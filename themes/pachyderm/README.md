@@ -261,3 +261,24 @@ The static folder should contain only **theme** assets that you do not need or w
 
 - Uses default internal Hugo template `{{ template "_internal/twitter_cards.html" . }}`
 - Found in `/themes/pachyderm/layouts/partials/head.html`
+
+--- 
+
+# Frontmatter Options
+
+```yaml
+---
+# metadata # 
+title: 
+description:
+date:
+# taxonomy #
+tags:
+series:
+seriesPart:
+# other # 
+author:
+beta: false //  displays a beta/experimental flag on the article. default is `false` 
+layout: // only needed for special layouts like `glossary` or `search`. 
+---
+```
