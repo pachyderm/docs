@@ -18,7 +18,7 @@ Pachyderm autocompletion is supported for `bash` and `zsh` shells.
 You must have either of them preinstalled
 before installing Pachyderm autocompletion.
 
-!!! tip
+!!! Note
     Type `pachctl completion --help` to display help information about
     the command.
 
@@ -113,6 +113,6 @@ steps:
 
    `pachctl` autocomplete should now be enabled in your system.
 
-!!! note "See Also:"
+!!! Note "See Also:"
 
     [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/)

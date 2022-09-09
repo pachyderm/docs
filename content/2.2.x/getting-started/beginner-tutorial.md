@@ -21,7 +21,7 @@ This guide assumes that you have Pachyderm running.
 
 - Or check out our [Quick Install](../../deploy-manage/deploy/quickstart/) page to deploy on your favorite cloud.
 
-!!! tip
+!!! Note
     If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
     This handy tool suggests `pachctl` commands as you type and
     helps you learn Pachyderm faster.
@@ -194,8 +194,8 @@ pachctl get file images@master:liberty.png | display
 Now that you have some data in your repo, it is time to do something
 with it. Pipelines are the core processing primitive in Pachyderm.
 Pipelines are defined with a simple JSON file called a pipeline
-specification or pipeline spec for short. For this [example](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/examples/opencv), we already
-[created the pipeline spec for you](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/examples/opencv/edges.json).
+specification or pipeline spec for short. For this [example](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/examples/opencv), we already
+[created the pipeline spec for you](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/examples/opencv/edges.json).
 
 When you want to create your own pipeline specification later, you can refer to the
 full [Pipeline Specification](../../reference/pipeline-spec) to use
@@ -289,7 +289,7 @@ to the appropriate output repo of your pipeline.
 Now, let's create the pipeline in Pachyderm:
 
 ```shell
-pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/edges.json
+pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
 ```
 Again, check the end result in your Console:
 ![Console edges pipeline](../images/console-edges-pipeline.png)
@@ -494,7 +494,7 @@ and
 * To create the `montage` pipeline, run:
 
     ```shell
-    pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/montage.json
+    pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/montage.json
     ```
 
     See your new DAG in Console:

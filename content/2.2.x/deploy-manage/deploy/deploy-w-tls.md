@@ -74,10 +74,10 @@ trusted certificate, you will need to set the `pachd_address` in the
 Pachyderm context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
-!!! example
+!!! Example
     ```shell   
     echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
     ```
 
-!!! note "See Also:"
+!!! Note "See Also:"
     [Connect by using a Pachyderm context](../connect-to-cluster/#connect-by-using-a-pachyderm-context)

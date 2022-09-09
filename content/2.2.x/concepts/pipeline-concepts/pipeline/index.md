@@ -55,7 +55,7 @@ A minimum pipeline specification must include the following parameters:
   run, as well as a `cmd` field for the specific code within the
   container that you want to execute, such as a Python script.
 
-!!! example
+!!! Example
     ```json
     {
       "pipeline": {

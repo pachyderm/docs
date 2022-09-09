@@ -70,7 +70,7 @@ in your filepath:
 	pachctl put file <repo>@<branch>:</path/to/file> -f s3://object_store_url
   	```
 
-!!! note
+!!! Note
     If you are configuring a local cluster to access an external bucket,
     make sure that Pachyderm has been given the proper access.
 

@@ -80,7 +80,7 @@ Now let's consider what the following glob patterns would match respectively:
 | `/**`| The match is applied at **all levels of your directory structure**. This is a recursive glob pattern. Let's look at the additional example below for more detail.||
 
 
-!!! example "Example: The case of the `/**` glob pattern"
+!!! Example "Example: The case of the `/**` glob pattern"
     
 
     Say we have the following repo structure:
@@ -124,7 +124,7 @@ you to test various glob patterns before you use them in a pipeline.
 top-level filesystem objects in the `train` repository as one
 datum:
 
-!!! example
+!!! Example
     ```shell
     pachctl glob file train@master:/
     ```
@@ -140,7 +140,7 @@ datum:
 top-level filesystem object in the `train` repository as a separate
 datum:
 
-!!! example
+!!! Example
     ```shell
     pachctl glob file train@master:/*
     ```
@@ -169,7 +169,7 @@ You can use the `pachctl list datum -f <my_pipeline_spec.json>` command to previ
 The pipeline does not need to have been created for the command to return the list of datums. This "dry run" helps you adjust your glob pattern when creating your pipeline.
 {{% /notice %}}
 
-!!! example
+!!! Example
     ```shell
     pachctl list datum -f edges.json
     ```
@@ -187,7 +187,7 @@ The pipeline does not need to have been created for the command to return the li
 ### Running list datum on a past job 
 You can use the `pachctl list datum <pipeline>@<job_ID>` command to check the datums processed by a given job.
 
-!!! example
+!!! Example
     ```shell
     pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
     ```

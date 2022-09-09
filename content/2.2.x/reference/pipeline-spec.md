@@ -529,7 +529,7 @@ output repository will be `s3://<output_repo>`.
 If you want to expose an input repository through an S3 gateway, see
 `input.pfs.s3` in [PFS Input](#pfs-input). 
 
-!!! note "See Also:"
+!!! Note "See Also:"
     [Environment Variables](../../deploy-manage/deploy/environment-variables/)
 
 ### Input
@@ -612,7 +612,7 @@ with pipes must use them since they are more performant. The difference will
 be especially notable if the job only reads a subset of the files that are
 available to it.
 
-!!! note
+!!! Note
     `lazy` does not support datums that
     contain more than 10000 files.
 

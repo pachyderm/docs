@@ -65,7 +65,7 @@ Below, the state transition diagram of a job:
 
 - The `pachctl list job -p <pipeline>` command returns the jobs in a given pipeline.
 
-    !!! example
+    !!! Example
         ```shell
         pachctl list job -p edges
         ```
@@ -90,7 +90,7 @@ The `pachctl inspect jobs <pipeline>@<jobID>` command enables you to view detail
 information about a specific (sub)job in a given pipeline (state, number of datums processed/failed/skipped, data downloaded, uploaded,
 process time, image:tag used to transform your data, etc...). Along with checking the logs, it is especially useful when troubleshooting a failed job.
 
-!!! example
+!!! Example
     Add a `--raw` flag to output a detailed JSON version of the job.
     ```shell
     pachctl inspect job edges@fd9454d06d8e4fa38a75c8cd20b39538 --raw

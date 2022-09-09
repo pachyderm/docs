@@ -22,7 +22,7 @@ To use tracing in Pachyderm, complete the following steps:
 1. Run Jaeger in Kubernetes
 
     ```shell
-    kubectl apply -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/etc/deploy/tracing/jaeger-all-in-one.yaml
+    kubectl apply -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/etc/deploy/tracing/jaeger-all-in-one.yaml
     ```
 
 2. Point Pachyderm at Jaeger
@@ -79,7 +79,7 @@ kubectl port-forward svc/jaeger-query 16686:80 & # UI service
 Then, connect to `localhost:16686` in your browser, and you should see all
 collected traces.
 
-!!! note "See Also:"
+!!! Note "See Also:"
     [Kubernetes Service Environment Variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables)
 
 ## Troubleshooting

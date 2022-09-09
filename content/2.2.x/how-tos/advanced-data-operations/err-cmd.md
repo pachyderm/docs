@@ -9,11 +9,11 @@ series:
 seriesPart:
 ---
 
-!!! note "TL;DR"
+!!! Note "TL;DR"
     The `err_cmd` parameter enables you to fail a datum without failing the
     whole job.
 
-!!! note
+!!! Note
     Before you read this section, make sure that you understand such
     concepts as [Datum](../../../concepts/pipeline-concepts/datum/) and
     [Pipeline](../../../concepts/pipeline-concepts/pipeline/).
@@ -79,5 +79,5 @@ written to the output, set `"err_cmd" : ["true"]`. The failed datums,
 which are "recovered" by `err_cmd` in this way, will be retried on
 the next job, just as failed datums.
 
-!!! note "See Also:"
-    [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/err_cmd/)
+!!! Note "See Also:"
+    [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/err_cmd/)

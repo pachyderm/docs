@@ -10,7 +10,7 @@ seriesPart:
 --- 
 
 
-!!! note 
+!!! Note 
     To deploy and configure a Pachyderm cluster
     to read logs from Loki,
     a ***Pachyderm Enterprise License*** is required. 
@@ -49,7 +49,7 @@ The URI at which Pachyderm reads from the Loki API Server is determined by the `
 If Loki is deployed after the `pachd` container,
 the `pachd` container will need to be redeployed to receive these connection parameters.
 
-!!! note 
+!!! Note 
     If you are not running Promtail on the node 
     where your Pachyderm pods are located, you
     will be unable to get logs for pipelines running
@@ -65,7 +65,7 @@ pachd:
   lokiLogging: true
 ```
 
-In such case, add the following section to your [value.yaml](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L203):
+In such case, add the following section to your [value.yaml](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L203):
 
 ```yaml  
 loki-stack:

@@ -10,7 +10,7 @@ seriesPart:
 ---
 
 
-!!! note "TL;DR"
+!!! Note "TL;DR"
     Use transactions to run multiple Pachyderm commands
     simultaneously in one job run.
 
@@ -51,7 +51,7 @@ will run once all the input commits have been finished**.
     its ID in the local Pachyderm configuration file. By default, this file
     is stored at `~/.pachyderm/config.json`.
 
-    !!! example
+    !!! Example
           ```json hl_lines="9"
           {
             "user_id": "b4fe4317-be21-4836-824f-6661c68b8fba",
@@ -90,7 +90,7 @@ will run once all the input commits have been finished**.
     Completed transaction with 1 requests: 7a81eab5e6c6430aa5c01deb06852ca5
     ```
 
-    !!! tip "Noteworthy"
+    !!! Note "Noteworthy"
           As soon as a commit is started (whether through `start commit` or `put file` without an open commit, or finishing a transaction that contains a start commit), a new [**global commit** as well as a **global job**](../../../concepts/advanced-concepts/globalID/#definition) is created. All open commits are in a `started` state, each of the pipeline jobs created is `running`, and the workers waiting for the commit(s) to be closed to process the data. In other words, your changes will only be applied when you close the commits.
         
           In the case of a transaction, the workers will wait until all of the input commits are finished to process them in one batch. All of those commits and jobs will be part of the same global commit/job and share the same globalID (**`Transaction ID`**). Without a transaction, each commit would trigger its own separate job.

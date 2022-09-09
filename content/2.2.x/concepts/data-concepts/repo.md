@@ -76,7 +76,7 @@ Pachyderm's repositories are divided into two categories:
 You can view the list of all user repositories in your Pachyderm cluster
 by running the `pachctl list repo` command.
 
-!!! example
+!!! Example
     ```shell
     pachctl list repo
     ```
@@ -97,7 +97,7 @@ by running the `pachctl list repo` command.
 The `pachctl inspect repo` command provides a more detailed overview
 of a specified repository.
 
-!!! example
+!!! Example
     ```shell
     pachctl inspect repo raw_data
     ```

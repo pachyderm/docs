@@ -102,7 +102,7 @@ through the standard input stream (`stdin`) in your terminal.
 Specify the parameters as a comma-separated list enclosed in
 curly brackets.
 
-!!! note
+!!! Note
     By default, the `pachd` port is `30650`.
 
 To create a new context with specific parameters, complete

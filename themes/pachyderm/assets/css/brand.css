@@ -16,6 +16,9 @@
     --is-meow: {{ .Site.Params.font.size}}
 }
 
+img {
+    max-width: 100%;
+}
 
 /* Non-Bulma classes */
 

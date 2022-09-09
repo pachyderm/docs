@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-!!! info
+!!! Info
     Before you read this section, make sure that you understand the concepts
     described in the following sections:
 

@@ -28,7 +28,7 @@ if your code writes data to an external system and you want
 to know the current job ID, you can use the `PACH_JOB_ID`
 environment variable to refer to the current job ID.
 
-!!! note "See Also:"
+!!! Note "See Also:"
     [Local Deployment](../../../getting-started/local-installation/)
 
 ## `pachd` Environment Variables
@@ -159,5 +159,5 @@ can connect to is Pachyderm itself. This is generally not recommended as very
 little of the Pachyderm API is idempotent, but in some specific cases it can be
 a viable approach.
 
-!!! note "See Also"
+!!! Note "See Also"
     - [transform.env](../../../reference/pipeline-spec/#transform-required)

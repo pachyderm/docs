@@ -12,7 +12,7 @@ seriesPart:
 A typical Pachyderm workflow involves multiple iterations of
 experimenting with your code and pipeline specs.
 
-!!! info
+!!! Info
     Before you read this section, make sure that you
     understand basic Pachyderm pipeline concepts described in
     [Concepts](../../concepts/pipeline-concepts/index.md).
@@ -31,7 +31,7 @@ be written in any language and can use any libraries of choice. Whether
 your code is as simple as a bash command or as complicated as a
 TensorFlow neural network, it needs to be built with all the required
 dependencies into a container that can run anywhere, including inside
-of Pachyderm. See [Examples](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples).
+of Pachyderm. See [Examples](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples).
 
 Your code does not have to import any special Pachyderm
 functionality or libraries. However, it must meet the
@@ -77,7 +77,7 @@ The reason is that Pachyderm cannot execute your code immediately when
 your container starts, so it runs a shim process in your container
 instead, and then, it calls your pipeline specification's `cmd` from there.
 
-!!! note
+!!! Note
     The `Dockerfile` example below is provided for your reference
     only. Your `Dockerfile` might look completely different.
 
@@ -86,7 +86,7 @@ To build a Docker image, complete the following steps:
 1. If you do not have a registry, create one with a preferred provider.
 If you decide to use DockerHub, follow the [Docker Hub Quickstart](https://docs.docker.com/docker-hub/) to
 create a repository for your project.
-1. Create a `Dockerfile` for your project. See the [OpenCV example](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/examples/opencv/Dockerfile).
+1. Create a `Dockerfile` for your project. See the [OpenCV example](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/examples/opencv/Dockerfile).
 1. Build a new image from the `Dockerfile` by specifying a tag:
 
    ```shell
@@ -123,7 +123,7 @@ with the `--push-images` flag. For more information, see
      docker push <image>:tag
      ```
 
-!!! note
+!!! Note
     Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
 
 ## Step 4: Create/Edit the Pipeline Config
@@ -139,7 +139,7 @@ parameters:
 - `transform`
 - `input`
 
-!!! note
+!!! Note
     Some special types of pipelines, such as a spout pipeline, do not
     require you to specify all of these parameters. 
     Spout pipelines, for example, do not have input repos.
@@ -186,7 +186,7 @@ parameter, as well as many others, in the pipeline specification.
 
      You can specify a local file or a file stored in a remote
      location, such as a GitHub repository. For example,
-     `https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/edges.json`.
+     `https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json`.
 
 1. If your pipeline specification changes, you can update the pipeline 
    by running
@@ -195,7 +195,7 @@ parameter, as well as many others, in the pipeline specification.
      pachctl update pipeline -f my-pipeline.json
      ```
 
-!!! note "See Also:"
+!!! Note "See Also:"
     - [Updating Pipelines](../../pipeline-operations/updating-pipelines)
     - Advanced users, parameterize your pipeline specifications with [Jsonnet pipeline specification files](../../pipeline-operations/jsonnet-pipeline-specs).
 

@@ -71,7 +71,7 @@ You can control the number of worker pods that Pachyderm runs in a
 pipeline by defining the `parallelism` parameter in the
 [pipeline specification](../../../reference/pipeline-spec/).
 
-!!! example
+!!! Example
     ```json
     "parallelism_spec": {
        // Exactly one of these two fields should be set

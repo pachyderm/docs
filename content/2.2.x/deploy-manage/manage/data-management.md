@@ -34,6 +34,6 @@ when downloading the input. The pod would get evicted and
 rescheduled to a different node, where the same thing might happen
 (assuming that node had a similar volume).
 
-!!! note "See Also:"
+!!! Note "See Also:"
 
    [Troubleshoot a pipeline](../../../troubleshooting/pipeline-troubleshooting#all-your-pods-or-jobs-get-evicted)

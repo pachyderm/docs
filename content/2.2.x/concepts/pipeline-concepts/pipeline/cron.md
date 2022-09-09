@@ -36,7 +36,7 @@ For example, you want to query a database every ten seconds and update your
 dataset with the new data every time the pipeline is triggered. The following
 pipeline extract illustrates how you can specify this configuration.
 
-!!! example
+!!! Example
 
     ```json
       "input": {
@@ -62,7 +62,7 @@ previous one. You can set the overwrite flag to true to overwrite the
 timestamp file on each tick. To learn more about overwriting commits in
 Pachyderm, see [Datum processing](../datum/index.md).
 
-!!! example
+!!! Example
 
     ```json
       "input": {
@@ -75,5 +75,5 @@ Pachyderm, see [Datum processing](../datum/index.md).
     ```
 
 {{% notice info %}}
-    [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/db)
+    [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/db)
 {{% /notice %}}

@@ -64,7 +64,7 @@ To create a pipeline, complete the following steps:
 
             For example, in our opencv beginner tutorial:
             ```shell
-            pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/edges.json
+            pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
             ```
          -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
        
@@ -116,7 +116,7 @@ repository. However, if such a repo already exists, your pipeline will take
 over the master branch. The files that were stored in the repo before
 will still be in the `HEAD` of the branch.
 
-!!! note "See Also:"
+!!! Note "See Also:"
     - [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
     - [Pipeline Specification](../../../reference/pipeline-spec/)
     - [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)

@@ -73,7 +73,7 @@ by running `pachctl list commit <commitID>` or restrict to a particular reposito
 
 - The `pachctl list commit <repo>@<branch>` command returns the commits in the given branch of a repo.
 
-    !!! example
+    !!! Example
         ```shell
         pachctl list commit images@master
         ```
@@ -98,7 +98,7 @@ of when the commit was opened and finished.
 - If you specify a branch instead of a specific commit (`pachctl inspect commit <repo>@<branch>`),
 Pachyderm displays the information about the HEAD of the branch.
 
-!!! example
+!!! Example
     Add a `--raw` flag to output a detailed JSON version of the commit.
     ```shell
     pachctl inspect commit images@c6d7be4a13614f2baec2cb52d14310d0 --raw
