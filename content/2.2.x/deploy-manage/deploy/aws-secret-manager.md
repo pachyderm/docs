@@ -36,19 +36,22 @@ Deploy the [**Secrets Store CSI driver**](https://secrets-store-csi-driver.sigs.
 !!! Important
       Make sure to enable the [`Sync as Kubernetes Secret` feature](https://secrets-store-csi-driver.sigs.k8s.io/topics/sync-as-kubernetes-secret.html) explicitly by setting the helm parameter `syncSecret.enabled` to true.
 
-!!! Note "TL;DR"
-      ``` shell
-      helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
-      helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver --namespace kube-system --set syncSecret.enabled=true
-      ```
+{{% notice %}}
+``` shell
+helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver --namespace kube-system --set syncSecret.enabled=true
+```
+{{% /notice %}}
 
 ### Install the AWS Provider
 **AWS provider** for the Secrets Store CSI Driver allows you to make secrets stored in Secrets Manager appear as files mounted in Kubernetes pods.
 
-!!! Note "TL;DR"
-      ``` shell
-      kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
-      ```
+{{% notice %}}
+TL;DR
+``` shell
+kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
+```
+{{% /notice %}}
 
 ## 3. Store Pachyderm's Secrets in Secrets Manager
 In your Secret Manager Console, click on **Store a new secret**, select the **Other type of Secret** (for generic secrets), provide the following Key/Value pairs, then choose a secret name. 

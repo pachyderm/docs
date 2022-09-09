@@ -15,10 +15,11 @@ the most important aspects of distributed computation.
 Pachyderm uses **glob patterns** to provide flexibility to
 define data distribution. 
 
-!!! Note
-     Pachyderm's concept of glob patterns is similar to Unix glob patterns.
-     For example, the `ls *.md` command matches all files with the
-     `.md` file extension.
+{{% notice %}}
+Pachyderm's concept of glob patterns is similar to Unix glob patterns.
+For example, the `ls *.md` command matches all files with the
+`.md` file extension.
+{{% /notice %}}
 
 
 The glob pattern applies to all of the directories/files in the branch specified by the [`pfs` section of the pipeline specification (referred to as PFS inputs)](../#pfs-input-and-glob-pattern). The directories/files that match are the [datums](../) that will be processed by the worker(s) that run your pipeline code. 
@@ -70,7 +71,7 @@ state with a `json` file for each city in that state:
 Now let's consider what the following glob patterns would match respectively:
 
 |Glob Pattern| Corresponding match| Example|
-|-----------------|---------------------------------||
+|-----------------|---------------------------------|-|
 | `/`| This pattern matches `/`, the root directory itself, meaning **all the data would be one large datum**. All changes in any of the files and directories trigger Pachyderm to process the whole repository contents as a single datum.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes all changed files and directories in the repo as a single datum.*|
 | `/*`| This pattern matches **everything under the root directory**. It defines **one datum per state**, which means that all the cities for a given state are processed together by a single worker, but each state is processed independently.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes the `California/` datum only*.|
 | `/Colorado/*`| This pattern matches **files only under the `/Colorado` directory**. It defines **one datum per city**.|*If you add a new file `Alamosa.json` to the `Colorado/` directory and `Sacramento.json` to the `California/` directory, Pachyderm processes the `Alamosa.json` datum only.*|
@@ -164,9 +165,9 @@ Pachyderm allows you to check those datums:
 ### Testing your glob pattern before creating a pipeline
 You can use the `pachctl list datum -f <my_pipeline_spec.json>` command to preview the datums defined by a pipeline given its specification file. 
 
-!!! note "Note"  
-    The pipeline does not need to have been created for the command to return the list of datums. This "dry run" helps you adjust your glob pattern when creating your pipeline.
- 
+{{% notice %}}
+The pipeline does not need to have been created for the command to return the list of datums. This "dry run" helps you adjust your glob pattern when creating your pipeline.
+{{% /notice %}}
 
 !!! example
     ```shell
@@ -201,33 +202,35 @@ You can use the `pachctl list datum <pipeline>@<job_ID>` command to check the da
     de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142de8714c11b004610ea7af2378:/g2QnNqa.jpg skipped Less than a second
     ```
 
-!!! note "Note"  
-    In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
+{{% notice %}}
+In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
+{{% /notice %}}
 
-!!! info "Stats and Datum Metadata"
+{{% notice info %}} 
+Stats and Datum Metadata
     - Running `list datum` on a given job execution of a pipeline allows you to additionally display the STATUS (running, failed, success) and TIME of each datum.
     - You might want to follow up with [inspect datum pipeline@job_number datum ID](https://docs.pachyderm.com/latest/reference/pachctl/pachctl_inspect_datum/) to detail the files that a specific datum includes.
     
-        ```shell
-        pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
-        ```
-        **System Response:**
-        ```
-        ID	a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
-        Job ID	b8687e9720f04b7ab53ae8c64541003b
-        State	SUCCESS
-        Data Downloaded	606.3KiB
-        Data Uploaded	26.96KiB
-        Total Time	582.000134ms
-        Download Time	40.062075ms
-        Process Time	535.387088ms
-        Upload Time	6.550971ms
-        PFS State:
-          REPO         COMMIT                             PATH
-          edges.meta   b8687e9720f04b7ab53ae8c64541003b   /pfs/a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
-        Inputs:
-          REPO     COMMIT                             PATH
-          images   b8687e9720f04b7ab53ae8c64541003b   /w7RVTsv.jpg
-        ```
-        Add `--raw` for a full JSON version of the [datum's metadata](../metadata/).
-
+```shell
+pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
+```
+**System Response:**
+```
+ID	a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
+Job ID	b8687e9720f04b7ab53ae8c64541003b
+State	SUCCESS
+Data Downloaded	606.3KiB
+Data Uploaded	26.96KiB
+Total Time	582.000134ms
+Download Time	40.062075ms
+Process Time	535.387088ms
+Upload Time	6.550971ms
+PFS State:
+  REPO         COMMIT                             PATH
+  edges.meta   b8687e9720f04b7ab53ae8c64541003b   /pfs/a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
+Inputs:
+  REPO     COMMIT                             PATH
+  images   b8687e9720f04b7ab53ae8c64541003b   /w7RVTsv.jpg
+```
+Add `--raw` for a full JSON version of the [datum's metadata](../metadata/).
+{{% /notice %}}

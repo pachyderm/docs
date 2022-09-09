@@ -74,5 +74,6 @@ Pachyderm, see [Datum processing](../datum/index.md).
       }
     ```
 
-!!! note "See Also:"
+{{% notice info %}}
     [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/db)
+{{% /notice %}}

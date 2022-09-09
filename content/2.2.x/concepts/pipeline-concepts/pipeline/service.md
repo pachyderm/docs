@@ -50,5 +50,6 @@ The service section specifies the following parameters:
 !!! Info
         The Service starts running *at the first commit* in the input repo.
 
-!!! Note "See Also:"    
-        - [Service](../../../../reference/pipeline-spec/#service-optional)
+{{% notice info %}} 
+- [Service](../../../../reference/pipeline-spec/#service-optional)
+{{% /notice %}}

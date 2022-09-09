@@ -122,5 +122,6 @@ complete cleanup of your Pachyderm cluster.
 If you run the delete command with the `--all` flag, all
 repositories will be deleted.
 
-!!! note "See Also:"
-    [Pipeline](../pipeline-concepts/pipeline/index.md)
+{{% notice %}}
+[Pipeline](../pipeline-concepts/pipeline/index.md)
+{{% /notice %}}

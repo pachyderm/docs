@@ -1,4 +1,4 @@
 <div class="notification {{ .Get 0 }}">
     <button class="delete"></button>
-    {{.Inner}}
+    {{.Inner | plainify}}
 </div>

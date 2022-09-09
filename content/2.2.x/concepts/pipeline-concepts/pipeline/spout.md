@@ -48,15 +48,9 @@ in the base image of your spout
 as well as your authentication information.
 As a result, the authentication is seamless when using `pachctl`. 
 
-!!! Note 
-    Support for a transparent
-    authentication in our SDKs is coming soon.
-    In the meantime, check our Spout 101 example
-    at the end of this page
-    to learn how to retrieve
-    and inject your authentication token
-    into your API client.
-
+{{% notice warning %}}
+Support for a transparent authentication in our SDKs is coming soon. In the meantime, check our Spout 101 example at the end of this page to learn how to retrieve and inject your authentication token into your API client.
+{{% /notice %}}
 
 To create a spout pipeline, you will need:
 
@@ -64,19 +58,19 @@ To create a spout pipeline, you will need:
 * A Docker container with your spout code that connects to, reads, transforms, and pushes data from the data source to your output repo. 
 * A spout pipeline specification file that uses your container.
 
-!!! Note 
-    It is important
-    to remember that you will
-    need to use a `put file` API call
-    from a client of your choice
-    to push your data
-    into the pipeline output repository.
-    Having the entire Pachyderm API
-    available to you
-    allows you to package data
-    into commits and transactions
-    at the granularity your problem requires.
-
+{{% notice %}}
+It is important
+to remember that you will
+need to use a `put file` API call
+from a client of your choice
+to push your data
+into the pipeline output repository.
+Having the entire Pachyderm API
+available to you
+allows you to package data
+into commits and transactions
+at the granularity your problem requires.
+{{% /notice %}}
 
 A minimum spout specification must include the following
 parameters in the [pipeline specification](../../../reference/pipeline-spec.md):
@@ -90,15 +84,16 @@ parameters in the [pipeline specification](../../../reference/pipeline-spec.md):
 xs
 Here is an example of a minimum spout pipeline specification:
 
-!!! note
-    The `env` property is an optional argument.
-    You can define your data stream source
-    from within the container
-    in which you run
-    your script.
-    For simplicity, in this example,
-    `env` specifies the
-    source of the Kafka host.
+{{% notice %}}
+The `env` property is an optional argument.
+You can define your data stream source
+from within the container
+in which you run
+your script.
+For simplicity, in this example,
+`env` specifies the
+source of the Kafka host.
+{{% /notice %}}
 
 ```
 {

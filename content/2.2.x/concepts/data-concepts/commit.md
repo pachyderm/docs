@@ -9,8 +9,9 @@ series:
 seriesPart:
 --- 
 
-!!! Note "Attention"
-         Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+{{% notice tip %}}
+Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+{{% /notice %}}
 
 ## Definition
 
@@ -30,8 +31,9 @@ indicating the data is ready for processing by downstream pipelines.
 
  When you create a new commit, the previous commit on which the new commit is based becomes the parent of the new commit. Your repo history consists of those parent-child relationships between your data commits.
 
-!!! Note
-    An initial commit has `<none>` as a parent.
+{{% notice tip %}}
+An initial commit has `<none>` as a parent.
+{{% /notice  %}}
 
 Additionally, **commits have an "origin"**.
 You can see an origin as the answer to: **"What triggered the production of this commit?"**.
@@ -50,9 +52,10 @@ That origin can be of 3 types:
     They have the same content as their parent commit and are mainly used for [global IDs](../../advanced-concepts/globalID/).
 
 
-!!! Note
-    To track provenance, Pachyderm requires **all commits to belong to exactly one branch**.
-    When moving a commit from one [branch](./branch.md) to another, Pachyderm creates an `ALIAS` commit on the other branch.
+{{% notice tip %}}
+To track provenance, Pachyderm requires **all commits to belong to exactly one branch**.
+When moving a commit from one [branch](./branch.md) to another, Pachyderm creates an `ALIAS` commit on the other branch.
+{{% /notice  %}}
 
 
 Each commit has an alphanumeric identifier (ID) that you can reference in the `<repo>@<commitID>` format (or `<repo>@<branch>=<commitID>` if the commit has multiple branches from the same repo) .

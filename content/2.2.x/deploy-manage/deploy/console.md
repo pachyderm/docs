@@ -23,8 +23,9 @@ Pachyderm Community Edition comes with Console per default. Upon upgrading to Pa
 - Benefit from our Authentication/Authorization features and control which users, groups, or roles have access to specific Pachyderm resources.
 - Lift all [CE scaling limits](../../../reference/scaling-limits/).
 
-!!! Note
-     Request an Enterprise trial token directly from Console CE by hitting the **"Upgrade to Enterprise"** button at the bottom right of your Console, fill in [this form](https://www.pachyderm.com/trial/), or get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io).
+{{% notice %}}
+Request an Enterprise trial token directly from Console CE by hitting the **"Upgrade to Enterprise"** button at the bottom right of your Console, fill in [this form](https://www.pachyderm.com/trial/), or get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io).
+{{% /notice %}}
 
 Before diving into Console installation steps, please look at Console's various states, from the Community Edition to Enterprise. It should give you a mental model of the various paths to upgrade your Community Edition and what happens when your Enterprise token expires.
 

@@ -41,9 +41,9 @@ to a commit in the staging branch.
 Although, in this section, the branch in which you consolidate changes
 is called `staging`, you can name it as you like. 
 
-!!! Note
-    You can have multiple staging branches. 
-    For example, `dev1`, `dev2`, `staging`...
+{{% notice tip %}}
+You can have multiple staging branches.  For example, `dev1`, `dev2`, `staging`...
+{{% /notice %}}
 
 In the example below, we first create a repository called `data` on which we configure
 a staging branch:
@@ -224,9 +224,9 @@ To copy files from one branch to another, complete the following steps:
       pachctl finish commit data@master
       ```
 
-!!! Note
-      While the commit is open, you can run `pachctl delete file` if you want to remove something from
-      the parent commit or `pachctl put file` if you want to upload something that is not in a repo yet.
+{{% notice tip %}}
+While the commit is open, you can run `pachctl delete file` if you want to remove something from the parent commit or `pachctl put file` if you want to upload something that is not in a repo yet.
+{{% /notice %}}
 
 ## Deferred Processing in Output Repositories
 
@@ -354,11 +354,12 @@ input. The name of the branch is auto-generated with the form
 `<pipeline-name>-trigger-n`. You can manually update the heads of these branches
 to trigger processing just like in the previous example.
 
-!!! note
-      Deleting or updating a pipeline **will not clean up** the trigger branch that it has created.
-      In fact, the trigger branch has a lifetime that is not tied to the pipeline's lifetime.
-      There is no guarantee that other pipelines are not using that trigger branch.
-      A trigger branch can, however, be deleted manually (`pachctl delete branch <repo>@<branch>`).
+{{% notice tip %}}
+Deleting or updating a pipeline **will not clean up** the trigger branch that it has created.
+In fact, the trigger branch has a lifetime that is not tied to the pipeline's lifetime.
+There is no guarantee that other pipelines are not using that trigger branch.
+A trigger branch can, however, be deleted manually (`pachctl delete branch <repo>@<branch>`).
+{{% /notice  %}}
 
 ## More advanced automation
 

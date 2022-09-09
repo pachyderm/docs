@@ -36,6 +36,6 @@ the `pachctl list job <jobID>` command:
 
 ![datums in progress](../../images/datums_in_progress.png)
 
-!!! Note
-    Datums that failed are still included in the total, but not
-    shown in the progress indicator.
+{{% notice %}}
+    Datums that failed are still included in the total, but not shown in the progress indicator.
+{{% /notice %}}
