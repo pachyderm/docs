@@ -1,4 +1,13 @@
-# Deferred Processing of Data
+---
+# metadata # 
+title: Deferred Processing
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 While a Pachyderm pipeline is running, it processes any new data that you
 commit to its input branch. However, in some cases, you

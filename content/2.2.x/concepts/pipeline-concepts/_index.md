@@ -1,4 +1,13 @@
-# Pipeline Concepts
+---
+# metadata # 
+title: Pipeline Concepts
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm Pipeline System (PPS) is the computational
 component of the Pachyderm platform that enables you to

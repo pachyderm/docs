@@ -1,4 +1,13 @@
-# Sidecar S3 Gateway 
+---
+# metadata # 
+title:  Sidecar S3 Gateway
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm offers the option to use **S3-Protocol-Enabled Pipelines** (i.e., Pipelines enabled to access input and output repos via the S3 Gateway).
 

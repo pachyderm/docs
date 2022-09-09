@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+weight: 6
 ---
 
 This section describes features available in the enterprise

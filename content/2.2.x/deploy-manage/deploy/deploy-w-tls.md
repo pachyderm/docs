@@ -1,4 +1,13 @@
-# Deploy Pachyderm with TLS (SSL, HTTPS)
+---
+# metadata # 
+title:  Deploy Pachyderm with TSL (SSL, HTTPS)
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 ## Obtain A Certificate And Enable TLS
 

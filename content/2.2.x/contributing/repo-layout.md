@@ -1,4 +1,13 @@
-# Repo layout
+---
+# metadata # 
+title: Repo Layout
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Following is a layout of the various directories that make up the pachyderm
 repo, and their purpose.

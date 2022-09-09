@@ -1,4 +1,15 @@
-# Configure Environment Variables
+---
+# metadata # 
+title:  Configure Environment Variables
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
+
 
 When you use Pachyderm, you can define environment variables that
 can transmit the required configuration directly to your application.

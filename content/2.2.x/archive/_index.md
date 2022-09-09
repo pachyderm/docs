@@ -1,4 +1,14 @@
-# Archive
+---
+# metadata # 
+title: Archive
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+weight: 10
+--- 
 
 The Pachyderm team is constantly working on adding new features and
 improvements to all Pachyderm products. To leverage Pachyderm in its

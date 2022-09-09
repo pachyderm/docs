@@ -1,4 +1,13 @@
-# On Premises
+---
+# metadata # 
+title:  On Premises
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 This page walks you through the fundamentals of what you need to know about Kubernetes, persistent volumes, and object stores to deploy Pachyderm on-premises.
 

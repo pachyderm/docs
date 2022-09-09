@@ -1,4 +1,14 @@
-# Infrastructure Recommendations
+---
+# metadata # 
+title: Infrastructure Recommendations
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 In the simplest case, such as running a Pachyderm cluster locally, implicit and
 explicit port-forwarding enables you to communicate with `pachd`, the Pachyderm

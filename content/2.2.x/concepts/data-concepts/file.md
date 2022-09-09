@@ -1,4 +1,13 @@
-# File
+---
+# metadata # 
+title: File
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A file is a Unix filesystem object, which is a directory or
 file, that stores data. Unlike source code

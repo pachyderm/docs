@@ -1,4 +1,13 @@
-# Join Input
+---
+# metadata # 
+title: Join Input
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A join is a special type of pipeline input that enables you to combine
 files that reside in separate Pachyderm repositories and match a

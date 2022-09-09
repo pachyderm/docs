@@ -42,14 +42,14 @@ params:
 
   ## HomePage Features
    # TODO: add date sort to range on featureDisplayVideos
-  Videos: true # displays first 3 videos from "/tutorials/videos/", sorted by date.
+  Videos: false # displays first 3 videos from "/tutorials/videos/", sorted by date.
   CommunityDetails: true  # displays slack and other community details (WIP)
   
   ## Release Features
   versionDropdown: true # displays a top-nav dropdown with top-level sections served as versioned documentation. 
   downloads: true # Enables displaying the download dropdown (requires release.patch)
   releaseInfo:
-    latest: "2.3.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
+    latest: "2.2.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
     patch: "2.2.7" # Used to generate download links
 
 

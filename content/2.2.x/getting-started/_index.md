@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+weight: 1
 ---
 
 ![what-is-pachyderm](./images/what-is-pachyderm.svg)

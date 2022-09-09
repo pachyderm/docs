@@ -1,4 +1,15 @@
-# Non-Default Namespaces
+---
+# metadata # 
+title:  Non-Default Namespaces
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
+
 
 Often, production deploys of Pachyderm involve deploying Pachyderm to a non-default namespace. This helps administrators of the cluster more easily manage Pachyderm components alongside other things that might be running inside of Kubernetes (DataDog, TensorFlow Serving, etc.).
 

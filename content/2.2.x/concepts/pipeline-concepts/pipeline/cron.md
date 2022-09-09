@@ -1,4 +1,13 @@
-# Cron Pipeline
+---
+# metadata # 
+title: Cron Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm triggers pipelines when new changes appear in the input repository.
 However, if you want to trigger a pipeline based on time instead of upon

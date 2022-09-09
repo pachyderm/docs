@@ -1,4 +1,13 @@
-# Helm Deployment
+---
+# metadata # 
+title:  Helm Deployment
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 

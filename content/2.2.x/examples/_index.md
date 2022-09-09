@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+weight: 8
 ---
 
 A curated list of examples that use Pachyderm.

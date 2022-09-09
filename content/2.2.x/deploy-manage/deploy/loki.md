@@ -1,4 +1,14 @@
-# Enable Logs Aggregation With Loki
+---
+# metadata # 
+title:  Enable Logs Aggregation With Loki
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 !!! note 
     To deploy and configure a Pachyderm cluster

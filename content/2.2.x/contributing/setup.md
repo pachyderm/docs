@@ -1,4 +1,13 @@
-# Setup for contributors
+---
+# metadata # 
+title: Contributor Setup
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 ## General requirements
 

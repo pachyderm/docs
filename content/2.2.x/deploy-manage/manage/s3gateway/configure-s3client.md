@@ -1,4 +1,14 @@
-# Configure Your S3 Client
+---
+# metadata # 
+title:  Configure Your S3 Client
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 Before you can access a repo via the S3 gateway,
 you need to configure your S3 client. 

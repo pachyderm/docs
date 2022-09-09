@@ -1,4 +1,13 @@
-# Branch
+---
+# metadata # 
+title: Branch
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A Pachyderm branch is a pointer to a commit that
 moves along with new commits as they are submitted. By default,

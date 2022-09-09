@@ -1,4 +1,13 @@
-# Datum
+---
+# metadata # 
+title: Datum
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 !!! note "TL;DR"
     Datums define what input data is seen by your code. It can be

@@ -1,4 +1,13 @@
-# Pachyderm Versioned Data Concepts
+---
+# metadata # 
+title: Versioned Data Concepts
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm data concepts describe **version-control primitives** that
 you interact with when you use Pachyderm.

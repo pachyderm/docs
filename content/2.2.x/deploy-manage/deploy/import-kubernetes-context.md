@@ -1,4 +1,14 @@
-# Import a Kubernetes Context
+---
+# metadata # 
+title:  Import a Kubernetes Context
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 After you have deployed Pachyderm with [Helm](../helm-install/), the Pachyderm context is not created.
 Therefore, **you need to manually create a new Pachyderm context with
@@ -26,13 +36,13 @@ To import a Kubernetes context, complete the following steps:
    ```
 
 
-1. Create a new Pachyderm context with the embedded Kubernetes context:
+2. Create a new Pachyderm context with the embedded Kubernetes context:
 
    ```shell
    pachctl config import-kube <new-pachyderm-context-name> -k `kubectl config current-context`
    ```
 
-1. Verify that the context was successfully created and view the context parameters:
+3. Verify that the context was successfully created and view the context parameters:
 
    **Example:**
 
@@ -51,13 +61,13 @@ To import a Kubernetes context, complete the following steps:
    }
    ```
 
-1. Activate the new Pachyderm context:
+4. Activate the new Pachyderm context:
 
    ```shell
    pachctl config set active-context <new-pachyderm-context-name>
    ```
 
-1. Verify that the new context has been activated:
+5. Verify that the new context has been activated:
 
    ```shell
    pachctl config get active-context

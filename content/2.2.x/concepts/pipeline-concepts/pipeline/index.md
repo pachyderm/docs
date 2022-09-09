@@ -1,4 +1,13 @@
-# Pipeline
+---
+# metadata # 
+title: Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 
 A pipeline is a Pachyderm primitive that is responsible for reading data

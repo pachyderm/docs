@@ -1,4 +1,14 @@
-# Production Deployment Recommended Pre-Requisites
+---
+# metadata # 
+title:  Production Deployment Recommended Pre-Requisites
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 To deploy in production, we recommend setting up the following pieces of networking infrastructure: A load balancer, a kubernetes ingress controller, and a DNS pointing to the load balancer. In addition we recommend using a managed database instance (such as RDS for AWS). 
 

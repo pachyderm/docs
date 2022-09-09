@@ -1,4 +1,13 @@
-# History
+---
+# metadata # 
+title: History
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm implements rich version-control and history semantics. This section
 describes the core concepts and architecture of Pachyderm's version control

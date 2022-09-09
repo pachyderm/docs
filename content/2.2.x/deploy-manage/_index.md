@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+weight: 4
 ---
 
 This section describes how to deploy Pachyderm in a production environment.

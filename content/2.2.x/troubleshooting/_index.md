@@ -9,6 +9,7 @@ series:
 seriesPart:
 # other # 
 author: Lawrence Lane
+weight: 7
 ---
 
 This section describe troubleshooting guidelines that should

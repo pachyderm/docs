@@ -1,4 +1,13 @@
-# Global S3 Gateway 
+---
+# metadata # 
+title:  Global S3 Gateway 
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm comes with an embedded **S3 gateway**, deployed in the `pachd` pod, that allows you to
 **access Pachyderm's repo through the S3 protocol**.  

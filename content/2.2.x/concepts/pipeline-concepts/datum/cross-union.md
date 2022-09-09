@@ -1,4 +1,13 @@
-# Cross and Union Inputs
+---
+# metadata # 
+title: Cross & Union Inputs
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 <!---This section needs to be made more clear. There is a lot of information
 that I would say describes the things you can do with a cross or union pipeline

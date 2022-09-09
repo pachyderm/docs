@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+weight: 5
 ---
 This section includes references to various tools
 that enable you to interact with Pachyderm by using

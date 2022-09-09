@@ -1,4 +1,13 @@
-# Connect to a Pachyderm cluster
+---
+# metadata # 
+title:  Connect to a Cluster
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 After you deploy a Pachyderm cluster, you can continue to use
 the command-line interface, connect to the Pachyderm console, or

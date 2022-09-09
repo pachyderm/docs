@@ -1,4 +1,13 @@
-# Set up Ingress with Traefik to access Pachyderm UI (`console`) service in your cluster 
+---
+# metadata # 
+title: Setup Ingress with Traefik
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Before completing the following steps, read the [Infrastructure Recommendation page](../).
 

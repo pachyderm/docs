@@ -1,4 +1,13 @@
-# Console
+---
+# metadata # 
+title:  Console 
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 ![Console in action](../images/console.gif)
 

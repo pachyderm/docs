@@ -1,9 +1,20 @@
+---
+# metadata # 
+title: Monitor your Pachyderm cluster with Prometheus
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 !!! Note 
     To monitor a Pachyderm cluster
     with Prometheus, 
     a ***Pachyderm Enterprise License*** is required. 
 
-# Monitor your Pachyderm cluster with Prometheus
+
 
 Pachyderm's deployment manifest exposes Prometheus metrics, 
 allowing an easy set up of the monitoring of your cluster.

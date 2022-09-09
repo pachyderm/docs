@@ -1,4 +1,13 @@
-# Set Up AWS Secret Manager
+---
+# metadata # 
+title:  Set Up AWS Secret Manager
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 For production environments, we highly recommend securing and centralizing the storage and management of your secrets (database access, root token, enterprise key, etc...) in **AWS Secrets Manager**, then allow your EKS cluster to retrieve those secrets using fine-grained IAM policies.
 

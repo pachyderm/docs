@@ -1,4 +1,14 @@
-# Google Cloud Platform
+---
+# metadata # 
+title:  Google Cloud Platform
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 For a quick test installation of Pachyderm on GCP (suitable for development), jump to our [Quickstart page](../quickstart/).
 

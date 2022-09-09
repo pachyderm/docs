@@ -1,4 +1,13 @@
-# Group Input
+---
+# metadata # 
+title: Group Input
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A group is a special type of pipeline input that enables you to aggregate
 files that reside in one or separate Pachyderm repositories and match a
