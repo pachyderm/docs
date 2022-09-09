@@ -1,0 +1,39 @@
+{{/* Displays cards with child page titles, their total count, a description or summary, and optionally quick buttons to the first 3 children. */}}
+{{ if .Site.Params.childPages.display}}
+    {{if .Pages }}
+        <aside>
+            <div class="columns is-flex-wrap-wrap">
+                {{ range sort .Pages "Weight" "$order"}}
+                <div class="column is-half theme-defer">
+                   <a class="card is-clipped" href="{{ .Permalink }}">
+                        <div class="card-content theme-tile">
+                            <div class="content">
+                                <h4 class="mr-3 has-text-weight-bold"> {{ .Title}}</h4>
+                                {{if eq .Params.label "required"}}
+                                    <div class="tag is-black is-pulled-left mr-2">REQUIRED</div>
+                                {{else if eq .Params.label "optional"}}
+                                     <div class="tag is-light is-pulled-left mr-2">OPTIONAL</div>
+                                {{end}}
+                                
+                
+                                <p class="is-size-7 has-text-dark"> {{if .Description}} {{.Description}} {{else}}{{.Summary | truncate 300}} {{end}}</p>
+                                {{if .Pages}} 
+                                    {{ if .Site.Params.childPages.grandchildren}}
+                                    <div class="buttons">
+                                        {{ range first 7 .Pages }}
+                                            <a class="card-buttons button is-small is-black is-outlined" href="{{ .Permalink }}">{{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
+                                        {{ end }}
+                                    </div>
+                                    {{else}}
+                                     <div class="tag is-white"> {{ len (.Pages) }} articles</div>  
+                                    {{end}}
+                                {{end}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </aside>
+    {{ end }}
+{{end}}

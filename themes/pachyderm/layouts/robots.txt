@@ -1,0 +1,5 @@
+User-agent: *
+
+{{range after 2 .Site.Sections.ByTitle.Reverse}}{{range .Sections}}
+Disallow: {{ .RelPermalink }}{{ if .Pages}}{{range .Pages}}
+Disallow: {{ .RelPermalink }}{{end}}{{end}}{{end}}{{end}}

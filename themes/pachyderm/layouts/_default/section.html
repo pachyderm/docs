@@ -1,0 +1,30 @@
+{{/* All parent pages (_index.md) are considered sections. See: https://gohugo.io/content-management/sections/ 
+    layout-section is an empty class for easier location; do not style against it.*/}}
+
+{{ define "main" }}
+        {{ if .Site.Params.heroBanner.section}}
+        <section id="section-hero" class="layout-section hero is-medium is-info theme-pattern-alt theme-rounded">
+            <div class="hero-body">
+                <h1><strong>{{.Title}}</strong></h1>
+                <hr>
+                    {{ if .Description}}
+                        <div class="has-text-black description">
+                            {{ .Description}}
+                        </div>
+                    {{end}}
+                    {{ if .Date }}
+                        <div class="is-size-7 has-text-black description">
+                            {{ .Date | time.Format ":date_long" }}
+                        </div>
+                    {{ end }}
+            </div>
+        </section>
+        {{else}}
+            {{/* Don't show the hero section */}}
+        {{end}}
+        <section class="layout-section container is-max-desktop my-6">
+            {{ partial "featureBetaNotice.html" . }}
+            {{ .Content }}
+            {{ partial "featureChildPages.html" . }}
+        </section>
+{{end}}

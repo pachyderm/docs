@@ -1,0 +1,21 @@
+{{/* https://giscus.app/ -- app must be installed on the github repo; repo must be public*/}}
+{{ if .Site.Params.giscus }} 
+    <section class="columns mx-2 my-3 p-3 theme-pattern-alt theme-rounded">
+        <script src="https://giscus.app/client.js" defer
+                data-repo="lbliii/milo"
+                data-repo-id="R_kgDOG8VE6Q"
+                data-category="General"
+                data-category-id="DIC_kwDOG8VE6c4CQfKf"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light_high_contrast"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </section>
+{{end}}

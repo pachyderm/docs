@@ -1,0 +1,20 @@
+{{ if .Site.Params.Videos }}
+    {{/* change the $directory value if you want to pull videos from a different location */}}
+    {{$directory := print (.Site.Params.releaseInfo.latest) "/tutorials/video/" }}
+
+    <section id="webinars" class="has-background-info mx-2 my-6 p-6 theme-pattern theme-rounded theme-defer is-hidden-mobile">
+        <h2 class="pb-4 has-text-weight-bold has-text-centered">View Latest Webinars </h2>
+        {{ with .Site.GetPage $directory }}
+            <section class="columns mx-3 theme-defer">
+                {{range .Pages}}
+                    <div class="column is-one-third theme-defer">
+                        <div class="p-1 m-1 has-background-white">
+                            {{.Content}}
+                        </div>
+                    </div>
+                {{end}}
+            </section>
+        {{ end }}
+    </section>
+
+{{end}}

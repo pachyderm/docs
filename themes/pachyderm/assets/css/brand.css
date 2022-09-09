@@ -1,0 +1,302 @@
+:root {
+    --is-primary-font: "Montserrat"; /* Chaning fonts? Also update head.html */
+    --is-secondary-font: "Montserrat";
+    --is-background-color: #fff;
+    --is-content-color: #000;
+    --is-content-color-inverted: #fff;
+    --is-primary-color: #582f6b;
+    --is-link-color: #ce6767;
+    --is-accent-color: #5ba3b1;
+    --is-code-color: #ce6767;
+    --is-notice-tip: #c6b7e5;
+    --is-notice-warning:#c49191;
+    --is-notice-info:  #ecf5f7;
+    --is-notice-success: #ede9ee;
+    --is-notice-danger:  #c6b7e5;
+    --is-meow: {{ .Site.Params.font.size}}
+}
+
+
+/* Non-Bulma classes */
+
+/* Animations */
+
+.theme-fade-in {
+    animation: fadeIn .4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+/* theme-fixed is used for floating directory/toc  */
+
+.theme-fixed {
+    position: fixed;
+    z-index: 100;
+}
+
+/* theme-pattern is used for the hero image backgrounds on single pages; alt is for list pages */
+
+.theme-pattern {
+    background-image: url(/images/pachContentBG.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.theme-pattern-alt {
+    background-image: url(/images/pachContentBG2.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* theme-tile is used for standardizing the size of child article tiles in list pages */
+
+.theme-tile {
+    height: 100%;
+}
+/* theme-directory is used to make the left navigation/folder-tree follow the reader */
+
+.theme-directory {
+    position: relative;
+    overflow-y: auto;
+    height: 600px;
+}
+
+/* Text Highlight Color */
+
+::selection {
+    background: var(--is-accent-color);
+    color: #fff;
+}
+
+
+/* The following are notice types used in documentation for tip, info, success, warning, danger content.  */
+
+.tip {
+    background-color: var(--is-notice-tip);
+}
+
+.tip::before {
+    content: "💡";
+    font-size: 1.5rem;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: left;
+
+
+}
+
+.warning {
+    background-color: var(--is-notice-warning);
+    color: white
+}
+
+.warning::before {
+    content: "☠️";
+    font-size: 1.5rem;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: left;
+
+}
+
+.info {
+    background-color: var(--is-notice-info);
+}
+
+.info::before {
+    content: "📖";
+    font-size: 1.5rem;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: left;
+
+}
+
+.success {
+    background-color: var(--is-notice-success);
+}
+
+.success::before {
+    content: "🎉";
+    font-size: 1.5rem;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: left;
+
+}
+
+ .logo {
+    width: 150px;
+    background-image: url(/images/pachLogo.svg);
+    background-repeat: no-repeat;
+}
+
+/* Dark Mode */
+.theme-dark-mode {
+    background-color: #000 !important;
+    color: var(--is-content-color-inverted);
+}
+
+.theme-dark-mode strong {
+    color: var(--is-content-color-inverted);
+}
+
+.theme-dark-mode a {
+    color: var(--is-notice-danger);
+}
+.theme-dark-mode a:hover {
+    color: var(--is-content-color-inverted);
+}
+
+.theme-dark-mode h1,
+.theme-dark-mode h2,
+.theme-dark-mode h3,
+.theme-dark-mode h4,
+.theme-dark-mode h5, 
+.theme-dark-mode h6,
+.theme-dark-mode p {
+    color: var(--is-content-color-inverted) !important;
+}
+
+.theme-dark-mode pre,
+.theme-dark-mode code { 
+    background-color: #454545 !important;
+    color: var(--is-content-color-inverted);
+}
+
+
+.theme-dark-mode .tag {
+    background-color: #454545;
+    color: var(--is-content-color-inverted);
+}
+.theme-dark-mode .tag.is-small.is-white {
+    background-color: #000;
+    color: var(--is-content-color-inverted);
+}
+
+.theme-dark-mode .theme-pattern-alt {
+    background-image: url(/images/pachContentBG2-D.svg) !important;
+}
+.theme-dark-mode .theme-pattern {
+    background-image: url(/images/pachContentBG-D.svg) !important;
+}
+.theme-dark-mode .logo {
+    background-image: url(/images/pachLogoWhite.svg);
+}
+
+.theme-dark-mode .glossary-term { 
+    background-color: #000 !important;
+    border: 1px solid #454545 !important;
+}
+
+.theme-dark-mode .glossary-definition {
+    background-color: #454545 !important;
+    color: var(--is-content-color-inverted);
+}
+
+.theme-dark-mode .glossary-buttons {
+    background-color: #fff !important;
+}
+
+.theme-dark-mode .glossary-buttons:hover, .theme-dark-mode .glossary-buttons:focus {
+    background-color: #454545 !important;
+}
+
+.theme-dark-mode  .description {
+    background-color: transparent !important;
+    color: var(--is-content-color-inverted) !important;
+}
+
+.theme-dark-mode .community {
+    background-color: #000 !important;
+    color: var(--is-content-color-inverted);
+}
+
+.theme-dark-mode table, .theme-dark-mode thead, .theme-dark-mode tbody, .theme-dark-mode tr, .theme-dark-mode th, .theme-dark-mode td {
+   color: var(--is-content-color-inverted) !important;
+}
+
+.theme-dark-mode li, .theme-dark-mode ul {
+    color: var(--is-content-color-inverted) !important;
+}
+
+.theme-dark-mode blockquote {
+    background-color: #454545 !important;
+    color: var(--is-content-color-inverted) !important;
+}
+
+.theme-dark-mode .search-results {
+    background-color: #000 !important;
+    color: var(--is-content-color-inverted) !important;
+    border : 1px solid #454545 !important;
+}
+
+.theme-dark-mode .github {
+    image-color: #fff !important;
+
+}
+
+.theme-dark-mode .notification {
+    border: 1px solid #454545 !important;
+    background-color: var(--is-content-color) !important;
+    color: var(--is-content-color-inverted) !important;
+}
+
+.theme-dark-mode .navbar-dropdown, .theme-dark-mode .navbar-link {
+    background-color: #000 !important;
+    color: var(--is-content-color-inverted) !important;
+}
+
+.theme-is-transparent {
+    background-color: transparent !important;
+}
+
+.theme-rounded {
+    border-radius: 30px;
+}
+
+
+/* Link weights */
+
+nav  a, article a {
+    font-weight: 700;
+}
+
+article aside a {
+    font-weight: 400;
+}
+
+/* H1-H3 Anchors show on hover; see /layouts/_default/_markup.html to customize.  */
+
+.anchor {
+    display: none;
+}
+
+h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
+    display: inline-block;
+}
+
+/* Google Variable Fonts */
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('/fonts//Montserrat-VariableFont_wght.ttf') format('truetype'),
+        url('/fonts//Montserra-Italic-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 1000;
+	font-stretch: 25% 151%;
+} 
+
+table {
+    font-size: .7rem;
+}
+
+.theme-video {
+    max-width: 400px;
+}
+
+.theme-defer {
+    content-visibility: auto;
+}

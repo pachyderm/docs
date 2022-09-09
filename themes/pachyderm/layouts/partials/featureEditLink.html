@@ -1,0 +1,7 @@
+{{ if .Site.Params.editLink.display }} 
+    {{$url := ""}}
+    {{with .File}} {{$url = .File.Path}} {{end}}
+    <div id="edit-github-container" class="column m-0 p-0 is-hidden-mobile">
+        <a class="tag is-pulled-right is-size-7 mb-2 is-black" href="{{ print .Site.Params.editLink.githubUrl $url }} "> Edit on <img src="/images/github-white.svg" height="15px" class="ml-1" alt="GitHub"> </a>
+    </div>
+{{end}}

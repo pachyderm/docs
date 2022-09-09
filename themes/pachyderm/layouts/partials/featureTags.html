@@ -1,0 +1,9 @@
+{{ if .Params.tags }}
+    <aside class="layout-baseof columns">
+        <div class="column is-flex is-justify-content-left"> 
+        {{range .Params.tags }}
+            <a class="button is-small is-primary m-1" href="/tags/{{ . | urlize }}"> {{.}} </a>
+        {{end}}
+        </div>
+    </aside>
+{{end}}

@@ -1,0 +1,105 @@
+{
+  "pipeline": {
+    "name": "string"
+  },
+  "description": "string",
+  "metadata": {
+    "annotations": {
+      "annotation": "string"
+    },
+    "labels": {
+      "label": "string"
+    }
+  },
+  "transform": {
+    "image": "string",
+    "cmd": ["string"],
+    "stdin": ["string"],
+    "err_cmd": ["string"],
+    "err_stdin": ["string"],
+    "env": {
+      "string": "string"
+    },
+    "secrets": [
+      {
+        "name": "string",
+        "mount_path": "string"
+      },
+      {
+        "name": "string",
+        "env_var": "string",
+        "key": "string"
+      }
+    ],
+    "image_pull_secrets": ["string"],
+    "accept_return_code": [0],
+    "debug": true,
+    "user": "string",
+    "working_dir": "string",
+    "dockerfile": "string"
+  },
+  "parallelism_spec": {
+    "constant": 0
+  },
+  "resource_requests": {
+    "memory": "string",
+    "cpu": 0,
+    "gpu": {
+      "type": "string",
+      "number": 0
+    },
+    "disk": "string"
+  },
+  "resource_limits": {
+    "memory": "string",
+    "cpu": 0,
+    "gpu": {
+      "type": "string",
+      "number": 0
+    },
+    "disk": "string"
+  },
+  "sidecar_resource_limits": {
+    "memory": "string",
+    "cpu": 0
+  },
+  "datum_timeout": "string",
+  "datum_tries": 0,
+  "job_timeout": "string",
+  "input": {},
+  "s3_out": true,
+  "reprocess_spec": "string",
+  "output_branch": "string",
+  "egress": {
+    "sql_database": {
+      "url": "string",
+      "file_format": {
+        "type": "string",
+        "columns": ["string"]
+      },
+      "secret": {
+        "name": "string",
+        "key": "PACHYDERM_SQL_PASSWORD"
+      }
+    }
+  },
+  "autoscaling": true,
+  "service": {
+    "internal_port": 0,
+    "external_port": 0
+  },
+  "spout": {
+    "service": {
+      "internal_port": 0,
+      "external_port": 0
+    }
+  },
+  "scheduling_spec": {
+    "node_selector": {
+      "string": "string"
+    },
+    "priority_class_name": "string"
+  },
+  "pod_spec": "string",
+  "pod_patch": "string"
+}

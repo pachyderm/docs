@@ -1,0 +1,40 @@
+
+  {{$toc := resources.Get "js/toc.js"  | resources.Minify  }}
+  {{ $clippy := resources.Get "js/clipboard.js"  | resources.Minify }}
+  {{ $relatedArticles := resources.Get "js/relatedArticles.js"  | resources.Minify }}
+  {{ $darkMode := resources.Get "js/darkMode.js" | resources.Minify   }}
+  {{ $notices := resources.Get "js/notices.js"  | resources.Minify  }}
+  {{ $pagination := resources.Get "js/pagination.js"  | resources.Minify  }}
+  {{ $filterByTags := resources.Get "js/filterByTags.js"  | resources.Minify  }}
+  {{ $mermaid := resources.Get "js/mermaid.js"  | resources.Minify  }}
+  
+
+  {{ $js := slice  $darkMode $toc $clippy $notices  $relatedArticles $pagination $filterByTags| resources.Concat "js/bundle.js"}}
+
+
+
+
+<footer class="footer theme-defer">
+    <script src="{{ $js.Permalink }}" ></script>
+    {{if .Params.mermaid}}
+      {{ partial "mermaid.html" . }}
+      <script src="{{ $mermaid.Permalink }}" ></script>
+    {{else}}
+    {{end}}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <section class="columns"> 
+    {{if .IsHome}}
+      {{/* Dont add the directory column */}}
+    {{else}}
+    <div class="column is-one-fifth is-hidden-mobile"> </div>
+    {{end}}
+    <div class="column"> 
+        <div class="content has-text-centered">
+          <a href="https://pachyderm.com">
+            <img src="{{ .Site.Params.logos.footer }}" alt="{{ .Site.Params.title }}" width="100px" height="100px" loading="lazy" />
+          </a>
+        </div>
+    </div>
+    </section>
+  </footer>

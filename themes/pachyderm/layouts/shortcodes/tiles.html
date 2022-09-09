@@ -1,0 +1,42 @@
+{{$d := .Get 0}}
+<div class="columns my-6 p-6 theme-pattern-alt theme-rounded">
+    {{ if eq $d "left"}} 
+        <div class="column is-one-fifth has-background-white m-3 community theme-rounded">
+            <h6 class="is-size-5 has-text-weight-bold has-text-centered">Join the Pach
+            </h6>
+            <div class="buttons is-justify-content-space-evenly">
+                <a href="https://github.com/pachyderm"> <img src="/images/github.svg" ></a>
+                <a href="https://www.pachyderm.com/slack/"> <img src="/images/slack.svg"></a>
+            </div>
+        </div>
+        <div class="column has-background-white m-3 community theme-rounded"> 
+            <h6 class="is-size-5 has-text-weight-bold has-text-centered">News</h6>
+            <div class="content pt-1 my-2 has-text-centered">
+            {{.Inner | markdownify }}
+            </div>
+        </div>
+    {{else if eq $d "right"}}
+        <div class="column has-background-white m-3 community theme-rounded"> 
+            <h6 class="is-size-5 has-text-weight-bold has-text-centered">News</h6>
+            <div class="content pt-1 my-2 has-text-centered">
+            {{.Inner}}
+            </div>
+        </div>
+        <div class="column is-one-fifth has-background-white m-3 community theme-rounded">
+            <h6 class="is-size-5 has-text-weight-bold has-text-centered">Join the Pach
+            </h6>
+            <div class="buttons is-justify-content-space-evenly">
+                <a href="https://github.com/pachyderm"> <img src="/images/github.svg" ></a>
+                <a href="https://www.pachyderm.com/slack/"> <img src="/images/slack.svg"></a>
+            </div>
+        </div>
+
+    {{else}}
+        <div class="column has-background-white m-3 community theme-rounded"> 
+            <h6 class="is-size-5 has-text-weight-bold has-text-centered">{{.Get 0}}</h6>
+            <div class="content pt-1 my-2 has-text-centered">
+                {{.Inner | markdownify }} 
+            </div>
+        </div>
+    {{end}}
+</div>
