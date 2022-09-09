@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title: Monitor your Pachyderm cluster with Prometheus
+title: Monitor with Prometheus
 description: 
 date: 
 # taxonomy #

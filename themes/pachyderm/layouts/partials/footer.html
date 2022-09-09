@@ -7,9 +7,10 @@
   {{ $pagination := resources.Get "js/pagination.js"  | resources.Minify  }}
   {{ $filterByTags := resources.Get "js/filterByTags.js"  | resources.Minify  }}
   {{ $mermaid := resources.Get "js/mermaid.js"  | resources.Minify  }}
+  {{ $legacyNotes := resources.Get "js/legacyNotes.js"  | resources.Minify  }}
   
 
-  {{ $js := slice  $darkMode $toc $clippy $notices  $relatedArticles $pagination $filterByTags| resources.Concat "js/bundle.js"}}
+  {{ $js := slice  $darkMode $toc $clippy $notices $relatedArticles $pagination $filterByTags $legacyNotes | resources.Concat "js/bundle.js"}}
 
 
 
