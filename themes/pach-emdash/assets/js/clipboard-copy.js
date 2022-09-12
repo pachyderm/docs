@@ -1,12 +1,12 @@
- var elements = document.getElementsByTagName('pre');
+function addCopyButton() {
+    var elements = document.getElementsByTagName('pre');
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
 
         if (element.innerText.length > 0) {
          
             var copyButton = document.createElement('button');
-            copyButton.classList.add( 'clippy', 'p-1', 'darken-1', 'rounded-3', 'uppercase', 'xxs', 'is-fit' 'pinned-end');
-
+            copyButton.classList.add('clippy', 'has-background-black', 'has-text-white', 'has-text-weight-bold', 'is-size-7', 'is-pulled-right', 'is-marginless', 'is-paddingless', 'is-radiusless', 'is-shadowless');
             copyButton.innerHTML = 'Copy';
             element.appendChild(copyButton);
 
@@ -22,3 +22,11 @@
             }.bind(element));
         }
     }
+}
+
+   
+
+addCopyButton()
+
+
+
