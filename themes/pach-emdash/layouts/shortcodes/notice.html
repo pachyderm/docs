@@ -1,0 +1,15 @@
+{{$in := .Inner }}
+
+{{$param := .Get 0}}
+
+
+<section class="darken-2 rounded-1 {{ .Get 0 }} sp-1"> 
+<div class="spread-between">
+    <button class="is-fit m">📖</button>
+    <button class="is-fit darken-1 sp-1 rounded-3 uppercase xxs hide">hide</button>
+</div>
+<div class="stack-left content">
+    {{ $in }}
+</div>
+</section>
+

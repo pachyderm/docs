@@ -1,0 +1,33 @@
+{{ define "main" }}
+         {{ if .Site.Params.heroBanner.list }}
+            <section class="black py-3 mt-1 c-sp-1">
+                    <h1>How can we help you?</h1>
+                    <p> Select multiple tags to find related articles.</p>
+            </section>
+        {{else}}
+        {{/* Don't show the hero section */}}
+        {{end}}
+
+        <section class="p-1"> 
+            {{ range .Site.Taxonomies.tags }}
+                <button class="button purple xs p-1 mr-1 mt-1 " onClick="Filter({{ .Page.Title }}, this)">{{ .Page.Title }}</button> 
+            {{ end }}
+        </section>
+
+        <section id="potentialResults" class="spread-left mt-4"> 
+
+            {{ range .Site.Pages }}
+                {{ if .Params.Tags}}
+                    <div class="is-one-third is-hidden" data-tags="{{ trim  (print .Params.Tags) "[]" }}"> 
+                        <a class="is-size-7" href="{{.Permalink}}">
+                            <div class="black sp-1 rounded-1">
+                                <h3 class="m">{{.Title}}</h3>
+                                <p>{{if .Description}} {{.Description}} {{else}}{{.Summary | truncate 300}} {{end}} </p>
+                            </div>
+                        </a>
+                    </div>
+                {{else}}
+                {{end}}
+            {{ end }}
+            </section>
+{{ end }}

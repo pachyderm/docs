@@ -1,0 +1,38 @@
+{{/* 
+    - All child pages without children are considered single pages. See: https://gohugo.io/content-management/page-bundles/ 
+    - layout-single is an empty class for easier location; do not style against it.
+*/}}
+
+{{ define "main" }}
+<div class="is-four-fifths is-fullsize-mobile">
+    {{ if .Site.Params.heroBanner.single}}
+        <section class="black py-3 mt-1 c-sp-1">
+                {{ partial "featureSeriesButton.html" . }}
+                <h1>{{.Title}}</h1>
+                {{ if .Description}}
+                    <p>
+                        {{ .Description}}
+                    </p>
+                {{end}}
+                <p class="xxs hefty uppercase">
+                    {{ if .Date }}
+                        {{ .Date | time.Format ":date_long" }} 
+                    {{else}} 
+                        {{ now | time.Format ":date_long" }} 
+                    {{end}}
+                </p> 
+        </section>
+    {{else}}
+        {{/* Don't show the hero section */}}
+    {{end}}
+    <section class="content p-4">
+        {{ partial "featureBetaNotice.html" . }}
+        {{ .Content }}
+        {{ partial "featureNextPrev.html" . }}
+    </section>
+    <section>
+         {{ partial "featureGiscus.html" . }}
+    </section>
+
+</div>
+{{end}}

@@ -1,0 +1,41 @@
+{{/* 
+    - All auto-generated list files use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
+    - layout-list is an empty class for easier location; do not style against it.
+*/}}
+
+{{ define "main" }}
+        {{ if .Site.Params.heroBanner.list }}
+        <section class="black py-3 mt-1 c-sp-1">
+            <div class="spread-between c-pinned-center">
+                <h1>{{.Title}} </h1>
+                <p class="label uppercase outlined xs sp-1"> taxonomy</p>
+            </div>
+        </section>
+        {{else}}
+        {{/* Don't show the hero section */}}
+        {{end}}
+        {{if .Content}}
+            <section class="content"> 
+                {{.Content}}
+            </section>
+        {{end}}
+
+        <section class="spread-left mt-3"> 
+                {{ range sort .Pages "Weight" "$order"}}
+                    {{ if  .Params.hidden }}
+                        {{/* Do not show the hidden child page or its descendants */}}
+                    {{else}}
+                        <div class="is-one-third">
+                            <a class="" href="{{ .Permalink }}">
+                                    <div class="black darken-1 c-my-2 rounded-1 m-2 p-1">
+                                        <h4 class="m"> {{ .Title}}</h4>
+                                        {{if .Pages}} <div class="outlined p-1 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
+                                        <p> {{.Summary | truncate 300 }} </p>
+                                    </div>
+                            </a>
+                        </div>
+                    {{end}}
+                {{ end }}
+        </section>
+
+{{end}}

@@ -1,0 +1,47 @@
+{{/* All pages first use the baseof template to begin building. See: https://gohugo.io/templates/base/ 
+    blocks provide a placeholder for inserting other content/templates that are generated later (e.g., a single.html template)
+    layout-baseof is an empty class for easier location; do not style against it.*/}}
+
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body class="stack"> 
+                {{ partial "nav.html" . }}
+        <main class="spread theme-fade-in">
+                {{ partial "directory.html" .}}     
+            <article class="content">
+              {{ if .IsHome}}
+                {{/* Don't show Breadcrumbs or EditLink*/}}
+              {{else}}
+              {{end}}
+              {{ if .Params.hidden }}
+                This content is not ready for public viewing.
+              {{ else }}
+                {{ if .IsHome}}
+                  {{/* Don't show Breadcrumbs or EditLink*/}}
+                {{else}}
+                <div class="spread-between">
+                      {{ partial "featureBreadcrumbs.html" . }} 
+                      {{ partial "featureEditLink.html" . }}
+                </div> 
+                {{end}}
+                    {{ block "main" . }}
+                    {{end}}
+              {{end}}
+              {{ partial "featureTags.html" . }}
+            </article>
+        </main>
+    </body>
+{{ partial "footer.html" . }}
+    
+</html>
+
+
+
+
+
+
+
+
+
+

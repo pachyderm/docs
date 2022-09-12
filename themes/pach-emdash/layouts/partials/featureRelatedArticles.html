@@ -1,0 +1,21 @@
+{{ if .Site.Params.relatedArticles }}
+    <section id="related-articles"> 
+        {{ if eq .BundleType "branch"}}
+        {{/*Show nothing*/}}
+        {{else}}
+            {{ $related := site.RegularPages.RelatedIndices . "tags"   }}
+            {{ with $related }}
+                <p class="p-1 outlined xs is-fit rounded-1"> Related Articles</p>
+                <div class="stack xs bold">
+                    {{ range . }}
+                        <a href="{{ .RelPermalink }}" class=""> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
+                    {{ end }}
+                </div>
+                {{else}}
+                <p class="p-1 outlined xs is-fit rounded-1"> No Related Articles</p>
+            {{ end }}
+         {{end}}
+     </section>
+{{end}}
+
+

@@ -1,0 +1,18 @@
+{{ if .Site.Params.Videos }}
+    {{/* change the $directory value if you want to pull videos from a different location */}}
+    {{$directory := print (.Site.Params.releaseInfo.latest) "/tutorials/video/" }}
+
+    <section id="webinars" class="stack black darken-1 mx-4 c-py-3 px-1  mt-3 rounded-4 is-hidden-mobile">
+        <h2 class="text-center m">View Latest Webinars</h2>
+        {{ with .Site.GetPage $directory }}
+            <section class="spread">
+                {{range .Pages}}
+                    <div class="darken-3 sp-2 rounded-2">
+                            {{.Content}}
+                    </div>
+                {{end}}
+            </section>
+        {{ end }}
+    </section>
+
+{{end}}

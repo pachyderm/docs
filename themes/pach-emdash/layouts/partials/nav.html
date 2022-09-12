@@ -1,0 +1,39 @@
+
+{{/* Used for versionDropdown feature  */}}
+ {{ $removeVersion := print "/" .Section "/"}}
+ {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
+{{/* End for versionDropdown feature */}}
+
+  <nav class="spread sticky brighten-2 shadow-d-1">
+    <div class="spread-left is-two-fifths ml-2">
+      <div class="mt-1" style="max-width:150px;">
+        <img src="/images/pachLogo.svg" alt="logo">
+      </div>
+      <div class="button is-fit hefty xs rounded-1"> <b>docs</b></div>
+    </div>
+    <div class="spread-right mr-2 c-rounded-1 c-sp-1">
+      <input class="black searchbar is-hidden-mobile" placeholder="Search...">
+      {{ if .Site.Params.versionDropdown }}
+        <button class="dropdown black is-fit grayscale bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
+          <div class="dropdown-content">
+            <div class="stack black c-mt-1 c-p-1 mt-5 rounded-1">
+            {{ range .Site.Sections.ByTitle.Reverse }} 
+                {{ if not .Params.hidden }}
+                {{/* Sort Options: https://gohugo.io/templates/lists/#order-content */}}
+                  {{$currentVersionOption := print "/" .Section "/"}}
+                  {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
+                <!--TODO: IF alternative version does not exist, set link to home page of other version-->
+                <a class="bold" href="{{$alternativeVersionPath}}" >
+                  v. {{.Title}}
+                </a>
+                {{ end }}
+            {{ end }}
+            </div>
+          </div>
+        </button>
+      {{end}}
+      <button id="darkModeButton" class="black is-fit grayscale " onclick="darkMode()">🌙</button>
+      <button class="purple is-fit is-hidden-touch bold "> Demo</button>
+      <button class="outline-black is-fit is-hidden-touch bold"> Sandbox</button>
+    </div>
+  </nav>

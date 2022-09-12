@@ -1,0 +1,33 @@
+{{/* 
+    - All auto-generated list files use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
+    - layout-list is an empty class for easier location; do not style against it.
+*/}}
+
+{{ define "main" }}
+
+    <div class="spread-between mx-4 my-4 mt-5">
+        <div>
+            <h1 class="text-center">Pachyderm Docs</h1>
+            <h2 class="subtitle-1 l mt-2 text-center"> Automate <b>data transformations</b> using Pachyderm</h2>
+        </div>
+        <div class="is-one-fifth text-center is-hidden-mobile">
+            <img src="{{ .Site.Params.logos.footer }}" alt="Pachyderm Docs">
+        </div>
+    </div>
+  
+    {{ partial "featureCommunityDetails.html" . }}
+    
+    <div class="stack-center mt-6 text-center">
+        <h2>Design, Build, & Deploy <br>  Data Transformation Pipelines</h2>
+    </div>
+    {{with  .Site.GetPage "section" .Site.Params.releaseInfo.latest  }}
+        <section class="mx-4 mt-4">
+            {{ partial "featureChildPages.html" . }}
+        </section>
+    {{end}}
+
+    {{ partial "featureVideos.html" . }}
+
+{{end}}
+
+

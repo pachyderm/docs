@@ -1,0 +1,9 @@
+{{ if .Site.Params.nextPrev }}
+    <div class="spread-between c-fit c-sp-1 c-purple c-rounded-1 uppercase extra-bold">
+    {{with .NextInSection }}<a href="{{.RelPermalink}}"> 👈 {{.Title | truncate 35}} </a>
+    {{else}}
+        <div class="is-invisible"></div>
+    {{end}}
+    {{with .PrevInSection }}<a href="{{.RelPermalink}}"> {{.Title | truncate 35}} 👉 </a>{{end}}
+</div>
+{{end}}
