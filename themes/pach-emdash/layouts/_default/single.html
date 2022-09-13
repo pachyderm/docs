@@ -6,7 +6,7 @@
 {{ define "main" }}
 <div class="is-four-fifths is-fullsize-mobile">
     {{ if .Site.Params.heroBanner.single}}
-        <section class="black py-3 mt-1 c-sp-1">
+        <section class="black gradient-rl-cold py-3 m-1 rounded-1 c-sp-1">
                 {{ partial "featureSeriesButton.html" . }}
                 <h1>{{.Title}}</h1>
                 {{ if .Description}}

@@ -2,6 +2,6 @@
     {{$url := ""}}
     {{with .File}} {{$url = .File.Path}} {{end}}
  
-    <a class="label black is-fit p-1 mr-1 xs rounded-1 uppercase bold" href="{{ print .Site.Params.editLink.githubUrl $url }} "> Edit on <img src="/images/github-white.svg" height="15px" class="ml-1" alt="GitHub"> </a>
+    <a class="label black darken-3 is-fit p-1 mr-1 xs rounded-1 uppercase bold" href="{{ print .Site.Params.editLink.githubUrl $url }} "> Edit on <img src="/images/github-white.svg" height="15px" class="ml-1" alt="GitHub"> </a>
 
 {{end}}
