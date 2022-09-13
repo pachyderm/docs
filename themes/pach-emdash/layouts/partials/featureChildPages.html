@@ -1,5 +1,11 @@
 {{/* Displays cards with child page titles, their total count, a description or summary, and optionally quick buttons to the first 7 children. */}}
 
+{{if .Content }}
+{{else}}
+<h2> Articles in this section:</h2>
+{{end}}
+
+
 {{ if .Site.Params.childPages.display}}
     {{if .Pages }}
         <aside class="spread c-pinned-top">

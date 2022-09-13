@@ -29,7 +29,7 @@ params:
     grandchildren: true # displays first 7 grandchildren as buttons in the card.
   editLink: 
     display: true #  displays a link to the corresponding github file for a given page; githubUrl must be set.
-    githubUrl: https://github.com/lbliii/milo/tree/main/content/  # should end with content/ 
+    githubUrl: https://github.com/pachyderm/docs/tree/main/content/  # should end with content/ 
   giscus: true # displays giscus commenting on single pages.
   heroBanner:
     single: true # displays hero section with a background image, title, description, and date on single pages.
