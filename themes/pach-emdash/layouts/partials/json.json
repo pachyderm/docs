@@ -1,28 +1,13 @@
 {
-	"content": {
 		"title": "{{if .Title}}{{ .Title }}{{else}}{{.Name}}{{end}}",
 		"version": "{{.Section}}",
+		"parent": "{{with .Parent}}{{.Title}}{{end}}",
 		"description": "{{ .Description }}",
 		"date": "{{ .Date | time.Format ":date_long" }}",
-		"author": "{{ .Params.author }}",
 		"uri": "{{ .Permalink }}",
-		"body": {{ .Plain | jsonify }}
-	},
-	"settings": {
+		"body": {{ .Plain | jsonify }},
 		"beta": "{{ .Params.beta}}",
-		"draft": "{{ .Params.draft}}",
 		"hidden": "{{ .Params.hidden}}",
-		"index": "{{ .Params.index }}",
-		"layout": "{{ .Params.layout }}",
-		"toc": "{{ .Params.toc }}",
-		"weight": "{{ .Params.weight }}"  
-	},
-	"taxonomies": {
 		"categories": [{{ range $cindex, $cat := .Params.categories }}{{ if $cindex }}, {{ end }}"{{ $cat| htmlEscape }}"{{ end }}],
-		"series": {
-			"name": "{{.Params.series}}",
-			"seriesPart" : "{{.Params.seriesPart}}",
-		},
 		"tags": [{{ range $tindex, $tag := .Params.tags }}{{ if $tindex }}, {{ end }}"{{ $tag| htmlEscape }}"{{ end }}]
-	}
 }

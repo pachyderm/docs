@@ -11,7 +11,6 @@ window.onload = function() {
 
     // get the window location 
     let currentLocation = window.location.href;
-    console.log (currentLocation);
 
     // find the link that matches the current location
     let currentTabIndex = 0;
@@ -27,7 +26,6 @@ window.onload = function() {
 
     document.addEventListener("keydown", function(event) {
         var keyName = event.key
-        console.log(keyName);
 
         if (keyName == "ArrowRight") {
             currentTabIndex++;

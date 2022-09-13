@@ -25,6 +25,7 @@
                       {{ partial "featureEditLink.html" . }}
                 </div> 
                 {{end}}
+                    {{ partial "algoliaHits" . }}
                     {{ block "main" . }}
                     {{end}}
               {{end}}

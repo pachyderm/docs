@@ -14,7 +14,6 @@ function traverse(dir, callback) {
 
 traverse('./content', function(filepath) {
     if (filepath.endsWith('.md')) {
-        console.log(filepath);
         let file = fs.readFileSync(filepath, 'utf8');
         // find content using the regex "s/!!! Note ([^\n])+\n/{{% notice %}}$1{{% /notice %}}/"
         let newFile = file.replace(/!!! Note ([^\n])+\n/g, "{{% notice %}}$1{{% /notice %}}\n");
