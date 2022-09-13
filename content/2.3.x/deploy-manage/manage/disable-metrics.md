@@ -1,4 +1,13 @@
-# Disable Usage Metrics
+---
+# metadata # 
+title: Disable Usage Metrics
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Pachyderm automatically collects and reports anonymous usage metrics.
 These metrics help the Pachyderm team understand how people use

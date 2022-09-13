@@ -1,4 +1,13 @@
-# Create a Machine Learning Workflow
+---
+# metadata # 
+title: Create a Machine Learning Workflow
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Because Pachyderm is a language and framework agnostic and
 platform, and because it easily distributes analysis over

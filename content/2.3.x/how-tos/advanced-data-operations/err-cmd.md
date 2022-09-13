@@ -1,4 +1,13 @@
-# Skip Failed Datums
+---
+# metadata # 
+title: Skip Failed Datums
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! note "TL;DR"
     The `err_cmd` parameter enables you to fail a datum without failing the

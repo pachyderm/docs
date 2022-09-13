@@ -1,11 +1,25 @@
-# Troubleshooting Deployments
+---
+# metadata # 
+title:  Troubleshooting Deployments
+description: Learn how to troubleshoot deployments of Pachyderm.
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 A common issue related to a deployment: getting a `CrashLoopBackoff` error. 
 
 ## General Pachyderm cluster deployment
 
-- [Pod stuck in `CrashLoopBackoff`](#pod-stuck-in-crashloopbackoff)
-- [Pod stuck in `CrashLoopBackoff` - with error attaching volume](#pod-stuck-in-crashloopbackoff-with-error-attaching-volume)
+- [General Pachyderm cluster deployment](#general-pachyderm-cluster-deployment)
+  - [Pod stuck in `CrashLoopBackoff`](#pod-stuck-in-crashloopbackoff)
+    - [Symptoms](#symptoms)
+    - [Recourse](#recourse)
+  - [Pod stuck in `CrashLoopBackoff` - with error attaching volume](#pod-stuck-in-crashloopbackoff---with-error-attaching-volume)
+    - [Symptoms](#symptoms-1)
+    - [Recourse](#recourse-1)
 
 ### Pod stuck in `CrashLoopBackoff`
 

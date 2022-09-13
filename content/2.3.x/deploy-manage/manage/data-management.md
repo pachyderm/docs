@@ -1,4 +1,13 @@
-# Storage Use Optimization
+---
+# metadata # 
+title: Storage Use Optimization
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 This section discusses best practices for minimizing the
 space needed to store your Pachyderm data, increasing

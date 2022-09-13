@@ -1,4 +1,13 @@
-# Ingest Data Via SQL Ingest
+---
+# metadata # 
+title: Data Warehouse Integration
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! Warning
     SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental){target=_blank}.

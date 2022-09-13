@@ -1,4 +1,13 @@
-# Manage Your Enterprise Server
+---
+# metadata # 
+title: Manage Your Enterprise Server
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 ## Contexts
 The enterprise server **has a separate context** in the pachctl config file (`~/.pachyderm/config.json`).

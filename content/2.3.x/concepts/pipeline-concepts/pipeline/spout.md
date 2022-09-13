@@ -1,4 +1,13 @@
-# Spout
+---
+# metadata # 
+title: Spout
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A spout is a type of pipeline
 that **ingests streaming data

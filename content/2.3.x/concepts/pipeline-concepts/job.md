@@ -1,4 +1,13 @@
-# Job
+---
+# metadata # 
+title: Job
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 !!! Attention
          Note that Pachyderm uses two different scopes when referring to a `job`. 

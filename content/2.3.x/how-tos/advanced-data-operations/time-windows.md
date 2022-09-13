@@ -1,4 +1,13 @@
-# Processing Time-Windowed Data
+---
+# metadata # 
+title: Processing Time-Windowed Data
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! info
     Before you read this section, make sure that you understand the concepts

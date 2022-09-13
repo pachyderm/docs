@@ -1,6 +1,13 @@
-
-# Role Binding
-
+---
+# metadata # 
+title: Role Binding
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 This chapter will detail how to:
 
 - Grant/modify permissions (Roles) on given Resources to a User (Idp or Robot User).

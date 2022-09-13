@@ -1,4 +1,13 @@
-# Connect to a Pachyderm cluster
+---
+# metadata # 
+title:  Connect to a Cluster
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 After you deploy a Pachyderm cluster, you can interact with Pachyderm using
 the command-line interface `pachctl` in a terminal, connect to the [Pachyderm Console](../console){target=_blank}, use [Notebooks via Pachyderm's Mount Extension](../../../how-tos/jupyterlab-extension/){target=_blank}, or

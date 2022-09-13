@@ -1,4 +1,13 @@
-# Import a Kubernetes Context
+---
+# metadata # 
+title:  Import a Kubernetes Context
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 After you have deployed Pachyderm with [Helm](../helm-install/), the Pachyderm context is not created.
 Therefore, **you need to manually create a new Pachyderm context with

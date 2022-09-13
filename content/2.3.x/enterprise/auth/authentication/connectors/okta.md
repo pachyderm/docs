@@ -1,4 +1,13 @@
-# Authenticating with Okta
+---
+# metadata # 
+title: Authenticating with Okta
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 If [Okta® access management software](https://www.okta.com){target=_blank}
 is your preferred choice of IdP,

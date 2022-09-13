@@ -1,4 +1,13 @@
-# Export Your Data with `egress`
+---
+# metadata # 
+title: Export Your Data with `egress`
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 The `egress` field in the Pachyderm [pipeline specification](../../../../reference/pipeline-spec)
 enables you to push the results of a pipeline to an

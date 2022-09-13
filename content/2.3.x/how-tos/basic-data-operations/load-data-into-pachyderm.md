@@ -1,4 +1,13 @@
-# Ingest Data by Using `pachctl`
+---
+# metadata # 
+title: Ingest Data by Using `pachctl`
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 ## `pachctl put file`
 

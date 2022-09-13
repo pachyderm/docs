@@ -1,4 +1,13 @@
-# CI/CD Integration
+---
+# metadata # 
+title: CI/CD Integration
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Pachyderm is a powerful system for providing data
 provenance and scalable processing to data

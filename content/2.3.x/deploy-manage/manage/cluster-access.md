@@ -1,4 +1,13 @@
-# Manage Cluster Access
+---
+# metadata # 
+title: Manage Cluster Access
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Pachyderm contexts enable you to store configuration parameters for
 multiple Pachyderm clusters in a single configuration file saved at

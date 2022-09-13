@@ -1,4 +1,13 @@
-# The Push Images Flag
+---
+# metadata # 
+title: The Push Images Flag
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 The `--push-images` flag is one way to improve development speed when working with pipelines. 
 

@@ -1,4 +1,13 @@
-# Developing Pachyderm in Windows with VSCode
+---
+# metadata # 
+title: Developing Pachyderm in Windows with VSCode
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 ## Before You Start 
 

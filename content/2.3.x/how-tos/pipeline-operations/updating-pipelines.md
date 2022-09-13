@@ -1,11 +1,14 @@
 ---
-# YAML header
-ignore_macros: true
+# metadata # 
+title:   Update a Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
 ---
 
-<!-- git-snippet: enable -->
-
-# Update a Pipeline
 
 While working with your data, you often need to modify an existing
 pipeline with new transformation code or pipeline parameters. 

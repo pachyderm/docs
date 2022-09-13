@@ -1,4 +1,14 @@
-# Enterprise Server Setup
+---
+# metadata # 
+title: Enterprise Server Setup
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
+
 The **Enterprise Server** is a component in Pachyderm which manages Enterprise Licensing
 and the integration with a company's Identity Providers (IDPs).
 

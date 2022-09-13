@@ -1,4 +1,13 @@
-# Provenance
+---
+# metadata # 
+title: Provenance
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 **Data versioning** ([History](../history/)) enables Pachyderm users to go back in time and see the state
 of a dataset or repository at a particular moment. 

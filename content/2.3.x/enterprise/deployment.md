@@ -1,4 +1,13 @@
-# Deploy Enterprise Edition
+---
+# metadata # 
+title: Deploy Enterprise Edition
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 ## Retrieve Your Enterprise Token
 

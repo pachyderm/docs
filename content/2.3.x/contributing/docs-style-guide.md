@@ -1,4 +1,13 @@
-# Documentation Style Guide
+---
+# metadata # 
+title: Documentation Style Guide
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Thank you for taking an interest in contributing to Pachyderm's docs! 🐘 📖
 

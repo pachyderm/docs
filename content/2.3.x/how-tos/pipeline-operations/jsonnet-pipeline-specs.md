@@ -1,10 +1,13 @@
 ---
-# YAML header
-ignore_macros: true
+# metadata # 
+title:   Jsonnet Pipeline Specifications
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
 ---
-
-<!-- git-snippet: enable -->
-# Jsonnet Pipeline Specifications
 
 !!! Warning
     `Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).

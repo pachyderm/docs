@@ -1,10 +1,13 @@
 ---
-# YAML header
-ignore_macros: true
----
-
-<!-- git-snippet: enable -->
-# Use GPUs
+# metadata # 
+title:  Use GPUs
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 
 - To install Pachyderm on an **NVIDIA DGX A100** box, skip to [Pachyderm on NVIDIA DGX A100](#pachyderm-on-nvidia-dgx-a100).

@@ -1,4 +1,13 @@
-# Distributed Computing
+---
+# metadata # 
+title: Distributed Computing
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Distributing your computations across multiple workers
 is a fundamental part of any big data processing.

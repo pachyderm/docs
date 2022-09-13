@@ -1,4 +1,13 @@
-# Features Overview
+---
+# metadata # 
+title: Features Overview
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! Note
      To get more information about Pachyderm Enterprise Edition, to ask questions, or to get access for evaluation, don't hesitate to get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io) or on our [Slack](https://www.pachyderm.com/slack/){target=_blank}. 

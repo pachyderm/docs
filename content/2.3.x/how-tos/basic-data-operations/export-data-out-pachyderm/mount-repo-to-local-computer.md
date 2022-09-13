@@ -1,4 +1,13 @@
-# Mount a Repo to a Local Computer
+---
+# metadata # 
+title: Mount a Repo to a Local Computer
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! warning
     Pachyderm uses FUSE to mount repositories as local filesystems.

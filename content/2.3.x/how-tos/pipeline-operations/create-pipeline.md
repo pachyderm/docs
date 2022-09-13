@@ -1,4 +1,13 @@
-# Create a Pipeline
+---
+# metadata # 
+title:  Create a Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 A Pachyderm pipeline is a mechanism that automates a machine learning workflow.
 A pipeline reads data from one or more input repositories, runs your code, and

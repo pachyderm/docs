@@ -1,4 +1,13 @@
-# Datum Processing
+---
+# metadata # 
+title: Datum Processing
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A [datum](../) is a Pachyderm abstraction that helps in optimizing
 pipeline processing. Datums exist only as a pipeline

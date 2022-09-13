@@ -1,4 +1,13 @@
-# Upgrades and Migrations
+---
+# metadata # 
+title: Upgrades & Migrations
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! Info
 

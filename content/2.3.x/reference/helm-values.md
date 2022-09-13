@@ -1,11 +1,13 @@
 ---
-# YAML header
-ignore_macros: true
+# metadata # 
+title:  Helm Chart Values
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
 ---
-
-<!-- git-snippet: enable -->
-
-# Helm Chart Values
 
 
 This document discusses each of the fields present in the `values.yaml` that can be used to deploy with Helm.

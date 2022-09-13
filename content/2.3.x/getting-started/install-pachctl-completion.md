@@ -1,4 +1,13 @@
-# Install `pachctl` Autocompletion
+---
+# metadata # 
+title:  Install `pachctl` Autocompletion
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Pachyderm autocompletion allows you to automatically finish
 partially typed commands by pressing `TAB`. Autocompletion needs

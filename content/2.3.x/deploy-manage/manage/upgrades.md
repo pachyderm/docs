@@ -1,4 +1,13 @@
-# Upgrade Pachyderm
+---
+# metadata # 
+title: Upgrade Pachyderm
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Upgrades between minor releases or patch releases, such as `2.1.0` to version `2.2.0`,
 should be seamless.

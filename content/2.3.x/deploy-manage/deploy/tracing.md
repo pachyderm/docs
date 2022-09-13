@@ -1,4 +1,13 @@
-# Configure Tracing with Jaeger
+---
+# metadata # 
+title:   Configure Tracing with Jaeger
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Pachyderm has the ability to trace requests using Jaeger. This
 can be useful when diagnosing slow clusters.

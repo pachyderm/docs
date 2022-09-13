@@ -1,4 +1,14 @@
-# Delete a Pipeline
+---
+# metadata # 
+title:  Delete a Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
+
 You can delete a pipeline by running:
 
 ```shell

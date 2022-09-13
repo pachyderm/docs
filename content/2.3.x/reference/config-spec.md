@@ -1,4 +1,13 @@
-# Config Specification
+---
+# metadata # 
+title:  Config Specification
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 This document outlines the fields in pachyderm configs. This should act as a
 reference. If you wish to change a config value, you should do so via

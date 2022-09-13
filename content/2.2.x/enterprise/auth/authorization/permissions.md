@@ -1,4 +1,13 @@
-# Permissions by Role 
+---
+# metadata # 
+title: Permissions by Role 
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Use this article to reference permissions granted to each role when assigning them to your team/resources.
 

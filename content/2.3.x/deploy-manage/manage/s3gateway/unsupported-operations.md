@@ -1,4 +1,13 @@
-## Unsupported operations
+---
+# metadata # 
+title:  Unsupported operations
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Some of the S3 operations are not yet supported by Pachyderm.
 If you run any of these operations, Pachyderm returns a standard

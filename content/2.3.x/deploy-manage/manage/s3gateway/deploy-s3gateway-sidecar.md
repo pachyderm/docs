@@ -1,4 +1,13 @@
-# Sidecar S3 Gateway
+---
+# metadata # 
+title:  Sidecar S3 Gateway
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 You can interact with input/output data through the S3 protocol using Pachyderm's S3-protocol-enabled pipelines.
 

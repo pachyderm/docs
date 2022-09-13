@@ -8,6 +8,7 @@ tags:
 series:
 seriesPart:
 --- 
+
 Service is a special type of pipeline that does not process data but provides
 a capability to expose it to the outside world. For example, you can use
 a service to serve a machine learning model as an API that has the most

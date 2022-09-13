@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Pachyderm S3 Gateway Supported Operations
+title:  Supported Operations
 description: 
 date: 
 # taxonomy #

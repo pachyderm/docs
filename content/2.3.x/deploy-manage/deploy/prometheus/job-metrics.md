@@ -1,5 +1,13 @@
-Back to the [Prometheus set up page](../).
-# List of job metrics exposed to Prometheus.
+---
+# metadata # 
+title: Job Metrics
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 pachyderm_worker_datum_count
 pachyderm_worker_datum_download_bytes_count

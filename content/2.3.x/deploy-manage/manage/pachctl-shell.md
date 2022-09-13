@@ -1,4 +1,13 @@
-# Using the Pachyderm Shell
+---
+# metadata # 
+title: Using the Pachyderm Shell
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 The Pachyderm Shell is a special-purpose shell for Pachyderm that provides
 auto-suggesting as you type. New Pachyderm users will find this user-friendly

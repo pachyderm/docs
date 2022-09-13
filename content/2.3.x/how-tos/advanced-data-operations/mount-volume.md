@@ -1,4 +1,13 @@
-# Mount a Volume in a Pipeline
+---
+# metadata # 
+title: Mount a Volume in a Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 You may have a local or a network-attached storage that you want your
 pipeline to write files to.

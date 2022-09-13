@@ -1,4 +1,13 @@
-# Glob Pattern
+---
+# metadata # 
+title: Glob Pattern
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Defining how your data is spread among workers is one of
 the most important aspects of distributed computation.

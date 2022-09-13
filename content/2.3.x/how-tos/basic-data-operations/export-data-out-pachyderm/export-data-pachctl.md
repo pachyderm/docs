@@ -1,4 +1,13 @@
-# Export Your Data with `pachctl`
+---
+# metadata # 
+title: Export Your Data with `pachctl`
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
  
 To export your data with pachctl:
 

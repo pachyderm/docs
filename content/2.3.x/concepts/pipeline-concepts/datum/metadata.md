@@ -1,4 +1,13 @@
-# Datum Metadata
+---
+# metadata # 
+title: Metadata
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 ## Datum Statistics
 Pachyderm stores information about each datum that

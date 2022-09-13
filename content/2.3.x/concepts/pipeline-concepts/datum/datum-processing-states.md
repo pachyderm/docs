@@ -1,4 +1,13 @@
-# Datum Processing States
+---
+# metadata # 
+title: Datum Processing States
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 When a pipeline runs, it processes your datums.
 Some of them get processed successfully and some might

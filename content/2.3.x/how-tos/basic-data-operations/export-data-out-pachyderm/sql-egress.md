@@ -1,5 +1,14 @@
 
-# Egress To An SQL Database
+---
+# metadata # 
+title: Egress To An SQL Database
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! Warning
     SQL Egress is an [experimental feature](../../../../reference/supported-releases/#experimental){target=_blank}.

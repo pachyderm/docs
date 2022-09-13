@@ -1,4 +1,13 @@
-# New Features and Major Changes
+---
+# metadata # 
+title:  What's New
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 `Pachyderm 2.1`, comes with new features and performance improvements. 
 

@@ -1,4 +1,13 @@
-# Use Transactions
+---
+# metadata # 
+title: Use Transactions
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! note "TL;DR"
     Use transactions to run multiple Pachyderm commands

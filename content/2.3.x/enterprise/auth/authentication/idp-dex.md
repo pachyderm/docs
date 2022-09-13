@@ -1,4 +1,13 @@
-# Pachyderm Integration with Identity Providers
+---
+# metadata # 
+title: Pachyderm Integration with Identity Providers
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! Note
     - Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/){target=_blank} if you do not have an enterprise key.

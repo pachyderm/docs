@@ -1,4 +1,13 @@
-# S3 Gateway API
+---
+# metadata # 
+title:  S3 Gateway API 
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 This section outlines the operations exposed by Pachyderm's HTTP API [S3 Gateway](../../deploy-manage/manage/s3gateway/). 
 

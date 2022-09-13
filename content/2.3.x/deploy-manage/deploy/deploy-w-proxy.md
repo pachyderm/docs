@@ -1,4 +1,14 @@
-# Deploy Pachyderm With a Proxy: One Port For All External Traffic
+---
+# metadata # 
+title:  Deploy Pachyderm via Proxy (One Port)
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 
 We are now shipping Pachyderm with an **optional embedded proxy** allowing Pachyderm to expose one single port externally (whether you access `pachd` over gRPC using `pachctl`, or `console` over HTTP, for example).
 

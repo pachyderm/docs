@@ -1,4 +1,13 @@
-# Global Identifier
+---
+# metadata # 
+title: Global Identifier
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 ## Definition
 Pachyderm provides users with a simple way to follow a change throughout their DAG (i.e., traverse `Provenance` and `Subvenance`).

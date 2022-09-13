@@ -1,4 +1,13 @@
-# Deploy Pachyderm on AWS
+---
+# metadata # 
+title:  Deploy Pachyderm on AWS
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 For a quick test installation of Pachyderm on AWS (suitable for development), jump to our [Quickstart page](../quickstart/).
 

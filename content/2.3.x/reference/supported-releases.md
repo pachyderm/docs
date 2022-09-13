@@ -1,4 +1,13 @@
-# Pachyderm Supported Releases and Features
+---
+# metadata # 
+title:  Pachyderm Supported Releases and Features
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Pachyderm lists the status for each release and feature, so that you can understand expectations for support and stability.
  

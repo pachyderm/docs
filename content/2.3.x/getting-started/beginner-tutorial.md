@@ -1,4 +1,13 @@
-# Beginner Tutorial
+---
+# metadata # 
+title:  Beginner Tutorial
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Welcome to the beginner tutorial for Pachyderm! 
 This tutorial should take about 15 minutes

@@ -1,4 +1,13 @@
-# Pachyderm Authentication flow
+---
+# metadata # 
+title: Pachyderm Authentication Flow
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 !!! Note
       In order for the users registered with your IdP to log in to Pachyderm,

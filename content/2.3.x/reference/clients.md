@@ -1,4 +1,13 @@
-# Pachyderm language clients
+---
+# metadata # 
+title:  Language Clients
+description: Learn about Pachyderm's language clients. 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 `pachctl` is the command-line tool you use 
 to interact with a Pachyderm cluster in your terminal. 

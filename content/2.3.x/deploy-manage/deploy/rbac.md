@@ -1,4 +1,14 @@
-# RBAC
+---
+# metadata # 
+title:  RBAC
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
 Pachyderm has support for Kubernetes Role-Based Access
 Controls (RBAC), which is a default part of all
 Pachyderm deployments. In most use cases, Pachyderm

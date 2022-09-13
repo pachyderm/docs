@@ -1,4 +1,13 @@
-# Deploy Pachyderm on a Microsoft Windows machine
+---
+# metadata # 
+title:  Deploy on Windows
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 You can deploy Pachyderm locally on your Microsoft Windows computer to
 try out Pachyderm. However, currently Pachyderm has limited support for

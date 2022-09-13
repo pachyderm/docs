@@ -1,4 +1,13 @@
-# Cron Pipeline
+---
+# metadata # 
+title: Cron Pipeline
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 A Cron pipeline is triggered by a set time interval *instead* of whenever new changes appear in the input repository.
 

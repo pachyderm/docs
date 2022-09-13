@@ -1,4 +1,13 @@
-# Pachyderm S3 Gateway Supported Operations
+---
+# metadata # 
+title:  Pachyderm S3 Gateway Supported Operations
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 The Pachyderm S3 gateway supports the following operations:
 

@@ -1,5 +1,13 @@
-
-# Role Binding
+---
+# metadata # 
+title: Role Binding
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 This chapter will detail how to:
 

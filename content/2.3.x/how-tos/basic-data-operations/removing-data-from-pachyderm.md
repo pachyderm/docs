@@ -1,4 +1,13 @@
-#  Delete Commits, Squash Commits, and Delete Data
+---
+# metadata # 
+title: Delete Commits, Squash Commits, and Delete Data
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 If *bad* data was committed into a Pachyderm input repository, you might need to
 delete a commit or surgically delete files from your history. 

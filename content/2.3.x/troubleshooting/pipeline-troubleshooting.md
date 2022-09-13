@@ -1,4 +1,13 @@
-# Troubleshooting Pipelines
+---
+# metadata # 
+title:  Troubleshooting Pipelines
+description: Learn how to troubleshoot Pachyderm pipelines.
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 ## Introduction
 

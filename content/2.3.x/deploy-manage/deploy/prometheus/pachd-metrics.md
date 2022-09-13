@@ -1,5 +1,13 @@
-Back to the [Prometheus set up page](../index).
-# List of pachd metrics exposed to Prometheus.
+---
+# metadata # 
+title: Pachd Metrics
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 pachyderm_pachd_auth_log_req_seconds_count
 pachyderm_pachd_cache_object_cache_hits_gauge

@@ -1,4 +1,13 @@
-# Pipeline Scaling Limits in Community Edition
+---
+# metadata # 
+title:  Pipeline Scaling Limits in Community Edition
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 Our free Pachyderm Community Edition contains **built-in scaling limitations and parallelism thresholds**. To scale beyond these limits, request a [Pachyderm Enterprise trial token](https://www.pachyderm.com/trial/){target=_blank} and enjoy unlimited scaling, and more.
 

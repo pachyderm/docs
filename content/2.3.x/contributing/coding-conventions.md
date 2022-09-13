@@ -1,4 +1,13 @@
-# Coding Conventions
+---
+# metadata # 
+title: Coding Conventions
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
 
 Interested in contributing to Pachyderm's code? Learn the conventions here! For setup instructions, see [Setup for Contributors](./setup.md).
 

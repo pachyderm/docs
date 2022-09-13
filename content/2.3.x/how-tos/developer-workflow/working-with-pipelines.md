@@ -1,4 +1,13 @@
-# Working with Pipelines
+---
+# metadata # 
+title: Working with Pipelines
+description: 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+---
 
 A typical Pachyderm workflow involves multiple iterations of
 experimenting with your code and pipeline specs.
