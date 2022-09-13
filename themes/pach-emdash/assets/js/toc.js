@@ -27,12 +27,10 @@ function styleTOC(){
 
         // remove the ' # ' from the heading text
         var headingText = headingText.replace(/#/g, '');
-        console.log(headingText);
-
         var li = document.createElement('li');
         var link = document.createElement('a');
 
-        li.classList.add('spread-left','xs');
+        li.classList.add('spread-left','xs', 'c-mb-1');
 
         link.href = '#' + headings[i].id
         link.role = headings[i].id;
@@ -63,14 +61,14 @@ function styleTOC(){
             if (window.scrollY > headings[i].offsetTop - 100) {
                 activeHeader = headings[i];
                 if (activeHeader.id == toc[i].role) {
-                    toc[i].classList.add('is-medium');
+                    toc[i].classList.add('s');
      
                 } 
             } 
         }
         for (var i =0; i < toc.length; i++) {
-            if (toc[i].classList.contains('is-medium') && toc[i].role != activeHeader.id) {
-                toc[i].classList.remove('is-medium');
+            if (toc[i].classList.contains('s') && toc[i].role != activeHeader.id) {
+                toc[i].classList.remove('s');
             }
         }
     });

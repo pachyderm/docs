@@ -15,9 +15,9 @@
         <section class="stack">
             {{ range .Pages.ByParam "seriesPart" }}
                 <article class="content"> 
-                        <a class="button purple p-1 mt-4 xxl bold" href="{{.Permalink}}">{{.Params.seriesPart}} {{.Title}} </a>
+                        <a class="button black gradient-lr-cold rounded-1 p-1 mt-4 xxl bold" href="{{.Permalink}}">{{.Params.seriesPart}} {{.Title}} </a>
                     {{ partial "featureBetaNotice.html" . }}
-                    <div class="content ml-2"> 
+                    <div class="content ml-2 p-4"> 
                     {{.Content}}
                     </div>
                 </article>

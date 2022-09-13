@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+layout: glossary
 --- 
 
 Pachyderm data concepts describe **version-control primitives** that

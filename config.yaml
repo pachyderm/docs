@@ -72,8 +72,6 @@ sitemap:
 taxonomies:
   tag: tags 
   category: categories 
-  solution: solutions 
-  product: products 
   series: series 
 
 markup:

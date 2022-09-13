@@ -5,8 +5,8 @@ description:
 date: 
 # taxonomy #
 tags: 
-series:
-seriesPart:
+series: ["onboarding"]
+seriesPart: 2
 ---
 
 Welcome to the beginner tutorial for Pachyderm! 

@@ -25,7 +25,8 @@ if (potentialResults) {
 
     intersect()
 
-    el.classList.toggle('is-black');
+    el.classList.toggle('purple');
+    el.classList.toggle('black');
 
     console.log(filterSet)
     console.log(intersectionSet)

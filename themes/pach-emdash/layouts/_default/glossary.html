@@ -5,7 +5,7 @@
 
 {{ define "main" }}
         {{ if .Site.Params.heroBanner.glossary}}
-            <section class="black  py-3 mt-1 c-sp-1">
+            <section class="black gradient-lr-cold rounded-1 py-3 m-1 c-sp-1">
                 <div class="spread-between c-pinned-center">
                     <h1>{{.Title}} </h1>
                     <p class="label uppercase outlined xs sp-1">glossary</p>
@@ -16,16 +16,17 @@
         {{end}}
 
         {{if .Content}}
-            <section class="content"> 
+            <section class="content p-4"> 
                 {{.Content}}
             </section>
         {{end}}
         {{/* Paginator Navigation Starts Here */}}
         <nav class="spread-center" role="navigation" aria-label="pagination">
-            <div class="pagination-list c-mt-1">
+            <div class="pagination-list m-1 c-mt-1">
+                <div class="button black rounded-1 m-1 p-1 gradient-rl-cold xs uppercase bold"> Glossary Pages</div>
                 {{ range .Paginator.Pagers}}
             
-                    <button data-pager="{{.}}" class="button black darken-1  p-1  mr-1 rounded-1 xxs" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
+                    <button data-pager="{{.}}" class="button black darken-3  p-1  mr-1 rounded-1 xxs" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
             
                 {{end}}
             </div>
@@ -33,7 +34,7 @@
         {{/* Paginator Pages are hidden and revealed with pagination.js */}}
         <section id="paginator">
             {{  range .Paginator.Pagers }}
-                <section id="{{.}}" class="mt-6 is-hidden">
+                <section id="{{.}}" class="mt-4 is-hidden">
                     {{ range after 0 .Pages}}
                         {{ if  .Params.hidden }}
                                 {{/* Do not show the hidden child page or its descendants */}}
@@ -48,7 +49,7 @@
                                         {{end}}
                                     </h4>
                                 </div>
-                                <div class="black darken-1 c-sp-1">
+                                <div class="black darken-3 rounded-1 c-sp-1">
                                     <p class="xs"> 
                                         {{ if .Description}}
                                             {{.Description}}

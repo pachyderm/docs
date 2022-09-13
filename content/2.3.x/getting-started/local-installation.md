@@ -5,8 +5,8 @@ description:
 date: 
 # taxonomy #
 tags: 
-series:
-seriesPart:
+series: ["onboarding"]
+seriesPart: 1
 ---
   
 This guide covers how you can quickly get started using Pachyderm locally on macOS®, Linux®, or Microsoft® Windows®. To install Pachyderm on Windows, first look at [Deploy Pachyderm on Windows](../wsl-deploy){target=_blank}.
