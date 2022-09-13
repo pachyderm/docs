@@ -15,15 +15,15 @@
       <input class="black searchbar is-hidden-mobile" placeholder="Search...">
       {{ if .Site.Params.versionDropdown }}
         <button class="dropdown black is-fit grayscale bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
-          <div class="dropdown-content">
-            <div class="stack black c-mt-1 c-p-1 mt-5 rounded-1">
-            {{ range .Site.Sections.ByTitle.Reverse }} 
+          <div class="dropdown-content mt-4">
+            <div class="stack black rounded-1">
+            {{ range after 1 .Site.Sections.ByTitle.Reverse }} 
                 {{ if not .Params.hidden }}
                 {{/* Sort Options: https://gohugo.io/templates/lists/#order-content */}}
                   {{$currentVersionOption := print "/" .Section "/"}}
                   {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
                 <!--TODO: IF alternative version does not exist, set link to home page of other version-->
-                <a class="bold" href="{{$alternativeVersionPath}}" >
+                <a class="bold  p-1  rounded-1 black" href="{{$alternativeVersionPath}}" >
                   v. {{.Title}}
                 </a>
                 {{ end }}
