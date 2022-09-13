@@ -10,7 +10,7 @@ seriesPart:
 --- 
 
 !!! Note "Attention"
-         Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID){target=_blank} for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+         Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
 
 ## Definition
 

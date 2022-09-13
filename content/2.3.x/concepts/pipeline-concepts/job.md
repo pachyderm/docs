@@ -12,7 +12,7 @@ seriesPart:
 !!! Attention
          Note that Pachyderm uses two different scopes when referring to a `job`. 
 
-         - A "global" scope tracking down your entire provenance chain. Refer to [GlobalID](../../advanced-concepts/globalID){target=_blank} for more details.
+         - A "global" scope tracking down your entire provenance chain. Refer to [GlobalID](../../advanced-concepts/globalID) for more details.
          - And a "local" scope in which a job (also referred to as sub job) is an execution of one particular pipeline. 
          
          The following page details the latter. 
@@ -58,9 +58,9 @@ Below, the state transition diagram of a job:
 ## List Jobs
 They are various ways to list jobs in Pachyderm, depending on the expected outcome:
 
-- The `pachctl list jobs` command returns [the list of all global jobs](../../advanced-concepts/globalID/#list-all-global-commits-and-global-jobs){target=_blank}. 
+- The `pachctl list jobs` command returns [the list of all global jobs](../../advanced-concepts/globalID/#list-all-global-commits-and-global-jobs). 
 
-- The `pachctl list jobs <jobID>` command returns [the list of all jobs sharing the same `<jobID>`](../../advanced-concepts/globalID/#list-all-commits-and-jobs-with-a-global-id){target=_blank}. 
+- The `pachctl list jobs <jobID>` command returns [the list of all jobs sharing the same `<jobID>`](../../advanced-concepts/globalID/#list-all-commits-and-jobs-with-a-global-id). 
 
 - Note that you can also track your jobs downstream as they complete by running `pachctl wait jobs <jobID>`. 
 

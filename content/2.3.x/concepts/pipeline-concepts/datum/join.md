@@ -33,7 +33,7 @@ The `outer-join` behavior can be set on any repository in your join.
 When you configure a join input (inner or outer), you must specify a glob pattern that
 includes a capture group. The capture group defines the specific string in
 the file path that is used to match files in other joined repos.
-Capture groups work analogously to the [regex capture group](https://www.regular-expressions.info/refcapture.html){target=_blank}.
+Capture groups work analogously to the [regex capture group](https://www.regular-expressions.info/refcapture.html).
 You define the capture group inside parenthesis. Capture groups are numbered
 from left to right and can also be nested within each other. Numbering for
 nested capture groups is based on their opening parenthesis.
@@ -56,7 +56,7 @@ following capture groups:
 | `/*/(bar-(123))/*`  | Capture group 1: `bar-123`, capture group 2: `123`. |
 
 
-Also, joins require you to specify a [replacement group](https://www.regular-expressions.info/replacebackref.html){target=_blank}
+Also, joins require you to specify a [replacement group](https://www.regular-expressions.info/replacebackref.html)
 in the `join_on` parameter to define which capture groups you want to try
 to match.
 
@@ -152,7 +152,7 @@ All files with indices from `1` to `5` match. The files
 with indices from `6` to `8` do not match. Therefore, you only get five
 datums for this job.
 
-To experiment further, see the full [joins example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins){target=_blank}.
+To experiment further, see the full [joins example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins).
 
 ## Outer Join
 
@@ -210,4 +210,4 @@ handle (not crash) the case where input files are missing from `/pfs/readings`.
 
 
 
-To experiment further, see the full [join example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins){target=_blank}.
+To experiment further, see the full [join example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins).

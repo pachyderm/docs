@@ -10,7 +10,7 @@ seriesPart:
 ---
 
 !!! Warning
-    SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental){target=_blank}.
+    SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental).
 
 You can inject database content, collected by your data warehouse, by pulling the result of a given query into Pachyderm and saving it as a CSV or JSON file.
 
@@ -185,10 +185,10 @@ pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pa
   snowflake://username@<account_identifier>/<db_name>/<schema_name>?warehouse=<warehouse_name>
   snowflake://username@hostname:port/<db_name>/<schema_name>?account=<account_identifier>&warehouse=<warehouse_name>
   ```
-  The *[`account_identifier`](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html){target=_blank}* takes one of the following forms for most URLs:
+  The *[`account_identifier`](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)* takes one of the following forms for most URLs:
 
-  - Option 1 - [Account Name](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-1-account-name-in-your-organization){target=_blank}:`organization_name`-`account_name`.
-  - Option 2 - [Account Locator](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-2-account-locator-in-a-region){target=_blank}: `account_locator`.`region`.`cloud`.
+  - Option 1 - [Account Name](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-1-account-name-in-your-organization):`organization_name`-`account_name`.
+  - Option 2 - [Account Locator](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-2-account-locator-in-a-region): `account_locator`.`region`.`cloud`.
 
 
 

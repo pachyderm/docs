@@ -87,7 +87,7 @@ This step comes in 3 flavors:
 
    1. Build, tag, and push a new image as described in your
       image registry documentation. For example, if you use
-      DockerHub, see [Docker Documentation](https://docs.docker.com/docker-hub/){target=_blank}.
+      DockerHub, see [Docker Documentation](https://docs.docker.com/docker-hub/).
 
    1. Update the [`transform.image`](../../../reference/pipeline-spec/#transform-required) field of your pipeline spec with your new tag.
    

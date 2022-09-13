@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Install `pachctl` Autocompletion
+title:  Install pachctl Auto-completion
 description: 
 date: 
 # taxonomy #
@@ -89,7 +89,7 @@ steps:
    you add the required path. If you do not have the `~/.zshrc` file on
    your computer, create one. For more information about setting up zsh
    completions, see
-   [zsh-completions](https://github.com/zsh-users/zsh-completions){target=_blank}.
+   [zsh-completions](https://github.com/zsh-users/zsh-completions).
 
 1. Install `pachctl` autocompletion for `zsh`:
 

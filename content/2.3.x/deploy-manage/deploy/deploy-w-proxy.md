@@ -34,7 +34,7 @@ This page is an add-on to existing installation instructions in the case where y
 The diagram below gives a quick overview of the layout of services and pods when using a proxy. In particular, it details how Pachyderm listens to all inbound traffic on one port, then routes each call to the appropriate backend:![Infrastruture Recommendation](../images/infra-recommendations-with-proxy.png)
 
 !!! Note 
-    See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L827){target=_blank} for all available configurable fields of the proxy.
+    See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L827) for all available configurable fields of the proxy.
 
 Before any deployment in production, we recommend reading the following section to [set up your production infrastructure](#deploy-pachyderm-in-production-with-a-proxy). 
 
@@ -64,7 +64,7 @@ The TCP load balancer (load balanced at L4 of the OSI model) will have port `80/
 
 * **Use a secure connection**
 
-    Make sure that you have [Transport Layer Security (TLS)](../deploy-w-tls){target=_blank} enabled for your incoming traffic. 
+    Make sure that you have [Transport Layer Security (TLS)](../deploy-w-tls) enabled for your incoming traffic. 
    
 * **Use Pachyderm authentication/authorization**
 
@@ -79,7 +79,7 @@ The TCP load balancer (load balanced at L4 of the OSI model) will have port `80/
 ## Deploy Pachyderm in Production With a Proxy
 
 Once you have your networking infrastructure setup, 
-check the [deployment page that matches your cloud provider](../../){target=_blank} and 
+check the [deployment page that matches your cloud provider](../../) and 
 follow the installation steps that apply to the cloud provider of your choice from section 1-6.
 Make sure that you have enabled the proxy by adding the following lines to your values.yaml:
 
@@ -97,9 +97,9 @@ replace the instructions in section 7 (Have 'pachctl' And Your Cluster Communica
 !!! Attention "If you plan to deploy Console in Production, read the following and adjust your values.yaml accordingly."
     Deploying Pachyderm with a proxy simplifies the setup of Console (No more dedicated DNS and ingress needed in front of Console). In a production environment, you will need to:
 
-    - [Activate Authentication](../../../enterprise/auth/){target=_blank}.Although, if you are an Helm user, setting up your License Key in your values.yaml will activate Authentication by default. This instruction applies to users activating auth by using pachctl.
+    - [Activate Authentication](../../../enterprise/auth/).Although, if you are an Helm user, setting up your License Key in your values.yaml will activate Authentication by default. This instruction applies to users activating auth by using pachctl.
     - Update the values in the highlighted fields below.
-    - Additionally, you will need to configure your Identity Provider (`oidc.upstreamIDPs`). See examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461){target=_blank} and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
+    - Additionally, you will need to configure your Identity Provider (`oidc.upstreamIDPs`). See examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
 
     ```yaml hl_lines="10-11 19-20"
 
@@ -317,18 +317,18 @@ Follow your regular [QUICK Cloud Deploy documentation](../quickstart/), but for 
     ```
 ## Deploy Pachyderm Locally With a Proxy
 
-This section is an alternative to the default [local deployment instructions](../../../getting-started/local-installation){target=_blank}. It uses a variant of the original one line command to enable a proxy. 
+This section is an alternative to the default [local deployment instructions](../../../getting-started/local-installation). It uses a variant of the original one line command to enable a proxy. 
 
-Follow the [Prerequisites](#prerequisites){target=_blank} before [deploying Pachyderm](#deploy-pachyderm-community-edition-or-enterprise) (with or without Console) on your local cluster, then [Connect 'pachctl' To Your Cluster](#connect-pachctl-to-your-cluster).
+Follow the [Prerequisites](#prerequisites) before [deploying Pachyderm](#deploy-pachyderm-community-edition-or-enterprise) (with or without Console) on your local cluster, then [Connect 'pachctl' To Your Cluster](#connect-pachctl-to-your-cluster).
 
-JupyterLab users, [**you can also install Pachyderm JupyterLab Mount Extension**](../../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension){target=_blank} on your local Pachyderm cluster to experience Pachyderm from your familiar notebooks. 
+JupyterLab users, [**you can also install Pachyderm JupyterLab Mount Extension**](../../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local Pachyderm cluster to experience Pachyderm from your familiar notebooks. 
 
 Note that you can run both Console and JupyterLab on your local installation.
 ### Prerequisites
 
-- If you are not using Linux, follow all the default [Prerequisites](../../../getting-started/local-installation/#prerequisites){target=_blank} installation instructions. 
+- If you are not using Linux, follow all the default [Prerequisites](../../../getting-started/local-installation/#prerequisites) installation instructions. 
 
-- If you are a Linux user, make sure to set up your local Kubernetes Cluster with [Kind](../../../getting-started/local-installation/#using-kind){target=_blank} while following the default [Prerequisites](../../../getting-started/local-installation/#prerequisites){target=_blank} installation instructions. **Use the command below**.
+- If you are a Linux user, make sure to set up your local Kubernetes Cluster with [Kind](../../../getting-started/local-installation/#using-kind) while following the default [Prerequisites](../../../getting-started/local-installation/#prerequisites) installation instructions. **Use the command below**.
 
 Then start your Kubernetes environment.
 
@@ -340,7 +340,7 @@ Then start your Kubernetes environment.
 
     Later, we will use `minikube tunnel` to make the proxy available on `localhost`.
 
-    Check [Minikube's documentation](https://minikube.sigs.k8s.io/docs/){target=_blank} for details.
+    Check [Minikube's documentation](https://minikube.sigs.k8s.io/docs/) for details.
 
 === "Kind (Linux)"
 
@@ -369,7 +369,7 @@ Then start your Kubernetes environment.
       The extraPortMappings will make NodePorts in the cluster available on localhost; NodePort 30080 becomes localhost:80.
       This will make Pachyderm available at `localhost:80` as long as this kind cluster is running.
 
-      Check [Kind's documentation](https://kind.sigs.k8s.io/){target=_blank} for details.
+      Check [Kind's documentation](https://kind.sigs.k8s.io/) for details.
 
 ### Deploy Pachyderm Community Edition Or Enterprise
 
@@ -401,7 +401,7 @@ Then start your Kubernetes environment.
 
       This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, we create a default mock user (username:admin, password: password) to authenticate to Console without having to connect your Identity Provider.
 
-      - Create a license.txt file in which you paste your [Enterprise Key](../../../enterprise/){target=_blank} .
+      - Create a license.txt file in which you paste your [Enterprise Key](../../../enterprise/) .
       - Then, run the following helm command to install Pachyderm's latest Enterprise Edition:
 
         ```shell 
@@ -465,11 +465,11 @@ and authenticate using the mock User (username: `admin`, password: `password`).
 - To use `pachctl`, run `pachctl auth login` then
 authenticate again (to Pachyderm this time) with the mock User (username: `admin`, password: `password`).
 
-- Notebook users, if you have installed [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/index.md){target=_blank} on the same cluster, the connection url to your Pachyderm cluster in the login form (click on the mount extension icon in the far left tab ) is now: `grpc://pachd.<namespace>.svc.cluster.local:30650`
+- Notebook users, if you have installed [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/index.md) on the same cluster, the connection url to your Pachyderm cluster in the login form (click on the mount extension icon in the far left tab ) is now: `grpc://pachd.<namespace>.svc.cluster.local:30650`
 
 ## Changes to the S3 Gateway
 
-The `pachyderm-proxy` service also routes Pachyderm's [**S3 gateway**](../../manage/s3gateway/){target=_blank} (allowing you to
+The `pachyderm-proxy` service also routes Pachyderm's [**S3 gateway**](../../manage/s3gateway/) (allowing you to
 **access Pachyderm's repo through the S3 protocol**) on port 80 (note the endpoint in the diagram below).
 
 ![Global S3 Gateway with Proxy](../../images/main-s3-gateway-with-proxy.png)
@@ -484,7 +484,7 @@ Note that the enterprise server will be deployed behind its proxy, as will each 
     Enabling an embedded enterprise server with your pachd as part of the same helm installation will not work with the proxy. 
     You can use a standalone enterprise server instead.
 
-Follow your regular [enterprise server deployment and configuration instructions](../../../enterprise/auth/enterprise-server/setup){target=_blank}, except for those few steps:
+Follow your regular [enterprise server deployment and configuration instructions](../../../enterprise/auth/enterprise-server/setup), except for those few steps:
 
 - [Section 1: Deploy an enterprise server](../../enterprise/auth/enterprise-server/setup.md#1-deploy-an-enterprise-server)):
    
@@ -501,18 +501,18 @@ Follow your regular [enterprise server deployment and configuration instructions
 
     - Update all mentions of `http://<PACHD-IP>:30657/` and `http://<PACHD-IP>:30658/` with `http://<Enterprise-server-external-IP-or-DNS>:80/` or `https://<Enterprise-server-external-IP-or-DNS>:443/`
 
-    - Your `redirect_uri` must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback` in your IdP connector as mentioned in the [IdP section of the documentation](../../../enterprise/auth/authentication/idp-dex/#pachyderm-integration-with-identity-providers){target=_blank}
+    - Your `redirect_uri` must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback` in your IdP connector as mentioned in the [IdP section of the documentation](../../../enterprise/auth/authentication/idp-dex/#pachyderm-integration-with-identity-providers)
 
 
-- [Section 3: Register your cluster with the enterprise server](../../enterprise/auth/enterprise-server/setup.md#3-register-your-cluster-with-the-enterprise-server){target=_blank}:
+- [Section 3: Register your cluster with the enterprise server](../../enterprise/auth/enterprise-server/setup.md#3-register-your-cluster-with-the-enterprise-server):
 
-    If you chose to [register a cluster to an enterprise server using pachctl](../../enterprise/auth/enterprise-server/setup.md#register-clusters-with-pachctl){target=_blank}, change all the port numbers to 80(http)/443(https) in the `pachctl enterprise register` command:
+    If you chose to [register a cluster to an enterprise server using pachctl](../../enterprise/auth/enterprise-server/setup.md#register-clusters-with-pachctl), change all the port numbers to 80(http)/443(https) in the `pachctl enterprise register` command:
 
     ```shell
     pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:80 --pachd-address <pachd-IP>:80
     ```
 
-- [Section 4: Enable auth on each cluster](../../enterprise/auth/enterprise-server/setup.md#4-enable-auth-on-each-cluster){target=_blank}, use these instructions to:
+- [Section 4: Enable auth on each cluster](../../enterprise/auth/enterprise-server/setup.md#4-enable-auth-on-each-cluster), use these instructions to:
 
     - Set up the issuer in the idp config between the enterprise server and your cluster:
     

@@ -16,10 +16,10 @@ enabled to secure internet browser connections and transactions through data enc
 
 Before you can enable TLS:
 
-- Obtain a certificate from a trusted Certificate Authority such as [Let's Encrypt](https://letsencrypt.org/){target=_blank}, [HashiCorp Vault](https://www.vaultproject.io/){target=_blank}, [Venafi](https://www.venafi.com/){target=_blank}... 
+- Obtain a certificate from a trusted Certificate Authority such as [Let's Encrypt](https://letsencrypt.org/), [HashiCorp Vault](https://www.vaultproject.io/), [Venafi](https://www.venafi.com/)... 
 - Create a tls secret ( `kubectl create secret tls <name> --key=tls.key --cert=tls.cert`) with the  "tls.key" and "tls.crt" keys containing the PEM-encoded private key and certificate material.
 
-Optionally, you can install [Cert-Manager](https://cert-manager.io/docs/installation/){target=_blank} on your cluster to simplify the process of obtaining (No Certificate Signing Requests needed), renewing, and using certificates. 
+Optionally, you can install [Cert-Manager](https://cert-manager.io/docs/installation/) on your cluster to simplify the process of obtaining (No Certificate Signing Requests needed), renewing, and using certificates. 
 In particular, you can use cert-manager to:
 
 - **Talk to a certificate issuer**  Cert-manager comes with a number of built-in certificate issuers. You can also install external issuers in addition to the built-in types.
@@ -38,7 +38,7 @@ In particular, you can use cert-manager to:
 Once your tls secret is created:
 
 - Enable tls in your helm values.
-- Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources){target=_blank}.
+- Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
 
 !!! Example
     In this example, you terminate tls at the cluster level by enabling tls directly on pachd:

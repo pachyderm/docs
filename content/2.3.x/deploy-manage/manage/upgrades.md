@@ -12,7 +12,7 @@ seriesPart:
 Upgrades between minor releases or patch releases, such as `2.1.0` to version `2.2.0`,
 should be seamless.
 Therefore, the upgrade procedure is simple and requires little to no downtime.
-As a good practice, we recommend that you check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md){target=_blank} before an upgrade to get an understanding of the changes introduced between your current version and your target. 
+As a good practice, we recommend that you check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before an upgrade to get an understanding of the changes introduced between your current version and your target. 
 
 !!! Warning 
        Do not use these steps to upgrade between major versions as it might result in data corruption.
@@ -71,7 +71,7 @@ In the case of a simple upgrade of version on a cluster, and provided that you d
 
 ## 4- Helm Upgrade
 
-- Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/){target=_blank} command with your updated values.yaml:
+- Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
 
       ```shell
       helm repo add pach https://helm.pachyderm.com
@@ -80,7 +80,7 @@ In the case of a simple upgrade of version on a cluster, and provided that you d
       ```
 
 !!! Note 
-      Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm){target=_blank}.
+      Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
 
 - The upgrade can take some time. You can run `kubectl get pods` periodically in a separate tab to check the status of the deployment. When Pachyderm is deployed, the command shows all pods as `READY`:
 

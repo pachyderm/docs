@@ -10,12 +10,12 @@ seriesPart:
 --- 
 
 
-The package manager [Helm](https://helm.sh/docs/intro/install/#helm){target=_blank} is the authoritative deployment method for Pachyderm.
+The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 
 !!! Reminder
     **Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
 
-This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm){target=_blank} or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/pachyderm){target=_blank}.
+This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/pachyderm).
 
 !!! Attention 
     We are now shipping Pachyderm with an **optional embedded proxy** 
@@ -31,21 +31,21 @@ This page gives a high level view of the steps to follow to install Pachyderm us
 
 ## Install
 ### Prerequisites
-1. Install [`Helm`](https://helm.sh/docs/intro/install/){target=_blank}. 
+1. Install [`Helm`](https://helm.sh/docs/intro/install/). 
 
 1. Install [`pachctl`](../../../getting-started/local-installation/#install-pachctl), the command-line utility for interacting with a Pachyderm cluster. 
 
-1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/){target=_blank} that apply to you:
+1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/) that apply to you:
     * **Find the deployment page that applies to your Cloud provider** (or custom deployment, or on-premises deployment).
     It will help list the various installation prerequisites, and deployment instructions (Kubernetes, PostgreSQL, Object Store, IdP etc...) that fit your own use case.
     
-         For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform){target=_blank} page.
+         For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform) page.
 
     * Additionally, those instructions will help identify the configuration parameters needed. Those parameter values will **be set in your YAML configuration file** as follows.
 
 ### Edit a Values.yaml File
 
-Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/examples){target=_blank}. Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.
+Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/examples). Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.
 
 - Refer to this section to [understand Pachyderm's main configuration values (License Key, IdP configuration, etc...)](#read-before-any-install-or-upgrade-pachyderm-configuration-values-and-platform-secrets) and how you can set them. 
 
@@ -54,7 +54,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
 !!! Warning
     **No default k8s CPU and memory requests and limits** are created for pachd.  If you don't provide values in the values.yaml file, then those requests and limits are simply not set. 
     
-    For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml){target=_blank}** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
+    For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
      
 ###  Install Pachyderm's Helm Chart
 1. Get your Helm Repo Info
@@ -70,7 +70,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
     helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
     ```
     !!! Info "To choose a specific helm chart version"
-        **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm){target=_blank}.
+        **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
         
 
         - You can choose a specific helm chart version by adding a `--version` flag (for example, `--version 0.3.0`) to your `helm install.`
@@ -149,7 +149,7 @@ pachd               {{ config.pach_latest_version }}
 
 ## Uninstall Pachyderm's Helm Chart
 
-[Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/){target=_blank} a release by running:
+[Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) a release by running:
 ```shell
 helm uninstall pachd 
 ```
@@ -166,7 +166,7 @@ We recommend making sure that everything is properly removed following a helm un
 - If your uninstall failed, there might be config jobs still running. Run `kubectl get jobs.batch | grep pachyderm` and delete any remaining job.
 
 ## Upgrade Pachyderm's Helm Chart
-When a new version of Pachyderm's chart is released, or when you want to update some configuration parameters on your cluster, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/){target=_blank} command:
+When a new version of Pachyderm's chart is released, or when you want to update some configuration parameters on your cluster, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
 
 ```shell
 helm upgrade pachd -f my_new_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>        
@@ -205,8 +205,8 @@ You can provide credentials and configuration values directly in your values.yam
 
 -  *A-1 - Provide the few required values and let Pachyderm generate the rest*
 
-    - Provide your [Enterprise License](../../enterprise/deployment.md#activate-the-enterprise-edition){target=_blank} (For Enterprise users only). 
-    - Optionally, your [IDPs configuration](../../enterprise/auth/authentication/idp-dex.md#create-your-idp-pachyderm-connection){target=_blank} (For Enterprise users using the Authentication feature)
+    - Provide your [Enterprise License](../../enterprise/deployment.md#activate-the-enterprise-edition) (For Enterprise users only). 
+    - Optionally, your [IDPs configuration](../../enterprise/auth/authentication/idp-dex.md#create-your-idp-pachyderm-connection) (For Enterprise users using the Authentication feature)
 
     The rest of the values will be generated for you.
 

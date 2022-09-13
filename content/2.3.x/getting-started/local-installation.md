@@ -9,12 +9,12 @@ series: ["onboarding"]
 seriesPart: 1
 ---
   
-This guide covers how you can quickly get started using Pachyderm locally on macOS®, Linux®, or Microsoft® Windows®. To install Pachyderm on Windows, first look at [Deploy Pachyderm on Windows](../wsl-deploy){target=_blank}.
+This guide covers how you can quickly get started using Pachyderm locally on macOS®, Linux®, or Microsoft® Windows®. To install Pachyderm on Windows, first look at [Deploy Pachyderm on Windows](../wsl-deploy).
 
 Pachyderm is a data-centric pipeline and data versioning application written in go that runs on top of a Kubernetes cluster. 
 A common way to interact with Pachyderm is by using Pachyderm command-line tool `pachctl`, from a terminal window. To check the state of your deployment, you will also need to install `kubectl`, Kubernetes command-line tool. 
 
-Additionally, we will show you how to deploy and access Pachyderm UIs **[JupyterLab Mount Extension](../../how-tos/jupyterlab-extension/){target=_blank}** and **[Console](../../deploy-manage/deploy/console){target=_blank}** on your local cluster. 
+Additionally, we will show you how to deploy and access Pachyderm UIs **[JupyterLab Mount Extension](../../how-tos/jupyterlab-extension/)** and **[Console](../../deploy-manage/deploy/console)** on your local cluster. 
 
 Note that each web UI addresses different use cases:
 
@@ -50,7 +50,7 @@ For a successful local deployment of Pachyderm, you will need:
       - Oracle® VirtualBox™ 
 - [Helm](#install-helm) to deploy Pachyderm on your Kubernetes cluster.  
 - [Pachyderm Command Line Interface (`pachctl`)](#install-pachctl) to interact with your Pachyderm cluster.
-- [Kubernetes Command Line Interface `kubectl`](https://kubernetes.io/docs/tasks/tools/){target=_blank} to interact with your underlying Kubernetes cluster.
+- [Kubernetes Command Line Interface `kubectl`](https://kubernetes.io/docs/tasks/tools/) to interact with your underlying Kubernetes cluster.
 
 ### Setup A Local Kubernetes Cluster
 
@@ -66,7 +66,7 @@ the Beginner Tutorial.
 To configure Minikube, follow these steps:  
   
 1. Install minikube and VirtualBox in your operating system as described in  
-the [Kubernetes documentation](https://kubernetes.io/docs/setup/){target=_blank}.    
+the [Kubernetes documentation](https://kubernetes.io/docs/setup/).    
 1. Start `minikube`:  
   
       ```shell  
@@ -103,7 +103,7 @@ by following these steps:
   
 #### Using Kind  
   
-1. Install Kind according to its [documentation](https://kind.sigs.k8s.io/){target=_blank}.  
+1. Install Kind according to its [documentation](https://kind.sigs.k8s.io/).  
   
 1. From the command prompt, confirm that Kubernetes is running:  
    ```shell  
@@ -123,7 +123,7 @@ with a Pachyderm cluster in your terminal.
       Pachyderm now offers **universal Multi-Arch docker images that can serve both ARM and AMD users**.
       
       - Brew users: The download of the package matching your architecture is automatic—nothing specific to do.
-      - Debian-based and other Linux flavors users not relying on [Homebrew](https://docs.brew.sh/Homebrew-on-Linux){target=_blank}:
+      - Debian-based and other Linux flavors users not relying on [Homebrew](https://docs.brew.sh/Homebrew-on-Linux):
 
         Run `uname -m` to identify your architecture, then choose the command in the `AMD` section below if the output is `x86_64` , or `ARM` if it is `aarch64`.
 
@@ -182,7 +182,7 @@ with a Pachyderm cluster in your terminal.
       out. This is expected behavior because Pachyderm has not been deployed yet (`pachd` is not yet running).  
 
 !!! Tip  
-    If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/){target=_blank}. This add-on tool suggests `pachctl` commands as you type. It will help you learn Pachyderm's main commands faster.  
+    If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/). This add-on tool suggests `pachctl` commands as you type. It will help you learn Pachyderm's main commands faster.  
   
 !!! Note "Architecture"  
       A look at [Pachyderm high-level architecture diagram](../../deploy-manage/#overview)   
@@ -192,13 +192,13 @@ with a Pachyderm cluster in your terminal.
   
 ### Install `Helm`  
   
-Follow Helm's [installation guide](https://helm.sh/docs/intro/install/){target=_blank}.  
+Follow Helm's [installation guide](https://helm.sh/docs/intro/install/).  
   
 ## Deploy Pachyderm
   
 When done with the [Prerequisites](#prerequisites), deploy Pachyderm on your local cluster by following these steps. Your default installation comes with Console (Pachyderm's Web UI).
 
-Additionally, for JupyterLab users,  you can [**install Pachyderm JupyterLab Mount Extension**](#notebooks-users-install-pachyderm-jupyterlab-mount-extension){target=_blank} on your local Pachyderm cluster to experience Pachyderm from your familiar notebooks. 
+Additionally, for JupyterLab users,  you can [**install Pachyderm JupyterLab Mount Extension**](#notebooks-users-install-pachyderm-jupyterlab-mount-extension) on your local Pachyderm cluster to experience Pachyderm from your familiar notebooks. 
 
 Note that you can run both Console and JupyterLab on your local installation.
   
@@ -212,7 +212,7 @@ Note that you can run both Console and JupyterLab on your local installation.
 * Install Pachyderm:  
 
 !!! Attention  "Request an **Enterprise Key**"
-     To request a FREE trial enterprise license key, [click here](../../enterprise){target=_blank}. 
+     To request a FREE trial enterprise license key, [click here](../../enterprise). 
 
 === "Pachyderm Community Edition (Includes Console)"
       This command will install Pachyderm's latest available GA version with Console Community Edition.
@@ -223,9 +223,9 @@ Note that you can run both Console and JupyterLab on your local installation.
 
        Add the following `--set console.enabled=false` to the command above to install without Console.
 === "Enterprise"
-      This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, **we create a default mock user (username:`admin`, password: `password`)** to [authenticate to Console](../../deploy-manage/deploy/console/#connect-to-console){target=_blank} without having to connect your Identity Provider. 
+      This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, **we create a default mock user (username:`admin`, password: `password`)** to [authenticate to Console](../../deploy-manage/deploy/console/#connect-to-console) without having to connect your Identity Provider. 
 
-       - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise){target=_blank}.
+       - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise).
        - Then, run the following helm command to **install Pachyderm's latest Enterprise Edition**: 
       
         ```shell  
@@ -243,7 +243,7 @@ Note that you can run both Console and JupyterLab on your local installation.
       ```
 
 !!! Info "See Also"
-      More [details on Pachyderm's Helm installation](../../deploy-manage/deploy/helm-install/){target=_blank}.
+      More [details on Pachyderm's Helm installation](../../deploy-manage/deploy/helm-install/).
 
 ## Check Your Install
 
@@ -329,7 +329,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 !!! Note
       You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
 
-- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension){target=_blank} on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml){target=_blank}:
+- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
       ```shell
       helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -365,7 +365,7 @@ See the example below:
     
 - Point your browser to **`http://localhost:8888`**, and authenticate using any mock User (username: `admin`, password: `password` will do).
 
-- Now that you are in, [click on Pachyderm's Mount Extension icon on the left of your JupyterLab](../../how-tos/jupyterlab-extension/#connect-the-extension-to-your-pachyderm-cluster){target=_blank} to connect your JupyterLab to your Pachyderm cluster.
+- Now that you are in, [click on Pachyderm's Mount Extension icon on the left of your JupyterLab](../../how-tos/jupyterlab-extension/#connect-the-extension-to-your-pachyderm-cluster) to connect your JupyterLab to your Pachyderm cluster.
 
       Enter `grpc://<your-pachd-cluster-ip-from-the-previous-step>:30650` to login. 
 
@@ -385,7 +385,7 @@ From the cell of a notebook, run:
     ```    
 
 !!! Attention "Try our Notebook examples!"
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples){target=_blank} running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
+       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
 ## Next Steps  
   
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  

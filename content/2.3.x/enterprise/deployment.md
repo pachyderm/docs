@@ -18,7 +18,7 @@ registering for the Enterprise Edition.
 
 !!! Information
       - If you are a new user evaluating Pachyderm,
-      you can request a [FREE trial token](https://www.pachyderm.com/trial/){target=_blank}.
+      you can request a [FREE trial token](https://www.pachyderm.com/trial/).
       - If you are having trouble locating your activation code, contact [support@pachyderm.io](mailto:support@pachyderm.io).
 
 ## Activate The Enterprise Edition
@@ -29,7 +29,7 @@ Enabling Pachyderm's Enterprise Edition can be done in one of two flavors:
 
     - Provide your enterprise key in the `pachd.enterpriseLicenseKey: "<ENTERPRISE-LICENSE-KEY>"` field of your helm values (See the [Helm deployment instructions](../../deploy-manage/deploy/helm-install/) that match your targeted platform). Pachyderm will store this value in the platform secret `pachyderm-license` in the key `enterprise-license-key`.
     
-    - Alternatively, you can [create a secret](../../how-tos/advanced-data-operations/secrets/#create-and-manage-secrets-in-pachyderm){target=_blank} containing your License (Key: `enterprise-license-key`) and reference its name in the field `pachd.enterpriseLicenseKeySecretName`.
+    - Alternatively, you can [create a secret](../../how-tos/advanced-data-operations/secrets/#create-and-manage-secrets-in-pachyderm) containing your License (Key: `enterprise-license-key`) and reference its name in the field `pachd.enterpriseLicenseKeySecretName`.
 
     !!! Attention 
         - When enabling the enterprise features through Helm, [**auth is automatically activated**](../auth).
@@ -48,7 +48,7 @@ Enabling Pachyderm's Enterprise Edition can be done in one of two flavors:
             ```
 
     !!! See Also
-         See the [Helm Values reference](../../reference/helm-values/#pachd){target=_blank} for details. 
+         See the [Helm Values reference](../../reference/helm-values/#pachd) for details. 
 
 - Or, [activate the Enterprise Edition](#activate-pachyderm-enterprise-edition-on-an-existing-cluster) on an existing cluster using `pachctl` as described below.
 

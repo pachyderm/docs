@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+layout: glossary
 --- 
 
 !!! note "TL;DR"
@@ -52,42 +53,4 @@ The most primitive input of a pipeline is a [**PFS input**](../../../reference/p
 - and **a [glob pattern](glob-pattern.md) to determine how the input data is partitioned**.
 
 A pipeline input can have one or multiple PFS inputs.
-In the latter case, Pachyderm provides a variety of options to aggregate several PFS inputs together.
-### Aggregating Datums Further
-Your initial PFS inputs can be further combined by using the following
-aggregation methods, each configurable in the "input" section of the pipeline specification:
-
-[**Cross**](./cross-union/#cross-input)
-:    A cross input creates a cross-product of multiple repositories.
-     Therefore, each datum from one repository is combined with each
-     datum from the other repository.
-
-[**Group**](./group/)
-:    A group input can take one or multiple repositories and processes
-     all the data that match a particular
-     file path pattern at once. Pachyderm's group is similar to the database *group-by*, but it matches on file paths only, not the content of the files.
-
-[**Union**](./cross-union/#union-input)
-:    A union input can take multiple repositories and processes
-     all the data in each input independently. The pipeline
-     processes the datums in no defined order and the output
-     repository includes results from all input sources.
-
-[**Joins**](./join/)
-:    A join input enables you to join files that are stored
-     in different Pachyderm repositories and match a particular
-     file path pattern. Pachyderm supports joins similar to the
-     database’s *inner join* and *outer join* operations, although they only match
-     on file paths, not the actual file content.
-
-
-!!! Important
-     Pipeline inputs, number of workers, parallelism parameters, and other
-     performance knobs can all be configured through their
-     corresponding fields in the [pipeline specification](../../../reference/pipeline-spec.md).
-
-To understand how datums affect data processing in Pachyderm, you need to
-understand the following subconcepts:
-
-* [Glob Pattern](glob-pattern.md)
-* [Datum Processing](relationship-between-datums.md)
+In the latter case, Pachyderm provides a variety of options to aggregate several PFS inputs together. 

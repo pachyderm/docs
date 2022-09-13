@@ -60,13 +60,13 @@ environment variables.
 | `NUM_SHARDS`               | `32`      | The max number of `pachd` pods that can run in a <br> single cluster. |
 | `STORAGE_BACKEND`          | `""`      | The storage backend defined for the Pachyderm cluster.|
 | `STORAGE_HOST_PATH`        | `""`      | The host path to storage. |
-| `KUBERNETES_PORT_443_TCP_ADDR` |`none` | An IP address that Kubernetes exports <br> automatically for your code to communicate with <br> the Kubernetes API. Read access only. Most variables <br> that have use the `PORT_ADDRESS_TCP_ADDR` pattern <br> are Kubernetes environment variables. For more information,<br> see [Kubernetes environment variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables){target=_blank}. |
+| `KUBERNETES_PORT_443_TCP_ADDR` |`none` | An IP address that Kubernetes exports <br> automatically for your code to communicate with <br> the Kubernetes API. Read access only. Most variables <br> that have use the `PORT_ADDRESS_TCP_ADDR` pattern <br> are Kubernetes environment variables. For more information,<br> see [Kubernetes environment variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables). |
 | `METRICS`                  | `true`   | Defines whether anonymous Pachyderm metrics are being <br>collected or not. |
 | `BLOCK_CACHE_BYTES`        | `1G`     | The size of the block cache in `pachd`. |
 | `WORKER_IMAGE`             | `""`     | The base Docker image that is used to run your pipeline.|
 | `WORKER_SIDECAR_IMAGE`     | `""`     | The `pachd` image that is used as a worker sidecar. |
 | `WORKER_IMAGE_PULL_POLICY` | `IfNotPresent`| The pull policy that defines how Docker images are <br>pulled. You can set <br> a Kubernetes image pull policy as needed. |
-| `LOG_LEVEL`                | `info`   | Verbosity of the log output. If you want to disable <br> logging, set this variable to `0`. Viable Options <br>`debug` <br>`info` <br> `error`<br>For more information, see [Go logrus log levels](https://pkg.go.dev/github.com/sirupsen/logrus#Level){target=_blank}. ||
+| `LOG_LEVEL`                | `info`   | Verbosity of the log output. If you want to disable <br> logging, set this variable to `0`. Viable Options <br>`debug` <br>`info` <br> `error`<br>For more information, see [Go logrus log levels](https://pkg.go.dev/github.com/sirupsen/logrus#Level). ||
 | `IAM_ROLE`                 |  `""`    | The role that defines permissions for Pachyderm in AWS.|
 | `IMAGE_PULL_SECRET`        |  `""`    | The Kubernetes secret for image pull credentials.|
 | `EXPOSE_OBJECT_API`        |  `false` | Controls access to internal Pachyderm API.|

@@ -62,7 +62,7 @@ Make sure that you use your `pachd_address` in `client.NewFromAddress("<your-pac
 For example, if you are testing on `minikube`, run
 `minikube ip` to get this information.
 
-See the [OpenCV Example in Go](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/opencv){target=_blank} for more
+See the [OpenCV Example in Go](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/opencv) for more
 information.
 
 ## Python Client
@@ -73,12 +73,12 @@ It implements most of the functionalities provided with the `pachctl` CLI tool a
 !!! Note
      Use **python-pachyderm v{{ config.python_pachyderm_version }}** with Pachyderm {{ config.pach_branch }}. 
 
-You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/){target=_blank}, namely:
+You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/), namely:
 
-- The [installation instructions](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/getting_started.html#installation){target=_blank} and links to PyPI.
-- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}x/getting_started.html#hello-world-example){target=_blank} to jumpstart your understanding of the API.
-- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/v{{ config.python_pachyderm_version }}/examples){target=_blank}. 
-- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/python_pachyderm.html){target=_blank}.
+- The [installation instructions](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/getting_started.html#installation) and links to PyPI.
+- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}x/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
+- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/v{{ config.python_pachyderm_version }}/examples). 
+- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/python_pachyderm.html).
 
 ## Node Client
 
@@ -86,11 +86,11 @@ Our Javascript client `node-pachyderm` is a library officially supported by Pach
 
 Today, we provide only read operations as shown in Console. Over time, we will add additional functionality to the SDK. However, there are no near-term plans to reach parity with python-pachyderm yet.
 
-Please get in touch with us if you are [interested in contributing](https://github.com/pachyderm/node-pachyderm/blob/main/contributing.md){target=_blank} or ask your questions on our dedicated [slack channel](https://pachyderm-users.slack.com/archives/C028ZV066JY){target=_blank}.
+Please get in touch with us if you are [interested in contributing](https://github.com/pachyderm/node-pachyderm/blob/main/contributing.md) or ask your questions on our dedicated [slack channel](https://pachyderm-users.slack.com/archives/C028ZV066JY).
 
-You will find installations instructions and a first quick overview of how to use the library in our [public repository](https://github.com/pachyderm/node-pachyderm){target=_blank}. 
-Check also our [opencv example](https://github.com/pachyderm/node-pachyderm/tree/main/examples/opencv){target=_blank}.
+You will find installations instructions and a first quick overview of how to use the library in our [public repository](https://github.com/pachyderm/node-pachyderm). 
+Check also our [opencv example](https://github.com/pachyderm/node-pachyderm/tree/main/examples/opencv).
 
 ## Other languages
 
-Pachyderm uses a simple [protocol buffer API](https://github.com/pachyderm/pachyderm/blob/master/src/pfs/pfs.proto){target=_blank}. Protobufs support [other languages](https://developers.google.com/protocol-buffers/){target=_blank}, any of which can be used to programmatically use Pachyderm. We have not built clients for them yet. It is an easy way to contribute to Pachyderm if you are looking to get involved.
+Pachyderm uses a simple [protocol buffer API](https://github.com/pachyderm/pachyderm/blob/master/src/pfs/pfs.proto). Protobufs support [other languages](https://developers.google.com/protocol-buffers/), any of which can be used to programmatically use Pachyderm. We have not built clients for them yet. It is an easy way to contribute to Pachyderm if you are looking to get involved.

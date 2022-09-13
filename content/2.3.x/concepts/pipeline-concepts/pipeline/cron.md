@@ -86,4 +86,4 @@ pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pa
 ```
 
 !!! note "See Also:"
-    [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/db){target=_blank}
+    [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/db)

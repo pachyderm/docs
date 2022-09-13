@@ -196,6 +196,6 @@ Run 9: /pfs/A/3.txt
 !!! note "See Also:"
         - [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
         - [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
-        - [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/ml/hyperparameter){target=_blank}
+        - [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/ml/hyperparameter)
 
 

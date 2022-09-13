@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Install `pachctl` Autocompletion
+title:  Install pachctl Auto-completion
 description: 
 date: 
 # taxonomy #

@@ -59,7 +59,7 @@ Before any manual backup:
 - **Suspend all mutation of state by scaling `pachd` and the worker pods down**:
 
     !!! Attention
-         Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate){target=_blank} in our deployment section.
+         Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate) in our deployment section.
 
     To pause Pachyderm:
     
@@ -67,7 +67,7 @@ Before any manual backup:
 
     - Alternatively, you can use `kubectl`:
 
-        Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/){target=_blank}.
+        Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
         Run `kubectl config get-contexts` to list all available clusters and contexts (the current context is marked with a `*`), then `kubectl config use-context <your-context-name>` to set the proper active context.
 
         ```shell 
@@ -101,9 +101,9 @@ you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQ
 
     !!! Info "Here are some pointers to the relevant documentation"
 
-         - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc){target=_blank}
-         - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up){target=_blank}
-         - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql){target=_blank}
+         - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+         - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
+         - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
 
          For on-premises Kubernetes deployments, check the vendor documentation
          for your on-premises PostgreSQL for details on backing up and restoring your databases.
@@ -114,9 +114,9 @@ use the object store provider’s backup method.
 
     !!! Info "Here are some pointers to the relevant documentation"
 
-         - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc){target=_blank}
-         - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview){target=_blank}
-         - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage){target=_blank}
+         - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+         - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
+         - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
 
          For on-premises Kubernetes deployments, check the vendor documentation
          for your on-premises object store for details on backing up and
@@ -149,7 +149,7 @@ Depending on your scenario, pick all or a subset of the following steps:
 - Deploy Pachyderm into your new cluster
 
 !!! Info
-    Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../deploy/index.md){target=_blank}
+    Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../deploy/index.md)
 
 ### Restore The Databases And Objects
 
@@ -163,9 +163,9 @@ Finally, update the copy of your original Helm values to point Pachyderm to the 
 Pachyderm into the new cluster.
 
 !!! Info
-    The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm){target=_blank}
+    The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
 
-### [Connect 'pachctl' To Your Restored Cluster](../../../deploy-manage/deploy/aws-deploy-pachyderm/#7-have-pachctl-and-your-cluster-communicate){target=_blank}
+### [Connect 'pachctl' To Your Restored Cluster](../../../deploy-manage/deploy/aws-deploy-pachyderm/#7-have-pachctl-and-your-cluster-communicate)
 
 ...and [check that your cluster is up and running](../../../deploy-manage/deploy/aws-deploy-pachyderm/#8-check-that-your-cluster-is-up-and-running).
 
@@ -179,7 +179,7 @@ Backing up / restoring an Enterprise Server is similar to the back up / restore 
 ### Backup A Standalone Enterprise Server
 
 !!! Attention
-     Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check your [Enterprise Server](../../enterprise/auth/enterprise-server/setup.md){target=_blank} context: `pachctl config get active-enterprise-context`, or `pachctl config set active-enterprise-context <my-enterprise-context-name> --overwrite` to set it.
+     Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check your [Enterprise Server](../../enterprise/auth/enterprise-server/setup.md) context: `pachctl config get active-enterprise-context`, or `pachctl config set active-enterprise-context <my-enterprise-context-name> --overwrite` to set it.
 
 - [Pause the Enterprise Server](#suspend-operations) like you would pause a regular cluster by running `pachctl enterprise pause` (Enterprise users), or using `kubectl`.
 
@@ -204,8 +204,8 @@ Backing up / restoring an Enterprise Server is similar to the back up / restore 
 
 - [Follow the steps above](#restore-pachyderm) while skipping all tasks related to creating and populating a new object-store.
 
-- Once your cluster is up and running, check that all [your clusters are automatically registered with your new Enterprise Server](../../enterprise/auth/enterprise-server/manage.md#list-all-registered-clusters){target=_blank}.
+- Once your cluster is up and running, check that all [your clusters are automatically registered with your new Enterprise Server](../../enterprise/auth/enterprise-server/manage.md#list-all-registered-clusters).
 
 ## Additional Info
    
-For additional questions about backup / restore, you can post them in the community #help channel on [Slack](https://www.pachyderm.com/slack/){target=_blank}, or reach out to your TAM if you are an Enterprise customer.
+For additional questions about backup / restore, you can post them in the community #help channel on [Slack](https://www.pachyderm.com/slack/), or reach out to your TAM if you are an Enterprise customer.

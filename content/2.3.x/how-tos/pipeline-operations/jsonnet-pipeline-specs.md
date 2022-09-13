@@ -12,7 +12,7 @@ seriesPart:
 !!! Warning
     `Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).
 
-Pachyderm [pipeline's specification](../../../reference/pipeline-spec){target=_blank} files are intuitive, simple, and language agnostic.
+Pachyderm [pipeline's specification](../../../reference/pipeline-spec) files are intuitive, simple, and language agnostic.
 They are, however, very static.
 
 A **jsonnet pipeline specification file** is a thin wrapping layer atop of your JSON file, 
@@ -25,7 +25,7 @@ while experimenting with various values of given fields.
 ## Jsonnet Specs
 
 Pachyderm's Jsonnet pipeline specs are written in 
-the open-source templating language [jsonnet](https://jsonnet.org/){target=_blank}.
+the open-source templating language [jsonnet](https://jsonnet.org/).
 Jsonnet wraps the baseline of a JSON file into a function, 
 allowing the injection of parameters to a pipeline specification file. 
 
@@ -55,7 +55,7 @@ See the full `edges.jsonnet` here:
 {{ gitsnippet('pachyderm/pachyderm', 'examples/opencv/jsonnet/edges.jsonnet', '2.3.x') }}
 ```
 
-Or check our full ["jsonnet-ed" opencv example](https://github.com/pachyderm/pachyderm/tree/2.3.x/examples/opencv/jsonnet){target=_blank}.
+Or check our full ["jsonnet-ed" opencv example](https://github.com/pachyderm/pachyderm/tree/2.3.x/examples/opencv/jsonnet).
 
 To create or update a pipeline using a jsonnet pipeline specification file:
 
@@ -70,7 +70,7 @@ To create or update a pipeline using a jsonnet pipeline specification file:
     The command above will generate a JSON file named `edges-1.json` then create a pipeline of the same name taking the repository `images` as its input.
 
 !!! Information 
-    Read jsonnet's complete [standard library documentation](https://jsonnet.org/ref/stdlib.html){target=_blank} to learn about all the variables types, string manipulation and mathematical functions, or assertions available to you.
+    Read jsonnet's complete [standard library documentation](https://jsonnet.org/ref/stdlib.html) to learn about all the variables types, string manipulation and mathematical functions, or assertions available to you.
 
 
 At the minimum, your function should always have a parameter that acts as a name modifier. 
@@ -79,7 +79,7 @@ You can quickly generate several pipelines from the same jsonnet pipeline specif
 by adding a prefix or a suffix to its generic name.
 
 !!! Info 
-    Your .jsonnet file can create multiple pipelines at once as illustrated in our [group example](https://github.com/pachyderm/pachyderm/tree/master/examples/group){target=_blank}.
+    Your .jsonnet file can create multiple pipelines at once as illustrated in our [group example](https://github.com/pachyderm/pachyderm/tree/master/examples/group).
 
 ## Use Cases
 

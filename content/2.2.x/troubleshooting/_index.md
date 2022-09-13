@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Troubleshooting
+title:  Troubleshooting Guides
 description: Learn how to resolve issues with deploying, configuring, or running Pachyderm.
 date: 
 # taxonomy #

@@ -8,5 +8,5 @@
 {{ if .p1.Parent }}{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
 {{ else if not .p1.IsHome }}{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
-  <div class="breadcrumb"> <a href="{{ .p1.Permalink }}" class="xs uppercase">{{ .p1.Title | truncate 20 }}</a></div>
+  <div class="breadcrumb"> <a href="{{ .p1.Permalink }}" class="xs uppercase">{{ .p1.Title | truncate 15 }}</a></div>
 {{ end }}
