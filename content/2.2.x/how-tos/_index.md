@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  How Tos
-description: 
+description: Learn how to perform basic and advanced data operations using these walkthroughs.
 date: 
 # taxonomy #
 tags: 

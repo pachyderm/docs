@@ -23,8 +23,7 @@ This guide assumes that you have Pachyderm running.
 
 !!! Note
     If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
-    This handy tool suggests `pachctl` commands as you type and
-    helps you learn Pachyderm faster.
+    This handy tool suggests `pachctl` commands as you type and helps you learn Pachyderm faster.
 
 For this tutorial, you will use `pachctl` to interact with your Pachyderm cluster from your terminal window and Console (Pachyderm Web UI) to interactively
 visualize and explore your pipelines, your data, debug jobs, read logs, etc...
@@ -91,6 +90,7 @@ have not added anything to it yet, the size of the repository HEAD commit
 on the master branch is 0B.
 
 Check your Console and notice the creation of your repository. 
+
 !!! Note 
     Note the "plus" icon in your `images` repository. 
     It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 

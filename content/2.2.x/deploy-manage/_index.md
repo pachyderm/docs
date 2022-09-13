@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Deploy & Manage
-description: 
+description: Learn how to deploy and manage Pachyderm either locally, on-prem, or in the cloud.
 date: 
 # taxonomy #
 tags: 

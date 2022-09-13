@@ -2,7 +2,7 @@
 # metadata # 
 title:  Reference
 description: Reference key details about Pachyderm.
-date: 
+date: Reference pachctl commands, helm chart values, pipeline spec options, and more.
 # taxonomy #
 tags: 
 series:

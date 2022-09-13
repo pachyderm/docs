@@ -1,23 +1,21 @@
 {{/* Displays cards with child page titles, their total count, a description or summary, and optionally quick buttons to the first 7 children. */}}
 
-{{if .Content }}
-{{else}}
-<h2> Articles in this section:</h2>
-{{end}}
-
 
 {{ if .Site.Params.childPages.display}}
     {{if .Pages }}
-        <aside class="spread c-pinned-top">
+        <aside class="spread-left c-pinned-top rounded-1 sp-1 mt-5">
             {{ range sort .Pages "Weight" "$order"}}
                 {{ if  .Params.hidden }}
                     {{/* Do not show the hidden child page or its descendants */}}
                 {{else}}
-                    <section class="is-one-third is-fullsize-mobile c-mt-1 mt-5">
+                    <section class="is-one-third is-fullsize-mobile">
+                        <div class="rounded-1  mr-1 my-1 p-1 move-u">
                             <a href="{{.Permalink}}">
-                                <h3 class="m">{{.Title}}</h3>
+                                <h3 class="m">{{.Title}} <b class="s">></b></h3>
                             {{if .Description}}
                                 <p class="subtitle-1">{{.Description}}</p>
+                                {{else}}
+                                <p class="subtitle-1">{{.Summary | truncate 100}}</p>
                             {{end}}
                             </a>
                             {{if eq .Params.label "required"}}
@@ -26,9 +24,9 @@
                                         <div class="label white">OPTIONAL</div>
                                     {{end}}
                             {{ if .Site.Params.childPages.grandchildren}}
-                                <div class="spread-left">
+                                <div class="spread-left mb-3">
                                     {{ range first 7 .Pages }}
-                                    <a class="button outlined p-1 mt-1 mr-1 xs is-fit rounded-1" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                    <a class="button outlined p-1  mt-1 mr-1 xs is-fit rounded-1" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 20}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                     </a>
                                     {{ end }}
                                     {{if .Pages}}
@@ -39,6 +37,7 @@
                             {{else}}
                                 <div class="label black darken-1"> {{ len (.Pages) }} articles</div>  
                             {{end}}
+                            </div>
                     </section>
                 {{end}}
             {{end}}

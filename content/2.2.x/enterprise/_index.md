@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Enterprise Edition
-description: 
+description: Learn about the unique features and settings specific to the Enterprise edition of Pachyderm.
 date: 
 # taxonomy #
 tags: 

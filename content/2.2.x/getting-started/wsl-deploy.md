@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Deploy Pachyderm on a Microsoft Windows machine
+title:  Deploy on Windows
 description: 
 date: 
 # taxonomy #

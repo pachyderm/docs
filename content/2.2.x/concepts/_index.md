@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Concepts
-description: 
+description: Learn about basic and advanced concepts for performing data transformations with pipelines.
 date: 
 # taxonomy #
 tags: 
