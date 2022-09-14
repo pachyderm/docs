@@ -5,11 +5,11 @@
     --xxsmall-text: calc(8px); 
     --xsmall-text: calc(12px);
     --small-text: calc(16px + 0vw);
-    --medium-text: calc(16px + 1vw);
+    --medium-text: calc(16px + .75vw);
     --large-text: calc(16px + 1.5vw);
-    --xlarge-text: calc(16px + 2vw);
-    --xxlarge-text: calc(16px + 2.5vw);
-    --xxxlarge-text: calc(16px + 5vw);  
+    --xlarge-text: calc(16px + 1.75vw);
+    --xxlarge-text: calc(16px + 2vw);
+    --xxxlarge-text: calc(16px + 4vw);  
 
     --spacing-1: 90;
     --spacing-2: 60;
