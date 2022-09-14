@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Pipeline
-description: 
+description: "Learn about the types of pipelines used in Pachyderm, including: spout, cron, and service pipelines."
 date: 
 # taxonomy #
 tags: 

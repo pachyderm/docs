@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Datum Processing States
-description: 
+description: Learn about the concept of datum processing states in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

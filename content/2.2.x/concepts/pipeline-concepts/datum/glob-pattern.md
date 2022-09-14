@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Glob Pattern
-description: 
+description: Learn about the concept of a glob pattern in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

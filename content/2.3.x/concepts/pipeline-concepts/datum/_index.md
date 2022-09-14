@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Datum
-description: 
+description: Learn about the concept of a Datum in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

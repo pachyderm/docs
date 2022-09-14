@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Setup Ingress with Traefik
-description: 
+description: Learn how to route cluster-external HTTP/s requests to cluster-internal services using Traefik. 
 date: 
 # taxonomy #
 tags: 

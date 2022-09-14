@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Metadata
-description: 
+description: Learn about the concept of metadata in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

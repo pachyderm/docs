@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Provenance
-description: 
+description: Learn about the concept of provenance in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

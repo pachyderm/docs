@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Commit
-description: 
+description: Learn about the concept of a commit in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

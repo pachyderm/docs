@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Repository
-description: 
+description: Learn about the concept of a repository in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

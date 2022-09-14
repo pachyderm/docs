@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Branch
-description: 
+description: Learn about the concept of a branch in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

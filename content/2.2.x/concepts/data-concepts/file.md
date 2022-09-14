@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: File
-description: 
+description: Learn about the concept of a file in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

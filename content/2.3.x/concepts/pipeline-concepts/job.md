@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Job
-description: 
+description: Learn about the concept of a Job in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

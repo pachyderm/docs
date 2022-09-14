@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: History
-description: 
+description: Learn about the concept of a history (version control) in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

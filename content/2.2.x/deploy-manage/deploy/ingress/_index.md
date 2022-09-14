@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Infrastructure Recommendations
-description: 
+description: Learn about some of our infrastructure recommendations for running Pachyderm.
 date: 
 # taxonomy #
 tags: 

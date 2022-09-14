@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Pachd Metrics
-description: 
+description: Learn about the pachd metrics available. 
 date: 
 # taxonomy #
 tags: 

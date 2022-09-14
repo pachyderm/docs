@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Spout
-description: 
+description: Learn about the concept of a spout pipeline in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

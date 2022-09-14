@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Group Input
-description: 
+description: Learn about the concept of a group input in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

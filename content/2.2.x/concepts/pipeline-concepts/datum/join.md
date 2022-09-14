@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Join Input
-description: 
+description: Learn about the concept of a join input in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Cron Pipeline
-description: 
+description: Learn about the concept of a cron pipeline in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

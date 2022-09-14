@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Cross & Union Inputs
-description: 
+description: Learn about the concept of cross and union inputs in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

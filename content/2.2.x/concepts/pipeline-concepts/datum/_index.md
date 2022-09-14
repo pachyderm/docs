@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Datum
-description: 
+description: Learn about the concept of a Datum in Pachyderm. 
 date: 
 # taxonomy #
 tags: 
@@ -25,28 +25,22 @@ The files output by all of the datums are then combined together to
 create the final output commit.
 
 ## Data distribution
-Think of datums as a way to **divide your input data** 
-and **distribute processing workloads**.
-They are instrumental in optimizing your pipeline performance.
+Think of datums as a way to **divide your input data**  and **distribute processing workloads**. They are instrumental in optimizing your pipeline performance.
 
-You define how your data is spread among workers by
-**specifying [pipeline inputs](#pipeline-inputs)** for your pipeline 
-in its pipeline specification file. 
+You define how your data is spread among workers by **specifying [pipeline inputs](#pipeline-inputs)** for your pipeline  in its pipeline specification file. 
 
-Based on this specification file, the data in the `input` 
-of your pipeline is turned in datums 
-each of which can contain 1 to many files.
-Pachyderm provides a wide variety of ways to define the granularity of each datum. 
+Based on this specification file, the data in the `input`  of your pipeline is turned in datums 
+each of which can contain 1 to many files. Pachyderm provides a wide variety of ways to define the granularity of each datum. 
 
-For example, you can configure a whole branch of an
-input repository to be one datum, each top-level filesystem object of a given branch
-to be a separate datum, specific paths on a given branch can be datums, etc...
+For example, you can configure a whole branch of an input repository to be one datum, each top-level filesystem object of a given branch to be a separate datum, specific paths on a given branch can be datums, etc... 
+
 You can also create a combination of the above by aggregating multiple input.
 
 ## Pipeline Inputs
-This section details the tools at your disposal to
-"break down" your data and fit your specific use case.
+This section details the tools at your disposal to "break down" your data and fit your specific use case.
+
 ### PFS Input and Glob Pattern
+
 The most primitive input of a pipeline is a [**PFS input**](../../../reference/pipeline-spec/#pfs-input), defined, at a minimum, by:
 
 - a repo containing the data you want your pipeline to consider

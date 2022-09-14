@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Versioned Data Concepts
-description: 
+description: Learn about the data versioning concepts used in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

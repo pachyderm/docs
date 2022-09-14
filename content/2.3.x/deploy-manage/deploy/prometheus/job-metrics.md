@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Job Metrics
-description: 
+description: Learn about the job metrics available. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Monitor with Prometheus
-description: 
+description: Learn how to monitor a Pachyderm cluster using Prometheus. 
 date: 
 # taxonomy #
 tags: 

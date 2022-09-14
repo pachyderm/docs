@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Documentation Style Guide
-description: 
+description: Learn how to contribute content to Pachyderm's documentation. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Coding Conventions
-description: 
+description: Learn the coding conventions contributors to Pachyderm's code base follow.
 date: 
 # taxonomy #
 tags: 
