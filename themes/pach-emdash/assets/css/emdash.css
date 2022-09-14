@@ -24,7 +24,7 @@
     --is-link-color: var(--is-purple);
     --is-shadow-color: var(--is-dark-gray);
     --is-highlight-color: var(--is-purple);
-    --is-code-color: var(--is-gray);
+    --is-code-color: #5393A5;
 
     --is-info-color: var(--is-blue);
     --is-info-text: var(--is-white);; 

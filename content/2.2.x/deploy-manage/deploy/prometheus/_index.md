@@ -30,12 +30,14 @@ Only available for self-managed deployments today.
 Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
 
     - Get Repo Info
+  
     ```s
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo update
     ```
 
     - Install the Prometheus-operator helm chart
+
     ```s
     helm install <a-release-name> prometheus-community/kube-prometheus-stack
     ```
@@ -74,11 +76,13 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
             Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
             to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
             Let's take a quick look at this file:
-            
+
             ```s
             kubectl -o json get service/pachd
             ```
+
             In the json file, find:
+    
             ```json
                 {
                 "name": "prom-metrics",

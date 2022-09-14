@@ -132,7 +132,7 @@ Once your backup is completed, resume your normal operations by scaling `pachd` 
 
 - Alternatively, if you used `kubectl`:
 
-    ```sh
+    ```s
     kubectl scale deployment pachd --replicas 1
     ```
 

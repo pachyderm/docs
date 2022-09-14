@@ -66,7 +66,7 @@ Below, the state transition diagram of a job:
 - The `pachctl list job -p <pipeline>` command returns the jobs in a given pipeline.
 
     !!! Example
-    
+
         ```s
         pachctl list job -p edges
         ```
@@ -93,6 +93,7 @@ process time, image:tag used to transform your data, etc...). Along with checkin
 
 !!! Example
     Add a `--raw` flag to output a detailed JSON version of the job.
+
     ```s
     pachctl inspect job edges@fd9454d06d8e4fa38a75c8cd20b39538 --raw
     ```

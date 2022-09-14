@@ -82,7 +82,7 @@ To deploy an EKS cluster, complete the following steps:
 
       **System Response:**
 
-      ```
+      ```s
       NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
       service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   23h
       ```
@@ -330,7 +330,8 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
 [Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
 
 
-=== "Gp3 + Service account annotations"   
+=== "Gp3 + Service account annotations"  
+ 
       ```yaml
       deployTarget: AMAZON
       # This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
@@ -369,6 +370,7 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
         enabled: false
       ```
 === "Gp3 + AWS Credentials"   
+
       ```yaml
       deployTarget: AMAZON
       # This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
@@ -409,6 +411,7 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
 [Check out our example of values.yaml for gp2](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/aws-gp2-values.yaml) or use our minimal example below.   
     
 === "For Gp2 + Service account annotations"
+
       ```yaml
       deployTarget: AMAZON      
       etcd:

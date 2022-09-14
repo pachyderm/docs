@@ -201,7 +201,8 @@ Pachyderm needs a [GCS bucket](https://cloud.google.com/storage/docs/) (Object s
       * `GCP_REGION` — The GCP region of your Kubernetes cluster e.g. "us-west1".
 
 * Create the bucket:
-     ```
+
+     ```s
      gsutil mb -l ${GCP_REGION}  gs://${BUCKET_NAME} 
      ```
 
@@ -482,7 +483,7 @@ global:
 
     **System Response:**
 
-    ```
+    ```s
     NAME: pachyderm
     LAST DEPLOYED: Mon Nov  8 16:48:49 2021
     NAMESPACE: default
@@ -506,7 +507,7 @@ global:
 
     **System Response:**
 
-    ```
+    ```s
     NAME                     READY   STATUS    RESTARTS   AGE
     etcd-0                   1/1     Running   0          4m50s
     pachd-5db79fb9dd-b2gdq   1/1     Running   2          4m49s

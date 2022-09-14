@@ -28,6 +28,7 @@ Pick the `egress` protocol that applies to your storage:
 | Azure Blob Storage | `wasb://` | `wasb://default-container@storage-account/az-dir` |
 
 !!! example
+
     ```json
     "egress": {
        "URL": "s3://bucket/dir"

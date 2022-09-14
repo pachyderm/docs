@@ -42,7 +42,7 @@ Once your tls secret is created:
 
 !!! Example
     In this example, you terminate tls at the cluster level by enabling tls directly on pachd:
-    
+
     ```yaml
      pachd:
        tls:
@@ -62,8 +62,8 @@ Et voila!
 
 If you use Kubernetes cluster-wide proxies to control outbound access, use the following attributes to propagate your required settings:
 
--  `global.proxy`: Sets the HTTP/S proxy server address for Console, PachD, and Enterprise Server. 
--  `global.noProxy`: Define a comma-separated list of destinations that bypass the proxy if `global.proxy` is being used.
+  -  `global.proxy`: Sets the HTTP/S proxy server address for Console, PachD, and Enterprise Server. 
+  -  `global.noProxy`: Define a comma-separated list of destinations that bypass the proxy if `global.proxy` is being used.
 
 
 
@@ -75,6 +75,7 @@ Pachyderm context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
 !!! Example
+
     ```s   
     echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
     ```

@@ -21,6 +21,7 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
 ## Manifest Format
 
 === "JSON Full Specifications"
+
     ```json
     {
       "pipeline": {

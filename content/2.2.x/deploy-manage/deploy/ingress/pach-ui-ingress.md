@@ -106,10 +106,11 @@ Here is a quick high-level view of the various components at play.
       The deployment of Pachyderm automatically creates the required set of rules.
 
 1. Check your new rules by running `kubectl describe ingress console`:
+2. 
          ```s
          kubectl describe ingress console
          ```
-         ```
+         ```s
          Name:             console
          Namespace:        default
          Address:
@@ -126,7 +127,7 @@ Here is a quick high-level view of the various components at play.
          Events:           <none>
          ```
        
-1. Check the Traefik Dashboard again (http://127.0.0.1:9000/dashboard/), your new set of rules should now be visible.
+3. Check the Traefik Dashboard again (http://127.0.0.1:9000/dashboard/), your new set of rules should now be visible.
 
 
 ## Browse

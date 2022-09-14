@@ -54,7 +54,8 @@ See the reference [values.yaml](../../../reference/helm-values/) for the list of
         1. For a quick installation, put the secrets' values in the dedicated fields of your values.yaml. In such cases, those will populate Pachyderm's default `pachyderm-bootstrap-config` secret. 
 
         Find the complete list of helm values that can control secret values here: 
-        ``` 
+
+        ```s
         global.postgresqlExistingSecretName 
         console.config.oauthClientSecretSecretName 
         pachd.enterpriseLicenseKeySecretName 
@@ -71,17 +72,20 @@ See the reference [values.yaml](../../../reference/helm-values/) for the list of
        
 ###  Install Pachyderm's Helm Chart
 1. Get your Helm Repo Info
+
     ```s
     helm repo add pach https://helm.pachyderm.com
     helm repo update
     ```
 
-1. Install Pachyderm
+2. Install Pachyderm
 
     You are ready to deploy Pachyderm on the environment of your choice.
+
     ```s
     helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
     ```
+
     !!! Info "To choose a specific helm chart version"
         **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
         
@@ -95,7 +99,8 @@ See the reference [values.yaml](../../../reference/helm-values/) for the list of
      
     
 
-1. Check your deployment
+3. Check your deployment
+
     ```s
     kubectl get pods
     ```
@@ -105,7 +110,7 @@ See the reference [values.yaml](../../../reference/helm-values/) for the list of
     
     **System Response:**
 
-    ```
+    ```s
     NAME                           READY   STATUS    RESTARTS   AGE
     etcd-0                         1/1     Running   0          18h
     pachd-5db79fb9dd-b2gdq         1/1     Running   2          18h
@@ -157,7 +162,7 @@ pachctl version
 
 **System Response:**
 
-```
+```s
 COMPONENT           VERSION
 pachctl             {{ config.pach_latest_version }}
 pachd               {{ config.pach_latest_version }}

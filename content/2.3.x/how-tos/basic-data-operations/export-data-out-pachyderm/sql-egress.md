@@ -74,6 +74,7 @@ Append an egress section to your pipeline specification file, then fill in:
     ```
 
 !!! Example
+
         ```json
         {
         "pipeline": {

@@ -263,6 +263,7 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 You are ready to create your instance. 
 
 !!! Example
+
     ```s
     az postgres server create \
         --resource-group <your_resource_group> \

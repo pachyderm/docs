@@ -73,11 +73,12 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
             Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
             to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
             Let's take a quick look at this file:
-            
+    
             ```s
             kubectl -o json get service/pachd
             ```
             In the json file, find:
+
             ```json
                 {
                 "name": "prom-metrics",

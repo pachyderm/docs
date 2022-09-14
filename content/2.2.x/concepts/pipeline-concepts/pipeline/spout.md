@@ -95,7 +95,7 @@ For simplicity, in this example,
 source of the Kafka host.
 {{% /notice %}}
 
-```
+```json
 {
   "pipeline": {
     "name": "my-spout"

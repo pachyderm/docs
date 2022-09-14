@@ -219,7 +219,7 @@ Jump to [Helm install](#3-helm-install)
     
     **System Response:**
 
-    ```
+    ```s
     NAME                           READY   STATUS    RESTARTS   AGE
     console-7b69ddf66d-bxmg5       1/1     Running   0          18h
     etcd-0                         1/1     Running   0          18h

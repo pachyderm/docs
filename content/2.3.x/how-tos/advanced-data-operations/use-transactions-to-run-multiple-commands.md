@@ -51,6 +51,7 @@ will run once all the input commits have been finished**.
     is stored at `~/.pachyderm/config.json`.
 
     !!! example
+    
           ```json hl_lines="9"
           {
             "user_id": "b4fe4317-be21-4836-824f-6661c68b8fba",

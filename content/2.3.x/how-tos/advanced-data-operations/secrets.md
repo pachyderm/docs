@@ -48,6 +48,7 @@ Let's first generate your secret configuration file using the `kubectl` command.
    ```
 
 !!! Example "Example of a generic secret"
+
       ```json
       {
          "apiVersion": "v1",
@@ -110,6 +111,7 @@ In Pachyderm, a Secret can be used in three different ways:
       ```
     !!! Example "Example of a pipeline specification file assigning a Secret's values to environment variables"  
          Look at the pipeline specification in this example and see how we used the  `"env_var"` to pass CLEARML API credentials to the pipeline code.
+   
          ```json
          {
             "pipeline": {

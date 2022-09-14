@@ -127,6 +127,7 @@ top-level filesystem objects in the `train` repository as one
 datum:
 
 !!! Example
+
     ```s
     pachctl glob file train@master:/
     ```
@@ -172,6 +173,7 @@ The pipeline does not need to have been created for the command to return the li
 {{% /notice %}}
 
 !!! Example
+
     ```s
     pachctl list datum -f edges.json
     ```

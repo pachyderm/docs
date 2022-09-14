@@ -38,7 +38,8 @@ You can list all global commits by running the following command:
 pachctl list commit
 ```
 Each global commit displays how many (sub) commits it is made of.
-```
+
+```s
 ID                               SUBCOMMITS PROGRESS CREATED        MODIFIED
 1035715e796f45caae7a1d3ffd1f93ca 7          ▇▇▇▇▇▇▇▇ 7 seconds ago  7 seconds ago
 28363be08a8f4786b6dd0d3b142edd56 6          ▇▇▇▇▇▇▇▇ 24 seconds ago 24 seconds ago
@@ -50,7 +51,7 @@ pachctl list job
 ```
 you will notice that the job IDs are shared with the global commit IDs.
 
-```
+```s
 ID                               SUBJOBS PROGRESS CREATED            MODIFIED
 1035715e796f45caae7a1d3ffd1f93ca 2       ▇▇▇▇▇▇▇▇ 55 seconds ago     55 seconds ago
 28363be08a8f4786b6dd0d3b142edd56 1       ▇▇▇▇▇▇▇▇ About a minute ago About a minute ago
@@ -73,7 +74,7 @@ To list all (sub) commits involved in a global commit:
 ```s
 pachctl list commit 1035715e796f45caae7a1d3ffd1f93ca
 ```
-```
+```s
 REPO         BRANCH COMMIT                           FINISHED      SIZE        ORIGIN DESCRIPTION
 images       master 1035715e796f45caae7a1d3ffd1f93ca 5 minutes ago 238.3KiB    USER
 edges.spec   master 1035715e796f45caae7a1d3ffd1f93ca 5 minutes ago 244B        ALIAS
@@ -88,7 +89,7 @@ Similarly, change `commit` in `job` to list all (sub) jobs linked to your global
 ```s
 pachctl list job 1035715e796f45caae7a1d3ffd1f93ca
 ```
-```
+```s
 ID                               PIPELINE STARTED       DURATION  RESTART PROGRESS  DL       UL       STATE
 1035715e796f45caae7a1d3ffd1f93ca montage  5 minutes ago 4 seconds 0       1 + 0 / 1 79.49KiB 381.1KiB success
 1035715e796f45caae7a1d3ffd1f93ca edges    5 minutes ago 2 seconds 0       1 + 0 / 1 57.27KiB 22.22KiB success

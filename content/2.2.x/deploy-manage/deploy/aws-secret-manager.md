@@ -37,7 +37,7 @@ Deploy the [**Secrets Store CSI driver**](https://secrets-store-csi-driver.sigs.
       Make sure to enable the [`Sync as Kubernetes Secret` feature](https://secrets-store-csi-driver.sigs.k8s.io/topics/sync-as-kubernetes-secret.html) explicitly by setting the helm parameter `syncSecret.enabled` to true.
 
 {{% notice %}}
-``` shell
+``` s
 helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
 helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver --namespace kube-system --set syncSecret.enabled=true
 ```
@@ -48,7 +48,7 @@ helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
 
 {{% notice %}}
 TL;DR
-``` shell
+``` s
 kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
 ```
 {{% /notice %}}
@@ -82,6 +82,7 @@ Before granting your EKS pods the proper permissions to access your secrets, you
 Follow the steps in [AWS user guide](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
 
 !!! Example "TL;DR"
+
       ```s
       eksctl utils associate-iam-oidc-provider --cluster="<cluster-name>"
       ```
@@ -121,7 +122,8 @@ The role is associated with a Kubernetes service account created in the namespac
 
 
 !!! Example "TL;DR"
-    ``` shell
+
+    ``` s
     eksctl create iamserviceaccount \
     --name "<my-service-account>" \
     --cluster "<my-cluster>" \

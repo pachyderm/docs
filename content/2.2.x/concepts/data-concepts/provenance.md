@@ -52,6 +52,7 @@ the direct provenance of your commits and learn where the data in the repository
 originates in.
 
 !!! Example
+
     ```s
     pachctl inspect commit edges@71c791f3252c492a8f8ad9a51e5a5cd5 --raw
     ```
