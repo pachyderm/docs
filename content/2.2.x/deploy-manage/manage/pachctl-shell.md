@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Using the Pachyderm Shell
-description: 
+description: Learn how to use the Pachyderm Shell.
 date: 
 # taxonomy #
 tags: 

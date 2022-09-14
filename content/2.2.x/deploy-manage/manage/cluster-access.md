@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Manage Cluster Access
-description: 
+description: Learn how to manage Kubernetes cluster access using Pachyderm Contexts.
 date: 
 # taxonomy #
 tags: 
@@ -9,19 +9,10 @@ series:
 seriesPart:
 ---
 
-Pachyderm contexts enable you to store configuration parameters for
-multiple Pachyderm clusters in a single configuration file saved at
-`~/.pachyderm/config.json`. This file stores the information
-about all Pachyderm clusters that you have deployed from your
-machine locally or on a remote server.
+Pachyderm contexts enable you to store configuration parameters for multiple Pachyderm clusters in a single configuration file saved at `~/.pachyderm/config.json`. This file stores the information about all Pachyderm clusters that you have deployed from your machine locally or on a remote server.
 
-For example, if you have a cluster that
-is deployed locally in `minikube` and another one deployed on
-Amazon EKS, configurations for these clusters are stored in
-that `config.json` file. By default, all local cluster configurations
-have the `local` prefix. If you have multiple local clusters,
-Pachyderm adds a consecutive number to the `local` prefix
-of each cluster.
+For example, if you have a cluster that is deployed locally in `minikube` and another one deployed on Amazon EKS, configurations for these clusters are stored in
+that `config.json` file. By default, all local cluster configurations have the `local` prefix. If you have multiple local clusters, Pachyderm adds a consecutive number to the `local` prefix of each cluster.
 
 The following text is an example of a Pachyderm `config.json` file:
 

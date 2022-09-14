@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Disable Usage Metrics
-description: 
+description: Learn how to disable automatically collected usage metrics. 
 date: 
 # taxonomy #
 tags: 

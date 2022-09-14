@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Storage Use Optimization
-description: 
+description: Learn how to optimize your data storage to increase data-processing performance. 
 date: 
 # taxonomy #
 tags: 

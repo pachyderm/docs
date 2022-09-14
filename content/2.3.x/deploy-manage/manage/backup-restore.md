@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Backup & Restore Your Cluster
-description: 
+description: Learn how to back-up and restore the state of a production Pachyderm cluster.
 date: 
 # taxonomy #
 tags: 

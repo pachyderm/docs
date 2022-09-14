@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Global S3 Gateway
-description: 
+description: Learn about Pachyderm's embedded S3 gateway, which is compatible with MinIO, AWS S3 CLI, and boto3. 
 date: 
 # taxonomy #
 tags: 

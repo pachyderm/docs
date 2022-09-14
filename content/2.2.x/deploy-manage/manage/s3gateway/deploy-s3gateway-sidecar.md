@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Sidecar S3 Gateway
-description: 
+description: Learn how to use S3-protocol-enabled pipelines and interact with external input/output data.
 date: 
 # taxonomy #
 tags: 

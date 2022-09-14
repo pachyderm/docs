@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Pachyderm S3 Gateway Supported Operations
-description: 
+description: Learn which S3 Gateway operations are supported by Pachyderm. 
 date: 
 # taxonomy #
 tags: 

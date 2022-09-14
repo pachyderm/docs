@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Storage Use Optimization
-description: 
+description: Learn how to optimize your data storage to increase data-processing performance. 
 date: 
 # taxonomy #
 tags: 
@@ -9,11 +9,7 @@ series:
 seriesPart:
 ---
 
-This section discusses best practices for minimizing the
-space needed to store your Pachyderm data, increasing
-the performance of your data processing as related to
-data organization, and general good ideas when you
-are using Pachyderm to version/process your data.
+This section discusses best practices for minimizing the space needed to store your Pachyderm data, increasing the performance of your data processing as related to data organization, and general good ideas when you are using Pachyderm to version/process your data.
 
 ## Setting a root volume size
 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Use GPUs
-description: 
+description: Learn how to access GPUs on a Kubernetes cluster for Pachyderm data transformations. 
 date: 
 # taxonomy #
 tags: 

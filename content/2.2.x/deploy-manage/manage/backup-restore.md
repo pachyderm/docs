@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Backup & Restore Your Cluster
-description: 
+title: Backup & Restore Clusters
+description: Learn how to back-up and restore the state of a production Pachyderm cluster.
 date: 
 # taxonomy #
 tags: 
@@ -11,11 +11,9 @@ seriesPart:
 
 # Backup Restore Your Cluster
 
-This page will walk you through the main steps required
-to manually back up and restore the state of a Pachyderm cluster in production.
+This page will walk you through the main steps required to manually back up and restore the state of a Pachyderm cluster in production.
 
-Details on how to perform those steps might vary depending
-on your infrastructure and cloud provider / on-premises setup. 
+Details on how to perform those steps might vary depending on your infrastructure and cloud provider / on-premises setup. 
 
 Refer to your provider's documentation.
 

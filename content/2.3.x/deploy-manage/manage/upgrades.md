@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Upgrade Pachyderm
-description: 
+description: Learn how to upgrade Pachyderm's pachctl and pachd. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  Configure Your S3 Client
-description: 
+title: S3 Client Configuration
+description: Learn how to configure an S3 client.
 date: 
 # taxonomy #
 tags: 
@@ -9,10 +9,7 @@ series:
 seriesPart:
 --- 
 
-Before you can access a repo via the S3 gateway,
-you need to configure your S3 client. 
-Complete the steps in one of the sections below that
-correspond to your S3 client.
+Before you can access a repo via the S3 gateway, you need to configure your S3 client.  Complete the steps in one of the sections below that correspond to your S3 client.
 
 ## Configure MinIO
 1. Install the MinIO client as
