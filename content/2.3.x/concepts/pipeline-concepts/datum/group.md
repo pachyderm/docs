@@ -121,7 +121,7 @@ The pipeline will process 3 datums for this job.
 
 The `pachctl list datum -f <your_pipeline_spec.json>` command is a useful tool to check your datums: 
 
-```code
+```s
 ID FILES                                                                                                                                                                                                                        STATUS TIME
 -  labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID1-labID1.txt, labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID1-labID3.txt, labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID1-labID2.txt -      -
 -  labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID2-labID1.txt, labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID2-labID3.txt                                                                           -      -

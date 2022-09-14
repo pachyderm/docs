@@ -66,6 +66,7 @@ Below, the state transition diagram of a job:
 - The `pachctl list job -p <pipeline>` command returns the jobs in a given pipeline.
 
     !!! Example
+    
         ```s
         pachctl list job -p edges
         ```

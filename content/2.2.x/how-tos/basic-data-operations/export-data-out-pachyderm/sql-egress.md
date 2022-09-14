@@ -65,7 +65,7 @@ Append an egress section to your pipeline specification file, then fill in:
     ```
     The following table will be written to the database:
 
-    ```
+    ```s
     foo   |  bar
     ===============
     string | 1
@@ -73,6 +73,7 @@ Append an egress section to your pipeline specification file, then fill in:
     ```
 
 !!! Example
+
         ```json
         {
         "pipeline": {

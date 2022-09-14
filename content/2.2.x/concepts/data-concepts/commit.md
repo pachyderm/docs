@@ -100,6 +100,7 @@ Pachyderm displays the information about the HEAD of the branch.
 
 !!! Example
     Add a `--raw` flag to output a detailed JSON version of the commit.
+
     ```s
     pachctl inspect commit images@c6d7be4a13614f2baec2cb52d14310d0 --raw
     ```

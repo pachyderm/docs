@@ -54,7 +54,7 @@ For more information, see [Cross and Union](./cross-union.md), [Join](./join.md)
 Let's consider an input repo with the following structure where each top-level directory represents a US
 state with a `json` file for each city in that state:
 
-```
+```s
     /California
        /San-Francisco.json
        /Los-Angeles.json
@@ -84,7 +84,8 @@ Now let's consider what the following glob patterns would match respectively:
     
 
     Say we have the following repo structure:
-    ```
+
+    ```s
       /nope1.txt
       /test1.txt
       /foo-1
@@ -97,13 +98,14 @@ Now let's consider what the following glob patterns would match respectively:
           /anothertest.txt
     ```
     ...and apply the following pattern to our input repo:
-    ```
+
+    ```s
       "glob": "/**test*.txt"
     ```
     We are **recursively matching all `.txt` files containing `test`** starting from our input repo's root directory.
     In this case, the resulting datums will be:
     
-    ```
+    ```s
       - /test1.txt
       - /foo-1/test2.txt
       - /foo-2/foo-2_1/test3.txt
@@ -175,7 +177,7 @@ The pipeline does not need to have been created for the command to return the li
     ```
     **System Response:**
 
-    ```
+    ```s
       ID FILES                                                STATUS TIME
     -  images@b8687e9720f04b7ab53ae8c64541003b:/46Q8nDz.jpg -      -
     -  images@b8687e9720f04b7ab53ae8c64541003b:/8MN9Kg0.jpg -      -
@@ -188,12 +190,13 @@ The pipeline does not need to have been created for the command to return the li
 You can use the `pachctl list datum <pipeline>@<job_ID>` command to check the datums processed by a given job.
 
 !!! Example
+
     ```s
     pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
     ```
     **System Response:**
 
-    ```
+    ```s
       ID                                                               FILES                                                STATUS  TIME
     a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8 images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg success Less than a second
     e2b4628dd88b179051ba0576e06fac12ae2e4d16165296212d0e98de501d17df images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg success Less than a second
@@ -215,7 +218,8 @@ Stats and Datum Metadata
 pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
 ```
 **System Response:**
-```
+
+```s
 ID	a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
 Job ID	b8687e9720f04b7ab53ae8c64541003b
 State	SUCCESS
@@ -232,5 +236,6 @@ Inputs:
   REPO     COMMIT                             PATH
   images   b8687e9720f04b7ab53ae8c64541003b   /w7RVTsv.jpg
 ```
+
 Add `--raw` for a full JSON version of the [datum's metadata](../metadata/).
 {{% /notice %}}

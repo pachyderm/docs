@@ -50,6 +50,7 @@ a staging branch:
 
 !!! Tip "Additionnaly"
       A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
+
       ```json
          "pfs": {
             "repo": "data",
