@@ -66,25 +66,23 @@ They are various ways to list jobs in Pachyderm, depending on the expected outco
 
 - The `pachctl list jobs -p <pipeline>` command returns the list of all the jobs run in a given pipeline.
 
-    !!! example
-        ```s
-        pachctl list jobs -p edges
-        ```
+###  Example
+```s
+pachctl list jobs -p edges
+```
 
-        **System Response:**
+**System Response:**
 
-        ```s
-        ID                               PIPELINE STARTED      DURATION           RESTART PROGRESS  DL       UL       STATE
-        fd9454d06d8e4fa38a75c8cd20b39538 edges    20 hours ago 5 seconds          0       2 + 1 / 3 181.1KiB 111.4KiB success
-        5a78358d4b53494cbba4550428f2fe98 edges    20 hours ago 2 seconds          0       1 + 0 / 1 57.27KiB 22.22KiB success
-        7dcd77a2f7f34ff384a6096d1139e922 edges    20 hours ago Less than a second 0       0 + 0 / 0 0B       0B       success
-        ```
+```s
+ID                               PIPELINE STARTED      DURATION           RESTART PROGRESS  DL       UL       STATE
+fd9454d06d8e4fa38a75c8cd20b39538 edges    20 hours ago 5 seconds          0       2 + 1 / 3 181.1KiB 111.4KiB success
+5a78358d4b53494cbba4550428f2fe98 edges    20 hours ago 2 seconds          0       1 + 0 / 1 57.27KiB 22.22KiB success
+7dcd77a2f7f34ff384a6096d1139e922 edges    20 hours ago Less than a second 0       0 + 0 / 0 0B       0B       success
+```
 
-    For each (sub) job, Pachyderm shows the time the pipeline started, its duration, data downloaded and uploaded, the `STATE` of the pipeline execution, and the number of datums in the `PROGRESS` section.
-    The format of the progress column is `DATUMS PROCESSED + DATUMS SKIPPED / TOTAL DATUMS`.
+For each (sub) job, Pachyderm shows the time the pipeline started, its duration, data downloaded and uploaded, the `STATE` of the pipeline execution, and the number of datums in the `PROGRESS` section. The format of the progress column is `DATUMS PROCESSED + DATUMS SKIPPED / TOTAL DATUMS`.
 
-
-    See [Datum Processing States](../../../concepts/pipeline-concepts/datum/datum-processing-states/) for details on Datum states.
+See [Datum Processing States](../../../concepts/pipeline-concepts/datum/datum-processing-states/) for details on Datum states.
 
 ## Inspect Job
 The `pachctl inspect jobs <pipeline>@<jobID>` command enables you to view detailed
@@ -92,71 +90,71 @@ information about a specific (sub)job in a given pipeline (state, number of datu
 process time, image:tag used to transform your data, etc...). Along with checking the logs, it is especially useful when troubleshooting a failed job.
 
 
-!!! example
-    Add a `--raw` flag to output a detailed JSON version of the job.
+### Example
+Add a `--raw` flag to output a detailed JSON version of the job.
 
-    ```s
-    pachctl inspect jobs edges@fd9454d06d8e4fa38a75c8cd20b39538 --raw
-    ```
+```s
+pachctl inspect jobs edges@fd9454d06d8e4fa38a75c8cd20b39538 --raw
+```
 
-    **System Response:**
+**System Response:**
 
-    ```json
-    {
-        "job": {
-            "pipeline": {
-            "name": "edges"
-            },
-            "id": "fd9454d06d8e4fa38a75c8cd20b39538"
+```json
+{
+    "job": {
+        "pipeline": {
+        "name": "edges"
         },
-        "pipeline_version": "1",
-        "output_commit": {
-            "branch": {
-            "repo": {
-                "name": "edges",
-                "type": "user"
-            },
-            "name": "master"
-            },
-            "id": "fd9454d06d8e4fa38a75c8cd20b39538"
+        "id": "fd9454d06d8e4fa38a75c8cd20b39538"
+    },
+    "pipeline_version": "1",
+    "output_commit": {
+        "branch": {
+        "repo": {
+            "name": "edges",
+            "type": "user"
         },
-        "data_processed": "2",
-        "data_skipped": "1",
-        "data_total": "3",
-        "stats": {
-            "download_time": "0.113263653s",
-            "process_time": "1.020472976s",
-            "upload_time": "0.010323995s",
-            "download_bytes": "185424",
-            "upload_bytes": "114041"
+        "name": "master"
         },
-        "state": "JOB_SUCCESS",
-        "created": "2021-08-02T20:13:10.461841493Z",
-        "started": "2021-08-02T20:13:32.870023561Z",
-        "finished": "2021-08-02T20:13:38.691891860Z",
-        "details": {
-            "transform": {
-            "image": "pachyderm/opencv:1.0",
-            "cmd": [
-                "python3",
-                "/edges.py"
-            ]
-            },
-            "input": {
-            "pfs": {
-                "name": "images",
-                "repo": "images",
-                "repo_type": "user",
-                "branch": "master",
-                "commit": "fd9454d06d8e4fa38a75c8cd20b39538",
-                "glob": "/*"
-            }
-            },
-            "salt": "27bbe39ccae54cc2976e3f960a2e1f94",
-            "datum_tries": "3"
+        "id": "fd9454d06d8e4fa38a75c8cd20b39538"
+    },
+    "data_processed": "2",
+    "data_skipped": "1",
+    "data_total": "3",
+    "stats": {
+        "download_time": "0.113263653s",
+        "process_time": "1.020472976s",
+        "upload_time": "0.010323995s",
+        "download_bytes": "185424",
+        "upload_bytes": "114041"
+    },
+    "state": "JOB_SUCCESS",
+    "created": "2021-08-02T20:13:10.461841493Z",
+    "started": "2021-08-02T20:13:32.870023561Z",
+    "finished": "2021-08-02T20:13:38.691891860Z",
+    "details": {
+        "transform": {
+        "image": "pachyderm/opencv:1.0",
+        "cmd": [
+            "python3",
+            "/edges.py"
+        ]
+        },
+        "input": {
+        "pfs": {
+            "name": "images",
+            "repo": "images",
+            "repo_type": "user",
+            "branch": "master",
+            "commit": "fd9454d06d8e4fa38a75c8cd20b39538",
+            "glob": "/*"
         }
+        },
+        "salt": "27bbe39ccae54cc2976e3f960a2e1f94",
+        "datum_tries": "3"
     }
-    ```
+}
+```
 
 
 

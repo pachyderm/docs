@@ -75,43 +75,43 @@ Pachyderm's repositories are divided into two categories:
 You can view the list of all user repositories in your Pachyderm cluster
 by running the `pachctl list repo` command.
 
-!!! Example
+### Example 
 
-    ```s
-    pachctl list repo
-    ```
+```s
+pachctl list repo
+```
 
-    **System Response:**
+**System Response:**
 
-    ```s
-    NAME       CREATED      SIZE (MASTER) ACCESS LEVEL
-    montage    19 hours ago 1.664MiB      [repoOwner]  Output repo for pipeline montage.
-    edges      19 hours ago 133.6KiB      [repoOwner]  Output repo for pipeline edges.
-    images     19 hours ago 238.3KiB      [repoOwner]
-    ```
+```s
+NAME       CREATED      SIZE (MASTER) ACCESS LEVEL
+montage    19 hours ago 1.664MiB      [repoOwner]  Output repo for pipeline montage.
+edges      19 hours ago 133.6KiB      [repoOwner]  Output repo for pipeline edges.
+images     19 hours ago 238.3KiB      [repoOwner]
+```
 
-    Additionally, `pachctl list repo --all` will let you see all repos of all types, and `pachctl list repo --type=spec` or `pachctl list repo --type=meta` will filter the `spec` or `meta` repos only.
+Additionally, `pachctl list repo --all` will let you see all repos of all types, and `pachctl list repo --type=spec` or `pachctl list repo --type=meta` will filter the `spec` or `meta` repos only.
 
 
 ## Inspect a Repo
 The `pachctl inspect repo` command provides a more detailed overview
 of a specified repository.
 
-!!! Example
+###  Example
 
-    ```s
-    pachctl inspect repo raw_data
-    ```
+```s
+pachctl inspect repo raw_data
+```
 
-    **System Response:**
+**System Response:**
 
-    ```s
-    Name: raw_data
-    Description: A raw data repository
-    Created: 6 hours ago
-    Size of HEAD on master: 5.121MiB
-    ```
-    Add a `--raw` flag to output a more detailed JSON version of the repo's metadata.
+```s
+Name: raw_data
+Description: A raw data repository
+Created: 6 hours ago
+Size of HEAD on master: 5.121MiB
+```
+Add a `--raw` flag to output a more detailed JSON version of the repo's metadata.
 
 ## Delete a Repo
 If you need to delete a repository, you can run the

@@ -30,6 +30,7 @@ In particular, you will:
 - [4. Persistent Volumes Creation](#4-persistent-volumes-creation)
 - [5. Create an Azure Managed PostgreSQL Server Database](#5-create-an-azure-managed-postgresql-server-database)
   - [Create A PostgreSQL Server Instance¶](#create-a-postgresql-server-instance)
+    - [Example](#example)
   - [Create Your Databases](#create-your-databases)
   - [Update your values.yaml](#update-your-valuesyaml)
 - [6. Deploy Pachyderm](#6-deploy-pachyderm)
@@ -264,19 +265,20 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 
 You are ready to create your instance. 
 
-!!! Example
+#### Example
 
-    ```s
-    az postgres server create \
-        --resource-group <your_resource_group> \
-        --name <your_server_name>  \
-        --location westus \
-        --sku-name GP_Gen5_2 \
-        --admin-user <server_admin_username> \
-        --admin-password <server_admin_password> \
-        --ssl-enforcement Disabled \
-        --version 11
-    ```
+```s
+az postgres server create \
+    --resource-group <your_resource_group> \
+    --name <your_server_name>  \
+    --location westus \
+    --sku-name GP_Gen5_2 \
+    --admin-user <server_admin_username> \
+    --admin-password <server_admin_password> \
+    --ssl-enforcement Disabled \
+    --version 11
+```
+
 {{% notice warning %}}
 - Make sure that your PostgreSQL version is `>= 11`
 - Keep the SSL setting `Disabled`.
@@ -286,16 +288,17 @@ Once created, go back to your newly created database, and:
 
 - Open the access to your instance:
 
-!!! Note
-    Azure provides two options for pods running on an AKS worker nodes to access a PostgreSQL DB instance, pick what fit you best:
+{{% notice note %}}
+Azure provides two options for pods running on an AKS worker nodes to access a PostgreSQL DB instance, pick what fit you best:
 
-      - Create a [firewall rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-firewall-rules#connecting-from-azure) on the Azure DB Server with a range of IP addresses that encompasses all IPs of the AKS Cluster nodes (this can be a very large range if using node auto-scaling).
-      - Create a [VNet Rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-data-access-and-security-vnet) on the Azure DB Server that allows access from the subnet the AKS nodes are in. This is used in conjunction with the Microsoft.Sql VNet Service Endpoint enabled on the cluster subnet.
+  - Create a [firewall rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-firewall-rules#connecting-from-azure) on the Azure DB Server with a range of IP addresses that encompasses all IPs of the AKS Cluster nodes (this can be a very large range if using node auto-scaling).
+  - Create a [VNet Rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-data-access-and-security-vnet) on the Azure DB Server that allows access from the subnet the AKS nodes are in. This is used in conjunction with the Microsoft.Sql VNet Service Endpoint enabled on the cluster subnet.
 
-    You can also choose the more secure option to [deny public access to your PostgreSQL instance](https://docs.microsoft.com/en-us/azure/postgresql/howto-deny-public-network-access) then [Create a private endpoint in the K8s vnet](https://docs.microsoft.com/en-us/azure/postgresql/howto-configure-privatelink-cli). Read more about how to [configure a private link using CLI on Azure's documentation](https://docs.microsoft.com/en-us/azure/postgresql/concepts-data-access-and-security-private-link)
+You can also choose the more secure option to [deny public access to your PostgreSQL instance](https://docs.microsoft.com/en-us/azure/postgresql/howto-deny-public-network-access) then [Create a private endpoint in the K8s vnet](https://docs.microsoft.com/en-us/azure/postgresql/howto-configure-privatelink-cli). Read more about how to [configure a private link using CLI on Azure's documentation](https://docs.microsoft.com/en-us/azure/postgresql/concepts-data-access-and-security-private-link)
 
-   
-   Alternativelly, in the **Connection Security** of your newly created server, *Allow access to Azure services* (This is equivalent to running `az postgres server firewall-rule create --server-name <your_server_name> --resource-group <your_resource_group> --name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0`). 
+
+Alternativelly, in the **Connection Security** of your newly created server, *Allow access to Azure services* (This is equivalent to running `az postgres server firewall-rule create --server-name <your_server_name> --resource-group <your_resource_group> --name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0`). 
+{{% /notice %}}
 
 - In the **Essentials** page of your instance, find the full **server name** and **admin username** that will be required in your [values.yaml](#update-your-valuesyaml).
 

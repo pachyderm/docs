@@ -35,17 +35,19 @@ You can create additional branches to experiment with the data (`pachctl create 
 
 To view a list of branches in a repo, run the `pachctl list branch <myrepo>` command.
 
-!!! example
-    ```s
-    pachctl list branch images
-    ```
+##  example
+```s
+pachctl list branch images
+```
 
-    **System Response:**
+**System Response:**
 
-    ```s
-    BRANCH HEAD
-    master c32879ae0e6f4b629a43429b7ec10ccc
-    ```
-!!! Attention "It is important to note that..."
+```s
+BRANCH HEAD
+master c32879ae0e6f4b629a43429b7ec10ccc
+```
+
+{{% notice warning %}}
     - Deleting a branch (`pachctl delete branch <myrepo>@<branchname>`) does not delete the commits on it.
     - All branches must have a head commit. 
+{{% /notice %}}

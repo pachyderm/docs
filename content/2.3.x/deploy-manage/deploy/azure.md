@@ -36,6 +36,7 @@ In particular, you will:
 - [4. Persistent Volumes Creation](#4-persistent-volumes-creation)
 - [5. Create an Azure Managed PostgreSQL Server Database](#5-create-an-azure-managed-postgresql-server-database)
   - [Create A PostgreSQL Server Instance¶](#create-a-postgresql-server-instance)
+    - [Example](#example)
   - [Create Your Databases](#create-your-databases)
   - [Update your yaml values](#update-your-yaml-values)
 - [6. Deploy Pachyderm](#6-deploy-pachyderm)
@@ -146,9 +147,9 @@ To access your data, Pachyderm uses a [Storage Account](https://docs.microsoft.c
 
 To create a new storage account, follow the steps below:
 
-!!! Warning
-      The storage account name must be unique in the Azure location.
-
+{{% notice warning %}}
+The storage account name must be unique in the Azure location.
+{{% /notice %}}
 * Set up the following variables:
 
       * STORAGE_ACCOUNT - The name of the storage account where you store your data.
@@ -224,8 +225,9 @@ etcd and PostgreSQL (metadata storage) each claim the creation of a pv.
 
 If you plan to deploy Pachyderm with its default bundled PostgreSQL instance, read the warning below and jump to the [deployment section](#6-deploy-pachyderm):
 
-!!! Warning
-    The metadata service (Persistent disk) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your disk choice, you may need to oversize the volume significantly to ensure enough IOPS.
+{{% notice warning %}}
+The metadata service (Persistent disk) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your disk choice, you may need to oversize the volume significantly to ensure enough IOPS.
+{{% /notice %}}
 
 If you plan to deploy a managed PostgreSQL instance (Recommended in production), read the following section.
 
@@ -263,22 +265,23 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 
 You are ready to create your instance. 
 
-!!! Example
-    ```s
-    az postgres server create \
-        --resource-group <your_resource_group> \
-        --name <your_server_name>  \
-        --location westus \
-        --sku-name GP_Gen5_2 \
-        --admin-user <server_admin_username> \
-        --admin-password <server_admin_password> \
-        --ssl-enforcement Disabled \
-        --version 11
-    ```
+#### Example 
+```s
+az postgres server create \
+    --resource-group <your_resource_group> \
+    --name <your_server_name>  \
+    --location westus \
+    --sku-name GP_Gen5_2 \
+    --admin-user <server_admin_username> \
+    --admin-password <server_admin_password> \
+    --ssl-enforcement Disabled \
+    --version 11
+```
 
-!!! Warning
-    - Make sure that your PostgreSQL version is `>= 11`
-    - Keep the SSL setting `Disabled`.
+{{% notice warning %}}
+- Make sure that your PostgreSQL version is `>= 11`
+- Keep the SSL setting `Disabled`.
+{{% /notice %}}
 
 
 Once created, go back to your newly created database, and: 

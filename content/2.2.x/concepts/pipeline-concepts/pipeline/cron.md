@@ -36,16 +36,16 @@ For example, you want to query a database every ten seconds and update your
 dataset with the new data every time the pipeline is triggered. The following
 pipeline extract illustrates how you can specify this configuration.
 
-!!! Example
+### Example 1 
 
-    ```json
-      "input": {
-        "cron": {
-          "name": "tick",
-          "spec": "@every 10s"
-        }
-      }
-    ```
+```json
+  "input": {
+    "cron": {
+      "name": "tick",
+      "spec": "@every 10s"
+    }
+  }
+```
 
 When you create this pipeline, Pachyderm creates a new input data repository
 that corresponds to the `cron` input. Then, Pachyderm automatically commits
@@ -62,17 +62,17 @@ previous one. You can set the overwrite flag to true to overwrite the
 timestamp file on each tick. To learn more about overwriting commits in
 Pachyderm, see [Datum processing](../datum/index.md).
 
-!!! Example
+### Example 2
 
-    ```json
-      "input": {
-        "cron": {
-          "name": "tick",
-          "spec": "@every 10s",
-          "overwrite": true
-        }
-      }
-    ```
+```json
+  "input": {
+    "cron": {
+      "name": "tick",
+      "spec": "@every 10s",
+      "overwrite": true
+    }
+  }
+```
 
 {{% notice info %}}
     [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/db)

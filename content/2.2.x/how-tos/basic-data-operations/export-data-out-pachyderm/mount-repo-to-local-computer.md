@@ -9,11 +9,12 @@ series:
 seriesPart:
 ---
 
-!!! warning
-    Pachyderm uses FUSE to mount repositories as local filesystems.
-    Because Apple has announced phasing out support for macOS
-    kernel extensions, including FUSE, this functionality is no
-    longer stable on macOS Catalina (10.15) or later.
+{{% notice warning %}}
+Pachyderm uses FUSE to mount repositories as local filesystems.
+Because Apple has announced phasing out support for macOS
+kernel extensions, including FUSE, this functionality is no
+longer stable on macOS Catalina (10.15) or later.
+{{% /notice%}}
 
 Pachyderm enables you to mount a repository
 as a local filesystem on your computer by using the
@@ -91,8 +92,9 @@ write access to the mounted repositories, which means that you can
 open the files for editing and put them back to the Pachyderm
 repository. 
 
-!!! Warning
-    Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+{{% notice warning %}}
+Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+{{% /notice %}}
 
 For example, you have the [OpenCV example pipeline](../../../../getting-started/beginner-tutorial/#image-processing-with-opencv)
 up and running. If you want to edit files in the `images`

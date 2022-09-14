@@ -104,9 +104,9 @@ Some of the steps below will require you to keep updating the values.yaml starte
 
 Pachyderm needs an S3 bucket (Object store) to store your data. You can create the bucket by running the following commands:
 
-!!! Warning
-      The S3 bucket name must be globally unique across the entire
-      Amazon region. 
+{{% notice warning %}}
+The S3 bucket name must be globally unique across the entire Amazon region. 
+{{% /notice %}}
 
 * Set up the following system variables:
 
@@ -288,11 +288,14 @@ Configure your DB instance as follows.
 | *Database name* | In the *Database options* section, enter Pachyderm's Database name (We are using `pachyderm` in this example.) and click *Create database* to create your PostgreSQL service. Your instance is running. <br>Warning: If you do not specify a database name, Amazon RDS does not create a database.|
 
 
-!!! Warning "One last step"
-      Once your instance is created: 
+{{% notice warning %}}
+One Last Step
 
-      - If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../enterprise/auth/enterprise-server/setup.md), you will need to create a second database named "dex" in your RDS instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). This second database is not needed when your cluster is managed by an enterprise server.
-      - Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). Pachyderm will use the same username to connect to `pachyderm` as well as to `dex`. 
+Once your instance is created: 
+
+- If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../enterprise/auth/enterprise-server/setup.md), you will need to create a second database named "dex" in your RDS instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). This second database is not needed when your cluster is managed by an enterprise server.
+- Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). Pachyderm will use the same username to connect to `pachyderm` as well as to `dex`. 
+{{% /notice %}}
 
 ### Update your values.yaml 
 Once your databases have been created, add the following fields to your Helm values:

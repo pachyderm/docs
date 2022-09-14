@@ -41,15 +41,16 @@ In particular, you will:
 1. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
 1. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
 
-!!! Warning "TL;DR - Give me the script"
+{{% notice warning %}}  
+TL;DR - Give me the script
 
-    [This script](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/deploy/gcp/gcp-doco-script.sh) will create a GKE cluster, the workload identity service accounts and permissions you need, a static IP, the cloud SQL instance and databases, and a cloud storage bucket. It will also install Pachyderm into the cluster. 
+[This script](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/deploy/gcp/gcp-doco-script.sh) will create a GKE cluster, the workload identity service accounts and permissions you need, a static IP, the cloud SQL instance and databases, and a cloud storage bucket. It will also install Pachyderm into the cluster. 
 
-      - Before running it, update the global variables at the top of the script and make sure to go through the [prerequisites](#1-prerequisites), as we are assuming that you have created a project and enabled the necessary APIs.  
-      Note that it will also create a file called ${NAME}.values.yaml in the current directory.
+- Before running it, update the global variables at the top of the script and make sure to go through the [prerequisites](#1-prerequisites), as we are assuming that you have created a project and enabled the necessary APIs.  
+Note that it will also create a file called ${NAME}.values.yaml in the current directory.
 
-    - Once your script has run, [configure your context](#7-have-pachctl-and-your-cluster-communicate)   and [check that your cluster is up and running](#8-check-that-your-cluster-is-up-and-running).
-
+- Once your script has run, [configure your context](#7-have-pachctl-and-your-cluster-communicate)   and [check that your cluster is up and running](#8-check-that-your-cluster-is-up-and-running).
+{{%/notice %}}
 
 ## 1. Prerequisites
 
@@ -197,8 +198,9 @@ Once your Kubernetes cluster is up, and your infrastructure configured, you are 
 
 Pachyderm needs a [GCS bucket](https://cloud.google.com/storage/docs/) (Object store) to store your data. You can create the bucket by running the following commands:
 
-!!! Warning
-     The GCS bucket name must be globally unique.
+{{% notice warning %}} 
+The GCS bucket name must be globally unique.
+{{% /notice %}}
 
 * Set up the following system variables:
 
@@ -295,12 +297,13 @@ etcd and PostgreSQL (metadata storage) each claim the creation of a [persistent 
 
 If you plan to deploy Pachyderm with its default bundled PostgreSQL instance, read the warning below, and jump to the [deployment section](#6-deploy-pachyderm): 
 
-!!! Info   
-    When deploying Pachyderm on GCP, your persistent volumes are automatically created and assigned the **default disk size of 50 GBs**. Note that StatefulSets is a default as well .
+{{% notice info %}}   
+    When deploying Pachyderm on GCP, your persistent volumes are automatically created and assigned the **default disk size of 50 GBs**. Note that StatefulSets is a default as well.
+{{%/notice%}}
 
-!!! Warning
-    Each persistent disk generally requires a small persistent volume size but **high IOPS (1500)**. If you choose to overwrite the default disk size, depending on your disk choice, you may need to oversize the volume significantly to ensure enough IOPS. For reference, 1GB should work fine for 1000 commits on 1000 files. 10GB is often a sufficient starting
-    size, though we recommend provisioning at least 1500 write IOPS, which requires at least 50GB of space on SSD-based PDs and 1TB of space on Standard PDs. 
+{{% notice warning %}} 
+Each persistent disk generally requires a small persistent volume size but **high IOPS (1500)**. If you choose to overwrite the default disk size, depending on your disk choice, you may need to oversize the volume significantly to ensure enough IOPS. For reference, 1GB should work fine for 1000 commits on 1000 files. 10GB is often a sufficient starting size, though we recommend provisioning at least 1500 write IOPS, which requires at least 50GB of space on SSD-based PDs and 1TB of space on Standard PDs. 
+{{% /notice %}}
 
 If you plan to deploy a managed PostgreSQL instance (CloudSQL), read the following section. Note that this is the **recommended setup in production**. 
 ## 5. Create a GCP Managed PostgreSQL Database

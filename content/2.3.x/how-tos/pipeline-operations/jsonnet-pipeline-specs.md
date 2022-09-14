@@ -37,19 +37,19 @@ of the edges pipeline spec `edges.json` in the opencv example, used to inject a 
 and an input repository name into the original pipeline specifications.
 
 
-!!! Example 
-    In this snippet of `edges.jsonnet`, the parameter `src` sits in place of what would have been
-    the value of the field `repo`, as a placeholder for any parameter that will be passed to the jsonnet pipeline spec.
+### Example 1
+In this snippet of `edges.jsonnet`, the parameter `src` sits in place of what would have been
+the value of the field `repo`, as a placeholder for any parameter that will be passed to the Jsonnet pipeline spec.
 
-    ```yaml
-    input: {
-        pfs: {
-          name: "images",
-          glob: "/*",
-          repo: src,
-        }
-      },
-    ```
+```yaml
+input: {
+    pfs: {
+        name: "images",
+        glob: "/*",
+        repo: src,
+    }
+    },
+```
 
 See the full `edges.jsonnet` here:
 ```yaml
@@ -63,15 +63,16 @@ To create or update a pipeline using a jsonnet pipeline specification file:
 - add the `--jsonnet` flag to your `pipeline create` or `pipeline update` commands, followed by a local path to your jsonnet file or an url.
 - add `--arg <parameter-name>=value` for each variable.
 
-!!! Example
-    ```s
-    pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
-    ```
+###  Example 2
+```s
+pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
+```
 
-    The command above will generate a JSON file named `edges-1.json` then create a pipeline of the same name taking the repository `images` as its input.
+The command above will generate a JSON file named `edges-1.json` then create a pipeline of the same name taking the repository `images` as its input.
 
-!!! Information 
-    Read jsonnet's complete [standard library documentation](https://jsonnet.org/ref/stdlib.html) to learn about all the variables types, string manipulation and mathematical functions, or assertions available to you.
+{{% notice info %}}
+Read Jsonnet's complete [standard library documentation](https://jsonnet.org/ref/stdlib.html) to learn about all the variables types, string manipulation and mathematical functions, or assertions available to you.
+{{%/notice %}}
 
 
 At the minimum, your function should always have a parameter that acts as a name modifier. 

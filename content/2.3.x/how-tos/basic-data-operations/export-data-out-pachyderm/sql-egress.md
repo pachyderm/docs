@@ -74,38 +74,38 @@ Append an egress section to your pipeline specification file, then fill in:
     text!  | 2
     ```
 
-!!! Example
+#### Example
 
-        ```json
-        {
-        "pipeline": {
-            "name": "egress"
+```json
+{
+"pipeline": {
+    "name": "egress"
+},
+"input": {
+    "pfs": {
+        "repo": "input_repo",
+        "glob": "/",
+        "name": "in"
+    }
+},
+"transform": {
+   ...
+},
+"egress": {
+    "sql_database": {
+        "url": "snowflake://pachyderm@WHMUWUD-CJ80657/PACH_DB/PUBLIC?warehouse=COMPUTE_WH",
+        "file_format": {
+            "type": "CSV",
+            "columns": ["foo", "bar"]
         },
-        "input": {
-            "pfs": {
-                "repo": "input_repo",
-                "glob": "/",
-                "name": "in"
-            }
-        },
-        "transform": {
-           ...
-        },
-        "egress": {
-            "sql_database": {
-                "url": "snowflake://pachyderm@WHMUWUD-CJ80657/PACH_DB/PUBLIC?warehouse=COMPUTE_WH",
-                "file_format": {
-                    "type": "CSV",
-                    "columns": ["foo", "bar"]
-                },
-                "secret": {
-                    "name": "snowflakesecret",
-                    "key": "PACHYDERM_SQL_PASSWORD"
-                }
-            }
+        "secret": {
+            "name": "snowflakesecret",
+            "key": "PACHYDERM_SQL_PASSWORD"
         }
-        }
-        ```
+    }
+}
+}
+```
 
 ### 3. In your User Code, Write Your Data to Directories Named After Each Table
  
@@ -121,17 +121,18 @@ Data (in the form of CSV files) that the pipeline writes to the output repo is i
  - The order of the values in each line of a CSV must match the order of the columns in the schema of your interface table unless you were using headers AND specified the `"columns": ["foo", "bar"],` field in your pipeline specification file.
 {{% /notice %}}
    
-!!! Example 
-        ```
-        "1","Tim","2017-03-12T21:51:45Z","true"
-        "12","Tom","2017-07-25T21:51:45Z","true"
-        "33","Tam","2017-01-01T21:51:45Z","false"
-        "54","Pach","2017-05-15T21:51:45Z","true"
-        ```
+#### Example 
+```s
+"1","Tim","2017-03-12T21:51:45Z","true"
+"12","Tom","2017-07-25T21:51:45Z","true"
+"33","Tam","2017-01-01T21:51:45Z","false"
+"54","Pach","2017-05-15T21:51:45Z","true"
+```
 
-!!! Note 
-    - Pachyderm queries the schema of the interface tables before insertion then parses the data into their SQL data types.    
-    - Each insertion creates a new row in your table.
+{{% notice note %}}
+- Pachyderm queries the schema of the interface tables before insertion then parses the data into their SQL data types.    
+- Each insertion creates a new row in your table.
+{{% /notice %}}
 
 ## Troubleshooting
 

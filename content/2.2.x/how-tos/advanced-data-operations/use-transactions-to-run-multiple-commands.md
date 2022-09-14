@@ -8,11 +8,7 @@ tags:
 series:
 seriesPart:
 ---
-
-
-!!! Note "TL;DR"
-    Use transactions to run multiple Pachyderm commands
-    simultaneously in one job run.
+Use transactions to run multiple Pachyderm commands simultaneously in one job run.
 
 A transaction is a Pachyderm operation that enables you to **create
 a collection of Pachyderm commands and execute them concurrently**.
@@ -30,9 +26,7 @@ will run once all the input commits have been finished**.
 
 ## Start and Finish Transaction Demarcations
 
-
-!!! Important "Preamble"
-    A transaction demarcation initializes some transactional behavior before the demarcated area begins, then ends that transactional behavior when the demarcated area ends. You should see those demarcations as a declaration of the group of commands that will be treated together as a single coherent operation.
+A transaction demarcation initializes some transactional behavior before the demarcated area begins, then ends that transactional behavior when the demarcated area ends. You should see those demarcations as a declaration of the group of commands that will be treated together as a single coherent operation.
 
 
 * To start a transaction demarcation, run the following command:
@@ -51,23 +45,23 @@ will run once all the input commits have been finished**.
     its ID in the local Pachyderm configuration file. By default, this file
     is stored at `~/.pachyderm/config.json`.
 
-    !!! Example
+    ### Example 
     
-          ```json hl_lines="9"
-          {
-            "user_id": "b4fe4317-be21-4836-824f-6661c68b8fba",
-            "v2": {
-              "active_context": "local-2",
-              "contexts": {
-                "default": {},
-                "local-2": {
-                  "source": 3,
-                  "active_transaction": "7a81eab5e6c6430aa5c01deb06852ca5",
-                  "cluster_name": "minikube",
-                  "auth_info": "minikube",
-                  "namespace": "default"
-                },
-          ```
+    ```json hl_lines="9"
+    {
+      "user_id": "b4fe4317-be21-4836-824f-6661c68b8fba",
+      "v2": {
+        "active_context": "local-2",
+        "contexts": {
+          "default": {},
+          "local-2": {
+            "source": 3,
+            "active_transaction": "7a81eab5e6c6430aa5c01deb06852ca5",
+            "cluster_name": "minikube",
+            "auth_info": "minikube",
+            "namespace": "default"
+          },
+    ```
 
   
     After you start a transaction demarcation, you can add [supported commands (i.e., transactional commands)](#supported-operations), such

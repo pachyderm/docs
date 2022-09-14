@@ -41,29 +41,32 @@ Deploying and configuring an enterprise server can be done in one of two flavors
 ### As Part Of A Regular Pachyderm Helm Deployment
 Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/local-dev-values.yaml)) or check our minimal example below to your values.yaml.
 
-!!! Warning
-		- If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
+{{% notice warning %}} 
+- If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
 
-			```s
-			kubectl create namespace enterprise
-			helm install ... --set enterpriseServer.enabled=true  --namespace enterprise
-			```
+```s
+kubectl create namespace enterprise
+helm install ... --set enterpriseServer.enabled=true  --namespace enterprise
+```
 
-			This command deploys postgres, etcd and a deployment and service called `pach-enterprise`. 
-			`pach-enterprise` uses the same docker image and pachd binary, but it **listens on a different set of ports (31650, 31657, 31658)** to avoid conflicts with pachd.
+This command deploys postgres, etcd and a deployment and service called `pach-enterprise`. 
+`pach-enterprise` uses the same docker image and pachd binary, but it **listens on a different set of ports (31650, 31657, 31658)** to avoid conflicts with pachd.
 
-		- Check the state of your deployment by running:
-			```s
-			kubectl get all --namespace enterprise
-			```
-			**System Response**
-			```
-			NAME                                   READY   STATUS    RESTARTS   AGE
-			pod/etcd-5fd7c675b6-46kz7              1/1     Running   0          113m
-			pod/pach-enterprise-6dc9cb8f66-rs44t   1/1     Running   0          105m
-			pod/postgres-6bfd7bfc47-9mz28          1/1     Running   0          113m
+- Check the state of your deployment by running:
+  
+```s
+kubectl get all --namespace enterprise
+```
+**System Response**
 
-			```
+```s
+NAME                                   READY   STATUS    RESTARTS   AGE
+pod/etcd-5fd7c675b6-46kz7              1/1     Running   0          113m
+pod/pach-enterprise-6dc9cb8f66-rs44t   1/1     Running   0          105m
+pod/postgres-6bfd7bfc47-9mz28          1/1     Running   0          113m
+
+```
+{{% /notice %}}
 
 
 === "values.yaml for an **embedded single-cluster deployment**"
@@ -167,15 +170,16 @@ Check the [list of all available helm values](../../../../reference/helm-values/
 
 
 
-!!! Warning
-		- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit. In such a case, skip step 2.
+{{% notice warning %}} 
+- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit. In such a case, skip step 2.
 
-			However, **this secret is only used when configuring through helm**:
+However, **this secret is only used when configuring through helm**:
 
-			- If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
-			- Same behavior if you [activate enterprise manually](../../../deployment/) (`pachctl license activate`) then [activate authentication](../../) (`pachctl auth activate`).
+- If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
+- Same behavior if you [activate enterprise manually](../../../deployment/) (`pachctl license activate`) then [activate authentication](../../) (`pachctl auth activate`).
 
-		- **Set the helm value `pachd.activateAuth` to false to prevent the automatic  bootstrap of auth on the cluster**.
+- **Set the helm value `pachd.activateAuth` to false to prevent the automatic  bootstrap of auth on the cluster**.
+{{% /notice %}}
 
 ### On An Existing Pachyderm Cluster
 
@@ -224,12 +228,13 @@ Add the enterprise server's root token, and network addresses to the values.yaml
   		enterpriseRootToken: "<ENTERPRISE-ROOT-TOKEN>" # the same root token of the enterprise cluster
 	```
 
-!!! Warning
-		**When setting your enterprise server info as part of the Helm deployment of a cluster, unless 		the helm value `pachd.activateAuth` was intentionally set to false, auth is automatically activated** (i.e., you can skip step 4).
+{{% notice warning %}} 
+**When setting your enterprise server info as part of the Helm deployment of a cluster, unless 		the helm value `pachd.activateAuth` was intentionally set to false, auth is automatically activated** (i.e., you can skip step 4).
 
-		In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created on the cluster. It contains an entry for your clusters' [rootToken](../../#activate-user-access-management). This is separate from the enterprise server root token. Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created on the cluster. It contains an entry for your clusters' [rootToken](../../#activate-user-access-management). This is separate from the enterprise server root token. Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-	  **This secret is only used when configuring through helm**
+**This secret is only used when configuring through helm**
+{{% /notice %}}
 
 ### Register Clusters With pachctl
 

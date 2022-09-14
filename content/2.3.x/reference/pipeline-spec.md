@@ -897,13 +897,15 @@ Let's compare `"until_success"` and `"every_job"`:
       - **Case of our default `reprocess_until_success.json pipeline`**: A quick check at the [list datum on the job id](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/glob-pattern/#running-list-datum-on-a-past-job) shows 4 datums, of which 3 were skipped. (Only the changed file was processed)
       - **Case of `reprocess_at_every_job.json`**: A quick check at the list datum on the job id shows that all 4 datums were reprocessed, none were skipped.
 
-!!! Warning
-    `"reprocess_spec": "every_job` will not take advantage of Pachyderm's default de-duplication. In effect, this can lead to slower pipeline performance. Before using this setting, consider other options such as including metadata in your file, naming your files with a timestamp, UUID, or other unique identifiers in order to take advantage of de-duplication. Review how [datum processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/) works to understand more.
+{{% notice warning %}}
+`"reprocess_spec": "every_job` will not take advantage of Pachyderm's default de-duplication. In effect, this can lead to slower pipeline performance. Before using this setting, consider other options such as including metadata in your file, naming your files with a timestamp, UUID, or other unique identifiers in order to take advantage of de-duplication. Review how [datum processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/) works to understand more.
+{{% /notice %}}
 
 ### Service (optional)
 
-!!! Warning
-    Service Pipelines are an [experimental feature](../../reference/supported-releases/#experimental).
+{{% notice warning %}}
+Service Pipelines are an [experimental feature](../../reference/supported-releases/#experimental).
+{{% /notice %}}
 
 `service` specifies that the pipeline should be treated as a long running
 service rather than a data transformation. This means that `transform.cmd` is

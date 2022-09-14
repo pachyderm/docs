@@ -39,9 +39,10 @@ you have updated your pipeline specification JSON file.
 pachctl update pipeline -f pipeline.json
 ```
 
-!!! Note
+{{% notice note%}}
     Similar to `create pipeline`, `update pipeline` with the `-f` flag can 
     take a URL if your JSON manifest is hosted on GitHub or other remote location.
+{{% /notice %}}
 
 ## Using Jsonnet Pipeline Specification Files
 
@@ -51,11 +52,11 @@ apply your changes at once by running:
 ```s
 pachctl update pipeline --jsonnet <your jsonnet pipeline specs path or URL> --arg <param 1>=<value 1> --arg <param 2>=<value 2>
 ```
-!!! Example
+### Example
 
-      ```s
-      pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
-      ```
+```s
+pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
+```
 
 ## Update the Code in a Pipeline
 To update the code in your pipeline, complete the following steps:

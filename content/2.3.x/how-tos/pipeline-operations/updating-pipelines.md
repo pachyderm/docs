@@ -52,10 +52,11 @@ apply your changes at once by running:
 ```s
 pachctl update pipeline --jsonnet <your jsonnet pipeline specs path or URL> --arg <param 1>=<value 1> --arg <param 2>=<value 2>
 ```
-!!! Example
-      ```s
-      pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
-      ```
+
+### Example
+```s
+pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
+```
 
 ## Update the Code in a Pipeline
 To update the code in your pipeline, complete the following steps:

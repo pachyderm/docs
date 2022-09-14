@@ -48,13 +48,17 @@ seriesPart:
 Note that we are assuming that you **already have a Pachyderm cluster running** to connect your JupyterHub/JupyterLab. Find Pachyderm installation instructions in the [Deploy/Manage](../../deploy-manage/deploy/) section of our documentation.
 ## Using The Extension
 
-!!! Warning "Troubleshooting - When in doubt, restart your mount server"
-        JupyterLab Mount Extension is an [experimental feature](https://docs.pachyderm.com/latest/reference/supported-releases/#experimental). Many issues can be resolved by restarting the mount server, should you find yourself in an odd situation. To kill/restart your server, run the following command from the terminal window in jupyterlab:
+{{% notice warning %}}  
+Troubleshooting - When in doubt, restart your mount server
 
-        ```s
-        pkill -f "pachctl mount-server" 
-        ```
-        The server will restart by itself.
+JupyterLab Mount Extension is an [experimental feature](https://docs.pachyderm.com/latest/reference/supported-releases/#experimental). Many issues can be resolved by restarting the mount server, should you find yourself in an odd situation. To kill/restart your server, run the following command from the terminal window in jupyterlab:
+
+```s
+pkill -f "pachctl mount-server" 
+```
+The server will restart by itself.
+{{% /notice %}}
+
 ### Connect The Extension To Your Pachyderm Cluster
 
 To connect the extension to your Pachyderm cluster, fill in the full `pachd_address` (i.e., Pachyderm cluster address) in the login form accessible by clicking on the mount extension icon in the far left tab bar. It should look like "grpc://`<external-IP-address-or-domain-name>`:`<port-number>`".
@@ -218,8 +222,9 @@ Replace the image name with your own image otherwise.
     --values <your-jupyterhub-values.yaml>
     ```
 
-    !!! Note 
+    {{% notice note %}}
         This may take a while if you are pulling from a large Docker image.
+    {{% /notice %}}
 
 
 - Find the IP address you will use to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
@@ -227,81 +232,28 @@ Replace the image name with your own image otherwise.
 - Click on the link provided in the stdout of your terminal to run JupyterLab in a browser, then jump to the [`Connect Your JupyterLab Extension To Your Pachyderm Cluster`](#connect-the-extension-to-your-pachyderm-cluster) section.
 
 - Run the following command to refresh the mount server:
-
-    ``` shell
+    ```s
     umount /pfs
     ```
 
+{{% notice warning %}}  
+M1 users with Docker Desktop < `4.6`
 
-<!-- ### 2- On Your Machine
+A [documented issue between qemu and Docker Desktop](https://gitlab.com/qemu-project/qemu/-/issues/340) prevents you from running our pre-built Mount Extension Image in Docker Desktop.
 
-- Prerequisites
+We recommend to:
 
-    - [Install `pachctl`](../../../getting-started/local-installation/#install-pachctl) :
-    Make sure that the version of `pachctl` matches the version of your cluster.
- 
-    - [Have 'pachctl' and your Cluster Communicate](../../../getting-started/local-installation/#have-pachctl-and-your-cluster-communicate) .
+- Use [Podman](https://podman.io) (See installation instructions)
+  ```s
+  brew install podman
+  podman machine init --disk-size 50
+  podman machine start
+  podman machine ssh
+  sudo rpm-ostree install qemu-user-static && sudo systemctl reboot THEN
+  ```
+then replace the keyword `docker` with `podman` in all the commands above. 
 
-    - [Install FUSE](h../../../how-tos/basic-data-operations/export-data-out-pachyderm/mount-repo-to-local-computer/#prerequisites) . Choose the instructions that fit your environment.
-    
-    - [Test your mount](../../../how-tos/basic-data-operations/export-data-out-pachyderm/mount-repo-to-local-computer/#mounting-repositories-in-read-only-mode) :
-     Create a repo containing a file on its master branch, then mount the HEAD on a local directory of your choice. 
-    
-        !!! Example
-            ```s
-            pachctl create repo images
-            pachctl put file images@master:liberty.png -f http://imgur.com/46Q8nDz.png
-            pachctl mount images --repos images@master
-            ```
-            The image should be visible in your directory `images` in this example.    
-    
-    - Create a `/pfs` directory owned by the Notebook USER:
-
-        !!! Example "Example on Debian-based Linux"
-            Run the following commands to create the mount directory and install FUSE:
-
-            ```s
-            # Install FUSE
-            sudo apt-get update && apt-get -y install curl fuse
-            # Create the directory your data will be mounted into and grant your USER access
-            sudo mkdir -p /pfs
-            sudo chown $USER /pfs
-            ```
-
- 
-- Install the extension in the python environment where you have [installed Jupyterlab](https://jupyter.org/install) 
-
-    ```s
-    pip install jupyterlab
-    pip install jupyterlab-pachyderm==<version>
-    ```
-    !!! Note
-        Replace `<version>` with your chosen [version of the extension](https://pypi.org/project/jupyterlab-pachyderm/).
-
-- Start your JupyterLab
-    ```s
-    jupyter-lab
-    ```
-
-If you are using the same USER to run JupyterLab, the Mount Extension, and have granted that USER access to `/pfs`, you are all set. You should see your existing repos [ready to be mounted](#use-jupyterlab-mount-extension) in your Notebook and can start experimenting. -->
-
-
-!!! Warning "M1 users with Docker Desktop < `4.6`"
-
-     A [documented issue between qemu and Docker Desktop](https://gitlab.com/qemu-project/qemu/-/issues/340) prevents you from running our pre-built Mount Extension Image in Docker Desktop.
-
-     We recommend to:
-
-     - Use [Podman](https://podman.io) (See installation instructions)
-     ```s
-     brew install podman
-     podman machine init --disk-size 50
-     podman machine start
-     podman machine ssh
-     sudo rpm-ostree install qemu-user-static && sudo systemctl reboot THEN
-     ```
-     then replace the keyword `docker` with `podman` in all the commands above. 
-     - Or make sure that your qemu version is > `6.2`.
-
+- Or make sure that your qemu version is > `6.2`.
+{{%/notice%}}
 
 

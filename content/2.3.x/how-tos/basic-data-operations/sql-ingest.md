@@ -9,8 +9,9 @@ series:
 seriesPart:
 ---
 
-!!! Warning
-    SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{% notice warning %}}
+SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{%/notice%}}
 
 You can inject database content, collected by your data warehouse, by pulling the result of a given query into Pachyderm and saving it as a CSV or JSON file.
 
@@ -207,9 +208,10 @@ All numeric values are converted into strings in your CSV and JSON.
 | 12345 | 12345 | "12345" |
 | 123.45 | 123.45 | "123.45" |
 
-!!! Warning
-        - Note that infinite (Inf) and not a number (NaN) values will also be stored as strings in JSON files. 
-        - Use this format `#.#` for all decimals that you plan to egress back to a database.
+{{% notice warning %}}
+- Note that infinite (Inf) and not a number (NaN) values will also be stored as strings in JSON files. 
+- Use this format `#.#` for all decimals that you plan to egress back to a database.
+{{%/notice %}}
 
 ##### Date/Timestamps
 

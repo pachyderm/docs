@@ -45,9 +45,11 @@ pachd:
       oauthClientSecret
 ```
 
-!!! Warning "CARRY YOUR CLUSTERID OVER"
+{{% notice warning %}}
+CARRY YOUR CLUSTERID OVER
 
-       Aside from retrieving any generated values and inserting them back as credentials  or as secrets in your values.yaml, you will need to **retrieve your clusterID** and carry it over to your new deployment by setting the field `pachd.clusterDeploymentID` with your ID. Note that your Cluster ID is located in your `~/.pachyderm/config.json`. You can also find it by running `pachctl config get context <your-context-name>' (run `pachctl list context` to list out all contexts).  
+Aside from retrieving any generated values and inserting them back as credentials  or as secrets in your values.yaml, you will need to **retrieve your clusterID** and carry it over to your new deployment by setting the field `pachd.clusterDeploymentID` with your ID. Note that your Cluster ID is located in your `~/.pachyderm/config.json`. You can also find it by running `pachctl config get context <your-context-name>' (run `pachctl list context` to list out all contexts).  
+{{% /notice %}}
 
 ## Upgrade `pachctl` version
  
@@ -185,5 +187,8 @@ In general, these values can be provided in three different ways:
       Run `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve the value corresponding to the key `rootToken` in the default secret `pachyderm-bootstrap-config`.
 
 
-!!! Warning "Attention users of Pachyderm bundled PostgreSQL"
-      If you are using the **built in postgreSQL, you cannot use an existing secret to pass postgreSQL credentials**. You need to retrieve then pass your auto-generated credentials in your values (`global.postgresql.postgresqlPassword`).
+{{% notice warning %}} 
+Attention users of Pachyderm bundled PostgreSQL
+
+If you are using the **built in postgreSQL, you cannot use an existing secret to pass postgreSQL credentials**. You need to retrieve then pass your auto-generated credentials in your values (`global.postgresql.postgresqlPassword`).
+{{% /notice  %}}
