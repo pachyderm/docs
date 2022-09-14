@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Create a Pipeline
-description: 
+description: Learn how to create a pipeline using the pachctl create command. 
 date: 
 # taxonomy #
 tags: ["pipelines"]

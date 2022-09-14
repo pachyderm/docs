@@ -5,14 +5,14 @@
 {{/* End for versionDropdown feature */}}
 
   <nav class="spread sticky brighten-5 level-top">
-    <div class="spread-left is-two-fifths ml-2">
+    <div class="spread-left is-two-fifths ml-2 is-hidden-mobile">
       <div class="mt-1" style="max-width:150px;">
         <img src="/images/pachLogo.svg" alt="logo">
       </div>
       <div class="button is-fit hefty xs rounded-1"> <b>docs</b></div>
     </div>
     <div class="spread-right mr-2 c-rounded-1">
-      <div id="searchbox" class="is-hidden-mobile"> </div>
+      <div id="searchbox" class=""> </div>
       {{ if .Site.Params.versionDropdown }}
         <button class="dropdown black is-fit grayscale bold sp-1"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
           <div class="dropdown-content mt-4">
