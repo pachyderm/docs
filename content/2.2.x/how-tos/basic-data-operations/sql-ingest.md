@@ -23,7 +23,7 @@ Specifically, we help you connect to a remote database of your choice and pull t
 Pachyderm's SQL Ingest uses [jsonnet pipeline specs](../../pipeline-operations/jsonnet-pipeline-specs) with the following parameters to automatically create the pipelines that access, query, and materialize the results of a SQL query to a data warehouse. The outputted results can take the form of CSV or JSON files. Check the [Formatting section](#formats-and-sql-datatypes) at the bottom of the page for specific details on formats and SQL Datatypes.
 
 Pass in the following parameters and get your results committed to an output repo, ready for the following downstream pipeline:
-```shell
+```s
 pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet \
   --arg name=myingest \
   --arg url="mysql://root@mysql:3306/test_db" \
@@ -56,7 +56,7 @@ Where the parameters passed to the jsonnet pipeline spec are:
 
         Note the references to the JSON dataset elements by their hierarchical paths in the query:
 
-          ```shell
+          ```s
           pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet  \
           --arg name=mysnowflakeingest \
           --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
@@ -102,7 +102,7 @@ Before you create your SQL Ingest pipelines, make sure to create a [generic secr
 Pachyderm's SQL Ingest will take an URL as its connection string to the database of your choice.
 
 The URL is structured as follows:
-```shell
+```s
 <protocol>://<username>@<host>:<port>/<database>?<param1>=<value1>&<param2>=<value2>
 ```
 
@@ -180,7 +180,7 @@ You have run a query using SQL Ingest. How do you inspect its result?
 
 - Check what the query looked like:
 
-    ```shell
+    ```s
     pachctl get file myingest_queries@master:/0000
     ```
     ```
@@ -190,7 +190,7 @@ You have run a query using SQL Ingest. How do you inspect its result?
 
 - Read the file written to the output repo `myingest`:
 
-    ```shell
+    ```s
     pachctl list file myingest@master
     ```
     ```
@@ -198,7 +198,7 @@ You have run a query using SQL Ingest. How do you inspect its result?
     /0000 file 52B
     ```
 
-    ```shell
+    ```s
     pachctl get file myingest@master:/0000
     ```
     ```yaml

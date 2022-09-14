@@ -67,13 +67,13 @@ They are various ways to list jobs in Pachyderm, depending on the expected outco
 - The `pachctl list jobs -p <pipeline>` command returns the list of all the jobs run in a given pipeline.
 
     !!! example
-        ```shell
+        ```s
         pachctl list jobs -p edges
         ```
 
         **System Response:**
 
-        ```shell
+        ```s
         ID                               PIPELINE STARTED      DURATION           RESTART PROGRESS  DL       UL       STATE
         fd9454d06d8e4fa38a75c8cd20b39538 edges    20 hours ago 5 seconds          0       2 + 1 / 3 181.1KiB 111.4KiB success
         5a78358d4b53494cbba4550428f2fe98 edges    20 hours ago 2 seconds          0       1 + 0 / 1 57.27KiB 22.22KiB success
@@ -95,7 +95,7 @@ process time, image:tag used to transform your data, etc...). Along with checkin
 !!! example
     Add a `--raw` flag to output a detailed JSON version of the job.
 
-    ```shell
+    ```s
     pachctl inspect jobs edges@fd9454d06d8e4fa38a75c8cd20b39538 --raw
     ```
 

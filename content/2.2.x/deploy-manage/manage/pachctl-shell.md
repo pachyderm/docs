@@ -20,7 +20,7 @@ do so.
 
 To enter the Pachyderm Shell, type:
 
-```shell
+```s
 pachctl shell
 ```
 

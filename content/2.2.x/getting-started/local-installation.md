@@ -65,11 +65,11 @@ To configure Minikube, follow these steps:
 the [Kubernetes documentation](https://kubernetes.io/docs/setup/).    
 1. Start `minikube`:  
   
-      ```shell  
+      ```s  
       minikube start  
       ```  
       Linux users, add this `--driver` flag:
-      ```shell
+      ```s
       minikube start --driver=kvm2
       ```
 !!! Note
@@ -86,7 +86,7 @@ by following these steps:
    ![Docker Desktop Enable K8s](../images/k8s_docker_desktop.png)  
   
 2. From the command prompt, confirm that Kubernetes is running:  
-   ```shell  
+   ```s  
    kubectl get all  
    ```  
    ```  
@@ -102,7 +102,7 @@ by following these steps:
 1. Install Kind according to its [documentation](https://kind.sigs.k8s.io/).  
   
 1. From the command prompt, confirm that Kubernetes is running:  
-   ```shell  
+   ```s  
    kubectl get all  
    ```  
    ```  
@@ -119,32 +119,32 @@ with a Pachyderm cluster in your terminal.
   
       * For macOS, run:  
   
-      ```shell  
+      ```s  
       brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
       ```  
   
       * For a Debian-based Linux 64-bit or Windows 10 or later running on  
       WSL:  
   
-      ```shell  
+      ```s  
       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
       ```  
   
       * For all other Linux flavors:  
   
-      ```shell  
+      ```s  
       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin  
       ```  
   
 1. Verify that installation was successful by running `pachctl version --client-only`:  
   
-      ```shell  
+      ```s  
       pachctl version --client-only  
       ```  
   
       **System Response:**  
   
-      ```shell  
+      ```s  
       COMPONENT           VERSION  
       pachctl             {{ config.pach_latest_version }}  
       ```  
@@ -175,7 +175,7 @@ Note that you can run both Console and JupyterLab on your local installation.
   
 * Get the Repo Info:  
 
-    ```shell  
+    ```s  
     helm repo add pach https://helm.pachyderm.com  
     helm repo update 
     ```  
@@ -189,7 +189,7 @@ Note that you can run both Console and JupyterLab on your local installation.
 === "Pachyderm Community Edition (Includes Console)"
       This command will install Pachyderm's latest available GA version with Console CE.
 
-       ```shell  
+       ```s  
        helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  
        ```    
 
@@ -200,7 +200,7 @@ Note that you can run both Console and JupyterLab on your local installation.
        - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise).
        - Then, run the following helm command to **install Pachyderm's latest Enterprise Edition**: 
       
-        ```shell  
+        ```s  
         helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
         ``` 
 
@@ -210,7 +210,7 @@ Note that you can run both Console and JupyterLab on your local installation.
 
 !!! Tip "To uninstall Pachyderm fully"
       Running `helm uninstall pachd` leaves persistent volume claims behind. To wipe your instance clean, run:
-      ```shell
+      ```s
       helm uninstall pachd 
       kubectl delete pvc -l suite=pachyderm 
       ```
@@ -228,14 +228,14 @@ Because Pachyderm needs to pull the Pachyderm Docker images
 from DockerHub, it might take a few minutes for the Pachyderm pods status
 to change to `Running`.
 
-```shell
+```s
 kubectl get pods
 ```
 
 **System Response:**
 At a very minimum, you should see the following pods (console depends on your choice above): 
 
-```shell
+```s
 NAME                                           READY   STATUS      RESTARTS   AGE
 pod/console-5b67678df6-s4d8c                   1/1     Running     0          2m8s
 pod/etcd-0                                     1/1     Running     0          2m8s
@@ -255,21 +255,21 @@ the easiest way to connect `pachctl` to your local cluster is to use the `port-f
 
 - To connect to your new Pachyderm instance, run:
 
-      ```shell
+      ```s
       pachctl config import-kube local --overwrite
       pachctl config set active-context local
       ```
 
 - Then:
 
-      ```shell
+      ```s
       pachctl port-forward
       ``` 
       **Background this process in a new tab of your terminal.**
 
 ### Verify that `pachctl` and your cluster are connected. 
   
-```shell  
+```s  
 pachctl version  
 ```  
 
@@ -304,11 +304,11 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 
 - To install [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
-      ```shell
+      ```s
       helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
       helm repo update
       ```
-      ```shell
+      ```s
       helm upgrade --cleanup-on-fail \
       --install jupyter jupyterhub/jupyterhub \
       --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml
@@ -326,12 +326,12 @@ See the example below:
 
 - Once your pods are up, in your terminal, run :
 
-      ```shell
+      ```s
       kubectl port-forward svc/proxy-public 8888:80
       ```
 
       Then 
-      ```shell
+      ```s
       kubectl get services | grep -w "pachd " | awk '{print $3}'
       ```
       Note the returned ip address. You will need this cluster IP in a next step.
@@ -347,7 +347,7 @@ See the example below:
 - Verify that your JupyterLab Extension is connected to your cluster. 
 From the cell of a notebook, run:
 
-    ```shell
+    ```s
     !pachctl version
     ``` 
 

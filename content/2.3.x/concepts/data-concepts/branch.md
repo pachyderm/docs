@@ -36,13 +36,13 @@ You can create additional branches to experiment with the data (`pachctl create 
 To view a list of branches in a repo, run the `pachctl list branch <myrepo>` command.
 
 !!! example
-    ```shell
+    ```s
     pachctl list branch images
     ```
 
     **System Response:**
 
-    ```shell
+    ```s
     BRANCH HEAD
     master c32879ae0e6f4b629a43429b7ec10ccc
     ```

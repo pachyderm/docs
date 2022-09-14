@@ -41,13 +41,13 @@ Yosemite or later.
 
   * On macOS, run:
 
-    ```shell
+    ```s
     brew install osxfuse
     ```
 
   * On Ubuntu, run:
 
-    ```shell
+    ```s
     sudo apt-get install -y fuse
     ```
 
@@ -74,7 +74,7 @@ Notebook for exploration.
 
       **Example:**
 
-      ```shell
+      ```s
       pachctl mount images --repos images@staging
       ```
 
@@ -137,7 +137,7 @@ For example, `mydirectory`.
 
 1. Run `pachctl mount` for a repository and branch that you want to mount:
 
-      ```shell
+      ```s
       pachctl mount <path-on-your-computer> [flags]
       ```
 
@@ -146,14 +146,14 @@ For example, `mydirectory`.
       * If you want to mount all the repositories in your Pachyderm cluster 
       to a `mydirectory` directory on your computer and give `WRITE` access to them, run:
 
-      ```shell
+      ```s
       pachctl mount mydirectory --write
       ```
 
       * If you want to mount the master branch of the `images` repo
       and enable file editing in this repository, run:
 
-      ```shell
+      ```s
       pachctl mount mydirectory --repos images@master+w
       ```
 
@@ -177,13 +177,13 @@ For example, `mydirectory`.
       * Tip
       Mount multiple repos at once by appending each mount instruction to the same command.
       For example, the following will mount both repos to the `/mydirectory` directory.
-      ```shell
+      ```s
       pachctl mount ./mydirectory -r first_repo@master -r second_repo@master
       ```  
 1. You can check that the repo was mounted by running the mount command
 in your terminal:
 
-      ```shell hl_lines="7"
+      ```s hl_lines="7"
       mount
       /dev/disk1s1 on / (apfs, local, read-only, journaled)
       devfs on /dev (devfs, local, nobrowse)

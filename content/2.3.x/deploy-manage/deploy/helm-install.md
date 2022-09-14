@@ -58,7 +58,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
      
 ###  Install Pachyderm's Helm Chart
 1. Get your Helm Repo Info
-    ```shell
+    ```s
     helm repo add pach https://helm.pachyderm.com
     helm repo update
     ```
@@ -66,7 +66,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
 1. Install Pachyderm
 
     You are ready to deploy Pachyderm on the environment of your choice.
-    ```shell
+    ```s
     helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
     ```
     !!! Info "To choose a specific helm chart version"
@@ -82,7 +82,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
      
 
 1. Check your deployment
-    ```shell
+    ```s
     kubectl get pods
     ```
 
@@ -105,22 +105,22 @@ Assuming your `pachd` is running as shown above, make sure that `pachctl` can ta
 If you are exposing your cluster publicly:
 
 1. Retrieve the external IP address of your TCP load balancer or your domain name:
-```shell
+```s
 kubectl get services | grep pachd-lb | awk '{print $4}'
 ```
 
 1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
-    ```shell
+    ```s
     echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set 
     ```
-    ```shell
+    ```s
     context "<your-cluster-context-name>" --overwrite
     ```
 
 1. Check that your are using the right context: 
 
-    ```shell
+    ```s
     pachctl config get active-context
     ```
 
@@ -128,14 +128,14 @@ kubectl get services | grep pachd-lb | awk '{print $4}'
 
 If you're not exposing `pachd` publicly, you can run:
 
-```shell
+```s
 # Background this process because it blocks.
 pachctl port-forward
 ``` 
 
 Verify that `pachctl` and your cluster are connected:
 
-```shell
+```s
 pachctl version
 ```
 
@@ -150,7 +150,7 @@ pachd               {{ config.pach_latest_version }}
 ## Uninstall Pachyderm's Helm Chart
 
 [Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) a release by running:
-```shell
+```s
 helm uninstall pachd 
 ```
 
@@ -168,7 +168,7 @@ We recommend making sure that everything is properly removed following a helm un
 ## Upgrade Pachyderm's Helm Chart
 When a new version of Pachyderm's chart is released, or when you want to update some configuration parameters on your cluster, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
 
-```shell
+```s
 helm upgrade pachd -f my_new_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>        
 ```
 
@@ -218,12 +218,12 @@ You can provide credentials and configuration values directly in your values.yam
     For example, by using:
 
     - For a root token:
-    ```shell
+    ```s
     openssl rand -hex 16
     f438329fc98302779be65eef226d32c1
     ```
     - For other values:
-    ```shell
+    ```s
     openssl rand -base64 42
     tJkHm0+8niOtP1F8lAPryO9dGwMV7SL/u/uCZQi24kFuRj+7VYvtj01q
     ```

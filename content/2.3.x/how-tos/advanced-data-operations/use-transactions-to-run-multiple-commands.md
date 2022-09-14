@@ -36,13 +36,13 @@ will run once all the input commits have been finished**.
 
 * To start a transaction demarcation, run the following command:
 
-    ```shell
+    ```s
     pachctl start transaction
     ```
 
     **System Response:**
 
-    ```shell
+    ```s
     Started new transaction: 7a81eab5e6c6430aa5c01deb06852ca5
     ```
 
@@ -79,13 +79,13 @@ will run once all the input commits have been finished**.
 
 * To finish a transaction, run:
 
-    ```shell
+    ```s
     pachctl finish transaction
     ```
 
     **System Response:**
 
-    ```shell
+    ```s
     Completed transaction with 1 requests: 7a81eab5e6c6430aa5c01deb06852ca5
     ```
 
@@ -111,7 +111,7 @@ While there is a transaction object in the Pachyderm configuration
 file, all supported API requests append the request to the
 transaction instead of running directly. These supported commands include:
 
-```shell
+```s
 create repo
 delete repo
 update repo
@@ -235,13 +235,13 @@ changes to the staging branch while your pipeline is subscribed to the
 master branch. To switch to these branches simultaneously, you can
 use transactions like this:
 
-```shell
+```s
 pachctl start transaction
 ```
 
 **System Response:**
 
-```shell
+```s
 Started new transaction: 0d6f0bc337a0493696e382034a2a2055
 pachctl pachctl create branch data@master --head staging
 Added to transaction: 0d6f0bc337a0493696e382034a2a2055

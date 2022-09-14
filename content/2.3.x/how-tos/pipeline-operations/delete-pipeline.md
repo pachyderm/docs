@@ -11,7 +11,7 @@ seriesPart:
 
 You can delete a pipeline by running:
 
-```shell
+```s
 pachctl delete pipeline <pipeline_name>
 ```
 

@@ -22,7 +22,7 @@ described on the [MinIO download page](https://min.io/download).
 1. Verify that MinIO components are successfully installed by running
 the following command:
 
-      ```shell
+      ```s
       minio version
       mc version
       ```
@@ -35,7 +35,7 @@ the following command:
 
 1. Set up the MinIO configuration file to use the S3 Gateway port `30600` for your host:
 
-      ```shell
+      ```s
       vi ~/.mc/config.json
       ```
       You should see a configuration similar to the following.
@@ -55,7 +55,7 @@ the following command:
       should be set as mentioned in the [# Set Your Credentails](#set-your-credentials) section of this page. 
 
 !!! Example "Example:  Check the list of filesystem objects on the `master` branch of the repository `raw_data`"
-      ```shell
+      ```s
       mc ls local/master.raw_data
       ```
 
@@ -68,12 +68,12 @@ in the [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-
 
 1. Verify that the AWS CLI is installed:
 
-      ```shell
+      ```s
       aws --version
       ```
 
 1. Configure AWS CLI. Use the `aws configure` command to configure your credentials file:
-      ```shell
+      ```s
       aws configure --profile <name-your-profile>
       ```
       Both the access key and secret key 
@@ -92,7 +92,7 @@ in the [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-
       To reference a given profile when using the S3 client, append `--profile <name-your-profile>` at the end of your command.
 
 !!! Example "Example:  Check the list of filesystem objects on the `master` branch of the repository `raw_data`"
-      ```shell
+      ```s
       aws --endpoint-url http://<localhost_or_externalIP>:30600/ s3 ls s3://master.raw_data
       ```
 
@@ -112,7 +112,7 @@ Then follow the [Using boto](https://boto3.amazonaws.com/v1/documentation/api/la
 - If [authentication is enabled](../../../../enterprise/auth/), 
 retrieve your session token in your active context:
 
-      ```shell
+      ```s
       more ~/.pachyderm/config.json
       ```
       Search for your session token: `"session_token": "your-session-token-value"`.

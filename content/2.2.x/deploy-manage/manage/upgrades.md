@@ -54,20 +54,20 @@ pachd:
   
       * For macOS, run:  
   
-      ```shell  
+      ```s  
       brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
       ```  
   
       * For a Debian-based Linux 64-bit or Windows 10 or later running on  
       WSL:  
   
-      ```shell  
+      ```s  
       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
       ```  
   
       * For all other Linux flavors:  
   
-      ```shell  
+      ```s  
       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin  
       ```  
 
@@ -77,13 +77,13 @@ pachd:
 
  - Verify that the installation was successful by running `pachctl version --client-only`:  
   
-      ```shell  
+      ```s  
       pachctl version --client-only  
       ```  
   
       **System Response:**  
   
-      ```shell  
+      ```s  
       COMPONENT           VERSION  
       pachctl             <This should display the version you installed>  
       ```  
@@ -92,7 +92,7 @@ pachd:
 
 - Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
 
-      ```shell
+      ```s
       helm repo add pach https://helm.pachyderm.com
       helm repo update
       helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
@@ -105,7 +105,7 @@ pachd:
 to check the status of the deployment. When Pachyderm is deployed, the command
 shows all pods as `READY`:
 
-      ```shell
+      ```s
       kubectl get pods
       ```
       Once the pods are up, you should see a pod for `pachd` running 
@@ -113,7 +113,7 @@ shows all pods as `READY`:
 
       **System response:**
 
-      ```shell
+      ```s
       NAME                     READY     STATUS    RESTARTS   AGE
       pachd-3677268306-9sqm0   1/1       Running   0          4m
       ...
@@ -121,13 +121,13 @@ shows all pods as `READY`:
 
 - Verify that the new version has been deployed:
 
-      ```shell
+      ```s
       pachctl version
       ```
 
       **System response:**
 
-      ```shell
+      ```s
       COMPONENT           VERSION
       pachctl             {{ config.pach_latest_version }}
       pachd               {{ config.pach_latest_version }}

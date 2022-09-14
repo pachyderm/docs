@@ -41,13 +41,13 @@ See the detail of the meta repo structure below.
     - `/meta/`: The `meta` directory holds datums' statistics
     - `/pfs`: The `pfs` directory holds the input data of datums, and their resulting output data
 
-    ```shell
+    ```s
     pachctl list file edges.meta@master
     ```
 
     **System response:**
 
-    ```shell
+    ```s
     NAME   TAG TYPE SIZE
     /meta/     dir  1.956KiB
     /pfs/      dir  371.9KiB
@@ -59,13 +59,13 @@ The **meta directory holds each datum's JSON metadata**, and can be accessed usi
 
 !!! Example
 
-    ```shell
+    ```s
     pachctl get file edges.meta@master:/meta/002f991aa9db9f0c44a92a30dff8ab22e788f86cc851bec80d5a74e05ad12868/meta | jq
     ```
 
     **System response:**
 
-    ```shell
+    ```s
     {
       "job": {
         "pipeline": {
@@ -96,13 +96,13 @@ The pfs directory has both the **input files** of datums, and the resulting **ou
 
 !!! Example
 
-    ```shell
+    ```s
     pachctl list file montage.meta@master:/pfs/47be06d9e614700397d8d56272a1a5e039df82bf931e8e3c9d34bccbfbc8b349/
     ```
 
     **System response:**
 
-    ```shell
+    ```s
     NAME                                                                          TAG TYPE SIZE
     /pfs/47be06d9e614700397d8d56272a1a5e039df82bf931e8e3c9d34bccbfbc8b349/edges/      dir  133.6KiB
     /pfs/47be06d9e614700397d8d56272a1a5e039df82bf931e8e3c9d34bccbfbc8b349/images/     dir  238.3KiB

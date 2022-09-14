@@ -29,13 +29,13 @@ You can inject database content, collected by your data warehouse, by pulling th
 You must generate a secret that contains the password granting user access to the database; you will pass the username details through the database connection string in [step 2](#2-create-a-database-connection-string).
 
 1. Copy the following:
-    ```shell
+    ```s
     kubectl create secret generic yourSecretName --from-literal=PACHYDERM_SQL_PASSWORD=yourDatabaseUserPassword --dry-run=client --output=json > yourSecretFile.json
     ```
 2. Swap out `yourSecretName`, `yourDatabaseUserPassword`, and `yourSecretFile` with relevant inputs.
 3. Open a terminal and run the command.
 4. Copy the following: 
-    ```shell
+    ```s
     pachctl create secret -f yourSecretFile.json
     ```
 5. Swap out `yourSecretfile` with relevant filename. 
@@ -58,7 +58,7 @@ Pachyderm's SQL Ingest requires a connection string defined as a [Jsonnet URL pa
 Pachyderm provides a [default Jsonnet template](https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet) that has key parameters built in. To use it, you must pass an argument for each [parameter](#parameters). 
 
 1. Copy the following:
-   ```shell
+   ```s
    pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet \
      --arg name=<pipelineName> \
      --arg url="<connectionStringToDdatabase>" \
@@ -101,7 +101,7 @@ In this example, we are leveraging Snowflake's support for queries traversing [s
     ```
 4.  Define the pipeline spec by populating all of the parameter values:
    
-   ```shell
+   ```s
       pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet \
       --arg name=mysnowflakeingest \
       --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
@@ -133,7 +133,7 @@ In the default Jsonnet template, the file generated is obtainable from the outpu
 
 To create an SQL Ingest Jsonnet Pipeline spec, you must have a `.jsonnet` file and several parameters:
 
-```shell
+```s
 pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet \
   --arg name=<pipelineName> \
   --arg url="<connectionStringToDdatabase>" \
@@ -181,7 +181,7 @@ pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pa
 
  Pachyderm supports two connection URL patterns to query Snowflake:
 
-  ```shell
+  ```s
   snowflake://username@<account_identifier>/<db_name>/<schema_name>?warehouse=<warehouse_name>
   snowflake://username@hostname:port/<db_name>/<schema_name>?account=<account_identifier>&warehouse=<warehouse_name>
   ```

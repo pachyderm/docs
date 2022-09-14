@@ -78,12 +78,12 @@ this syntax in all operations and scripts that accept pipeline names.
 To view historical versions of a pipeline use the `--history`
 flag with the `pachctl list pipeline` command:
 
-```shell
+```s
 pachctl list pipeline --history all
 ```
 **System Response:**
 
-```shell
+```s
 NAME      VERSION INPUT     CREATED     STATE / LAST JOB
 Pipeline2 1       input2:/* 4 hours ago running / success
 Pipeline1 3       input1:/* 4 hours ago running / success

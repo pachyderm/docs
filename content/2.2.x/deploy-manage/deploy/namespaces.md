@@ -19,14 +19,14 @@ you need to add the `-n` or `--namespace` flag when deploying.
     you can have [Helm](../helm-install/) create it with `--create-namespace`.
 
 
-    ```shell
+    ```s
     helm install <args> --namespace pachyderm --create-namespace
     ```
 
 * To talk to your Pachyderm cluster:
 
     - You can either modify an existing pachctl context
-        ```shell
+        ```s
         pachctl config update context --namespace pachyderm
         ```
 

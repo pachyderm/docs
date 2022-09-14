@@ -36,15 +36,15 @@ A good way to create this file is:
 Let's first generate your secret configuration file using the `kubectl` command. For example:
 
 - for a generic authentication secret:
-   ```shell
+   ```s
    kubectl create secret generic mysecretname --from-literal=username=<myusername> --from-literal=password=<mypassword> --dry-run=client  --output=json > myfirstsecret.json
    ```
 - for a tls secret:
-   ```shell
+   ```s
    kubectl create secret tls mysecretname --cert=<Path to your certificate> --key=<Path to your SSH key> --dry-run=client  --output=json > myfirstsecret.json 
    ```
 - for a docker registry secret:
-   ```shell
+   ```s
    kubectl create secret docker-registry mysecretname --dry-run=client --docker-server=<DOCKER_REGISTRY_SERVER> --docker-username=<DOCKER_USER> --docker-password=<DOCKER_PASSWORD> --output=json > myfirstsecret.json
    ```
 
@@ -67,7 +67,7 @@ Find more detailed information on the [creation of Secrets](https://kubernetes.i
 
 ### Create your Secret in Pachyderm
 Next, run the following to actually create the secret in the Pachyderm Kubernetes cluster:
-```shell
+```s
 pachctl create secret -f myfirstsecret.json 
 ```
 

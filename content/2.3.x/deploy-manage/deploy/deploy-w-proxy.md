@@ -134,21 +134,21 @@ The grpc address provided when pointing your `pachctl` CLI at your cluster chang
 Run the following commands:
 
 1. Retrieve the external IP address of your TCP load balancer (or use your domain name):
-  ```shell
+  ```s
   kubectl get services | grep pachyderm-proxy | awk '{print $4}'
   ```
 1. Update the context of your cluster using the external IP address/domain name captured above:
 
-    ```shell
+    ```s
     echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:80"}' | pachctl config set context "<your-cluster-context-name>" --overwrite
     ```
-    ```shell
+    ```s
     pachctl config set active-context "<your-cluster-context-name>"
     ```
 
 1. Check that your are using the right context: 
 
-    ```shell
+    ```s
     pachctl config get active-context
     ```
 
@@ -334,7 +334,7 @@ Then start your Kubernetes environment.
 
 === "Minikube (OS X / Windows)"
 
-    ```shell
+    ```s
     minikube start
     ```
 
@@ -344,7 +344,7 @@ Then start your Kubernetes environment.
 
 === "Kind (Linux)"
 
-    ```shell
+    ```s
       cat <<EOF | kind create cluster --name=kind --config=-
       kind: Cluster
       apiVersion: kind.x-k8s.io/v1alpha4
@@ -375,7 +375,7 @@ Then start your Kubernetes environment.
 
 * Get the Repo Info:  
 
-  ```shell  
+  ```s  
   helm repo add pach https://helm.pachyderm.com  
   helm repo update 
   ```  
@@ -388,13 +388,13 @@ Then start your Kubernetes environment.
     
      Set your Service type to `NodePort` rather than `LoadBalancer` in the commands below.
 
-      ```shell 
+      ```s 
       -- set proxy.service.type=NodePort
       ```
           
 === "Community Edition With Console"
 
-      ```shell
+      ```s
       helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
       ```
 === "Enterprise With Console"
@@ -404,7 +404,7 @@ Then start your Kubernetes environment.
       - Create a license.txt file in which you paste your [Enterprise Key](../../../enterprise/) .
       - Then, run the following helm command to install Pachyderm's latest Enterprise Edition:
 
-        ```shell 
+        ```s 
         helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
         ```
     
@@ -417,14 +417,14 @@ running `kubectl get pods`. When Pachyderm is ready for use,
 all Pachyderm pods must be in the **Running** status.
 
 
-```shell
+```s
 kubectl get pods
 ```
 
 **System Response:**
 At a very minimum, you should see the following pods (console depends on your choice above): 
 
-```shell
+```s
 NAME                                  READY   STATUS    RESTARTS   AGE
 pod/console-55bc9f679-w4xrk           1/1     Running   0          71m
 pod/etcd-0                            1/1     Running   0          70m
@@ -444,7 +444,7 @@ you can now connect `pachctl` to your local cluster.
 
 - To connect `pachctl` to your new Pachyderm instance, run:
 
-    ```shell
+    ```s
     echo '{"pachd_address":"grpc://127.0.0.1:80"}' | pachctl config set context local --overwrite && pachctl config set active-context local
     ```
 
@@ -508,7 +508,7 @@ Follow your regular [enterprise server deployment and configuration instructions
 
     If you chose to [register a cluster to an enterprise server using pachctl](../../enterprise/auth/enterprise-server/setup.md#register-clusters-with-pachctl), change all the port numbers to 80(http)/443(https) in the `pachctl enterprise register` command:
 
-    ```shell
+    ```s
     pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:80 --pachd-address <pachd-IP>:80
     ```
 
@@ -516,13 +516,13 @@ Follow your regular [enterprise server deployment and configuration instructions
 
     - Set up the issuer in the idp config between the enterprise server and your cluster:
     
-    ```shell
+    ```s
     echo "issuer: http://<enterprise-external-IP-or-dns>" | pachctl idp set-config --config -
     ```
 
     - For each registered cluster, enable auth:
 
-        ```shell
+        ```s
         pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<pachd-external-IP-or-DNS>/authorization-code/callback 
         ```
 
@@ -530,13 +530,13 @@ Follow your regular [enterprise server deployment and configuration instructions
 
         - Make sure than your enterprise context is set up properly:
 
-        ```shell
+        ```s
         pachctl config get active-enterprise-context
         ```
 
         If not:
 
-        ```shell
+        ```s
         pachctl config set active-enterprise-context <my-enterprise-context-name>
         ```
 

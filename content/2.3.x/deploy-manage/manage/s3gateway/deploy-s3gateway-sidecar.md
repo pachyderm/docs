@@ -75,7 +75,7 @@ Your user code is responsible for:
 
 Use the [S3_ENDPOINT](../../../deploy/environment-variables/#pipeline-worker-environment-variables) environment variable to access the sidecar. No authentication is needed; you can only read the input bucket and write in the output bucket.
 
-  ```shell
+  ```s
   aws --endpoint-url $S3_ENDPOINT s3 cp /tmp/result/ s3://out --recursive
   ```
 

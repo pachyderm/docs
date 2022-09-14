@@ -64,7 +64,7 @@ Enable your pipeline to use the Sidecar S3 Gateway by following those simple ste
 
 * To access the sidecar instance and a bucket, you should use the [S3_ENDPOINT](../../../deploy/environment-variables/#pipeline-worker-environment-variables) environment variable (see example below). No authentication is needed; 
   you can only read the input bucket and write in the output bucket.
-  ```shell
+  ```s
   aws --endpoint-url $S3_ENDPOINT s3 cp /tmp/result/ s3://out --recursive
   ```
 

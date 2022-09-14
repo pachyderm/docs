@@ -34,7 +34,7 @@ nested capture groups is based on their opening parenthesis.
 Below you can find a few examples of applying a glob pattern with a capture
 group to a file path. For example, if you have the following file path:
 
-```shell
+```s
 /foo/bar-123/ABC.txt
 ```
 
@@ -72,7 +72,7 @@ The files at the root of your repository have the following naming convention. Y
 
 * `labresults` repo:
 
-   ```shell
+   ```s
    ├── LIPID-patientID1-labID1.txt (1)
    ├── LIPID-patientID2-labID1.txt (2)
    ├── LIPID-patientID1-labID2.txt (3)

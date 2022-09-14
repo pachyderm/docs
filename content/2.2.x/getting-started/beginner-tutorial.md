@@ -68,19 +68,19 @@ tons of them.
 For this demo, we create a repo called `images` to hold the
 data we want to process:
 
-```shell
+```s
 pachctl create repo images
 ```
 
 Verify that the repository was created:
 
-```shell
+```s
 pachctl list repo
 ```
 
 **System response:**
 
-```shell
+```s
 NAME   CREATED       SIZE (MASTER) ACCESS LEVEL
 images 4 seconds ago ≤ 0B          [repoOwner]
 ```
@@ -124,7 +124,7 @@ can do `pachctl start commit` and `pachctl finish commit` yourself.
 
 To commit the file `liberty.png` to the `master` branch of the `images` repo, run :
 
-```shell
+```s
 pachctl put file images@master:liberty.png -f http://imgur.com/46Q8nDz.png
 ```
 
@@ -132,7 +132,7 @@ To make sure that the data we just added is in Pachyderm.
 
 * Use the `pachctl list repo` command to check that data has been added:
 
-  ```shell
+  ```s
   pachctl list repo
   ```
 
@@ -145,7 +145,7 @@ To make sure that the data we just added is in Pachyderm.
 
 * View the commit that was just created:
 
-  ```shell
+  ```s
   pachctl list commit images
   ```
 
@@ -158,7 +158,7 @@ To make sure that the data we just added is in Pachyderm.
 
 * View the file in that commit:
 
-  ```shell
+  ```s
   pachctl list file images@master
   ```
 
@@ -179,13 +179,13 @@ command will let you view it:
 
 * On macOS, run:
 
-```shell
+```s
 pachctl get file images@master:liberty.png | open -f -a Preview.app
 ```
 
 * On Linux 64-bit, run:
 
-```shell
+```s
 pachctl get file images@master:liberty.png | display
 ```
 
@@ -288,7 +288,7 @@ to the appropriate output repo of your pipeline.
 
 Now, let's create the pipeline in Pachyderm:
 
-```shell
+```s
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
 ```
 Again, check the end result in your Console:
@@ -312,7 +312,7 @@ connection. Subsequent runs will be much faster.
 
 * You can view the job with:
 
-    ```shell
+    ```s
     pachctl list job
     ```
 
@@ -325,7 +325,7 @@ connection. Subsequent runs will be much faster.
 
 * You can check the state of your pipeline:
 
-    ```shell
+    ```s
     pachctl list pipeline
     ```
 
@@ -344,7 +344,7 @@ connection. Subsequent runs will be much faster.
 
 * List your repositories:
 
-    ```shell
+    ```s
     pachctl list repo
     ```
 
@@ -364,13 +364,13 @@ that we viewed the input data.
 
 * On macOS, run:
 
-```shell
+```s
 pachctl get file edges@master:liberty.png | open -f -a Preview.app
 ```
 
 * On Linux 64-bit, run:
 
-```shell
+```s
 pachctl get file edges@master:liberty.png | display
 ```
 
@@ -392,7 +392,7 @@ will simply do two more `put file` commands and by specifying `master`
 as the branch, it automatically parents our commits onto each other.
 Branch names are just references to a particular HEAD commit.
 
-```shell
+```s
 pachctl put file images@master:AT-AT.png -f http://imgur.com/8MN9Kg0.png
 pachctl put file images@master:kitten.png -f http://imgur.com/g2QnNqa.png
 ```
@@ -404,7 +404,7 @@ new outputs.
 
 * View the list of jobs that have started:
 
-    ```shell
+    ```s
     pachctl list job
     ```
 
@@ -421,14 +421,14 @@ new outputs.
 
   * On macOS, run:
 
-    ```shell
+    ```s
     pachctl get file edges@master:AT-AT.png | open -f -a Preview.app
     pachctl get file edges@master:kitten.png | open -f -a Preview.app
     ```
 
   * On Linux, run:
 
-    ```shell
+    ```s
     pachctl get file edges@master:AT-AT.png | display
     pachctl get file edges@master:kitten.png | display
     ```
@@ -493,7 +493,7 @@ and
 
 * To create the `montage` pipeline, run:
 
-    ```shell
+    ```s
     pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/montage.json
     ```
 
@@ -502,13 +502,13 @@ and
 
 * The pipeline creation triggers a job that generates a montage for all the current HEAD commits of the input repos:
 
-    ```shell
+    ```s
     pachctl list job
     ```
 
     **System response:**
 
-    ```shell
+    ```s
     ID                               SUBJOBS PROGRESS CREATED        MODIFIED
     01e0c8040e18429daf7f67ce34c3a5d7 1       ▇▇▇▇▇▇▇▇ 11 seconds ago 11 seconds ago
     1c1a9d7d36944eabb4f6f14ebca25bf1 1       ▇▇▇▇▇▇▇▇ 12 minutes ago 12 minutes ago
@@ -524,13 +524,13 @@ and
 
     * On macOS, run:
 
-        ```shell
+        ```s
         pachctl get file montage@master:montage.png | open -f -a Preview.app
         ```
 
     * On Linux 64-bit, run:
 
-        ```shell
+        ```s
         pachctl get file montage@master:montage.png | display
         ```
 

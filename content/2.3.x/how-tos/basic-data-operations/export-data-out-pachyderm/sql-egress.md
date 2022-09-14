@@ -137,7 +137,7 @@ You have a pipeline running but do not see any update in your database?
 
 Check your logs:
 
-```shell
+```s
 pachctl list pipeline
 pachctl logs -p <your-pipeline-name> --master
 ```

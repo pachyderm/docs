@@ -42,7 +42,7 @@ Enabling Pachyderm's Enterprise Edition can be done in one of two flavors:
 
             Generate your own value using:
 
-            ```shell
+            ```s
             openssl rand -hex 16
             f438329fc98302779be65eef226d32c1
             ```
@@ -58,13 +58,13 @@ To unlock Pachyderm Enterprise Features, complete the following steps:
 
 1. Activate the Enterprise Edition by running:
 
-      ```shell
+      ```s
       echo <your-activation-token> | pachctl license activate
       ```
 
 1. Verify the status of the enterprise activation:
 
-      ```shell
+      ```s
       pachctl enterprise get-state
       ```
 

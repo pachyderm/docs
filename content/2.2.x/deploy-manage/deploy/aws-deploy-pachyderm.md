@@ -61,7 +61,7 @@ To deploy an EKS cluster, complete the following steps:
 
 1. Deploy an EKS cluster:
 
-      ```shell
+      ```s
       eksctl create cluster --name <name> --version <version> \
       --nodegroup-name <name> --node-type <vm-flavor> \
       --nodes <number-of-nodes> --nodes-min <min-number-nodes> \
@@ -70,13 +70,13 @@ To deploy an EKS cluster, complete the following steps:
 
       **Example**
 
-      ```shell
+      ```s
       eksctl create cluster --name pachyderm-cluster --region us-east-2 --profile <your named profile>
       ```
 
 1. Verify the deployment:
 
-      ```shell
+      ```s
       kubectl get all
       ```
 
@@ -115,20 +115,20 @@ Pachyderm needs an S3 bucket (Object store) to store your data. You can create t
 * If you are creating an S3 bucket in the `us-east-1` region, run the following
       command:
 
-      ```shell
+      ```s
       aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
       ```
 
 * If you are creating an S3 bucket in any region but the `us-east-1`
 region, run the following command:
 
-      ```shell
+      ```s
       aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION} --create-bucket-configuration LocationConstraint=${AWS_REGION}
       ```
 
 * Verify that the S3 bucket was created:
 
-      ```shell   
+      ```s   
       aws s3 ls
       ```
 
@@ -488,7 +488,7 @@ Check the [list of all available helm values](../../../reference/helm-values/) a
 
 - You can now deploy a Pachyderm cluster by running this command:
 
-      ```shell
+      ```s
       helm repo add pach https://helm.pachyderm.com
       helm repo update
       helm install pachyderm -f values.yaml pach/pachyderm --version <version-of-the-chart>
@@ -496,7 +496,7 @@ Check the [list of all available helm values](../../../reference/helm-values/) a
 
       **System Response:**
 
-      ```shell
+      ```s
       NAME: pachd
       LAST DEPLOYED: Mon Jul 12 18:28:59 2021
       NAMESPACE: default
@@ -508,7 +508,7 @@ Check the [list of all available helm values](../../../reference/helm-values/) a
       to check the status of deployment. When Pachyderm is deployed, the command
       shows all pods as `READY`:
 
-      ```shell
+      ```s
       kubectl wait --for=condition=ready pod -l app=pachd --timeout=5m
       ```
 
@@ -531,22 +531,22 @@ Assuming your `pachd` is running as shown above, make sure that `pachctl` can ta
 If you are exposing your cluster publicly:
 
   1. Retrieve the external IP address of your TCP load balancer or your domain name:
-    ```shell
+    ```s
     kubectl get services | grep pachd-lb | awk '{print $4}'
     ```
 
   1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
-      ```shell
+      ```s
       echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set context "<your-cluster-context-name>" --overwrite
       ```
-      ```shell
+      ```s
       pachctl config set active-context "<your-cluster-context-name>"
       ```
 
   1. Check that your are using the right context: 
 
-      ```shell
+      ```s
       pachctl config get active-context
       ```
 
@@ -554,7 +554,7 @@ If you are exposing your cluster publicly:
 
 If you're not exposing `pachd` publicly, you can run:
 
-```shell
+```s
 # Background this process because it blocks.
 pachctl port-forward
 ``` 
@@ -564,13 +564,13 @@ pachctl port-forward
 !!! Attention
     If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
 
-```shell
+```s
 pachctl version
 ```
 
 **System Response:**
 
-```shell
+```s
 COMPONENT           VERSION
 pachctl             {{ config.pach_latest_version }}
 pachd               {{ config.pach_latest_version }}

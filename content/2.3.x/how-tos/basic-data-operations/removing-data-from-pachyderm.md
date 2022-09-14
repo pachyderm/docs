@@ -23,7 +23,7 @@ Additionally, although this is a separate use-case, you have the option to [squa
 
 To fix a broken HEAD, run the following command:
 
-```shell
+```s
 pachctl delete commit <commit-ID>
 ```
 
@@ -55,7 +55,7 @@ into their children** and then removing the global commit.
 This behavior is inspired by the squash option in git rebase.
 **No data stored in PFS is removed** since they remain in the child commits.
 
-```shell
+```s
 pachctl squash commit <commit-ID>
 ```
 
@@ -90,19 +90,19 @@ In such a case, you will need to:
 - Create a new commit in which you surgically remove the problematic file.
     1. Start a new commit:
 
-        ```shell
+        ```s
         pachctl start commit <repo>@<branch>
         ```
 
     1. Delete all corrupted files from the newly opened commit:
 
-        ```shell
+        ```s
         pachctl delete file <repo>@<branch or commitID>:/path/to/files
         ```
 
     1. Finish the commit:
 
-        ```shell
+        ```s
         pachctl finish commit <repo>@<branch>
         ```
 

@@ -36,7 +36,7 @@ Previous results remain accessible through the corresponding commit IDs.
 To update a pipeline, run the following command after
 you have updated your pipeline specification JSON file.
 
-```shell
+```s
 pachctl update pipeline -f pipeline.json
 ```
 
@@ -49,11 +49,11 @@ pachctl update pipeline -f pipeline.json
 [Jsonnet pipeline specs](../jsonnet-pipeline-specs) allow you to bypass the "update-your -specification-file" step and 
 apply your changes at once by running:
 
-```shell
+```s
 pachctl update pipeline --jsonnet <your jsonnet pipeline specs path or URL> --arg <param 1>=<value 1> --arg <param 2>=<value 2>
 ```
 !!! Example
-      ```shell
+      ```s
       pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
       ```
 
@@ -65,19 +65,19 @@ To update the code in your pipeline, complete the following steps:
 the Docker distribution that you use, steps for enabling it might
 vary:
 
-     ```shell
+     ```s
      docker ps
      ```
      If you get an error message similar to the following:
 
-     ```shell
+     ```s
      Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
      ```
      enable the Docker daemon (see the Docker documentation for your operating system and platform).
      For example, if you use `minikube` on  macOS, run the following
      command:
 
-     ```shell
+     ```s
      eval $(minikube docker-env)
      ```
 
@@ -96,7 +96,7 @@ This step comes in 3 flavors:
 
    1. Update the pipeline:
 
-      ```shell
+      ```s
       pachctl update pipeline -f <pipeline.json>
       ```
 
@@ -112,7 +112,7 @@ This step comes in 3 flavors:
 
    * Once your pipeline code is updated and your image is built, tagged, and pushed, update your pipeline using this command line. In this case, there is no need to edit the pipeline specification file to update the value of your new tag. This command will take care of it:
 
-      ```shell
+      ```s
       pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
       ```
 
@@ -123,7 +123,7 @@ This step comes in 3 flavors:
 
    1. Run the following command:
 
-      ```shell
+      ```s
       pachctl update pipeline -f <pipeline name> --push-images --registry <registry> --username <registry user>
       ```
 
@@ -131,7 +131,7 @@ This step comes in 3 flavors:
 
       **Example:**
 
-      ```shell
+      ```s
       pachctl update pipeline -f edges.json --push-images --username testuser
       ```
 

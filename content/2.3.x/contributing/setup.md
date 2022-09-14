@@ -26,12 +26,12 @@ To stay up to date, we recommend doing the following.
 
 First clone the code:
 (Note, as of 07/11/19 pachyderm is using go modules and recommends cloning the code outside of the $GOPATH, we use the location ~/workspace as an example, but the code can live anywhere)
-```shell
+```s
     cd ~/workspace
     git clone git@github.com:pachyderm/pachyderm
 ```
 Then update your `~/.bash_profile` by adding the line:
-```shell
+```s
     source ~/workspace/pachyderm/etc/contributing/bash_helpers
 ```
 And you'll stay up to date!
@@ -41,27 +41,27 @@ And you'll stay up to date!
 ### File descriptor limit
 
 If you're running tests locally, you'll need to up your file descriptor limit. To do this, first setup a LaunchDaemon to up the limit with sudo privileges:
-```shell
+```s
     sudo cp ~/workspace/pachyderm/etc/contributing/com.apple.launchd.limit.plist /Library/LaunchDaemons/
 ```
 Once you restart, this will take effect. To see the limits, run:
-```shell
+```s
     launchctl limit maxfiles
 ```
 Before the change is in place you'll see something like `256    unlimited`. After the change you'll see a much bigger number in the first field. This ups the system wide limit, but you'll also need to set a per-process limit.
 
 Second, up the per process limit by adding something like this to your `~/.bash_profile` :
-```shell
+```s
     ulimit -n 12288
 ```
 Unfortunately, even after setting that limit it never seems to report the updated version. So if you try
-```shell
+```s
     ulimit
 ```
 And just see `unlimited`, don't worry, it took effect.
 
 To make sure all of these settings are working, you can test that you have the proper setup by running:
-```shell
+```s
     make test-pfs-server
 ```
 If this fails with a timeout, you'll probably also see 'too many files' type of errors. If that test passes, you're all good!
@@ -69,11 +69,11 @@ If this fails with a timeout, you'll probably also see 'too many files' type of 
 ### Timeout helper
 
 You'll need the `timeout` utility to run the `make launch` task. To install on mac, do:
-```shell
+```s
     brew install coreutils
 ```
 And then make sure to prepend the following to your path:
-```shell
+```s
     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 ```
 ## Dev cluster
@@ -86,7 +86,7 @@ And check it's status: `kubectl get all`.
 
 This will install the dev version of `pachctl`:
 
-```shell
+```s
     cd ~/workspace/pachyderm
     make install
     pachctl version
@@ -101,14 +101,14 @@ place in your minikube cluster:
 
 For `pachyderm_entrypoint` container:
 
-```shell
+```s
 make docker-build-test-entrypoint
 ./etc/kube/push-to-minikube.sh pachyderm_entrypoint
 ```
 
 For `pachyderm/python-build` container:
 
-```shell
+```s
 (cd etc/pipeline-build; make push-to-minikube)
 ```
 
@@ -118,7 +118,7 @@ Now that we have a dev cluster, it's nice to be able to run some tests locally
 as we are developing.
 
 To run some specific tests, just use `go test` directly, e.g:
-```shell
+```s
 go test -v ./src/server/cmd/pachctl/cmd
 ```
 

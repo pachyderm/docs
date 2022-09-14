@@ -34,7 +34,7 @@ For more detailed step by step instructions, follow this [documentation](https:/
 1. Click **Create**.
 1. Type the name of your application, such as **Pachyderm**.
 1. Add the following Login redirect URI. 
-      ```shell
+      ```s
       http://<ip>:30658/callback
       ```
       Note: Your port number should be whatever is routing to the Identity Service:658.
@@ -65,13 +65,13 @@ To configure Pachyderm Auth, complete the following steps:
 
    1. Get the `pachd` pod ID:
 
-      ```shell
+      ```s
       kubectl get pod
       ```
 
       **Example system response:**
 
-      ```shell
+      ```s
       pachd-79f7f68c65-9qs8g      1/1     Running   0          4h2m
       ...
       ```
@@ -80,13 +80,13 @@ To configure Pachyderm Auth, complete the following steps:
 
       **Example:**
 
-      ```shell
+      ```s
       kubectl port-forward pachd-79f7f68c65-9qs8g 30657
       ```
 
 1. Enable Pachyderm authentication:
 
-      ```shell
+      ```s
       pachctl auth activate --initial-admin=robot:admin
       ```
 
@@ -98,13 +98,13 @@ To configure Pachyderm Auth, complete the following steps:
 1. Log in as the admin user with the token you received in the previous
 step:
 
-      ```shell
+      ```s
       pachctl auth use-auth-token
       ```
 
 1. Set up the authentication config:
 
-    ```shell
+    ```s
     pachctl auth set-config <<EOF
       {
       "live_config_version": 2,
@@ -140,7 +140,7 @@ or sign in with Google:
 
    1. Run:
 
-      ```shell
+      ```s
       pachctl auth login
       ```
 
@@ -155,13 +155,13 @@ or sign in with Google:
 
 1. In the terminal, check that you are logged in as the Okta user:
 
-      ```shell
+      ```s
       pachctl auth whoami
       ```
 
       **Example of System Response:**
 
-      ```shell
+      ```s
       You are "okta:test@pachyderm.com"
       session expires: 07 Aug 20 14:04 PDT
       ```

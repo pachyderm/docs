@@ -70,7 +70,7 @@ Before any manual backup:
         Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
         Run `kubectl config get-contexts` to list all available clusters and contexts (the current context is marked with a `*`), then `kubectl config use-context <your-context-name>` to set the proper active context.
 
-        ```shell 
+        ```s 
         kubectl scale deployment pachd --replicas 0 
         kubectl scale rc --replicas 0 -l suite=pachyderm,component=worker
         ```
@@ -79,7 +79,7 @@ Before any manual backup:
 
         Run the `watch` command to monitor the state of `pachd` and worker pods terminating:
 
-        ```shell
+        ```s
         watch -n 5 kubectl get pods
         ```
 
@@ -186,7 +186,7 @@ Backing up / restoring an Enterprise Server is similar to the back up / restore 
     !!! Note "kubectl users"
          There is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
 
-         ```shell
+         ```s
          kubectl scale deployment pach-enterprise --replicas 0 
          ``` 
 
@@ -196,7 +196,7 @@ Backing up / restoring an Enterprise Server is similar to the back up / restore 
 
 - [Resume the operations on your Enterprise Server](#resuming-operations) by running `pachctl enterprise unpause`  (Enterprise users) to scale the `pach-enterprise` deployment back up. Alternatively, if you used `kubectl`, run:
 
-    ```shell
+    ```s
     kubectl scale deployment pach-enterprise --replicas 1
     ```
 

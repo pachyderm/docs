@@ -45,7 +45,7 @@ that runs in `minikube`.
 
 * To use port-forwarding, run:
 
-  ```shell
+  ```s
   pachctl port-forward
   ```
 
@@ -53,13 +53,13 @@ that runs in `minikube`.
 
   1. Get the minikube IP address:
 
-     ```shell
+     ```s
      minikube ip
      ```
 
   1. Point your browser to the following address:
 
-     ```shell
+     ```s
      <minikube_ip>:30080
      ```
 
@@ -105,7 +105,7 @@ steps:
 
 1. Get the current context:
 
-      ```shell
+      ```s
       pachctl config get active-context
       ```
 
@@ -115,7 +115,7 @@ steps:
       If no IP address is set up for this cluster, you get the following
       output:
 
-      ```shell
+      ```s
       pachctl config get context <name>
       {
 
@@ -124,13 +124,13 @@ steps:
 
 1. Set up `pachd_address`:
 
-      ```shell
+      ```s
       pachctl config update context <name> --pachd-address <host:port>
       ```
 
       **Example:**
 
-      ```shell
+      ```s
       pachctl config update context local --pachd-address 192.168.1.15:30650
       ```
 
@@ -138,13 +138,13 @@ steps:
 
 1. Verify that the configuration has been updated:
 
-      ```shell
+      ```s
       pachctl config get context local
       ```
 
       **System Response:**
 
-      ```shell
+      ```s
       {
          "pachd_address": "192.168.1.15:30650"
       }

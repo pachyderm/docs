@@ -89,7 +89,7 @@ create a repository for your project.
 1. Create a `Dockerfile` for your project. See the [OpenCV example](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/examples/opencv/Dockerfile).
 1. Build a new image from the `Dockerfile` by specifying a tag:
 
-   ```shell
+   ```s
    docker build -t <image>:<tag> .
    ```
 
@@ -111,7 +111,7 @@ with the `--push-images` flag. For more information, see
 
     If you use DockerHub, run:
 
-     ```shell
+     ```s
      docker login --username=<dockerhub-username> --password=<dockerhub-password> <dockerhub-fqdn>
      ```
 
@@ -119,7 +119,7 @@ with the `--push-images` flag. For more information, see
 
     If you use DockerHub, run:
 
-     ```shell
+     ```s
      docker push <image>:tag
      ```
 
@@ -152,7 +152,7 @@ as a GitHub repository.
 A simple pipeline specification file in JSON would look like the example below.
 The pipeline takes its data from the input repo `data`, runs worker containers with the defined image `<image>:<tag>` and `command`, then outputs the resulting processed data in the `my-pipeline` output repo.  During a job execution, each worker sees and reads from the local file system `/pfs/data` containing only matched data from the `glob` expression, and writes its output to `/pfs/out` with standard file system functions; Pachyderm handles the rest. 
 
-```shell
+```s
 # my-pipeline.json
 {
   "pipeline": {
@@ -180,7 +180,7 @@ parameter, as well as many others, in the pipeline specification.
 
 1. Create a Pachyderm pipeline from the spec:
 
-     ```shell
+     ```s
      pachctl create pipeline -f my-pipeline.json
      ```
 
@@ -191,7 +191,7 @@ parameter, as well as many others, in the pipeline specification.
 1. If your pipeline specification changes, you can update the pipeline 
    by running
 
-     ```shell
+     ```s
      pachctl update pipeline -f my-pipeline.json
      ```
 

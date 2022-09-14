@@ -45,32 +45,32 @@ from the most recent upload.
 
     1. View the list of files:
 
-         ```shell
+         ```s
          pachctl list file images@master
          ```
 
          **System Response:**
 
-         ```shell
+         ```s
          NAME   TYPE SIZE
          /A.csv file 258B
          ```
 
     1. Add the `A.csv` file once again:
 
-         ```shell
+         ```s
          pachctl put file images@master -f A.csv
          ```
 
     1. Verify that the file size has not changed:
 
-         ```shell
+         ```s
          pachctl list file images@master
          ```
 
          **System Response:**
 
-         ```shell
+         ```s
          NAME   TYPE SIZE
          /A.csv file 258B
          ```
@@ -86,32 +86,32 @@ If you upload the same file to that repository with the
 
     1. View the list of files:
 
-         ```shell
+         ```s
          pachctl list file images@master
          ```
 
          **System Response:**
 
-         ```shell
+         ```s
          NAME   TYPE SIZE
          /A.csv file 258B
          ```
 
     1. Add the `A.csv` file once again:
 
-         ```shell
+         ```s
          pachctl put file -a images@master -f A.csv
          ```
 
     1. Verify that the file size has doubled:
 
-         ```shell
+         ```s
          pachctl list file images@master
          ```
 
          **System Response:**
 
-         ```shell
+         ```s
          NAME   TYPE SIZE
          /A.csv file 516B
          ```

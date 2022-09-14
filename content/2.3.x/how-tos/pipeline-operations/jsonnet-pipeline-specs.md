@@ -63,7 +63,7 @@ To create or update a pipeline using a jsonnet pipeline specification file:
 - add `--arg <parameter-name>=value` for each variable.
 
 !!! Example
-    ```shell
+    ```s
     pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
     ```
 

@@ -28,7 +28,7 @@ In particular, you can use cert-manager to:
 
     You can verify that the certificate is issued correctly by running the following command:
 
-    ```shell
+    ```s
     kubectl get certificate
     ```
     You should see the certificate with a status of Ready in output.
@@ -75,7 +75,7 @@ Pachyderm context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
 !!! Example
-    ```shell   
+    ```s   
     echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
     ```
 
