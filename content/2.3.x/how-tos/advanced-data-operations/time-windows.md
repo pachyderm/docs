@@ -269,9 +269,10 @@ in `moving_sales_window` can use the `/` or `/*` glob pattern, depending
 on whether you need to process all of the time-windowed files together
 or if they can be processed in parallel.
 
-!!! warning
-    When you create this type of moving time-windowed data set,
-    the concept of *now* or *today* is relative. You must define the time
-    based on your use case. For example, by configuring to use `UTC`. Do not use
-    functions such as `time.now()` to determine the current time. The actual
-    time when this pipeline runs might vary.
+{{% notice warning %}}
+When you create this type of moving time-windowed data set,
+the concept of *now* or *today* is relative. You must define the time
+based on your use case. For example, by configuring to use `UTC`. Do not use
+functions such as `time.now()` to determine the current time. The actual
+time when this pipeline runs might vary.
+{{% /notice %}}

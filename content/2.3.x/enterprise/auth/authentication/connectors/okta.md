@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Authenticating with Okta
-description: 
+title: Okta
+description: Learn how to authenticate with Okta.
 date: 
 # taxonomy #
 tags: 

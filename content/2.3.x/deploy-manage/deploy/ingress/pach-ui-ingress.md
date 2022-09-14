@@ -27,11 +27,10 @@ using the **ingress controller** Traefik.
 Here is a quick high-level view of the various components at play.
 ![pach-ui-ingress](../../../images/console_ingress_traefik.png)
 
-!!! Warning 
-
-    The following installation steps are for **Informational Purposes** ONLY. 
-    Please refer to your full Traefik documentation 
-    for further installation details and any troubleshooting advice.
+{{% notice warning %}}
+The following installation steps are for **Informational Purposes** ONLY. 
+Please refer to your full Traefik documentation for further installation details and any troubleshooting advice.
+{{% /notice %}}
 
 ## Traefik installation and Ingress Ressource Definition
 1. Helm install [Traefik](https://github.com/traefik/traefik-helm-chart):

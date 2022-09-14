@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Identity Providers
-description: 
+description: Learn how to enable users to log in to Pachyderm using their preferred identity provider. 
 date: 
 # taxonomy #
 tags: 
@@ -9,20 +9,21 @@ series:
 seriesPart:
 ---
 
-!!! Note
-    - Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have an enterprise key.
-    - Helm users, **you have the option to set your IdP values directly through Helm (Recommended)**. See below.
-    - Alternatively, you can use `pachctl` to connect your IdP to Pachyderm. First, verify that
-    the [Authentication](../../#authentication-and-authorization) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges).  Run `pachctl auth use-auth-token` and enter your rootToken to login as a Root User if you are not.
+{{% notice note %}}
+- Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have an enterprise key.
+- Helm users, **you have the option to set your IdP values directly through Helm (Recommended)**. See below.
+- Alternatively, you can use `pachctl` to connect your IdP to Pachyderm. First, verify that the [Authentication](../../#authentication-and-authorization) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges).  Run `pachctl auth use-auth-token` and enter your rootToken to login as a Root User if you are not.
+{{% /notice %}}
     
-!!! Attention 
-    We are now shipping Pachyderm with an **optional embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy:
-    
-    - Check out our new recommended architecture and [deployment instructions](../../../../deploy-manage/deploy/deploy-w-proxy/).
-    - **Update your Callback URL**. Details below.
+{{% notice attention%}}
+We are now shipping Pachyderm with an **optional embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy Pachyderm with a Proxy:
+
+- Check out our new recommended architecture and [deployment instructions](../../../../deploy-manage/deploy/deploy-w-proxy/).
+- **Update your Callback URL**. Details below.
+{{% /notice %}}
     
 
 ## Enable your users to authenticate to Pachyderm by logging into their favorite Identity Provider in 3 steps:
@@ -180,22 +181,24 @@ on the application settings page.
 - `redirect_uri` - This parameter should match what you have added
 to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
 
-!!! Warning
-    **When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
+{{% notice warning %}}
+**When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
 
-    - `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
-    - TLS requires all non-localhost redirectURIs to be **HTTPS**.
-    - AZURE USERS: 
-        - You must use TLS when deploying on Azure.
-        - When using Azure Active Directory, add the following to the oidc config:
-        ``` yaml
-        "config":{
-            "claimMapping": {
-                "email": "preferred_username"
-            } 
-        }      
-     
-        ```
+- `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
+- TLS requires all non-localhost redirectURIs to be **HTTPS**.
+- AZURE USERS: 
+    - You must use TLS when deploying on Azure.
+    - When using Azure Active Directory, add the following to the oidc config:
+    ``` yaml
+    "config":{
+        "claimMapping": {
+            "email": "preferred_username"
+        } 
+    }      
+ 
+    ```
+{{% /notice %}}
+
 !!! Attention "Attention Proxy users"
     Your `redirect_uri` must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
 

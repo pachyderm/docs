@@ -14,12 +14,13 @@ Pachyderm provides users with a simple way to follow a change throughout their D
 
 Pachyderm associates a commit ID to each new commit. You can quickly check this new commit by running `pachctl list commit repo@branch`. **All resulting downstream commits and jobs in your DAG will then share that same ID (Global Identifier).**
 
-!!! Info "TLDR"
-    The commits and jobs sharing the same ID **represent a logically-related set of objects**. 
-    The ID of a commit is also:
+{{% notice note %}}
+The commits and jobs sharing the same ID **represent a logically-related set of objects**. 
+The ID of a commit is also:
 
-    - the ID of any commits created along due to provenance relationships, 
-    - and the ID of any jobs triggered by the creation of those commits. 
+- the ID of any commits created along due to provenance relationships, 
+- and the ID of any jobs triggered by the creation of those commits. 
+{{% /notice %}}
 
 This ability to track down related commits and jobs with one global identifier brought the need to introduce a new scope to our original concepts of [job](../../pipeline-concepts/job/) and [commit](../../data-concepts/commit/). The nuance in the scope of a commit or a job ( "Global" or "Local") gives the term two possible meanings.
 

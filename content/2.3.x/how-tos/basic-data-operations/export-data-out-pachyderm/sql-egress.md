@@ -10,8 +10,9 @@ series:
 seriesPart:
 ---
 
-!!! Warning
-    SQL Egress is an [experimental feature](../../../../reference/supported-releases/#experimental).
+{{% notice warning %}}
+SQL Egress is an [experimental feature](../../../../reference/supported-releases/#experimental).
+{{% /notice %}}
 
 Pachyderm already implements [egress to object storage](../export-data-egress) as an optional egress field in the pipeline specification. 
 Similarly, our **SQL egress** lets you seamlessly export data from a Pachyderm-powered pipeline output repo to an SQL database.
@@ -113,12 +114,12 @@ Data (in the form of CSV files) that the pipeline writes to the output repo is i
 
 **Each top-level directory is named after the table you want to egress its content to**. All of the files reachable in the walk of each root directory are parsed in the given format indicated in the egress section of the pipeline specification file (CSV for now), then inserted in their corresponding table. Find more information on how to format your CSV file depending on your targeted SQL Data Type in our [SQL Ingest Formatting section](../sql-ingest.md#formats).
 
-!!! Warning
-     - All interface tables must pre-exist before an insertion.
-     - Files in the root produce an error as they do not correspond to a table.
-     - The directory structure below the top level does not matter.  The first directory in the path is the table; everything else is walked until a file is found.  All the data in those files is inserted into the table.
-     - The order of the values in each line of a CSV must match the order of the columns in the schema of your interface table unless you were using headers AND specified the `"columns": ["foo", "bar"],` field in your pipeline specification file.
-
+{{% notice warning %}}
+ - All interface tables must pre-exist before an insertion.
+ - Files in the root produce an error as they do not correspond to a table.
+ - The directory structure below the top level does not matter.  The first directory in the path is the table; everything else is walked until a file is found.  All the data in those files is inserted into the table.
+ - The order of the values in each line of a CSV must match the order of the columns in the schema of your interface table unless you were using headers AND specified the `"columns": ["foo", "bar"],` field in your pipeline specification file.
+{{% /notice %}}
    
 !!! Example 
         ```

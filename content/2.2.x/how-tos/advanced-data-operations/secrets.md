@@ -13,8 +13,9 @@ seriesPart:
 Pachyderm uses Kubernetes' *Secrets* to store and manage sensitive data, such as passwords, OAuth tokens, or ssh keys. You can use any of [Kubernetes' types of Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-types) that match your use case. 
 Namely, `generic` (or Opaque), `tls`, or `docker-registry`.
 
-!!! Warning
-      As of today, Pachyderm *only supports the JSON format for Kubernetes' Secrets files*.
+{{% notice warning %}}
+As of today, Pachyderm *only supports the JSON format for Kubernetes' Secrets files*.
+{{% /notice %}}
 
 To use a Secret in Pachyderm, you need to:
 

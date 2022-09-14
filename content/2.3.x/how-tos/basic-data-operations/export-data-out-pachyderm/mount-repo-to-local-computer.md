@@ -9,11 +9,12 @@ series:
 seriesPart:
 ---
 
-!!! warning
-    Pachyderm uses FUSE to mount repositories as local filesystems.
-    Because Apple has announced phasing out support for macOS
-    kernel extensions, including FUSE, this functionality is no
-    longer stable on macOS Catalina (10.15) or later.
+{{% notice warning %}}
+Pachyderm uses FUSE to mount repositories as local filesystems.
+Because Apple has announced phasing out support for macOS
+kernel extensions, including FUSE, this functionality is no
+longer stable on macOS Catalina (10.15) or later.
+{{% /notice %}}
 
 Pachyderm enables you to mount a repository
 as a local filesystem on your computer by using the
@@ -65,24 +66,25 @@ the data, without modifying it. For example, you can mount your
 repo to a local computer and then open that directory in a Jupyter
 Notebook for exploration. 
 
-!!! Note
-      The `pachctl mount` command allows you to mount not only the default
-      branch, typically a `master` branch, but also other Pachyderm
-      branches. By default, Pachyderm mounts the `master` branch. However,
-      if you add a branch to the name of the repo, the `HEAD` of that branch
-      will be mounted.
+{{% notice note %}}
+The `pachctl mount` command allows you to mount not only the default
+branch, typically a `master` branch, but also other Pachyderm
+branches. By default, Pachyderm mounts the `master` branch. However,
+if you add a branch to the name of the repo, the `HEAD` of that branch
+will be mounted.
 
-      **Example:**
+**Example:**
 
-      ```s
-      pachctl mount images --repos images@staging
-      ```
+```s
+pachctl mount images --repos images@staging
+```
 
-      You can also mount a specific commit, but because commits
-      might be on multiple branches, modifying them might result in data deletion
-      in the `HEAD` of the branches. Therefore, you can only mount commits in
-      read-only mode. If you want to write to a specific commit that is not
-      the `HEAD` of a branch, you can create a new branch with that commit as `HEAD`.
+You can also mount a specific commit, but because commits
+might be on multiple branches, modifying them might result in data deletion
+in the `HEAD` of the branches. Therefore, you can only mount commits in
+read-only mode. If you want to write to a specific commit that is not
+the `HEAD` of a branch, you can create a new branch with that commit as `HEAD`.
+{{% /notice %}}
 
 ## Mounting Repositories in Read-Write Mode
 
@@ -91,8 +93,9 @@ write access to the mounted repositories, which means that you can
 open the files for editing and put them back to the Pachyderm
 repository. 
 
-!!! Warning
-    Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+{{% notice warning %}}
+Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+{{% /notice %}}
 
 For example, you have the [OpenCV example pipeline](../../../../getting-started/beginner-tutorial/#image-processing-with-opencv)
 up and running. If you want to edit files in the `images`
@@ -114,17 +117,16 @@ locally, their changes will likely be overwritten when you exit
 `pachctl mount`. This happens because  Therefore, make sure that you do not work on the
 same files while someone else is working on them.
 
-!!! Note
-    
-    - Use writable mount **ONLY** when you have sole ownership
-    over the mounted data. Otherwise, merge conflicts or
-    unexpected data overwrites can occur.
+{{% notice note %}}
+- Use writable mount **ONLY** when you have sole ownership
+over the mounted data. Otherwise, merge conflicts or
+unexpected data overwrites can occur.
 
-    - Because output repositories are created by the Pachyderm
-      pipelines, they are immutable. Only a pipeline
-      can change and update files in these repositories. If you try to change
-      a file in an output repo, you will get an error message.
-
+- Because output repositories are created by the Pachyderm
+  pipelines, they are immutable. Only a pipeline
+  can change and update files in these repositories. If you try to change
+  a file in an output repo, you will get an error message.
+{{% /notice %}}
 
 ### How to Mount/Unmount a Pachyderm Repo
 

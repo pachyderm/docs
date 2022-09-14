@@ -64,10 +64,11 @@ This behavior is inspired by the squash option in git rebase.
 pachctl squash commit <commit-ID>
 ```
 
-!!! Warning "Important"
-    - Squashing a global commit on the head of a branch (no children) will fail. Use `pachctl delete commit` instead.
-    - Squash commit only applies to [user repositories](../../../concepts/data-concepts/repo/). For example, you cannot squash a commit that updated a pipeline (Commit that lives in a spec repository).
-    - Similarly to `pachctl delete commit`, `pachctl squash commit` stops (but does not delete) associated jobs.
+{{% notice warning %}}
+- Squashing a global commit on the head of a branch (no children) will fail. Use `pachctl delete commit` instead.
+- Squash commit only applies to [user repositories](../../../concepts/data-concepts/repo/). For example, you cannot squash a commit that updated a pipeline (Commit that lives in a spec repository).
+- Similarly to `pachctl delete commit`, `pachctl squash commit` stops (but does not delete) associated jobs.
+{{% /notice %}}
 
 !!! Example
 

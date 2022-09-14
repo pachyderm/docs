@@ -21,16 +21,17 @@ Note that each web UI addresses different use cases:
 - **JupyterLab Mount Extension** allows you to experiment and explore your data, then build your pipelines' code from your familiar Notebooks.
 - **Console** helps you visualize your DAGs (Directed Acyclic Graphs), monitor your pipeline executions, access your logs, and troubleshoot while your pipelines are running.
   
-!!! Warning  
-      - A local installation is **not designed to be a production  
-      environment**. It is meant to help you learn and experiment quickly with Pachyderm.   
-      - A local installation is designed for a **single-node cluster**.  
-      This cluster uses local storage on disk and does not create  
-      Persistent Volumes (PVs). If you want to deploy a production multi-node  
-      cluster, follow the instructions for your cloud provider or on-prem  
-      installation as described in [Deploy Pachyderm](../../deploy-manage/deploy/).  
-      New Kubernetes nodes cannot be added to this single-node cluster.   
-  
+{{% notice warning %}}
+- A local installation is **not designed to be a production  
+environment**. It is meant to help you learn and experiment quickly with Pachyderm.   
+- A local installation is designed for a **single-node cluster**.  
+This cluster uses local storage on disk and does not create  
+Persistent Volumes (PVs). If you want to deploy a production multi-node  
+cluster, follow the instructions for your cloud provider or on-prem  
+installation as described in [Deploy Pachyderm](../../deploy-manage/deploy/).  
+New Kubernetes nodes cannot be added to this single-node cluster.   
+{{% /notice %}}  
+
 Pachyderm uses `Helm` for all deployments.  
 
 !!! Attention 

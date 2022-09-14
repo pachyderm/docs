@@ -84,8 +84,9 @@ Use the [S3_ENDPOINT](../../../deploy/environment-variables/#pipeline-worker-env
 If auth is enabled on the Pachyderm cluster, credentials must be passed with
 each S3 gateway endpoint.
 
-!!! Warning "Important"
-    The `Access Key` must equal the `Secret Key`. 
+{{% notice warning %}}
+The `Access Key` must equal the `Secret Key`. 
+{{% /notice %}}
 
 ---
 

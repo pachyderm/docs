@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Role Binding
-description: 
+description: Learn how to grant and modify permissions on given resources for an IDP or robot  user.
 date: 
 # taxonomy #
 tags: 
@@ -18,19 +18,22 @@ This chapter will detail how to:
     - Robot User: **Robot users do not have any permission by default**. They will need to be set by a `clusterAdmin`.
     - The case of the Pipeline User: In Pachyderm, **you do not explicitly grant users access to pipelines**, they get set for you when you create or update a pipeline. 
 
-!!! Warning "Rules to keep in mind"
-    - A user or group can have one or more roles on a specific Resource.
-    - Roles are inherited: if a user has a role on a cluster, they have that role for all projects and repos in that cluster.
-    - The creator of a repo becomes its `repoOwner`.
-    - To update a pipeline, you must have at least `repoReader`-level access to all pipeline inputs
-        and `repoWriter`-level access to the pipeline output. 
-        This is because pipelines read from their input repos and write
-        to their output repos.
-    - When a user subscribes a pipeline to a repo, Pachyderm sets
-        that user as an `repoOwner` of that pipeline's output repo.
-        If additional users need access to the output repository,
-        the initial `repoOwner` of a pipeline's output repo, or a `clusterAdmin`,
-        needs to grant that user access to the repo.
+{{% notice warning %}} 
+Rules to keep in mind
+
+- A user or group can have one or more roles on a specific Resource.
+- Roles are inherited: if a user has a role on a cluster, they have that role for all projects and repos in that cluster.
+- The creator of a repo becomes its `repoOwner`.
+- To update a pipeline, you must have at least `repoReader`-level access to all pipeline inputs
+    and `repoWriter`-level access to the pipeline output. 
+    This is because pipelines read from their input repos and write
+    to their output repos.
+- When a user subscribes a pipeline to a repo, Pachyderm sets
+    that user as an `repoOwner` of that pipeline's output repo.
+    If additional users need access to the output repository,
+    the initial `repoOwner` of a pipeline's output repo, or a `clusterAdmin`,
+    needs to grant that user access to the repo.
+{{% /notice %}}
     
 ## Set Roles to Users
 

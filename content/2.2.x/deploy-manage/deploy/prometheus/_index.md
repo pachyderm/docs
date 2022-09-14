@@ -16,15 +16,14 @@ seriesPart:
 
 
 
-Pachyderm's deployment manifest exposes Prometheus metrics, 
-allowing an easy set up of the monitoring of your cluster.
-Only available for self-managed deployments today. 
+Pachyderm's deployment manifest exposes Prometheus metrics,  allowing an easy set up of the monitoring of your cluster. Only available for self-managed deployments today. 
 
 
-!!! Warning 
-    These installation steps are for **Informational Purposes** ONLY. 
-    Please refer to your full Prometheus documentation 
-    for further installation details and any troubleshooting advice.
+{{% notice warning %}}
+These installation steps are for **Informational Purposes** ONLY. 
+Please refer to your full Prometheus documentation for further installation details and any troubleshooting advice.
+{{% /notice %}}
+
 ## Prometheus installation and Service Monitor creation
 1. Helm install [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#kube-prometheus-stack),
 Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:

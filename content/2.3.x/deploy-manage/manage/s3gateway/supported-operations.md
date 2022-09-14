@@ -74,8 +74,9 @@ For example, let's create the `master` branch of the repo `test`.
 ## Delete Bucket
 Call the *delete an empty S3 bucket* command on your S3 client to delete a Pachyderm repository.
 
-!!! Warning
-    The repo must be completely empty.
+{{% notice warning %}}
+The repo must be completely empty.
+{{% /notice %}}
 
 1. In MinIO, 
     ```s

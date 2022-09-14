@@ -15,8 +15,9 @@ seriesPart:
 
 Pachyderm **Console is a complete web UI for visualizing running pipelines and exploring your data**. By clicking on individual pipeline segments, users can check their jobs' status, visualize their commits' content, access logs, and much more! It is a valuable companion when troubleshooting pipelines.
 
-!!! Warning
-     Console has been part of Pachyderm Community Edition since Pachyderm `2.2.3`. Refer to an [earlier version of the deployment instructions](https://docs.pachyderm.com/2.1.x/deploy-manage/deploy/console/) for previous versions of Pachyderm (`2.2.2` and under).
+{{% notice warning %}}
+Console has been part of Pachyderm Community Edition since Pachyderm `2.2.3`. Refer to an [earlier version of the deployment instructions](https://docs.pachyderm.com/2.1.x/deploy-manage/deploy/console/) for previous versions of Pachyderm (`2.2.2` and under).
+{{%/notice%}}
 
 Pachyderm Community Edition comes with Console per default. Upon upgrading to Pachyderm Enterprise, you will be able to:
 
@@ -71,14 +72,14 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
         To configure your Identity Provider as a part of `helm install`, see examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
     - Or manually update your values.yaml with `oidc.mockIDP = false` then [set up an Identity Provider by using `pachctl`](../../../enterprise/auth/authentication/idp-dex).
 
-!!! Warning
-    - **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../../enterprise/auth/#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
-    
-        However, **this secret is only used when configuring through helm**:
+{{% notice warning %}}
+- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../../enterprise/auth/#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-        - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
-        - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
+    However, **this secret is only used when configuring through helm**:
 
+    - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
+    - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
+{{%/notice %}}
 
     - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
 

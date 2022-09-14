@@ -51,9 +51,9 @@ Find the exhaustive list of:
 If [auth is enabled](../../../enterprise/auth/) on the Pachyderm cluster, credentials must be passed with
 each S3 gateway endpoint as mentioned in the [**Configure Your S3 Client**](./configure-s3client/#set-your-credentials) page.
 
-!!! Warning "Important"
-    In any case, whether those values are empty (no authentication) or set, the Access Key must equal the 
-    Secret Key (both set to the same value). 
+{{% notice warning %}}
+In any case, whether those values are empty (no authentication) or set, the Access Key must equal the Secret Key (both set to the same value). 
+{{% /notice %}}
 
 ## Port Forwarding
 If you do not have direct access to the Kubernetes cluster, you can use port

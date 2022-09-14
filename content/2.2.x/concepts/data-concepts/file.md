@@ -24,9 +24,10 @@ To upload your files to a Pachyderm repository, run the
 `pachctl put file` command. By using the `pachctl put file`
 command, you can put both files and directories into a Pachyderm repository.
 
-!!! Warning
-     - It is important to note that **directories are implied from the paths of the files**. Directories are not stored and will not exist **unless they contain files**. 
-     - Do not use [regex metacharacters](https://www.w3schools.com/python/gloss_python_regex_metacharacters.asp) in a path or a file name.
+{{% notice warning %}}
+- It is important to note that **directories are implied from the paths of the files**. Directories are not stored and will not exist **unless they contain files**. 
+- Do not use [regex metacharacters](https://www.w3schools.com/python/gloss_python_regex_metacharacters.asp) in a path or a file name.
+{{% /notice %}}
 
 ## File Processing Strategies
 
@@ -41,39 +42,39 @@ same file to that repository, Pachyderm *overwrites* the existing
 file with the data, which results in the `A.csv` file having only data
 from the most recent upload.
 
-!!! Example
+{{% notice example %}}
+1. View the list of files:
 
-    1. View the list of files:
+     ```s
+     pachctl list file images@master
+     ```
 
-         ```s
-         pachctl list file images@master
-         ```
+     **System Response:**
 
-         **System Response:**
+     ```s
+     NAME   TYPE SIZE
+     /A.csv file 258B
+     ```
 
-         ```s
-         NAME   TYPE SIZE
-         /A.csv file 258B
-         ```
+2. Add the `A.csv` file once again:
 
-    1. Add the `A.csv` file once again:
+     ```s
+     pachctl put file images@master -f A.csv
+     ```
 
-         ```s
-         pachctl put file images@master -f A.csv
-         ```
+3. Verify that the file size has not changed:
 
-    1. Verify that the file size has not changed:
+     ```s
+     pachctl list file images@master
+     ```
 
-         ```s
-         pachctl list file images@master
-         ```
+     **System Response:**
 
-         **System Response:**
-
-         ```s
-         NAME   TYPE SIZE
-         /A.csv file 258B
-         ```
+     ```s
+     NAME   TYPE SIZE
+     /A.csv file 258B
+     ```
+{{% /notice %}}
 
 ### **Appending to files**
 When you enable the append mode by using the `--append`
@@ -82,36 +83,36 @@ For example, you have an `A.csv` file in the `images` repository.
 If you upload the same file to that repository with the
 `--append` flag, Pachyderm *appends* to the file.
 
-!!! Example
+{{% notice example %}}
+1. View the list of files:
 
-    1. View the list of files:
+   ```s
+   pachctl list file images@master
+   ```
 
-         ```s
-         pachctl list file images@master
-         ```
+   **System Response:**
 
-         **System Response:**
+   ```s
+   NAME   TYPE SIZE
+   /A.csv file 258B
+   ```
 
-         ```s
-         NAME   TYPE SIZE
-         /A.csv file 258B
-         ```
+2. Add the `A.csv` file once again:
 
-    1. Add the `A.csv` file once again:
+   ```s
+   pachctl put file -a images@master -f A.csv
+   ```
 
-         ```s
-         pachctl put file -a images@master -f A.csv
-         ```
+3. Verify that the file size has doubled:
 
-    1. Verify that the file size has doubled:
+   ```s
+   pachctl list file images@master
+   ```
 
-         ```s
-         pachctl list file images@master
-         ```
+   **System Response:**
 
-         **System Response:**
-
-         ```s
-         NAME   TYPE SIZE
-         /A.csv file 516B
-         ```
+   ```s
+   NAME   TYPE SIZE
+   /A.csv file 516B
+   ```
+{{% /notice %}}

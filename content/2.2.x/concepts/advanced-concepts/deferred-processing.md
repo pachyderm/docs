@@ -48,16 +48,17 @@ You can have multiple staging branches.  For example, `dev1`, `dev2`, `staging`.
 In the example below, we first create a repository called `data` on which we configure
 a staging branch:
 
-!!! Tip "Additionnaly"
-      A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
+{{% notice tip %}}
+A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
 
-      ```json
-         "pfs": {
-            "repo": "data",
-            "branch": "master",
-            "glob": "/*",
-      }
-      ```
+```json
+      "pfs": {
+      "repo": "data",
+      "branch": "master",
+      "glob": "/*",
+}
+```
+{{% /notice%}}
 
 1. Create a repository. For example, `data`.
 

@@ -96,8 +96,9 @@ you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQ
     Note that if you are using a cloud provider, you might
     choose to use the provider’s method of making PostgreSQL backups.
     
-    !!! Warning "Reminder"
-        A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
+    {{% notice warning %}}
+    A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
+    {{% /notice %}}
 
     !!! Info "Here are some pointers to the relevant documentation"
 

@@ -20,10 +20,12 @@ To check the active enterprise context, run:
 pachctl config get active-enterprise-context
 ```
 
-!!! Warning "Important Notes"
-    - In a single-cluster deployment, the **active enterprise context will be the same as the enterprise context**.
-    - The `pachctl  license` and `pachctl idp` commands **run against the enterprise context**. 
+{{% notice warning %}}
+- In a single-cluster deployment, the **active enterprise context will be the same as the enterprise context**.
+- The `pachctl  license` and `pachctl idp` commands **run against the enterprise context**. 
+
 `pachctl auth` commands accept an `--enterprise` flag to run against the enterprise context.
+{{% /notice %}}
 
 ## Configuring IDPs
 To configure IDP integrations, use `pachctl idp create-connector` as documented in 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Identity Providers
-description: 
+description:  Learn how to enable users to log in to Pachyderm using their preferred identity provider. 
 date: 
 # taxonomy #
 tags: 
@@ -9,15 +9,17 @@ series:
 seriesPart:
 ---
 
+{{% notice note %}}
+- Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have an enterprise key.
+  
+- Before connecting your IdP to Pachyderm, verify that
+the [Authentication](../../#activate-user-access-management) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges). 
+Alternatively, you have the option to set your IdP values directly through [Helm](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L696). 
 
+In any case, we recommend going through this page to understand the specifics of all the fields you will need to set up.
+- Run `pachctl auth use-auth-token` to login as a Root User.
 
-!!! Note
-    - Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have an enterprise key.
-    - Before connecting your IdP to Pachyderm, verify that
-    the [Authentication](../../#activate-user-access-management) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges). 
-    Alternatively, [**you have the option to set your IdP values directly through Helm**](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L696). 
-    In any case, we recommend going through this page to understand the specifics of all the fields you will need to set up.
-    - Run `pachctl auth use-auth-token` to login as a Root User.
+{{% /notice %}}
     
 
 ## Enable your users to authenticate to Pachyderm by logging into their favorite Identity Provider in 3 steps:
@@ -172,22 +174,22 @@ on the application settings page.
 - `redirect_uri` - This parameter should match what you have added
 to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
 
-!!! Warning
-    **When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
+{{% notice warning %}}
+**When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
 
-    - `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
-    - TLS requires all non-localhost redirectURIs to be **HTTPS**.
-    - AZURE USERS: 
-        - You must use TLS when deploying on Azure.
-        - When using Azure Active Directory, add the following to the oidc config:
-        ``` yaml
-        "config":{
-            "claimMapping": {
-                "email": "preferred_username"
-            } 
-        }      
-        ```
-
+- `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
+- TLS requires all non-localhost redirectURIs to be **HTTPS**.
+- AZURE USERS: 
+    - You must use TLS when deploying on Azure.
+    - When using Azure Active Directory, add the following to the oidc config:
+    ``` yaml
+    "config":{
+        "claimMapping": {
+            "email": "preferred_username"
+        } 
+    }      
+    ```
+{{% /notice %}}
 
 !!! Note
 

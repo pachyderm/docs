@@ -34,10 +34,9 @@ to add data to Pachyderm**. You can create a repository with the `pachctl create
 command, or by using one of [Pachyderm's client API](../../../reference/clients/). 
 After creating the repository, add your data by using the `pachctl put file` command.
 
-!!! warning "Noteworthy"
-    A Pachyderm repo name can include alphanumeric characters, dashes, and underscores,
-    and should be no more than 63 characters long.
-
+{{% notice warning %}}
+A Pachyderm repo name can include alphanumeric characters, dashes, and underscores, and should be no more than 63 characters long.
+{{% /notice %}}
 
 Pachyderm's repositories are divided into two categories:
 

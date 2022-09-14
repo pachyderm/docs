@@ -105,8 +105,9 @@ See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/4246
     You might choose to deploy your preferred Ingress Controller (Traefik, NGINX). Read about the installation and configuration of [Traefik](./pach-ui-ingress/) on a cluster.
 
 
-!!! Warning
-    To have the ingress routes use the https protocol without enabling the cert secret configuration, set `ingress.uriHttpsProtoOverride` to true in your values.yaml.
+{{% notice warning %}}
+To have the ingress routes use the https protocol without enabling the cert secret configuration, set `ingress.uriHttpsProtoOverride` to true in your values.yaml.
+{{% /notice %}}
 
     
 === "Example on AWS EKS"

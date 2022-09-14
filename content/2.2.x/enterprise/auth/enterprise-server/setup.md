@@ -9,8 +9,7 @@ series:
 seriesPart:
 ---
 
-The **Enterprise Server** is a component in Pachyderm which manages Enterprise Licensing
-and the integration with a company's Identity Providers (IDPs).
+The **Enterprise Server** is a component in Pachyderm which manages Enterprise Licensing and the integration with a company's Identity Providers (IDPs).
 
 An organization can have **many Pachyderm clusters registered with one single Enterprise Server**. Administrators activate the Enterprise Server with an **Enterprise License Key** from Pachyderm sales, and optionally configure authentication with their IDP via SAML, OIDC, LDAP, etc...
 
@@ -195,11 +194,11 @@ To enable the Enterprise Server on an existing cluster:
 	```s
 	pachctl auth activate --enterprise
 	```
-
-	!!! Warning
-		Enabling Auth will return a `root token` for the enterprise server. 
-		**This is separate from the root tokens for each pachd (cluster)**. 
-		They should all be stored securely.
+  {{% notice warning %}}
+  Enabling Auth will return a `root token` for the enterprise server. 
+  **This is separate from the root tokens for each pachd (cluster)**. 
+  They should all be stored securely.
+  {{% /notice  %}}
 
 Once the enterprise server is deployed, 
 deploy your cluster(s) (`helm install...`) and [register it(them) with the enterprise server](#3-register-your-cluster-with-the-enterprise-server). Note that you have the option to register your clusters directly in your values.yaml when deploying or after its deployment, using `pachctl`.

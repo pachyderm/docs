@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Role Binding
-description: 
+description: Learn how to grant and modify permissions on given resources for an IDP or robot  user.
 date: 
 # taxonomy #
 tags: 
@@ -14,25 +14,31 @@ This chapter will detail how to:
 - Grant/modify permissions (Roles) on given Resources to a User (Idp or Robot User).
 - Remove all permissions on a Ressource from a User (Idp or Robot User).
 
-!!! Note "Default Privileges"
-    - Root User: The activation of the Authentication and Authorization feature generates a **Root User** with **unalterable and unrevokable `clusterAdmin` privileges**. 
-    - Robot User: **Robot users do not have any permission by default**. They will need to be set by a `clusterAdmin`.
-    - The case of the Pipeline User: In Pachyderm, **you do not explicitly grant users access to pipelines**, they get set for you when you create or update a pipeline. 
+{{% notice note %}} 
+Default Privileges
 
-!!! Warning "Rules to keep in mind"
-    - A user or group can have one or more roles on a specific Resource.
-    - Roles are inherited: if a user has a role on a cluster, they have that role for all projects and repos in that cluster.
-    - The creator of a repo becomes its `repoOwner`.
-    - To update a pipeline, you must have at least `repoReader`-level access to all pipeline inputs
-        and `repoWriter`-level access to the pipeline output. 
-        This is because pipelines read from their input repos and write
-        to their output repos.
-    - When a user subscribes a pipeline to a repo, Pachyderm sets
-        that user as an `repoOwner` of that pipeline's output repo.
-        If additional users need access to the output repository,
-        the initial `repoOwner` of a pipeline's output repo, or a `clusterAdmin`,
-        needs to grant that user access to the repo.
-    
+- Root User: The activation of the Authentication and Authorization feature generates a **Root User** with **unalterable and unrevokable `clusterAdmin` privileges**. 
+- Robot User: **Robot users do not have any permission by default**. They will need to be set by a `clusterAdmin`.
+- The case of the Pipeline User: In Pachyderm, **you do not explicitly grant users access to pipelines**, they get set for you when you create or update a pipeline. 
+{{% /notice %}}
+
+{{% notice warning %}}
+Rules to keep in mind
+
+- A user or group can have one or more roles on a specific Resource.
+- Roles are inherited: if a user has a role on a cluster, they have that role for all projects and repos in that cluster.
+- The creator of a repo becomes its `repoOwner`.
+- To update a pipeline, you must have at least `repoReader`-level access to all pipeline inputs
+    and `repoWriter`-level access to the pipeline output. 
+    This is because pipelines read from their input repos and write
+    to their output repos.
+- When a user subscribes a pipeline to a repo, Pachyderm sets
+    that user as an `repoOwner` of that pipeline's output repo.
+    If additional users need access to the output repository,
+    the initial `repoOwner` of a pipeline's output repo, or a `clusterAdmin`,
+    needs to grant that user access to the repo.
+{{% /notice %}}
+
 ## Set Roles to Users
 
 - A **clusterAdmin** can grant admin privileges on a cluster or any lower level ressources to other users.     
@@ -42,38 +48,41 @@ This chapter will detail how to:
     ```s
     pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
     ```
-!!! Note
 
-    Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L391). 
 
-    For example, grant reader access to all repos to a specific group:
-    ```yaml
-     pachd:
-        pachAuthClusterRoleBindings:
-            group:data-scientists:
-            - repoReader
-    ```
-    Or, give the user `paul@company.com` the clusterAdmin role, and the robot user `wallie` logReader rights on the cluster. 
-    ```yaml
-     pachd:
-        pachAuthClusterRoleBindings:
-            user:paul@company.com:
-            - clusterAdmin
-            robot:wallie:
-            - logReader
-    ```
+{{% notice note %}}
 
-To keep using our Auth0 example and illustrate the attribution of a given Role to a User,
-let's have our `Root User` (with default clusterAdmin privileges) give `repoReader` access to a repo to our `one-pachyderm-user@gmail.com` user. 
+Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L391). 
+
+For example, grant reader access to all repos to a specific group:
+
+```yaml
+ pachd:
+    pachAuthClusterRoleBindings:
+        group:data-scientists:
+        - repoReader
+```
+Or, give the user `paul@company.com` the clusterAdmin role, and the robot user `wallie` logReader rights on the cluster. 
+
+```yaml
+ pachd:
+    pachAuthClusterRoleBindings:
+        user:paul@company.com:
+        - clusterAdmin
+        robot:wallie:
+        - logReader
+```
+{{% /notice %}}
+
+
+To keep using our Auth0 example and illustrate the attribution of a given Role to a User, let's have our `Root User` (with default clusterAdmin privileges) give `repoReader` access to a repo to our `one-pachyderm-user@gmail.com` user. 
 
 In particular, we will:
 
 1. Connect as our Root User again.
-1. Create a repo named `testinput` containing one text file.
-1. Grant `repoReader` access on this repo to our user `one-pachyderm-user@gmail.com` registered with our IdP (Auth0).
-1. See what happens when `one-pachyderm-user@gmail.com` tries to write in the repo without the proper writing access.
-
-<br>
+2. Create a repo named `testinput` containing one text file.
+3. Grant `repoReader` access on this repo to our user `one-pachyderm-user@gmail.com` registered with our IdP (Auth0).
+4. See what happens when `one-pachyderm-user@gmail.com` tries to write in the repo without the proper writing access.
 
 - **First, let's connect as our Root User:**
     ```s
@@ -87,7 +96,6 @@ In particular, we will:
     printf "this is a test" >./testinput/test.txt
     pachctl create repo testinput
     cd testinput && pachctl put file testinput@master -f test.txt
-
     ```
     A quick `pachctl list repo` will list your new repo and display your access level on that repo as a **clusterAdmin**.
     ![Admin Repo Access Level](../images/clusteradmin-repo-access.png)
@@ -105,19 +113,21 @@ In particular, we will:
     user:one-pachyderm-user@gmail.com: [repoReader]
     pach:root: [repoOwner]
     ```
+{{% notice note%}}
 
-    !!! Note
-        Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
-        Pachyderm defines 4 prefixes depending on the type of user:
+Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
+Pachyderm defines 4 prefixes depending on the type of user:
 
-        - robot
-        - user
-        - group
-        - pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
+- robot
+- user
+- group
+- pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
 
-        Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
+Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
+{{% /notice %}}
 
 - **Finally, have `one-pachyderm-user@gmail.com` try to add a file to `testinput` without proper writing privileges:**
+- 
     ```s
     # Login as `one-pachyderm-user@gmail.com`
     pachctl auth login
@@ -126,33 +136,40 @@ In particular, we will:
     cd testinput && pachctl put file testinput@master -f anothertest.txt
     ```
     The command returns an error message: 
-    ```
+
+    ```s
     user:one-pachyderm-user@pachyderm.io is not authorized to perform this operation - needs permissions [REPO_WRITE] on REPO testinput
     ```
 
-!!! Info
-    Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
+{{% notice info %}}
+  Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
+{{% /notice %}}
 
-!!! Note
-    - To alter a user's privileges, simply re-run the `pachctl auth set` command above with a different set of Roles. 
-    For example, 
-    ```s
-    pachctl auth set repo testinput repoWriter user:one-pachyderm-user@gmail.com
-    ```
-    will give one-pachyderm-user@gmail.com `repoWriter` privileges when they were inially granted `repoReader` access.
+{{% notice note %}}
+- To alter a user's privileges, simply re-run the `pachctl auth set` command above with a different set of Roles. 
 
-    - You can remove all access level on a repo to a user by using the `none` keyword.
-    For example,
-    ```s
-    pachctl auth set repo testinput none user:one-pachyderm-user@gmail.com
-    ```
-    will remove any previous granted rights on the repo `testinput` to the user one-pachyderm-user@gmail.com.
+For example, 
 
-    - To assign `repoReader` access to `allClusterUsers` on a repo:
-    ```s
-    pachctl auth set repo testinput repoReader allClusterUsers
-    ```   
+```s
+pachctl auth set repo testinput repoWriter user:one-pachyderm-user@gmail.com
+```
+will give one-pachyderm-user@gmail.com `repoWriter` privileges when they were inially granted `repoReader` access.
 
+- You can remove all access level on a repo to a user by using the `none` keyword.
+
+For example,
+
+```s
+pachctl auth set repo testinput none user:one-pachyderm-user@gmail.com
+```
+will remove any previous granted rights on the repo `testinput` to the user one-pachyderm-user@gmail.com.
+
+- To assign `repoReader` access to `allClusterUsers` on a repo:
+
+```s
+pachctl auth set repo testinput repoReader allClusterUsers
+```   
+{{% /notice %}}
 ## Set Roles to Groups
 
 If your IdP enables group support,
@@ -165,17 +182,17 @@ Let's keep using our Auth0 example as an illustration, and:
 1. Update our connector accordingly.
 1. Grant the group an owner access to a specific repo in Pachyderm.
 
-!!! Info
-    To enable the Group creation in Auth0, you will need to install an [`Authorization Extension`](https://auth0.com/docs/extensions/authorization-extension) to Auth0:
+{{% notice info %}}
+To enable the Group creation in Auth0, you will need to install an [`Authorization Extension`](https://auth0.com/docs/extensions/authorization-extension) to Auth0:
 
-    - Go to **Auth0 Dashboard > Extensions**.
-    - Select **Auth0 Authorization** and answer the prompt to install.
-    - Choose where you would like to store your data: **Webtask Storage** for this example and click **Install**
-    - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
-        - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
-        - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-        ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
-
+- Go to **Auth0 Dashboard > Extensions**.
+- Select **Auth0 Authorization** and answer the prompt to install.
+- Choose where you would like to store your data: **Webtask Storage** for this example and click **Install**
+- Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
+  - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
+  - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
+  ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
+{{% /notice %}}
 
 - 1- Group creation
 
@@ -245,6 +262,7 @@ Let's keep using our Auth0 example as an illustration, and:
 
     Note the addition of the `scopes` and `claimMapping` fields to your original connector configuration file.
     Update your connector:
+
     ```s
     pachctl idp update-connector auth0 --version 2
     ```
@@ -256,15 +274,18 @@ Let's keep using our Auth0 example as an illustration, and:
     pachctl auth set repo testinput repoOwner group:testgroup
     ```
     A quick check at this repo should give you its updated list of users an their access level:
+
     ```s
     pachctl auth get repo testinput
     ```
     **System Response**
-    ```
+
+    ```s
     pach:root: [repoOwner]
     user:another-pachyderm-user@gmail.com: [repoReader]
     group:testgroup: [repoOwner]
     ```
-    !!! Info "Useful note"
-        The following command `pachctl auth get-groups` lists the groups that have been defined on your cluster.
+    {{% notice tip %}}
+      The following command `pachctl auth get-groups` lists the groups that have been defined on your cluster.
+    {{% /notice %}}
 

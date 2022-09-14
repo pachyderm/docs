@@ -9,8 +9,9 @@ series:
 seriesPart:
 ---
 
-!!! Warning
-    `Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{% notice warning %}}
+`Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{% /notice %}}
 
 Pachyderm [pipeline's specification](../../../reference/pipeline-spec) files are intuitive, simple, and language agnostic.
 They are, however, very static.

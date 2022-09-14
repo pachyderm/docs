@@ -14,8 +14,9 @@ should be seamless.
 Therefore, the upgrade procedure is simple and requires little to no downtime.
 As a good practice, we recommend that you check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before an upgrade to get an understanding of the changes introduced between your current version and your target. 
 
-!!! Warning 
-       Do not use these steps to upgrade between major versions as it might result in data corruption.
+{{% notice warning %}}
+Do not use these steps to upgrade between major versions as it might result in data corruption.
+{{% /notice %}}
 
 Complete the following steps to upgrade Pachyderm from one minor release to another.
 ## 1- Backup Your Cluster

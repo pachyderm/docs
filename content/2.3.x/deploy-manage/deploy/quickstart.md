@@ -46,8 +46,11 @@ Use the latest available version of the components listed below.
 * [pachctl](../../../getting-started/local-installation#install-pachctl): the cli to interact with Pachyderm.
 * Install [`Helm`](https://helm.sh/docs/intro/install/) for your deployment. 
 
-!!! Warning "Get a Pachyderm Enterprise key"
-    To get a free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
+{{% notice warning %}}
+Get a Pachyderm Enterprise key
+
+To get a free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
+{{% /notice %}}
 
 Select your favorite cloud provider.
 

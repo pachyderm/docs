@@ -18,14 +18,15 @@ output data through the S3 protocol. For example, running Kubeflow or Apache™ 
     Note that this use case of the S3 Gateway differs from the [Global use case](index.md). The latter runs directly on the `pachd` pod and exists independently and outside of any pipeline lifecycle. 
     The *"Sidecar S3 Gateway"* (also referred to as *"S3 Enabled Pipelines"*), on the other hand, is a separate S3 gateway instance **running in a `sidecar` container in the `pipeline worker` pod**.
 
-!!! Warning "Maintaining data provenance"
-    For example, if a Kubeflow pipeline were to read and write data from a Pachyderm repo
-    directly through the global S3 gateway, Pachyderm
-    would not be able to maintain data provenance
-    (the alteration of the data in the updated repo could not be traced back to any given job/input commit). 
+{{% notice warning %}} 
+Maintaining data provenance
 
-    Using an S3-enabled pipeline, Pachyderm will control the flow and
-    the same Kubeflow code will now be part of Pachyderm's job execution, thus maintaining proper data provenance.
+For example, if a Kubeflow pipeline were to read and write data from a Pachyderm repo directly through the global S3 gateway, Pachyderm
+would not be able to maintain data provenance (the alteration of the data in the updated repo could not be traced back to any given job/input commit). 
+
+Using an S3-enabled pipeline, Pachyderm will control the flow and
+the same Kubeflow code will now be part of Pachyderm's job execution, thus maintaining proper data provenance.
+{{% /notice %}}
 
 The S3 gateway sidecar instance is created together with the
 pipeline and shut down when the pipeline is destroyed.

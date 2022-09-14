@@ -67,15 +67,15 @@ Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [
 Pachyderm root token:
 54778a770c554d0fb84563033c9cb808
 ```
-!!! Warning 
-    You must save the token to a secure location
-    to avoid being locked out of your cluster.
-    
-    When needed, use this token to log back in as this initial admin user:
+{{% notice warning %}}
+You must save the token to a secure location to avoid being locked out of your cluster.
 
-    ```s
-    pachctl auth use-auth-token
-    ```
+When needed, use this token to log back in as this initial admin user:
+
+```s
+pachctl auth use-auth-token
+```
+{{% /notice %}}
 
 As a *Root User* (or initial admin), 
 you can now configure Pachyderm to work with

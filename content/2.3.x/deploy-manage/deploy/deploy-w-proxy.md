@@ -28,8 +28,9 @@ This page is an add-on to existing installation instructions in the case where y
           type: LoadBalancer
       ```
 
-!!! Warning
-    The deployment of Pachyderm with a proxy is optional at the moment and will become permanent in the next minor release of Pachyderm.
+{{% notice warning %}}
+The deployment of Pachyderm with a proxy is optional at the moment and will become permanent in the next minor release of Pachyderm.
+{{% /notice %}}
 
 The diagram below gives a quick overview of the layout of services and pods when using a proxy. In particular, it details how Pachyderm listens to all inbound traffic on one port, then routes each call to the appropriate backend:![Infrastruture Recommendation](../images/infra-recommendations-with-proxy.png)
 

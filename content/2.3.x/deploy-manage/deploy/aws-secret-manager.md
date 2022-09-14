@@ -27,8 +27,9 @@ To retrieve your secrets through your workloads running on your cluster, you wil
 - A Secrets Store CSI driver
 - AWS Secrets Manager and Config Provider
 
-!!! Warning
-      The ASCP works with Amazon Elastic Kubernetes Service (Amazon EKS) 1.17+.
+{{% notice warning %}}
+The ASCP works with Amazon Elastic Kubernetes Service (Amazon EKS) 1.17+.
+{{% /notice %}}
 
 ### Install the Secrets Store CSI Driver
 Deploy the [**Secrets Store CSI driver**](https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html) by following the installation steps.

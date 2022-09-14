@@ -19,9 +19,11 @@ Pachyderm Enterprise Edition helps you scale and manage Pachyderm data pipelines
 
 It delivers the most recent version of the Community Edition of Pachyderm along with additional features(#additioanl-features).
 
-!!! Warning "THE ENTERPRISE EDITION LIFTS **ALL SCALING LIMITATIONS**"
-     Note that the activation of the Enterprise Edition [**lifts all scaling limits of the Community Edition**](../../reference/scaling-limits/). You can run as many pipelines as you need and parallelize your jobs without constraints.
+{{% notice warning %}} 
+THE ENTERPRISE EDITION LIFTS **ALL SCALING LIMITATIONS**
 
+     Note that the activation of the Enterprise Edition [**lifts all scaling limits of the Community Edition**](../../reference/scaling-limits/). You can run as many pipelines as you need and parallelize your jobs without constraints.
+{{%/notice %}}
 
 ### Additional Features
 

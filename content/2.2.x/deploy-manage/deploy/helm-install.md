@@ -39,11 +39,11 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
 
 See the reference [values.yaml](../../../reference/helm-values/) for the list of all available helm values at your disposal.
 
-!!! Warning
-    **No default k8s CPU and memory requests and limits** are created for pachd.  If you don't provide values in the values.yaml file, then those requests and limits are simply not set. 
-    
-    For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
+{{% notice warning %}}
+**No default k8s CPU and memory requests and limits** are created for pachd.  If you don't provide values in the values.yaml file, then those requests and limits are simply not set. 
 
+For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
+{{% /notice %}}
     
 
 !!! Note "**Platform Secrets: READ BEFORE ANY INSTALL OR UPGRADE**" 
@@ -192,6 +192,6 @@ When a new version of Pachyderm's chart is released, or when you want to change 
 helm upgrade pachd -f my_new_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>        
 ```
 
-!!! Warning
-
-        Make sure that your platform's secret names have been set properly. Refer to this [section](#edit-a-valuesyaml-file) for the list of secrets we recommend creating prior to installing the product, and what to do if you have not. **Failing to provide those values might cause your upgrade to fail.**
+{{% notice warning %}}
+Make sure that your platform's secret names have been set properly. Refer to this [section](#edit-a-valuesyaml-file) for the list of secrets we recommend creating prior to installing the product, and what to do if you have not. **Failing to provide those values might cause your upgrade to fail.**
+{{% /notice %}}

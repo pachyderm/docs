@@ -49,8 +49,9 @@ We recommend following one of these guides to get Kubernetes running.
 ### Storage Classes 
 Once you deploy Kubernetes, you will also need to configure [storage classes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1) to consume persistent volumes for `etcd` and `postgresql`. 
 
-!!! Warning
-    The database and metadata service (Persistent disks) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your storage provider, you may need to oversize the volume significantly to ensure enough IOPS.
+{{% notice warning %}}
+The database and metadata service (Persistent disks) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your storage provider, you may need to oversize the volume significantly to ensure enough IOPS.
+{{% /notice %}}
 
 Once you have determined the name of the storage classes you are going to use and the sizes, you can add them to your helm values file, specifically:
 
