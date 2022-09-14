@@ -21,6 +21,7 @@
 
     --is-text-color:  var(--is-black);
     --is-text-color-inverted: var(--is-white);
+    --is-link-color: var(--is-purple);
     --is-shadow-color: var(--is-dark-gray);
     --is-highlight-color: var(--is-purple);
     --is-code-color: var(--is-gray);
@@ -95,7 +96,7 @@ body, div, section, button, h1, h2, h3, h4, h5, h6  {
 
 a {
     text-decoration: none;
-    color: var(--is-link-color);
+    color: inherit;
 }
 a:hover, button:hover, .label:hover { opacity: 0.7; }
 
@@ -1592,4 +1593,9 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   width: 100%; 
   height: 100%; 
   overflow-y: scroll; 
+}
+
+.content > p a, .content > ul a, .content > ol a  { 
+  text-decoration: underline;
+  font-weight: 700;
 }
