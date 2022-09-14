@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Ingest Data into and Export data from Pachyderm 
-description: 
+title: Basic Data Operations
+description:  Learn how to mount, ingest, push, pull, and expose data with Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["data operations"]
 series:
 seriesPart:
 ---

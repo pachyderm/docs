@@ -9,7 +9,7 @@
   {{ $mermaid := resources.Get "js/mermaid.js"  | resources.Minify  }}
   {{ $legacyNotes := resources.Get "js/legacyNotes.js"  | resources.Minify  }}
   {{ $keyboard := resources.Get "js/keyboard.js"  | resources.Minify  }}
-  {{ $algolia := resources.Get "js/algolia.js"  | resources.Minify  }}}
+  {{ $algolia := resources.Get "js/algolia.js"  | resources.Minify  }}
 
 
   {{ $js := slice $darkMode $toc $clippy $notices  $relatedArticles $pagination $filterByTags $legacyNotes $keyboard | resources.Concat "js/bundle.js"}}
