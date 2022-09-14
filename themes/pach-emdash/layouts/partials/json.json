@@ -5,6 +5,7 @@
 		"description": "{{ .Description }}",
 		"date": "{{ .Date | time.Format ":date_long" }}",
 		"uri": "{{ .Permalink }}",
+		"relURI": "{{ .RelPermalink }}",
 		"body": {{ .Plain | jsonify }},
 		"beta": "{{ .Params.beta}}",
 		"hidden": "{{ .Params.hidden}}",
