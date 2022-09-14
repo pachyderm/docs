@@ -1,10 +1,10 @@
 ---
 # metadata # 
 title:  Deploy on Windows
-description: 
+description: Learn how to deploy Pachyderm locally on a Windows machine.
 date: 
 # taxonomy #
-tags: 
+tags: ["windows"]
 series:
 seriesPart:
 ---

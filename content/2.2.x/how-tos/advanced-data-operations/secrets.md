@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Create and Manage Secrets in Pachyderm
-description: 
+title: Manage Secrets
+description: Learn how to create and manage Kubernetes secrets in Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["secrets"]
 series:
 seriesPart:
 ---

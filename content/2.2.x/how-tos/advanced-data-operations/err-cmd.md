@@ -1,22 +1,24 @@
 ---
 # metadata # 
 title: Skip Failed Datums
-description: 
+description: Learn how to skip failed datums to prevent jobs from fully failing.
 date: 
 # taxonomy #
-tags: 
+tags: ["datums"]
 series:
 seriesPart:
 ---
 
-!!! Note "TL;DR"
-    The `err_cmd` parameter enables you to fail a datum without failing the
-    whole job.
+{{% notice note %}}
+The `err_cmd` parameter enables you to fail a datum without failing the
+whole job.
+{{% /notice %}}
 
-!!! Note
-    Before you read this section, make sure that you understand such
-    concepts as [Datum](../../../concepts/pipeline-concepts/datum/) and
-    [Pipeline](../../../concepts/pipeline-concepts/pipeline/).
+{{% notice tip %}}
+Before you read this section, make sure that you understand such
+concepts as [Datum](../../../concepts/pipeline-concepts/datum/) and
+[Pipeline](../../../concepts/pipeline-concepts/pipeline/).
+{{% /notice %}}
 
 When Pachyderm processes your data, it breaks it up into units of
 computation called datums. Each datum is processed separately.

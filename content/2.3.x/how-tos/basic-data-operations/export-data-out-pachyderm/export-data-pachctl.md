@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Export Your Data with `pachctl`
-description: 
+title: Export via Pachctl
+description: Learn how to export data using the pachctl get command. 
 date: 
 # taxonomy #
 tags: 

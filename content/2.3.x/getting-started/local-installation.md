@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Local Installation  
-description: 
+description: Learn how to install Pachyderm locally using your favorite container solution.
 date: 
 # taxonomy #
 tags: 

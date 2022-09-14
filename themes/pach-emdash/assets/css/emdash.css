@@ -1,15 +1,15 @@
 /* EmdashCSS by @lbliii - https://emdash.dev; https://github.com/lbliii/emdashCSS */
 :root {
     --is-font-family: 'Montserrat', sans-serif;
-    --is-header-line-height: 80%;
+    --is-header-line-height: 100%;
     --xxsmall-text: calc(8px); 
     --xsmall-text: calc(12px);
     --small-text: calc(16px + 0vw);
-    --medium-text: calc(16px + .5vw);
-    --large-text: calc(16px + 1vw);
-    --xlarge-text: calc(16px + 1.5vw);
-    --xxlarge-text: calc(16px + 2vw);
-    --xxxlarge-text: calc(16px + 4vw);  
+    --medium-text: calc(16px + .25vw);
+    --large-text: calc(16px + .5vw);
+    --xlarge-text: calc(16px + .75vw);
+    --xxlarge-text: calc(16px + 1vw);
+    --xxxlarge-text: calc(16px + 3vw);  
 
     --spacing-1: 90;
     --spacing-2: 60;

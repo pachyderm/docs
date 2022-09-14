@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Mount a Volume in a Pipeline
-description: 
+title: Mount Data
+description: Learn how to mount local or network-attached storage and use its data in Pachyderm pipelines
 date: 
 # taxonomy #
 tags: 

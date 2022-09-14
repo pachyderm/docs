@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Delete Commits, Squash Commits, and Delete Data
-description: 
+title: Manage Commits & Delete Data
+description: Learn how to delete and squash commits. 
 date: 
 # taxonomy #
 tags: 
@@ -39,12 +39,17 @@ When you delete a HEAD commit, Pachyderm performs the following actions:
   downstream in your DAG.
 - Deletes the output commits from the deleted jobs. All the actions listed above are applied to those commits as well.
 
-!!! Warning
+{{% notice warning %}}
      This command will **only succeed if the HEAD commit has no children on any branch**. `pachctl delete commit` will error when attempting to delete a HEAD commit with children. 
+{{% /notice %}}
 
-!!! Note "Are you wondering how a HEAD commit can have children?"
-     A commit can be the head of a branch and still have children. 
-     For instance, given a `master` branch in a repository named `repo`, if you branch `master` by running `pachctl create branch repo@staging --head repo@master`, the `master`'s HEAD will have an alias child on `staging`. 
+{{% notice note %}}
+Are you wondering how a HEAD commit can have children?
+
+A commit can be the head of a branch and still have children. 
+For instance, given a `master` branch in a repository named `repo`, if you branch `master` by running `pachctl create branch repo@staging --head repo@master`, the `master`'s HEAD will have an alias child on `staging`. 
+
+{{% /notice %}}
 
 ## Squash non-HEAD Commits
 

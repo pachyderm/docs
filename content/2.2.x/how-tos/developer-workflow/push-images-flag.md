@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: The Push Images Flag
-description: 
+description: Learn how to use the --push-images flag to accelerate pipeline development speed.
 date: 
 # taxonomy #
 tags: 

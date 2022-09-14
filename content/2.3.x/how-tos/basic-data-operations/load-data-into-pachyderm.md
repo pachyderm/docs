@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Ingest Data by Using `pachctl`
-description: 
+title: Ingest Data
+description: Learn how to ingest data using the pachctl put command.
 date: 
 # taxonomy #
-tags: 
+tags: ["ingest"]
 series:
 seriesPart:
 ---

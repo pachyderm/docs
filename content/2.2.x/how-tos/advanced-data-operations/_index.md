@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Advanced Data Operations
-description: 
+description: Learn how to perform advanced data operations such as...
 date: 
 # taxonomy #
 tags: 

@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Data Warehouse Integration
-description: 
+title: SQL Ingest
+description: Learn how to set up the SQL Ingest Tool to import data into Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["sql","ingest"]
 series:
 seriesPart:
 ---

@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Export Your Data with `egress`
-description: 
+title: Export via Egress
+description: Learn how to push pipeline results to an external datastore using the egress pipeline spec attribute.
 date: 
 # taxonomy #
-tags: 
+tags: ["egress"]
 series:
 seriesPart:
 ---

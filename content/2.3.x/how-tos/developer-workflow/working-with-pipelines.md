@@ -1,10 +1,10 @@
 ---
 # metadata # 
 title: Working with Pipelines
-description: 
+description: Learn about the steps involved in building, testing, and deploying data-transformation pipelines in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines"]
 series:
 seriesPart:
 ---

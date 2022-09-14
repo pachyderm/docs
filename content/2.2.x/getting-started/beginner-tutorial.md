@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Beginner Tutorial
-description: 
+description: Learn how to quickly ingest photos, trace their outlines, and output a collage using the transformed data in Pachyderm.
 date: 
 # taxonomy #
 tags: 
@@ -9,9 +9,7 @@ series:
 seriesPart:
 ---
 
-Welcome to the beginner tutorial for Pachyderm! 
-This tutorial should take about 15 minutes
-to complete and introduce you to Pachyderm's fundamental concepts.
+Welcome to the beginner tutorial for Pachyderm! This tutorial should take about 15 minutes to complete and introduce you to Pachyderm's fundamental concepts.
 
 ### Prerequisites
 
@@ -21,9 +19,11 @@ This guide assumes that you have Pachyderm running.
 
 - Or check out our [Quick Install](../../deploy-manage/deploy/quickstart/) page to deploy on your favorite cloud.
 
-!!! Note
-    If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
-    This handy tool suggests `pachctl` commands as you type and helps you learn Pachyderm faster.
+{{% notice tip %}}
+If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
+
+This handy tool suggests `pachctl` commands as you type and helps you learn Pachyderm faster.
+{{% /notice %}}
 
 For this tutorial, you will use `pachctl` to interact with your Pachyderm cluster from your terminal window and Console (Pachyderm Web UI) to interactively
 visualize and explore your pipelines, your data, debug jobs, read logs, etc...
@@ -62,8 +62,9 @@ a users table, or training data for an ML model. Repos are easy to create
 and do not take much space when empty so do not worry about making
 tons of them.
 
-!!! Info
-    More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
+{{% notice info %}}
+More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
+{{% /notice %}}
 
 For this demo, we create a repo called `images` to hold the
 data we want to process:
@@ -91,9 +92,10 @@ on the master branch is 0B.
 
 Check your Console and notice the creation of your repository. 
 
-!!! Note 
-    Note the "plus" icon in your `images` repository. 
-    It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
+{{% notice note %}}
+Note the "plus" icon in your `images` repository. 
+It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
+{{% /notice %}}
 
 ![Console images repo](../images/console-images-repo.png)
 
@@ -104,8 +106,9 @@ Pachyderm, you write data to an explicit `commit`. Commits are immutable
 snapshots of your data which give Pachyderm its version control properties.
 You can add, remove, or update `files` in a given commit.
 
-!!! Info
-    More about the concept of [`Commit`](../../concepts/data-concepts/commit/#commit) in Pachyderm.
+{{% notice note %}}
+More about the concept of [`Commit`](../../concepts/data-concepts/commit/#commit) in Pachyderm.
+{{% /notice %}}
 
 Let's start by adding a file, in this case an image, to a new
 commit. We have provided some sample images for you that we host on

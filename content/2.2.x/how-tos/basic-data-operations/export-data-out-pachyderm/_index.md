@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Export Data
-description: 
+description: Learn the different ways you can export transformed data from Pachyderm.
 date: 
 # taxonomy #
 tags: 

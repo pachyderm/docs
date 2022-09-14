@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Mount a Repo to a Local Computer
-description: 
+title: Mount a Repo Locally
+description: Learn how to mount a repository as a local filesystem using the pachctl mount command. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Beginner Tutorial
-description: 
+description: Learn how to quickly ingest photos, trace their outlines, and output a collage using the transformed data in Pachyderm.
 date: 
 # taxonomy #
 tags: 

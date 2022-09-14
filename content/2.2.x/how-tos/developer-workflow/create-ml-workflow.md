@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Create a Machine Learning Workflow
-description: 
+title: Machine Learning Workflows
+description:  Learn how to incorporate Pachyderm into your Machine Learning workflows.
 date: 
 # taxonomy #
 tags: 

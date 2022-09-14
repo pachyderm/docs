@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: CI/CD Integration
-description: 
+description:  Learn how to incorporate Pachyderm into your overall CI/CD workflows.
 date: 
 # taxonomy #
 tags: 

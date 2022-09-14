@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Egress To An SQL Database
-description: 
+title: SQL Egress 
+description: Learn how to egress data to an SQL database.
 date: 
 # taxonomy #
-tags: 
+tags: ["sql", "egress"]
 series:
 seriesPart:
 ---

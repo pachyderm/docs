@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Delete Commits, Squash Commits, and Delete Data
-description: 
+title: Manage Commits & Delete Data
+description: Learn how to delete and squash commits. 
 date: 
 # taxonomy #
 tags: 

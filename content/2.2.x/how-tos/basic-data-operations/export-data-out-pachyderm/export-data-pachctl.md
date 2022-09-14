@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Export Your Data with `pachctl`
-description: 
+title: Export via Pachctl
+description: Learn how to export data using the pachctl get command. 
 date: 
 # taxonomy #
 tags: 
@@ -50,33 +50,36 @@ To export your data with pachctl:
       OBX|2|NM|2571-8^Triglyceride|110|mg/dL
       ```
 
-!!! Note
-      You can view the parent, grandparent, and any previous
-      commit by using the caret (`^`) symbol followed by a number that
-      corresponds to an ancestor in sequence:
+{{% notice note %}}
+You can view the parent, grandparent, and any previous
+commit by using the caret (`^`) symbol followed by a number that
+corresponds to an ancestor in sequence:
 
-      * View a parent commit
-         ```s
-         pachctl list commit <repo>@<branch-or-commit>^:<path/to/file>
-         ```
+* View a parent commit
+  
+   ```s
+   pachctl list commit <repo>@<branch-or-commit>^:<path/to/file>
+   ```
 
-         ```s
-         pachctl get file <repo>@<branch-or-commit>^:<path/to/file>
-         ```
+   ```s
+   pachctl get file <repo>@<branch-or-commit>^:<path/to/file>
+   ```
 
-      * View an `<n>` parent of a commit
-         ```s
-         pachctl list commit <repo>@<branch-or-commit>^<n>:<path/to/file>
-         ```
+* View an `<n>` parent of a commit
+  
+   ```s
+   pachctl list commit <repo>@<branch-or-commit>^<n>:<path/to/file>
+   ```
 
-         ```s
-         pachctl get file <repo>@<branch-or-commit>^<n>:<path/to/file>
-         ```
+   ```s
+   pachctl get file <repo>@<branch-or-commit>^<n>:<path/to/file>
+   ```
 
-         **Example:**
-         ```s
-         pachctl get file datas@master^4:user_data.csv
-         ```
+   **Example:**
 
-         If the file does not exist in that revision, Pachyderm displays an error message.
+   ```s
+   pachctl get file datas@master^4:user_data.csv
+   ```
+
+   If the file does not exist in that revision, Pachyderm displays an error message.
 
