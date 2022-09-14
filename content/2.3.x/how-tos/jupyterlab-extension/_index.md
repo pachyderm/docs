@@ -1,10 +1,10 @@
 ---
 # metadata # 
 title:  Pachyderm JupyterLab Mount Extension
-description: 
+description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["integrations", "jupyterlab"]
 series:
 seriesPart:
 weight: 

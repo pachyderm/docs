@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title:  Delete a Pipeline
-description: 
+title: Delete a Pipeline
+description: Learn how to delete a pipeline using the pachctl delete command. 
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines"]
 series:
 seriesPart:
 ---

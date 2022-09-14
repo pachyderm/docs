@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Pipeline Specification
-description: 
+description:  Learn about the different attributes of a pipeline spec. 
 date: 
 # taxonomy #
 tags: 
@@ -27,7 +27,7 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
       "pipeline": {
         "name": string
       },
-      "description": string,
+      "description": "string",
       "metadata": {
         "annotations": {
             "annotation": string
@@ -37,7 +37,7 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
         }
       },
       "transform": {
-        "image": string,
+        "image": "string",
         "cmd": [ string ],
         "stdin": [ string ],
         "err_cmd": [ string ],
@@ -46,67 +46,67 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
             string: string
         },
         "secrets": [ {
-            "name": string,
+            "name": "string",
             "mount_path": string
         },
         {
-            "name": string,
-            "env_var": string,
+            "name": "string",
+            "env_var": "string",
             "key": string
         } ],
         "image_pull_secrets": [ string ],
         "accept_return_code": [ int ],
         "debug": bool,
-        "user": string,
-        "working_dir": string,
-        "dockerfile": string,
+        "user": "string",
+        "working_dir": "string",
+        "dockerfile": "string",
       },
       "parallelism_spec": {
         "constant": int
       },
       "resource_requests": {
-        "memory": string,
+        "memory": "string",
         "cpu": number,
         "gpu": {
-          "type": string,
+          "type": "string",
           "number": int
         }
-        "disk": string,
+        "disk": "string",
       },
       "resource_limits": {
-        "memory": string,
+        "memory": "string",
         "cpu": number,
         "gpu": {
-          "type": string,
+          "type": "string",
           "number": int
         }
-        "disk": string,
+        "disk": "string",
       },
       "sidecar_resource_limits": {
-        "memory": string,
+        "memory": "string",
         "cpu": number
       },
-      "datum_timeout": string,
+      "datum_timeout": "string",
       "datum_tries": int,
-      "job_timeout": string,
+      "job_timeout": "string",
       "input": {
         <"pfs", "cross", "union", "join", "group" or "cron" see below>
       },
       "s3_out": bool,
-      "reprocess_spec": string,
-      "output_branch": string,
+      "reprocess_spec": "string",
+      "output_branch": "string",
       "egress": {
         // Egress to an object store
         "URL": "s3://bucket/dir"
         // Egress to a database
         "sql_database": {
-            "url": string,
+            "url": "string",
             "file_format": {
-                "type": string,
+                "type": "string",
                 "columns": [string]
             },
             "secret": {
-                "name": string,
+                "name": "string",
                 "key": "PACHYDERM_SQL_PASSWORD"
             }
         }
@@ -127,8 +127,8 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
         "node_selector": {string: string},
         "priority_class_name": string
       },
-      "pod_spec": string,
-      "pod_patch": string,
+      "pod_spec": "string",
+      "pod_patch": "string",
     }
 
     ------------------------------------
@@ -136,10 +136,10 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
     ------------------------------------
 
     "pfs": {
-      "name": string,
-      "repo": string,
-      "branch": string,
-      "glob": string,
+      "name": "string",
+      "repo": "string",
+      "branch": "string",
+      "glob": "string",
       "lazy" bool,
       "empty_files": bool,
       "s3": bool
@@ -152,10 +152,10 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
     "cross" or "union": [
       {
         "pfs": {
-          "name": string,
-          "repo": string,
-          "branch": string,
-          "glob": string,
+          "name": "string",
+          "repo": "string",
+          "branch": "string",
+          "glob": "string",
           "lazy" bool,
           "empty_files": bool,
           "s3": bool
@@ -163,10 +163,10 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
       },
       {
         "pfs": {
-          "name": string,
-          "repo": string,
-          "branch": string,
-          "glob": string,
+          "name": "string",
+          "repo": "string",
+          "branch": "string",
+          "glob": "string",
           "lazy" bool,
           "empty_files": bool,
           "s3": bool
@@ -183,11 +183,11 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
     "join": [
       {
         "pfs": {
-          "name": string,
-          "repo": string,
-          "branch": string,
-          "glob": string,
-          "join_on": string,
+          "name": "string",
+          "repo": "string",
+          "branch": "string",
+          "glob": "string",
+          "join_on": "string",
           "outer_join": bool,
           "lazy": bool,
           "empty_files": bool,
@@ -196,11 +196,11 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
       },
       {
         "pfs": {
-          "name": string,
-          "repo": string,
-          "branch": string,
-          "glob": string,
-          "join_on": string,
+          "name": "string",
+          "repo": "string",
+          "branch": "string",
+          "glob": "string",
+          "join_on": "string",
           "outer_join": bool,
           "lazy": bool,
           "empty_files": bool,
@@ -217,11 +217,11 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
     "group": [
       {
         "pfs": {
-          "name": string,
-          "repo": string,
-          "branch": string,
-          "glob": string,
-          "group_by": string,
+          "name": "string",
+          "repo": "string",
+          "branch": "string",
+          "glob": "string",
+          "group_by": "string",
           "lazy": bool,
           "empty_files": bool,
           "s3": bool
@@ -229,11 +229,11 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
       },
       {
         "pfs": {
-          "name": string,
-          "repo": string,
-          "branch": string,
-          "glob": string,
-          "group_by": string,
+          "name": "string",
+          "repo": "string",
+          "branch": "string",
+          "glob": "string",
+          "group_by": "string",
           "lazy": bool,
           "empty_files": bool,
           "s3": bool
@@ -248,9 +248,9 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
     ------------------------------------
 
     "cron": {
-        "name": string,
-        "spec": string,
-        "repo": string,
+        "name": "string",
+        "spec": "string",
+        "repo": "string",
         "start": time,
         "overwrite": bool
     }
@@ -562,18 +562,18 @@ single repo.
 
 ```
 {
-    "name": string,
-    "repo": string,
-    "branch": string,
-    "glob": string,
+    "name": "string",
+    "repo": "string",
+    "branch": "string",
+    "glob": "string",
     "lazy" bool,
     "empty_files": bool,
     "s3": bool,
     "trigger": {
-        "branch": string,
+        "branch": "string",
         "all": bool,
-        "cron_spec": string,
-        "size": string,
+        "cron_spec": "string",
+        "size": "string",
         "commits": int
     }
 }
@@ -719,9 +719,9 @@ contains the time which satisfied the spec.
 
 ```
 {
-    "name": string,
-    "spec": string,
-    "repo": string,
+    "name": "string",
+    "spec": "string",
+    "repo": "string",
     "start": time,
     "overwrite": bool
 }

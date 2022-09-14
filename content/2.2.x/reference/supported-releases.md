@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  Pachyderm Supported Releases and Features
-description: 
+title:  Pachyderm Supported Releases & Features
+description: Check which versions of Pachyderm are actively supported using this guide.
 date: 
 # taxonomy #
 tags: 

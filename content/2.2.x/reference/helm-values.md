@@ -1,10 +1,10 @@
 ---
 # metadata # 
 title:  Helm Chart Values
-description: 
+description:  Learn about the configurable helm chart attributes for Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["configuration", "helm"]
 series:
 seriesPart:
 ---

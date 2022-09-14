@@ -99,12 +99,12 @@ In Pachyderm, a Secret can be used in three different ways:
 
       ```json
       "transform": {
-         "image": string,
+         "image": "string",
          "cmd": [ string ],
          ...
          "secrets": [ {
-            "name": string,
-            "env_var": string,
+            "name": "string",
+            "env_var": "string",
             "key": string
          }]
       }
@@ -161,11 +161,11 @@ In Pachyderm, a Secret can be used in three different ways:
 
       ```json
       "transform": {
-         "image": string,
+         "image": "string",
          "cmd": [ string ],
          ...
          "secrets": [ {
-            "name": string,
+            "name": "string",
             "mount_path": string
          }]
       }
@@ -179,7 +179,7 @@ In Pachyderm, a Secret can be used in three different ways:
 
       ```JSON
       "transform": {
-         "image": string,
+         "image": "string",
          "cmd": [ string ],
          ...
          "image_pull_secrets": [ string ]

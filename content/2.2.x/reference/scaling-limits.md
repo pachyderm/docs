@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title:  Pipeline Scaling Limits in Community Edition
-description: 
+title:  Pipeline Scaling Limits (CE)
+description: Learn about the built-in scaling limitations of Pachyderm's Community Edition.
 date: 
 # taxonomy #
-tags: 
+tags: ["community edition"]
 series:
 seriesPart:
 ---

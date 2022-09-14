@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title:  Config Specification
-description: 
+title:  Configuration Specification
+description: Learn about the base configuration options available for Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["configuration"]
 series:
 seriesPart:
 ---
@@ -17,20 +17,20 @@ reference. If you wish to change a config value, you should do so via
 
 ```json
 {
-  "user_id": string,
+  "user_id": "string",
   "v2": {
-    "active_context": string,
-    "active_enterprise_context": string,
+    "active_context": "string",
+    "active_enterprise_context": "string",
     "contexts": {
         "source": int,
-        "pachd_address": string,
-        "server_cas": string,
-        "session_token": string,
-        "active_transaction": string,
-        "cluster_name": string,
-        "auth_info": string,
-        "namspace": string,
-        "cluster_deployment_id": string,
+        "pachd_address": "string",
+        "server_cas": "string",
+        "session_token": "string",
+        "active_transaction": "string",
+        "cluster_name": "string",
+        "auth_info": "string",
+        "namspace": "string",
+        "cluster_deployment_id": "string",
         "enterprise_server": bool,
         "port_forwarders": {
           service_name: int,

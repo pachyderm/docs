@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title:  Create a Pipeline
+title: Create a Pipeline
 description: 
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines"]
 series:
 seriesPart:
 ---

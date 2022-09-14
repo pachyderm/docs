@@ -7,4 +7,5 @@ date:
 tags: ["2.3.x"]
 series:
 seriesPart:
+alias: "/latest"
 ---

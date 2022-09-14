@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title:   Jsonnet Pipeline Specifications
-description: 
+title: Jsonnet Pipeline Specifications
+description: Learn how to configure a pipeline using the Jsonnet templating language.
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines", "jsonnet"]
 series:
 seriesPart:
 ---
