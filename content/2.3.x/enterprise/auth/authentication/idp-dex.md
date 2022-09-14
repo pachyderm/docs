@@ -91,8 +91,10 @@ Then, complete the following steps:
     if you are running Pachyderm in Minikube, you can find the IP
     address by running `minikube ip`. 
 
-    !!! Attention "Attention Proxy users"
-            Your Callback URL must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
+   {{% notice warning %}} 
+   Attention Proxy users
+    Your Callback URL must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
+    {{% /notice %}}
 
 1. Scroll down to **Show Advanced Settings**.
 1. Select **Grant Types**.
@@ -199,12 +201,14 @@ to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
     ```
 {{% /notice %}}
 
-!!! Attention "Attention Proxy users"
-    Your `redirect_uri` must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
+{{% notice warning %}} 
+Attention Proxy users
+Your `redirect_uri` must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
+{{%/notice %}}
 
-!!! Note
-
-    Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
+{{% notice note %}}
+Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
+{{% /notice %}}
 
 #### Create Your Idp-Pachyderm Connection
 

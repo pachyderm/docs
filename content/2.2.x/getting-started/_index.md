@@ -19,5 +19,8 @@ For a quick start, deploy Pachyderm on your [local machine](./local-installation
 !!! Note "Got questions?"
      [Request a demo](https://www.pachyderm.com/request-a-demo/), join our [Users Slack Channel](https://www.pachyderm.com/slack/), or [Contact our Support Team](mailto:support@pachyderm.io).
 
-!!! Attention "**Extend your Community Edition with an Enterprise license**"
-    [Contact us](mailto:sales@pachyderm.com) and start experimenting.
+{{% notice warning %}}  
+**Extend your Community Edition with an Enterprise license**
+
+[Contact us](mailto:sales@pachyderm.com) and start experimenting.
+{{% /notice %}}

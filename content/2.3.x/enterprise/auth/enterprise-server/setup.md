@@ -32,11 +32,12 @@ The setup of an Enterprise Server requires to:
 3. Register your newly created or existing Pachyderm clusters with your enterprise server.
 4. Optional: Enable Auth on each cluster.
 
-!!! Attention 
-    We are now shipping Pachyderm with an **embedded proxy** 
-    allowing your nterprise server to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy your enterprise server with a Proxy, check out our new recommended architecture and [deployment instructions](../../../../deploy-manage/deploy/deploy-w-proxy/) as they alter the instructions below.
+{{% notice warning %}}
+We are now shipping Pachyderm with an **embedded proxy** 
+allowing your nterprise server to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy your enterprise server with a Proxy, check out our new recommended architecture and [deployment instructions](../../../../deploy-manage/deploy/deploy-w-proxy/) as they alter the instructions below.
+{{% /notice %}}
 
 ## 1 - Deploy An Enterprise Server
 Deploying and configuring an enterprise server can be done in one of two flavors:

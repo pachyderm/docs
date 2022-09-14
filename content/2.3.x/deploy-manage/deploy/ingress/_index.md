@@ -18,16 +18,17 @@ define **additional inbound connection rules**.
 Before we dive into the delivery of external traffic to Pachyderm, 
 read the following recommendations to set up your infrastructure in production.
 
-!!! Note
-    - Refer to our generic ["Helm Install"](../helm-install/) page for more information on how to install and get started with `Helm`.
+{{% notice note %}}
+Refer to our generic ["Helm Install"](../helm-install/) page for more information on how to install and get started with `Helm`.
+{{% /notice %}}
+
 ## Pachyderm Infrastructure Recommendations
 
-!!! Attention 
-    We are now shipping Pachyderm with an **embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, our new recommended architecture and [deployment instructions](../deploy-w-proxy.md) overwrite the following instructions.
+{{% notice warning %}}
+We are now shipping Pachyderm with an **embedded proxy** allowing your cluster to expose one single port externally. This deployment setup is optional.
 
+If you choose to deploy Pachyderm with a Proxy, our new recommended architecture and [deployment instructions](../deploy-w-proxy.md) overwrite the following instructions.
+{{%/notice %}}
 For production deployments,
 we recommend that you:
 

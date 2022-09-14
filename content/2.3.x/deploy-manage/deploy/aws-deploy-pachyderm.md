@@ -20,11 +20,12 @@ For deployments in production, refer to the following diagram and follow these s
       - Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
     
 
-!!! Attention 
-    We are now shipping Pachyderm with an **embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
+{{% notice warning %}}
+We are now shipping Pachyderm with an **embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
+{{% /notice%}}
 
 The following section walks you through deploying a Pachyderm cluster on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS). 
 
@@ -53,8 +54,9 @@ you have the following prerequisites installed and configured:
 
 ## 2. Deploy Kubernetes by using `eksctl`
 
-!!! Attention
-      Pachyderm requires running your cluster on Kubernetes 1.19.0 and above.
+{{% notice warning %}}
+Pachyderm requires running your cluster on Kubernetes 1.19.0 and above.
+{{%/notice%}}
 
 Use the `eksctl` tool to deploy an EKS cluster in your
 Amazon AWS environment. The `eksctl create cluster` command
@@ -250,8 +252,9 @@ volume later.
 By default, Pachyderm runs with a bundled version of PostgreSQL. 
 For production environments, it is **strongly recommended that you disable the bundled version and use an RDS PostgreSQL instance**. 
 
-!!! Attention
-      Note that [Aurora Serverless PostgreSQL](https://aws.amazon.com/rds/aurora/serverless/) is not supported and will not work.
+{{% notice warning %}}
+Note that [Aurora Serverless PostgreSQL](https://aws.amazon.com/rds/aurora/serverless/) is not supported and will not work.
+{{% /notice %}}
 
 This section will provide guidance on the configuration settings you will need to: 
 
@@ -564,8 +567,9 @@ pachctl port-forward
 
 ## 8. Check That Your Cluster Is Up And Running
 
-!!! Attention
+{{% notice warning %}}
     If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% /notice %}}
 
 ```s
 pachctl version

@@ -27,11 +27,12 @@ exposed IP address and port.
 This section describes the various options available for you to connect
 to your Pachyderm cluster.
 
-!!! Attention 
-    We are now shipping Pachyderm with an **optional embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the way you connect to a cluster.
+{{% notice warning %}}
+We are now shipping Pachyderm with an **optional embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the way you connect to a cluster.
+{{%/notice %}}
 
 ## Connect to a Local Cluster
 

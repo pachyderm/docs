@@ -22,10 +22,13 @@ Setting up Pachyderm's User Access Management (also referred to as "Authenticati
 
 1. [Activate the feature](#activate-user-access-management).
 
-!!! Attention "Helm users, setting up your License Key in Helm will activate Auth by default. SKIP THIS STEP."
-      If you enable the enterprise features [through Helm, auth will be activated by default](../deployment/).
+{{% notice warning %}}
+Helm users, setting up your License Key in Helm will activate Auth by default. SKIP THIS STEP.
 
-      In this case, a `pachyderm-auth` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management) in the key `rootToken`. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+If you enable the enterprise features [through Helm, auth will be activated by default](../deployment/).
+
+In this case, a `pachyderm-auth` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management) in the key `rootToken`. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+{{% /notice%}}
 
 1. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 
 1. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding.md) on given Pachyderm Ressources. 

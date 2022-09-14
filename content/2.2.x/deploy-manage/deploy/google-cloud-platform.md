@@ -25,8 +25,9 @@ In particular, you will:
 1. Make a few [client installations](#1-prerequisites) before you start.
 1. [Deploy Kubernetes](#2-deploy-kubernetes).
 
-    !!! Attention
-        For users who want to use an existing cluster, make sure to enable [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). For users creating a new cluster, the script provided in this documentation takes care of it.
+  {{%notice warning %}}
+  For users who want to use an existing cluster, make sure to enable [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). For users creating a new cluster, the script provided in this documentation takes care of it.
+  {{% /notice %}}
 
 1. [Create an GCS bucket](#3-create-a-gcs-bucket) for your data and grant Pachyderm access.
 1. [Enable The Creation of Persistent Volumes](#4-persistent-volumes-creation)
@@ -91,9 +92,9 @@ Additionally, before you begin your installation:
 
 ## 2. Deploy Kubernetes
 
-!!! Attention
-    Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
-
+{{% notice warning %}}
+Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% /notice%}}
 
 To create a new Kubernetes cluster by using GKE, run:
 
@@ -561,8 +562,9 @@ If you're not exposing `pachd` publicly, you can run:
 You are done! You can make sure that your cluster is working
 by running `pachctl version` or creating a new repo.
 
-!!! Attention
-    If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% notice warning %}}
+If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% /notice %}}
 
 ```s
 pachctl version

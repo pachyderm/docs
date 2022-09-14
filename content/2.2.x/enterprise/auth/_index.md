@@ -22,13 +22,13 @@ As a result, users can authenticate **using their existing credentials from vari
 
 Setting up Pachyderm's User Access Management (also referred to as "Authentication and Authorization" or "Auth" in this documentation) requires to follow those 3 simple steps:
 
-!!! Attention 
-      If you have enabled the enterprise features [through Helm, auth is already activated](../auth/).
+{{% notice warning %}}
+If you have enabled the enterprise features [through Helm, auth is already activated](../auth/).
 
-      In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-	  **This secret is only used when configuring through helm**
-
+**This secret is only used when configuring through helm**
+{{% /notice %}}
 
 1. [Activate the feature](#activate-user-access-management).
 1. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 

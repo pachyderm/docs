@@ -17,17 +17,21 @@ The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the auth
 
 This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/pachyderm).
 
-!!! Attention 
-    We are now shipping Pachyderm with an **optional embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter some of the following instructions.
+{{% notice warning %}}
+We are now shipping Pachyderm with an **optional embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
 
-!!! Important "Before your start your installation process." 
-      - Refer to this generic page for more information on  how to install and get started with `Helm`.
-      - Read our [infrastructure recommendations](../ingress/). You will find instructions on setting up an ingress controller, a TCP load balancer, or connecting an Identity Provider for access control. 
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter some of the following instructions.
+{{% /notice%}}
 
-      - If you are planning to use Pachyderm UI with authentication, read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of a DNS, an Ingress, and the activation of authentication.
+{{% notice warning %}}
+Before your start your installation process.
+
+- Refer to this generic page for more information on  how to install and get started with `Helm`.
+- Read our [infrastructure recommendations](../ingress/). You will find instructions on setting up an ingress controller, a TCP load balancer, or connecting an Identity Provider for access control. 
+
+- If you are planning to use Pachyderm UI with authentication, read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of a DNS, an Ingress, and the activation of authentication.
+{{% /notice%}}
 
 ## Install
 ### Prerequisites
@@ -159,8 +163,9 @@ We recommend making sure that everything is properly removed following a helm un
 
 - The uninstall leaves your persistent volumes. To clean them up, run `kubectl get pvc` and delete the claims `data-postgres-0` and `etcd-storage-etcd-0`. 
 
-!!! Attention
-     Deleting pvs will result in the loss of your data.
+{{% notice warning %}}
+Deleting pvs will result in the loss of your data.
+{{% /notice %}}
 
 - All other resources should have been removed by Helm. Run `kubectl get all | grep "etcd\|\pachd\|postgres\|pg-bouncer"` to make sure of it and delete any remaining resources where necessary.
 

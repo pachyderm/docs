@@ -43,15 +43,16 @@ To generate the docs:
 - In your favorite browser, run `localhost:6060/pkg/`
 
 
-!!! Attention
-     A compatible version of `gRPC` is needed when using the Go client.  You can identify the compatible version by searching for the version number next to `replace google.golang.org/grpc => google.golang.org/grpc` in https://github.com/pachyderm/pachyderm/blob/master/go.mod then:
+{{% notice warning %}}
+ A compatible version of `gRPC` is needed when using the Go client.  You can identify the compatible version by searching for the version number next to `replace google.golang.org/grpc => google.golang.org/grpc` in https://github.com/pachyderm/pachyderm/blob/master/go.mod then:
 
-	```s
-	go get google.golang.org/grpc
-	cd $GOPATH/src/google.golang.org/grpc
-	git checkout v1.29.1
-	```
-     
+```s
+go get google.golang.org/grpc
+cd $GOPATH/src/google.golang.org/grpc
+git checkout v1.29.1
+```
+{{% /notice %}} 
+
 ### Running Go Examples
 
 The Pachyderm godocs reference (see generation instructions above)

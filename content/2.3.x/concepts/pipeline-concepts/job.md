@@ -9,13 +9,14 @@ series:
 seriesPart:
 --- 
 
-!!! Attention
-         Note that Pachyderm uses two different scopes when referring to a `job`. 
+{{% notice warning %}}
+Note that Pachyderm uses two different scopes when referring to a `job`. 
 
-         - A "global" scope tracking down your entire provenance chain. Refer to [GlobalID](../../advanced-concepts/globalID) for more details.
-         - And a "local" scope in which a job (also referred to as sub job) is an execution of one particular pipeline. 
-         
-         The following page details the latter. 
+- A "global" scope tracking down your entire provenance chain. Refer to [GlobalID](../../advanced-concepts/globalID) for more details.
+- And a "local" scope in which a job (also referred to as sub job) is an execution of one particular pipeline. 
+
+The following page details the latter. 
+{{% /notice %}}
 
 ## Definition
 

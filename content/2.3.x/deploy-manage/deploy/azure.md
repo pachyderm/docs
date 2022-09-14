@@ -19,11 +19,12 @@ For a quick test installation of Pachyderm on Azure (suitable for development), 
       - Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
     
 
-!!! Attention 
-    We are now shipping Pachyderm with an **embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
+{{% notice warning %}}
+We are now shipping Pachyderm with an **embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
+{{%/notice %}}
 
 The following section walks you through deploying a Pachyderm cluster on Microsoft® Azure® Kubernetes
 Service environment (AKS). 
@@ -64,8 +65,9 @@ latest available version of the components listed below.
 
 You can deploy Kubernetes on Azure by following the official [Azure Kubernetes Service documentation](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?tabs=azure-cli), [use the quickstart walkthrough](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough), or follow the steps in this section.
 
-!!! Attention 
-      Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% notice warning %}}
+Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% /notice %}}
 
 At a minimum, you will need to specify the parameters below:
 
@@ -490,8 +492,9 @@ pachctl port-forward
 
 ## 8. Check That Your Cluster Is Up And Running
 
-!!! Attention
-    If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% notice warning %}}
+If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% /notice %}}
 
 ```s
 pachctl version

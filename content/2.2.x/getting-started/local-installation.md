@@ -183,8 +183,11 @@ Note that you can run both Console and JupyterLab on your local installation.
 
 * Install Pachyderm: 
 
-!!! Attention  "Request an **Enterprise Key**"
-     To request a FREE trial enterprise license key, [click here](../../enterprise). 
+{{% notice warning %}} 
+Request an **Enterprise Key**
+
+To request a FREE trial enterprise license key, [click here](../../enterprise). 
+{{% /notice %}}
 
 
 === "Pachyderm Community Edition (Includes Console)"
@@ -358,8 +361,12 @@ From the cell of a notebook, run:
     pachd               {{ config.pach_latest_version }}  
     ```    
 
-!!! Attention "Try our Notebook examples!"
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
+{{% notice warning %}} 
+Try our Notebook examples!
+
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
+{{% /notice %}}
+
 ## Next Steps  
   
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  

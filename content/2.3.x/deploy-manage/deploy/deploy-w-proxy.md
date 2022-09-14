@@ -95,40 +95,43 @@ proxy:
 Once your cluster is provisioned, and Pachyderm installed, 
 replace the instructions in section 7 (Have 'pachctl' And Your Cluster Communicate) by this [new set of instructions](#to-connect-your-pachctl-client-to-your-cluster).
 
-!!! Attention "If you plan to deploy Console in Production, read the following and adjust your values.yaml accordingly."
-    Deploying Pachyderm with a proxy simplifies the setup of Console (No more dedicated DNS and ingress needed in front of Console). In a production environment, you will need to:
+{{% notice warning %}}
+If you plan to deploy Console in Production, read the following and adjust your values.yaml accordingly.
 
-    - [Activate Authentication](../../../enterprise/auth/).Although, if you are an Helm user, setting up your License Key in your values.yaml will activate Authentication by default. This instruction applies to users activating auth by using pachctl.
-    - Update the values in the highlighted fields below.
-    - Additionally, you will need to configure your Identity Provider (`oidc.upstreamIDPs`). See examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
+Deploying Pachyderm with a proxy simplifies the setup of Console (No more dedicated DNS and ingress needed in front of Console). In a production environment, you will need to:
 
-    ```yaml hl_lines="10-11 19-20"
+- [Activate Authentication](../../../enterprise/auth/).Although, if you are an Helm user, setting up your License Key in your values.yaml will activate Authentication by default. This instruction applies to users activating auth by using pachctl.
+- Update the values in the highlighted fields below.
+- Additionally, you will need to configure your Identity Provider (`oidc.upstreamIDPs`). See examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
 
-    deployTarget: "<pick-your-cloud-provider>"
+```yaml hl_lines="10-11 19-20"
 
-    # enable the proxy
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
-        annotations: {...}
+deployTarget: "<pick-your-cloud-provider>"
 
-    ingress:
-      host: <insert-external-ip-address-or-dns-name>
+# enable the proxy
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+    annotations: {...}
 
-    pachd:
-      storage:
-        amazon:
-          bucket: "<bucket-name>"
-          ...
-          region: "<us-east-2>"
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "<your-enterprise-token>"
+ingress:
+  host: <insert-external-ip-address-or-dns-name>
 
-    oidc:
-      # populate the pachd.upstreamIDPs with an array of Dex Connector configurations.
-      upstreamIDPs: []
-    ```
+pachd:
+  storage:
+    amazon:
+      bucket: "<bucket-name>"
+      ...
+      region: "<us-east-2>"
+  # pachyderm enterprise key
+  enterpriseLicenseKey: "<your-enterprise-token>"
+
+oidc:
+  # populate the pachd.upstreamIDPs with an array of Dex Connector configurations.
+  upstreamIDPs: []
+```
+{{%/notice%}}
 
 ### To connect your `pachctl` client to your cluster
 The grpc address provided when pointing your `pachctl` CLI at your cluster changes now that a proxy allows a single entry point.
@@ -385,13 +388,15 @@ Then start your Kubernetes environment.
 * Install Pachyderm by running the following command:  
  
 
-!!! Attention "Attention Kind users"
-    
-     Set your Service type to `NodePort` rather than `LoadBalancer` in the commands below.
+{{% notice warning %}} 
+Attention Kind users
 
-      ```s 
-      -- set proxy.service.type=NodePort
-      ```
+ Set your Service type to `NodePort` rather than `LoadBalancer` in the commands below.
+
+  ```s 
+  -- set proxy.service.type=NodePort
+  ```
+{{% /notice %}}
           
 === "Community Edition With Console"
 
@@ -440,8 +445,11 @@ pod/postgres-0                        1/1     Running   0          70m
 Assuming your `pachd` is running as shown above,
 you can now connect `pachctl` to your local cluster.
 
-!!! Attention "Minikube users" 
-    Open a new tab in your terminal and run `minikube tunnel` (the command creates a network route on your host to `pachyderm-proxy` service deployed with type LoadBalancer, and set its ingress to its ClusterIP, here `127.0.0.1`). You will be prompted to enter your password.
+{{% notice warning %}} 
+Minikube users
+
+Open a new tab in your terminal and run `minikube tunnel` (the command creates a network route on your host to `pachyderm-proxy` service deployed with type LoadBalancer, and set its ingress to its ClusterIP, here `127.0.0.1`). You will be prompted to enter your password.
+{{% /notice %}}
 
 - To connect `pachctl` to your new Pachyderm instance, run:
 
@@ -481,9 +489,11 @@ Your enterprise server is [deployed in the same way as any regular cluster](#dep
 
 Note that the enterprise server will be deployed behind its proxy, as will each cluster registered to this enterprise server.
 
-!!! Attention
-    Enabling an embedded enterprise server with your pachd as part of the same helm installation will not work with the proxy. 
-    You can use a standalone enterprise server instead.
+{{% notice warning %}}
+Enabling an embedded enterprise server with your pachd as part of the same helm installation will not work with the proxy. 
+
+You can use a standalone enterprise server instead.
+{{% /notice %}}
 
 Follow your regular [enterprise server deployment and configuration instructions](../../../enterprise/auth/enterprise-server/setup), except for those few steps:
 

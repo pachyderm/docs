@@ -60,8 +60,9 @@ This page assumes that you have an [Azure Subsciption](https://docs.microsoft.co
 
 You can deploy Kubernetes on Azure by following the official [Azure Kubernetes Service documentation](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?tabs=azure-cli), [use the quickstart walkthrough](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough), or follow the steps in this section.
 
-!!! Attention 
-      Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% notice warning %}}
+Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% /notice %}}
 
 
 At a minimum, you will need to specify the parameters below:
@@ -491,8 +492,9 @@ pachctl port-forward
 
 ## 8. Check That Your Cluster Is Up And Running
 
-!!! Attention
-    If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% notice warning %}}
+If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% /notice %}}
 
 ```s
 pachctl version

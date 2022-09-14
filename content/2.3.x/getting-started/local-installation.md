@@ -34,11 +34,12 @@ New Kubernetes nodes cannot be added to this single-node cluster.
 
 Pachyderm uses `Helm` for all deployments.  
 
-!!! Attention 
-    We are now shipping Pachyderm with an **optional embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-manage/deploy/deploy-w-proxy.md).
+{{% notice warning %}}
+We are now shipping Pachyderm with an **optional embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-manage/deploy/deploy-w-proxy.md).
+{{% /notice%}}
 
 ## Prerequisites  
 
@@ -120,14 +121,14 @@ by following these steps:
 `pachctl` is a command-line tool that you can use to interact  
 with a Pachyderm cluster in your terminal.  
 
-!!! Attention
-      Pachyderm now offers **universal Multi-Arch docker images that can serve both ARM and AMD users**.
-      
-      - Brew users: The download of the package matching your architecture is automatic—nothing specific to do.
-      - Debian-based and other Linux flavors users not relying on [Homebrew](https://docs.brew.sh/Homebrew-on-Linux):
+{{% notice warning %}}
+Pachyderm now offers **universal Multi-Arch docker images that can serve both ARM and AMD users**.
 
-        Run `uname -m` to identify your architecture, then choose the command in the `AMD` section below if the output is `x86_64` , or `ARM` if it is `aarch64`.
+- Brew users: The download of the package matching your architecture is automatic—nothing specific to do.
+- Debian-based and other Linux flavors users not relying on [Homebrew](https://docs.brew.sh/Homebrew-on-Linux):
 
+  Run `uname -m` to identify your architecture, then choose the command in the `AMD` section below if the output is `x86_64` , or `ARM` if it is `aarch64`.
+{{% /notice %}}
   
 1. Run the corresponding steps for your operating system:  
   
@@ -212,8 +213,11 @@ Note that you can run both Console and JupyterLab on your local installation.
 
 * Install Pachyderm:  
 
-!!! Attention  "Request an **Enterprise Key**"
-     To request a FREE trial enterprise license key, [click here](../../enterprise). 
+{{% notice warning %}} 
+Request an **Enterprise Key**
+
+To request a FREE trial enterprise license key, [click here](../../enterprise). 
+{{% /notice %}}
 
 === "Pachyderm Community Edition (Includes Console)"
       This command will install Pachyderm's latest available GA version with Console Community Edition.
@@ -385,8 +389,11 @@ From the cell of a notebook, run:
     pachd               {{ config.pach_latest_version }}  
     ```    
 
-!!! Attention "Try our Notebook examples!"
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
+{{% notice warning %}}
+Try our Notebook examples!
+
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
+{{% /notice  %}}
 ## Next Steps  
   
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  

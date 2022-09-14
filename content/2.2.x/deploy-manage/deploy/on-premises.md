@@ -39,8 +39,10 @@ Before you start, you will need the following clients installed:
 The Kubernetes docs have instructions for [deploying Kubernetes in a variety of on-premise scenarios](https://kubernetes.io/docs/setup/).
 We recommend following one of these guides to get Kubernetes running.
 
-!!! Attention
-    Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% notice warning %}}
+Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{%/notice %}}
+
 ### Storage Classes 
 Once you deploy Kubernetes, you will also need to configure [storage classes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1) to consume persistent volumes for `etcd` and `postgresql`. 
 

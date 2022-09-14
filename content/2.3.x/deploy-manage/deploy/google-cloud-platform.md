@@ -17,11 +17,12 @@ For a quick test installation of Pachyderm on GCP (suitable for development), ju
       - Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
     
 
-!!! Attention 
+{{% notice warning %}}
     We are now shipping Pachyderm with an **embedded proxy** 
     allowing your cluster to expose one single port externally. This deployment setup is optional.
     
     If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
+{{% /notice %}}
 
 The following section walks you through deploying a Pachyderm cluster on [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) (GKE). 
 
@@ -30,8 +31,9 @@ In particular, you will:
 1. Make a few [client installations](#1-prerequisites) before you start.
 1. [Deploy Kubernetes](#2-deploy-kubernetes).
 
-    !!! Attention
-        For users who want to use an existing cluster, make sure to enable [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). For users creating a new cluster, the script provided in this documentation takes care of it.
+ {{% notice warning %}}
+ For users who want to use an existing cluster, make sure to enable [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). For users creating a new cluster, the script provided in this documentation takes care of it.
+  {{% /notice %}}
 
 1. [Create an GCS bucket](#3-create-a-gcs-bucket) for your data and grant Pachyderm access.
 1. [Enable The Creation of Persistent Volumes](#4-persistent-volumes-creation)
@@ -96,9 +98,9 @@ Additionally, before you begin your installation:
 
 ## 2. Deploy Kubernetes
 
-!!! Attention
-    Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
-
+{{% notice warning %}}
+Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{%/notice%}}
 
 To create a new Kubernetes cluster by using GKE, run:
 
@@ -475,31 +477,36 @@ global:
     postgresqlUsername: "postgres"
     postgresqlPassword: "<InstanceRootPassword>"
 ```
-!!! Attention "Attention Proxy users" 
-    Replace the `pachd.externalService` section:
+{{% notice warning %}}
+Attention Proxy users 
+Replace the `pachd.externalService` section:
 
-    ```yaml
-    pachd:
-      enabled: true
-      externalService:
-        enabled: true
-        apiGRPCport:    31400
-        loadBalancerIP: "<STATIC_IP_ADDR>"
-    ```
-    with:
+```yaml
+pachd:
+  enabled: true
+  externalService:
+    enabled: true
+    apiGRPCport:    31400
+    loadBalancerIP: "<STATIC_IP_ADDR>"
+```
+with:
 
-    ```yaml
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
-        loadBalancerIP:  "<STATIC_IP_ADDR>"
-    pachd:
-      enabled: true
-    ```
+```yaml
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+    loadBalancerIP:  "<STATIC_IP_ADDR>"
+pachd:
+  enabled: true
+```
+{{%/notice %}}
 
-!!! Note
+{{% notice note  %}}
     Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [github](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml).
+
+{{% /notice %}}
+
 ### Deploy Pachyderm on the Kubernetes cluster
 
 - You can now deploy a Pachyderm cluster by running this command:
@@ -587,8 +594,9 @@ If you're not exposing `pachd` publicly, you can run:
 You are done! You can make sure that your cluster is working
 by running `pachctl version` or creating a new repo.
 
-!!! Attention
-    If Authentication is activated (When you deploy with an enterprise key, for example), you will need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{{% notice warning %}}
+If Authentication is activated (When you deploy with an enterprise key, for example), you will need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+{% /notice %}
 
 ```s
 pachctl version
