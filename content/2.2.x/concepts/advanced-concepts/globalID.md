@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Global Identifier
-description: 
+description: Learn about the concept of a global identifier in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

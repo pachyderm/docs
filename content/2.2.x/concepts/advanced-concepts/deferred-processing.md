@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Deferred Processing
-description: 
+description: Learn about the concept of deferred processing in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

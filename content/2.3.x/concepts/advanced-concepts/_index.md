@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Advanced Concepts
-description: 
+description: Learn about the more advanced concepts used in Pachyderm. 
 date: 
 # taxonomy #
 tags: 

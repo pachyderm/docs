@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Distributed Computing
-description: 
+description:  Learn about the concept of distributed computing in Pachyderm. 
 date: 
 # taxonomy #
 tags: 
