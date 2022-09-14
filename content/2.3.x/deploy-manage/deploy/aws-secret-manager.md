@@ -79,10 +79,10 @@ Before granting your EKS pods the proper permissions to access your secrets, you
 
 Follow the steps in [AWS user guide](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
 
-!!! Example "TL;DR"
-      ```s
-      eksctl utils associate-iam-oidc-provider --cluster="<cluster-name>"
-      ```
+####  Example 
+```s
+eksctl utils associate-iam-oidc-provider --cluster="<cluster-name>"
+```
 
 ### Create An IAM Policy That Grants Read Access To Your Secret 
 
@@ -118,15 +118,15 @@ This [policy limits the access to the secrets](https://docs.aws.amazon.com/secre
 The role is associated with a Kubernetes service account created in the namespace that you specify (your cluster's) and annotated with `eks.amazonaws.com/role-arn:arn:aws:iam::111122223333:role/my-role-name`.
 
 
-!!! Example "TL;DR"
-    ``` shell
-    eksctl create iamserviceaccount \
-    --name "<my-service-account>" \
-    --cluster "<my-cluster>" \
-    --attach-policy-arn \ "<Copy the arn of your policy HERE>" \
-    --approve \ 
-    --override-existing-serviceaccounts
-    ```
+#### Example
+``` shell
+eksctl create iamserviceaccount \
+--name "<my-service-account>" \
+--cluster "<my-cluster>" \
+--attach-policy-arn \ "<Copy the arn of your policy HERE>" \
+--approve \ 
+--override-existing-serviceaccounts
+```
 
 
 ## 5. Mount Your Secrets In Your EKS Cluster

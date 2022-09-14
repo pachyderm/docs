@@ -51,13 +51,16 @@ the following command:
       Both the access key and secret key 
       should be set as mentioned in the [# Set Your Credentails](#set-your-credentials) section of this page. 
 
-!!! Example "Example:  Check the list of filesystem objects on the `master` branch of the repository `raw_data`"
-      ```s
-      mc ls local/master.raw_data
-      ```
+### Example
+Check the list of filesystem objects on the `master` branch of the repository `raw_data`.
 
-!!! Info
-      Find **MinIO** full documentation [here](https://docs.min.io/docs/minio-client-complete-guide).
+```s
+mc ls local/master.raw_data
+```
+
+{{% notice info %}}
+Find **MinIO** full documentation [here](https://docs.min.io/docs/minio-client-complete-guide).
+{{% /notice %}}
 
 ## Configure The AWS CLI
 1. Install the AWS CLI as described
@@ -83,18 +86,23 @@ in the [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-
       Default region name:
       Default output format [None]:
       ```
-!!! Note
-      Note that the `--profile` flag ([named profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)) is optional. If not used, your access information will be stored in the default profile. 
-      
-      To reference a given profile when using the S3 client, append `--profile <name-your-profile>` at the end of your command.
+{{% notice note %}}
+Note that the `--profile` flag ([named profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)) is optional. If not used, your access information will be stored in the default profile. 
 
-!!! Example "Example:  Check the list of filesystem objects on the `master` branch of the repository `raw_data`"
-      ```s
-      aws --endpoint-url http://<localhost_or_externalIP>:30600/ s3 ls s3://master.raw_data
-      ```
+To reference a given profile when using the S3 client, append `--profile <name-your-profile>` at the end of your command.
+{{% /notice%}}
 
-!!! Info
-      Find **AWS S3 CLI** full documentation [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html).
+### Example
+
+Check the list of filesystem objects on the `master` branch of the repository `raw_data`.
+
+```s
+aws --endpoint-url http://<localhost_or_externalIP>:30600/ s3 ls s3://master.raw_data
+```
+
+{{% notice info %}}
+Find **AWS S3 CLI** full documentation [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html).
+{{% /notice %}}
  
 ## Configure boto3
 Before using Boto3, you need to [set up authentication credentials for your AWS account](#configure-the-aws-cli) using the AWS CLI as mentioned previously.

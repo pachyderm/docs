@@ -80,41 +80,42 @@ Now let's consider what the following glob patterns would match respectively:
 | `/**`| The match is applied at **all levels of your directory structure**. This is a recursive glob pattern. Let's look at the additional example below for more detail.||
 
 
-!!! Example "Example: The case of the `/**` glob pattern"
-    
+### Example of the `/**` glob pattern
 
-    Say we have the following repo structure:
 
-    ```s
-      /nope1.txt
-      /test1.txt
-      /foo-1
-        /nope2.txt
-        /test2.txt
-      /foo-2
-        /foo-2_1
-          /nope3.txt
-          /test3.txt
-          /anothertest.txt
-    ```
-    ...and apply the following pattern to our input repo:
+Say we have the following repo structure:
 
-    ```s
-      "glob": "/**test*.txt"
-    ```
-    We are **recursively matching all `.txt` files containing `test`** starting from our input repo's root directory.
-    In this case, the resulting datums will be:
-    
-    ```s
-      - /test1.txt
-      - /foo-1/test2.txt
-      - /foo-2/foo-2_1/test3.txt
-      - /foo-2/foo-2_1/anothertest.txt
-    ```
+```s
+  /nope1.txt
+  /test1.txt
+  /foo-1
+    /nope2.txt
+    /test2.txt
+  /foo-2
+    /foo-2_1
+      /nope3.txt
+      /test3.txt
+      /anothertest.txt
+```
+...and apply the following pattern to our input repo:
 
-!!! See "See Also"
-        - To understand how Pachyderm scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
-        - To learn about Datums' incremental processing, read our [Datum Processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
+```s
+  "glob": "/**test*.txt"
+```
+We are **recursively matching all `.txt` files containing `test`** starting from our input repo's root directory.
+In this case, the resulting datums will be:
+
+```s
+  - /test1.txt
+  - /foo-1/test2.txt
+  - /foo-2/foo-2_1/test3.txt
+  - /foo-2/foo-2_1/anothertest.txt
+```
+
+{{% notice info %}}
+- To understand how Pachyderm scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
+- To learn about Datums' incremental processing, read our [Datum Processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
+{{% /notice %}}
 
 ## Test a Glob pattern
 
@@ -126,7 +127,7 @@ you to test various glob patterns before you use them in a pipeline.
 top-level filesystem objects in the `train` repository as one
 datum:
 
-!!! Example
+  ### Example
 
     ```s
     pachctl glob file train@master:/
@@ -143,7 +144,7 @@ datum:
 top-level filesystem object in the `train` repository as a separate
 datum:
 
-!!! Example
+  ###  Example
     ```s
     pachctl glob file train@master:/*
     ```
@@ -172,40 +173,40 @@ You can use the `pachctl list datum -f <my_pipeline_spec.json>` command to previ
 The pipeline does not need to have been created for the command to return the list of datums. This "dry run" helps you adjust your glob pattern when creating your pipeline.
 {{% /notice %}}
 
-!!! Example
+### Example
 
-    ```s
-    pachctl list datum -f edges.json
-    ```
-    **System Response:**
+```s
+pachctl list datum -f edges.json
+```
+**System Response:**
 
-    ```s
-      ID FILES                                                STATUS TIME
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/46Q8nDz.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/8MN9Kg0.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/g2QnNqa.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg -      -
-    ```
+```s
+  ID FILES                                                STATUS TIME
+-  images@b8687e9720f04b7ab53ae8c64541003b:/46Q8nDz.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/8MN9Kg0.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/g2QnNqa.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg -      -
+```
 
 ### Running list datum on a past job 
 You can use the `pachctl list datum <pipeline>@<job_ID>` command to check the datums processed by a given job.
 
-!!! Example
+#### Example
 
-    ```s
-    pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
-    ```
-    **System Response:**
+```s
+pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
+```
+**System Response:**
 
-    ```s
-      ID                                                               FILES                                                STATUS  TIME
-    a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8 images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg success Less than a second
-    e2b4628dd88b179051ba0576e06fac12ae2e4d16165296212d0e98de501d17df images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg success Less than a second
-    353b6d2a5ac78f56facc7979e190affbb8f75c6f74da84b758216a8df77db473 images@7856142de8714c11b004610ea7af2378:/8MN9Kg0.jpg skipped Less than a second
-    b751702850acad5502dc51c3e7e7a1ac10ba2199fdb839989cd0c5430ee10b84 images@fc9a12ee149a4499a1a7da0a31971b37:/46Q8nDz.jpg skipped Less than a second
-    de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142de8714c11b004610ea7af2378:/g2QnNqa.jpg skipped Less than a second
-    ```
+```s
+  ID                                                               FILES                                                STATUS  TIME
+a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8 images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg success Less than a second
+e2b4628dd88b179051ba0576e06fac12ae2e4d16165296212d0e98de501d17df images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg success Less than a second
+353b6d2a5ac78f56facc7979e190affbb8f75c6f74da84b758216a8df77db473 images@7856142de8714c11b004610ea7af2378:/8MN9Kg0.jpg skipped Less than a second
+b751702850acad5502dc51c3e7e7a1ac10ba2199fdb839989cd0c5430ee10b84 images@fc9a12ee149a4499a1a7da0a31971b37:/46Q8nDz.jpg skipped Less than a second
+de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142de8714c11b004610ea7af2378:/g2QnNqa.jpg skipped Less than a second
+```
 
 {{% notice %}}
 In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.

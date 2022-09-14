@@ -48,22 +48,22 @@ Let's first generate your secret configuration file using the `kubectl` command.
    kubectl create secret docker-registry mysecretname --dry-run=client --docker-server=<DOCKER_REGISTRY_SERVER> --docker-username=<DOCKER_USER> --docker-password=<DOCKER_PASSWORD> --output=json > myfirstsecret.json
    ```
 
-!!! Example "Example of a generic secret"
+####  Generic Secret Example 
 
-      ```json
-      {
-         "apiVersion": "v1",
-         "kind": "Secret",
-         "metadata": {
-            "name": "clearml"
-         },
-         "type": "Opaque",
-         "stringData": {
-            "access": "<CLEARML_API_ACCESS_KEY>",
-            "secret": "<CLEARML_API_SECRET_KEY>"
-         }
-      }
-      ```
+```json
+{
+   "apiVersion": "v1",
+   "kind": "Secret",
+   "metadata": {
+      "name": "clearml"
+   },
+   "type": "Opaque",
+   "stringData": {
+      "access": "<CLEARML_API_ACCESS_KEY>",
+      "secret": "<CLEARML_API_SECRET_KEY>"
+   }
+}
+```
 Find more detailed information on the [creation of Secrets](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/) in Kubernetes documentation.
 
 ### Create your Secret in Pachyderm
@@ -110,48 +110,50 @@ In Pachyderm, a Secret can be used in three different ways:
          }]
       }
       ```
-    !!! Example "Example of a pipeline specification file assigning a Secret's values to environment variables"  
-         Look at the pipeline specification in this example and see how we used the  `"env_var"` to pass CLEARML API credentials to the pipeline code.
-   
-         ```json
-         {
-            "pipeline": {
-               "name": "mnist"
-            },
-            "description": "MNIST example logging to ClearML",
-            "input": {
-               "pfs": {
-                  "repo": "data",
-                  "branch": "master",
-                  "glob": "/*"
-               }
-            },
-            "transform": {
-               "cmd": [
-                  "/bin/sh"
-               ],
-               "stdin": [
-                  "python pytorch_mnist.py --lr 0.2 --save-location /pfs/out"
-               ],
-               "image": "pachyderm/clearml_mnist:dev0.11",
-               "secrets": [
-                  {
-                  "name": "clearml",
-                  "env_var": "CLEARML_API_ACCESS_KEY",
-                  "key": "access"
-                  },
-                  {
-                  "name": "clearml",
-                  "env_var": "CLEARML_API_SECRET_KEY",
-                  "key": "secret"
-                  }
-               ]
-            }
+   ### Example 
+   Example of a pipeline specification file assigning a Secret's values to environment variables.
+
+   Look at the pipeline specification in this example and see how we used the  `"env_var"` to pass CLEARML API credentials to the pipeline code.
+
+   ```json
+   {
+      "pipeline": {
+         "name": "mnist"
+      },
+      "description": "MNIST example logging to ClearML",
+      "input": {
+         "pfs": {
+            "repo": "data",
+            "branch": "master",
+            "glob": "/*"
          }
-         ```
+      },
+      "transform": {
+         "cmd": [
+            "/bin/sh"
+         ],
+         "stdin": [
+            "python pytorch_mnist.py --lr 0.2 --save-location /pfs/out"
+         ],
+         "image": "pachyderm/clearml_mnist:dev0.11",
+         "secrets": [
+            {
+            "name": "clearml",
+            "env_var": "CLEARML_API_ACCESS_KEY",
+            "key": "access"
+            },
+            {
+            "name": "clearml",
+            "env_var": "CLEARML_API_SECRET_KEY",
+            "key": "secret"
+            }
+         ]
+      }
+   }
+   ```
 
 
-1. **As a file in a volume mounted on a container**:
+2. **As a file in a volume mounted on a container**:
 
       In this case, in Pachyderm's pipeline specification file, you need to reference Kubernetes' Secret by its:
 
@@ -173,7 +175,7 @@ In Pachyderm, a Secret can be used in three different ways:
       }
       ```
 
-1. **When pulling images**:
+3. **When pulling images**:
 
       [Image pull Secrets](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) are a different kind of secret used to store access credentials to your private image registry. 
       

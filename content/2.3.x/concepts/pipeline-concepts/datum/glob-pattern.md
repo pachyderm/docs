@@ -15,16 +15,16 @@ the most important aspects of distributed computation.
 Pachyderm uses **glob patterns** to provide flexibility to
 define data distribution. 
 
-!!! Note
-     Pachyderm's concept of glob patterns is similar to Unix glob patterns.
-     For example, the `ls *.md` command matches all files with the
-     `.md` file extension.
+{{% notice note %}}
+Pachyderm's concept of glob patterns is similar to Unix glob patterns. For example, the `ls *.md` command matches all files with the `.md` file extension.
+{{% /notice %}}
 
 
 The glob pattern applies to all of the directories/files in the branch specified by the [`pfs` section of the pipeline specification (referred to as PFS inputs)](../#pfs-input-and-glob-pattern). The directories/files that match are the [datums](../) that will be processed by the worker(s) that run your pipeline code. 
 
-!!! Important
-        You must **configure a glob pattern for each PFS input** of a [pipeline specification](../../../../reference/pipeline-spec/#pipeline-specification). 
+{{% notice warning %}}
+You must **configure a glob pattern for each PFS input** of a [pipeline specification](../../../../reference/pipeline-spec/#pipeline-specification). 
+{{% /notice %}}
 
 
 We have listed some commonly used glob patterns. We will later illustrate their use in an example:
@@ -79,39 +79,41 @@ Now let's consider what the following glob patterns would match respectively:
 | `/**`| The match is applied at **all levels of your directory structure**. This is a recursive glob pattern. Let's look at the additional example below for more detail.||
 
 
-!!! example "Example: The case of the `/**` glob pattern"
+### Example 
+The case of the `/**` glob pattern
     
+Say we have the following repo structure:
 
-    Say we have the following repo structure:
-    ```
-      /nope1.txt
-      /test1.txt
-      /foo-1
-        /nope2.txt
-        /test2.txt
-      /foo-2
-        /foo-2_1
-          /nope3.txt
-          /test3.txt
-          /anothertest.txt
-    ```
-    ...and apply the following pattern to our input repo:
-    ```
-      "glob": "/**test*.txt"
-    ```
-    We are **recursively matching all `.txt` files containing `test`** starting from our input repo's root directory.
-    In this case, the resulting datums will be:
-    
-    ```
-      - /test1.txt
-      - /foo-1/test2.txt
-      - /foo-2/foo-2_1/test3.txt
-      - /foo-2/foo-2_1/anothertest.txt
-    ```
+```s
+/nope1.txt
+/test1.txt
+/foo-1
+  /nope2.txt
+  /test2.txt
+/foo-2
+  /foo-2_1
+    /nope3.txt
+    /test3.txt
+    /anothertest.txt
+```
+...and apply the following pattern to our input repo:
+```s
+"glob": "/**test*.txt"
+```
+We are **recursively matching all `.txt` files containing `test`** starting from our input repo's root directory.
+In this case, the resulting datums will be:
 
-!!! See "See Also"
-        - To understand how Pachyderm scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
-        - To learn about Datums' incremental processing, read our [Datum Processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
+```s
+- /test1.txt
+- /foo-1/test2.txt
+- /foo-2/foo-2_1/test3.txt
+- /foo-2/foo-2_1/anothertest.txt
+```
+
+{{% notice info %}}
+- To understand how Pachyderm scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
+- To learn about Datums' incremental processing, read our [Datum Processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
+{{%/notice %}}
 
 ## Test a Glob pattern
 
@@ -123,23 +125,23 @@ you to test various glob patterns before you use them in a pipeline.
 top-level filesystem objects in the `train` repository as one
 datum:
 
-!!! example
-    ```s
-    pachctl glob file train@master:/
-    ```
+  #### Example
+  ```s
+  pachctl glob file train@master:/
+  ```
 
-    **System Response:**
+  **System Response:**
 
-    ```s
-    NAME TYPE SIZE
-    /    dir  15.11KiB
-    ```
+  ```s
+  NAME TYPE SIZE
+  /    dir  15.11KiB
+```
 
 * If you set the `glob` property to `/*`, Pachyderm detects each
 top-level filesystem object in the `train` repository as a separate
 datum:
 
-!!! example
+  #### Example
     ```s
     pachctl glob file train@master:/*
     ```
@@ -158,76 +160,80 @@ datum:
 The granularity of your datums defines how your data will be distributed across the available workers allocated to a job.
 Pachyderm allows you to check those datums:
 
-  - for a pipeline currently being developed  
-  - for a past job 
+- for a pipeline currently being developed  
+- for a past job 
 
 ### Testing your glob pattern before creating a pipeline
 You can use the `pachctl list datum -f <my_pipeline_spec.json>` command to preview the datums defined by a pipeline given its specification file. 
 
-!!! note "Note"  
-    The pipeline does not need to have been created for the command to return the list of datums. This "dry run" helps you adjust your glob pattern when creating your pipeline.
+{{% notice note %}}
+The pipeline does not need to have been created for the command to return the list of datums. This "dry run" helps you adjust your glob pattern when creating your pipeline.
+{{% /notice %}}
  
 
-!!! example
-    ```s
-    pachctl list datum -f edges.json
-    ```
-    **System Response:**
+#### Example
+```s
+pachctl list datum -f edges.json
+```
+**System Response:**
 
-    ```
-      ID FILES                                                STATUS TIME
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/46Q8nDz.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/8MN9Kg0.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/g2QnNqa.jpg -      -
-    -  images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg -      -
-    ```
+```s
+  ID FILES                                                STATUS TIME
+-  images@b8687e9720f04b7ab53ae8c64541003b:/46Q8nDz.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/8MN9Kg0.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/g2QnNqa.jpg -      -
+-  images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg -      -
+```
 
 ### Running list datum on a past job 
 You can use the `pachctl list datum <pipeline>@<job_ID>` command to check the datums processed by a given job.
 
-!!! example
-    ```s
-    pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
-    ```
-    **System Response:**
+#### Example
+```s
+pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
+```
+**System Response:**
 
-    ```
-      ID                                                               FILES                                                STATUS  TIME
-    a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8 images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg success Less than a second
-    e2b4628dd88b179051ba0576e06fac12ae2e4d16165296212d0e98de501d17df images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg success Less than a second
-    353b6d2a5ac78f56facc7979e190affbb8f75c6f74da84b758216a8df77db473 images@7856142de8714c11b004610ea7af2378:/8MN9Kg0.jpg skipped Less than a second
-    b751702850acad5502dc51c3e7e7a1ac10ba2199fdb839989cd0c5430ee10b84 images@fc9a12ee149a4499a1a7da0a31971b37:/46Q8nDz.jpg skipped Less than a second
-    de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142de8714c11b004610ea7af2378:/g2QnNqa.jpg skipped Less than a second
-    ```
+```s
+  ID                                                               FILES                                                STATUS  TIME
+a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8 images@b8687e9720f04b7ab53ae8c64541003b:/w7RVTsv.jpg success Less than a second
+e2b4628dd88b179051ba0576e06fac12ae2e4d16165296212d0e98de501d17df images@b8687e9720f04b7ab53ae8c64541003b:/Togu2RY.jpg success Less than a second
+353b6d2a5ac78f56facc7979e190affbb8f75c6f74da84b758216a8df77db473 images@7856142de8714c11b004610ea7af2378:/8MN9Kg0.jpg skipped Less than a second
+b751702850acad5502dc51c3e7e7a1ac10ba2199fdb839989cd0c5430ee10b84 images@fc9a12ee149a4499a1a7da0a31971b37:/46Q8nDz.jpg skipped Less than a second
+de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142de8714c11b004610ea7af2378:/g2QnNqa.jpg skipped Less than a second
+```
 
-!!! note "Note"  
+{{% notice note %}}
     In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
+{{% /notice %}}
 
-!!! info "Stats and Datum Metadata"
-    - Running `list datum` on a given job execution of a pipeline allows you to additionally display the STATUS (running, failed, success) and TIME of each datum.
-    - You might want to follow up with [inspect datum pipeline@job_number datum ID](https://docs.pachyderm.com/latest/reference/pachctl/pachctl_inspect_datum/) to detail the files that a specific datum includes.
-    
-        ```s
-        pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
-        ```
-        **System Response:**
-        ```
-        ID	a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
-        Job ID	b8687e9720f04b7ab53ae8c64541003b
-        State	SUCCESS
-        Data Downloaded	606.3KiB
-        Data Uploaded	26.96KiB
-        Total Time	582.000134ms
-        Download Time	40.062075ms
-        Process Time	535.387088ms
-        Upload Time	6.550971ms
-        PFS State:
-          REPO         COMMIT                             PATH
-          edges.meta   b8687e9720f04b7ab53ae8c64541003b   /pfs/a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
-        Inputs:
-          REPO     COMMIT                             PATH
-          images   b8687e9720f04b7ab53ae8c64541003b   /w7RVTsv.jpg
-        ```
-        Add `--raw` for a full JSON version of the [datum's metadata](../metadata/).
+{{% notice info %}}
+Stats and Datum Metadata
 
+- Running `list datum` on a given job execution of a pipeline allows you to additionally display the STATUS (running, failed, success) and TIME of each datum.
+- You might want to follow up with [inspect datum pipeline@job_number datum ID](https://docs.pachyderm.com/latest/reference/pachctl/pachctl_inspect_datum/) to detail the files that a specific datum includes.
+
+  ```s
+  pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
+  ```
+  **System Response:**
+  ```
+  ID	a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
+  Job ID	b8687e9720f04b7ab53ae8c64541003b
+  State	SUCCESS
+  Data Downloaded	606.3KiB
+  Data Uploaded	26.96KiB
+  Total Time	582.000134ms
+  Download Time	40.062075ms
+  Process Time	535.387088ms
+  Upload Time	6.550971ms
+  PFS State:
+    REPO         COMMIT                             PATH
+    edges.meta   b8687e9720f04b7ab53ae8c64541003b   /pfs/a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
+  Inputs:
+    REPO     COMMIT                             PATH
+    images   b8687e9720f04b7ab53ae8c64541003b   /w7RVTsv.jpg
+  ```
+  Add `--raw` for a full JSON version of the [datum's metadata](../metadata/).
+{{% /notice %}}
