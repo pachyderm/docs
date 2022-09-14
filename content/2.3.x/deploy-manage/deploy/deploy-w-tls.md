@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Deploy Pachyderm with TSL (SSL, HTTPS)
-description: 
+description: Learn how to deploy a Pachyderm cluster with Transport Layer Security (TLS).
 date: 
 # taxonomy #
 tags: 

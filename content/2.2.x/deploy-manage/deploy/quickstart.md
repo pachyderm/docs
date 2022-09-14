@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Quickstart
-description: 
+description: Learn how to deploy the latest version of Pachyderm quickly with simplified instructions and pre-set Helm values.
 date: 
 # taxonomy #
 tags: 

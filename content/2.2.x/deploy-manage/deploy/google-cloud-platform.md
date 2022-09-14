@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Google Cloud Platform
-description: 
+description: Learn how to deploy a Pachyderm cluster on Google's GKE. 
 date: 
 # taxonomy #
 tags: 

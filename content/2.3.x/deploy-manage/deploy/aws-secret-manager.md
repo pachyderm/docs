@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Set Up AWS Secret Manager
-description: 
+description: Learn how to securely manage and centralize your secrets.
 date: 
 # taxonomy #
 tags: 

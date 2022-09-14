@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Import a Kubernetes Context
-description: 
+description: Learn how to import and embed a Kubernetes Context into a Pachyderm context. 
 date: 
 # taxonomy #
 tags: 
@@ -9,8 +9,7 @@ series:
 seriesPart:
 --- 
 
-After you have deployed Pachyderm with [Helm](../helm-install/), the Pachyderm context is not created.
-Therefore, **you need to manually create a new Pachyderm context with
+After you have deployed Pachyderm with [Helm](../helm-install/), the Pachyderm context is not created. Therefore, **you need to manually create a new Pachyderm context with
 the embedded current Kubernetes context and activate that context**.
 
 To import a Kubernetes context, complete the following steps:

@@ -1,10 +1,10 @@
 ---
 # metadata # 
 title:  Helm Deployment
-description: 
+description: Learn how to install Pachyderm using a Helm chart.
 date: 
 # taxonomy #
-tags: 
+tags: ["helm"]
 series:
 seriesPart:
 --- 

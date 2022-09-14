@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:   Configure Tracing with Jaeger
-description: 
+description: Learn how to trace requests with Jaeger when diagnosing slow cluster performance. 
 date: 
 # taxonomy #
 tags: 

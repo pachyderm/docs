@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Console 
-description: 
+description: Learn how to use Pachyderm's user interface, Console. 
 date: 
 # taxonomy #
 tags: 

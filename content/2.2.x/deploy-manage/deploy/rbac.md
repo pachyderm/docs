@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  RBAC
-description: 
+description: Learn how Pachyderm supports Kubernetes' Role-Base Access Controls (RBAC).
 date: 
 # taxonomy #
 tags: 
@@ -10,15 +10,8 @@ seriesPart:
 --- 
 
 
-Pachyderm has support for Kubernetes Role-Based Access
-Controls (RBAC), which is a default part of all
-Pachyderm deployments. In most use cases, Pachyderm
-sets all the RBAC permissions automatically. However,
-if you are deploying Pachyderm on a cluster that your
-company owns, security policies might not allow certain
-RBAC permissions by default. Therefore, you need to
-contact your Kubernetes administrator and provide the
-following list of required permissions:
+Pachyderm has support for Kubernetes Role-Based Access Controls (RBAC), which is a default part of all Pachyderm deployments. In most use cases, Pachyderm sets all the RBAC permissions automatically. However, if you are deploying Pachyderm on a cluster that your company owns, security policies might not allow certain RBAC permissions by default. Therefore, you need to
+contact your Kubernetes administrator and provide the following list of required permissions:
 
 {% raw %}
 

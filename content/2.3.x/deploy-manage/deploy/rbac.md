@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  RBAC
-description: 
+description: Learn how Pachyderm supports Kubernetes' Role-Base Access Controls (RBAC).
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  On Premises
-description: 
+description: Learn how to deploy Pachyderm on-premises. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Deploy Pachyderm on AWS
-description: 
+description: Learn how to deploy a Pachyderm cluster on AWS. 
 date: 
 # taxonomy #
 tags: 

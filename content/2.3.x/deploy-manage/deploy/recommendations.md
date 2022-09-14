@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  Production Deployment Recommended Pre-Requisites
-description: 
+title:  Production Recommendations 
+description: Learn which pieces of networking infrastructure Pachyderm recommends setting up for production use. 
 date: 
 # taxonomy #
 tags: 

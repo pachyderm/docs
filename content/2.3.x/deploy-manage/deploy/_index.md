@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Deploy
-description: 
+description: Learn all the ways you can deploy a Pachyderm cluster, be it locally, on-premise, or in the cloud. 
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Azure
-description: 
+description: Learn how to deploy a Pachyderm cluster on Microsoft Azure. 
 date: 
 # taxonomy #
 tags: 

@@ -1,15 +1,13 @@
 ---
 # metadata # 
 title:  Configure Environment Variables
-description: 
+description: Learn how to configure environment variables for Pachyderm. 
 date: 
 # taxonomy #
 tags: 
 series:
 seriesPart:
 --- 
-
-
 
 When you use Pachyderm, you can define environment variables that
 can transmit the required configuration directly to your application.
@@ -28,8 +26,9 @@ if your code writes data to an external system and you want
 to know the current job ID, you can use the `PACH_JOB_ID`
 environment variable to refer to the current job ID.
 
-!!! Note "See Also:"
-    [Local Deployment](../../../getting-started/local-installation/)
+{{% notice note %}}
+[Local Deployment](../../../getting-started/local-installation/)
+{{% /notice %}}
 
 ## `pachd` Environment Variables
 

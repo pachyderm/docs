@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Deploy Pachyderm via Proxy (One Port)
-description: 
+description: Learn how to deploy Pachyderm using an embedded proxy, exposing only one external port. 
 date: 
 # taxonomy #
 tags: 

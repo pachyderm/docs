@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Enable Logs Aggregation With Loki
-description: 
+description: Learn how to enable log aggregation with Loki through the Promtail agent service.
 date: 
 # taxonomy #
 tags: 
@@ -11,12 +11,7 @@ seriesPart:
 
 ## Shipping logs to Loki
 
-Loki retrieves logs from pods in Kubernetes through
-an agent service called **Promtail**. 
-**Promtail** runs on each node and
-sends logs from Kubernetes pods to the Loki API Server,
-tagging each log entry with information
-about the pod that produced it. 
+Loki retrieves logs from pods in Kubernetes through an agent service called **Promtail**.  **Promtail** runs on each node and sends logs from Kubernetes pods to the Loki API Server, tagging each log entry with information about the pod that produced it. 
 
 You need to [configure Promtail](https://grafana.com/docs/loki/latest/clients/promtail/configuration/) for your environment
 to ship logs to your Loki instance. 

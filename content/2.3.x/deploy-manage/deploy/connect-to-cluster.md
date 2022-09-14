@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Connect to a Cluster
-description: 
+description: Learn how to connect to Pachyderm clusters locally and on the cloud.
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Enable Logs Aggregation With Loki
-description: 
+description: Learn how to enable log aggregation with Loki through the Promtail agent service.
 date: 
 # taxonomy #
 tags: 
@@ -10,10 +10,9 @@ seriesPart:
 --- 
 
 
-!!! Note 
-    To deploy and configure a Pachyderm cluster
-    to read logs from Loki,
-    a ***Pachyderm Enterprise License*** is required. 
+{{% notice note %}}
+To deploy and configure a Pachyderm cluster to read logs from Loki, a ***Pachyderm Enterprise License*** is required. 
+{{% /notice %}}
 
 ## Shipping logs to Loki
 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:   Configure Tracing with Jaeger
-description: 
+description: Learn how to trace requests with Jaeger when diagnosing slow cluster performance. 
 date: 
 # taxonomy #
 tags: 
@@ -10,8 +10,7 @@ seriesPart:
 --- 
 
 
-Pachyderm has the ability to trace requests using Jaeger. This
-can be useful when diagnosing slow clusters.
+Pachyderm has the ability to trace requests using Jaeger. This can be useful when diagnosing slow clusters.
 
 ![Successful Trace](../../assets/images/healthy.png)
 
