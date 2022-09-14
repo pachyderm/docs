@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title: Pachyderm Integration with Identity Providers
+title: Identity Providers
 description: 
 date: 
 # taxonomy #

@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Authentication and Authorization
-description: 
+title: Authentication & Authorization
+description: Learn how to Pachyderm's user access management works.
 date: 
 # taxonomy #
 tags: 

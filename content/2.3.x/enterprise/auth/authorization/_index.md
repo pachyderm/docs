@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Authorization
-description: 
+description: Learn how to set up and manage Role-Based Access Control (RBAC) for Pachyderm.
 date: 
 # taxonomy #
 tags: 
@@ -10,12 +10,13 @@ seriesPart:
 ---
 
 
-!!! Note
-    Go back to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have a key.
-    Before setting up a Role-Based access control to Pachyderm resources, verify that:
+{{% notice note %}}
+Go back to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have a key.
+Before setting up a Role-Based access control to Pachyderm resources, verify that:
 
-    - the User Access Management feature is on by running `pachctl auth whoami`. The command should return `You are "pach:root"` (i.e., your are the **Root User** with `clusterAdmin` privileges). Run `pachctl auth use-auth-token` to login as a Root User.
-    - your [IdP connector is set](../authentication/idp-dex.md).
+- the User Access Management feature is on by running `pachctl auth whoami`. The command should return `You are "pach:root"` (i.e., your are the **Root User** with `clusterAdmin` privileges). Run `pachctl auth use-auth-token` to login as a Root User.
+- your [IdP connector is set](../authentication/idp-dex.md).
+{{% /notice%}}
 
 Pachyderm authorization feature follows a **Role Based Access Control** model (RBAC).
 The access control is based on **Roles**  assigned to **Users**, granting them a set of permissions on Pachyderm's **Resources** (**Role Bindings**). 

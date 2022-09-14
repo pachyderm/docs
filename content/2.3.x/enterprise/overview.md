@@ -1,10 +1,10 @@
 ---
 # metadata # 
 title: Features Overview
-description: 
+description: Learn about the main features unique to Pachyderm's Enterprise edition.
 date: 
 # taxonomy #
-tags: 
+tags: ["enterprise"]
 series:
 seriesPart:
 ---

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Authentication
-description: 
+description: Learn about the different authentication flows, connectors, and integrations available. 
 date: 
 # taxonomy #
 tags: 

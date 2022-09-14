@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Connectors
-description: 
+description: Learn about the connectors available for use with Pachyderm Enterprise.
 date: 
 # taxonomy #
 tags: 

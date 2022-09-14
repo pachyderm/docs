@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Enterprise Server Setup
-description: 
+title: Server Setup
+description: Learn how to set up a Pachyderm enterprise server.
 date: 
 # taxonomy #
 tags: 

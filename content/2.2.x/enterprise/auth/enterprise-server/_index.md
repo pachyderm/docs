@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Enterprise Server
-description: 
+description: Learn how to spin up and manage a Pachyderm Enterprise server.
 date: 
 # taxonomy #
 tags: 

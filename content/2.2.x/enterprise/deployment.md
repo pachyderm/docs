@@ -1,10 +1,10 @@
 ---
 # metadata # 
-title: Deploy Enterprise Edition
-description: 
+title: Deploy
+description: Learn how to deploy the Enterprise edition of Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["enterprise"]
 series:
 seriesPart:
 ---

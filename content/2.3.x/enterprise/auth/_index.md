@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Authentication and Authorization
-description: 
+title: Authentication & Authorization
+description: Learn how to Pachyderm's user access management works.
 date: 
 # taxonomy #
 tags: 
@@ -10,8 +10,7 @@ seriesPart:
 ---
 
 !!! Note
-    User Access Management is an [enterprise feature](../../enterprise/) that requires
-    an active enterprise token.
+    User Access Management is an [enterprise feature](../../enterprise/) that requires an active enterprise token.
 
 Pachyderm delegates its authentication to third party Identity Providers.
 
