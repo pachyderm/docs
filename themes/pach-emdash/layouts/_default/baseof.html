@@ -7,8 +7,9 @@
     {{ partial "head.html" . }}
     <body class="stack"> 
                 {{ partial "nav.html" . }}
+                {{ partial "algoliaHits" . }}  
         <main class="spread theme-fade-in">
-                {{ partial "directory.html" .}}     
+                {{ partial "directory.html" .}}   
             <article class="content">
               {{ if .IsHome}}
                 {{/* Don't show Breadcrumbs or EditLink*/}}
@@ -25,7 +26,7 @@
                       {{ partial "featureEditLink.html" . }}
                 </div> 
                 {{end}}
-                    {{ partial "algoliaHits" . }}
+                    
                     {{ block "main" . }}
                     {{end}}
               {{end}}

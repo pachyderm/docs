@@ -16,7 +16,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
   search.addWidgets([
     instantsearch.widgets.searchBox({
       container: "#searchbox",
-      placeholder: "🔍 Search...",
+      placeholder: "Search...",
       showReset: false,
       showSubmit: false,
       autofocus: false,
@@ -32,18 +32,18 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
     
     }),
     instantsearch.widgets.configure({
-      hitsPerPage: 10,
+      hitsPerPage: 6,
     }),
     instantsearch.widgets.hits({
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['stack'],
-        list: ['m-1', 'p-1', 'rounded-1', 'brighten-1'],
+        root: ['spread-center','modal', 'darken-3'],
+        list: ['is-three-fifths','white', 'pr-1', 'rounded-1', 'brighten-1'],
         item: ['spread'] },
       templates: {
-        empty: `<div class="hit stack-center mb-3"> <h2 class="uppercase bold">No Results Found</h2>
-        <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>.`,
+        empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-1 m-1"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
+        <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
         item: `<a class="hit spread c-pinned-center is-full darken-1 rounded-1 c-sp-1 m-1 move-l" href="/{{uri}}">
         <div class="black is-fit xxs rounded-1 darken-3">{{{version}}}</div>
                 <div class="stack c-mt-1">

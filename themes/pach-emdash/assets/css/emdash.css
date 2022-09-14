@@ -70,6 +70,11 @@
     --layer-angle-1: 1deg;
     --layer-angle-2: -1deg;
 
+    --modal-top: 0;
+    --modal-bottom: 0;
+    --modal-left: 0;
+    --modal-right: 0;
+
     --ghoul-1: 10px;
     --ghoul-2: 20px;
     --ghoul-3: 30px;
@@ -1573,3 +1578,18 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   overflow-y: scroll;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.modal { 
+  position: fixed; 
+  z-index: 1; 
+  top: var(--modal-top);
+  bottom: var(--modal-bottom);
+  right: var(--modal-right);
+  left: var(--modal-left);
+  width: 100%; 
+  height: 100%; 
+  overflow-y: scroll; 
+}
