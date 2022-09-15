@@ -41,8 +41,9 @@ That origin can be of 3 types:
 
 - `USER`: The commit is the result of a user change (`put file`, `update pipeline`, `delete file`...)
     
-    !!! Info
-        Every `USER` change is an initial commit.
+    {{% notice info %}}
+    Every `USER` change is an initial commit.
+    {{%/notice%}}
 
 - `AUTO`: Pachyderm's pipelines are data-driven. A data commit to a data repository may
     trigger downstream processing jobs in your pipeline(s). The output commits from

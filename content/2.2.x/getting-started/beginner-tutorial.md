@@ -206,8 +206,9 @@ more advanced options. Options include building your own code into a
 container.
 In this tutorial, your pipeline will use a pre-built Docker image.
 
-!!! Info
-    More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
+{{% notice info %}}
+More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
+{{% /notice %}}
 
 For now, we are going to create a single pipeline that takes in images
 and does some simple edge detection.
