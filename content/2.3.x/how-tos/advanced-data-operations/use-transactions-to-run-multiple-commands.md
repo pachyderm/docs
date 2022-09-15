@@ -10,9 +10,7 @@ seriesPart:
 ---
 
 {{% notice note %}}
- "TL;DR"
-    Use transactions to run multiple Pachyderm commands
-    simultaneously in one job run.
+**TL;DR**:Use transactions to run multiple Pachyderm commands simultaneously in one job run.
 {{% /notice %}}
 
 A transaction is a Pachyderm operation that enables you to **create
@@ -52,31 +50,30 @@ A transaction demarcation initializes some transactional behavior before the dem
 
 ###  Example
 
-      ```json hl_lines="9"
-      {
-        "user_id": "b4fe4317-be21-4836-824f-6661c68b8fba",
-        "v2": {
-          "active_context": "local-2",
-          "contexts": {
-            "default": {},
-            "local-2": {
-              "source": 3,
-              "active_transaction": "7a81eab5e6c6430aa5c01deb06852ca5",
-              "cluster_name": "minikube",
-              "auth_info": "minikube",
-              "namespace": "default"
-            },
-      ```
-
+```json hl_lines="9"
+{
+  "user_id": "b4fe4317-be21-4836-824f-6661c68b8fba",
+  "v2": {
+    "active_context": "local-2",
+    "contexts": {
+      "default": {},
+      "local-2": {
+        "source": 3,
+        "active_transaction": "7a81eab5e6c6430aa5c01deb06852ca5",
+        "cluster_name": "minikube",
+        "auth_info": "minikube",
+        "namespace": "default"
+      },
+```
   
-    After you start a transaction demarcation, you can add [supported commands (i.e., transactional commands)](#supported-operations), such
-    as `pachctl start commit`, `pachctl create branch` ..., to the
-    transaction.  
+After you start a transaction demarcation, you can add [supported commands (i.e., transactional commands)](#supported-operations), such
+as `pachctl start commit`, `pachctl create branch` ..., to the
+transaction.  
 
-    All commands that are performed in a transaction are
-    queued up and not executed against the actual cluster until you finish
-    the transaction. When you finish the transaction, all queued command
-    are executed atomically.
+All commands that are performed in a transaction are
+queued up and not executed against the actual cluster until you finish
+the transaction. When you finish the transaction, all queued command
+are executed atomically.
 
 * To finish a transaction, run:
 
@@ -98,7 +95,7 @@ A transaction demarcation initializes some transactional behavior before the dem
 
   We have used the [inner join pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins) in our joins example to illustrate the difference between no transaction and the use a transaction, all other things being equal. Make sure to follow the example README if you want to run those pachctl commands yourself.
 
-  ![Tx vs no Tx](../images/flow-control-with-and-without-trx.png)
+  ![Tx vs no Tx](../../images/flow-control-with-and-without-trx.png)
         
   {{% notice note %}}
   Note that in the case with the transaction, the `put file` and following `finish commit` are happening **after** the `finish transaction` instruction.
@@ -194,7 +191,7 @@ the data repository and the other updates the parameters repository.
 The following animation shows the standard Pachyderm workflow without
 a transaction:
 
-![Standard workflow](../../assets/images/transaction_wrong.gif)
+![Standard workflow](../../../assets/images/transaction_wrong.gif)
 
 In Pachyderm, a pipeline starts as soon as a new commit lands in
 a repository. In the diagram above, as soon as `commit 1` is added
@@ -211,7 +208,7 @@ With transactions, you can ensure that only one job triggers with
 both the new `data` and `parameters`. The following animation
 demonstrates how transactions work:
 
-![Transactions workflow](../../assets/images/transaction_right.gif)
+![Transactions workflow](../../../assets/images/transaction_right.gif)
 
 The transaction ensures that a single job runs for the two commits
 that were started within the transaction.

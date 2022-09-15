@@ -1,8 +1,7 @@
-
 ---
 # metadata # 
 title: Egress To An SQL Database
-description: 
+description: Learn how to use data egress to end data to an SQL database. 
 date: 
 # taxonomy #
 tags: 
@@ -63,14 +62,14 @@ Append an egress section to your pipeline specification file, then fill in:
 - the `name`: the Kubernetes secret name.
 - the `columns`: Optional array for egress of **CSV files with headers only**. The order of the columns in this array must match the order of the schema columns; however, the CSV columns can be any order. So if the array is ["foo", "bar"] and the CSV file is:
 
-    ``` 
+    ```s
     bar,foo
     1,"string"
     2,"text!"
     ```
     The following table will be written to the database:
 
-    ```
+    ```s
     foo   |  bar
     ===============
     string | 1

@@ -11,13 +11,9 @@ seriesPart:
 
 ## Definition
 
-A Pachyderm repository is a location where you store your data inside
-Pachyderm. It is a top-level data object that contains
-files and folders. 
+A Pachyderm repository is a location where you store your data inside Pachyderm. It is a top-level data object that contains files and folders. 
 
-Similar to Git, a **Pachyderm repository tracks all
-changes to the data and creates a history of data modifications that you
-can access and review**. 
+Similar to Git, a **Pachyderm repository tracks all changes to the data and creates a history of data modifications that you can access and review**. 
 
 {{% notice info %}}
 You can store any type of file in a Pachyderm repo, including binary and plain text files.
@@ -36,8 +32,7 @@ command, or by using one of [Pachyderm's client API](../../../reference/clients/
 After creating the repository, add your data by using the `pachctl put file` command.
 
 {{% notice warning %}}
-    A Pachyderm repo name can include alphanumeric characters, dashes, and underscores,
-    and should be no more than 63 characters long.
+A Pachyderm repo name can include alphanumeric characters, dashes, and underscores, and should be no more than 63 characters long.
 {{% /notice %}}
 
 
@@ -125,7 +120,5 @@ If you run the delete command with the `--all` flag, all
 repositories will be deleted.
 
 {{% notice tip %}}
-See Also 
-
-[Pipeline](../pipeline-concepts/pipeline/index.md)
+**See Also**: [Pipeline](../pipeline-concepts/pipeline/index.md)
 {{% /notice%}}

@@ -48,6 +48,6 @@ master c32879ae0e6f4b629a43429b7ec10ccc
 ```
 
 {{% notice warning %}}
-    - Deleting a branch (`pachctl delete branch <myrepo>@<branchname>`) does not delete the commits on it.
-    - All branches must have a head commit. 
+- Deleting a branch (`pachctl delete branch <myrepo>@<branchname>`) does not delete the commits on it.
+- All branches must have a head commit. 
 {{% /notice %}}

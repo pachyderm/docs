@@ -26,8 +26,8 @@ Pick the `egress` protocol that applies to your storage:
 
 ## Example 
 
-    ```json
-    "egress": {
-       "URL": "s3://bucket/dir"
-    },
-    ```
+```json
+"egress": {
+   "URL": "s3://bucket/dir"
+},
+```

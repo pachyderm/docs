@@ -163,7 +163,7 @@ For example, `mydirectory`.
 
       **System Response:**
 
-      ```
+      ```s
       ro for images: &{Branch:master Write:true}
       ri: repo:<name:"montage" > created:<seconds:1591812554 nanos:348079652 > size_bytes:1345398 description:"Output repo for pipeline montage." branches:<repo:<name:"montage" > name:"master" >
       continue
@@ -201,7 +201,7 @@ in your terminal:
       `CMD + SHIFT + G`, and type the mountpoint location. If you have mounted
       the repo to `~/mydirectory`, type `~/mydirectory`.
 
-      ![finder-repo-mount](../../../assets/images/s_finder_repo_mount.png)
+      ![finder-repo-mount](../../../../assets/images/s_finder_repo_mount.png)
 
 1. Edit the files as needed.
 1. When ready, **add your changes to the Pachyderm repo by stopping

@@ -79,7 +79,7 @@ In the simple example below, we create three successive commits on the master br
 
 We then run `pachctl squash commit ID1`, then `pachctl squash commit ID2`, and look at our branch and remaining commit(s).
 
-![Squash example](../images/squash-delete.png)
+![Squash example](../../images/squash-delete.png)
 * A’ and C' are altered versions of files A and C.
 
 At any moment, `pachctl list file repo@master` invariably returns the same files A’, B, C’. `pachctl list commit` however, differs in each case, since, by squashing commits, we have deleted them from the branch. 
@@ -115,11 +115,11 @@ In such a case, you will need to:
 - Optionally, wipe this file from your history by squashing the initial bad commit and all its children up to
    the newly finished commit.
 
-      Unless the subsequent commits overwrote or deleted the
-      bad data, the data might still be present in the
-      children commits. Squashing those commits cleans up your
-      commit history and ensures that the errant data is not
-      available when non-HEAD versions of the data are read.
+  Unless the subsequent commits overwrote or deleted the
+  bad data, the data might still be present in the
+  children commits. Squashing those commits cleans up your
+  commit history and ensures that the errant data is not
+  available when non-HEAD versions of the data are read.
 
 ### Example 
 
@@ -128,7 +128,7 @@ How would we do that?
 
 For now, `pachctl list file repo@master` returns the files A’, B, C’, E, F.
 
-![Delete data example](../images/delete-data.png)
+![Delete data example](../../images/delete-data.png)
 * A’ and C' are altered versions of files A and C.
 
 - We create a new commit in which we surgically remove file C:

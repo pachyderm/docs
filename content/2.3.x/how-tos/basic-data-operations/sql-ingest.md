@@ -51,7 +51,7 @@ Not all secret formats are the same. For a full walkthrough on how to create, ed
 
 Pachyderm's SQL Ingest requires a connection string defined as a [Jsonnet URL parameter](#url-parameter-details) to connect to your database; the URL is structured as follows:
 
-```
+```s
 <protocol>://<username>@<host>:<port>/<database>?<param1>=<value1>&<param2>=<value2>
 ```
 
@@ -94,7 +94,7 @@ In this example, we are leveraging Snowflake's support for queries traversing [s
       - **Database**: `SNOWFLAKE_SAMPLE_DATA` 
       - **Schema**: `WEATHER`
       - **Warehouse**: `COMPUTE_WH`
-      ```
+      ```s
       snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH
       ```
 3. Build query for the table `DAILY_14_TOTAL` using information from column `V`.  
@@ -126,7 +126,7 @@ SQL Ingest's Jsonnet pipeline spec, [**`sql_ingest_cron.jsonnet`**](https://gith
 -  **1 Output Repo**: Used to store the data transformed by the cron pipeline; set by the pipeline spec's `pipeline.name` attribute, which you can define through the Jsonnet parameter `--arg name=outputRepoName \`.
 - **1 Output File**: Used to save the query results (JSON or CSV) and potentially be used as input for a following pipeline.
 
-![sql-ingest-diagram](../images/sql-ingest-cron-example.png)
+![sql-ingest-diagram](../../images/sql-ingest-cron-example.png)
 
 In the default Jsonnet template, the file generated is obtainable from the output repo, `outputRepoName@master:/0000`. The filename is hardcoded, however you could paramaterize this as well using a custom Jsonnet pipeline spec and passing `--arg outputFile='0000'`. The file's contents are the result of the query(`--arg query="query"`) being ran against the database`--arg url="connectionStringToDdatabase"` ; both are defined in the `transform.cmd` attribute.
 
@@ -164,7 +164,7 @@ pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pa
 
 #### URL Parameter Details
 
-```
+```s
 <protocol>://<username>@<host>:<port>/<database>?<param1>=<value1>&<param2>=<value2>
 ```
 

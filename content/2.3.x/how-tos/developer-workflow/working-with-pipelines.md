@@ -18,7 +18,7 @@ Before you read this section, make sure that you understand basic Pachyderm pipe
 
 In general, there are five steps to working with a pipeline. The stages can be summarized in the image below. 
 
-![Developer workflow](../../assets/images/d_steps_analysis_pipeline.svg)
+![Developer workflow](../../../assets/images/d_steps_analysis_pipeline.svg)
 
 We will walk through each of the stages in detail.
 
@@ -77,9 +77,8 @@ your container starts, so it runs a shim process in your container
 instead, and then, it calls your pipeline specification's `cmd` from there.
 
 {{% notice note %}}
-
-    The `Dockerfile` example below is provided for your reference
-    only. Your `Dockerfile` might look completely different.
+The `Dockerfile` example below is provided for your reference
+only. Your `Dockerfile` might look completely different.
 {{% /notice %}}
 
 To build a Docker image, complete the following steps:
@@ -125,8 +124,7 @@ with the `--push-images` flag. For more information, see
      ```
 
 {{% notice note %}}
-
-    Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
+Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
 {{% /notice %}}
 
 ## Step 4: Create/Edit the Pipeline Config
@@ -143,10 +141,9 @@ parameters:
 - `input`
 
 {{% notice note %}}
-
-    Some special types of pipelines, such as a spout pipeline, do not
-    require you to specify all of these parameters. 
-    Spout pipelines, for example, do not have input repos.
+Some special types of pipelines, such as a spout pipeline, do not
+require you to specify all of these parameters. 
+Spout pipelines, for example, do not have input repos.
 {{% /notice %}}
 
 Check our reference [pipeline specification](../../../reference/pipeline-spec) page, for a list of all available fields in a pipeline specification file.
