@@ -72,13 +72,13 @@ loki-stack:
 ```
 
 {{% notice note %}}
-"Grafana Users"
+**Grafana Users**:
 - To use Grafana, deploy with `loki-stack.grafana.enabled: true`.
 - To access Grafana, run port-forward with `kubectl port-forward svc/pachyderm-grafana 4001:80`. Change the port 4001 to what suits you best.
 - Login to `localhost:4001` with the username `admin`, and the password found with running `kubectl get secret pachyderm-grafana -o jsonpath="{.data.admin-password}" | base64 -d`.
   If enterprise is activated, you will be able to inspect containers logs in your console.
 
-  ![Container logs](../images/grafana_user_logs.png)
+  ![Container logs](../../images/grafana_user_logs.png)
 {{% /notice %}}
 
 

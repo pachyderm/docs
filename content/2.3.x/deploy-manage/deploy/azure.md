@@ -302,20 +302,20 @@ Once created, go back to your newly created database, and:
 
 {{% notice note %}}
 
-    Azure provides two options for pods running on an AKS worker nodes to access a PostgreSQL DB instance, pick what fit you best:
+Azure provides two options for pods running on an AKS worker nodes to access a PostgreSQL DB instance, pick what fit you best:
+
+  - Create a [firewall rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-firewall-rules#connecting-from-azure) on the Azure DB Server with a range of IP addresses that encompasses all IPs of the AKS Cluster nodes (this can be a very large range if using node auto-scaling).
+  - Create a [VNet Rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-data-access-and-security-vnet) on the Azure DB Server that allows access from the subnet the AKS nodes are in. This is used in conjunction with the Microsoft.Sql VNet Service Endpoint enabled on the cluster subnet.
+
+You can also choose the more secure option to [deny public access to your PostgreSQL instance](https://docs.microsoft.com/en-us/azure/postgresql/howto-deny-public-network-access) then [Create a private endpoint in the K8s vnet](https://docs.microsoft.com/en-us/azure/postgresql/howto-configure-privatelink-cli). Read more about how to [configure a private link using CLI on Azure's documentation](https://docs.microsoft.com/en-us/azure/postgresql/concepts-data-access-and-security-private-link)
+
+
+Alternativelly, in the **Connection Security** of your newly created server, *Allow access to Azure services* (This is equivalent to running `az postgres server firewall-rule create --server-name <your_server_name> --resource-group <your_resource_group> --name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0`). 
 {{% /notice %}}
-
-      - Create a [firewall rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-firewall-rules#connecting-from-azure) on the Azure DB Server with a range of IP addresses that encompasses all IPs of the AKS Cluster nodes (this can be a very large range if using node auto-scaling).
-      - Create a [VNet Rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-data-access-and-security-vnet) on the Azure DB Server that allows access from the subnet the AKS nodes are in. This is used in conjunction with the Microsoft.Sql VNet Service Endpoint enabled on the cluster subnet.
-
-    You can also choose the more secure option to [deny public access to your PostgreSQL instance](https://docs.microsoft.com/en-us/azure/postgresql/howto-deny-public-network-access) then [Create a private endpoint in the K8s vnet](https://docs.microsoft.com/en-us/azure/postgresql/howto-configure-privatelink-cli). Read more about how to [configure a private link using CLI on Azure's documentation](https://docs.microsoft.com/en-us/azure/postgresql/concepts-data-access-and-security-private-link)
-
-   
-   Alternativelly, in the **Connection Security** of your newly created server, *Allow access to Azure services* (This is equivalent to running `az postgres server firewall-rule create --server-name <your_server_name> --resource-group <your_resource_group> --name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0`). 
 
 - In the **Essentials** page of your instance, find the full **server name** and **admin username** that will be required in your [values.yaml](#update-your-yaml-values).
 
-![Instance overview page](../images/azure_postgresql_overview.png)
+![Instance overview page](../../images/azure_postgresql_overview.png)
 
 ### Create Your Databases
 After your instance is created, you will need to create Pachyderm's database(s).
@@ -323,8 +323,7 @@ After your instance is created, you will need to create Pachyderm's database(s).
 If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../enterprise/auth/enterprise-server/setup.md), you will need to create a second database named "dex" in your PostgreSQL Server instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
 
 {{% notice note %}}
-
-    Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
+Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
 {{% /notice %}}
 
 Pachyderm will use the same user to connect to `pachyderm` as well as to `dex`. 
@@ -357,9 +356,8 @@ You have set up your infrastructure, created your data container and a Managed P
 
 ### Update Your Values.yaml  
 
-{{% notice note %}}
- 
-     If you have not created a Managed PostgreSQL Server instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
+{{% notice note %}} 
+If you have not created a Managed PostgreSQL Server instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
 {{% /notice %}}
 
 If you have previously tried to run Pachyderm locally,
@@ -532,5 +530,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterla
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% notice note %}}
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% /notice %}}

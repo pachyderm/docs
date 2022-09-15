@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-![Console in action](../images/console.gif)
+![Console in action](../../images/console.gif)
 
 ## What is Console
 
@@ -30,7 +30,7 @@ Request an Enterprise trial token directly from Console CE by hitting the **"Upg
 
 Before diving into Console installation steps, please look at Console's various states, from the Community Edition to Enterprise. It should give you a mental model of the various paths to upgrade your Community Edition and what happens when your Enterprise token expires.
 
-![Console state diagram](../images/console-state-diagram.png)
+![Console state diagram](../../images/console-state-diagram.png)
 
 ## Deploy Console
 
@@ -52,9 +52,8 @@ Follow the deployment instructions in our [Local Installation](../../getting-sta
 You are all set!
 
 {{% notice note %}}
-
-    - **Pachyderm local deployment comes with Console by default**. To prevent Console from being installed, pass the following parameter to your helm install one line command `--set console.enabled=false`.
-    - Console CE does not require any authentication.
+- **Pachyderm local deployment comes with Console by default**. To prevent Console from being installed, pass the following parameter to your helm install one line command `--set console.enabled=false`.
+- Console CE does not require any authentication.
 {{% /notice %}}
 
 ### Deploy In The Cloud
@@ -64,9 +63,8 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 - You can opt for a **quick installation** that will alleviate those infrastructure constraints (Not recommended in Production but an easy way to get started) and speed up your installation by following the steps in our [Quick Cloud Deployment](../quickstart/) page, then [connect to your Console](#connect-to-console): 
 
 {{% notice note %}}
- 
-    - You can "quick install" Pachyderm CE or Enterprise Edition.
-    - Use the mock user (username:`admin`, password: `password`) to login to Console when authentication is enabled but no Identity provider was wired (Enterprise).
+- You can "quick install" Pachyderm CE or Enterprise Edition.
+- Use the mock user (username:`admin`, password: `password`) to login to Console when authentication is enabled but no Identity provider was wired (Enterprise).
 {{% /notice %}}
 
 - For a **production environment**:
@@ -79,40 +77,40 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 {{% notice warning %}}
 - **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-auth` k8s secret is created containing a [rootToken](../../enterprise/auth/index.md#activate-user-access-management) key. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-However, **this secret is only used when configuring through helm**:
+  However, **this secret is only used when configuring through helm**:
 
-    - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
-    - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
+  - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
+  - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
 
 - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
 {{% /notice %}}
 
 ### Connect to Console
 
-=== "No Ingress set up (Local or Quick Install)"
+#### No Ingress set up (Local or Quick Install)
 
-    - Run `pachctl port-forward` (Background this process in a new tab of your terminal).
-    
-    - Connect to your Console (Pachyderm UI):
+- Run `pachctl port-forward` (Background this process in a new tab of your terminal).
 
-         - Point your browser to `http://localhost:4000` 
-         - Authenticate as the mock User using `admin` & `password` 
+- Connect to your Console (Pachyderm UI):
 
-=== "Ingress / DNS set up"
+     - Point your browser to `http://localhost:4000` 
+     - Authenticate as the mock User using `admin` & `password` 
 
-    - Point your browser to:
+#### Ingress / DNS set up
 
-         - `http://<external-IP-address-or-domain-name>:80` or,
-         - `https://<external-IP-address-or-domain-name>:443` if TLS is enabled
+- Point your browser to:
 
-    - Authenticate:
+     - `http://<external-IP-address-or-domain-name>:80` or,
+     - `https://<external-IP-address-or-domain-name>:443` if TLS is enabled
 
-         - As the mock User using `admin` & `password` if you used the mockIDP.
-         - As a User of your IdP otherwise.
+- Authenticate:
+
+     - As the mock User using `admin` & `password` if you used the mockIDP.
+     - As a User of your IdP otherwise.
 
 
 You are all set! 
 You should land on the Projects page of Console.
 
-![Console Landing Page](../../getting-started/images/console_landing_page.png)
+![Console Landing Page](../../../getting-started/images/console_landing_page.png)
 

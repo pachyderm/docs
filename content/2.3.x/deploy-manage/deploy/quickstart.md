@@ -35,7 +35,7 @@ Deploying with a proxy presents a couple of advantages:
 - You will need one DNS only.
 - It simplifies the deployment of Console.
 - No more port-forward.
-    - {{% /notice %}}
+{{% /notice %}}
 
 ## 1. Prerequisites
 
@@ -78,43 +78,43 @@ Install [AWS CLI](https://aws.amazon.com/cli/)
 1. Create a values.yaml
 
 
-=== "Deploy Pachyderm CE (includes Console CE)"
+#### Deploy Pachyderm CE (includes Console CE)
 
-    ```yaml
-    deployTarget: "AMAZON"
-    pachd:
-      storage:
-        amazon:
-          bucket: "bucket_name"      
-          # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
-          id: "AKIAIOSFODNN7EXAMPLE"                
-          # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          region: "us-east-2"
-      externalService:
-        enabled: true
-    console:
-      enabled: true
-    ```
-=== "Deploy Pachyderm Enterprise with Console"
-    Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/index.md#cluster-roles) per default.
+```yaml
+ deployTarget: "AMAZON"
+ pachd:
+   storage:
+     amazon:
+       bucket: "bucket_name"      
+       # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+       id: "AKIAIOSFODNN7EXAMPLE"                
+       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+       region: "us-east-2"
+   externalService:
+     enabled: true
+ console:
+   enabled: true
+```
+#### Deploy Pachyderm Enterprise with Console
+ Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/index.md#cluster-roles) per default.
 
-    ```yaml
-    deployTarget: "AMAZON"
-    pachd:
-      storage:
-        amazon:
-          bucket: "bucket_name"                
-          # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
-          id: "AKIAIOSFODNN7EXAMPLE"                
-          # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          region: "us-east-2"
-      # pachyderm enterprise key 
-      enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
-    console:
-      enabled: true
-    ```
+```yaml
+ deployTarget: "AMAZON"
+ pachd:
+   storage:
+     amazon:
+       bucket: "bucket_name"                
+       # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+       id: "AKIAIOSFODNN7EXAMPLE"                
+       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+       region: "us-east-2"
+   # pachyderm enterprise key 
+   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+ console:
+   enabled: true
+```
      
 
 Jump to [Helm install](#3-helm-install)
@@ -131,45 +131,44 @@ Add `--scopes storage-rw` to your `gcloud container clusters create` command.
 
 1. Create a values.yaml
 
-=== "Deploy Pachyderm CE (includes Console CE)"
+#### Deploy Pachyderm CE (includes Console CE)
 
-    ```yaml
-    deployTarget: "GOOGLE"
-    pachd:
-      storage:
-        google:
-          bucket: "bucket_name"
-          cred: |
-            INSERT JSON CONTENT HERE
-      externalService:
-        enabled: true
-    console:
-      enabled: true
-    ```
-=== "Deploy Pachyderm Enterprise with Console"
-    Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/index.md#cluster-roles) per default.
+```yaml
+ deployTarget: "GOOGLE"
+ pachd:
+   storage:
+     google:
+       bucket: "bucket_name"
+       cred: |
+         INSERT JSON CONTENT HERE
+   externalService:
+     enabled: true
+ console:
+   enabled: true
+```
+#### Deploy Pachyderm Enterprise with Console
+ Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/index.md#cluster-roles) per default.
 
-    ```yaml
-    deployTarget: "GOOGLE"
-    pachd:
-      storage:
-        google:
-          bucket: "bucket_name"
-          cred: |
-            INSERT JSON CONTENT HERE
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
-    console:
-      enabled: true
-    ```
+```yaml
+ deployTarget: "GOOGLE"
+ pachd:
+   storage:
+     google:
+       bucket: "bucket_name"
+       cred: |
+         INSERT JSON CONTENT HERE
+   # pachyderm enterprise key
+   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+ console:
+   enabled: true
+```
 
 Jump to [Helm install](#3-helm-install)
 
 ### Azure
 
 {{% notice note %}}
-
-    - This section assumes that you have an [Azure Subscription](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+- This section assumes that you have an [Azure Subscription](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 {{% /notice %}}
 
 1. Additional client installation:
@@ -181,43 +180,43 @@ Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/in
 
 1. Create a values.yaml
 
-=== "Deploy Pachyderm CE (includes Console CE)"
+#### Deploy Pachyderm CE (includes Console CE)
 
-    ```yaml
-    deployTarget: "MICROSOFT"
-    pachd:
-      storage:
-        microsoft:
-          # storage container name
-          container: "blah"
-          # storage account name
-          id: "AKIAIOSFODNN7EXAMPLE"
-          # storage account key
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-      externalService:
-        enabled: true
-    console:
-      enabled: true
-    ```
-=== "Deploy Pachyderm Enterprise with Console"
-    Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/permissions.md#clusteradminrole) per default.
+```yaml
+ deployTarget: "MICROSOFT"
+ pachd:
+   storage:
+     microsoft:
+       # storage container name
+       container: "blah"
+       # storage account name
+       id: "AKIAIOSFODNN7EXAMPLE"
+       # storage account key
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+   externalService:
+     enabled: true
+ console:
+   enabled: true
+```
+#### Deploy Pachyderm Enterprise with Console
+ Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/permissions.md#clusteradminrole) per default.
 
-    ```yaml    
-    deployTarget: "MICROSOFT"
-    pachd:
-      storage:
-        microsoft:
-          # storage container name
-          container: "blah"
-          # storage account name
-          id: "AKIAIOSFODNN7EXAMPLE"
-          # storage account key
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
-    console:
-      enabled: true
-    ```
+```yaml    
+ deployTarget: "MICROSOFT"
+ pachd:
+   storage:
+     microsoft:
+       # storage container name
+       container: "blah"
+       # storage account name
+       id: "AKIAIOSFODNN7EXAMPLE"
+       # storage account key
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+   # pachyderm enterprise key
+   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+ console:
+   enabled: true
+```
 
 Jump to [Helm install](#3-helm-install)
 
@@ -255,48 +254,47 @@ Jump to [Helm install](#3-helm-install)
 
 ## 4. Have 'pachctl' And Your Cluster Communicate
 
-=== "You have deployed Pachyderm without Console"
+### You have deployed Pachyderm without Console
 
-    - Retrieve the external IP address of pachd service:
-        ```s
-        kubectl get services | grep pachd-lb | awk '{print $4}'
-        ```
-    - Then **update your context for pachctl to point at your cluster**:
-
-        ```s
-        echo '{"pachd_address": "grpc://<external-IP-address>:30650"}' | pachctl config set context "<choose-a-cluster-context-name>" --overwrite
-        ```
-
-        ```s
-        pachctl config set active-context "<your-cluster-context-name>"
-        ```
-    - If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your mock User (username:`admin`, password: `password`), before you use `pachctl`. 
-
-=== "You have deployed Pachyderm with Console"
-    - To connect to your new Pachyderm instance, run:
-
-        ```s
-        pachctl config import-kube local --overwrite
-        ```
-        ```s
-        pachctl config set active-context local
-        ```
-    - Then run `pachctl port-forward` (Background this process in a new tab of your terminal).
-
-
-- Finally, check that your cluster is up and running
+- Retrieve the external IP address of pachd service:
+    ```s
+    kubectl get services | grep pachd-lb | awk '{print $4}'
+    ```
+- Then **update your context for pachctl to point at your cluster**:
 
     ```s
-    pachctl version
+    echo '{"pachd_address": "grpc://<external-IP-address>:30650"}' | pachctl config set context "<choose-a-cluster-context-name>" --overwrite
     ```
-
-    **System Response:**
 
     ```s
-    COMPONENT           VERSION
-    pachctl             {{ config.pach_latest_version }}
-    pachd               {{ config.pach_latest_version }}
+    pachctl config set active-context "<your-cluster-context-name>"
     ```
+- If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your mock User (username:`admin`, password: `password`), before you use `pachctl`. 
+
+### You have deployed Pachyderm with Console
+- To connect to your new Pachyderm instance, run:
+
+    ```s
+    pachctl config import-kube local --overwrite
+    ```
+    ```s
+    pachctl config set active-context local
+    ```
+- Then run `pachctl port-forward` (Background this process in a new tab of your terminal).
+
+###  Check that your cluster is up and running
+
+```s
+pachctl version
+```
+
+**System Response:**
+
+```s
+COMPONENT           VERSION
+pachctl             {{ config.pach_latest_version }}
+pachd               {{ config.pach_latest_version }}
+```
 
 ## 5. Connect to Console
 To connect to your Console (Pachyderm UI):
@@ -316,8 +314,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterla
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice note %}}
-
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-    
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
 {{% /notice %}}
 

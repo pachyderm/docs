@@ -59,17 +59,18 @@ To create a pipeline, complete the following steps:
     ```s
     pachctl create pipeline -f <pipeline_spec>
     ```
-    !!! Note
-         -  `pachctl create pipeline -f` also accepts an URL.
+   {{% notice note %}}
+   -  `pachctl create pipeline -f` also accepts an URL.
 
-            For example, in our opencv beginner tutorial:
-            ```s
-            pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/edges.json
-            ```
-         -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
+      For example, in our opencv beginner tutorial:
+      ```s
+      pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/edges.json
+      ```
+   -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
+  {{%/notice%}}
        
 
-1. Verify that the Kubernetes pod has been created for the pipeline:
+2. Verify that the Kubernetes pod has been created for the pipeline:
 
     ```s
     pachctl list pipeline
@@ -116,9 +117,11 @@ repository. However, if such a repo already exists, your pipeline will take
 over the master branch. The files that were stored in the repo before
 will still be in the `HEAD` of the branch.
 
-!!! note "See Also:"
-    - [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
-    - [Pipeline Specification](../../../reference/pipeline-spec/)
-    - [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)
-    - [Update a Pipeline](../updating-pipelines/)
-    - [Delete a Pipeline](../delete-pipeline/)
+{{% notice note %}}
+**See Also**:
+- [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
+- [Pipeline Specification](../../../reference/pipeline-spec/)
+- [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)
+- [Update a Pipeline](../updating-pipelines/)
+- [Delete a Pipeline](../delete-pipeline/)
+{{% /notice %}}

@@ -12,7 +12,7 @@ seriesPart:
 For a quick test installation of Pachyderm on AWS (suitable for development), jump to our [Quickstart page](../quickstart/).
 
 For deployments in production, refer to the following diagram and follow these step-by-step instructions:
-![AWS Arch](../images/arch-diagram-high-level-aws.svg)
+![AWS Arch](../../images/arch-diagram-high-level-aws.svg)
 
 {{% notice tip %}}
 Before your start your installation process.
@@ -86,16 +86,16 @@ To deploy an EKS cluster, complete the following steps:
 
 1. Verify the deployment:
 
-      ```s
-      kubectl get all
-      ```
+   ```s
+   kubectl get all
+   ```
 
-      **System Response:**
+   **System Response:**
 
-      ```
-      NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-      service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   23h
-      ```
+   ```s
+   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+   service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   23h
+   ```
 
 Once your Kubernetes cluster is up, and your infrastructure is configured, 
 you are ready to prepare for the installation of Pachyderm.
@@ -117,29 +117,27 @@ The S3 bucket name must be globally unique across the entire Amazon region.
 
 * Set up the following system variables:
 
-      * `BUCKET_NAME` — A globally unique S3 bucket name.
-      * `AWS_REGION` — The AWS region of your Kubernetes cluster. For example,
-      `us-west-2` and not `us-west-2a`.
+  * `BUCKET_NAME` — A globally unique S3 bucket name.
+  * `AWS_REGION` — The AWS region of your Kubernetes cluster. For example,
+  `us-west-2` and not `us-west-2a`.
 
-* If you are creating an S3 bucket in the `us-east-1` region, run the following
-      command:
+* If you are creating an S3 bucket in the `us-east-1` region, run the following command:
 
-      ```s
-      aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
-      ```
+  ```s
+  aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
+  ```
 
-* If you are creating an S3 bucket in any region but the `us-east-1`
-region, run the following command:
+* If you are creating an S3 bucket in any region but the `us-east-1` region, run the following command:
 
-      ```s
-      aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION} --create-bucket-configuration LocationConstraint=${AWS_REGION}
-      ```
+  ```s
+  aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION} --create-bucket-configuration LocationConstraint=${AWS_REGION}
+  ```
 
 * Verify that the S3 bucket was created:
 
-      ```s   
-      aws s3 ls
-      ```
+  ```s   
+  aws s3 ls
+  ```
 
 You now need to **give Pachyderm access to your bucket** either by:
 
@@ -147,10 +145,11 @@ You now need to **give Pachyderm access to your bucket** either by:
 OR
 - Passing your AWS credentials (account ID and KEY) to your values.yaml when installing
 
-!!! Info
-      IAM roles provide finer grained user management and security
-      capabilities than access keys. Pachyderm recommends the use of IAM roles for production
-      deployments.
+{{% notice info %}}
+IAM roles provide finer grained user management and security
+capabilities than access keys. Pachyderm recommends the use of IAM roles for production
+deployments.
+{{%/notice%}}
 
 ### Add An IAM Role And Policy To Your Service Account
 
@@ -213,10 +212,11 @@ master keys. When creating a bucket for your Pachyderm cluster, you can set up e
 of them. Because Pachyderm requests that buckets do not include encryption
 information, the method that you select for the bucket is applied.
 
-!!! Info
-      Setting up communication between Pachyderm object storage clients and AWS KMS
-      to append encryption information to Pachyderm requests is not supported and
-      not recommended. 
+{{% notice info%}}
+Setting up communication between Pachyderm object storage clients and AWS KMS
+to append encryption information to Pachyderm requests is not supported and
+not recommended. 
+{{%/notice%}}
 
 To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html).
 
@@ -270,14 +270,14 @@ create **two databases** (`pachyderm` and, depending on whether your cluster is 
 - Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
 
 {{% notice note %}}
-
-      It is assumed that you are already familiar with RDS, or will be working with an administrator who is.
+It is assumed that you are already familiar with RDS, or will be working with an administrator who is.
 {{% /notice %}}
 
 ### Create An RDS Instance
 
-!!! Info 
-      Find the details of all the steps highlighted below in [AWS Documentation: "Getting Started" hands-on tutorial](https://aws.amazon.com/getting-started/hands-on/create-connect-postgresql-db/).
+{{% notice info%}}
+Find the details of all the steps highlighted below in [AWS Documentation: "Getting Started" hands-on tutorial](https://aws.amazon.com/getting-started/hands-on/create-connect-postgresql-db/).
+{{% /notice %}}
  
 In the RDS console, create a database **in the region matching your Pachyderm cluster**. Choose the **PostgreSQL** engine and select a PostgreSQL version >= 13.3.
 
@@ -339,161 +339,163 @@ You have set up your infrastructure, created your S3 bucket and an AWS Managed P
 ### Update Your Values.yaml  
 
 {{% notice note %}}
-
-     If you have not created a Managed PostgreSQL RDS instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
-#### For gp3 EBS Volumes
+If you have not created a Managed PostgreSQL RDS instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
 {{% /notice %}}
 
+#### For gp3 EBS Volumes
 [Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
 
 
-=== "Gp3 + Service account annotations"   
-      ```yaml
-      deployTarget: AMAZON
-      # This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
-      # And a storageclass configured named gp3
-      etcd:
-        storageClass: gp3
-      pachd:
-        storage:
-          amazon:
-            bucket: blah
-            region: us-east-2
-        serviceAccount:
-          additionalAnnotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/pachyderm-bucket-access
-        worker:
-          serviceAccount:
-            additionalAnnotations:
-              eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/pachyderm-bucket-access
-        externalService:
-          enabled: true
-      global:
-        postgresql:
-          postgresqlUsername: "username"
-          postgresqlPassword: "password" 
-          # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-          postgresqlDatabase: "databasename"
-          # The postgresql database host to connect to. Defaults to postgres service in subchart
-          postgresqlHost: "RDS CNAME"
-          # The postgresql database port to connect to. Defaults to postgres server in subchart
-          postgresqlPort: "5432"
+#####  Gp3 + Service account annotations
 
-      postgresql:
-        # turns off the install of the bundled postgres.
-        # If not using the built in Postgres, you must specify a Postgresql
-        # database server to connect to in global.postgresql
-        enabled: false
-      ```
-=== "Gp3 + AWS Credentials"   
-      ```yaml
-      deployTarget: AMAZON
-      # This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
-      # And a storageclass configured named gp3
-      etcd:
-        storageClass: gp3
-      pachd:
-        storage:
-          amazon:
-            bucket: blah
-            region: us-east-2
-            # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-            id: AKIAIOSFODNN7EXAMPLE
-            # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-            secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-        externalService:
-          enabled: true           
-      global:
-        postgresql:
-          postgresqlUsername: "username"
-          postgresqlPassword: "password" 
-          # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-          postgresqlDatabase: "databasename"
-          # The postgresql database host to connect to. Defaults to postgres service in subchart
-          postgresqlHost: "RDS CNAME"
-          # The postgresql database port to connect to. Defaults to postgres server in subchart
-          postgresqlPort: "5432"
+```yaml
+deployTarget: AMAZON
+# This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
+# And a storageclass configured named gp3
+etcd:
+  storageClass: gp3
+pachd:
+  storage:
+    amazon:
+      bucket: blah
+      region: us-east-2
+  serviceAccount:
+    additionalAnnotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/pachyderm-bucket-access
+  worker:
+    serviceAccount:
+      additionalAnnotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/pachyderm-bucket-access
+  externalService:
+    enabled: true
+global:
+  postgresql:
+    postgresqlUsername: "username"
+    postgresqlPassword: "password" 
+    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    postgresqlDatabase: "databasename"
+    # The postgresql database host to connect to. Defaults to postgres service in subchart
+    postgresqlHost: "RDS CNAME"
+    # The postgresql database port to connect to. Defaults to postgres server in subchart
+    postgresqlPort: "5432"
 
-      postgresql:
-        # turns off the install of the bundled postgres.
-        # If not using the built in Postgres, you must specify a Postgresql
-        # database server to connect to in global.postgresql
-        enabled: false
-      ```
+postgresql:
+  # turns off the install of the bundled postgres.
+  # If not using the built in Postgres, you must specify a Postgresql
+  # database server to connect to in global.postgresql
+  enabled: false
+```
+
+##### Gp3 + AWS Credentials
+
+```yaml
+deployTarget: AMAZON
+# This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
+# And a storageclass configured named gp3
+etcd:
+  storageClass: gp3
+pachd:
+  storage:
+    amazon:
+      bucket: blah
+      region: us-east-2
+      # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+      id: AKIAIOSFODNN7EXAMPLE
+      # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+      secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  externalService:
+    enabled: true           
+global:
+  postgresql:
+    postgresqlUsername: "username"
+    postgresqlPassword: "password" 
+    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    postgresqlDatabase: "databasename"
+    # The postgresql database host to connect to. Defaults to postgres service in subchart
+    postgresqlHost: "RDS CNAME"
+    # The postgresql database port to connect to. Defaults to postgres server in subchart
+    postgresqlPort: "5432"
+
+postgresql:
+  # turns off the install of the bundled postgres.
+  # If not using the built in Postgres, you must specify a Postgresql
+  # database server to connect to in global.postgresql
+  enabled: false
+```
 
 #### For gp2 EBS Volumes
 
 [Check out our example of values.yaml for gp2](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/aws-gp2-values.yaml) or use our minimal example below.   
     
-=== "For Gp2 + Service account annotations"
-      ```yaml
-      deployTarget: AMAZON      
-      etcd:
-        etcd.storageSize: 500Gi
-      pachd:
-        storage:
-          amazon:
-            bucket: blah
-            region: us-east-2
-        serviceAccount:
-          additionalAnnotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
-        worker:
-          serviceAccount:
-            additionalAnnotations:
-              eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
-        externalService:
-          enabled: true
-      global:
-        postgresql:
-          postgresqlUsername: "username"
-          postgresqlPassword: "password" 
-          # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-          postgresqlDatabase: "databasename"
-          # The postgresql database host to connect to. Defaults to postgres service in subchart
-          postgresqlHost: "RDS CNAME"
-          # The postgresql database port to connect to. Defaults to postgres server in subchart
-          postgresqlPort: "5432"
+##### For Gp2 + Service account annotations
+```yaml
+deployTarget: AMAZON      
+etcd:
+  etcd.storageSize: 500Gi
+pachd:
+  storage:
+    amazon:
+      bucket: blah
+      region: us-east-2
+  serviceAccount:
+    additionalAnnotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
+  worker:
+    serviceAccount:
+      additionalAnnotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
+  externalService:
+    enabled: true
+global:
+  postgresql:
+    postgresqlUsername: "username"
+    postgresqlPassword: "password" 
+    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    postgresqlDatabase: "databasename"
+    # The postgresql database host to connect to. Defaults to postgres service in subchart
+    postgresqlHost: "RDS CNAME"
+    # The postgresql database port to connect to. Defaults to postgres server in subchart
+    postgresqlPort: "5432"
 
-      postgresql:
-        # turns off the install of the bundled postgres.
-        # If not using the built in Postgres, you must specify a Postgresql
-        # database server to connect to in global.postgresql
-        enabled: false
-      ```  
-=== "For Gp2 + AWS Credentials"
-      ```yaml
-      deployTarget: AMAZON      
-      etcd:
-        etcd.storageSize: 500Gi
-      pachd:
-        storage:
-          amazon:
-            bucket: blah
-            region: us-east-2
-            # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-            id: AKIAIOSFODNN7EXAMPLE            
-            # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html           
-            secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-        externalService:
-          enabled: true
-      global:
-        postgresql:
-          postgresqlUsername: "username"
-          postgresqlPassword: "password" 
-          # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-          postgresqlDatabase: "databasename"
-          # The postgresql database host to connect to. Defaults to postgres service in subchart
-          postgresqlHost: "RDS CNAME"
-          # The postgresql database port to connect to. Defaults to postgres server in subchart
-          postgresqlPort: "5432"
+postgresql:
+  # turns off the install of the bundled postgres.
+  # If not using the built in Postgres, you must specify a Postgresql
+  # database server to connect to in global.postgresql
+  enabled: false
+```  
+##### For Gp2 + AWS Credentials
+```yaml
+deployTarget: AMAZON      
+etcd:
+  etcd.storageSize: 500Gi
+pachd:
+  storage:
+    amazon:
+      bucket: blah
+      region: us-east-2
+      # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+      id: AKIAIOSFODNN7EXAMPLE            
+      # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html           
+      secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  externalService:
+    enabled: true
+global:
+  postgresql:
+    postgresqlUsername: "username"
+    postgresqlPassword: "password" 
+    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    postgresqlDatabase: "databasename"
+    # The postgresql database host to connect to. Defaults to postgres service in subchart
+    postgresqlHost: "RDS CNAME"
+    # The postgresql database port to connect to. Defaults to postgres server in subchart
+    postgresqlPort: "5432"
 
-      postgresql:
-        # turns off the install of the bundled postgres.
-        # If not using the built in Postgres, you must specify a Postgresql
-        # database server to connect to in global.postgresql
-        enabled: false
-      ```
+postgresql:
+  # turns off the install of the bundled postgres.
+  # If not using the built in Postgres, you must specify a Postgresql
+  # database server to connect to in global.postgresql
+  enabled: false
+```
 
 
 Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml).
@@ -504,42 +506,41 @@ Retain (ideally in version control) a copy of the Helm values used to deploy you
 
 ### Deploy Pachyderm On The Kubernetes Cluster
 
-
 - You can now deploy a Pachyderm cluster by running this command:
 
-      ```s
-      helm repo add pach https://helm.pachyderm.com
-      helm repo update
-      helm install pachyderm -f values.yaml pach/pachyderm --version <version-of-the-chart>
-      ```
+  ```s
+  helm repo add pach https://helm.pachyderm.com
+  helm repo update
+  helm install pachyderm -f values.yaml pach/pachyderm --version <version-of-the-chart>
+  ```
 
-      **System Response:**
+  **System Response:**
 
-      ```s
-      NAME: pachd
-      LAST DEPLOYED: Mon Jul 12 18:28:59 2021
-      NAMESPACE: default
-      STATUS: deployed
-      REVISION: 1
-      ```
+  ```s
+  NAME: pachd
+  LAST DEPLOYED: Mon Jul 12 18:28:59 2021
+  NAMESPACE: default
+  STATUS: deployed
+  REVISION: 1
+  ```
 
-      The deployment takes some time. You can run `kubectl get pods` periodically
-      to check the status of deployment. When Pachyderm is deployed, the command
-      shows all pods as `READY`:
+  The deployment takes some time. You can run `kubectl get pods` periodically
+  to check the status of deployment. When Pachyderm is deployed, the command
+  shows all pods as `READY`:
 
-      ```s
-      kubectl wait --for=condition=ready pod -l app=pachd --timeout=5m
-      ```
+  ```s
+  kubectl wait --for=condition=ready pod -l app=pachd --timeout=5m
+  ```
 
-      **System Response**
+  **System Response**
 
-      ```
-      pod/pachd-74c5766c4d-ctj82 condition met
-      ```
+  ```s
+  pod/pachd-74c5766c4d-ctj82 condition met
+  ```
 
-      **Note:** If you see a few restarts on the `pachd` nodes, it means that
-      Kubernetes tried to bring up those pods before `etcd` was ready. Therefore,
-      Kubernetes restarted those pods. You can safely ignore this message.
+  **Note:** If you see a few restarts on the `pachd` nodes, it means that
+  Kubernetes tried to bring up those pods before `etcd` was ready. Therefore,
+  Kubernetes restarted those pods. You can safely ignore this message.
 
 - Finally, make sure that [`pachctl` talks with your cluster](#7-have-pachctl-and-your-cluster-communicate).
 
@@ -581,7 +582,7 @@ pachctl port-forward
 ## 8. Check That Your Cluster Is Up And Running
 
 {{% notice warning %}}
-    If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
 {{% /notice %}}
 
 ```s
@@ -604,5 +605,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterla
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% notice info %}}
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% /notice %}}

@@ -13,7 +13,7 @@ seriesPart:
 We are now shipping Pachyderm with an **optional embedded proxy** allowing Pachyderm to expose one single port externally (whether you access `pachd` over gRPC using `pachctl`, or `console` over HTTP, for example).
 
 See Pachyderm new high-level architecture diagram:
-![High level architecture](../images/arch-diagram-high-level-with-proxy.svg)
+![High level architecture](../../images/arch-diagram-high-level-with-proxy.svg)
 
 This page is an add-on to existing installation instructions in the case where you chose to deploy Pachyderm with an embedded proxy. The steps below replace all or parts of the existing installation documentation. We will let you know when to use them and which section they overwrite.
 
@@ -33,11 +33,10 @@ This page is an add-on to existing installation instructions in the case where y
 The deployment of Pachyderm with a proxy is optional at the moment and will become permanent in the next minor release of Pachyderm.
 {{% /notice %}}
 
-The diagram below gives a quick overview of the layout of services and pods when using a proxy. In particular, it details how Pachyderm listens to all inbound traffic on one port, then routes each call to the appropriate backend:![Infrastruture Recommendation](../images/infra-recommendations-with-proxy.png)
+The diagram below gives a quick overview of the layout of services and pods when using a proxy. In particular, it details how Pachyderm listens to all inbound traffic on one port, then routes each call to the appropriate backend:![Infrastruture Recommendation](../../images/infra-recommendations-with-proxy.png)
 
 {{% notice note %}}
- 
-    See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L827) for all available configurable fields of the proxy.
+See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L827) for all available configurable fields of the proxy.
 {{% /notice %}}
 
 Before any deployment in production, we recommend reading the following section to [set up your production infrastructure](#deploy-pachyderm-in-production-with-a-proxy). 
@@ -53,18 +52,19 @@ The TCP load balancer (load balanced at L4 of the OSI model) will have port `80/
         
     When a proxy is enabled with `type:LoadBalancer` (see the snippet of values.yaml enabling the proxy), Pachyderm creates a `pachyderm-proxy` service allowing your cloud platform (AWS, GKE...) to **provision a TCP Load Balancer automatically**.
         
-    !!! Note 
-        - You can optionally attach any additional Load Balancer configuration information to the metadata of your service by adding the appropriate `annotations` in the `proxy.service` of your values.yaml.
-        - You can pre-create a static IP (For example, in GCP: `gcloud compute addresses create ADDRESS_NAME --global --IP-version IPV4)`, then pass this external IP to the `loadBalancerIP` in the `proxy.service` of your values.yaml.
+  {{% notice note %}}
+  - You can optionally attach any additional Load Balancer configuration information to the metadata of your service by adding the appropriate `annotations` in the `proxy.service` of your values.yaml.
+  - You can pre-create a static IP (For example, in GCP: `gcloud compute addresses create ADDRESS_NAME --global --IP-version IPV4)`, then pass this external IP to the `loadBalancerIP` in the `proxy.service` of your values.yaml.
 
-        ```yaml
-        proxy:
-          enabled: true
-          service:
-            type: LoadBalancer
-            annotations: {<add-optional-annotations-here}
-            loadBalancerIP: <insert-your-proxy-external-IP-address-here>
-        ```
+  ```yaml
+  proxy:
+    enabled: true
+    service:
+      type: LoadBalancer
+      annotations: {<add-optional-annotations-here}
+      loadBalancerIP: <insert-your-proxy-external-IP-address-here>
+  ```
+  {{%/notice %}}
 
 * **Use a secure connection**
 
@@ -181,147 +181,148 @@ Follow your regular [QUICK Cloud Deploy documentation](../quickstart/), but for 
 
 
 ### AWS
-=== "Deploy Pachyderm without Console"
+####  Deploy Pachyderm without Console
 
-    ```yaml hl_lines="3-6"
-    deployTarget: "AMAZON"
+```yaml hl_lines="3-6"
+deployTarget: "AMAZON"
 
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
 
-    pachd:
-      storage:
-        amazon:
-          bucket: "bucket_name"      
-          # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
-          id: "AKIAIOSFODNN7EXAMPLE"                
-          # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          region: "us-east-2"          
-    ```
-=== "Deploy Pachyderm with Console and Enterprise"
+pachd:
+  storage:
+    amazon:
+      bucket: "bucket_name"      
+      # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+      id: "AKIAIOSFODNN7EXAMPLE"                
+      # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+      secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+      region: "us-east-2"          
+```
+####  Deploy Pachyderm with Console and Enterprise
 
-    ```yaml hl_lines="3-9 21-26"
-    deployTarget: "AMAZON"
+```yaml hl_lines="3-9 21-26"
+deployTarget: "AMAZON"
 
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
 
-    ingress:
-      host: <insert-external-ip-address-or-dns-name>
+ingress:
+  host: <insert-external-ip-address-or-dns-name>
 
-    pachd:
-      storage:
-        amazon:
-          bucket: "<bucket-name>"                
-          # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
-          id: "AKIAIOSFODNN7EXAMPLE"                
-          # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          region: "<us-east-2>"
-      # pachyderm enterprise key 
-      enterpriseLicenseKey: "<your-enterprise-token>"
-      localhostIssuer: "true"
-    ```
+pachd:
+  storage:
+    amazon:
+      bucket: "<bucket-name>"                
+      # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+      id: "AKIAIOSFODNN7EXAMPLE"                
+      # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+      secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+      region: "<us-east-2>"
+  # pachyderm enterprise key 
+  enterpriseLicenseKey: "<your-enterprise-token>"
+  localhostIssuer: "true"
+```
 
 ### Google
 
-=== "Deploy Pachyderm without Console"
+#### Deploy Pachyderm without Console
 
-    ```yaml hl_lines="3-6"
-    deployTarget: "GOOGLE"
+```yaml hl_lines="3-6"
+deployTarget: "GOOGLE"
 
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
 
-    pachd:
-      storage:
-        google:
-          bucket: "<bucket-name>"
-          cred: |
-            INSERT JSON CONTENT HERE
-      externalService:
-        enabled: true
-    ```
-=== "Deploy Pachyderm with Console and Enterprise"
+pachd:
+  storage:
+    google:
+      bucket: "<bucket-name>"
+      cred: |
+        INSERT JSON CONTENT HERE
+  externalService:
+    enabled: true
+```
+####  Deploy Pachyderm with Console and Enterprise
 
-    ```yaml hl_lines="3-9 18-19"
-    deployTarget: "GOOGLE"
+```yaml hl_lines="3-9 18-19"
+deployTarget: "GOOGLE"
 
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
 
-    ingress:
-      host: <insert-external-ip-address-or-dns-name>
+ingress:
+  host: <insert-external-ip-address-or-dns-name>
 
-    pachd:
-      storage:
-        google:
-          bucket: "<bucket-name>"
-          cred: |
-            INSERT JSON CONTENT HERE
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "<your-enterprise-token>"
-      localhostIssuer: "true"
-    ```
+pachd:
+  storage:
+    google:
+      bucket: "<bucket-name>"
+      cred: |
+        INSERT JSON CONTENT HERE
+  # pachyderm enterprise key
+  enterpriseLicenseKey: "<your-enterprise-token>"
+  localhostIssuer: "true"
+```
 
 ### Azure
 
-=== "Deploy Pachyderm without Console"
+#### Deploy Pachyderm without Console
 
-    ```yaml hl_lines="3-6"
-    deployTarget: "MICROSOFT"
+```yaml hl_lines="3-6"
+deployTarget: "MICROSOFT"
 
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
 
-    pachd:
-      storage:
-        microsoft:
-          # storage container name
-          container: "blah"
-          # storage account name
-          id: "AKIAIOSFODNN7EXAMPLE"
-          # storage account key
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-    ```
-=== "Deploy Pachyderm with Console and Enterprise"
+pachd:
+  storage:
+    microsoft:
+      # storage container name
+      container: "blah"
+      # storage account name
+      id: "AKIAIOSFODNN7EXAMPLE"
+      # storage account key
+      secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+```
+####  Deploy Pachyderm with Console and Enterprise
 
-    ```yaml hl_lines="3-9 22-23"
-    deployTarget: "MICROSOFT"
+```yaml hl_lines="3-9 22-23"
+deployTarget: "MICROSOFT"
 
-    proxy:
-      enabled: true
-      service:
-        type: LoadBalancer
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
 
-    ingress:
-      host: <insert-external-ip-address-or-dns-name>
+ingress:
+  host: <insert-external-ip-address-or-dns-name>
 
 
-    pachd:
-      storage:
-        microsoft:
-          # storage container name
-          container: "<your-container-name>"
-          # storage account name
-          id: "AKIAIOSFODNN7EXAMPLE"
-          # storage account key
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "<your-enterprise-token>"
-      localhostIssuer: "true"
-    ```
+pachd:
+  storage:
+    microsoft:
+      # storage container name
+      container: "<your-container-name>"
+      # storage account name
+      id: "AKIAIOSFODNN7EXAMPLE"
+      # storage account key
+      secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+  # pachyderm enterprise key
+  enterpriseLicenseKey: "<your-enterprise-token>"
+  localhostIssuer: "true"
+```
+
 ## Deploy Pachyderm Locally With a Proxy
 
 This section is an alternative to the default [local deployment instructions](../../../getting-started/local-installation). It uses a variant of the original one line command to enable a proxy. 
@@ -339,44 +340,44 @@ Note that you can run both Console and JupyterLab on your local installation.
 
 Then start your Kubernetes environment.
 
-=== "Minikube (OS X / Windows)"
+#### Minikube (OS X / Windows)
 
-    ```s
-    minikube start
-    ```
+```s
+minikube start
+```
 
-    Later, we will use `minikube tunnel` to make the proxy available on `localhost`.
+Later, we will use `minikube tunnel` to make the proxy available on `localhost`.
 
-    Check [Minikube's documentation](https://minikube.sigs.k8s.io/docs/) for details.
+Check [Minikube's documentation](https://minikube.sigs.k8s.io/docs/) for details.
 
-=== "Kind (Linux)"
+#### Kind (Linux)
 
-    ```s
-      cat <<EOF | kind create cluster --name=kind --config=-
-      kind: Cluster
-      apiVersion: kind.x-k8s.io/v1alpha4
-      nodes:
-          - role: control-plane
-            kubeadmConfigPatches:
-                - |
-                    kind: InitConfiguration
-                    nodeRegistration:
-                        kubeletExtraArgs:
-                            node-labels: "ingress-ready=true"
-            extraPortMappings:
-                - containerPort: 30080
-                  hostPort: 80
-                  protocol: TCP
-                - containerPort: 30443
-                  hostPort: 443
-                  protocol: TCP
-        EOF
-    ```
+```s
+  cat <<EOF | kind create cluster --name=kind --config=-
+  kind: Cluster
+  apiVersion: kind.x-k8s.io/v1alpha4
+  nodes:
+      - role: control-plane
+        kubeadmConfigPatches:
+            - |
+                kind: InitConfiguration
+                nodeRegistration:
+                    kubeletExtraArgs:
+                        node-labels: "ingress-ready=true"
+        extraPortMappings:
+            - containerPort: 30080
+              hostPort: 80
+              protocol: TCP
+            - containerPort: 30443
+              hostPort: 443
+              protocol: TCP
+    EOF
+```
 
-      The extraPortMappings will make NodePorts in the cluster available on localhost; NodePort 30080 becomes localhost:80.
-      This will make Pachyderm available at `localhost:80` as long as this kind cluster is running.
+The extraPortMappings will make NodePorts in the cluster available on localhost; NodePort 30080 becomes localhost:80.
+This will make Pachyderm available at `localhost:80` as long as this kind cluster is running.
 
-      Check [Kind's documentation](https://kind.sigs.k8s.io/) for details.
+Check [Kind's documentation](https://kind.sigs.k8s.io/) for details.
 
 ### Deploy Pachyderm Community Edition Or Enterprise
 
@@ -401,22 +402,23 @@ Attention Kind users
   ```
 {{% /notice %}}
           
-=== "Community Edition With Console"
+#### Community Edition With Console
 
-      ```s
-      helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
-      ```
-=== "Enterprise With Console"
+```s
+helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+```
 
-      This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, we create a default mock user (username:admin, password: password) to authenticate to Console without having to connect your Identity Provider.
+#### Enterprise With Console
 
-      - Create a license.txt file in which you paste your [Enterprise Key](../../../enterprise/) .
-      - Then, run the following helm command to install Pachyderm's latest Enterprise Edition:
+This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, we create a default mock user (username:admin, password: password) to authenticate to Console without having to connect your Identity Provider.
 
-        ```s 
-        helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
-        ```
-    
+- Create a license.txt file in which you paste your [Enterprise Key](../../../enterprise/) .
+- Then, run the following helm command to install Pachyderm's latest Enterprise Edition:
+
+  ```s 
+  helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
+  ```
+
 
 
 * Check Your Install
@@ -484,7 +486,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 The `pachyderm-proxy` service also routes Pachyderm's [**S3 gateway**](../../manage/s3gateway/) (allowing you to
 **access Pachyderm's repo through the S3 protocol**) on port 80 (note the endpoint in the diagram below).
 
-![Global S3 Gateway with Proxy](../images/main-s3-gateway-with-proxy.png)
+![Global S3 Gateway with Proxy](../../images/main-s3-gateway-with-proxy.png)
 
 ## Changes to the Enterprise Server Setup
 

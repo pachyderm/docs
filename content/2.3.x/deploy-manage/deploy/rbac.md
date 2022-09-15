@@ -19,8 +19,6 @@ RBAC permissions by default. Therefore, you need to
 contact your Kubernetes administrator and provide the
 following list of required permissions:
 
-{% raw %}
-
 ```s
 Rules: []rbacv1.PolicyRule{{
 		APIGroups: []string{""},
@@ -37,8 +35,6 @@ Rules: []rbacv1.PolicyRule{{
 		ResourceNames: []string{client.StorageSecretName},
 		}},
 ```
-
-{% endraw %}
 
 The following table explains how Pachyderm uses those permissions:
 

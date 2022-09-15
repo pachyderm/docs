@@ -94,6 +94,7 @@ echo '{"pachd_address": "grpcs://<external-IP-address-or-domain-name>:443"}' | p
 ```s
 pachctl config set active-context "grpcs-context"
 ```
+{{% /notice %}}
 
 {{% notice info %}}
 [Connect by using a Pachyderm context](../connect-to-cluster/#connect-by-using-a-pachyderm-context)

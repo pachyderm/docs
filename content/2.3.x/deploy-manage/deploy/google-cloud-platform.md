@@ -21,10 +21,10 @@ Before your start your installation process.
     
 
 {{% notice warning %}}
-    We are now shipping Pachyderm with an **embedded proxy** 
-    allowing your cluster to expose one single port externally. This deployment setup is optional.
-    
-    If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
+We are now shipping Pachyderm with an **embedded proxy** 
+allowing your cluster to expose one single port externally. This deployment setup is optional.
+
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
 {{% /notice %}}
 
 The following section walks you through deploying a Pachyderm cluster on [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) (GKE). 
@@ -46,8 +46,8 @@ In particular, you will:
 1. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
 1. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
 
-{{% notice warning %}}  
-TL;DR - Give me the script
+{{% notice tip %}}  
+**TL;DR**: 
 
 [This script](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/deploy/gcp/gcp-doco-script.sh) will create a GKE cluster, the workload identity service accounts and permissions you need, a static IP, the cloud SQL instance and databases, and a cloud storage bucket. It will also install Pachyderm into the cluster. 
 
@@ -305,7 +305,7 @@ etcd and PostgreSQL (metadata storage) each claim the creation of a [persistent 
 If you plan to deploy Pachyderm with its default bundled PostgreSQL instance, read the warning below, and jump to the [deployment section](#6-deploy-pachyderm): 
 
 {{% notice info %}}   
-    When deploying Pachyderm on GCP, your persistent volumes are automatically created and assigned the **default disk size of 50 GBs**. Note that StatefulSets is a default as well.
+When deploying Pachyderm on GCP, your persistent volumes are automatically created and assigned the **default disk size of 50 GBs**. Note that StatefulSets is a default as well.
 {{%/notice%}}
 
 {{% notice warning %}} 
@@ -326,7 +326,7 @@ This section will provide guidance on the configuration settings you will need t
 
 {{% notice note %}}
 
-      It is assumed that you are already familiar with CloudSQL, or will be working with an administrator who is.
+It is assumed that you are already familiar with CloudSQL, or will be working with an administrator who is.
 {{% /notice %}}
 
 ### Create A CloudSQL Instance
@@ -363,7 +363,7 @@ If you plan to deploy a standalone cluster (i.e., if you do not plan to register
 
 {{% notice note %}}
 
-    Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
+Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
 {{% /notice %}}
 
 Run the first or both commands depending on your use case.
@@ -378,10 +378,9 @@ Pachyderm will use the same user "postgres" to connect to `pachyderm` as well as
 Once your databases have been created, add the following fields to your Helm values:
 
 {{% notice note %}}
-
-    To identify a Cloud SQL instance, you can find the INSTANCE_NAME on the Overview page for your instance in the Google Cloud Console, or by running the following command: 
-    `gcloud sql instances describe INSTANCE_NAME`
-    For example: myproject:myregion:myinstance.
+To identify a Cloud SQL instance, you can find the INSTANCE_NAME on the Overview page for your instance in the Google Cloud Console, or by running the following command: 
+`gcloud sql instances describe INSTANCE_NAME`
+For example: myproject:myregion:myinstance.
 {{% /notice %}}
 
 You will need to retrieve the name of your Cloud SQL connection: 
@@ -436,8 +435,7 @@ STATIC_IP_ADDR=$(gcloud compute addresses describe ${STATIC_IP_NAME} --region=${
 ```
 
 {{% notice note %}}
-
-     If you have not created a Managed CloudSQL instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml and remove the `cloudsqlAuthProxy` fields. This setup is **not recommended in production environments**.
+If you have not created a Managed CloudSQL instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml and remove the `cloudsqlAuthProxy` fields. This setup is **not recommended in production environments**.
 {{% /notice %}}
 
 Retrieve these additional variables, then fill in their values in the YAML file below:
@@ -516,8 +514,7 @@ pachd:
 {{%/notice %}}
 
 {{% notice note  %}}
-    Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [github](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml).
-
+Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [github](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml).
 {{% /notice %}}
 
 ### Deploy Pachyderm on the Kubernetes cluster
@@ -609,7 +606,7 @@ by running `pachctl version` or creating a new repo.
 
 {{% notice warning %}}
 If Authentication is activated (When you deploy with an enterprise key, for example), you will need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
-{% /notice %}
+{{% /notice %}}
 
 ```s
 pachctl version
@@ -631,5 +628,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterla
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% notice note %}}
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% /notice%}}

@@ -12,8 +12,9 @@ seriesPart:
 
 The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 
-!!! Reminder
-    **Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
+{{% notice note %}}
+**Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
+{{% /notice %}}
 
 This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/pachyderm).
 
@@ -70,20 +71,23 @@ For Production deployments, Pachyderm strongly recommends that you **[create you
 
 1. Install Pachyderm
 
-    You are ready to deploy Pachyderm on the environment of your choice.
-    ```s
-    helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
-    ```
-    !!! Info "To choose a specific helm chart version"
-        **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
-        
+ You are ready to deploy Pachyderm on the environment of your choice.
+ ```s
+ helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
+ ```
+ {{% notice info %}}
+ To choose a specific helm chart version
 
-        - You can choose a specific helm chart version by adding a `--version` flag (for example, `--version 0.3.0`) to your `helm install.`
-        - No additional flag will install the latest GA release of Pachyderm by default. 
-        - You can choose the latest pre-release version of the chart by using the flag `--devel` (pre-releases are versions of the chart that correspond to releases of Pachyderm that don't have the GA status yet).
+  **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
+  
+
+  - You can choose a specific helm chart version by adding a `--version` flag (for example, `--version 0.3.0`) to your `helm install.`
+  - No additional flag will install the latest GA release of Pachyderm by default. 
+  - You can choose the latest pre-release version of the chart by using the flag `--devel` (pre-releases are versions of the chart that correspond to releases of Pachyderm that don't have the GA status yet).
 
 
-        For example: When the 2.0 version of Pachyderm was a release candidate, using the flag `--devel` would let you install the latest RC of 2.0 while no flag would retrieve the newest GA (1.13.4). 
+  For example: When the 2.0 version of Pachyderm was a release candidate, using the flag `--devel` would let you install the latest RC of 2.0 while no flag would retrieve the newest GA (1.13.4). 
+ {{%/notice %}}
      
 
 1. Check your deployment
@@ -96,7 +100,7 @@ For Production deployments, Pachyderm strongly recommends that you **[create you
     
     **System Response:**
 
-    ```
+    ```s
     NAME                           READY   STATUS    RESTARTS   AGE
     etcd-0                         1/1     Running   0          18h
     pachd-5db79fb9dd-b2gdq         1/1     Running   2          18h
@@ -146,7 +150,7 @@ pachctl version
 
 **System Response:**
 
-```
+```s
 COMPONENT           VERSION
 pachctl             {{ config.pach_latest_version }}
 pachd               {{ config.pach_latest_version }}
@@ -236,11 +240,10 @@ In the case where you have activated Enterprise and configured your IdP, note th
     ```
 
 {{% notice note %}}
-
-    Note that those values will be injected into platform secrets at the time of the installation.
-#### **B - Use Secret(s)** 
+Note that those values will be injected into platform secrets at the time of the installation.
 {{% /notice %}}
 
+#### **B - Use Secret(s)** 
 If your organization uses tools like ArgoCD for Gitops, you might want to [create secrets](../../how-tos/advanced-data-operations/secrets.md#create-a-secret) ahead of time then provide their names in the `secretName` field of your values.yaml. 
 
 Find the secret name field that references your secret in your values.yaml [(Column A)](#mapping-external-secrets-fields-values-fields-and-pachyderm-platform-secrets) and its corresponding Secret Key (First column) in the second table below.

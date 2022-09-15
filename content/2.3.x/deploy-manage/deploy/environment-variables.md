@@ -25,7 +25,7 @@ to know the current job ID, you can use the `PACH_JOB_ID`
 environment variable to refer to the current job ID.
 
 {{% notice note %}}
-    [Local Deployment](../../../getting-started/local-installation/)
+[Local Deployment](../../../getting-started/local-installation/)
 {{% /notice %}}
 
 ## `pachd` Environment Variables
@@ -143,18 +143,21 @@ particularly useful:
 | `HOME`                     | The path to the home directory. The default value is `/root` |
 | `<input-repo>=<path/to/input/repo>` | The path to the filesystem that is <br> defined in the `input` in your pipeline specification. Pachyderm defines <br> such a variable for each input. The path is defined by the `glob` pattern in the <br> spec. For example, if you have an input `images` and a glob pattern of `/`, <br> Pachyderm defines the `images=/pfs/images` variable. If you <br> have a glob pattern of `/*`, Pachyderm matches <br> the files in the `images` repository and, therefore, the path is <br> `images=/pfs/images/liberty.png`. |
 | `input_COMMIT`             | The ID of the commit that is used for the input. <br>For example, `images_COMMIT=fa765b5454e3475f902eadebf83eac34`. |
-| `S3_ENDPOINT`         | A Pachyderm S3 gateway sidecar container endpoint. <br> If you have an S3 enabled pipeline, this parameter specifies a URL that <br> you can use to access the pipeline's repositories state when a <br> particular job was run. The URL has the following format: <br> `http://<job-ID>-s3:600`. <br> An example of accessing the data by using AWS CLI looks like this: <br>`echo foo_data | aws --endpoint=${S3_ENDPOINT} s3 cp - s3://out/foo_file`. |
+| `S3_ENDPOINT`         | A Pachyderm S3 gateway sidecar container endpoint. <br> If you have an S3 enabled pipeline, this parameter specifies a URL that <br> you can use to access the pipeline's repositories state when a <br> particular job was run. The URL has the following format: <br> `http://<job-ID>-s3:600`. <br> An example of accessing the data by using AWS CLI looks like this: `echo foo_data | aws --endpoint=${S3_ENDPOINT} s3 cp - s3://out/foo_file`. |
 
 In addition to these environment variables, Kubernetes injects others for
 Services that run inside the cluster. These variables enable you to connect to
 those outside services, which can be powerful but might also result
-in processing being retried multiple times. For example, if your code
-writes a row to a database, that row might be written multiple times because of
-retries. Interaction with outside services must be idempotent to prevent
+in processing being retried multiple times. 
+
+For example, if your code writes a row to a database, that row might be written multiple times because of retries. Interaction with outside services must be idempotent to prevent
 unexpected behavior. Furthermore, one of the running services that your code
 can connect to is Pachyderm itself. This is generally not recommended as very
 little of the Pachyderm API is idempotent, but in some specific cases it can be
 a viable approach.
 
-!!! note "See Also"
-    - [transform.env](../../../reference/pipeline-spec/#transform-required)
+{{% notice note %}}
+**See Also**: [transform.env](../../../reference/pipeline-spec/#transform-required)
+{{% /notice %}}
+
+
