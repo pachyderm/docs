@@ -21,7 +21,7 @@ processes, see [Working with Pipelines](working-with-pipelines.md).
 The following diagram demonstrates automated Pachyderm
 development workflow with CI:
 
-![Developer Workflow](../../assets/images/d_developer_workflow102.svg)
+![Developer Workflow](../../../assets/images/d_developer_workflow102.svg)
 
 Although initial CI setup might require extra effort on your side,
 in the long run, it brings significant benefits to your team,

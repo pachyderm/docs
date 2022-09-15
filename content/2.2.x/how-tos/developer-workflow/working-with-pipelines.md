@@ -18,7 +18,7 @@ Before you read this section, make sure that you understand basic Pachyderm pipe
 
 In general, there are five steps to working with a pipeline. The stages can be summarized in the image below. 
 
-![Developer workflow](../../assets/images/d_steps_analysis_pipeline.svg)
+![Developer workflow](../../../assets/images/d_steps_analysis_pipeline.svg)
 
 We will walk through each of the stages in detail.
 
@@ -124,8 +124,7 @@ with the `--push-images` flag. For more information, see
      ```
 
 {{% notice note %}}
-
-    Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
+Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
 {{% /notice %}}
 
 ## Step 4: Create/Edit the Pipeline Config
@@ -142,10 +141,9 @@ parameters:
 - `input`
 
 {{% notice note %}}
-
-    Some special types of pipelines, such as a spout pipeline, do not
-    require you to specify all of these parameters. 
-    Spout pipelines, for example, do not have input repos.
+Some special types of pipelines, such as a spout pipeline, do not
+require you to specify all of these parameters. 
+Spout pipelines, for example, do not have input repos.
 {{% /notice %}}
 
 Check our reference [pipeline specification](../../../reference/pipeline-spec) page, for a list of all available fields in a pipeline specification file.
@@ -200,8 +198,8 @@ parameter, as well as many others, in the pipeline specification.
      ```
 
 {{% notice note %}}
- "See Also:"
-    - [Updating Pipelines](../../pipeline-operations/updating-pipelines)
-    - Advanced users, parameterize your pipeline specifications with [Jsonnet pipeline specification files](../../pipeline-operations/jsonnet-pipeline-specs).
+**See Also**:
+- [Updating Pipelines](../../pipeline-operations/updating-pipelines)
+- Advanced users, parameterize your pipeline specifications with [Jsonnet pipeline specification files](../../pipeline-operations/jsonnet-pipeline-specs).
 {{% /notice %}}
 

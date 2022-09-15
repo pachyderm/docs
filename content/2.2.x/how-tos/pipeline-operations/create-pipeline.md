@@ -59,18 +59,19 @@ To create a pipeline, complete the following steps:
     ```s
     pachctl create pipeline -f <pipeline_spec>
     ```
-    !!! Note
-         -  `pachctl create pipeline -f` also accepts an URL.
+    {{% notice note %}}
+   -  `pachctl create pipeline -f` also accepts an URL.
 
-            For example, in our opencv beginner tutorial:
+      For example, in our opencv beginner tutorial:
 
-            ```s
-            pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
-            ```
-         -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
+      ```s
+      pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
+      ```
+   -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
+  {{% /notice%}}
        
 
-1. Verify that the Kubernetes pod has been created for the pipeline:
+2. Verify that the Kubernetes pod has been created for the pipeline:
 
     ```s
     pachctl list pipeline
@@ -107,6 +108,7 @@ To create a pipeline, complete the following steps:
 You can, for example, create multiple pipelines out of the same jsonnet pipeline spec file while pointing each of them at different input repositories, parameterize a command line in the transform field of your pipelines, or dynamically pass various docker images to train different models on the same dataset. 
 
 For illustration purposes, in the following example, we are creating a pipeline named `edges-1` and pointing its input repository at the repo 'images':
+
 ```s
 pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
 ```
@@ -117,9 +119,11 @@ repository. However, if such a repo already exists, your pipeline will take
 over the master branch. The files that were stored in the repo before
 will still be in the `HEAD` of the branch.
 
-!!! Note "See Also:"
-    - [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
-    - [Pipeline Specification](../../../reference/pipeline-spec/)
-    - [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)
-    - [Update a Pipeline](../updating-pipelines/)
-    - [Delete a Pipeline](../delete-pipeline/)
+{{% notice note %}}
+**See Also**:
+- [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
+- [Pipeline Specification](../../../reference/pipeline-spec/)
+- [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)
+- [Update a Pipeline](../updating-pipelines/)
+- [Delete a Pipeline](../delete-pipeline/)
+{{% /notice %}}

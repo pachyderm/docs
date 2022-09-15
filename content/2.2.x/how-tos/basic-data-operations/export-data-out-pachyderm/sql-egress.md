@@ -22,8 +22,7 @@ Interface tables are intermediate tables used for staging the data being egresse
 They are the tables your SQL Egress pipeline inserts its data into and should be **dedicated tables**. The content of your interface tables matches the content of the latest output commit of your pipeline. 
 
 {{% notice note %}}
- "Best Practice" 
-A new output commit will trigger a **delete of all data in the interface tables** before inserting more recent values. As a best practice, we strongly recommend to **create a separate database** for Pachyderm Egress. 
+**Best Practice**: A new output commit will trigger a **delete of all data in the interface tables** before inserting more recent values. As a best practice, we strongly recommend to **create a separate database** for Pachyderm Egress. 
 {{% /notice %}}
 
 As of today, we support the following drivers:

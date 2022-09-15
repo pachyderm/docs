@@ -24,11 +24,15 @@ Specifically, we help you connect to a remote database of your choice and pull t
 
 - Run the following command to generate your secret:
 
-    `kubectl create secret generic <secret-name>  --from-literal=PACHYDERM_SQL_PASSWORD=<password-to-warehouse> --dry-run=client --output=json > yourwarehousesecret.json`
+  ```s
+  kubectl create secret generic <secret-name>  --from-literal=PACHYDERM_SQL_PASSWORD=<password-to-warehouse> --dry-run=client --output=json > yourwarehousesecret.json
+  ```
 
 - Then apply it to your Pachyderm cluster:
 
-    `pachctl create secret -f yourwarehousesecret.json`
+  ```s
+  pachctl create secret -f yourwarehousesecret.json
+  ```
 
 - The list returned by `kubectl get secret` should feature the secret name. 
 
@@ -166,17 +170,17 @@ The same base image [pachctf](https://hub.docker.com/repository/docker/pachyderm
 
 Check the visual representation of the SQL Ingest DAG created above in Console: 
 
-![SQL Ingest DAG](../images/sqlingest-pipelines.png)
+![SQL Ingest DAG](../../images/sqlingest-pipelines.png)
 
 In your terminal:
 
 - The list of the DAG's pipelines (`pachctl list pipeline`) looks like this:
 
-     ![List pipeline](../images/sqlingest-list-pipeline.png)
+     ![List pipeline](../../images/sqlingest-list-pipeline.png)
 
 - 3 repos are created:
 
-     ![List repo](../images/sqlingest-list-repo.png)
+     ![List repo](../../images/sqlingest-list-repo.png)
 
 ## How To Inspect The Result Of A Query?
 

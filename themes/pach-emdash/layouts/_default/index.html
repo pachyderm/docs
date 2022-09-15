@@ -5,7 +5,7 @@
 
 {{ define "main" }}
 
-    <div class="spread-between c-pinned-bottom mx-4 my-4 mt-5">
+    <div class="spread-between c-pinned-bottom m-4">
         <div>
             <h1 class="text-left">Pachyderm Docs</h1>
             <h2 class="subtitle-1 m mt-2 text-left"> Automate <b>data transformations</b> using Pachyderm</h2>
@@ -17,7 +17,7 @@
   
     {{ partial "featureCommunityDetails.html" . }}
     
-    <div class="stack-center mt-6 text-center">
+    <div class="stack-center mt-5 text-center">
         <h2>Design, Build, & Deploy <br>  Data Transformation Pipelines</h2>
     </div>
     {{with  .Site.GetPage "section" .Site.Params.releaseInfo.latest  }}

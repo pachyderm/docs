@@ -73,9 +73,8 @@ in your filepath:
   	```
 
 {{% notice note %}}
-
-    If you are configuring a local cluster to access an external bucket,
-    make sure that Pachyderm has been given the proper access.
+If you are configuring a local cluster to access an external bucket,
+make sure that Pachyderm has been given the proper access.
 {{% /notice %}}
 
 * Add multiple files at once by using the `-i` option or multiple `-f` flags.

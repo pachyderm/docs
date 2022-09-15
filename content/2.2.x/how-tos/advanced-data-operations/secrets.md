@@ -84,7 +84,7 @@ NAME     TYPE                           CREATED
 mysecret kubernetes.io/dockerconfigjson 11 seconds ago 
 ```
 {{% notice note %}}
-    Use `pachctl delete secret` to delete a secret given its name,  `pachctl inspect secret` to list a secret given its name.
+Use `pachctl delete secret` to delete a secret given its name,  `pachctl inspect secret` to list a secret given its name.
 {{% /notice %}}
 
 You can now edit your pipeline specification file as follow.
