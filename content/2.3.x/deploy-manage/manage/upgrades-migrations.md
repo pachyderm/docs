@@ -24,7 +24,7 @@ Upgrades are typically a simple process should require little to no downtime.
 * Migrations — A **migration** must be performed when you are **moving between major releases**,
 For questions on how to migrate, please contact your technical account manager or email support@pachyderm.com.
 
-{{% notice important %}}
+{{% notice danger %}}
 Performing an *upgrade* between *major releases* might lead to corrupted data. You must perform a migration when going between major versions.
 {{% /notice %}}
 

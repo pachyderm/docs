@@ -50,21 +50,21 @@ Use the IdP of your choice.
 For now, let's configure Pachyderm so that our
 Pachyderm users can log in through Auth0.
 
-### 1- Register a Pachyderm Application with your IdP
+### 1: Register a Pachyderm Application with your IdP
 
-!!! TLDR
-    The one important and invariant element of this step, 
-    no matter what your IdP choice might be, is the **callback URL**.
-    Callback URLs are the URLs that your IdP invokes after the authentication process. 
-    The IdP redirects back to this URL once a user is authenticated.
+{{% notice tip %}}
+The one important and invariant element of this step, 
+no matter what your IdP choice might be, is the **callback URL**.
+Callback URLs are the URLs that your IdP invokes after the authentication process. 
+The IdP redirects back to this URL once a user is authenticated.
 
-    For security reasons, you need to add your application's URL to your client's Allowed Callback URLs.
-    This enables your IdP to recognize these URLs as valid. 
+For security reasons, you need to add your application's URL to your client's Allowed Callback URLs.
+This enables your IdP to recognize these URLs as valid. 
 
-    **For Local or “Quick” deployment cases where you do not have a public DNS entry or public IP address, set the following field `config.insecureSkipIssuerCallbackDomainCheck` to `true` in your connector file below.**
+**For Local or “Quick” deployment cases where you do not have a public DNS entry or public IP address, set the following field `config.insecureSkipIssuerCallbackDomainCheck` to `true` in your connector file below.**
 
-    The format of the URL is described below. 
-
+The format of the URL is described below. 
+{{% /notice %}}
 
 If you do not have an Auth0 account, sign up for one
 at https://auth0.com and create your Pool of Users 
@@ -92,7 +92,7 @@ Then, complete the following steps:
     address by running `minikube ip`. 
 
    {{% notice warning %}} 
-   Attention Proxy users
+   **Attention Proxy users**: 
     Your Callback URL must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
     {{% /notice %}}
 
@@ -100,15 +100,15 @@ Then, complete the following steps:
 1. Select **Grant Types**.
 1. Verify that **Authorization Code** and **Refresh Token** are selected.
 
-   ![Auth0 Grant Settings](../images/auth0-grant-settings.png)
+   ![Auth0 Grant Settings](../../images/auth0-grant-settings.png)
 
 {{% notice note %}}
 For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
 We will log in to Pachyderm as this user once our IdP connection is completed.
-![Auth0 Create User](../images/auth0-create-user.png)
+![Auth0 Create User](../../images/auth0-create-user.png)
 {{% /notice %}}
 
-### 2- Set up and create an Idp-Pachyderm connector
+### 2: Set up and create an Idp-Pachyderm connector
 
 #### Create A Connector Configuration File
 To configure your Idp-Pachyderm integration, **create a connector configuration file** corresponding to your IdP. 
@@ -120,49 +120,49 @@ For a list of available connectors and their configuration options, see [Dex doc
 In the case of our integration with Auth0, we will use an oidc connector with the following parameters:
 
 {{% notice note %}}
-
-    Pachyderm supports the JSON and YAML formats for its connector files. 
+Pachyderm supports the JSON and YAML formats for its connector files. 
 {{% /notice %}}
 
 See our oidc connector example in JSON and YAML formats below.
-=== "oidc-dex-connector.json"
 
-    ``` json
-    {
-    "type": "oidc",
-    "id": "auth0",
-    "name": "Auth0",
-    "version": 1,
-    "config":{
-        "issuer": "https://dev-k34x5yjn.us.auth0.com/",
-        "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
-        "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
-        "redirectURI": "http://<ip>:30658/callback",
-        "insecureEnableGroups": true,
-        "insecureSkipEmailVerified": true,
-        "insecureSkipIssuerCallbackDomainCheck": false,
-        "forwardedLoginParams": ["login_hint"] 
-        }
-    }
-    ```
-=== "oidc-dex-connector.yaml"
+#####  oidc-dex-connector.json
 
-    ``` yaml
-        type: oidc
-        id: auth0
-        name: Auth0
-        version: 1
-        config:
-            issuer: https://dev-k34x5yjn.us.auth0.com/
-            clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
-            clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
-            redirectURI: http://<ip>:30658/callback
-            insecureEnableGroups: true
-            insecureSkipEmailVerified: true
-            insecureSkipIssuerCallbackDomainCheck: false,
-            forwardedLoginParams:
-            - login_hint
-    ```
+``` json
+{
+"type": "oidc",
+"id": "auth0",
+"name": "Auth0",
+"version": 1,
+"config":{
+  "issuer": "https://dev-k34x5yjn.us.auth0.com/",
+  "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
+  "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
+  "redirectURI": "http://<ip>:30658/callback",
+  "insecureEnableGroups": true,
+  "insecureSkipEmailVerified": true,
+  "insecureSkipIssuerCallbackDomainCheck": false,
+  "forwardedLoginParams": ["login_hint"] 
+  }
+}
+```
+##### oidc-dex-connector.yaml
+
+``` yaml
+  type: oidc
+  id: auth0
+  name: Auth0
+  version: 1
+  config:
+      issuer: https://dev-k34x5yjn.us.auth0.com/
+      clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
+      clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
+      redirectURI: http://<ip>:30658/callback
+      insecureEnableGroups: true
+      insecureSkipEmailVerified: true
+      insecureSkipIssuerCallbackDomainCheck: false,
+      forwardedLoginParams:
+      - login_hint
+```
 
 You will need to replace the following placeholders with relevant values:
 
@@ -284,11 +284,10 @@ Use the `pachctl auth revoke` command to revoke access for an existing Pachyderm
 - revoke all tokens for a given user `pachctl auth revoke --user=idp:usernamen@pachyderm.io` to log that user out forcibly.
 
 {{% notice note %}}
-
-    Note that a user whose Pachyderm token has been revoked can technically log in to Pachyderm again unless **you have removed that user from the user registry of your IdP**.
+Note that a user whose Pachyderm token has been revoked can technically log in to Pachyderm again unless **you have removed that user from the user registry of your IdP**.
 {{% /notice %}}
 
 For the curious mind: Take a look at the sequence diagram below illustrating the OIDC login flow. It highlights the exchange of the original OIDC ID Token for a Pachyderm Token.
 
-![OIDC Login Flow](../images/pachyderm-oidc-dex-flow.png)
+![OIDC Login Flow](../../images/pachyderm-oidc-dex-flow.png)
 

@@ -75,46 +75,45 @@ For a specific target release, specify the targeted major/minor version of `pach
 
 - Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
 
-      ```s
-      helm repo add pach https://helm.pachyderm.com
-      helm repo update
-      helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
-      ```
+  ```s
+  helm repo add pach https://helm.pachyderm.com
+  helm repo update
+  helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
+  ```
 
 {{% notice note %}}
- 
-      Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
+Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
 {{% /notice %}}
 
 - The upgrade can take some time. You can run `kubectl get pods` periodically in a separate tab to check the status of the deployment. When Pachyderm is deployed, the command shows all pods as `READY`:
 
-      ```s
-      kubectl get pods
-      ```
-      Once the pods are up, you should see a pod for `pachd` running 
-      (alongside etcd, pg-bouncer, postgres, console etc... depending on your installation). 
+  ```s
+  kubectl get pods
+  ```
+  Once the pods are up, you should see a pod for `pachd` running 
+  (alongside etcd, pg-bouncer, postgres, console etc... depending on your installation). 
 
-      **System response:**
+  **System response:**
 
-      ```s
-      NAME                     READY     STATUS    RESTARTS   AGE
-      pachd-3677268306-9sqm0   1/1       Running   0          4m
-      ...
-      ```
+  ```s
+  NAME                     READY     STATUS    RESTARTS   AGE
+  pachd-3677268306-9sqm0   1/1       Running   0          4m
+  ...
+  ```
 
 - Verify that the new version has been deployed:
 
-      ```s
-      pachctl version
-      ```
+  ```s
+  pachctl version
+  ```
 
-      **System response:**
+  **System response:**
 
-      ```s
-      COMPONENT           VERSION
-      pachctl             {{ config.pach_latest_version }}
-      pachd               {{ config.pach_latest_version }}
-      ```
+  ```s
+  COMPONENT           VERSION
+  pachctl             {{ config.pach_latest_version }}
+  pachd               {{ config.pach_latest_version }}
+  ```
 
-      The `pachd` and `pachctl` versions must both match the new version.
+  The `pachd` and `pachctl` versions must both match the new version.
 

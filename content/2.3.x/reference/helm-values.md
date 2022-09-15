@@ -317,6 +317,8 @@ If you're using Google Storage Buckets as your storage backend, configure it her
 
 - `storage.local.hostpath` indicates the path on the host where the PFS metadata will be stored.
 - `storage.local.requireRoot`
+
+
 ##### pachd.storage.microsoft
 
 If you're using Microsoft Blob Storage as your storage backend, configure it here.
@@ -373,14 +375,13 @@ This section is to configure the PostgresQL Subchart, if used.
 - `persistence.storageClass` specifies the storage class for the postgresql Persistent Volume (PV)
 
 {{% notice note %}}
- "More"
-    See notes in Bitnami chart values.yaml file for more information.
-    More info for setting up storage classes on various cloud providers:
-{{% /notice %}}
+**More**: See notes in Bitnami chart values.yaml file for more information.
+  More info for setting up storage classes on various cloud providers:
 
-      - AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
-      - GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
-      - Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+- [AWS](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)
+- [GCP](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd)
+- [Azure](https://docs.microsoft.com/en-us/azure/aks/concepts-storage)
+{{% /notice %}}
 
 - `storageSize` specifies the size of the volume to use for postgresql.
 
@@ -435,11 +436,10 @@ port exposed directly to the Internet.
   for higher availability. Each replica can handle 50,000 concurrent connections.There is an affinity rule to prefer scheduling the proxy pods **on the same node as pachd**, so a number here that matches the number of pachd replicas is a fine configuration.
   
 {{% notice note %}}
- 
-      We don't guarantee to keep the proxy<->pachd traffic on-node or even in-region.
-  
-  - `proxy.image` specifies the details of the proxy image to pull.  THe following fields can be left at the defaults unless instructed.
+ We don't guarantee to keep the proxy<->pachd traffic on-node or even in-region.
 {{% /notice %}}
+
+- `proxy.image` specifies the details of the proxy image to pull.  THe following fields can be left at the defaults unless instructed.
 
     - `proxy.image.repository` the proxy image repository. Defaults to "envoyproxy/envoy".
     - `proxy.image. tag` the tag of the proxy image.

@@ -42,10 +42,9 @@ See the Identity Provider High Level Diagram below:
 
 ## Activate User Access Management
 {{% notice note %}}
-
-    Verify the status of your **Enterprise License** before activating the User Access Management feature
-    by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
-    status along with the expiration date of the Enterprise License.   
+Verify the status of your **Enterprise License** before activating the User Access Management feature
+by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
+status along with the expiration date of the Enterprise License.   
 {{% /notice %}}
 
 To activate Pachyderm's authentication and authorization features,
@@ -61,7 +60,7 @@ Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [
 
 
 **System Response**
-```
+```s
 Pachyderm root token:
 54778a770c554d0fb84563033c9cb808
 ```

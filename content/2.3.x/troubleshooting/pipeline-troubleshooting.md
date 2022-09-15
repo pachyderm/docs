@@ -42,27 +42,13 @@ That scenario is quite easy to troubleshoot:
 1. Check your number of pipelines and parallelism settings (`"parallelism_spec"` attribute in your pipeline specification files) against our [limits](../../reference/scaling-limits).
 1. Additionally, your stderr and pipeline logs (`pachctl log -p <pipeline name> --master` or `pachctl log -p <pipeline name> --worker`) should contain one or both of those messages:
 
-   - number of pipelines limit exceeded:
+   - **number of pipelines limit exceeded**: Pachyderm Community Edition requires an activation key to create more than 16 total pipelines (you have X).  Use the command `pachctl license activate` to enter your key.
 
-     ```
-     Pachyderm Community Edition requires an activation key to create more than 16 total pipelines (you have X).  Use the command `pachctl license activate` to enter your key.
+       Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
 
-     Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
-
-     Get a key here:
-     → https://www.pachyderm.com/trial/
-     ```
-
-   - max number of workers exceeded:
-
-     ```
-     This pipeline will only create a total of 8 workers (you specified X). Pachyderm Community Edition requires an activation key to create pipelines with constant parallelism greater than 8. Use the command `pachctl license activate` to enter your key.
+   - **max number of workers exceeded**: This pipeline will only create a total of 8 workers (you specified X). Pachyderm Community Edition requires an activation key to create pipelines with constant parallelism greater than 8. Use the command `pachctl license activate` to enter your key.
 
      Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
-
-     Get a key here:
-     → https://www.pachyderm.com/trial/
-     ```
 
 To lift those limitations, Request an [**Enterprise Edition trial token**](https://www.pachyderm.com/trial/).
 Check out our [Enterprise features](https://docs.pachyderm.com/latest/enterprise/) for more details on our Enterprise Offer.
@@ -71,7 +57,7 @@ Check out our [Enterprise features](https://docs.pachyderm.com/latest/enterprise
 
 When there’s an error in user code, the typical error message you’ll see is
 
-```
+```s
 failed to process datum <UUID> with error: <user code error>
 ```
 
@@ -93,7 +79,7 @@ In cases where user code is failing, changes first need to be made to the code a
 
 When there’s an error in the data, this will typically manifest in a user code error such as
 
-```
+```s
 failed to process datum <UUID> with error: <user code error>
 ```
 
@@ -180,7 +166,7 @@ If you inspect the job via `pachctl inspect job <pipeline_name>@<jobID>`, you do
 
 E.g:
 
-```
+```s
 Worker Status:
 WORKER              JOB                 DATUM               STARTED
 ...
@@ -188,7 +174,7 @@ WORKER              JOB                 DATUM               STARTED
 
 If you do `kubectl get pod` you see the worker pod for your pipeline, e.g:
 
-```
+```s
 po/pipeline-foo-5-v1-273zc
 ```
 
@@ -202,7 +188,7 @@ If there are no parent jobs that are still running, then continue debugging:
 
 Describe the pod via:
 
-```
+```s
 kubectl describe po/pipeline-foo-5-v1-273zc
 ```
 
