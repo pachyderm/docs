@@ -1,6 +1,6 @@
 # About this theme
 
-This theme is called "Pachyderm" and lives in `/themes/pachyderm`. 
+This theme is called "pach-emdash" and lives in `/themes/pach-emdash`. 
 
 ---
 
@@ -8,7 +8,7 @@ This theme is called "Pachyderm" and lives in `/themes/pachyderm`.
 
 ## `/archetypes`
 
-TBD
+Archetypes are an optional way to generate markdown files based on defined templates. This is not currently set up in our Hugo project.
 
 ## `/assets` 
 
@@ -30,9 +30,9 @@ The assets directory is for resources that you intend to transform (minify, opti
 
 ### `/css` 
 
-The CSS assets used in this theme is powered by [Bulma](https://bulma.io/). Bulma is an easy and very lightweight framework that makes maintaining a high PageSpeed score a breeze. 
+The CSS assets used in this theme is powered by [Emdash](https://emdash.dev/). This is a framework I'm building aimed at helping writers build content-first layouts.  
 
-The `brand.css` file is laid on top of `bulma.css` to flavor the framework with custom colors and add any project-specfic needs. As a best practice, use an obvious naming convention (e.g., `brand-fade-in`; `brand-fixed`) for CSS classes that are not Bulma. This will help you whenever you want to iterate or troubleshoot. 
+Almost everything has been converted into variables that you can modify from `:root` instead of having to change the css directly (spacing, line height, colors, font sizes, etc).
 
 ### `/js` 
 
@@ -46,31 +46,6 @@ The JS assets in this theme is hand-rolled; the less dependencies there are, the
 - **`pagination.js`**: Powers pagination UI on pages using the  `glossary.html` layout
 - **`relatedArticles.js`**: Powers the related articles toggle on pages using the `single.html` layout
 - **`toc.js`**: Powers the table of contents / scroll highlight on pages using the `single.html` layout
-
-```yaml
-[repoA] // create repoA
-[repoB]
-
-> pipelineA // create pipelineA
-  description: "my first pipeline"
-  metadata:
-  input:
-  pfs:
-    glob: /*
-    repo: images
-  transform:
-    cmd:
-      - python3
-      - /edges.py
-    image: pachyderm/opencv
-
-{ // start a transaction 
-  <  images_dp_2@master // start a commit 
-  >  images_dp_2@master // finish a commit 
-} // finish a transaction
-
-~[repoA](file.csv) // put file.csv into repo A
-```
 
 ---
 
@@ -126,18 +101,13 @@ Default feature config:
 params:
   # Feature Switches #
 
-  ## Branding features
-  logos:
-    nav:  "/../images/pachLogo.svg"
-    footer: "/../images/footerLogo.svg"
-
   ## Content features
   childPages: 
     display: true # displays child pages of a section.
     grandchildren: true # displays first 7 grandchildren as buttons in the card.
   editLink: 
     display: true #  displays a link to the corresponding github file for a given page; githubUrl must be set.
-    githubUrl: https://github.com/lbliii/milo/tree/main/content/  # should end with content/ 
+    githubUrl: https://github.com/pachyderm/docs/tree/main/content/  # should end with content/ 
   giscus: true # displays giscus commenting on single pages.
   heroBanner:
     single: true # displays hero section with a background image, title, description, and date on single pages.
@@ -150,7 +120,7 @@ params:
 
   ## HomePage Features
    # TODO: add date sort to range on featureDisplayVideos
-  Videos: true # displays first 3 videos from "/tutorials/videos/", sorted by date.
+  Videos: false # displays first 3 videos from "/tutorials/videos/", sorted by date.
   CommunityDetails: true  # displays slack and other community details (WIP)
   
   ## Release Features
@@ -158,7 +128,7 @@ params:
   downloads: true # Enables displaying the download dropdown (requires release.patch)
   releaseInfo:
     latest: "2.3.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
-    patch: "2.2.7" # Used to generate download links
+    patch: "2.3.2" # Used to generate download links
 
 
   ## Nav features 
@@ -168,6 +138,9 @@ params:
 
   ## Testing Features
   defaultCss: false # displays default bulma css only without branding.
+
+## Feature Ideas 
+## 1. Create a layouts/partials/brand.css file that has hugo variables to control some css from the config.yaml file. 
 ```
 
 ### **`/shortcodes `**
@@ -183,10 +156,18 @@ Hugo comes with [a few pre-built shortcodes](https://gohugo.io/content-managemen
 Shortcodes are powerful because of their flexibility and ease of use. Below is our `notice.html` (callout) as an example:
 
 ```go
-<div class="notification {{ .Get 0 }}">
-    <button class="delete"></button>
-    {{.Inner}}
+{{$type := .Get 0 }}
+
+<section class="rounded-1 {{with $type}}} {{.}} {{else}}darken-3{{end}} sp-1"> 
+<div class="spread-between">
+    <div class="is-fit l mt-1">{{if eq $type "warning"}}⚠️{{else if eq $type "info"}}📖{{else if eq $type "tip"}}💡{{else if eq $type "danger"}}☠️{{else if eq $type "example"}}✍️{{else if eq $type "success"}}🎉{{else}}ℹ️{{end}}
+    </div>
+    <button class="is-fit darken-1 sp-1 rounded-3 uppercase xxs hide">toggle</button>
 </div>
+<div class="content">
+    {{ .Inner }}
+</div>
+</section>
 ```
 
 1. Define the html and css; in this case a div with the Bulma class `notification`.
@@ -207,14 +188,6 @@ In this case, `tip` is the first argument; it is a CSS class created to style th
 ### `/static`
 
 The static folder should contain only **theme** assets that you do not need or want to transform; default images/svgs, fonts, etc. These static assets are served directly from the `/images` path of your site.
-
-```css
-.theme-pattern {
-    background-image: url(/images/pachContentBG.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
 ```
 
 **Note**: Your theme's static folder is different from your site's static folder; you can also store static assets from a top-level `/static` folder. 

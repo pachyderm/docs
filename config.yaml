@@ -20,7 +20,6 @@ params:
 
   ## Branding features
   logos:
-    nav:  "/../images/pachLogo.svg"
     footer: "/../images/footerLogo.svg"
 
   ## Content features
