@@ -53,7 +53,7 @@ Find a list of all possible job stages below and a state diagram detailing how a
 
 Below, the state transition diagram of a job: 
 
-![Job State Diagram](../../images/job-state-diagram.png)
+![Job State Diagram](../images/job-state-diagram.png)
 
 ## List Jobs
 They are various ways to list jobs in Pachyderm, depending on the expected outcome:

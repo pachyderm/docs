@@ -33,7 +33,7 @@ you have also deployed Pachyderm Web UI.
 Point your browser to **`localhost:4000`** to connect to Console.
 You should land on this page:
 
-![Console Landing Page](../images/console_landing_page.png)
+![Console Landing Page](./images/console_landing_page.png)
 
 Click on your **View Project** (We are working on allowing you to organize your pipelines by Projects) to get started. You are all set to have a follow-along visual experience of the coming steps.
 
@@ -97,7 +97,7 @@ Note the "plus" icon in your `images` repository.
 It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
 {{% /notice %}}
 
-![Console images repo](../images/console-images-repo.png)
+![Console images repo](./images/console-images-repo.png)
 
 ### Adding Data to Pachyderm
 
@@ -174,7 +174,7 @@ To make sure that the data we just added is in Pachyderm.
 
 In your Console, click on the `images` repo to visualize its commit and inspect its file:
 
-![Console images liberty](../images/console-images-liberty.png)
+![Console images liberty](./images/console-images-liberty.png)
 
 Alternatively, you can view the file by retrieving it from Pachyderm. 
 Because this is an image, you cannot just print it out in the terminal, but the following
@@ -296,7 +296,7 @@ Now, let's create the pipeline in Pachyderm:
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
 ```
 Again, check the end result in your Console:
-![Console edges pipeline](../images/console-edges-pipeline.png)
+![Console edges pipeline](./images/console-edges-pipeline.png)
 #### What Happens When You Create a Pipeline
 
 Creating a pipeline tells Pachyderm to run your code on the data in your
@@ -380,7 +380,7 @@ pachctl get file edges@master:liberty.png | display
 
 The output should look like this:
 
-![Console edges liberty](../images/console-edges-liberty.png)
+![Console edges liberty](./images/console-edges-liberty.png)
 
 
 #### Processing More Data
@@ -502,7 +502,7 @@ and
     ```
 
     See your new DAG in Console:
-    ![Console opencv DAG](../images/console-opencv-dag.png)
+    ![Console opencv DAG](./images/console-opencv-dag.png)
 
 * The pipeline creation triggers a job that generates a montage for all the current HEAD commits of the input repos:
 
@@ -524,7 +524,7 @@ and
 
     * In Console:
 
-        ![Console opencv montage](../images/console-opencv-montage.png)
+        ![Console opencv montage](./images/console-opencv-montage.png)
 
     * On macOS, run:
 

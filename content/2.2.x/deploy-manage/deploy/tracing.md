@@ -93,8 +93,8 @@ collected traces.
 
 2. If you see a trace appear in Jaeger with no subtraces, like so:
 
-    ![Trace with no children](../../assets/images/no-traces.png)
+ ![Trace with no children](../../assets/images/no-traces.png)
 
-    This might mean that `pachd` has not connected to Jaeger, but
-    `pachctl` has. Restart the `pachd` pods *after* creating the
-    Jaeger service in Kubernetes.
+ This might mean that `pachd` has not connected to Jaeger, but
+ `pachctl` has. Restart the `pachd` pods *after* creating the
+ Jaeger service in Kubernetes.

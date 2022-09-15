@@ -73,7 +73,7 @@ appended or overwritten with other files to create the final result. Below, a se
 {{% /notice %}}
 
 
-![Map Reduce](../../../images/parallel_data_processing.png)
+![Map Reduce](../../images/parallel_data_processing.png)
 
 
 Let's now create a new commit and overwrite a file in `datum 2`,
@@ -84,7 +84,7 @@ details of the change; therefore, it processes the whole `datum 2(')` (here in y
 and outputs 3 files. Then, the following pipeline aggregates
 these data to create the final result.
 
-![Map Reduce](../../../images/parallel_data_processing_following_commit.png)
+![Map Reduce](../../images/parallel_data_processing_following_commit.png)
 
 ## Incrementality 
 In Pachyderm, unchanged datums are never re-processed. 

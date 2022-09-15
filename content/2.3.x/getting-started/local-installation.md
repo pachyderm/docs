@@ -88,7 +88,7 @@ You can use Kubernetes on Docker Desktop instead of Minikube on macOS or Linux
 by following these steps:  
   
 1. In the Docker Desktop Preferences, enable Kubernetes:  
-   ![Docker Desktop Enable K8s](../images/k8s_docker_desktop.png)  
+   ![Docker Desktop Enable K8s](./images/k8s_docker_desktop.png)  
   
 2. From the command prompt, confirm that Kubernetes is running:  
    ```s  
@@ -98,7 +98,7 @@ by following these steps:
    NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE  
    service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   5d  
    ```  
-  
+
    * To reset your Kubernetes cluster that runs on Docker Desktop, click  
    the **Reset Kubernetes cluster** button. See image above.   
   

@@ -114,5 +114,5 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 You are all set! 
 You should land on the Projects page of Console.
 
-![Console Landing Page](../../../getting-started/images/console_landing_page.png)
+![Console Landing Page](../../getting-started/images/console_landing_page.png)
 

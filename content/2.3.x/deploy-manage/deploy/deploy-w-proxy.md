@@ -484,7 +484,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 The `pachyderm-proxy` service also routes Pachyderm's [**S3 gateway**](../../manage/s3gateway/) (allowing you to
 **access Pachyderm's repo through the S3 protocol**) on port 80 (note the endpoint in the diagram below).
 
-![Global S3 Gateway with Proxy](../../images/main-s3-gateway-with-proxy.png)
+![Global S3 Gateway with Proxy](../images/main-s3-gateway-with-proxy.png)
 
 ## Changes to the Enterprise Server Setup
 

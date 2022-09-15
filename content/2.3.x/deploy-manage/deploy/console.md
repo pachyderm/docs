@@ -114,5 +114,5 @@ However, **this secret is only used when configuring through helm**:
 You are all set! 
 You should land on the Projects page of Console.
 
-![Console Landing Page](../../../getting-started/images/console_landing_page.png)
+![Console Landing Page](../../getting-started/images/console_landing_page.png)
 

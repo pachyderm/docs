@@ -248,5 +248,5 @@ Use the `pachctl auth revoke` command to revoke access for an existing Pachyderm
 
 Take a look at the sequence diagram below illustrating the OIDC login flow. It highlights the exchange of the original OIDC ID Token for a Pachyderm Token.
 
-![OIDC Login Flow](../../images/pachyderm-oidc-dex-flow.png)
+![OIDC Login Flow](../images/pachyderm-oidc-dex-flow.png)
 
