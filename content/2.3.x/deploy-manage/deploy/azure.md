@@ -253,7 +253,7 @@ This section will provide guidance on the configuration settings you will need t
 - Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
 
 {{% notice note %}}
-    It is assumed that you are already familiar with PostgreSQL Server, or will be working with an administrator who is.
+It is assumed that you are already familiar with PostgreSQL Server, or will be working with an administrator who is.
 {{% /notice %}}
 
 ### Create A PostgreSQL Server Instance¶
