@@ -183,9 +183,9 @@ It is important to note that if no secret name is provided for the fields mentio
 |upstream-idps|The list of dex connectors, each containing Oauth client info connecting to an upstream IDP|oidc.upstreamIDPsSecretName|oidc.upstreamIDPs|idps|
 
 
-!!! Tip
-
-      Run `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve the value corresponding to the key `rootToken` in the default secret `pachyderm-bootstrap-config`.
+{{% notice tip %}}
+Run `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve the value corresponding to the key `rootToken` in the default secret `pachyderm-bootstrap-config`.
+{{% /notice %}}
 
 
 {{% notice warning %}} 

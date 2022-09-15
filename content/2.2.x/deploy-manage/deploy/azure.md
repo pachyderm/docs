@@ -244,15 +244,17 @@ This section will provide guidance on the configuration settings you will need t
 - Create one or **two databases** (`pachyderm` and, depending on whether your cluster is standalone or managed by an enterprise server, a second database, `dex`).
 - Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
 
-!!! Note
-    It is assumed that you are already familiar with PostgreSQL Server, or will be working with an administrator who is.
+{{% notice note %}}
+It is assumed that you are already familiar with PostgreSQL Server, or will be working with an administrator who is.
+{{%/notice %}}
 
 ### Create A PostgreSQL Server Instance¶
 
-!!! Info 
-    Find the details of the steps and available parameters to create a PostgreSQL Server instance with Azure Console in Azure Documentation ["Create an Azure Database for PostgreSQL server by using the Azure portal"](https://docs.microsoft.com/en-us/azure/postgresql/quickstart-create-server-database-portal). 
-    
-    Alternatively, you can use the cli and run [`az postgres server create`](https://docs.microsoft.com/en-us/cli/azure/postgres/server?view=azure-cli-latest) with your relevant parameters.
+{{% notice info %}}
+Find the details of the steps and available parameters to create a PostgreSQL Server instance with Azure Console in Azure Documentation ["Create an Azure Database for PostgreSQL server by using the Azure portal"](https://docs.microsoft.com/en-us/azure/postgresql/quickstart-create-server-database-portal). 
+
+Alternatively, you can use the cli and run [`az postgres server create`](https://docs.microsoft.com/en-us/cli/azure/postgres/server?view=azure-cli-latest) with your relevant parameters.
+{{% /notice %}}
 
 In the Azure console, choose the **Azure Database for PostgreSQL servers** service. You will be asked to pick your server type: `Single Server` or `Hyperscale` (for multi-tenant applications), then configure your DB instance as follows.
 

@@ -80,8 +80,9 @@ Pachyderm's pipeline names are unique.
 You can quickly generate several pipelines from the same jsonnet pipeline specification file
 by adding a prefix or a suffix to its generic name.
 
-!!! Info 
-    Your .jsonnet file can create multiple pipelines at once as illustrated in our [group example](https://github.com/pachyderm/pachyderm/tree/master/examples/group).
+{{% notice info %}}
+Your .jsonnet file can create multiple pipelines at once as illustrated in our [group example](https://github.com/pachyderm/pachyderm/tree/master/examples/group).
+{{% /notice%}}
 
 ## Use Cases
 

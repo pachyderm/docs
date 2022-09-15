@@ -69,13 +69,14 @@ Install the following clients:
 If this is the first time you use the SDK, follow
 the [Google SDK QuickStart Guide](https://cloud.google.com/sdk/docs/quickstarts).
 
-!!! tip
-    You can install `kubectl` by using the Google Cloud SDK and
-    running the following command:
+{{% notice tip %}}
+You can install `kubectl` by using the Google Cloud SDK and
+running the following command:
 
-    ```s
-    gcloud components install kubectl
-    ```
+```s
+gcloud components install kubectl
+```
+{{% /notice %}}
 
 Additionally, before you begin your installation: 
 

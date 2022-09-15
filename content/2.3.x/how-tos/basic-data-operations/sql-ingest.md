@@ -232,9 +232,9 @@ All numeric values are converted into strings in your CSV and JSON.
 |`"my string"`|"""my string"""|
 |"this will be enclosed in quotes because it has a ,"|"this will be enclosed in quotes because it has a ,"|
 
-!!! Tip 
-     When parsing your CSVs in your user code, remember to escape `"` with `""`.
-
+{{% notice tip %}}
+When parsing your CSVs in your user code, remember to escape `"` with `""`.
+{{%/notice %}}
 
 #### Supported Data Types
 

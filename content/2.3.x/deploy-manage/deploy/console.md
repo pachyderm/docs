@@ -41,9 +41,9 @@ It details the additional steps required to install and access your Console.
 
 ### Deploy Locally
 
-!!! Info "Reminder"
-      A local installation helps you learn
-      some of the Pachyderm basics and experiment with the product. It is not designed to be a production environment.
+{{% notice info %}}
+A local installation helps you learn some of the Pachyderm basics and experiment with the product. It is not designed to be a production environment.
+{{%/notice %}}
 
 We provide an easy "one line" deployment command to install Pachyderm with Console on a local environment. All you need is a Kubernetes cluster running locally.
 

@@ -109,8 +109,9 @@ Before using Boto3, you need to [set up authentication credentials for your AWS 
 
 Then follow the [Using boto](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#using-boto3) documentation starting with importing boto3 in your python file and creating your S3 resources.
    
-!!! Info   
-      Find **boto3** full documentation [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html).
+{{% notice info %}}
+Find **boto3** full documentation [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html).
+{{% /notice %}}
 
 
 ## Set Your Credentials

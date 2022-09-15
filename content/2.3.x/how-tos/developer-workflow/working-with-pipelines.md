@@ -12,10 +12,9 @@ seriesPart:
 A typical Pachyderm workflow involves multiple iterations of
 experimenting with your code and pipeline specs.
 
-!!! info
-    Before you read this section, make sure that you
-    understand basic Pachyderm pipeline concepts described in
-    [Concepts](../../concepts/pipeline-concepts/index.md).
+{{% notice info %}}
+Before you read this section, make sure that you understand basic Pachyderm pipeline concepts described in [Concepts](../../concepts/pipeline-concepts/index.md).
+{{% /notice %}}
 
 In general, there are five steps to working with a pipeline. The stages can be summarized in the image below. 
 

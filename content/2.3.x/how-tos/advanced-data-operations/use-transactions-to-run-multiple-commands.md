@@ -78,31 +78,31 @@ A transaction demarcation initializes some transactional behavior before the dem
 
 * To finish a transaction, run:
 
-    ```s
-    pachctl finish transaction
-    ```
+  ```s
+  pachctl finish transaction
+  ```
 
-    **System Response:**
+  **System Response:**
 
-    ```s
-    Completed transaction with 1 requests: 7a81eab5e6c6430aa5c01deb06852ca5
-    ```
+  ```s
+  Completed transaction with 1 requests: 7a81eab5e6c6430aa5c01deb06852ca5
+  ```
 
-    !!! tip "Noteworthy"
-          As soon as a commit is started (whether through `start commit` or `put file` without an open commit, or finishing a transaction that contains a start commit), a new [**global commit** as well as a **global job**](../../../concepts/advanced-concepts/globalID/#definition) is created. All open commits are in a `started` state, each of the pipeline jobs created is `running`, and the workers waiting for the commit(s) to be closed to process the data. In other words, your changes will only be applied when you close the commits.
+  {{% notice tip %}}
+  As soon as a commit is started (whether through `start commit` or `put file` without an open commit, or finishing a transaction that contains a start commit), a new [**global commit** as well as a **global job**](../../../concepts/advanced-concepts/globalID/#definition) is created. All open commits are in a `started` state, each of the pipeline jobs created is `running`, and the workers waiting for the commit(s) to be closed to process the data. In other words, your changes will only be applied when you close the commits.
+
+  In the case of a transaction, the workers will wait until all of the input commits are finished to process them in one batch. All of those commits and jobs will be part of the same global commit/job and share the same globalID (**`Transaction ID`**). Without a transaction, each commit would trigger its own separate job.
+  {{%/notice %}}
+
+  We have used the [inner join pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins) in our joins example to illustrate the difference between no transaction and the use a transaction, all other things being equal. Make sure to follow the example README if you want to run those pachctl commands yourself.
+
+  ![Tx vs no Tx](../../images/flow-control-with-and-without-trx.png)
         
-          In the case of a transaction, the workers will wait until all of the input commits are finished to process them in one batch. All of those commits and jobs will be part of the same global commit/job and share the same globalID (**`Transaction ID`**). Without a transaction, each commit would trigger its own separate job.
-
-
-      We have used the [inner join pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins) in our joins example to illustrate the difference between no transaction and the use a transaction, all other things being equal. Make sure to follow the example README if you want to run those pachctl commands yourself.
-
-      ![Tx vs no Tx](../../images/flow-control-with-and-without-trx.png)
-        
-    !!! Note "Important"
-          Note that in the case with the transaction, the `put file` and following `finish commit` are happening **after** the `finish transaction` instruction.
-          You must finish your transaction before putting files in the corresponding repo for the data to be 
-          part of the same batch. Running a 'put file' before closing the transaction would result in a commit being created 
-          independently from the transaction itself and a job to run on that commit.
+  {{% notice note %}}
+  Note that in the case with the transaction, the `put file` and following `finish commit` are happening **after** the `finish transaction` instruction.
+  
+  You must finish your transaction before putting files in the corresponding repo for the data to be  part of the same batch. Running a 'put file' before closing the transaction would result in a commit being created independently from the transaction itself and a job to run on that commit.
+  {{% /notice %}}
 
 ## Supported Operations
 

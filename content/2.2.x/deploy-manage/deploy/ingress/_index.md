@@ -101,9 +101,9 @@ If your `ingress` is enabled:
 ```
 See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L143) for all available fields.
 
-!!! Info
-    You might choose to deploy your preferred Ingress Controller (Traefik, NGINX). Read about the installation and configuration of [Traefik](./pach-ui-ingress/) on a cluster.
-
+{{% notice info %}}
+You might choose to deploy your preferred Ingress Controller (Traefik, NGINX). Read about the installation and configuration of [Traefik](./pach-ui-ingress/) on a cluster.
+{{%/notice %}}
 
 {{% notice warning %}}
 To have the ingress routes use the https protocol without enabling the cert secret configuration, set `ingress.uriHttpsProtoOverride` to true in your values.yaml.

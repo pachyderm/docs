@@ -35,23 +35,24 @@ For example, you can find the `reason` in `meta/<datumID>/meta`: the error messa
 
 See the detail of the meta repo structure below.
 
-!!! Info
-    A meta repo contains 2 directories:
+{{% notice info %}}
+A meta repo contains 2 directories:
 
-    - `/meta/`: The `meta` directory holds datums' statistics
-    - `/pfs`: The `pfs` directory holds the input data of datums, and their resulting output data
+- `/meta/`: The `meta` directory holds datums' statistics
+- `/pfs`: The `pfs` directory holds the input data of datums, and their resulting output data
 
-    ```s
-    pachctl list file edges.meta@master
-    ```
+```s
+pachctl list file edges.meta@master
+```
 
-    **System response:**
+**System response:**
 
-    ```s
-    NAME   TAG TYPE SIZE
-    /meta/     dir  1.956KiB
-    /pfs/      dir  371.9KiB
-    ```
+```s
+NAME   TAG TYPE SIZE
+/meta/     dir  1.956KiB
+/pfs/      dir  371.9KiB
+```
+{{% /notice %}}
 
 
 ### Meta directory

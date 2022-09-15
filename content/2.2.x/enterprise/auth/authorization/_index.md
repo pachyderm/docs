@@ -74,8 +74,9 @@ These roles are only applicable at the cluster level. `clusterAdmin` is a catch-
 
 - **clusterAdmin**: A clusterAdmin can perform any action on the cluster.
 
-!!! Info
-    Activating auth (`pachctl auth activate`) creates a Root User with irrevocable `clusterAdmin` rights. This Role must be set at the cluster level only.
+{{% notice info %}}
+Activating auth (`pachctl auth activate`) creates a Root User with irrevocable `clusterAdmin` rights. This Role must be set at the cluster level only.
+{{% /notice %}}
 
 - **secretAdmin**: A secretAdmin has the ability to create, update, delete Kubernetes secrets on a cluster.
 

@@ -112,8 +112,9 @@ Then, complete the following steps:
 #### Create A Connector Configuration File
 To configure your Idp-Pachyderm integration, **create a connector configuration file** corresponding to your IdP. 
 
-!!! Info
-    For a list of available connectors and their configuration options, see [Dex documentation](https://dexidp.io/docs/connectors/).
+{{% notice info %}}
+For a list of available connectors and their configuration options, see [Dex documentation](https://dexidp.io/docs/connectors/).
+{{% /notice%}}
 
 In the case of our integration with Auth0, we will use an oidc connector with the following parameters:
 
@@ -265,9 +266,9 @@ or
 ```s
 pachctl idp update-connector --config oidc-dex-connector.yaml
 ```
-!!! Info
-    Run `pachctl idp --help` for a full list of commands.
-    In particular, those commands let you create, update, delete, list, or get a specific connector.
+{{% notice info %}}
+Run `pachctl idp --help` for a full list of commands. In particular, those commands let you create, update, delete, list, or get a specific connector.
+{{%/notice%}}
 
 ### 3- Login
 The users registered with your IdP are now ready to [Log in to Pachyderm](./login.md)

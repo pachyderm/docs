@@ -19,8 +19,9 @@ Similar to Git, a **Pachyderm repository tracks all
 changes to the data and creates a history of data modifications that you
 can access and review**. 
 
-!!! Info
-    You can store any type of file in a Pachyderm repo, including binary and plain text files.
+{{% notice info %}}
+You can store any type of file in a Pachyderm repo, including binary and plain text files.
+{{% /notice %}}
 
 Unlike a Git repository that stores history in a `.git` file in your copy
 of a Git repo, **Pachyderm stores the history of your commits in a centralized

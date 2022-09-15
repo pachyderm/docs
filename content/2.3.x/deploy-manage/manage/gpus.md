@@ -24,8 +24,9 @@ through device plugins, see the [Kubernetes documentation](https://kubernetes.io
 
 Let’s walk through the main steps allowing Pachyderm to leverage the AI performance of your [DGX A100](https://www.nvidia.com/en-in/data-center/dgx-a100/) GPUs.
 
-!!! Info
-    Read about NVIDIA DGX A100's full [userguide](https://docs.nvidia.com/dgx/pdf/dgxa100-user-guide.pdf).
+{{% notice info %}}
+Read about NVIDIA DGX A100's full [userguide](https://docs.nvidia.com/dgx/pdf/dgxa100-user-guide.pdf).
+{{% /notice %}}
 
 
 {{% notice tip %}}

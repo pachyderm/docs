@@ -153,14 +153,16 @@ with a Pachyderm cluster in your terminal.
       If you run `pachctl version` without the flag `--client-only`, the command times  
       out. This is expected behavior because Pachyderm has not been deployed yet (`pachd` is not yet running).  
 
-!!! Tip  
-    If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/). This add-on tool suggests `pachctl` commands as you type. It will help you learn Pachyderm's main commands faster.  
+{{% notice tip %}}
+If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/). This add-on tool suggests `pachctl` commands as you type. It will help you learn Pachyderm's main commands faster.  
+{{% /notice %}}
       
-!!! Note "Architecture"  
+{{% notice info %}}
       A look at [Pachyderm high-level architecture diagram](../../deploy-manage/#overview)   
       will help you build a mental image of Pachyderm various architectural components.  
   
       For information, you can also check what a production setup looks like in this [infrastructure diagram](../../deploy-manage/deploy/ingress/#deliver-external-traffic-to-pachyderm).  
+{{% /notice %}}
   
 ### Install `Helm`  
   
@@ -208,19 +210,25 @@ To request a FREE trial enterprise license key, [click here](../../enterprise).
         helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
         ``` 
 
-!!! Note 
+{{% notice note %}}
        This installation can take several minutes. Run a quick `helm list --all` in a separate tab to witness the installation happening in the background.
+{{% /notice %}}
 
 
-!!! Tip "To uninstall Pachyderm fully"
+{{% notice tip %}} 
+To uninstall Pachyderm fully
       Running `helm uninstall pachd` leaves persistent volume claims behind. To wipe your instance clean, run:
       ```s
       helm uninstall pachd 
       kubectl delete pvc -l suite=pachyderm 
       ```
+{{% /notice %}}
 
-!!! Info "See Also"
-      More [details on Pachyderm's Helm installation](../../deploy-manage/deploy/helm-install/).
+{{% notice tip %}}
+See Also 
+
+More [details on Pachyderm's Helm installation](../../deploy-manage/deploy/helm-install/).
+{{% /notice %}}
 
 ## Check Your Install
 

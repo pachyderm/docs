@@ -12,12 +12,15 @@ seriesPart:
 This document discusses each of the fields present in a pipeline specification.
 To see how to use a pipeline spec to create a pipeline, refer to the [create pipeline](../../how-tos/pipeline-operations/create-pipeline/#create-a-pipeline) section.
 
-!!! Info
-    - Pachyderm's pipeline specifications can be written in JSON or YAML.
-    - Pachyderm uses its json parser if the first character is `{`.
+{{% notice info %}}
+- Pachyderm's pipeline specifications can be written in JSON or YAML.
+- Pachyderm uses its json parser if the first character is `{`.
+{{% /notice %}}
 
-!!! Tip
-    A pipeline specification file can contain multiple pipeline declarations at once.
+{{% notice tip %}}
+A pipeline specification file can contain multiple pipeline declarations at once.
+{{% /notice %}}
+
 ## Manifest Format
 
 === "JSON Full Specifications"

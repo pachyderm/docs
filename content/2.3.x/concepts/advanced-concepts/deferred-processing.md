@@ -48,15 +48,17 @@ is called `staging`, you can name it as you like.
 In the example below, we first create a repository called `data` on which we configure
 a staging branch:
 
-!!! Tip "Additionnaly"
-      A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
-      ```json
-         "pfs": {
-            "repo": "data",
-            "branch": "master",
-            "glob": "/*",
-      }
-      ```
+{{% notice tip %}}
+A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
+
+```json
+      "pfs": {
+      "repo": "data",
+      "branch": "master",
+      "glob": "/*",
+}
+```
+{{% /notice %}}
 
 1. Create a repository. For example, `data`.
 

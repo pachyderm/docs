@@ -21,10 +21,11 @@ This guide assumes that you have Pachyderm running.
 
 - Or check out our [Quick Install](../../deploy-manage/deploy/quickstart/) page to deploy on your favorite cloud.
 
-!!! tip
-    If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
-    This handy tool suggests `pachctl` commands as you type and
-    helps you learn Pachyderm faster.
+{{% notice tip %}}
+If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
+This handy tool suggests `pachctl` commands as you type and
+helps you learn Pachyderm faster.
+{{% /notice %}}
 
 For this tutorial, you will use `pachctl` to interact with your Pachyderm cluster from your terminal window and Console (Pachyderm Web UI) to interactively
 visualize and explore your pipelines, your data, debug jobs, read logs, etc...

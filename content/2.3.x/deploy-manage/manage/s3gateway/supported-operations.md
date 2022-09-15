@@ -19,14 +19,16 @@ The Pachyderm S3 gateway supports the following operations:
 * [Get object](#get-object) (Download): Gets file contents on a branch of a repo.
 * [Remove object](#remove-object): Atomically removes a file on a branch.
 
-!!! Info
+{{% notice info %}}
 
-      When using the AWS S3 CLI, simply append `--profile <name-your-profile>` at the end of your command to reference a given profile. If none, the session token will be retrieved from the default profile. More info in the [**Configure your S3 client**](../configure-s3client/#configure-your-s3-client) page. 
+When using the AWS S3 CLI, simply append `--profile <name-your-profile>` at the end of your command to reference a given profile. If none, the session token will be retrieved from the default profile. More info in the [**Configure your S3 client**](../configure-s3client/#configure-your-s3-client) page. 
 
-      For example, in the **Create Bucket** section below, the command would become:
-      ```s
-      aws --endpoint-url http://localhost:30600/ s3 mb s3://master.test --profile <name-your-profile>
-      ```
+For example, in the **Create Bucket** section below, the command would become:
+
+```s
+aws --endpoint-url http://localhost:30600/ s3 mb s3://master.test --profile <name-your-profile>
+```
+{{% /notice%}}
 
 ## Create Bucket
 Call the *create an S3 bucket* command on your S3 client to create a branch in a Pachyderm repository. 

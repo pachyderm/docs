@@ -9,13 +9,14 @@ series:
 seriesPart:
 ---
 
-!!! info
-    Before you read this section, make sure that you understand the concepts
-    described in the following sections:
+{{% notice info %}}
+Before you read this section, make sure that you understand the concepts
+described in the following sections:
 
-    - [Datum](../../concepts/pipeline-concepts/datum/index.md)
-    - [Distributed Computing](../../concepts/advanced-concepts/distributed-computing.md)
-    - [Developer Workflow](../../developer-workflow/)
+- [Datum](../../concepts/pipeline-concepts/datum/index.md)
+- [Distributed Computing](../../concepts/advanced-concepts/distributed-computing.md)
+- [Developer Workflow](../../developer-workflow/)
+{{% /notice %}}
 
 If you are analyzing data that is changing over time, you might
 need to analyze historical data. For example, you might need to

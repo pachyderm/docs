@@ -45,9 +45,11 @@ Additionally, once you are familiar with the [opencv](https://github.com/pachyde
 - **Drag-and-Drop File Upload**: Console now supports file ingress from your local computer via an intuitive UI.
 - **List View**: Along with your traditional DAG view, our new List View provides an alternative to the DAG view that makes it easier to search and filter through all your repos and pipelines. 
 
-!!! Info "See Also" 
-     Check our [Changelog](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md).
+{{% notice info %}} 
+See Also
 
+Check our [Changelog](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md).
+{{% /notice %}}
 
 
 
