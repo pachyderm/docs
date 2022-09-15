@@ -9,6 +9,7 @@ series:
 seriesPart:
 --- 
 
+
 Pachyderm enables you to combine multiple [PFS inputs](../#pfs-input-and-glob-pattern) by using the `union` and `cross` operators in the pipeline specification.
 
 You can think of union as a *disjoint union binary operator* and cross as a *cartesian product binary operator*. 
