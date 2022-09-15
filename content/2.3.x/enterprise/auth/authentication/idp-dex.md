@@ -102,10 +102,11 @@ Then, complete the following steps:
 
    ![Auth0 Grant Settings](../images/auth0-grant-settings.png)
 
-!!! Note
-    For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
-    We will log in to Pachyderm as this user once our IdP connection is completed.
-    ![Auth0 Create User](../images/auth0-create-user.png)
+{{% notice note %}}
+For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
+We will log in to Pachyderm as this user once our IdP connection is completed.
+![Auth0 Create User](../images/auth0-create-user.png)
+{{% /notice %}}
 
 ### 2- Set up and create an Idp-Pachyderm connector
 
@@ -118,8 +119,10 @@ For a list of available connectors and their configuration options, see [Dex doc
 
 In the case of our integration with Auth0, we will use an oidc connector with the following parameters:
 
-!!! Note
+{{% notice note %}}
+
     Pachyderm supports the JSON and YAML formats for its connector files. 
+{{% /notice %}}
 
 See our oidc connector example in JSON and YAML formats below.
 === "oidc-dex-connector.json"
@@ -280,10 +283,12 @@ Use the `pachctl auth revoke` command to revoke access for an existing Pachyderm
 - revoke a given token: `pachctl auth revoke --token=<pach token>`.
 - revoke all tokens for a given user `pachctl auth revoke --user=idp:usernamen@pachyderm.io` to log that user out forcibly.
 
-!!! Note
+{{% notice note %}}
+
     Note that a user whose Pachyderm token has been revoked can technically log in to Pachyderm again unless **you have removed that user from the user registry of your IdP**.
+{{% /notice %}}
 
 For the curious mind: Take a look at the sequence diagram below illustrating the OIDC login flow. It highlights the exchange of the original OIDC ID Token for a Pachyderm Token.
 
-![OIDC Login Flow](../../images/pachyderm-oidc-dex-flow.png)
+![OIDC Login Flow](../images/pachyderm-oidc-dex-flow.png)
 

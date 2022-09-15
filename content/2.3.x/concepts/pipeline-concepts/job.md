@@ -23,10 +23,9 @@ The following page details the latter.
 A Pachyderm job is an execution of a pipeline that triggers
 when new data is detected in an input repository. 
 
-!!! Note
-        When a commit is made to the input repo of a pipeline, jobs are created for all of the downstream pipelines of a DAG. 
-        Those jobs are not running yet; each one is **waiting** until the prior pipeline(s) that it depends on in your DAG produces their output, 
-        which then becomes the input for the waiting pipeline.
+{{% notice note %}}
+When a commit is made to the input repo of a pipeline, jobs are created for all of the downstream pipelines of a DAG. Those jobs are not running yet; each one is **waiting** until the prior pipeline(s) that it depends on in your DAG produces their output, which then becomes the input for the waiting pipeline.
+{{% /notice %}}
 
 Each job runs your code against the current [commit](../../data-concepts/commit/#commit) in a `<repo>@<branch>` and
 then submits the results to the output repository of the pipeline as a single output commit. 
@@ -54,7 +53,7 @@ Find a list of all possible job stages below and a state diagram detailing how a
 
 Below, the state transition diagram of a job: 
 
-![Job State Diagram](../../images/job-state-diagram.png)
+![Job State Diagram](../images/job-state-diagram.png)
 
 ## List Jobs
 They are various ways to list jobs in Pachyderm, depending on the expected outcome:

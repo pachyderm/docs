@@ -71,8 +71,9 @@ information.
 The Python client `python-pachyderm` is officially supported by the Pachyderm team. 
 It implements most of the functionalities provided with the `pachctl` CLI tool allowing you to easily integrate operations like `create repo`, `put a file,` or `create pipeline` into your python applications.
 
-!!! Note
-     Use **python-pachyderm v{{ config.python_pachyderm_version }}** with Pachyderm {{ config.pach_branch }}. 
+{{% notice note %}}
+Use **python-pachyderm v{{ config.python_pachyderm_version }}** with Pachyderm {{ config.pach_branch }}. 
+{{% /notice %}}
 
 You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/), namely:
 

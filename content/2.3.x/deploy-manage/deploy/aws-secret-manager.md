@@ -48,10 +48,11 @@ helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
 ### Install the AWS Provider
 **AWS provider** for the Secrets Store CSI Driver allows you to make secrets stored in Secrets Manager appear as files mounted in Kubernetes pods.
 
-!!! Note "TL;DR"
-      ``` shell
-      kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
-      ```
+{{% notice note %}}
+```s
+kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
+```
+{{% /notice %}}
 
 ## 3. Store Pachyderm's Secrets in Secrets Manager
 In your Secret Manager Console, click on **Store a new secret**, select the **Other type of Secret** (for generic secrets), provide the following Key/Value pairs, then choose a secret name. 

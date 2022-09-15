@@ -1,37 +1,37 @@
 ---
-# metadata # 
-title:  Troubleshooting Pipelines
+# metadata #
+title: Troubleshooting Pipelines
 description: Learn how to troubleshoot Pachyderm pipelines.
-date: 
+date:
 # taxonomy #
-tags: 
+tags:
 series:
 seriesPart:
 ---
 
 ## Introduction
 
-Job failures can occur for a variety of reasons, but they generally categorize into 4 failure types: 
+Job failures can occur for a variety of reasons, but they generally categorize into 4 failure types:
 
 1. You [hit one of the Pachyderm Community Edition Scaling Limits](#community-edition-scaling-limits).
 1. [User-code-related](#user-code-failures): An error in the user code running inside the container or the json pipeline config.
 1. [Data-related](#data-failures): A problem with the input data such as incorrect file type or file name.
 1. [System- or infrastructure-related](#system-level-failures): An error in Pachyderm or Kubernetes such as missing credentials, transient network errors, or resource constraints (for example, out-of-memory--OOM--killed).
 
-In this document, we'll show you the tools for determining what kind of failure it is.  For each of the failure modes, we’ll describe Pachyderm’s and Kubernetes’s specific retry and error-reporting behaviors as well as typical user triaging methodologies. 
+In this document, we'll show you the tools for determining what kind of failure it is. For each of the failure modes, we’ll describe Pachyderm’s and Kubernetes’s specific retry and error-reporting behaviors as well as typical user triaging methodologies.
 
-Failed jobs in a pipeline will propagate information to downstream pipelines with empty commits to preserve provenance and make tracing the failed job easier.  A failed job is no longer running.
+Failed jobs in a pipeline will propagate information to downstream pipelines with empty commits to preserve provenance and make tracing the failed job easier. A failed job is no longer running.
 
-In this document, we'll describe what you'll see, how Pachyderm will respond, and techniques for triaging each of those three categories of failure. 
+In this document, we'll describe what you'll see, how Pachyderm will respond, and techniques for triaging each of those three categories of failure.
 
 At the bottom of the document, we'll provide specific troubleshooting steps for [specific scenarios](#specific-scenarios).
 
-- [Pipeline exists but never runs](#pipeline-exists-but-never-runs) 
+- [Pipeline exists but never runs](#pipeline-exists-but-never-runs)
 - [All your pods or jobs get evicted](#all-pods-or-jobs-get-evicted)
 
 ### Determining the kind of failure
 
-First off, you can see the status of Pachyderm's jobs with `pachctl list job --expand`, which will show you the status of all jobs.  For a failed job, use `pachctl inspect job <job-id>` to find out more about the failure.  The different categories of failures are addressed below.
+First off, you can see the status of Pachyderm's jobs with `pachctl list job --expand`, which will show you the status of all jobs. For a failed job, use `pachctl inspect job <job-id>` to find out more about the failure. The different categories of failures are addressed below.
 
 ### Community Edition Scaling Limits
 
@@ -41,53 +41,57 @@ That scenario is quite easy to troubleshoot:
 
 1. Check your number of pipelines and parallelism settings (`"parallelism_spec"` attribute in your pipeline specification files) against our [limits](../../reference/scaling-limits).
 1. Additionally, your stderr and pipeline logs (`pachctl log -p <pipeline name> --master` or `pachctl log -p <pipeline name> --worker`) should contain one or both of those messages:
-    - number of pipelines limit exceeded:
-        ```
-        Pachyderm Community Edition requires an activation key to create more than 16 total pipelines (you have X).  Use the command `pachctl license activate` to enter your key.
 
-        Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
+   - number of pipelines limit exceeded:
 
-        Get a key here:
-        → https://www.pachyderm.com/trial/
-        ```
-    - max number of workers exceeded:
-        ```
-        This pipeline will only create a total of 8 workers (you specified X). Pachyderm Community Edition requires an activation key to create pipelines with constant parallelism greater than 8. Use the command `pachctl license activate` to enter your key.
+     ```
+     Pachyderm Community Edition requires an activation key to create more than 16 total pipelines (you have X).  Use the command `pachctl license activate` to enter your key.
 
-        Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
+     Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
 
-        Get a key here:
-        → https://www.pachyderm.com/trial/
-        ```
+     Get a key here:
+     → https://www.pachyderm.com/trial/
+     ```
 
+   - max number of workers exceeded:
 
-To lift those limitations, Request an [**Enterprise Edition trial token**](https://www.pachyderm.com/trial/). 
-Check out our [Enterprise features](https://docs.pachyderm.com/latest/enterprise/) for more details on our Enterprise Offer. 
+     ```
+     This pipeline will only create a total of 8 workers (you specified X). Pachyderm Community Edition requires an activation key to create pipelines with constant parallelism greater than 8. Use the command `pachctl license activate` to enter your key.
 
+     Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
+
+     Get a key here:
+     → https://www.pachyderm.com/trial/
+     ```
+
+To lift those limitations, Request an [**Enterprise Edition trial token**](https://www.pachyderm.com/trial/).
+Check out our [Enterprise features](https://docs.pachyderm.com/latest/enterprise/) for more details on our Enterprise Offer.
 
 ### User Code Failures
 
-When there’s an error in user code, the typical error message you’ll see is 
+When there’s an error in user code, the typical error message you’ll see is
 
 ```
 failed to process datum <UUID> with error: <user code error>
 ```
 
-This means pachyderm successfully got to the point where it was running user code, but that code exited with a non-zero error code. If any datum in a pipeline fails, the entire job will be marked as failed, but datums that did not fail will not need to be reprocessed on future jobs.   You can use `pachctl inspect datum <job-id> <datum-id>` or `pachctl logs` with the `--pipeline`, `--job` or `--datum` flags to get more details.
+This means pachyderm successfully got to the point where it was running user code, but that code exited with a non-zero error code. If any datum in a pipeline fails, the entire job will be marked as failed, but datums that did not fail will not need to be reprocessed on future jobs. You can use `pachctl inspect datum <job-id> <datum-id>` or `pachctl logs` with the `--pipeline`, `--job` or `--datum` flags to get more details.
 
 There are some cases where users may want mark a datum as successful even for a non-zero error code by setting the `transform.accept_return_code` field in the pipeline config .
 
 #### Retries
+
 Pachyderm will automatically retry user code three (3) times before marking the datum as failed. This mitigates datums failing for transient connection reasons.
 
 #### Triage
-`pachctl logs --job=<job_ID>` or `pachctl logs --pipeline=<pipeline_name>` will print out any logs from your user code to help you triage the issue. Kubernetes will rotate logs occasionally so if nothing is being returned, you’ll need to make sure that you have a persistent log collection tool running in your cluster. 
 
-In cases where user code is failing, changes first need to be made to the code and followed by updating the pachyderm pipeline. This involves building a new docker container with the corrected code, modifying the pachyderm pipeline config to use the new image, and then calling `pachctl update pipeline -f updated_pipeline_config.json`. Depending on the issue/error, user may or may not want to also include the `--reprocess` flag with `update pipeline`. 
+`pachctl logs --job=<job_ID>` or `pachctl logs --pipeline=<pipeline_name>` will print out any logs from your user code to help you triage the issue. Kubernetes will rotate logs occasionally so if nothing is being returned, you’ll need to make sure that you have a persistent log collection tool running in your cluster.
+
+In cases where user code is failing, changes first need to be made to the code and followed by updating the pachyderm pipeline. This involves building a new docker container with the corrected code, modifying the pachyderm pipeline config to use the new image, and then calling `pachctl update pipeline -f updated_pipeline_config.json`. Depending on the issue/error, user may or may not want to also include the `--reprocess` flag with `update pipeline`.
 
 ### Data Failures
 
-When there’s an error in the data, this will typically manifest in a user code error such as 
+When there’s an error in the data, this will typically manifest in a user code error such as
 
 ```
 failed to process datum <UUID> with error: <user code error>
@@ -96,12 +100,14 @@ failed to process datum <UUID> with error: <user code error>
 This means pachyderm successfully got to the point where it was running user code, but that code exited with a non-zero error code, usually due to being unable to find a file or a path, a misformatted file, or incorrect fields/data within a file. If any datum in a pipeline fails, the entire job will be marked as failed. Datums that did not fail will not need to be reprocessed on future jobs.
 
 #### Retries
+
 Just like with user code failures, Pachyderm will automatically retry running a datum 3 times before marking the datum as failed. This mitigates datums failing for transient connection reasons.
 
 #### Triage
-Data failures can be triaged in a few different way depending on the nature of the failure and design of the pipeline. 
 
-In some cases, where malformed datums are expected to happen occasionally, they can be “swallowed” (e.g. marked as successful using `transform.accept_return_codes` or written out to a “failed_datums” directory and handled within user code). This would simply require the necessary updates to the user code and pipeline config as described above.  For cases where your code detects bad input data, a "dead letter queue" design pattern may be needed.  Many pachyderm developers use a special directory in each output repo for "bad data" and pipelines with globs for detecting bad data direct that data for automated and manual intervention.
+Data failures can be triaged in a few different way depending on the nature of the failure and design of the pipeline.
+
+In some cases, where malformed datums are expected to happen occasionally, they can be “swallowed” (e.g. marked as successful using `transform.accept_return_codes` or written out to a “failed_datums” directory and handled within user code). This would simply require the necessary updates to the user code and pipeline config as described above. For cases where your code detects bad input data, a "dead letter queue" design pattern may be needed. Many pachyderm developers use a special directory in each output repo for "bad data" and pipelines with globs for detecting bad data direct that data for automated and manual intervention.
 
 If a few files as part of the input commit are causing the failure, they can simply be removed from the HEAD commit with `start commit`, `delete file`, `finish commit`. The files can also be corrected in this manner as well. This method is similar to a revert in Git -- the “bad” data will still live in the older commits in Pachyderm, but will not be part of the HEAD commit and therefore not processed by the pipeline.
 
@@ -112,18 +118,20 @@ System-level failures are the most varied and often hardest to debug. We’ll ou
 Here are some of the most common system-level failures:
 
 - Malformed or missing credentials such that a pipeline cannot connect to object storage, registry, or other external service. In the best case, you’ll see `permission denied` errors, but in some cases you’ll only see “does not exist” errors (this is common reading from object stores)
-- Out-of-memory (OOM) killed or other resource constraint issues such as not being able to schedule pods on available cluster resources. 
+- Out-of-memory (OOM) killed or other resource constraint issues such as not being able to schedule pods on available cluster resources.
 - Network issues trying to connect Pachd, etcd, or other internal or external resources
 - Failure to find or pull a docker image from the registry
 
 #### Retries
+
 For system-level failures, Pachyderm or Kubernetes will generally continually retry the operation with exponential backoff. If a job is stuck in a given state (e.g. starting, merging) or a pod is in `CrashLoopBackoff`, those are common signs of a system-level failure mode.
 
-
 #### Triage
+
 Triaging system failures varies as widely as the issues do themselves. Here are options for the common issues mentioned previously.
+
 - Credentials: check your secrets in k8s, make sure they’re added correctly to the pipeline config, and double check your roles/perms within the cluster
-- OOM: Increase the memory limit/request or node size for your pipeline. If you are very resource constrained, making your datums smaller to require less resources may be necessary. 
+- OOM: Increase the memory limit/request or node size for your pipeline. If you are very resource constrained, making your datums smaller to require less resources may be necessary.
 - Network: Check to make sure etcd and pachd are up and running, that k8s DNS is correctly configured for pods to resolve each other and outside resources, firewalls and other networking configurations allow k8s components to reach each other, and ingress controllers are configured correctly
 - Check your container image name in the pipeline config and image_pull_secret.
 
@@ -168,12 +176,13 @@ rescheduled to a different node, where the same thing will happen.
 
 You can see the pipeline via `pachctl list pipeline`, but if you look at the job via `pachctl list job --expand`,
 it's marked as running with `0/0` datums having been processed.  
-If you inspect the job via `pachctl inspect job <pipeline_name>@<jobID>`, you don't see any worker set. 
+If you inspect the job via `pachctl inspect job <pipeline_name>@<jobID>`, you don't see any worker set.
 
 E.g:
+
 ```
 Worker Status:
-WORKER              JOB                 DATUM               STARTED             
+WORKER              JOB                 DATUM               STARTED
 ...
 ```
 
@@ -199,7 +208,7 @@ kubectl describe po/pipeline-foo-5-v1-273zc
 
 If the state is `CrashLoopBackoff`, you're looking for a descriptive error message. One such cause for this behavior might be if you specified an image for your pipeline that does not exist.
 
-If the state is `Pending` it's likely the cluster doesn't have enough resources. In this case, you'll see a `could not schedule` type of error message which should describe which resource you're low on. This is more likely to happen if you've set resource requests (cpu/mem/gpu) for your pipelines.  In this case, you'll just need to scale up your resources. You can use your cloud provider's auto scaling groups to increase the size of your instance group. It can take up to 10 minutes for the changes to go into effect. 
+If the state is `Pending` it's likely the cluster doesn't have enough resources. In this case, you'll see a `could not schedule` type of error message which should describe which resource you're low on. This is more likely to happen if you've set resource requests (cpu/mem/gpu) for your pipelines. In this case, you'll just need to scale up your resources. You can use your cloud provider's auto scaling groups to increase the size of your instance group. It can take up to 10 minutes for the changes to go into effect.
 
 ### Cannot Delete Pipelines with an etcd Error
 
@@ -233,7 +242,7 @@ kubectl edit statefulset etcd
 
 In the `spec/template/containers/command` path, set the value for
 `max-txn-ops` to a value appropriate for your cluster, in line
-with the advice in the error above: *larger than the greater of XXXXXX or YYYYYYY*.
+with the advice in the error above: _larger than the greater of XXXXXX or YYYYYYY_.
 
 ### Pipeline is stuck in `starting`
 

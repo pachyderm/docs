@@ -10,10 +10,12 @@ seriesPart:
 layout: glossary
 --- 
 
-!!! note "TL;DR"
+{{% notice note %}}
+ "TL;DR"
     Datums define what input data is seen by your code. It can be
     all data at once, each directory independently, individual
     files one by one, or combined data from multiple inputs together.
+{{% /notice %}}
 
 ## Definition
 A datum is **the smallest indivisible unit of computation within a job**.

@@ -13,10 +13,12 @@ This chapter will detail how to:
 - Grant/modify permissions (Roles) on given Resources to a User (Idp or Robot User).
 - Remove all permissions on a Ressource from a User (Idp or Robot User).
 
-!!! Note "Default Privileges"
-    - Root User: The activation of the Authentication and Authorization feature generates a **Root User** with **unalterable and unrevokable `clusterAdmin` privileges**. 
-    - Robot User: **Robot users do not have any permission by default**. They will need to be set by a `clusterAdmin`.
-    - The case of the Pipeline User: In Pachyderm, **you do not explicitly grant users access to pipelines**, they get set for you when you create or update a pipeline. 
+{{% notice note %}}
+ Default Privileges.
+- Root User: The activation of the Authentication and Authorization feature generates a **Root User** with **unalterable and unrevokable `clusterAdmin` privileges**. 
+- Robot User: **Robot users do not have any permission by default**. They will need to be set by a `clusterAdmin`.
+- The case of the Pipeline User: In Pachyderm, **you do not explicitly grant users access to pipelines**, they get set for you when you create or update a pipeline. 
+{{% /notice %}}
 
 {{% notice warning %}} 
 Rules to keep in mind
@@ -44,7 +46,9 @@ Rules to keep in mind
     ```s
     pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
     ```
-!!! Note
+{{% notice note %}}
+
+{{% /notice %}}
 
     Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L469). 
 
@@ -135,13 +139,15 @@ In particular, we will:
 !!! Info
     Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
 
-!!! Note
+{{% notice note %}}
+
     - To alter a user's privileges, simply re-run the `pachctl auth set` command above with a different set of Roles. 
     For example, 
     ```s
     pachctl auth set repo testinput repoWriter user:one-pachyderm-user@gmail.com
     ```
     will give one-pachyderm-user@gmail.com `repoWriter` privileges when they were inially granted `repoReader` access.
+{{% /notice %}}
 
     - You can remove all access level on a repo to a user by using the `none` keyword.
     For example,

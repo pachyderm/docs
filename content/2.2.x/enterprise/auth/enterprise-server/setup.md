@@ -21,8 +21,9 @@ An Enterprise Server uses the same binary/images as a regular Pachyderm cluster,
 The following diagram gives you a quick overview of an organization with multiple Pachyderm clusters behind a single Enterprise Server.
 ![Enterprise Server General Deployment](../images/enterprise-server.png)
 
-!!! Note
-	For POCs and smaller organizations with one single Pachyderm cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single Pachyderm cluster can run the Enterprise Server services embedded within pachd.
+{{% notice note %}}
+For POCs and smaller organizations with one single Pachyderm cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single Pachyderm cluster can run the Enterprise Server services embedded within pachd.
+{{% /notice %}}
 
 The setup of an Enterprise Server requires to:
 
@@ -159,8 +160,10 @@ pod/postgres-6bfd7bfc47-9mz28          1/1     Running   0          113m
 	```
 
 
-!!! Note
+{{% notice note %}}
+
      Update the following values as follow:
+{{% /notice %}}
 
 	 - `PACHD-IP`: The address of Pachyderm's IP. Retrieve Pachyderm external IP address if necessary.
 	 - `ISSUER`, `CLIENT-ID`, `CLIENT-SECRET`: Refer to our [Identity Provider Configuration page](../../authentication/idp-dex/#create-a-connector-configuration-file).
@@ -288,9 +291,11 @@ This is an **optional step**. Clusters can be registered with the enterprise ser
 	```s
 	pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<pachd-IP>:657/authorization-code/callback 
 	```
-!!! Note
+{{% notice note %}}
+
 	- Note the **`/authorization-code/callback`** appended after `<pachd-IP>:657` in `--redirect`.
 	- `--client-id` is to `pachctl auth activate` what `--id` is to `pachctl enterprise register`: In both cases, enter `<my-pachd-config-name>`. 
+{{% /notice %}}
 
 -	Make sure than your enterprise context is set up properly: 
 	```s

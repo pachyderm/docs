@@ -9,10 +9,10 @@ series:
 seriesPart:
 --- 
 
-!!! Note 
-    To monitor a Pachyderm cluster
-    with Prometheus, 
-    a ***Pachyderm Enterprise License*** is required. 
+{{% notice note %}}
+To monitor a Pachyderm cluster
+with Prometheus, a ***Pachyderm Enterprise License*** is required. 
+{{% /notice %}}
 
 
 Pachyderm's deployment manifest exposes Prometheus metrics, 

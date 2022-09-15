@@ -120,8 +120,9 @@ gcloud config set container/cluster ${CLUSTER_NAME}
 MACHINE_TYPE=<machine type for the k8s nodes, we recommend "n1-standard-4" or larger>
 ```
 
-!!! Note
-    Adding `--scopes storage-rw` to the `gcloud container clusters create ${CLUSTER_NAME} --machine-type ${MACHINE_TYPE}` command below will grant the rw scope to whatever service account is on the cluster, which, if you don’t provide it, is the default compute service account for the project with Editor permissions. While this is **not recommended in any production settings**, this option can be useful for a quick setup in development. In that scenario, you do not need any service account or additional GCP Bucket permission (see below).
+{{% notice note %}}
+Adding `--scopes storage-rw` to the `gcloud container clusters create ${CLUSTER_NAME} --machine-type ${MACHINE_TYPE}` command below will grant the rw scope to whatever service account is on the cluster, which, if you don’t provide it, is the default compute service account for the project with Editor permissions. While this is **not recommended in any production settings**, this option can be useful for a quick setup in development. In that scenario, you do not need any service account or additional GCP Bucket permission (see below).
+{{% /notice %}}
 
 
 ```s
@@ -323,8 +324,10 @@ This section will provide guidance on the configuration settings you will need t
 - Create one or **two databases** (`pachyderm` and, depending on whether your cluster is standalone or managed by an enterprise server, a second database, `dex`).
 - Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
 
-!!! Note
+{{% notice note %}}
+
       It is assumed that you are already familiar with CloudSQL, or will be working with an administrator who is.
+{{% /notice %}}
 
 ### Create A CloudSQL Instance
 
@@ -358,8 +361,10 @@ After your instance is created, you will need to create Pachyderm's database(s).
       
 If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../enterprise/auth/enterprise-server/setup.md)), you will need to create a second database named "dex" in your Cloud SQL instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
 
-!!! Note
+{{% notice note %}}
+
     Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
+{{% /notice %}}
 
 Run the first or both commands depending on your use case.
 
@@ -372,10 +377,12 @@ Pachyderm will use the same user "postgres" to connect to `pachyderm` as well as
 ### Update your values.yaml 
 Once your databases have been created, add the following fields to your Helm values:
 
-!!! Note
+{{% notice note %}}
+
     To identify a Cloud SQL instance, you can find the INSTANCE_NAME on the Overview page for your instance in the Google Cloud Console, or by running the following command: 
     `gcloud sql instances describe INSTANCE_NAME`
     For example: myproject:myregion:myinstance.
+{{% /notice %}}
 
 You will need to retrieve the name of your Cloud SQL connection: 
 
@@ -428,8 +435,10 @@ gcloud compute addresses create ${STATIC_IP_NAME} --region=${GCP_REGION}
 STATIC_IP_ADDR=$(gcloud compute addresses describe ${STATIC_IP_NAME} --region=${GCP_REGION} --format=json --flatten=address | jq '.[]' )
 ```
 
-!!! Note
+{{% notice note %}}
+
      If you have not created a Managed CloudSQL instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml and remove the `cloudsqlAuthProxy` fields. This setup is **not recommended in production environments**.
+{{% /notice %}}
 
 Retrieve these additional variables, then fill in their values in the YAML file below:
 

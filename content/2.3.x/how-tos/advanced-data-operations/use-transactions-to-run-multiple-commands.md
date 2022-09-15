@@ -9,9 +9,11 @@ series:
 seriesPart:
 ---
 
-!!! note "TL;DR"
+{{% notice note %}}
+ "TL;DR"
     Use transactions to run multiple Pachyderm commands
     simultaneously in one job run.
+{{% /notice %}}
 
 A transaction is a Pachyderm operation that enables you to **create
 a collection of Pachyderm commands and execute them concurrently**.
@@ -96,7 +98,7 @@ A transaction demarcation initializes some transactional behavior before the dem
 
   We have used the [inner join pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/joins) in our joins example to illustrate the difference between no transaction and the use a transaction, all other things being equal. Make sure to follow the example README if you want to run those pachctl commands yourself.
 
-  ![Tx vs no Tx](../../images/flow-control-with-and-without-trx.png)
+  ![Tx vs no Tx](../images/flow-control-with-and-without-trx.png)
         
   {{% notice note %}}
   Note that in the case with the transaction, the `put file` and following `finish commit` are happening **after** the `finish transaction` instruction.

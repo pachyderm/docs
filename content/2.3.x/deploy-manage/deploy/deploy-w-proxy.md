@@ -17,16 +17,17 @@ See Pachyderm new high-level architecture diagram:
 
 This page is an add-on to existing installation instructions in the case where you chose to deploy Pachyderm with an embedded proxy. The steps below replace all or parts of the existing installation documentation. We will let you know when to use them and which section they overwrite.
 
-!!! Note "TL;DR" 
-    - When the proxy option is activated, Pachyderm is reachable through **one TCP port for all incoming grpc (grpcs), console (HTTP/HTTPS), s3 gateway, OIDC, and dex traffic**, then routes each call to the appropriate backend microservice without any additional configuration.
-    - Enable the proxy as follow:
+{{% notice note %}}
+- When the proxy option is activated, Pachyderm is reachable through **one TCP port for all incoming grpc (grpcs), console (HTTP/HTTPS), s3 gateway, OIDC, and dex traffic**, then routes each call to the appropriate backend microservice without any additional configuration.
+- Enable the proxy as follow:
 
-      ```yaml
-      proxy:
-        enabled: true
-        service:
-          type: LoadBalancer
-      ```
+  ```yaml
+  proxy:
+    enabled: true
+    service:
+      type: LoadBalancer
+  ```
+{{% /notice %}}
 
 {{% notice warning %}}
 The deployment of Pachyderm with a proxy is optional at the moment and will become permanent in the next minor release of Pachyderm.
@@ -34,8 +35,10 @@ The deployment of Pachyderm with a proxy is optional at the moment and will beco
 
 The diagram below gives a quick overview of the layout of services and pods when using a proxy. In particular, it details how Pachyderm listens to all inbound traffic on one port, then routes each call to the appropriate backend:![Infrastruture Recommendation](../images/infra-recommendations-with-proxy.png)
 
-!!! Note 
+{{% notice note %}}
+ 
     See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml#L827) for all available configurable fields of the proxy.
+{{% /notice %}}
 
 Before any deployment in production, we recommend reading the following section to [set up your production infrastructure](#deploy-pachyderm-in-production-with-a-proxy). 
 
@@ -481,7 +484,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 The `pachyderm-proxy` service also routes Pachyderm's [**S3 gateway**](../../manage/s3gateway/) (allowing you to
 **access Pachyderm's repo through the S3 protocol**) on port 80 (note the endpoint in the diagram below).
 
-![Global S3 Gateway with Proxy](../../images/main-s3-gateway-with-proxy.png)
+![Global S3 Gateway with Proxy](../images/main-s3-gateway-with-proxy.png)
 
 ## Changes to the Enterprise Server Setup
 

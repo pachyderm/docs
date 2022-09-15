@@ -43,8 +43,9 @@ You must generate a secret that contains the password granting user access to th
 6. Run the command. 
 7. Confirm secret by running `pachctl list secret`. 
    
-!!! Note
-     Not all secret formats are the same. For a full walkthrough on how to create, edit, and view different types of secrets, see [Create and Manage Secrets in Pachyderm](../../advanced-data-operations/secrets/#create-a-secret).
+{{% notice note %}}
+Not all secret formats are the same. For a full walkthrough on how to create, edit, and view different types of secrets, see [Create and Manage Secrets in Pachyderm](../../advanced-data-operations/secrets/#create-a-secret).
+{{% /notice %}}
 
 ### 2. Create a Database Connection String
 

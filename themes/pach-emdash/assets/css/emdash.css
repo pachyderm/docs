@@ -24,7 +24,7 @@
     --is-link-color: var(--is-purple);
     --is-shadow-color: var(--is-dark-gray);
     --is-highlight-color: var(--is-purple);
-    --is-code-color: #5393A5;
+    --is-code-color: #c6b7e5;
 
     --is-info-color: var(--is-blue);
     --is-info-text: var(--is-white);; 
@@ -32,19 +32,19 @@
     --is-success-text: var(--is-white);
     --is-warning-color: var(--is-yellow);
     --is-warning-text: var(--is-black);
-    --is-danger-color: var(--is-red);
+    --is-danger-color: var(--is-orange);
     --is-danger-text: var(--is-white);
     
-    --is-red: #ff0000;
-    --is-green: #00ff00;
-    --is-blue: #0000ff;
-    --is-yellow: #ffff00;
-    --is-orange: #ff8000;
+    --is-red: #ce6767;
+    --is-green: #b1ffba;
+    --is-blue: #5ba3b1;
+    --is-yellow: #fffbb1;
+    --is-orange: #ffc3b1;
     --is-purple: #582f6b;
     --is-pink: #ff0080;
     --is-white: #ffffff;
     --is-black: #212529;
-    --is-gray: #808080;
+    --is-gray: #ecf5f7;
     --is-dark-gray: #404040;
     --is-graident-warm-pt-1: #ff0000;
     --is-graident-warm-pt-2: #ff4000;
@@ -351,13 +351,17 @@ ol li::marker {
 :is(.content) > :is(h1, h2, h3, h4, h5, h6) { margin-top: var(--xxxlarge-text); }
 
 .content  code, pre { 
-  max-width: 70%;
+  max-width: 90%;
   white-space: pre-wrap;
-  padding: 1ch;
-  margin: 1ch;
+  padding: 2px;
+  margin: 2px;
   overflow-x: scroll;
-  font-weight: 100;
+  font-weight: 900;
   color: var(--is-code-color);
+ }
+
+ pre > button {
+  color: var(--is-white);
  }
 
  .content {

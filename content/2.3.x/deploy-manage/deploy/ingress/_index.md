@@ -189,8 +189,9 @@ pachd:
 
 See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L197) for all available fields.
 
-!!! Note
-        When externalService is enabled, Pachyderm creates a corresponding `pachd-lb` service of `type:LoadBalancer` allowing your cloud platform (AWS, GKE...) to provision a TCP Load Balancer automatically.
+{{% notice note %}}
+When externalService is enabled, Pachyderm creates a corresponding `pachd-lb` service of `type:LoadBalancer` allowing your cloud platform (AWS, GKE...) to provision a TCP Load Balancer automatically.
+{{% /notice %}}
 
 Add the appropriate annotations to attach any Load Balancer configuration information to the metadata of your service.
 

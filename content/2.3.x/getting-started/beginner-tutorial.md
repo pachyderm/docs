@@ -35,7 +35,7 @@ you have also deployed Pachyderm Web UI.
 Point your browser to **`localhost:4000`** to connect to Console.
 You should land on this page:
 
-![Console Landing Page](../images/console_landing_page.png)
+![Console Landing Page](./images/console_landing_page.png)
 
 Click on your **View Project** (We are working on allowing you to organize your pipelines by Projects) to get started. You are all set to have a follow-along visual experience of the coming steps.
 
@@ -92,11 +92,12 @@ have not added anything to it yet, the size of the repository HEAD commit
 on the master branch is 0B.
 
 Check your Console and notice the creation of your repository. 
-!!! Note 
-    Note the "plus" icon in your `images` repository. 
-    It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
+{{% notice note %}} 
+Note the "plus" icon in your `images` repository. 
+It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
+{{% /notice %}}
 
-![Console images repo](../images/console-images-repo.png)
+![Console images repo](./images/console-images-repo.png)
 
 ### Adding Data to Pachyderm
 
@@ -172,7 +173,7 @@ To make sure that the data we just added is in Pachyderm.
 
 In your Console, click on the `images` repo to visualize its commit and inspect its file:
 
-![Console images liberty](../images/console-images-liberty.png)
+![Console images liberty](./images/console-images-liberty.png)
 
 Alternatively, you can view the file by retrieving it from Pachyderm. 
 Because this is an image, you cannot just print it out in the terminal, but the following
@@ -204,8 +205,9 @@ more advanced options. Options include building your own code into a
 container.
 In this tutorial, your pipeline will use a pre-built Docker image.
 
-!!! Info
-    More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
+{{% notice info %}}
+More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
+{{%/notice %}}
 
 For now, we are going to create a single pipeline that takes in images
 and does some simple edge detection.
@@ -249,9 +251,9 @@ to distribute computation. `/*` means that each file can be
 processed individually, which makes sense for images. Glob patterns are
 one of the most powerful features in Pachyderm.
 
-!!! Info
-    More about the concept of [`Glob Pattern`](../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern) 
-    in Pachyderm and the fundamental notion of [`Datums`](../../concepts/pipeline-concepts/datum/relationship-between-datums/).
+{{% notice info%}}
+More about the concept of [`Glob Pattern`](../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern) in Pachyderm and the fundamental notion of [`Datums`](../../concepts/pipeline-concepts/datum/relationship-between-datums/).
+{{% /notice %}}
 
 
 The following extract is the Python code run in this pipeline:
@@ -293,7 +295,7 @@ Now, let's create the pipeline in Pachyderm:
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/edges.json
 ```
 Again, check the end result in your Console:
-![Console edges pipeline](../images/console-edges-pipeline.png)
+![Console edges pipeline](./images/console-edges-pipeline.png)
 #### What Happens When You Create a Pipeline
 
 Creating a pipeline tells Pachyderm to run your code on the data in your
@@ -377,7 +379,7 @@ pachctl get file edges@master:liberty.png | display
 
 The output should look like this:
 
-![Console edges liberty](../images/console-edges-liberty.png)
+![Console edges liberty](./images/console-edges-liberty.png)
 
 
 #### Processing More Data
@@ -494,46 +496,46 @@ and
 
 * To create the `montage` pipeline, run:
 
-    ```s
-    pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/montage.json
-    ```
+  ```s
+  pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/examples/opencv/montage.json
+  ```
 
-    See your new DAG in Console:
-    ![Console opencv DAG](../images/console-opencv-dag.png)
+  See your new DAG in Console:
+  ![Console opencv DAG](./images/console-opencv-dag.png)
 
 * The pipeline creation triggers a job that generates a montage for all the current HEAD commits of the input repos:
 
-    ```s
-    pachctl list job
-    ```
+  ```s
+  pachctl list job
+  ```
 
-    **System response:**
+  **System response:**
 
-    ```s
-    ID                               SUBJOBS PROGRESS CREATED        MODIFIED
-    01e0c8040e18429daf7f67ce34c3a5d7 1       ▇▇▇▇▇▇▇▇ 11 seconds ago 11 seconds ago
-    1c1a9d7d36944eabb4f6f14ebca25bf1 1       ▇▇▇▇▇▇▇▇ 12 minutes ago 12 minutes ago
-    fe5c4f70ac4347fd9c5934f0a9c44651 1       ▇▇▇▇▇▇▇▇ 12 minutes ago 12 minutes ago
-    23378d899d3d45738f55df3809841145 1       ▇▇▇▇▇▇▇▇ 24 minutes ago 24 minutes ago
-    ```
+  ```s
+  ID                               SUBJOBS PROGRESS CREATED        MODIFIED
+  01e0c8040e18429daf7f67ce34c3a5d7 1       ▇▇▇▇▇▇▇▇ 11 seconds ago 11 seconds ago
+  1c1a9d7d36944eabb4f6f14ebca25bf1 1       ▇▇▇▇▇▇▇▇ 12 minutes ago 12 minutes ago
+  fe5c4f70ac4347fd9c5934f0a9c44651 1       ▇▇▇▇▇▇▇▇ 12 minutes ago 12 minutes ago
+  23378d899d3d45738f55df3809841145 1       ▇▇▇▇▇▇▇▇ 24 minutes ago 24 minutes ago
+  ```
 
 * View the generated montage image in Console or by running one of the following commands:
 
-    * In Console:
+  * In Console:
 
-        ![Console opencv montage](../images/console-opencv-montage.png)
+  ![Console opencv montage](./images/console-opencv-montage.png)
 
-    * On macOS, run:
+  * On macOS, run:
 
-        ```s
-        pachctl get file montage@master:montage.png | open -f -a Preview.app
-        ```
+  ```s
+  pachctl get file montage@master:montage.png | open -f -a Preview.app
+  ```
 
-    * On Linux 64-bit, run:
+  * On Linux 64-bit, run:
 
-        ```s
-        pachctl get file montage@master:montage.png | display
-        ```
+  ```s
+  pachctl get file montage@master:montage.png | display
+  ```
 
 ## Next Steps
 

@@ -61,8 +61,9 @@ latest available version of the components listed below.
 * [kubectl](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli)
 * [pachctl](../../../getting-started/local-installation#install-pachctl)
  
-!!! Note
-    This page assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+{{% notice note %}}
+This page assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+{{% /notice %}}
 
 ## 2. Deploy Kubernetes
 
@@ -138,8 +139,10 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
 
 1. Confirm the version of the Kubernetes server by running  `kubectl version`.
 
-!!! note "See Also:"
+{{% notice note %}}
+ "See Also:"
     - [Azure Virtual Machine sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general)
+{{% /notice %}}
 
 Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of Pachyderm. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
 
@@ -212,9 +215,11 @@ The storage account name must be unique in the Azure location.
                 )"
     ```
 
-!!! Note
+{{% notice note %}}
+
     Find the generated key in the **Storage accounts > Access keys**
     section in the [Azure Portal](https://portal.azure.com/) or by running the following command `az storage account keys list --account-name=${STORAGE_ACCOUNT}`.
+{{% /notice %}}
 
 
 * Create a new storage container within your storage account:
@@ -295,8 +300,10 @@ Once created, go back to your newly created database, and:
 
 - Open the access to your instance:
 
-!!! Note
+{{% notice note %}}
+
     Azure provides two options for pods running on an AKS worker nodes to access a PostgreSQL DB instance, pick what fit you best:
+{{% /notice %}}
 
       - Create a [firewall rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-firewall-rules#connecting-from-azure) on the Azure DB Server with a range of IP addresses that encompasses all IPs of the AKS Cluster nodes (this can be a very large range if using node auto-scaling).
       - Create a [VNet Rule](https://docs.microsoft.com/en-us/azure/mysql/concepts-data-access-and-security-vnet) on the Azure DB Server that allows access from the subnet the AKS nodes are in. This is used in conjunction with the Microsoft.Sql VNet Service Endpoint enabled on the cluster subnet.
@@ -315,8 +322,10 @@ After your instance is created, you will need to create Pachyderm's database(s).
       
 If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../enterprise/auth/enterprise-server/setup.md), you will need to create a second database named "dex" in your PostgreSQL Server instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
 
-!!! Note
+{{% notice note %}}
+
     Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
+{{% /notice %}}
 
 Pachyderm will use the same user to connect to `pachyderm` as well as to `dex`. 
 
@@ -348,8 +357,10 @@ You have set up your infrastructure, created your data container and a Managed P
 
 ### Update Your Values.yaml  
 
-!!! Note 
+{{% notice note %}}
+ 
      If you have not created a Managed PostgreSQL Server instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
+{{% /notice %}}
 
 If you have previously tried to run Pachyderm locally,
 make sure that you are using the right Kubernetes context first. 

@@ -11,8 +11,9 @@ seriesPart:
 
 ## `pachctl put file`
 
-!!! Note
-    At any time, run `pachctl put file --help` for the complete list of flags available to you.
+{{% notice note %}}
+At any time, run `pachctl put file --help` for the complete list of flags available to you.
+{{% /notice %}}
 
 1. Load your data into Pachyderm by using `pachctl` requires that one or several input repositories have been created. 
 
@@ -71,9 +72,11 @@ in your filepath:
 	pachctl put file <repo>@<branch>:</path/to/file> -f s3://object_store_url
   	```
 
-!!! Note
+{{% notice note %}}
+
     If you are configuring a local cluster to access an external bucket,
     make sure that Pachyderm has been given the proper access.
+{{% /notice %}}
 
 * Add multiple files at once by using the `-i` option or multiple `-f` flags.
 In the case of `-i`, the target file must be a list of files, paths, or URLs

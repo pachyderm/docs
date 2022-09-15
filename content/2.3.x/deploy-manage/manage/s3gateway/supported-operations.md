@@ -151,12 +151,9 @@ For example, list the contents of the repository raw_data.
 For example, add the `test.csv` file to the `master` branch in
 the `raw_data` repository. `raw_data` being an input repository.
 
-!!! Note
-    Not all the repositories that you see in the results of the `ls` command are
-    repositories that can be written to. 
-    Some of them might be read-only. 
-    Note that you should have writting access to the input repo 
-    in order to be able to add files to it.
+{{% notice note %}}
+Not all the repositories that you see in the results of the `ls` command are repositories that can be written to.  Some of them might be read-only.  Note that you should have writting access to the input repo in order to be able to add files to it.
+{{% /notice %}}
 
 1. In MinIO,
     - this would look like:

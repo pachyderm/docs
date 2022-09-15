@@ -76,15 +76,16 @@ pachctl create secret -f myfirstsecret.json
 You can run `pachctl list secret` to verify that your secret has been properly created.
 You should see an output that looks like the following:
 
-```
+```s
 NAME     TYPE                           CREATED        
 mysecret kubernetes.io/dockerconfigjson 11 seconds ago 
 ```
-!!! Note
-    Use `pachctl delete secret` to delete a secret given its name,  `pachctl inspect secret` to list a secret given its name.
+
+{{% notice note %}}
+Use `pachctl delete secret` to delete a secret given its name,  `pachctl inspect secret` to list a secret given its name.
+{{% /notice %}}
+
 You can now edit your pipeline specification file as follow.
-
-
 ## Reference a Secret in Pachyderm's specification file
 Now that your secret is created on Pachyderm cluster, you will need to notify your pipeline by updating your pipeline [specification file](https://docs.pachyderm.com/latest/reference/pipeline-spec/#manifest-format).
 In Pachyderm, a Secret can be used in three different ways:

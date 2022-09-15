@@ -101,8 +101,10 @@ Once your Kubernetes cluster is up, and your infrastructure is configured,
 you are ready to prepare for the installation of Pachyderm.
 Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure. 
 
-!!! Note "Secrets Manager"
-      Pachyderm recommends securing and managing your secrets in a Secret Manager. Learn about the [set up and configuration of your EKS cluster to retrieve the relevant secrets from AWS Secrets Manager](../aws-secret-manager) then resume the following installation steps.
+{{% notice note %}}
+ Secrets Manager.
+Pachyderm recommends securing and managing your secrets in a Secret Manager. Learn about the [set up and configuration of your EKS cluster to retrieve the relevant secrets from AWS Secrets Manager](../aws-secret-manager) then resume the following installation steps.
+{{% /notice %}}
 
 ## 3. Create an S3 bucket
 ### Create an S3 object store bucket for data
@@ -267,8 +269,10 @@ This section will provide guidance on the configuration settings you will need t
 create **two databases** (`pachyderm` and, depending on whether your cluster is standalone or managed by an enterprise server, a second database, `dex`).
 - Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
 
-!!! Note
+{{% notice note %}}
+
       It is assumed that you are already familiar with RDS, or will be working with an administrator who is.
+{{% /notice %}}
 
 ### Create An RDS Instance
 
@@ -334,9 +338,11 @@ You have set up your infrastructure, created your S3 bucket and an AWS Managed P
 
 ### Update Your Values.yaml  
 
-!!! Note
+{{% notice note %}}
+
      If you have not created a Managed PostgreSQL RDS instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
 #### For gp3 EBS Volumes
+{{% /notice %}}
 
 [Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
 

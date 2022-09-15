@@ -13,11 +13,13 @@ seriesPart:
 This document discusses each of the fields present in the `values.yaml` that can be used to deploy with Helm.
 To see how to use a helm values files to customize your deployment, refer to our [Helm Deployment Documentation](../../deploy-manage/deploy/helm-install/) section.
 
-!!! Note
-    You rarely need to specify all the fields. Most fields either come with sensible defaults or can be empty.
-    Values that are unchanged from the defaults can be omitted from the values file you supply at installation.
-    
-    Take a look at our deployment instructions [locally](../../getting-started/local-installation/) or [in the cloud](../../deploy-manage/deploy/quickstart/) to identify which of those are required for your deployment target.
+{{% notice note %}}
+You rarely need to specify all the fields. Most fields either come with sensible defaults or can be empty.
+
+Values that are unchanged from the defaults can be omitted from the values file you supply at installation.
+
+Take a look at our deployment instructions [locally](../../getting-started/local-installation/) or [in the cloud](../../deploy-manage/deploy/quickstart/) to identify which of those are required for your deployment target.
+{{% /notice %}}
 
 ## Values.yaml
 The following section displays the complete list of fields available in the [values.yaml](https://github.com/pachyderm/pachyderm/blob/2.3.x/etc/helm/pachyderm/values.yaml). 
@@ -370,9 +372,11 @@ This section is to configure the PostgresQL Subchart, if used.
 
 - `persistence.storageClass` specifies the storage class for the postgresql Persistent Volume (PV)
 
-!!! Note "More"
+{{% notice note %}}
+ "More"
     See notes in Bitnami chart values.yaml file for more information.
     More info for setting up storage classes on various cloud providers:
+{{% /notice %}}
 
       - AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
       - GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
@@ -430,10 +434,12 @@ port exposed directly to the Internet.
   - `proxy.replicas` : The number of proxy replicas to run.  1 is a default but can be increased
   for higher availability. Each replica can handle 50,000 concurrent connections.There is an affinity rule to prefer scheduling the proxy pods **on the same node as pachd**, so a number here that matches the number of pachd replicas is a fine configuration.
   
-!!! Note 
+{{% notice note %}}
+ 
       We don't guarantee to keep the proxy<->pachd traffic on-node or even in-region.
   
   - `proxy.image` specifies the details of the proxy image to pull.  THe following fields can be left at the defaults unless instructed.
+{{% /notice %}}
 
     - `proxy.image.repository` the proxy image repository. Defaults to "envoyproxy/envoy".
     - `proxy.image. tag` the tag of the proxy image.

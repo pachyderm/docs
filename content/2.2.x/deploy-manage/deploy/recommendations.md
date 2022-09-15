@@ -14,8 +14,9 @@ To deploy in production, we recommend setting up the following pieces of network
 
 Once you have your networking infrastructure set up, apply a helm values file such as the one specified in the example file below to wire up routing through an Ingress, and set up TLS. We recommend using a certificate manager such as [cert-manager](https://cert-manager.io/docs/) to refresh certificates and inject them as kubernetes secrets into your cluster for the ingress and load balancer to use.
 
-!!! Note
-     This example uses [Traefik](../ingress/pach-ui-ingress/) as an Ingress controller. To configure other ingress controllers, apply their annotations in `.Values.console.annotations`.
+{{% notice note %}}
+This example uses [Traefik](../ingress/pach-ui-ingress/) as an Ingress controller. To configure other ingress controllers, apply their annotations in `.Values.console.annotations`.
+{{% /notice %}}
 
 === "values.yaml with activation of an enterprise license and authentication"
 

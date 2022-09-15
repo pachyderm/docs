@@ -31,10 +31,10 @@ in a consistent state, at a given point in time.
 
 Restoring it involves re-populating the database(s) and the object store using those backups, then recreating a Pachyderm cluster.
 
-!!! Note
-    - Make sure that you have a bucket for backup use, 
-    separate from the object store used by your cluster.
-    - Depending on the reasons behind your cluster recovery, you might choose to use an existing vs. a new instance of PostgreSQL and/or the object store.
+{{% notice note %}}
+- Make sure that you have a bucket for backup use,  separate from the object store used by your cluster.
+- Depending on the reasons behind your cluster recovery, you might choose to use an existing vs. a new instance of PostgreSQL and/or the object store.
+{{% /notice %}}
 
 ## Manual Back Up Of A Pachyderm Cluster
 
@@ -43,7 +43,9 @@ Before any manual backup:
 - Make sure to retain a copy of the Helm values used to deploy your cluster.
 - Then, suspend any state-mutating operations.
 
-!!! Note 
+{{% notice note %}}
+ 
+{{% /notice %}}
 
     - **Backups incur downtime** until operations are resumed.
     - Operational best practices include notifying Pachyderm users of the outage and providing an estimated time when downtime will cease.  

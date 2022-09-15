@@ -78,8 +78,11 @@ kubectl port-forward svc/jaeger-query 16686:80 & # UI service
 Then, connect to `localhost:16686` in your browser, and you should see all
 collected traces.
 
-!!! Note "See Also:"
-    [Kubernetes Service Environment Variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables)
+{{% notice note %}}
+"See Also:"
+
+[Kubernetes Service Environment Variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables)
+{{% /notice %}}
 
 ## Troubleshooting
 
@@ -90,8 +93,8 @@ collected traces.
 
 2. If you see a trace appear in Jaeger with no subtraces, like so:
 
-    ![Trace with no children](../../assets/images/no-traces.png)
+ ![Trace with no children](../../assets/images/no-traces.png)
 
-    This might mean that `pachd` has not connected to Jaeger, but
-    `pachctl` has. Restart the `pachd` pods *after* creating the
-    Jaeger service in Kubernetes.
+ This might mean that `pachd` has not connected to Jaeger, but
+ `pachctl` has. Restart the `pachd` pods *after* creating the
+ Jaeger service in Kubernetes.

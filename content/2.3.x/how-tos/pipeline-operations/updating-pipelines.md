@@ -40,9 +40,9 @@ you have updated your pipeline specification JSON file.
 pachctl update pipeline -f pipeline.json
 ```
 
-!!! Note
-    Similar to `create pipeline`, `update pipeline` with the `-f` flag can 
-    take a URL if your JSON manifest is hosted on GitHub or other remote location.
+{{% notice note %}}
+Similar to `create pipeline`, `update pipeline` with the `-f` flag can  take a URL if your JSON manifest is hosted on GitHub or other remote location.
+{{% /notice %}}
 
 ## Using Jsonnet Pipeline Specification Files
 

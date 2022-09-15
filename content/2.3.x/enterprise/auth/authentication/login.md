@@ -9,9 +9,10 @@ series:
 seriesPart:
 ---
 
-!!! Note
-      In order for the users registered with your IdP to log in to Pachyderm,
-      your [IdP connector must be set](./idp-dex.md).
+{{% notice note %}}
+In order for the users registered with your IdP to log in to Pachyderm,
+your [IdP connector must be set](./idp-dex.md).
+{{% /notice %}}
 
 ## Login to a cluster as an IDP user
 1. We will illustrate the login flow of an IdP user, 
