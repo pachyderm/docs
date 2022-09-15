@@ -66,12 +66,10 @@ the data, without modifying it. For example, you can mount your
 repo to a local computer and then open that directory in a Jupyter
 Notebook for exploration. 
 
-!!! Note
-      The `pachctl mount` command allows you to mount not only the default
-      branch, typically a `master` branch, but also other Pachyderm
-      branches. By default, Pachyderm mounts the `master` branch. However,
-      if you add a branch to the name of the repo, the `HEAD` of that branch
-      will be mounted.
+{{% notice note %}}
+
+The `pachctl mount` command allows you to mount not only the default branch, typically a `master` branch, but also other Pachyderm branches. By default, Pachyderm mounts the `master` branch. However, if you add a branch to the name of the repo, the `HEAD` of that branch will be mounted.
+{{% /notice %}}
 
       **Example:**
 
@@ -116,11 +114,13 @@ locally, their changes will likely be overwritten when you exit
 `pachctl mount`. This happens because  Therefore, make sure that you do not work on the
 same files while someone else is working on them.
 
-!!! Note
+{{% notice note %}}
+
     
     - Use writable mount **ONLY** when you have sole ownership
     over the mounted data. Otherwise, merge conflicts or
     unexpected data overwrites can occur.
+{{% /notice %}}
 
     - Because output repositories are created by the Pachyderm
       pipelines, they are immutable. Only a pipeline

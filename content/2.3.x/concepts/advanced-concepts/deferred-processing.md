@@ -41,9 +41,10 @@ to a commit in the staging branch.
 Although, in this section, the branch in which you consolidate changes
 is called `staging`, you can name it as you like. 
 
-!!! Note
-    You can have multiple staging branches. 
-    For example, `dev1`, `dev2`, `staging`...
+{{% notice note %}}
+You can have multiple staging branches. 
+For example, `dev1`, `dev2`, `staging`...
+{{% /notice %}}
 
 In the example below, we first create a repository called `data` on which we configure
 a staging branch:
@@ -226,9 +227,11 @@ To copy files from one branch to another, complete the following steps:
       pachctl finish commit data@master
       ```
 
-!!! Note
+{{% notice note %}}
+
       While the commit is open, you can run `pachctl delete file` if you want to remove something from
       the parent commit or `pachctl put file` if you want to upload something that is not in a repo yet.
+{{% /notice %}}
 
 ## Deferred Processing in Output Repositories
 

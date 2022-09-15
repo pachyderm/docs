@@ -24,8 +24,9 @@ Pachyderm Community Edition comes with Console per default. Upon upgrading to Pa
 - Benefit from our Authentication/Authorization features and control which users, groups, or roles have access to specific Pachyderm resources.
 - Lift all [CE scaling limits](../../../reference/scaling-limits/).
 
-!!! Note
-     Request an Enterprise trial token directly from Console CE by hitting the **"Upgrade to Enterprise"** button at the bottom right of your Console, fill in [this form](https://www.pachyderm.com/trial/), or get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io).
+{{% notice note %}}
+Request an Enterprise trial token directly from Console CE by hitting the **"Upgrade to Enterprise"** button at the bottom right of your Console, fill in [this form](https://www.pachyderm.com/trial/), or get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io).
+{{% /notice %}}
 
 Before diving into Console installation steps, please look at Console's various states, from the Community Edition to Enterprise. It should give you a mental model of the various paths to upgrade your Community Edition and what happens when your Enterprise token expires.
 
@@ -50,9 +51,11 @@ We provide an easy "one line" deployment command to install Pachyderm with Conso
 Follow the deployment instructions in our [Local Installation](../../getting-started/local-installation.md#deploy-pachyderm) page.
 You are all set!
 
-!!! Note
+{{% notice note %}}
+
     - **Pachyderm local deployment comes with Console by default**. To prevent Console from being installed, pass the following parameter to your helm install one line command `--set console.enabled=false`.
     - Console CE does not require any authentication.
+{{% /notice %}}
 
 ### Deploy In The Cloud
 
@@ -60,9 +63,11 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 
 - You can opt for a **quick installation** that will alleviate those infrastructure constraints (Not recommended in Production but an easy way to get started) and speed up your installation by following the steps in our [Quick Cloud Deployment](../quickstart/) page, then [connect to your Console](#connect-to-console): 
 
-!!! Note 
+{{% notice note %}}
+ 
     - You can "quick install" Pachyderm CE or Enterprise Edition.
     - Use the mock user (username:`admin`, password: `password`) to login to Console when authentication is enabled but no Identity provider was wired (Enterprise).
+{{% /notice %}}
 
 - For a **production environment**:
 

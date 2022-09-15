@@ -9,8 +9,9 @@ series:
 seriesPart:
 ---
 
-!!! Note
-    User Access Management is an [enterprise feature](../../enterprise/) that requires an active enterprise token.
+{{% notice note %}}
+User Access Management is an [enterprise feature](../../enterprise/) that requires an active enterprise token.
+{{% /notice %}}
 
 Pachyderm delegates its authentication to third party Identity Providers.
 
@@ -40,10 +41,12 @@ See the Identity Provider High Level Diagram below:
 ![IdP - Dex diagram](./images/identity-provider-diagram.svg)
 
 ## Activate User Access Management
-!!! Note
+{{% notice note %}}
+
     Verify the status of your **Enterprise License** before activating the User Access Management feature
     by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
     status along with the expiration date of the Enterprise License.   
+{{% /notice %}}
 
 To activate Pachyderm's authentication and authorization features,
 run the following command in your terminal:

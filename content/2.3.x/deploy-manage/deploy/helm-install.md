@@ -216,8 +216,9 @@ You can provide credentials and configuration values directly in your values.yam
 
     The rest of the values will be generated for you.
 
-!!! Note
-    In the case where you have activated Enterprise and configured your IdP, note that you have the option to set roles at the Cluster level when deploying.
+{{% notice note %}}
+In the case where you have activated Enterprise and configured your IdP, note that you have the option to set roles at the Cluster level when deploying.
+{{% /notice %}}
 
 - *A-2 - Choose and set your values rather than rely on autogeneration*
         
@@ -234,9 +235,11 @@ You can provide credentials and configuration values directly in your values.yam
     tJkHm0+8niOtP1F8lAPryO9dGwMV7SL/u/uCZQi24kFuRj+7VYvtj01q
     ```
 
-!!! Note
+{{% notice note %}}
+
     Note that those values will be injected into platform secrets at the time of the installation.
 #### **B - Use Secret(s)** 
+{{% /notice %}}
 
 If your organization uses tools like ArgoCD for Gitops, you might want to [create secrets](../../how-tos/advanced-data-operations/secrets.md#create-a-secret) ahead of time then provide their names in the `secretName` field of your values.yaml. 
 

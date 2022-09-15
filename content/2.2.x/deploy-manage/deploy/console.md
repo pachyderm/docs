@@ -51,9 +51,11 @@ We provide an easy "one line" deployment command to install Pachyderm with Conso
 Follow the deployment instructions in our [Local Installation](../../../getting-started/local-installation/#deploy-pachyderm) page.
 You are all set!
 
-!!! Note
-    - **Pachyderm local deployment comes with Console by default**. To prevent Console from being installed, pass the following parameter to your helm install one line command `--set console.enabled=false`.
-    - Console CE does not require any authentication.
+{{% notice note %}}
+
+- **Pachyderm local deployment comes with Console by default**. To prevent Console from being installed, pass the following parameter to your helm install one line command `--set console.enabled=false`.
+- Console CE does not require any authentication.
+{{% /notice %}}
 
 ### Deploy In The Cloud
 
@@ -61,9 +63,11 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 
 - You can opt for a **quick installation** that will alleviate those infrastructure constraints (Not recommended in Production but an easy way to get started) and speed up your installation by following the steps in our [Quick Cloud Deployment](../quickstart/) page, then [connect to your Console](#connect-to-console): 
 
-!!! Note 
+{{% notice note %}}
+ 
     - You can "quick install" Pachyderm CE or Enterprise Edition.
     - Use the mock user (username:`admin`, password: `password`) to login to Console when authentication is enabled but no Identity provider was wired (Enterprise).
+{{% /notice %}}
 
 - For a **production environment**:
 

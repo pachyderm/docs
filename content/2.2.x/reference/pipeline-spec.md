@@ -533,8 +533,10 @@ output repository will be `s3://<output_repo>`.
 If you want to expose an input repository through an S3 gateway, see
 `input.pfs.s3` in [PFS Input](#pfs-input). 
 
-!!! Note "See Also:"
-    [Environment Variables](../../deploy-manage/deploy/environment-variables/)
+{{% notice note %}}
+"See Also:"
+[Environment Variables](../../deploy-manage/deploy/environment-variables/)
+{{% /notice %}}
 
 ### Input
 
@@ -616,9 +618,11 @@ with pipes must use them since they are more performant. The difference will
 be especially notable if the job only reads a subset of the files that are
 available to it.
 
-!!! Note
+{{% notice note %}}
+
     `lazy` does not support datums that
     contain more than 10000 files.
+{{% /notice %}}
 
 `input.pfs.empty_files` controls how files are exposed to jobs. If
 set to `true`, it causes files from this PFS to be presented as empty files.
@@ -885,10 +889,12 @@ thus will consume no resources.
 
 Per default, Pachyderm avoids repeated processing of unchanged datums (i.e., it processes only the datums that have changed and skip the unchanged datums). This [**incremental behavior**](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#example-1-one-file-in-the-input-datum-one-file-in-the-output-datum) ensures efficient resource utilization. However, you might need to alter this behavior for specific use cases and **force the reprocessing of all of your datums systematically**. This is especially useful when your pipeline makes an external call to other resources, such as a deployment or triggering an external pipeline system.  Set `"reprocess_spec": "every_job"` in order to enable this behavior. 
 
-!!! Note "About the default behavior"
+{{% notice note %}}
+ "About the default behavior"
     `"reprocess_spec": "until_success"` is the default behavior.
     To mitigate datums failing for transient connection reasons,
     Pachyderm automatically [retries user code three (3) times before marking a datum as failed](https://docs.pachyderm.com/latest/troubleshooting/pipeline-troubleshooting/#introduction). Additionally, you can [set the  `datum_tries`](https://docs.pachyderm.com/latest/reference/pipeline-spec/#datum-tries-optional) field to determine the number of times a job attempts to run on a datum when a failure occurs.
+{{% /notice %}}
 
 
 Let's compare `"until_success"` and `"every_job"`:
@@ -930,7 +936,8 @@ a spout pipeline does not have
 a PFS input.
 Instead, it consumes data from an outside source.
 
-!!! Note
+{{% notice note %}}
+
     A service pipeline cannot be configured as a spout,
     but **a spout can have a service added to it**
     by adding the `service` attribute to the `spout` field.
@@ -938,6 +945,7 @@ Instead, it consumes data from an outside source.
     a service endpoint that you can expose externally. 
     You can get the information
     about the service by running `kubectl get services`.
+{{% /notice %}}
 
 For more information, see [Spouts](../concepts/pipeline-concepts/pipeline/spout.md).
 

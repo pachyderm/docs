@@ -59,12 +59,11 @@ e050771b5c6f4082aed48a059e1ac203 1       ▇▇▇▇▇▇▇▇ About a minute
 For example, in this example, 7 commits and 2 jobs are involved in the changes occured
 in the global commit ID 1035715e796f45caae7a1d3ffd1f93ca.
 
-!!! Note
-        The progress bar is equally divided to the number of steps, or pipelines,
-        you have in your DAG. In the example above, `1035715e796f45caae7a1d3ffd1f93ca` is two steps.
-        If one of the sub-jobs fails, you will see the progress bar turn red
-        for that pipeline step. To troubleshoot, look into that particular
-        pipeline execution.
+{{% notice note %}}
+
+The progress bar is equally divided to the number of steps, or pipelines, you have in your DAG. In the example above,`1035715e796f45caae7a1d3ffd1f93ca` is two steps.
+If one of the sub-jobs fails, you will see the progress bar turn red for that pipeline step. To troubleshoot, look into that particular pipeline execution.
+{{% /notice %}}
 
 ## List All Commits And Jobs With A Global ID
 
@@ -97,17 +96,21 @@ The format of the progress column is `DATUMS PROCESSED + DATUMS SKIPPED / TOTAL 
 
 For more information, see [Datum Processing States](../../../concepts/pipeline-concepts/datum/datum-processing-states/).
 
-!!! Note
+{{% notice note %}}
+
      The global commit and global job above are the result of
      a `pachctl put file images@master -i images.txt` in the images repo of [the open cv example](../../../getting-started/beginner-tutorial/).
+{{% /notice %}}
 
 The following diagram illustrates the global commit and its various components:
     ![global_commit_after_putfile](../images/global_commit_after_putfile.png)
 
 Let's take a look at the origin of each commit.
 
-!!! Note
+{{% notice note %}}
+
         Check the list of [all commit origins](../data-concepts/commit.md) in the `Commit` page.
+{{% /notice %}}
 
 
 1. Inspect the commit ID 1035715e796f45caae7a1d3ffd1f93ca in the `images` repo,  the repo in which our change (`put file`) has originated:

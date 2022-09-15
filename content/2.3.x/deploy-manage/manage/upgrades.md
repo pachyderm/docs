@@ -53,8 +53,9 @@ In the case of a simple upgrade of version on a cluster, and provided that you d
       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin  
       ```  
 
-!!! Note
-      For a specific target release, specify the targeted major/minor version of `pachctl` for brew and major/minor/patch release for curl in the commands above.
+{{% notice note %}}
+For a specific target release, specify the targeted major/minor version of `pachctl` for brew and major/minor/patch release for curl in the commands above.
+{{% /notice %}}
 
 
  - Verify that the installation was successful by running `pachctl version --client-only`:  
@@ -80,8 +81,10 @@ In the case of a simple upgrade of version on a cluster, and provided that you d
       helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
       ```
 
-!!! Note 
+{{% notice note %}}
+ 
       Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
+{{% /notice %}}
 
 - The upgrade can take some time. You can run `kubectl get pods` periodically in a separate tab to check the status of the deployment. When Pachyderm is deployed, the command shows all pods as `READY`:
 

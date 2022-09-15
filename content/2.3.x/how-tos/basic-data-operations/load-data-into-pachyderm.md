@@ -11,8 +11,9 @@ seriesPart:
 
 ## `pachctl put file`
 
-!!! Note
-    At any time, run `pachctl put file --help` for the complete list of flags available to you.
+{{% notice note %}}
+At any time, run `pachctl put file --help` for the complete list of flags available to you.
+{{% /notice %}}
 
 1. Load your data into Pachyderm by using `pachctl` requires that one or several input repositories have been created. 
 

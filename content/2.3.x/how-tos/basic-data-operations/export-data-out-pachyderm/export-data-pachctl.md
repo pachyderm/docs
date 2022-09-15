@@ -50,10 +50,9 @@ To export your data with pachctl:
       OBX|2|NM|2571-8^Triglyceride|110|mg/dL
       ```
 
-!!! Note
-      You can view the parent, grandparent, and any previous
-      commit by using the caret (`^`) symbol followed by a number that
-      corresponds to an ancestor in sequence:
+   {{% notice note %}}
+
+   You can view the parent, grandparent, and any previous commit by using the caret (`^`) symbol followed by a number that corresponds to an ancestor in sequence:
 
       * View a parent commit
          ```s
@@ -79,4 +78,4 @@ To export your data with pachctl:
          ```
 
          If the file does not exist in that revision, Pachyderm displays an error message.
-
+   {{% /notice %}}

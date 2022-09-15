@@ -9,8 +9,9 @@ series:
 seriesPart:
 --- 
 
-!!! Note "Attention"
-         Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+{{% notice note %}}
+Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+{{% /notice %}}
 
 ## Definition
 
@@ -52,9 +53,11 @@ That origin can be of 3 types:
     They have the same content as their parent commit and are mainly used for [global IDs](../../advanced-concepts/globalID/).
 
 
-!!! Note
+{{% notice note %}}
+
     To track provenance, Pachyderm requires **all commits to belong to exactly one branch**.
     When moving a commit from one [branch](./branch.md) to another, Pachyderm creates an `ALIAS` commit on the other branch.
+{{% /notice %}}
 
 
 Each commit has an alphanumeric identifier (ID) that you can reference in the `<repo>@<commitID>` format (or `<repo>@<branch>=<commitID>` if the commit has multiple branches from the same repo) .

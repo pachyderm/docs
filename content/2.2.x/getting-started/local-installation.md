@@ -73,10 +73,9 @@ the [Kubernetes documentation](https://kubernetes.io/docs/setup/).
       ```s
       minikube start --driver=kvm2
       ```
-!!! Note
-    Any time you want to stop and restart Pachyderm, run `minikube delete`  
-    and `minikube start`. Minikube is not meant to be a production environment  
-    and does not handle being restarted well without a full wipe.  
+{{% notice note %}}
+Any time you want to stop and restart Pachyderm, run `minikube delete`  and `minikube start`. Minikube is not meant to be a production environment and does not handle being restarted well without a full wipe.  
+{{%/notice %}}
   
 #### Using Kubernetes on Docker Desktop   
   
@@ -118,40 +117,41 @@ with a Pachyderm cluster in your terminal.
   
 1. Run the corresponding steps for your operating system:  
   
-      * For macOS, run:  
-  
-      ```s  
-      brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
-      ```  
-  
-      * For a Debian-based Linux 64-bit or Windows 10 or later running on  
-      WSL:  
-  
-      ```s  
-      curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
-      ```  
-  
-      * For all other Linux flavors:  
-  
-      ```s  
-      curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin  
-      ```  
+   * For macOS, run:  
+
+   ```s  
+   brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
+   ```  
+
+   * For a Debian-based Linux 64-bit or Windows 10 or later running on  
+   WSL:  
+
+   ```s  
+   curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+   ```  
+
+   * For all other Linux flavors:  
+
+   ```s  
+   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin  
+   ```  
   
 1. Verify that installation was successful by running `pachctl version --client-only`:  
   
-      ```s  
-      pachctl version --client-only  
-      ```  
-  
-      **System Response:**  
-  
-      ```s  
-      COMPONENT           VERSION  
-      pachctl             {{ config.pach_latest_version }}  
-      ```  
-  
-      If you run `pachctl version` without the flag `--client-only`, the command times  
-      out. This is expected behavior because Pachyderm has not been deployed yet (`pachd` is not yet running).  
+   ```s  
+   pachctl version --client-only  
+   ```  
+
+   **System Response:**  
+
+   ```s  
+   COMPONENT           VERSION  
+   pachctl             {{ config.pach_latest_version }}  
+   ```  
+{{% notice note%}}
+If you run `pachctl version` without the flag `--client-only`, the command times  
+out. This is expected behavior because Pachyderm has not been deployed yet (`pachd` is not yet running).  
+{{% /notice %}}
 
 {{% notice tip %}}
 If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/). This add-on tool suggests `pachctl` commands as you type. It will help you learn Pachyderm's main commands faster.  
@@ -311,8 +311,10 @@ then authenticate using the mock User (username: `admin`, password: `password`).
 authenticate again (to Pachyderm this time) with the mock User (username: `admin`, password: `password`).
 ## NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
 
-!!! Note
+{{% notice note %}}
+
       You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
+{{% /notice %}}
 
 - To install [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
@@ -380,9 +382,11 @@ Make sure to check our [data science notebook examples](https://github.com/pachy
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  
   
   
-!!! Note "See Also"  
+{{% notice note %}}
+ "See Also"  
     [General Troubleshooting](../troubleshooting/general-troubleshooting.md)  
   
+{{% /notice %}}
 
 
 

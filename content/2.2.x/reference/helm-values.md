@@ -358,13 +358,16 @@ This section is to configure the PostgresQL Subchart, if used.
 
 - `persistence.storageClass` specifies the storage class for the postgresql Persistent Volume (PV)
 
-!!! Note "More"
-    See notes in Bitnami chart values.yaml file for more information.
-    More info for setting up storage classes on various cloud providers:
+{{% notice note %}}
+ "More"
+See notes in Bitnami chart values.yaml file for more information. 
 
-      - AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
-      - GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
-      - Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+More info for setting up storage classes on various cloud providers:
+
+- AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
+- GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
+- Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+{{% /notice %}}
 
 - `storageSize` specifies the size of the volume to use for postgresql.
 

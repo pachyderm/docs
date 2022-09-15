@@ -15,11 +15,12 @@ is your preferred choice of IdP,
 you can configure Pachyderm to use Okta as an OpenID Connect (OIDC) 
 identity provider using the following steps. 
 
-!!! Note
-    Before you can configure Pachyderm to work with Okta:
-    
-    - Check the [Pachyderm Integration with Identity Providers](../idp-dex.md) general page.
-    - Log in/Create an account at https://www.okta.com/login/. 
+{{% notice note %}}
+Before you can configure Pachyderm to work with Okta:
+
+- Check the [Pachyderm Integration with Identity Providers](../idp-dex.md) general page.
+- Log in/Create an account at https://www.okta.com/login/. 
+{{% /notice %}}
 
 
 ## Register Pachyderm with Okta

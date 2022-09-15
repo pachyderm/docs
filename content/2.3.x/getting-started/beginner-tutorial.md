@@ -92,9 +92,10 @@ have not added anything to it yet, the size of the repository HEAD commit
 on the master branch is 0B.
 
 Check your Console and notice the creation of your repository. 
-!!! Note 
-    Note the "plus" icon in your `images` repository. 
-    It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
+{{% notice note %}} 
+Note the "plus" icon in your `images` repository. 
+It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
+{{% /notice %}}
 
 ![Console images repo](../images/console-images-repo.png)
 

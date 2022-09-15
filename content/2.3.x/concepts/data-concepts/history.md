@@ -56,12 +56,11 @@ The following abstractions store the history of your data:
     `master.1` is the first (oldest) commit on the `master` branch, `master.2`
     is the second commit, and so on.
 
-!!! Note
-    Resolving ancestry syntax requires traversing chains of commits
-    high numbers passed to `^` and low numbers passed to `.`. 
-    These operations might take a long time.
-    If you plan to repeatedly access an ancestor, you might want to resolve that
-    ancestor with `pachctl inspect commit <repo>@<branch or commitID>`.
+{{% notice note %}}
+Resolving ancestry syntax requires traversing chains of commits high numbers passed to `^` and low numbers passed to `.`. 
+These operations might take a long time.
+If you plan to repeatedly access an ancestor, you might want to resolve that ancestor with `pachctl inspect commit <repo>@<branch or commitID>`.
+{{% /notice %}}
 
 ## View the Pipeline History
 

@@ -62,8 +62,9 @@ Note that we often use the acronym `CE` for Community Edition.
 
 ## 2. Create Your Values.yaml
 
-!!! Note
-    Pachyderm comes with a [Web UI (Console)](../console/#deploy-in-the-cloud) per default.
+{{% notice note %}}
+Pachyderm comes with a [Web UI (Console)](../console/#deploy-in-the-cloud) per default.
+{{% /notice %}}
 
 ### AWS
 
@@ -166,8 +167,10 @@ Jump to [Helm install](#3-helm-install)
 
 ### Azure
 
-!!! Note
+{{% notice note %}}
+
     - This section assumes that you have an [Azure Subscription](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+{{% /notice %}}
 
 1. Additional client installation:
 Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
@@ -312,7 +315,9 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterla
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
+{{% notice note %}}
+
        Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
     
+{{% /notice %}}
 

@@ -78,10 +78,9 @@ the [Kubernetes documentation](https://kubernetes.io/docs/setup/).
       ```s
       minikube start --driver=kvm2
       ```
-!!! Note
-    Any time you want to stop and restart Pachyderm, run `minikube delete`  
-    and `minikube start`. Minikube is not meant to be a production environment  
-    and does not handle being restarted well without a full wipe.  
+{{% notice note %}}
+Any time you want to stop and restart Pachyderm, run `minikube delete`  and `minikube start`. Minikube is not meant to be a production environment and does not handle being restarted well without a full wipe.  
+{{% /notice %}}
   
 #### Using Kubernetes on Docker Desktop   
   
@@ -117,9 +116,11 @@ by following these steps:
    ```  
   
 ### Install `pachctl`  
-  
+
+{{% notice note %}}
 `pachctl` is a command-line tool that you can use to interact  
 with a Pachyderm cluster in your terminal.  
+{{% /notice %}}
 
 {{% notice warning %}}
 Pachyderm now offers **universal Multi-Arch docker images that can serve both ARM and AMD users**.
@@ -335,8 +336,10 @@ then authenticate using the mock User (username: `admin`, password: `password`).
 authenticate again (to Pachyderm this time) with the mock User (username: `admin`, password: `password`).
 ## NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
 
-!!! Note
+{{% notice note %}}
+
       You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
+{{% /notice %}}
 
 - To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml):
 

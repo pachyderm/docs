@@ -93,8 +93,9 @@ through the standard input stream (`stdin`) in your terminal.
 Specify the parameters as a comma-separated list enclosed in
 curly brackets.
 
-!!! Note
-    By default, the `pachd` port is `30650`.
+{{% notice note %}}
+By default, the `pachd` port is `30650`.
+{{% /notice %}}
 
 To create a new context with specific parameters, complete
 the following steps:

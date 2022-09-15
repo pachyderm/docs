@@ -48,14 +48,14 @@ in the base image of your spout
 as well as your authentication information.
 As a result, the authentication is seamless when using `pachctl`. 
 
-!!! Note 
-    Support for a transparent
-    authentication in our SDKs is coming soon.
-    In the meantime, check our Spout 101 example
-    at the end of this page
-    to learn how to retrieve
-    and inject your authentication token
-    into your API client.
+{{% notice note %}}
+ 
+Support for a transparent
+authentication in our SDKs is coming soon.
+In the meantime, check our Spout 101 example
+at the end of this page to learn how to retrieve
+and inject your authentication token into your API client.
+{{% /notice %}}
 
 
 To create a spout pipeline, you will need:
@@ -64,7 +64,8 @@ To create a spout pipeline, you will need:
 * A Docker container with your spout code that connects to, reads, transforms, and pushes data from the data source to your output repo. 
 * A spout pipeline specification file that uses your container.
 
-!!! Note 
+{{% notice note %}}
+ 
     It is important
     to remember that you will
     need to use a `put file` API call
@@ -76,6 +77,7 @@ To create a spout pipeline, you will need:
     allows you to package data
     into commits and transactions
     at the granularity your problem requires.
+{{% /notice %}}
 
 
 A minimum spout specification must include the following

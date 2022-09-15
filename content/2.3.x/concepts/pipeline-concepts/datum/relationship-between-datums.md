@@ -34,8 +34,9 @@ each pipeline's job.
 
 ### 4- **Final commit in the pipeline's output repo**
 
-!!! Note "Reminder"
-        The output produced by a pipeline's job is written to an output repo of the same name (i.e., output repo name = pipeline name).
+{{% notice note %}}
+The output produced by a pipeline's job is written to an output repo of the same name (i.e., output repo name = pipeline name).
+{{% /notice %}}
 
 The content of all `/pfs/out` is combined in a commit to the pipeline's output repo. 
 This generally means unioning all the files together.
@@ -64,10 +65,12 @@ The files can then be further
 appended or overwritten with other files to create the final result. Below, a second pipeline appends the content of all files in each directory into one final document.
 
 
-!!! Note "Worth Noting"
+{{% notice note %}}
+ "Worth Noting"
     - In the example, the files are named after the datum itself. Depending on your use case, there might be more logical ways to name the files produced by a datum. However, in any case, make sure that this **name is unique for each datum** to avoid duplicate
     files with the same file path.
     - Each file is put in specific directories. This directory structure has been thought to facilitate the aggregation of the content in the following pipeline. Think about your directory structure so that the next glob pattern will aggregate your data as needed.
+{{% /notice %}}
 
 
 ![Map Reduce](../../../images/parallel_data_processing.png)
