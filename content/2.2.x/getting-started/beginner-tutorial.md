@@ -33,7 +33,7 @@ you have also deployed Pachyderm Web UI.
 Point your browser to **`localhost:4000`** to connect to Console.
 You should land on this page:
 
-![Console Landing Page](./images/console_landing_page.png)
+![Console Landing Page](../images/console_landing_page.png)
 
 Click on your **View Project** (We are working on allowing you to organize your pipelines by Projects) to get started. You are all set to have a follow-along visual experience of the coming steps.
 
@@ -66,8 +66,7 @@ tons of them.
 More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
 {{% /notice %}}
 
-For this demo, we create a repo called `images` to hold the
-data we want to process:
+For this demo, we create a repo called `images` to hold the data we want to process:
 
 ```s
 pachctl create repo images
@@ -97,7 +96,7 @@ Note the "plus" icon in your `images` repository.
 It indicates that this repository is an **input repository** instead of an output repository where the product of your pipeline transformation will be committed. Users can write data to input repositories only. 
 {{% /notice %}}
 
-![Console images repo](./images/console-images-repo.png)
+![Console images repo](../images/console-images-repo.png)
 
 ### Adding Data to Pachyderm
 
@@ -141,7 +140,7 @@ To make sure that the data we just added is in Pachyderm.
 
   **System response:**
 
-  ```
+  ```s
   NAME   CREATED       SIZE (MASTER) ACCESS LEVEL
   images 2 minutes ago ≤ 57.27KiB    [repoOwner]
   ```
@@ -154,7 +153,7 @@ To make sure that the data we just added is in Pachyderm.
 
   **System response:**
 
-  ```
+  ```s
   REPO   BRANCH COMMIT                           FINISHED       SIZE     ORIGIN DESCRIPTION
   images master 89a5ab3a23c949949f763943dd7a8aac 55 seconds ago 57.27KiB USER
   ```
@@ -167,14 +166,14 @@ To make sure that the data we just added is in Pachyderm.
 
   **System response:**
 
-  ```
+  ```s
   NAME         TYPE SIZE
   /liberty.png file 57.27KiB
   ```
 
 In your Console, click on the `images` repo to visualize its commit and inspect its file:
 
-![Console images liberty](./images/console-images-liberty.png)
+![Console images liberty](../images/console-images-liberty.png)
 
 Alternatively, you can view the file by retrieving it from Pachyderm. 
 Because this is an image, you cannot just print it out in the terminal, but the following
@@ -213,7 +212,7 @@ More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline
 For now, we are going to create a single pipeline that takes in images
 and does some simple edge detection.
 
-![image](../assets/images/opencv-liberty.png)
+![image](../../assets/images/opencv-liberty.png)
 
 Below is the `edges.json` pipeline spec. Let's walk
 through the details.
@@ -252,9 +251,10 @@ to distribute computation. `/*` means that each file can be
 processed individually, which makes sense for images. Glob patterns are
 one of the most powerful features in Pachyderm.
 
-!!! Info
-    More about the concept of [`Glob Pattern`](../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern) 
-    in Pachyderm and the fundamental notion of [`Datums`](../../concepts/pipeline-concepts/datum/relationship-between-datums/).
+{{% notice info %}}
+More about the concept of [`Glob Pattern`](../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern) 
+in Pachyderm and the fundamental notion of [`Datums`](../../concepts/pipeline-concepts/datum/relationship-between-datums/).
+{{% /notice %}}
 
 
 The following extract is the Python code run in this pipeline:
@@ -296,7 +296,7 @@ Now, let's create the pipeline in Pachyderm:
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
 ```
 Again, check the end result in your Console:
-![Console edges pipeline](./images/console-edges-pipeline.png)
+![Console edges pipeline](../images/console-edges-pipeline.png)
 #### What Happens When You Create a Pipeline
 
 Creating a pipeline tells Pachyderm to run your code on the data in your
@@ -304,8 +304,9 @@ input repo (the HEAD commit) as well as **all future commits** that
 occur after the pipeline is created. Our repo already had a commit, so
 Pachyderm automatically launched a `job` to process that data.
 
-!!! Info
-    More about the concept of [`Job`](../../concepts/pipeline-concepts/job/#job) in Pachyderm.
+{{% notice info %}}
+More about the concept of [`Job`](../../concepts/pipeline-concepts/job/#job) in Pachyderm.
+{{% /notice %}}
 
 
 The first time Pachyderm runs a pipeline job, it needs to download the
@@ -322,7 +323,7 @@ connection. Subsequent runs will be much faster.
 
     **System response:**
 
-    ```
+    ```s
     ID                               SUBJOBS PROGRESS CREATED       MODIFIED
     23378d899d3d45738f55df3809841145 1       ▇▇▇▇▇▇▇▇ 5 seconds ago 5 seconds ago
     ```
@@ -335,7 +336,7 @@ connection. Subsequent runs will be much faster.
 
     **System response:**
 
-    ```
+    ```s
     NAME  VERSION INPUT     CREATED       STATE / LAST JOB  DESCRIPTION
     edges 1       images:/* 2 minutes ago running / success A pipeline that performs image edge detection by using the OpenCV library.
     ```
@@ -354,7 +355,7 @@ connection. Subsequent runs will be much faster.
 
     **System response:**
 
-    ```
+    ```s
     NAME   CREATED        SIZE (MASTER) ACCESS LEVEL
     edges  10 minutes ago ≤ 22.22KiB    [repoOwner]  Output repo for pipeline edges.
     images 3 hours ago    ≤ 57.27KiB    [repoOwner]
@@ -380,7 +381,7 @@ pachctl get file edges@master:liberty.png | display
 
 The output should look like this:
 
-![Console edges liberty](./images/console-edges-liberty.png)
+![Console edges liberty](../images/console-edges-liberty.png)
 
 
 #### Processing More Data
@@ -414,7 +415,7 @@ new outputs.
 
     **System response:**
 
-    ```
+    ```s
     ID                               SUBJOBS PROGRESS CREATED        MODIFIED
     1c1a9d7d36944eabb4f6f14ebca25bf1 1       ▇▇▇▇▇▇▇▇ 31 seconds ago 31 seconds ago
     fe5c4f70ac4347fd9c5934f0a9c44651 1       ▇▇▇▇▇▇▇▇ 47 seconds ago 47 seconds ago
@@ -445,7 +446,7 @@ pipeline (also referenced as a **Directed Acyclic Graph or DAG** is this documen
 original and edge detected images and arranges them into a single
 montage of images:
 
-![image](../assets/images/opencv-liberty-montage.png)
+![image](../../assets/images/opencv-liberty-montage.png)
 
 Below is the pipeline spec for this new pipeline:
 
@@ -524,7 +525,7 @@ and
 
     * In Console:
 
-        ![Console opencv montage](./images/console-opencv-montage.png)
+        ![Console opencv montage](../images/console-opencv-montage.png)
 
     * On macOS, run:
 

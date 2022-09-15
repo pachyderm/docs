@@ -139,13 +139,13 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
      - AMD Architectures (amd64):
           
        ```s  
-       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
        ``` 
 
      - ARM Architectures (arm64):
 
        ```s  
-       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
+       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
        ```  
 
    * For all **other Linux flavors** (Choose the command matching your architecture):  
@@ -153,13 +153,13 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
      - AMD Architectures (amd64):
                
        ```s  
-       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin 
+       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< versionLink >}}_linux_amd64/pachctl /usr/local/bin 
        ``` 
 
      - ARM Architectures (arm64):
 
        ```s  
-       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_arm64/pachctl /usr/local/bin 
+       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< versionLink >}}_linux_arm64/pachctl /usr/local/bin 
        ```  
             
 1. Verify that installation was successful by running `pachctl version --client-only`:  
@@ -172,7 +172,7 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
   
       ```s  
       COMPONENT           VERSION  
-      pachctl             {{ config.pach_latest_version }}  
+      pachctl             {{< versionLink >}}  
       ```  
   
       If you run `pachctl version` without the flag `--client-only`, the command times  
@@ -303,8 +303,8 @@ pachctl version
 
 ```s  
 COMPONENT           VERSION  
-pachctl             {{ config.pach_latest_version }}  
-pachd               {{ config.pach_latest_version }}  
+pachctl             {{< versionLink >}}  
+pachd               {{< versionLink >}}  
 ```  
 You are all set!  
 
@@ -378,8 +378,8 @@ From the cell of a notebook, run:
 
   ```s 
   COMPONENT           VERSION  
-  pachctl             {{ config.pach_latest_version }}  
-  pachd               {{ config.pach_latest_version }}  
+  pachctl             {{< versionLink >}}  
+  pachd               {{< versionLink >}}  
   ```    
 
 {{% notice warning %}}

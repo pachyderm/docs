@@ -180,17 +180,17 @@ Check the list of [all commit origins](../data-concepts/commit.md) in the `Commi
     }
 
     ```
-    Note that the origin of the commit is of kind **`AUTO`** as it has been trigerred by the arrival of a commit in the upstream repo `images`.
-    ```json
-        "origin": {
-            "kind": "AUTO"
-        },
-    ```
+ Note that the origin of the commit is of kind **`AUTO`** as it has been trigerred by the arrival of a commit in the upstream repo `images`.
+ ```json
+     "origin": {
+         "kind": "AUTO"
+     },
+ ```
 
-    The same origin (`AUTO` ) applies to the commits sharing that same ID in the `montage` output repo as well as `edges.meta` and `montage.meta` system repos. 
-    {{% notice tip %}}
-    Check the list of [all types of repos](../data-concepts/repo.md) in the `Repo` page.
-    {{% /notice  %}}
+ The same origin (`AUTO` ) applies to the commits sharing that same ID in the `montage` output repo as well as `edges.meta` and `montage.meta` system repos. 
+ {{% notice tip %}}
+ Check the list of [all types of repos](../data-concepts/repo.md) in the `Repo` page.
+ {{% /notice  %}}
 
 - Besides  the `USER` and `AUTO` commits, notice a set of `ALIAS` commits in `edges.spec` and `montage.spec`:
 ```s

@@ -52,7 +52,7 @@ that corresponds to the `cron` input. Then, Pachyderm automatically commits
 a timestamp file to the `cron` input repository every ten seconds, which
 triggers the pipeline.
 
-![alt tag](../../../assets/images/cron1.png)
+![alt tag](../../../../assets/images/cron1.png)
 
 The pipeline runs every ten seconds, queries the database and updates its
 output. By default, each cron trigger adds a new tick file to the cron input
@@ -75,5 +75,5 @@ Pachyderm, see [Datum processing](../datum/index.md).
 ```
 
 {{% notice info %}}
-    [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/db)
+Periodic Ingress from [MongoDB](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/db)
 {{% /notice %}}

@@ -278,8 +278,8 @@ Jump to [Helm install](#3-helm-install)
 
     ```s
     COMPONENT           VERSION
-    pachctl             {{ config.pach_latest_version }}
-    pachd               {{ config.pach_latest_version }}
+    pachctl             {{< versionLink >}}
+    pachd               {{< versionLink >}}
     ```
 
 ## 5. Connect to Console

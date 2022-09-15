@@ -9,15 +9,10 @@ series:
 seriesPart:
 --- 
 
-<!---This section needs to be made more clear. There is a lot of information
-that I would say describes the things you can do with a cross or union pipeline
-but does not really have a good and clear explanation of what they are -->
-
 Pachyderm enables you to combine multiple [PFS inputs](../#pfs-input-and-glob-pattern) by using the `union` and
 `cross` operators in the pipeline specification.
 
-You can think of union as a *disjoint union binary operator* and cross as a
-*cartesian product binary operator*. 
+You can think of union as a *disjoint union binary operator* and cross as a *cartesian product binary operator*. 
 
 This section describes how to use `cross` and `union` in your pipelines and how you
 can optimize your code when you work with them.
@@ -25,8 +20,7 @@ can optimize your code when you work with them.
 ## Union Input
 
 The union input combines each of the datums in the input repos as one
-set of datums.
-The number of datums that are processed is the sum of all the
+set of datums. The number of datums that are processed is the sum of all the
 datums in each repo.
 
 For example, you have two input repos, `A` and `B`. Each of these
@@ -196,10 +190,10 @@ In cross inputs, if you use the `name` field, your two inputs cannot have the sa
 {{% /notice %}}
 
 {{% notice %}}
- See Also:
-    - [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
-    - [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
-    - [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/ml/hyperparameter)
+**See Also**:
+- [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
+- [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
+- [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/ml/hyperparameter)
 {{% /notice %}}
 
 

@@ -41,7 +41,7 @@ For a successful local deployment of Pachyderm, you will need:
    - Oracle® VirtualBox™
 - [Helm](#install-helm) to deploy Pachyderm on your Kubernetes cluster.
 - [Pachyderm Command Line Interface (`pachctl`)](#install-pachctl) to interact with your Pachyderm cluster.
-- [Kubernetes Command Line Interface `kubectl`](https://kubernetes.io/docs/tasks/tools/) to interact with your underlying Kubernetes cluster.
+- [Kubernetes Command Line Interface (`kubectl`)](https://kubernetes.io/docs/tasks/tools/) to interact with your underlying Kubernetes cluster.
 
 ### Setup A Local Kubernetes Cluster
 
@@ -56,16 +56,16 @@ To configure Minikube, follow these steps:
 1.  Install minikube and VirtualBox in your operating system as described in  
     the [Kubernetes documentation](https://kubernetes.io/docs/setup/).
 1.  Start `minikube`:
-          ```s
-          minikube start
-          ```
-          Linux users, add this `--driver` flag:
-          ```s
-          minikube start --driver=kvm2
-          ```
-    {{% notice note %}}
-    Any time you want to stop and restart Pachyderm, run `minikube delete` and `minikube start`. Minikube is not meant to be a production environment and does not handle being restarted well without a full wipe.  
-    {{%/notice %}}
+    ```s
+    minikube start
+    ```
+    Linux users, add this `--driver` flag:
+    ```s
+    minikube start --driver=kvm2
+    ```
+{{% notice note %}}
+Any time you want to stop and restart Pachyderm, run `minikube delete` and `minikube start`. Minikube is not meant to be a production environment and does not handle being restarted well without a full wipe.  
+{{%/notice %}}
 
 #### Using Kubernetes on Docker Desktop
 
@@ -73,7 +73,7 @@ You can use Kubernetes on Docker Desktop instead of Minikube on macOS or Linux
 by following these steps:
 
 1. In the Docker Desktop Preferences, enable Kubernetes:  
-   ![Docker Desktop Enable K8s](./images/k8s_docker_desktop.png)
+   ![Docker Desktop Enable K8s](../images/k8s_docker_desktop.png)
 
 2. From the command prompt, confirm that Kubernetes is running:
 
@@ -81,13 +81,11 @@ by following these steps:
    kubectl get all
    ```
 
-   ```
+   ```s
    NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
    service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   5d
    ```
-
-   - To reset your Kubernetes cluster that runs on Docker Desktop, click  
-     the **Reset Kubernetes cluster** button. See image above.
+To reset your Kubernetes cluster that runs on Docker Desktop, click the **Reset Kubernetes cluster** button. See image above.
 
 #### Using Kind
 
@@ -97,7 +95,7 @@ by following these steps:
    ```s
    kubectl get all
    ```
-   ```
+   ```s
    NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
    service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   5d
    ```
@@ -111,20 +109,20 @@ by following these steps:
    - For macOS, run:
 
    ```s
-   brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}
+   brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{< versionNumber>}}
    ```
 
    - For a Debian-based Linux 64-bit or Windows 10 or later running on  
      WSL:
 
    ```s
-   curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
+   curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
    ```
 
    - For all other Linux flavors:
 
    ```s
-   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin
+   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< versionLink >}}_linux_amd64/pachctl /usr/local/bin
    ```
 
 1. Verify that installation was successful by running `pachctl version --client-only`:
@@ -137,7 +135,7 @@ by following these steps:
 
    ```s
    COMPONENT           VERSION
-   pachctl             {{ config.pach_latest_version }}
+   pachctl             {{< versionLink >}}
    ```
 
    {{% notice note%}}
@@ -217,9 +215,7 @@ kubectl delete pvc -l suite=pachyderm
 {{% /notice %}}
 
 {{% notice tip %}}
-See Also
-
-More [details on Pachyderm's Helm installation](../../deploy-manage/deploy/helm-install/).
+**See Also**: More [details on Pachyderm's Helm installation](../../deploy-manage/deploy/helm-install/).
 {{% /notice %}}
 
 ## Check Your Install
@@ -274,10 +270,10 @@ pachctl version
 
 **System Response:**
 
-```
+```s
 COMPONENT           VERSION
-pachctl             {{ config.pach_latest_version }}
-pachd               {{ config.pach_latest_version }}
+pachctl             {{< versionLink >}}
+pachd               {{< versionLink >}}
 ```
 
 You are all set!
@@ -357,8 +353,8 @@ You do not need a local Pachyderm cluster already running to install Pachyderm J
 
   ```s
   COMPONENT           VERSION
-  pachctl             {{ config.pach_latest_version }}
-  pachd               {{ config.pach_latest_version }}
+  pachctl             {{< versionLink >}}
+  pachd               {{< versionLink >}}
   ```
 
 {{% notice warning %}}

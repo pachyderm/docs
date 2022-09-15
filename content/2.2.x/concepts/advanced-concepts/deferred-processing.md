@@ -292,7 +292,7 @@ update if you add a MB of new data to `staging`:
 dd if=/dev/urandom bs=1MiB count=1 | pachctl put file data@staging:/file
 pachctl list branch data
 ```
-```
+```s
 BRANCH  HEAD                             TRIGGER
 staging 64b70e6aeda84845858c42d755023673 -
 master  64b70e6aeda84845858c42d755023673 staging on Size(1MB)
@@ -318,7 +318,7 @@ There are three conditions on which you can trigger the repointing of a branch.
 
 When more than one is specified, a branch repoint will be triggered when any of
 the conditions is met. To guarantee that they all must be met, add
---trigger-all.
+`--trigger-all`.
 
 To experiment further, see the full [triggers example](https://github.com/pachyderm/examples/tree/master/deferred-processing/triggers).
 
@@ -328,7 +328,7 @@ Triggers can also be specified in the pipeline spec and automatically created
 when the pipeline is created. For example, this is the edges pipeline from our
 our OpenCV demo modified to only trigger when there is a 1 Megabyte of new images:
 
-```
+```json
 {
   "pipeline": {
     "name": "edges"

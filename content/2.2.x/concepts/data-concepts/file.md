@@ -42,7 +42,8 @@ same file to that repository, Pachyderm *overwrites* the existing
 file with the data, which results in the `A.csv` file having only data
 from the most recent upload.
 
-{{% notice example %}}
+#### Example 
+
 1. View the list of files:
 
      ```s
@@ -74,7 +75,6 @@ from the most recent upload.
      NAME   TYPE SIZE
      /A.csv file 258B
      ```
-{{% /notice %}}
 
 ### **Appending to files**
 When you enable the append mode by using the `--append`
@@ -83,7 +83,8 @@ For example, you have an `A.csv` file in the `images` repository.
 If you upload the same file to that repository with the
 `--append` flag, Pachyderm *appends* to the file.
 
-{{% notice example %}}
+#### Example 
+
 1. View the list of files:
 
    ```s
@@ -115,4 +116,3 @@ If you upload the same file to that repository with the
    NAME   TYPE SIZE
    /A.csv file 516B
    ```
-{{% /notice %}}

@@ -5,7 +5,7 @@
         if (element.innerText.length > 0) {
          
             var copyButton = document.createElement('button');
-            copyButton.classList.add( 'clippy', 'p-1', 'darken-1', 'rounded-3', 'uppercase', 'xxs', 'is-fit' 'pinned-end');
+            copyButton.classList.add( 'clippy', 'p-1', 'darken-1', 'rounded-3', 'uppercase', 'xxs', 'is-fit', 'pinned-end');
 
             copyButton.innerHTML = 'Copy';
             element.appendChild(copyButton);

@@ -49,9 +49,7 @@ params:
   downloads: true # Enables displaying the download dropdown (requires release.patch)
   releaseInfo:
     latest: "2.3.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
-    # patch: "2.3.2" # Used to generate download links
-    2.3.x: # The lastest minor patch version for this 2.3
-    2.2.x: # The lastest minor patch version for this 2.2
+    patch: "2.3.2" # Used to generate download links
 
 
   ## Nav features 
@@ -82,7 +80,7 @@ markup:
   highlight:
     anchorLineNos: false
     codeFences: true
-    guessSyntax: false
+    guessSyntax: true
     hl_Lines: ""
     hl_inline: false
     lineAnchors: ""
@@ -93,3 +91,6 @@ markup:
     noHl: false
     style: api # swapoff is another nice theme for pachyderm
     tabWidth: 4
+
+
+    

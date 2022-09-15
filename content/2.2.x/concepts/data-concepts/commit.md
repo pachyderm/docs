@@ -44,9 +44,9 @@ That origin can be of 3 types:
 
 - `USER`: The commit is the result of a user change (`put file`, `update pipeline`, `delete file`...)
     
-    {{% notice info %}}
-        Every `USER` change is an initial commit.
-    {{% /notice %}}
+  {{% notice info %}}
+  Every `USER` change is an initial commit.
+  {{% /notice %}}
 
 - `AUTO`: Pachyderm's pipelines are data-driven. A data commit to a data repository may
     trigger downstream processing jobs in your pipeline(s). The output commits from
@@ -74,24 +74,23 @@ by running `pachctl list commit <commitID>` or restrict to a particular reposito
 
 - Note that you can also track your commits downstream as they complete by running `pachctl wait commit <commitID>`. 
 
+- `list commit <repo>`, without mention of a branch, displays results from all branches of the specified repository.
+
 - The `pachctl list commit <repo>@<branch>` command returns the commits in the given branch of a repo.
 
-   {{% notice example %}}
-    
-        ```s
-        pachctl list commit images@master
-        ```
+### Example 
+  
+```s
+pachctl list commit images@master
+```
 
-        **System Response:**
+**System Response:**
 
-        ```s
-        REPO   BRANCH COMMIT                           FINISHED        SIZE       ORIGIN DESCRIPTION
-        images master c6d7be4a13614f2baec2cb52d14310d0 33 minutes ago  5.121MiB    USER
-        images master 385b70f90c3247e69e4bdadff12e44b2 2 hours ago     2.561MiB    USER
-        ```
-    {{% /notice %}}
-
-- `list commit <repo>`, without mention of a branch, displays results from all branches of the specified repository.
+```s
+REPO   BRANCH COMMIT                           FINISHED        SIZE       ORIGIN DESCRIPTION
+images master c6d7be4a13614f2baec2cb52d14310d0 33 minutes ago  5.121MiB    USER
+images master 385b70f90c3247e69e4bdadff12e44b2 2 hours ago     2.561MiB    USER
+```
 
 ## Inspect Commit
 The `pachctl inspect commit <repo>@<commitID>` command enables you to view detailed
@@ -103,7 +102,8 @@ of when the commit was opened and finished.
 - If you specify a branch instead of a specific commit (`pachctl inspect commit <repo>@<branch>`),
 Pachyderm displays the information about the HEAD of the branch.
 
-{{% notice example %}}
+### Example 
+
 Add a `--raw` flag to output a detailed JSON version of the commit.
 
 ```s
@@ -146,7 +146,6 @@ pachctl inspect commit images@c6d7be4a13614f2baec2cb52d14310d0 --raw
     }
 }
 ```
-{{% /notice %}}
 
 ## Squash And Delete Commit
 

@@ -36,7 +36,7 @@ redistributed to other workers for maximum fault tolerance.
 
 The following animation shows how distributed computing works:
 
-![Distributed computing basics](../../assets/images/distributed-computing101.gif)
+![Distributed computing basics](../../../assets/images/distributed-computing101.gif)
 
 In the diagram above, you have three Pachyderm worker pods that
 process your data. When a pod finishes processing a datum,
@@ -60,7 +60,7 @@ processing sequence.
 The following animation displays what happens inside a pod during
 the datum processing:
 
-![Distributed processing internals](../../assets/images/distributed-computing102.gif)
+![Distributed processing internals](../../../assets/images/distributed-computing102.gif)
 
 <!--TBA: the chunk_size property explanation article. Probably in a separate
 How-to, but need to add a link to it here-->
@@ -71,20 +71,19 @@ You can control the number of worker pods that Pachyderm runs in a
 pipeline by defining the `parallelism` parameter in the
 [pipeline specification](../../../reference/pipeline-spec/).
 
-{{% notice example %}}
+### Example 
+
 ```json
 "parallelism_spec": {
     // Exactly one of these two fields should be set
     "constant": int
 ```
-{{% /notice %}}
 
-Pachyderm has the following parallelism strategies that you
-can set in the pipeline spec:
+Pachyderm has the following parallelism strategies that you can set in the pipeline spec:
 
 | Strategy    | Description        |
 | ----------- | ------------------ |
-| constant    | Pachyderm starts the specified number of workers. For example, <br> if you set `"constant":10`, Pachyderm spreads the computation workload among ten workers. |
+| constant    | Pachyderm starts the specified number of workers. For example, if you set `"constant":10`, Pachyderm spreads the computation workload among ten workers. |
 
 By default, Pachyderm sets `parallelism` to `“constant": 1`, which means
 that it spawns one worker per Kubernetes node for this pipeline.
@@ -103,7 +102,7 @@ One limitation of autoscaling is that **it cannot dynamically scale down**. Supp
 
 
 {{% notice tip %}}
-See Also:
+**See Also**:
 * [Glob Pattern](../../pipeline-concepts/datum/glob-pattern/)
 * [Pipeline Specification](../../../reference/pipeline-spec/)
 {{% /notice %}}

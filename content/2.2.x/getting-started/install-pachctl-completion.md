@@ -60,7 +60,7 @@ To install `pachctl` autocompletion for `bash`, perform the following steps:
 
    **System response:**
 
-   ```
+   ```s
    Bash completions installed in /usr/local/etc/bash_completion.d/pachctl, you must restart bash to enable completions.
    ```
 
@@ -81,7 +81,7 @@ steps:
    For example, if you have installed zsh completion by using Homebrew,
    type:
 
-   ```zsh
+   ```s
    brew info zsh-completions
    ```
 
@@ -94,19 +94,19 @@ steps:
 
 1. Install `pachctl` autocompletion for `zsh`:
 
-   ```zsh
+   ```s
    pachctl completion zsh --install --path <path/to/zsh-completions>
    ```
 
    **Example:**
 
-   ```zsh
+   ```s
    pachctl completion zsh --install --path /usr/local/share/zsh-completions/_pachctl
    ```
 
    **System response:**
 
-   ```
+   ```s
    Completions installed in "_pachctl", you must restart your terminal to enable them.
    ```
 
@@ -115,7 +115,5 @@ steps:
    `pachctl` autocomplete should now be enabled in your system.
 
 {{% notice note %}}
- "See Also:"
+**See Also:** [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/)
 {{% /notice %}}
-
-    [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/)

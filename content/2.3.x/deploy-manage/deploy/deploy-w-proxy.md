@@ -468,8 +468,8 @@ Open a new tab in your terminal and run `minikube tunnel` (the command creates a
 
       ```  
       COMPONENT           VERSION  
-      pachctl             {{ config.pach_latest_version }}  
-      pachd               {{ config.pach_latest_version }}  
+      pachctl             {{< versionLink >}}  
+      pachd               {{< versionLink >}}  
       ```  
       You are all set!  
 

@@ -18,17 +18,8 @@ only, not the files' content.
 
 Pachyderm supports two types of joins: 
 
-- A default join setting, similar to a database *equi-join*
-or *inner-join* operation. Unlike the [cross input](../datum/cross-union.md),
-which creates datums from every combination of files in each input repository, 
-inner joins **only create datums where there is a *match***. 
-You can use inner joins to combine data from different Pachyderm repositories
-and ensure that only specific files from
-each repo are processed together. 
-If Pachyderm does not find any matching files, you get a zero-[datum](../datum/index.md) job.
-- Pachyderm also supports a join close to a database `outer-join`,
-allowing you to **create datums for all files in a repo, even if there is no match**. 
-The `outer-join` behavior can be set on any repository in your join.
+- A default join setting, similar to a database *equi-join* or *inner-join* operation. Unlike the [cross input](../datum/cross-union.md), which creates datums from every combination of files in each input repository,  inner joins **only create datums where there is a *match***.  You can use inner joins to combine data from different Pachyderm repositories and ensure that only specific files from each repo are processed together. If Pachyderm does not find any matching files, you get a zero-[datum](../datum/index.md) job.
+- Pachyderm also supports a join close to a database `outer-join`, allowing you to **create datums for all files in a repo, even if there is no match**. The `outer-join` behavior can be set on any repository in your join.
 
 When you configure a join input (inner or outer), you must specify a glob pattern that
 includes a capture group. The capture group defines the specific string in

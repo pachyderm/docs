@@ -28,7 +28,7 @@ complete audit trail**, allowing all results to be fully reproducible.
 
 The following diagram is an illustration of how provenance works:
 
-![Provenance example](../images/provenance.png) 
+![Provenance example](../../images/provenance.png) 
 
 
 In the diagram above, two input repositories (`model`
@@ -51,7 +51,7 @@ Pachyderm provides the `pachctl inspect` command that enables you to track
 the direct provenance of your commits and learn where the data in the repository
 originates in.
 
-{{% notice example %}}
+### Example 
 
 ```s
 pachctl inspect commit edges@71c791f3252c492a8f8ad9a51e5a5cd5 --raw
@@ -107,7 +107,6 @@ pachctl inspect commit edges@71c791f3252c492a8f8ad9a51e5a5cd5 --raw
     }
 }
 ```
-{{% /notice %}}
 
 - Provenance information: In the example above, you can see that the commit `71c791f3252c492a8f8ad9a51e5a5cd5`
     on the master branch of the `edges` repo was **automatically** produced (`origin.kind = AUTO`) from a **user** input on the master branch of the `images` repo processed by the `edges` pipeline (`direct_provenance`).

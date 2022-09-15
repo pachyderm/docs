@@ -152,8 +152,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION
-pachctl             {{ config.pach_latest_version }}
-pachd               {{ config.pach_latest_version }}
+pachctl             {{< versionLink >}}
+pachd               {{< versionLink >}}
 ```
 
 ## Uninstall Pachyderm's Helm Chart

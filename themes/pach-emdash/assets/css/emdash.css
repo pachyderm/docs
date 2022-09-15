@@ -352,18 +352,19 @@ ol li::marker {
 
 :is(.content) > :is(h1, h2, h3, h4, h5, h6) { margin-top: var(--xxxlarge-text); }
 
-.content  code, pre { 
-  max-width: 90%;
+.content  pre { 
+  max-width: 100%;
   white-space: pre-wrap;
-  padding: 2px;
-  margin: 2px;
+  padding: 1ch;
   overflow-x: scroll;
   font-weight: 900;
-  color: var(--is-code-color);
  }
 
- pre > button {
-  color: var(--is-white);
+ code {
+  color: var(--is-code-color);
+  white-space: pre;
+  padding: 2px;
+  margin: 2px;
  }
 
  .content {
