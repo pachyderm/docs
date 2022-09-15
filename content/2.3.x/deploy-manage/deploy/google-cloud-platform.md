@@ -49,7 +49,7 @@ In particular, you will:
 {{% notice tip %}}  
 **TL;DR**: 
 
-[This script](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/deploy/gcp/gcp-doco-script.sh) will create a GKE cluster, the workload identity service accounts and permissions you need, a static IP, the cloud SQL instance and databases, and a cloud storage bucket. It will also install Pachyderm into the cluster. 
+[This script](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/deploy/gcp/gcp-doco-script.sh) will create a GKE cluster, the workload identity service accounts and permissions you need, a static IP, the cloud SQL instance and databases, and a cloud storage bucket. It will also install Pachyderm into the cluster. 
 
 - Before running it, update the global variables at the top of the script and make sure to go through the [prerequisites](#1-prerequisites), as we are assuming that you have created a project and enabled the necessary APIs.  
 Note that it will also create a file called ${NAME}.values.yaml in the current directory.
@@ -422,7 +422,7 @@ You have set up your infrastructure, created your GCP bucket and a CloudSQL inst
 
 ### Update Your Values.yaml   
 
-[See an example of values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/gcp-values.yaml). 
+[See an example of values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/gcp-values.yaml). 
  
 You might want to create a static IP address to access your cluster externally. Refer to our [infrastructure documentation](../ingress/#loadbalancer) for more details or check the example below:
 
@@ -514,7 +514,7 @@ pachd:
 {{%/notice %}}
 
 {{% notice note  %}}
-Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [github](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml).
+Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [github](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml).
 {{% /notice %}}
 
 ### Deploy Pachyderm on the Kubernetes cluster
@@ -626,7 +626,7 @@ Once your cluster is up and running, you can helm install JupyterHub on your Pac
 
 Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterlab-extension/index.md) page for installation instructions. 
 
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
+Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice note %}}
 Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.

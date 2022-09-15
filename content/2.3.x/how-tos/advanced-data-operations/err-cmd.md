@@ -82,5 +82,5 @@ which are "recovered" by `err_cmd` in this way, will be retried on
 the next job, just as failed datums.
 
 {{% notice note %}}
-**See Also**: [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/err_cmd/)
+**See Also**: [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/err_cmd/)
 {{%/notice%}}

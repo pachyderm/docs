@@ -329,7 +329,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
 {{% /notice %}}
 
-- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml):
+- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
   ```s
   helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -338,7 +338,7 @@ You do not need a local Pachyderm cluster already running to install Pachyderm J
   ```s
   helm upgrade --cleanup-on-fail \
   --install jupyter jupyterhub/jupyterhub \
-  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml
+  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml
   ```
 
 
