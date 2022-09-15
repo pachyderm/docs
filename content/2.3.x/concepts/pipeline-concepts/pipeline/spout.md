@@ -90,7 +90,8 @@ parameters in the [pipeline specification](../../../reference/pipeline-spec.md):
 xs
 Here is an example of a minimum spout pipeline specification:
 
-!!! note
+{{% notice note %}}
+
     The `env` property is an optional argument.
     You can define your data stream source
     from within the container
@@ -99,6 +100,7 @@ Here is an example of a minimum spout pipeline specification:
     For simplicity, in this example,
     `env` specifies the
     source of the Kafka host.
+{{% /notice %}}
 
 ```
 {

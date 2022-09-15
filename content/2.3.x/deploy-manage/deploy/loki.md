@@ -38,11 +38,13 @@ The URI at which Pachyderm reads from the Loki API Server is determined by the `
 If Loki is deployed after the `pachd` container,
 the `pachd` container will need to be redeployed to receive these connection parameters.
 
-!!! note 
+{{% notice note %}}
+ 
     If you are not running Promtail on the node 
     where your Pachyderm pods are located, you
     will be unable to get logs for pipelines running
     on that node via `pachctl logs -p pipelineName`.
+{{% /notice %}}
 
 ## Default Loki Bundle 
 

@@ -88,7 +88,8 @@ Your pipeline processes the following datums without any specific order:
 /pfs/B/6.txt
 ```
 
-!!! note
+{{% notice note %}}
+
     Each datum in a pipeline is processed independently by a single
     execution of your code. In this example, your code runs six times, and
     each datum is available to it one at a time. For example, your code
@@ -96,6 +97,7 @@ Your pipeline processes the following datums without any specific order:
     different run, and so on. In a union, two or more datums are never
     available to your code at the same time. You can simplify
     your union code by using the `name` property as described below.
+{{% /notice %}}
 
 ### Simplifying the Union Pipelines Code
 
@@ -149,8 +151,10 @@ code is provided one of these sets at the time to process.
 For example, you have repositories `A` and `B` with three datums, each
 with the following structure:
 
-!!! note
+{{% notice note %}}
+
     For this example, the glob pattern is set to `/*`.
+{{% /notice %}}
 
 Repository `A` has three files at the top level:
 
@@ -189,13 +193,17 @@ Run 9: /pfs/A/3.txt
        /pfs/B/6.txt
 ```
 
-!!! note
+{{% notice note %}}
+
     In cross inputs, if you use the `name` field, your two
     inputs cannot have the same name. This could cause file system collisions.
+{{% /notice %}}
 
-!!! note "See Also:"
+{{% notice note %}}
+ "See Also:"
         - [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
         - [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
         - [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/ml/hyperparameter)
+{{% /notice %}}
 
 

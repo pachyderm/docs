@@ -533,8 +533,10 @@ output repository will be `s3://<output_repo>`.
 If you want to expose an input repository through an S3 gateway, see
 `input.pfs.s3` in [PFS Input](#pfs-input). 
 
-!!! note "See Also:"
+{{% notice note %}}
+ "See Also:"
     [Environment Variables](../../deploy-manage/deploy/environment-variables/)
+{{% /notice %}}
 
 ### Input
 
@@ -616,9 +618,11 @@ with pipes must use them since they are more performant. The difference will
 be especially notable if the job only reads a subset of the files that are
 available to it.
 
-!!! note
+{{% notice note %}}
+
     `lazy` does not support datums that
     contain more than 10000 files.
+{{% /notice %}}
 
 `input.pfs.empty_files` controls how files are exposed to jobs. If
 set to `true`, it causes files from this PFS to be presented as empty files.

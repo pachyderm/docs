@@ -9,9 +9,11 @@ series:
 seriesPart:
 ---
 
-!!! note "TL;DR"
+{{% notice note %}}
+ "TL;DR"
     Use transactions to run multiple Pachyderm commands
     simultaneously in one job run.
+{{% /notice %}}
 
 A transaction is a Pachyderm operation that enables you to **create
 a collection of Pachyderm commands and execute them concurrently**.

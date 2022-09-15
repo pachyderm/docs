@@ -71,9 +71,11 @@ in your filepath:
 	pachctl put file <repo>@<branch>:</path/to/file> -f s3://object_store_url
   	```
 
-!!! note
+{{% notice note %}}
+
     If you are configuring a local cluster to access an external bucket,
     make sure that Pachyderm has been given the proper access.
+{{% /notice %}}
 
 * Add multiple files at once by using the `-i` option or multiple `-f` flags.
 In the case of `-i`, the target file must be a list of files, paths, or URLs

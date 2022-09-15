@@ -76,9 +76,11 @@ The reason is that Pachyderm cannot execute your code immediately when
 your container starts, so it runs a shim process in your container
 instead, and then, it calls your pipeline specification's `cmd` from there.
 
-!!! note
+{{% notice note %}}
+
     The `Dockerfile` example below is provided for your reference
     only. Your `Dockerfile` might look completely different.
+{{% /notice %}}
 
 To build a Docker image, complete the following steps:
 
@@ -122,8 +124,10 @@ with the `--push-images` flag. For more information, see
      docker push <image>:tag
      ```
 
-!!! note
+{{% notice note %}}
+
     Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
+{{% /notice %}}
 
 ## Step 4: Create/Edit the Pipeline Config
 
@@ -138,10 +142,12 @@ parameters:
 - `transform`
 - `input`
 
-!!! note
+{{% notice note %}}
+
     Some special types of pipelines, such as a spout pipeline, do not
     require you to specify all of these parameters. 
     Spout pipelines, for example, do not have input repos.
+{{% /notice %}}
 
 Check our reference [pipeline specification](../../../reference/pipeline-spec) page, for a list of all available fields in a pipeline specification file.
 
@@ -194,7 +200,9 @@ parameter, as well as many others, in the pipeline specification.
      pachctl update pipeline -f my-pipeline.json
      ```
 
-!!! note "See Also:"
+{{% notice note %}}
+ "See Also:"
     - [Updating Pipelines](../../pipeline-operations/updating-pipelines)
     - Advanced users, parameterize your pipeline specifications with [Jsonnet pipeline specification files](../../pipeline-operations/jsonnet-pipeline-specs).
+{{% /notice %}}
 

@@ -138,8 +138,10 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
 
 1. Confirm the version of the Kubernetes server by running  `kubectl version`.
 
-!!! note "See Also:"
+{{% notice note %}}
+ "See Also:"
     - [Azure Virtual Machine sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general)
+{{% /notice %}}
 
 Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of Pachyderm. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
 
