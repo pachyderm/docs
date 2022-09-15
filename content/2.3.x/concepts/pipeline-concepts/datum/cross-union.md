@@ -9,28 +9,19 @@ series:
 seriesPart:
 --- 
 
-<!---This section needs to be made more clear. There is a lot of information
-that I would say describes the things you can do with a cross or union pipeline
-but does not really have a good and clear explanation of what they are -->
+Pachyderm enables you to combine multiple [PFS inputs](../#pfs-input-and-glob-pattern) by using the `union` and `cross` operators in the pipeline specification.
 
-Pachyderm enables you to combine multiple [PFS inputs](../#pfs-input-and-glob-pattern) by using the `union` and
-`cross` operators in the pipeline specification.
+You can think of union as a *disjoint union binary operator* and cross as a *cartesian product binary operator*. 
 
-You can think of union as a *disjoint union binary operator* and cross as a
-*cartesian product binary operator*. 
-
-This section describes how to use `cross` and `union` in your pipelines and how you
-can optimize your code when you work with them.
+This section describes how to use `cross` and `union` in your pipelines and how you can optimize your code when you work with them.
 
 ## Union Input
 
 The union input combines each of the datums in the input repos as one
-set of datums.
-The number of datums that are processed is the sum of all the
+set of datums. The number of datums that are processed is the sum of all the
 datums in each repo.
 
-For example, you have two input repos, `A` and `B`. Each of these
-repositories contain three files with the following names.
+For example, you have two input repos, `A` and `B`. Each of these repositories contain three files with the following names.
 
 Repository `A` has the following structure:
 
@@ -89,14 +80,13 @@ Your pipeline processes the following datums without any specific order:
 ```
 
 {{% notice note %}}
-
-    Each datum in a pipeline is processed independently by a single
-    execution of your code. In this example, your code runs six times, and
-    each datum is available to it one at a time. For example, your code
-    processes `pfs/A/1.txt` in one of the runs and `pfs/B/5.txt` in a
-    different run, and so on. In a union, two or more datums are never
-    available to your code at the same time. You can simplify
-    your union code by using the `name` property as described below.
+Each datum in a pipeline is processed independently by a single
+execution of your code. In this example, your code runs six times, and
+each datum is available to it one at a time. For example, your code
+processes `pfs/A/1.txt` in one of the runs and `pfs/B/5.txt` in a
+different run, and so on. In a union, two or more datums are never
+available to your code at the same time. You can simplify
+your union code by using the `name` property as described below.
 {{% /notice %}}
 
 ### Simplifying the Union Pipelines Code
@@ -107,7 +97,7 @@ To simplify your code, you can add the `name` field to the `pfs` object and
 give the same name to each of the input repos. For example, you can add, the
 `name` field with the value `C` to the input repositories `A` and `B`:
 
-```
+```json
 "input": {
     "union": [
         {
@@ -144,6 +134,7 @@ Then, in the pipeline, all datums appear in the same directory.
 In a cross input, Pachyderm exposes every combination of datums,
 or a cross-product, from each of your input repositories to your code
 in a single run.
+
 In other words, a cross input pairs every datum in one repository with
 each datum in another, creating sets of datums. Your transformation
 code is provided one of these sets at the time to process.
@@ -152,8 +143,7 @@ For example, you have repositories `A` and `B` with three datums, each
 with the following structure:
 
 {{% notice note %}}
-
-    For this example, the glob pattern is set to `/*`.
+For this example, the glob pattern is set to `/*`.
 {{% /notice %}}
 
 Repository `A` has three files at the top level:
@@ -194,16 +184,14 @@ Run 9: /pfs/A/3.txt
 ```
 
 {{% notice note %}}
-
-    In cross inputs, if you use the `name` field, your two
-    inputs cannot have the same name. This could cause file system collisions.
+In cross inputs, if you use the `name` field, your two inputs cannot have the same name. This could cause file system collisions.
 {{% /notice %}}
 
 {{% notice note %}}
- "See Also:"
-        - [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
-        - [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
-        - [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/ml/hyperparameter)
+**See Also:**
+- [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
+- [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
+- [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/ml/hyperparameter)
 {{% /notice %}}
 
 

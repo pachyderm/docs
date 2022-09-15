@@ -52,7 +52,7 @@ For a successful local deployment of Pachyderm, you will need:
       - Oracle® VirtualBox™ 
 - [Helm](#install-helm) to deploy Pachyderm on your Kubernetes cluster.  
 - [Pachyderm Command Line Interface (`pachctl`)](#install-pachctl) to interact with your Pachyderm cluster.
-- [Kubernetes Command Line Interface `kubectl`](https://kubernetes.io/docs/tasks/tools/) to interact with your underlying Kubernetes cluster.
+- [Kubernetes Command Line Interface (`kubectl`)](https://kubernetes.io/docs/tasks/tools/) to interact with your underlying Kubernetes cluster.
 
 ### Setup A Local Kubernetes Cluster
 
@@ -84,11 +84,10 @@ Any time you want to stop and restart Pachyderm, run `minikube delete`  and `min
   
 #### Using Kubernetes on Docker Desktop   
   
-You can use Kubernetes on Docker Desktop instead of Minikube on macOS or Linux  
-by following these steps:  
+You can use Kubernetes on Docker Desktop instead of Minikube on macOS or Linux by following these steps:  
   
 1. In the Docker Desktop Preferences, enable Kubernetes:  
-   ![Docker Desktop Enable K8s](./images/k8s_docker_desktop.png)  
+   ![Docker Desktop Enable K8s](../images/k8s_docker_desktop.png)  
   
 2. From the command prompt, confirm that Kubernetes is running:  
    ```s  
@@ -98,9 +97,7 @@ by following these steps:
    NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE  
    service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   5d  
    ```  
-
-   * To reset your Kubernetes cluster that runs on Docker Desktop, click  
-   the **Reset Kubernetes cluster** button. See image above.   
+      To reset your Kubernetes cluster that runs on Docker Desktop, click the **Reset Kubernetes cluster** button. See image above.   
   
 #### Using Kind  
   
@@ -118,8 +115,7 @@ by following these steps:
 ### Install `pachctl`  
 
 {{% notice note %}}
-`pachctl` is a command-line tool that you can use to interact  
-with a Pachyderm cluster in your terminal.  
+`pachctl` is a command-line tool that you can use to interact with a Pachyderm cluster in your terminal.  
 {{% /notice %}}
 
 {{% notice warning %}}
@@ -128,45 +124,43 @@ Pachyderm now offers **universal Multi-Arch docker images that can serve both AR
 - Brew users: The download of the package matching your architecture is automatic—nothing specific to do.
 - Debian-based and other Linux flavors users not relying on [Homebrew](https://docs.brew.sh/Homebrew-on-Linux):
 
-  Run `uname -m` to identify your architecture, then choose the command in the `AMD` section below if the output is `x86_64` , or `ARM` if it is `aarch64`.
+Run `uname -m` to identify your architecture, then choose the command in the `AMD` section below if the output is `x86_64` , or `ARM` if it is `aarch64`.
 {{% /notice %}}
   
 1. Run the corresponding steps for your operating system:  
-  
-      * For **macOS or Brew users**, run:  
-  
-        ```s  
-        brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
-        ```  
-  
-      * For a **Debian-based Linux 64-bit or Windows 10 or later running on  
-      WSL** (Choose the command matching your architecture):  
-            
-        - AMD Architectures (amd64):
-             
-        ```s  
-        curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
-        ``` 
+   * For **macOS or Brew users**, run:  
 
-        - ARM Architectures (arm64):
+     ```s  
+     brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
+     ```  
 
-        ```s  
-        curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
-        ```  
+   * For a **Debian-based Linux 64-bit or Windows 10 or later running on WSL** (Choose the command matching your architecture):  
+         
+     - AMD Architectures (amd64):
+          
+       ```s  
+       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+       ``` 
 
-      * For all **other Linux flavors** (Choose the command matching your architecture):  
+     - ARM Architectures (arm64):
 
-        - AMD Architectures (amd64):
-                  
-        ```s  
-        curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin 
-        ``` 
+       ```s  
+       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
+       ```  
 
-        - ARM Architectures (arm64):
+   * For all **other Linux flavors** (Choose the command matching your architecture):  
 
-        ```s  
-        curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_arm64/pachctl /usr/local/bin 
-        ```  
+     - AMD Architectures (amd64):
+               
+       ```s  
+       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin 
+       ``` 
+
+     - ARM Architectures (arm64):
+
+       ```s  
+       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_arm64/pachctl /usr/local/bin 
+       ```  
             
 1. Verify that installation was successful by running `pachctl version --client-only`:  
   
@@ -189,8 +183,7 @@ If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pa
 {{% /notice %}}
   
 {{% notice Note  %}}
-A look at [Pachyderm high-level architecture diagram](../../deploy-manage/#overview)   
-will help you build a mental image of Pachyderm various architectural components.  
+A look at [Pachyderm high-level architecture diagram](../../deploy-manage/#overview) will help you build a mental image of Pachyderm various architectural components.  
 
 For information, you can also check what a production setup looks like in this [infrastructure diagram](../../deploy-manage/deploy/ingress/#deliver-external-traffic-to-pachyderm).  
 {{% /notice %}}
@@ -217,28 +210,28 @@ Note that you can run both Console and JupyterLab on your local installation.
 * Install Pachyderm:  
 
 {{% notice warning %}} 
-Request an **Enterprise Key**
-
 To request a FREE trial enterprise license key, [click here](../../enterprise). 
 {{% /notice %}}
 
-=== "Pachyderm Community Edition (Includes Console)"
-      This command will install Pachyderm's latest available GA version with Console Community Edition.
+### Pachyderm Community Edition (Includes Console)
 
-       ```s  
-       helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  
-       ```    
+This command will install Pachyderm's latest available GA version with Console Community Edition.
 
-       Add the following `--set console.enabled=false` to the command above to install without Console.
-=== "Enterprise"
-      This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, **we create a default mock user (username:`admin`, password: `password`)** to [authenticate to Console](../../deploy-manage/deploy/console/#connect-to-console) without having to connect your Identity Provider. 
+ ```s  
+ helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  
+ ```    
 
-       - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise).
-       - Then, run the following helm command to **install Pachyderm's latest Enterprise Edition**: 
-      
-        ```s  
-        helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
-        ``` 
+ Add the following `--set console.enabled=false` to the command above to install without Console.
+
+### Enterprise
+This command will unlock your enterprise features and install Console Enterprise. Note that Console Enterprise requires authentication. By default, **we create a default mock user (username:`admin`, password: `password`)** to [authenticate to Console](../../deploy-manage/deploy/console/#connect-to-console) without having to connect your Identity Provider. 
+
+ - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise).
+ - Then, run the following helm command to **install Pachyderm's latest Enterprise Edition**: 
+
+  ```s  
+  helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
+  ``` 
 
 {{% notice note %}}
 This installation can take several minutes. Run a quick `helm list --all` in a separate tab to witness the installation happening in the background.
@@ -285,24 +278,20 @@ If you see a few restarts on the `pachd` nodes, that means that
 Kubernetes tried to bring up those pods before `etcd` or `postgres` were ready. Therefore,
 Kubernetes restarted those pods. Re-run `kubectl get pods`
  
-## Connect 'pachctl' To Your Cluster
+## Connect `pachctl` to Your Cluster
 
-Assuming your `pachd` is running as shown above,
-the easiest way to connect `pachctl` to your local cluster is to use the `port-forward` command.
+Assuming your `pachd` is running as shown above, the easiest way to connect `pachctl` to your local cluster is to use the `port-forward` command.
 
 - To connect to your new Pachyderm instance, run:
-
-      ```s
-      pachctl config import-kube local --overwrite
-      pachctl config set active-context local
-      ```
+  ```s
+  pachctl config import-kube local --overwrite
+  pachctl config set active-context local
+  ```
 
 - Then:
-
-      ```s
-      pachctl port-forward
-      ``` 
-      **Background this process in a new tab of your terminal.**
+  ```s
+  pachctl port-forward
+  ``` 
 
 ### Verify that `pachctl` and your cluster are connected. 
   
@@ -312,7 +301,7 @@ pachctl version
 
 **System Response:**  
 
-```  
+```s  
 COMPONENT           VERSION  
 pachctl             {{ config.pach_latest_version }}  
 pachd               {{ config.pach_latest_version }}  
@@ -337,91 +326,72 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 ## NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
 
 {{% notice note %}}
-
-      You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
+You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
 {{% /notice %}}
 
 - To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
-      ```s
-      helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-      helm repo update
-      ```
-      ```s
-      helm upgrade --cleanup-on-fail \
-      --install jupyter jupyterhub/jupyterhub \
-      --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml
-      ```
+  ```s
+  helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+  helm repo update
+  ```
+  ```s
+  helm upgrade --cleanup-on-fail \
+  --install jupyter jupyterhub/jupyterhub \
+  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml
+  ```
 
 
 - Check the state of your pods `kubectl get all`. Look for the pods `hub-xx` and `proxy-xx`; their state should be `Running`. 
 Run the command a couple times if necessary. The image takes some time to pull.
 See the example below:
 
-      ```
-      pod/hub-6fb9bb5847-ndfwc                       1/1     Running     0             22h
-      pod/proxy-57db95fd89-l5pd5                     1/1     Running     0             22h
-      ```
+  ```s
+  pod/hub-6fb9bb5847-ndfwc                       1/1     Running     0             22h
+  pod/proxy-57db95fd89-l5pd5                     1/1     Running     0             22h
+  ```
 
 - Once your pods are up, in your terminal, run :
 
-      ```s
-      kubectl port-forward svc/proxy-public 8888:80
-      ```
+  ```s
+  kubectl port-forward svc/proxy-public 8888:80
+  ```
 
-      Then 
-      ```s
-      kubectl get services | grep -w "pachd " | awk '{print $3}'
-      ```
-      Note the returned ip address. You will need this cluster IP in a next step.
+  Then 
+  ```s
+  kubectl get services | grep -w "pachd " | awk '{print $3}'
+  ```
+  Note the returned ip address. You will need this cluster IP in a next step.
     
 - Point your browser to **`http://localhost:8888`**, and authenticate using any mock User (username: `admin`, password: `password` will do).
 
-- Now that you are in, [click on Pachyderm's Mount Extension icon on the left of your JupyterLab](../../how-tos/jupyterlab-extension/#connect-the-extension-to-your-pachyderm-cluster) to connect your JupyterLab to your Pachyderm cluster.
-
-      Enter `grpc://<your-pachd-cluster-ip-from-the-previous-step>:30650` to login. 
+- Now that you are in, [click on Pachyderm's Mount Extension icon on the left of your JupyterLab](../../how-tos/jupyterlab-extension/#connect-the-extension-to-your-pachyderm-cluster) to connect your JupyterLab to your Pachyderm cluster. Enter `grpc://<your-pachd-cluster-ip-from-the-previous-step>:30650` to login. 
 
 - If Pachyderm was deployed with Enterprise, you will be prompted to login again. Use the same mock User (username: `admin`, password: `password`).
 
 - Verify that your JupyterLab Extension is connected to your cluster. 
 From the cell of a notebook, run:
 
-    ```s
-    !pachctl version
-    ``` 
+  ```s
+  !pachctl version
+  ``` 
 
-    ```  
-    COMPONENT           VERSION  
-    pachctl             {{ config.pach_latest_version }}  
-    pachd               {{ config.pach_latest_version }}  
-    ```    
+  ```s 
+  COMPONENT           VERSION  
+  pachctl             {{ config.pach_latest_version }}  
+  pachd               {{ config.pach_latest_version }}  
+  ```    
 
 {{% notice warning %}}
 Try our Notebook examples!
 
 Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. 
 {{% /notice  %}}
+
 ## Next Steps  
   
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  
   
-  
 {{% notice note %}}
- "See Also"  
-    [General Troubleshooting](../troubleshooting/general-troubleshooting.md)  
-  
+See Also: [General Troubleshooting](../troubleshooting/general-troubleshooting.md) 
 {{% /notice %}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

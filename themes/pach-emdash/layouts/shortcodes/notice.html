@@ -1,4 +1,4 @@
-{{$type := .Get 0 }}
+{{$type := .Get 0 | lower}}
 
 <section class="rounded-1 {{with $type}}} {{.}} {{else}}darken-3{{end}} sp-1"> 
 <div class="spread-between">

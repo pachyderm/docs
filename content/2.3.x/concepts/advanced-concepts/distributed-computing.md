@@ -36,7 +36,7 @@ redistributed to other workers for maximum fault tolerance.
 
 The following animation shows how distributed computing works:
 
-![Distributed computing basics](../../assets/images/distributed-computing101.gif)
+![Distributed computing basics](../../../assets/images/distributed-computing101.gif)
 
 In the diagram above, you have three Pachyderm worker pods that
 process your data. When a pod finishes processing a datum,
@@ -60,10 +60,7 @@ processing sequence.
 The following animation displays what happens inside a pod during
 the datum processing:
 
-![Distributed processing internals](../../assets/images/distributed-computing102.gif)
-
-<!--TBA: the chunk_size property explanation article. Probably in a separate
-How-to, but need to add a link to it here-->
+![Distributed processing internals](../../../assets/images/distributed-computing102.gif)
 
 ## Parallelism
 
@@ -101,8 +98,7 @@ Multiple jobs can run in parallel and cause new workers to spin up. For example,
 One limitation of autoscaling is that **it cannot dynamically scale down**. Suppose a job with many datums is near completion, only one worker is still working while the others are idle. Pachyderm does not yet have a way for the idle workers to steal work, and there are a few issues that prevent us from spinning down the idle workers. Kubernetes does not have a good way to scale down a controller and specify which pods should be killed, so scaling down may kill the worker pod that is still doing work. This means another worker will have to restart that work from scratch, and the job will take longer. Additionally, we want to keep the workers around to participate in the **distributed merge process** at the end of the job.
 
 {{% notice note %}}
- "See Also:"
+See Also:
+* [Glob Pattern](../../pipeline-concepts/datum/glob-pattern/)
+* [Pipeline Specification](../../../reference/pipeline-spec/)
 {{% /notice %}}
-
-    * [Glob Pattern](../../pipeline-concepts/datum/glob-pattern/)
-    * [Pipeline Specification](../../../reference/pipeline-spec/)

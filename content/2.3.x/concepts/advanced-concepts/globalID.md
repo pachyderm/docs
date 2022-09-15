@@ -14,12 +14,13 @@ Pachyderm provides users with a simple way to follow a change throughout their D
 
 Pachyderm associates a commit ID to each new commit. You can quickly check this new commit by running `pachctl list commit repo@branch`. **All resulting downstream commits and jobs in your DAG will then share that same ID (Global Identifier).**
 
-!!! Info "TLDR"
-    The commits and jobs sharing the same ID **represent a logically-related set of objects**. 
-    The ID of a commit is also:
+{{% notice info %}}
+The commits and jobs sharing the same ID **represent a logically-related set of objects**. 
+The ID of a commit is also:
 
-    - the ID of any commits created along due to provenance relationships, 
-    - and the ID of any jobs triggered by the creation of those commits. 
+- the ID of any commits created along due to provenance relationships, 
+- and the ID of any jobs triggered by the creation of those commits. 
+{{%/notice %}}
 
 This ability to track down related commits and jobs with one global identifier brought the need to introduce a new scope to our original concepts of [job](../../pipeline-concepts/job/) and [commit](../../data-concepts/commit/). The nuance in the scope of a commit or a job ( "Global" or "Local") gives the term two possible meanings.
 
@@ -38,7 +39,7 @@ You can list all global commits by running the following command:
 pachctl list commit
 ```
 Each global commit displays how many (sub) commits it is made of.
-```
+```s
 ID                               SUBCOMMITS PROGRESS CREATED        MODIFIED
 1035715e796f45caae7a1d3ffd1f93ca 7          ▇▇▇▇▇▇▇▇ 7 seconds ago  7 seconds ago
 28363be08a8f4786b6dd0d3b142edd56 6          ▇▇▇▇▇▇▇▇ 24 seconds ago 24 seconds ago
@@ -50,14 +51,14 @@ pachctl list job
 ```
 you will notice that the job IDs are shared with the global commit IDs.
 
-```
+```s
 ID                               SUBJOBS PROGRESS CREATED            MODIFIED
 1035715e796f45caae7a1d3ffd1f93ca 2       ▇▇▇▇▇▇▇▇ 55 seconds ago     55 seconds ago
 28363be08a8f4786b6dd0d3b142edd56 1       ▇▇▇▇▇▇▇▇ About a minute ago About a minute ago
 e050771b5c6f4082aed48a059e1ac203 1       ▇▇▇▇▇▇▇▇ About a minute ago About a minute ago
 ```
 For example, in this example, 7 commits and 2 jobs are involved in the changes occured
-in the global commit ID 1035715e796f45caae7a1d3ffd1f93ca.
+in the global commit ID `1035715e796f45caae7a1d3ffd1f93ca`.
 
 {{% notice note %}}
 
@@ -71,7 +72,7 @@ To list all (sub) commits involved in a global commit:
 ```s
 pachctl list commit 1035715e796f45caae7a1d3ffd1f93ca
 ```
-```
+```s
 REPO         BRANCH COMMIT                           FINISHED      SIZE        ORIGIN DESCRIPTION
 images       master 1035715e796f45caae7a1d3ffd1f93ca 5 minutes ago 238.3KiB    USER
 edges.spec   master 1035715e796f45caae7a1d3ffd1f93ca 5 minutes ago 244B        ALIAS
@@ -86,7 +87,7 @@ Similarly, change `commit` in `job` to list all (sub) jobs linked to your global
 ```s
 pachctl list job 1035715e796f45caae7a1d3ffd1f93ca
 ```
-```
+```s
 ID                               PIPELINE STARTED       DURATION  RESTART PROGRESS  DL       UL       STATE
 1035715e796f45caae7a1d3ffd1f93ca montage  5 minutes ago 4 seconds 0       1 + 0 / 1 79.49KiB 381.1KiB success
 1035715e796f45caae7a1d3ffd1f93ca edges    5 minutes ago 2 seconds 0       1 + 0 / 1 57.27KiB 22.22KiB success
@@ -97,23 +98,21 @@ The format of the progress column is `DATUMS PROCESSED + DATUMS SKIPPED / TOTAL 
 For more information, see [Datum Processing States](../../../concepts/pipeline-concepts/datum/datum-processing-states/).
 
 {{% notice note %}}
-
-     The global commit and global job above are the result of
-     a `pachctl put file images@master -i images.txt` in the images repo of [the open cv example](../../../getting-started/beginner-tutorial/).
+The global commit and global job above are the result of
+a `pachctl put file images@master -i images.txt` in the images repo of [the open cv example](../../../getting-started/beginner-tutorial/).
 {{% /notice %}}
 
 The following diagram illustrates the global commit and its various components:
-    ![global_commit_after_putfile](../images/global_commit_after_putfile.png)
+![global_commit_after_putfile](../images/global_commit_after_putfile.png)
 
 Let's take a look at the origin of each commit.
 
 {{% notice note %}}
-
-        Check the list of [all commit origins](../data-concepts/commit.md) in the `Commit` page.
+Check the list of [all commit origins](../data-concepts/commit.md) in the `Commit` page.
 {{% /notice %}}
 
 
-1. Inspect the commit ID 1035715e796f45caae7a1d3ffd1f93ca in the `images` repo,  the repo in which our change (`put file`) has originated:
+1. Inspect the commit ID `1035715e796f45caae7a1d3ffd1f93ca` in the `images` repo,  the repo in which our change (`put file`) has originated:
 
     ```s
     pachctl inspect commit images@1035715e796f45caae7a1d3ffd1f93ca --raw

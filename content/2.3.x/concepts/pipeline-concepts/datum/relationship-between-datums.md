@@ -18,21 +18,21 @@ of work.
 When new data comes in (in the form of commit(s) in its input repo(s)), a Pachyderm pipeline automatically starts a new job. Each Pachyderm job consists of the
 following stages:
 
-### 1- **Creation of input datums** 
+### 1: Creation of input datums
 In this stage, Pachyderm **creates datums based on the input data according to the
 [pipeline input(s)](../#pipeline-inputs)** set
 in the [pipeline specification file](../../../../reference/pipeline-spec/#pipeline-specification).
 
-### 2- **Transformation**
+### 2: Transformation
 The pipeline **uses your code to process the datums**.
 
-### 3- **Creation of output files**    
+### 3: Creation of output files 
 Your code writes output file(s) in the
 `pfs/out` output directory that Pachyderm 
 creates automatically for
 each pipeline's job.    
 
-### 4- **Final commit in the pipeline's output repo**
+### 4: Final commit in the pipeline's output repo
 
 {{% notice note %}}
 The output produced by a pipeline's job is written to an output repo of the same name (i.e., output repo name = pipeline name).
@@ -66,14 +66,13 @@ appended or overwritten with other files to create the final result. Below, a se
 
 
 {{% notice note %}}
- "Worth Noting"
-    - In the example, the files are named after the datum itself. Depending on your use case, there might be more logical ways to name the files produced by a datum. However, in any case, make sure that this **name is unique for each datum** to avoid duplicate
-    files with the same file path.
-    - Each file is put in specific directories. This directory structure has been thought to facilitate the aggregation of the content in the following pipeline. Think about your directory structure so that the next glob pattern will aggregate your data as needed.
+- In the example, the files are named after the datum itself. Depending on your use case, there might be more logical ways to name the files produced by a datum. However, in any case, make sure that this **name is unique for each datum** to avoid duplicate
+files with the same file path.
+- Each file is put in specific directories. This directory structure has been thought to facilitate the aggregation of the content in the following pipeline. Think about your directory structure so that the next glob pattern will aggregate your data as needed.
 {{% /notice %}}
 
 
-![Map Reduce](../../images/parallel_data_processing.png)
+![Map Reduce](../../../images/parallel_data_processing.png)
 
 
 Let's now create a new commit and overwrite a file in `datum 2`,
@@ -84,7 +83,7 @@ details of the change; therefore, it processes the whole `datum 2(')` (here in y
 and outputs 3 files. Then, the following pipeline aggregates
 these data to create the final result.
 
-![Map Reduce](../../images/parallel_data_processing_following_commit.png)
+![Map Reduce](../../../images/parallel_data_processing_following_commit.png)
 
 ## Incrementality 
 In Pachyderm, unchanged datums are never re-processed. 

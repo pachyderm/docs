@@ -9,13 +9,9 @@ series:
 seriesPart:
 --- 
 
-When a pipeline runs, it processes your datums.
-Some of them get processed successfully and some might
-be skipped or even fail. Generally, processed datums
-fall into either successful or failure state category.
+When a pipeline runs, it processes your datums. Some of them get processed successfully and some might be skipped or even fail. Generally, processed datums fall into either successful or failure state category.
 
-The following table describes the processing states
-of datums that can occur in Pachyderm:
+The following table describes the processing states of datums that can occur in Pachyderm:
 
 **Successful States**
 
@@ -34,8 +30,8 @@ of datums that can occur in Pachyderm:
 You can view the information about datum processing states in the output of
 the `pachctl list job <jobID>` command:
 
-![datums in progress](../../images/datums_in_progress.png)
+![datums in progress](../../../images/datums_in_progress.png)
 
-!!! Note
-    Datums that failed are still included in the total, but not
-    shown in the progress indicator.
+{{% notice note %}}
+Datums that failed are still included in the total, but not shown in the progress indicator.
+{{%/notice%}}

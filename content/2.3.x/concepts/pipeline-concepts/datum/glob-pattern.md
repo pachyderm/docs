@@ -9,11 +9,9 @@ series:
 seriesPart:
 --- 
 
-Defining how your data is spread among workers is one of
-the most important aspects of distributed computation.
+Defining how your data is spread among workers is one of the most important aspects of distributed computation.
 
-Pachyderm uses **glob patterns** to provide flexibility to
-define data distribution. 
+Pachyderm uses **glob patterns** to provide flexibility to define data distribution. 
 
 {{% notice note %}}
 Pachyderm's concept of glob patterns is similar to Unix glob patterns. For example, the `ls *.md` command matches all files with the `.md` file extension.
@@ -53,7 +51,7 @@ For more information, see [Cross and Union](./cross-union.md), [Join](./join.md)
 Let's consider an input repo with the following structure where each top-level directory represents a US
 state with a `json` file for each city in that state:
 
-```
+```s
     /California
        /San-Francisco.json
        /Los-Angeles.json
@@ -70,7 +68,7 @@ state with a `json` file for each city in that state:
 Now let's consider what the following glob patterns would match respectively:
 
 |Glob Pattern| Corresponding match| Example|
-|-----------------|---------------------------------||
+|-----------------|---------------------------------|----|
 | `/`| This pattern matches `/`, the root directory itself, meaning **all the data would be one large datum**. All changes in any of the files and directories trigger Pachyderm to process the whole repository contents as a single datum.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes all changed files and directories in the repo as a single datum.*|
 | `/*`| This pattern matches **everything under the root directory**. It defines **one datum per state**, which means that all the cities for a given state are processed together by a single worker, but each state is processed independently.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes the `California/` datum only*.|
 | `/Colorado/*`| This pattern matches **files only under the `/Colorado` directory**. It defines **one datum per city**.|*If you add a new file `Alamosa.json` to the `Colorado/` directory and `Sacramento.json` to the `California/` directory, Pachyderm processes the `Alamosa.json` datum only.*|
@@ -135,11 +133,9 @@ datum:
   ```s
   NAME TYPE SIZE
   /    dir  15.11KiB
-```
+  ```
 
-* If you set the `glob` property to `/*`, Pachyderm detects each
-top-level filesystem object in the `train` repository as a separate
-datum:
+* If you set the `glob` property to `/*`, Pachyderm detects each top-level filesystem object in the `train` repository as a separate datum:
 
   #### Example
     ```s
@@ -204,9 +200,8 @@ b751702850acad5502dc51c3e7e7a1ac10ba2199fdb839989cd0c5430ee10b84 images@fc9a12ee
 de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142de8714c11b004610ea7af2378:/g2QnNqa.jpg skipped Less than a second
 ```
 
-{{% notice note %}}
-    In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
-{{% /notice %}}
+In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
+
 
 {{% notice info %}}
 Stats and Datum Metadata
@@ -218,7 +213,8 @@ Stats and Datum Metadata
   pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
   ```
   **System Response:**
-  ```
+  
+  ```s
   ID	a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
   Job ID	b8687e9720f04b7ab53ae8c64541003b
   State	SUCCESS

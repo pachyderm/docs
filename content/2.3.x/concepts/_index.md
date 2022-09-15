@@ -14,7 +14,3 @@ This section details the foundational concepts of Pachyderm's data versioning an
 
 - **Pachyderm File System** (PFS) manages Pachyderm's data and versioning system.
 - **Pachyderm Pipeline System** (PPS) enables you to perform various transformations on your data. 
-
-After you have a good grasp of the basics, move to advanced concepts and features.
-
-In particular, you will learn:

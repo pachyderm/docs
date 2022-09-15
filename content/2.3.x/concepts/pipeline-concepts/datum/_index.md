@@ -11,10 +11,7 @@ layout: glossary
 --- 
 
 {{% notice note %}}
- "TL;DR"
-    Datums define what input data is seen by your code. It can be
-    all data at once, each directory independently, individual
-    files one by one, or combined data from multiple inputs together.
+**TLDR**: Datums define what input data is seen by your code. It can be all data at once, each directory independently, individual files one by one, or combined data from multiple inputs together.
 {{% /notice %}}
 
 ## Definition
