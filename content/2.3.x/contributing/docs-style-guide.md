@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+mermaid: true 
 --- 
 
 Thank you for taking an interest in contributing to Pachyderm's docs! 🐘 📖
@@ -163,6 +164,30 @@ Visualizations are helpful in learning complex workflows and UIs; however, they 
 
 Also, remember to add alt-text to your visualizations for screen readers.
 
+### Mermaid 
+
+You can build diagrams using [mermaid.js](https://mermaid-js.github.io/mermaid/#/) in our documentation by:
+1.  Adding `mermaid: true` to the frontmatter of an article.
+2.  Drafting a diagram, like so:
+
+```s
+    ```mermaid
+    graph TD;
+        A-->B;
+        A-->C;
+        B-->D;
+        C-->D;
+    ```
+```
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
 ---
 
-Want to make an update to this style guide? Select **Edit me on Github** and leave a suggestion as a pull request!
+Want to make an update to this style guide? Select **Edit on Github** and leave a suggestion as a pull request!
