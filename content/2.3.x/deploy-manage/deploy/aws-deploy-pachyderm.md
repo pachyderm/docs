@@ -14,10 +14,13 @@ For a quick test installation of Pachyderm on AWS (suitable for development), ju
 For deployments in production, refer to the following diagram and follow these step-by-step instructions:
 ![AWS Arch](../images/arch-diagram-high-level-aws.svg)
 
-!!! Important "Before your start your installation process." 
-      - Refer to our generic ["Helm Install"](../helm-install/) page for more information on  how to install and get started with `Helm`.
-      - Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
-      - Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
+{{% notice tip %}}
+Before your start your installation process.
+
+- Refer to our generic ["Helm Install"](../helm-install/) page for more information on  how to install and get started with `Helm`.
+- Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
+- Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
+{{% /notice %}}
     
 
 {{% notice warning %}}
@@ -32,14 +35,14 @@ The following section walks you through deploying a Pachyderm cluster on [Amazon
 In particular, you will:
 
 1. Make a few [client installations](#1-prerequisites) before you start.
-1. [Deploy Kubernetes](#2-deploy-kubernetes-by-using-eksctl).
-1. [Create an S3 bucket](#3-create-an-s3-bucket) for your data and grant Pachyderm access.
-1. [Enable Persistent Volumes Creation](#4-enable-your-persistent-volumes-creation)
-1. [Create An AWS Managed PostgreSQL Instance](#5-create-an-aws-managed-postgresql-database)
-1. [Deploy Pachyderm ](#6-deploy-pachyderm)
-1. Finally, you will need to install [pachctl](../../../getting-started/local-installation#install-pachctl) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
-1. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
-1. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
+2. [Deploy Kubernetes](#2-deploy-kubernetes-by-using-eksctl).
+3. [Create an S3 bucket](#3-create-an-s3-bucket) for your data and grant Pachyderm access.
+4. [Enable Persistent Volumes Creation](#4-enable-your-persistent-volumes-creation)
+5. [Create An AWS Managed PostgreSQL Instance](#5-create-an-aws-managed-postgresql-database)
+6. [Deploy Pachyderm ](#6-deploy-pachyderm)
+7. Finally, you will need to install [pachctl](../../../getting-started/local-installation#install-pachctl) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
+8. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
+9. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
 
 ## 1. Prerequisites
 
@@ -219,12 +222,14 @@ To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](h
 
 etcd and PostgreSQL (metadata storage) each claim the creation of a pv. 
 
-!!! Important
-      The metadata services generally require a small persistent volume size (i.e. 10GB) **but high IOPS (1500)**.
-      Note that Pachyderm out-of-the-box deployment comes with **gp2** default EBS volumes. 
-      While it might be easier to set up for test or development environments, **we highly recommend to use SSD gp3 in production**. A **gp3** EBS volume delivers a baseline performance of 3,000 IOPS and 125MB/s at any volume size. Any other disk choice may require to **oversize the volume significantly to ensure enough IOPS**.
+{{% notice tip %}}
+The metadata services generally require a small persistent volume size (i.e. 10GB) **but high IOPS (1500)**.
 
-      See [volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).
+Note that Pachyderm out-of-the-box deployment comes with **gp2** default EBS volumes. 
+While it might be easier to set up for test or development environments, **we highly recommend to use SSD gp3 in production**. A **gp3** EBS volume delivers a baseline performance of 3,000 IOPS and 125MB/s at any volume size. Any other disk choice may require to **oversize the volume significantly to ensure enough IOPS**.
+
+See [volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).
+{{% /notice %}}
 
 If you plan on using **gp2** EBS volumes:
 
@@ -487,8 +492,10 @@ You have set up your infrastructure, created your S3 bucket and an AWS Managed P
 
 Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml).
 
-!!! Important
-      Retain (ideally in version control) a copy of the Helm values used to deploy your cluster. It might be useful if you need to [restore a cluster from a backup](../../manage/backup-restore).
+{{% notice tip %}}
+Retain (ideally in version control) a copy of the Helm values used to deploy your cluster. It might be useful if you need to [restore a cluster from a backup](../../manage/backup-restore).
+{{% /notice %}}
+
 ### Deploy Pachyderm On The Kubernetes Cluster
 
 

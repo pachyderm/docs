@@ -28,11 +28,12 @@ Let’s walk through the main steps allowing Pachyderm to leverage the AI perfor
     Read about NVIDIA DGX A100's full [userguide](https://docs.nvidia.com/dgx/pdf/dgxa100-user-guide.pdf).
 
 
-!!! Important "TL;DR"
-    Support for scheduling GPU workloads in Kubernetes requires a fair amount of trial and effort. To ease the process:
+{{% notice tip %}}
+Support for scheduling GPU workloads in Kubernetes requires a fair amount of trial and effort. To ease the process:
 
-    - This [setup page](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html) will **walk you through very detailed installation steps** to prepare your Kubernetes cluster.
-    - Take advantage of a user's past experience in [this blog](https://discuss.kubernetes.io/t/my-adventures-with-microk8s-to-enable-gpu-and-use-mig-on-a-dgx-a100/15366).
+- This [setup page](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html) will **walk you through very detailed installation steps** to prepare your Kubernetes cluster.
+- Take advantage of a user's past experience in [this blog](https://discuss.kubernetes.io/t/my-adventures-with-microk8s-to-enable-gpu-and-use-mig-on-a-dgx-a100/15366).
+{{% /notice %}}
 
 Here is a quick recap of what will be needed:
 
@@ -92,12 +93,13 @@ Now that the DGX is added to your API server, you can then proceed to:
 
 1. If the container above is scheduled successfully: install Pachyderm. You are ready to [start leveraging NVIDIA's GPUs in your Pachyderm pipelines](#configure-gpus-in-pipelines).
 
-!!! Important "Note"
-    Note that you have the option to use GPUs for compute-intensive workloads on:
+{{% notice tip %}}
+Note that you have the option to use GPUs for compute-intensive workloads on:
 
-    - [Google Container Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus).
-    - [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/blogs/containers/utilizing-nvidia-multi-instance-gpu-mig-in-amazon-ec2-p4d-instances-on-amazon-elastic-kubernetes-service-eks/).
-    - [Azure Kubermnetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/gpu-cluster).
+- [Google Container Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus).
+- [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/blogs/containers/utilizing-nvidia-multi-instance-gpu-mig-in-amazon-ec2-p4d-instances-on-amazon-elastic-kubernetes-service-eks/).
+- [Azure Kubermnetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/gpu-cluster).
+{{% /notice %}}
 
 ## Configure GPUs in Pipelines
 
@@ -105,12 +107,12 @@ Once your GPU-enabled Kubernetes cluster is set,
 you can request a GPU tier in your pipeline specifications
 by [setting up GPU resource limits](../../../reference/pipeline-spec/#resource-requests-optional), along with its type and number of GPUs. 
 
-!!! Important
-    By default, Pachyderm workers are spun up and wait for new input. That works great for pipelines that are processing a lot of new incoming commits. However, for lower volume of input commits, you could have your pipeline workers 'taking' the GPU resource as far as k8s is concerned, but 'idling' as far as you are concerned. 
+{{% notice tip %}}
+By default, Pachyderm workers are spun up and wait for new input. That works great for pipelines that are processing a lot of new incoming commits. However, for lower volume of input commits, you could have your pipeline workers 'taking' the GPU resource as far as k8s is concerned, but 'idling' as far as you are concerned. 
 
-      - Make sure to set the `autoscaling` field to `true` so that if your pipeline is not getting used, the worker pods get spun down and the GPU resource freed.
-      - Additionally, specify how much of GPU your pipeline worker will need via the `resource_requests` fields in your [pipeline specification](../../../reference/pipeline-spec/#resource-requests-optional) with `ressource_requests` <= `resource_limits`.
-
+ - Make sure to set the `autoscaling` field to `true` so that if your pipeline is not getting used, the worker pods get spun down and the GPU resource freed.
+ - Additionally, specify how much of GPU your pipeline worker will need via the `resource_requests` fields in your [pipeline specification](../../../reference/pipeline-spec/#resource-requests-optional) with `ressource_requests` <= `resource_limits`.
+{{% /notice %}}
 
 Below is an example of a pipeline spec for a GPU-enabled pipeline from our [market sentiment analysis example](https://github.com/pachyderm/examples/tree/2.3.x/market-sentiment):
 

@@ -70,8 +70,9 @@ You can test your glob pattern and capture groups by using the
 `pachctl list datum -f <your_pipeline_spec.json>` command as described in
 [List Datum](../../datum/glob-pattern/#test-your-datums).
 
-!!! Important "Useful"
-    The content of the capture group defined in the `join_on` parameter is available to your pipeline's code in an environment variable: `PACH_DATUM_<input.name>_JOIN_ON`.
+{{% notice tip %}} 
+The content of the capture group defined in the `join_on` parameter is available to your pipeline's code in an environment variable: `PACH_DATUM_<input.name>_JOIN_ON`.
+{{% /notice %}}
     
 ## Inner Join
 Per default, a join input has an `inner-join` behavior.

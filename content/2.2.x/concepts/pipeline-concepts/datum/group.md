@@ -63,8 +63,10 @@ You can test your glob pattern and capture groups by using the
 `pachctl list datum -f <your_pipeline_spec.json>` command as described in
 [List Datum](../../datum/glob-pattern/#test-your-datums).
 
-!!! Important "Useful"
-    The content of the capture group defined in the `group_by` parameter is available to your pipeline's code in an environment variable: `PACH_DATUM_<input.name>_GROUP_BY`.
+{{% notice tip %}}
+The content of the capture group defined in the `group_by` parameter is available to your pipeline's code in an environment variable: `PACH_DATUM_<input.name>_GROUP_BY`.
+{{%/notice %}}
+
 ## Example
 
 For example, a repository `labresults` contains the lab results of patients. 

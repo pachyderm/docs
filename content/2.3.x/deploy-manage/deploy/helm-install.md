@@ -267,8 +267,11 @@ In the following table, you will find the complete list of:
 - the secret values fields if you chose to hard code your values rather than pass them in a secret.
 - Pachyderm's platform secrets and keys those values will be injected into in the latter case.
 
-!!! Important "Order of operations."
-       Note that if no secret name is provided for the fields mentioned in **A** (see table above), Pachyderm will retrieve the dedicated plain-text secret values in the helm values (Column **B**) and populate (or autogenerate when left blank) its own platform secrets at the time of the installation/upgrade (Column **C**). 
+{{% notice tip %}} 
+Order of operations.
+
+Note that if no secret name is provided for the fields mentioned in **A** (see table above), Pachyderm will retrieve the dedicated plain-text secret values in the helm values (Column **B**) and populate (or autogenerate when left blank) its own platform secrets at the time of the installation/upgrade (Column **C**). 
+{{% /notice %}}
 
 |Secret KEY name| <div style="width:290px"> Description </div>| A - Create your secrets ahead <br> of your cluster creation| B - Pass credentials in values.yaml| <div style="width:250px"> C - Corresponding (Platform Secret, Key) in which the values provided in A or B will be injected.</div>| 
 |------------|------------|-----|--------|---------|

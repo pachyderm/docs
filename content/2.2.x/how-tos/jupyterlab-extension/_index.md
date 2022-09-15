@@ -12,38 +12,39 @@ seriesPart:
 
 ![Mount extension in action](../images/mount-extension.gif)
 
- We implemented a [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) that selectively **maps the contents of data repositories right into your Jupyter environment**. Any named branch in a repo can be “mounted” into your file system via the Jupyter environment, making it feel like the data in Pachyderm is on your computer. 
+We implemented a [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) that selectively **maps the contents of data repositories right into your Jupyter environment**. Any named branch in a repo can be “mounted” into your file system via the Jupyter environment, making it feel like the data in Pachyderm is on your computer. 
 
- For Data Scientists whose data are stored in Pachyderm, the extension provides a seamless way to:
+For Data Scientists whose data are stored in Pachyderm, the extension provides a seamless way to:
 
 - Connect your Notebook to a Pachyderm cluster.
 - Browse, explore, analyze data stored in Pachyderm directly from your Notebook.
 - Run and test out your pipeline code before creating a Docker image. The extension provides a quick and reliable data **development environment** that can be shared. 
 
-!!! Important "TL;DR - Quick Start"
-    We will provide two sets of instructions, depending on whether you know the cluster address (`pachd_address`) you want to connect your JupyterHub to or don't.
+{{% notice tip %}}
+Quick Start
 
-    - **You know the `pachd_address` of your cluster**:
+We will provide two sets of instructions, depending on whether you know the cluster address (`pachd_address`) you want to connect your JupyterHub to or don't.
 
-        - Run:
-        ```s
-        docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}  lab --allow-root
-        ```
-        - Access your JupyterLab session through a local browser (check the link in the stdout).
-        - Then [connect your JupyterLab to your Pachyderm cluster](#connect-the-extension-to-your-pachyderm-cluster). 
-        You are ready to start experimenting.
+- **You know the `pachd_address` of your cluster**:
+  - Run:
+  ```s
+  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}  lab --allow-root
+  ```
+  - Access your JupyterLab session through a local browser (check the link in the stdout).
+  - Then [connect your JupyterLab to your Pachyderm cluster](#connect-the-extension-to-your-pachyderm-cluster). 
+  You are ready to start experimenting.
 
 
-    - **You do not know the `pachd_address` of your cluster**:
-
-        - Install `pachctl` (Pachyderm command line tool) on your machine (see [`pachctl` installation instructions](../../getting-started/local-installation/#install-pachctl) ).
-        - Then, [connect that CLI to your cluster](../../getting-started/local-installation/#connect-pachctl-to-your-cluster).
-        - And run:
-        ```s
-        docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }} lab --allow-root
-        ```
-        - Access your JupyterLab session through a local browser (check the link in the stdout).
-        You are all logged in. Start experimenting.
+- **You do not know the `pachd_address` of your cluster**:
+  - Install `pachctl` (Pachyderm command line tool) on your machine (see [`pachctl` installation instructions](../../getting-started/local-installation/#install-pachctl) ).
+  - Then, [connect that CLI to your cluster](../../getting-started/local-installation/#connect-pachctl-to-your-cluster).
+  - And run:
+  ```s
+  docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }} lab --allow-root
+  ```
+  - Access your JupyterLab session through a local browser (check the link in the stdout).
+  You are all logged in. Start experimenting.
+{{% /notice %}}
 
 Note that we are assuming that you **already have a Pachyderm cluster running** to connect your JupyterHub/JupyterLab. Find Pachyderm installation instructions in the [Deploy/Manage](../../deploy-manage/deploy/) section of our documentation.
 ## Using The Extension

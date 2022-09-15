@@ -13,14 +13,15 @@ On this page, you will find simplified deployment instructions and Helm values t
 
 For each cloud provider, we will give you the option to "quick deploy" Pachyderm with or without Console (Pachyderm Web UI).
 
-!!! Important 
-    The deployment steps highlighted in this document are **not intended for production**. For production settings, please read our [infrastructure recommendations](../ingress/). In particular, we recommend:
+{{% notice tip %}}
+The deployment steps highlighted in this document are **not intended for production**. For production settings, please read our [infrastructure recommendations](../ingress/). In particular, we recommend:
 
-     - the use of a **managed PostgreSQL server** (RDS, CloudSQL, or PostgreSQL Server) rather than Pachyderm's default bundled PostgreSQL.
-     - the setup of a **TCP Load Balancer** in front of your pachd service.
-     - the setup of an **Ingress Controller** in front of Console. 
+- the use of a **managed PostgreSQL server** (RDS, CloudSQL, or PostgreSQL Server) rather than Pachyderm's default bundled PostgreSQL.
+- the setup of a **TCP Load Balancer** in front of your pachd service.
+- the setup of an **Ingress Controller** in front of Console. 
 
-    Then find your targeted Cloud provider in the [Deploy and Manage](../) section of this documentation.
+Then find your targeted Cloud provider in the [Deploy and Manage](../) section of this documentation.
+{{% /notice %}}
 
 ## 1. Prerequisites
 
@@ -41,8 +42,10 @@ To get a free-trial token, fill in [this form](https://www.pachyderm.com/trial/)
 
 Select your favorite cloud provider.
 
-!!! Important "Definition"
+{{% notice tip %}}
     Note that we often use the acronym `CE` for Community Edition.
+{{% /notice %}}
+
 ## 2. Create Your Values.yaml
 
 !!! Note

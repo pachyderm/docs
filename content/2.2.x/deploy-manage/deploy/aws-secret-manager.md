@@ -34,10 +34,11 @@ The ASCP works with Amazon Elastic Kubernetes Service (Amazon EKS) 1.17+.
 ### Install the Secrets Store CSI Driver
 Deploy the [**Secrets Store CSI driver**](https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html) by following the installation steps.
 
-!!! Important
-      Make sure to enable the [`Sync as Kubernetes Secret` feature](https://secrets-store-csi-driver.sigs.k8s.io/topics/sync-as-kubernetes-secret.html) explicitly by setting the helm parameter `syncSecret.enabled` to true.
+{{% notice tip %}}
+Make sure to enable the [`Sync as Kubernetes Secret` feature](https://secrets-store-csi-driver.sigs.k8s.io/topics/sync-as-kubernetes-secret.html) explicitly by setting the helm parameter `syncSecret.enabled` to true.
+{{% /notice%}}
 
-{{% notice %}}
+{{% notice tip %}}
 ``` s
 helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
 helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver --namespace kube-system --set syncSecret.enabled=true

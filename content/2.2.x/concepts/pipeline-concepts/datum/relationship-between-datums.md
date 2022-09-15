@@ -41,10 +41,14 @@ The output produced by a pipeline's job is written to an output repo of the same
 The content of all `/pfs/out` is combined in a commit to the pipeline's output repo. 
 This generally means unioning all the files together.
 
-!!! Important "The Single Datum Provenance Rule"
-     If two outputted files have the same name (i.e., two datums wrote to the same output file, creating a conflict), then an error is raised, resulting in your pipeline failure. 
+{{% notice tip %}} 
+The Single Datum Provenance Rule
 
-     Avoid this anti-pattern from the start by **having each datum write in separate files**. Pachyderm provides an **environment variable `PACH_DATUM_ID`** that stores the datum ID. This variable is available in the pipeline's user code. To ensure that each datum outputs distinct file paths, you can use this variable in the name of your outputted files.
+If two outputted files have the same name (i.e., two datums wrote to the same output file, creating a conflict), then an error is raised, resulting in your pipeline failure. 
+
+Avoid this anti-pattern from the start by **having each datum write in separate files**. Pachyderm provides an **environment variable `PACH_DATUM_ID`** that stores the datum ID. This variable is available in the pipeline's user code. To ensure that each datum outputs distinct file paths, you can use this variable in the name of your outputted files.
+{{%/notice %}}
+
 ### 5. **Next: Add a `Reduce` (Merge) pipeline**
 
 If you need files from different datums merged into single files in a particular way:

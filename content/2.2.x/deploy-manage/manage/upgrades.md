@@ -166,8 +166,9 @@ In general, these values can be provided in three different ways:
       You have not created secrets ahead of your installation, nor did you provide values directly in the values.yaml; we created default values for you in the default secret `pachyderm-bootstrap-config` (See column C below for their key). 
       
 
-!!! Important
-       It is important to note that if no secret name is provided for the fields mentioned in **A**, Pachyderm will retrieve the dedicated plain-text secret values in the helm values (**B**) and populate a generic, default, auto-generated secret (pachyderm-bootstrap-config) at the time of the installation (see keys in **C**). If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. This default secret is reset at each upgrade, and new default values are created causing the upgrade to fail unless they are retrieved and set back into their appropriate fields.
+{{% notice info  %}}
+It is important to note that if no secret name is provided for the fields mentioned in **A**, Pachyderm will retrieve the dedicated plain-text secret values in the helm values (**B**) and populate a generic, default, auto-generated secret (pachyderm-bootstrap-config) at the time of the installation (see keys in **C**). If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. This default secret is reset at each upgrade, and new default values are created causing the upgrade to fail unless they are retrieved and set back into their appropriate fields.
+{{% /notice %}}
 
 
 |Secret KEY name| <div style="width:290px"> Description </div>| A - Create your secrets ahead <br> of your cluster creation| B - Pass credentials in values.yaml| <div style="width:250px"> C - Neither A nor B - KEY name in default `pachyderm-bootstrap-config` secret </div>| 

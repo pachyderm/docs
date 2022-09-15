@@ -173,9 +173,9 @@ B
 Because you have three datums in each repo, Pachyderm exposes
 a total of nine combinations of datums to your code.
 
-!!! important
-    In cross pipelines, both `pfs/A` and `pfs/B`
-    directories are visible during each code run.
+{{% notice tip %}}
+In cross pipelines, both `pfs/A` and `pfs/B` directories are visible during each code run.
+{{%/notice %}}
 
 ```s
 Run 1: /pfs/A/1.txt

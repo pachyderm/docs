@@ -11,15 +11,20 @@ seriesPart:
 
 The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 
-!!! Reminder
+{{% notice note %}}
     **Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
+{{% /notice %}}
 
 This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/etc/helm/pachyderm).
 
-!!! Important "Before your start your installation process." 
-      - Refer to this generic page for more information on how to install and get started with `Helm`.
-      - Read our [infrastructure recommendations](../ingress/). You will find instructions on setting up an ingress controller, a TCP load balancer, or connecting an Identity Provider for access control. 
-      - If you are planning to install Pachyderm UI, read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of a DNS, an Ingress, and the activation of authentication.
+{{% notice tip %}}
+"Before your start your installation process.
+
+- Refer to this generic page for more information on how to install and get started with `Helm`.
+- Read our [infrastructure recommendations](../ingress/). You will find instructions on setting up an ingress controller, a TCP load balancer, or connecting an Identity Provider for access control. 
+- If you are planning to install Pachyderm UI, read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of a DNS, an Ingress, and the activation of authentication.
+{{%/notice %}}
+
 ## Install
 ### Prerequisites
 1. Install [`Helm`](https://helm.sh/docs/intro/install/). 

@@ -92,8 +92,9 @@ This step comes in 3 flavors:
 
    1. Update the [`transform.image`](../../../reference/pipeline-spec/#transform-required) field of your pipeline spec with your new tag.
    
-      !!! Important
-            Make sure to update your tag every time you re-build. Our pull policy is `IfNotPresent` (Only pull the image if it does not already exist on the node.). Failing to update your tag will result in your pipeline running on a previous version of your code.
+     {{% notice tip %}}
+      Make sure to update your tag every time you re-build. Our pull policy is `IfNotPresent` (Only pull the image if it does not already exist on the node.). Failing to update your tag will result in your pipeline running on a previous version of your code.
+      {{% /notice %}}
 
    1. Update the pipeline:
 

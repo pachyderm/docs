@@ -11,10 +11,13 @@ seriesPart:
 
 For a quick test installation of Pachyderm on GCP (suitable for development), jump to our [Quickstart page](../quickstart/).
 
-!!! Important "Before your start your installation process." 
-      - Refer to our generic ["Helm Install"](./helm-install.md) page for more information on how to install and get started with `Helm`.
-      - Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
-      - Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
+{{% notice tip %}} 
+Before your start your installation process.
+
+- Refer to our generic ["Helm Install"](./helm-install.md) page for more information on how to install and get started with `Helm`.
+- Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
+- Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
+{{% /notice %}}
     
 
 {{% notice warning %}}
@@ -29,7 +32,7 @@ The following section walks you through deploying a Pachyderm cluster on [Google
 In particular, you will:
 
 1. Make a few [client installations](#1-prerequisites) before you start.
-1. [Deploy Kubernetes](#2-deploy-kubernetes).
+2. [Deploy Kubernetes](#2-deploy-kubernetes).
 
  {{% notice warning %}}
  For users who want to use an existing cluster, make sure to enable [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). For users creating a new cluster, the script provided in this documentation takes care of it.
