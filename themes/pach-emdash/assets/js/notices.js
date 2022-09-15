@@ -2,9 +2,10 @@
 
 window.addEventListener ('click', function (event) {
     if (event.target.classList.contains('hide')) {
-        // remove the great grandparent of the element that was clicked
-        event.target.parentNode.parentNode.remove();
-
+        // grab the grandparent of the element that was clicked
+        var notice = event.target.parentNode.parentNode;
+        // hide the second element in the notice
+        notice.children[1].classList.toggle('is-hidden');
     }
 });
 
