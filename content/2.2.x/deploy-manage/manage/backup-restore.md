@@ -104,28 +104,32 @@ you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQ
     A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
     {{%/notice%}}
 
-    !!! Info "Here are some pointers to the relevant documentation"
+    {{% notice info %}} 
+    Here are some pointers to the relevant documentation
 
-         - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-         - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
-         - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
+   - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+   - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
+   - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
 
-         For on-premises Kubernetes deployments, check the vendor documentation
-         for your on-premises PostgreSQL for details on backing up and restoring your databases.
+   For on-premises Kubernetes deployments, check the vendor documentation
+   for your on-premises PostgreSQL for details on backing up and restoring your databases.
+    {{% /notice %}}
 
 - To back up the object store, you can either download all objects or
 use the object store provider’s backup method.  
     The latter is preferable since it will typically not incur egress costs.
 
-    !!! Info "Here are some pointers to the relevant documentation"
+    {{% notice info %}} 
+    Here are some pointers to the relevant documentation
 
-         - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-         - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
-         - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
+   - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+   - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
+   - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
 
-         For on-premises Kubernetes deployments, check the vendor documentation
-         for your on-premises object store for details on backing up and
-         restoring a bucket.
+   For on-premises Kubernetes deployments, check the vendor documentation
+   for your on-premises object store for details on backing up and
+   restoring a bucket.
+    {{% /notice %}}
 
 ### Resuming operations
 
@@ -153,8 +157,9 @@ Depending on your scenario, pick all or a subset of the following steps:
 - Create a new empty Kubernetes cluster and give it access to your databases and bucket
 - Deploy Pachyderm into your new cluster
 
-!!! Info
-    Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../../../deploy-manage/deploy/)
+{{% notice info %}}
+Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../../../deploy-manage/deploy/)
+{{% /notice %}}
 
 ### Restore The Databases And Objects
 
@@ -167,8 +172,9 @@ method (this is most straightforward when using a cloud provider).
 Finally, update the copy of your original Helm values to point Pachyderm to the new databases and the new object store, then use Helm to install
 Pachyderm into the new cluster.
 
-!!! Info
-    The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
+{{% notice info %}}
+The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
+{{%/notice %}}
 
 ### [Connect 'pachctl' To Your Restored Cluster](../../../deploy-manage/deploy/aws-deploy-pachyderm/#7-have-pachctl-and-your-cluster-communicate)
 
@@ -189,14 +195,16 @@ Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check 
 
 - [Pause the Enterprise Server](#suspend-operations) like you would pause a regular cluster by running `pachctl enterprise pause` (Enterprise users), or using `kubectl`.
 
-    !!! Note "kubectl users"
-         There is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
+    {{% notice info %}}
+    **Kubernetes Users**:
+   There is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
 
-         ```s
-         kubectl scale deployment pach-enterprise --replicas 0 
-         ``` 
+   ```s
+   kubectl scale deployment pach-enterprise --replicas 0 
+   ``` 
 
-         There is no need to pause all the Pachyderm clusters registered to the Enterprise Server to backup the enterprise server; however, pausing the Enterprise server will result in your clusters becoming unavailable.
+   There is no need to pause all the Pachyderm clusters registered to the Enterprise Server to backup the enterprise server; however, pausing the Enterprise server will result in your clusters becoming unavailable.
+    {{% /notice %}}
 
 - As a reminder, the Enterprise Server does not use any object-store. Therefore, the [backup of the Enterprise Server](#back-up-the-databases-and-the-object-store) only consists in backing up the database `dex`.
 

@@ -512,9 +512,9 @@ global:
     REVISION: 1
     ```
 
-    !!! Note "Important"
-        If RBAC authorization is a requirement or you run into any RBAC
-        errors see [Configure RBAC](rbac.md).
+    {{% notice warning %}}
+    If RBAC authorization is a requirement or you run into any RBAC errors see [Configure RBAC](rbac.md).
+    {{%/notice %}}
 
     It may take a few minutes for the pachd nodes to be running because Pachyderm
     pulls containers from DockerHub. You can see the cluster status with
@@ -603,5 +603,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyte
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% notice info %}}
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% /notice %}}

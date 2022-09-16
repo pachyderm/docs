@@ -37,8 +37,9 @@ we recommend that you:
     For instructions on deployment with TLS, 
     see [Deploy Pachyderm with TLS](../deploy-w-tls/).
 
-    !!! Note
+    {{% notice note %}}
         Optionally, you can use a certificate manager such as [cert-manager](https://cert-manager.io/docs/) to refresh certificates and inject them as kubernetes secrets into your cluster for the ingress and load balancer to use.
+    {{% /notice %}}
    
 * **Use Pachyderm authentication/authorization**
 
@@ -166,9 +167,11 @@ To have the ingress routes use the https protocol without enabling the cert secr
 
 As of today, few Ingress Controller offer full support of the gRPC protocol. To access `pachd` over gRPC (for example, when using `pachctl` or the s3Gateway, we recommend using a Load Balancer instead.
 
-!!! See "See Also" 
-     * Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
-     * Kubernetes [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
+{{% notice info %}}
+**See Also**: 
+* Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
+* Kubernetes [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
+{{% /notice %}}
 
 ### `LoadBalancer`
 You should load balance **all gRPC and S3 incoming traffic** to a TCP LB (load balanced at L4 of the OSI model) deployed in front of the `pachd` service. To automatically provision an external load balancer in your current cloud (if supported), enable the `externalService` field of the `pachd` service in your values.yaml as follow:

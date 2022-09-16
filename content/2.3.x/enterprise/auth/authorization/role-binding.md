@@ -112,16 +112,17 @@ In particular, we will:
     pach:root: [repoOwner]
     ```
 
-    !!! Note
-        Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
-        Pachyderm defines 4 prefixes depending on the type of user:
+    {{% notice note %}}
+    Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
+    Pachyderm defines 4 prefixes depending on the type of user:
 
-        - robot
-        - user
-        - group
-        - pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
+    - robot
+    - user
+    - group
+    - pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
 
-        Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
+    Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
+    {{%/notice %}}
 
 - **Finally, have `one-pachyderm-user@gmail.com` try to add a file to `testinput` without proper writing privileges:**
     ```s
@@ -136,8 +137,9 @@ In particular, we will:
     user:one-pachyderm-user@pachyderm.io is not authorized to perform this operation - needs permissions [REPO_WRITE] on REPO testinput
     ```
 
-!!! Info
+{{% notice info %}}
     Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
+{{% /notice %}}
 
 {{% notice note %}}
 
@@ -173,17 +175,17 @@ Let's keep using our Auth0 example as an illustration, and:
 1. Update our connector accordingly.
 1. Grant the group an owner access to a specific repo in Pachyderm.
 
-!!! Info
-    To enable the Group creation in Auth0, you will need to install an [`Authorization Extension`](https://auth0.com/docs/extensions/authorization-extension) to Auth0:
+{{%notice info %}}
+To enable the Group creation in Auth0, you will need to install an [`Authorization Extension`](https://auth0.com/docs/extensions/authorization-extension) to Auth0:
 
-    - Go to **Auth0 Dashboard > Extensions**.
-    - Select **Auth0 Authorization** and answer the prompt to install.
-    - Choose where you would like to store your data: **Webtask Storage** for this example and click **Install**
-    - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
-        - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
-        - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-        ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
-
+- Go to **Auth0 Dashboard > Extensions**.
+- Select **Auth0 Authorization** and answer the prompt to install.
+- Choose where you would like to store your data: **Webtask Storage** for this example and click **Install**
+- Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
+  - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
+  - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
+  ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
+{{% /notice %}}
 
 - 1- Group creation
 
@@ -273,5 +275,6 @@ Let's keep using our Auth0 example as an illustration, and:
     user:another-pachyderm-user@gmail.com: [repoReader]
     group:testgroup: [repoOwner]
     ```
-    !!! Info "Useful note"
-        The following command `pachctl auth get-groups` lists the groups that have been defined on your cluster.
+    {{% notice info %}}
+    The following command `pachctl auth get-groups` lists the groups that have been defined on your cluster.
+    {{%/notice %}}

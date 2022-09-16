@@ -115,8 +115,10 @@ For a non-S3 input in such a cross, you can still specify a glob pattern.
 and output repo writable, 
 input bucket(s) are read-only, and the output bucket is initially empty and writable. 
 
-!!! Note "See Also"
-    - [Configure Environment Variables](../../../deploy/environment-variables/)
-    - [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
-    - [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
-    - [Pipeline Specification](../../../../reference/pipeline-spec/#input)
+{{% notice info %}}
+**See Also **
+- [Configure Environment Variables](../../../deploy/environment-variables/)
+- [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
+- [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
+- [Pipeline Specification](../../../../reference/pipeline-spec/#input)
+{{%/notice %}}

@@ -537,9 +537,9 @@ Check the [list of all available helm values](../../../reference/helm-values/) a
     REVISION: 1
     ```
 
-    !!! note "Important"
-        If RBAC authorization is a requirement or you run into any RBAC
-        errors see [Configure RBAC](rbac.md).
+    {{% notice warning %}}
+    If RBAC authorization is a requirement or you run into any RBAC errors see [Configure RBAC](rbac.md).
+    {{% /notice %}}
 
     It may take a few minutes for the pachd nodes to be running because Pachyderm
     pulls containers from DockerHub. You can see the cluster status with

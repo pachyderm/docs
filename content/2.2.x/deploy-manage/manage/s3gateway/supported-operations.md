@@ -67,9 +67,9 @@ For example, let's create the `master` branch of the repo `test`.
       ```
       2021-04-26 22:46:08 master.test
       ```
-    !!! Note
-        Alternatively, You can also use the `pachctl list repo` command to view the
-        list of repositories. You should see the newly created repository in this list.
+    {{% notice note %}}
+     Alternatively, You can also use the `pachctl list repo` command to view the list of repositories. You should see the newly created repository in this list.
+     {{% /notice%}}
     
 
 ## Delete Bucket
@@ -239,5 +239,6 @@ For example, delete the file `test.csv` in the `HEAD` of the `master` branch of 
      ```
      delete: s3://master.raw_data/test.csv
      ```
-!!! Note "See Also:"
-    - [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
+{{% notice info %}}
+**See Also**: [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
+{{%/notice %}}

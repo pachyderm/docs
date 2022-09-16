@@ -99,8 +99,10 @@ The `Access Key` must equal the `Secret Key`.
 - You can create a cross of an S3-enabled input with a non-S3 input; For a non-S3 input in such a cross, you can still specify a glob pattern.
 - Input bucket(s) are read-only, and the output bucket is initially empty and writable. 
 
-!!! note "See Also"
-    - [Configure Environment Variables](../../../deploy/environment-variables/)
-    - [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
-    - [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
-    - [Pipeline Specification](../../../../reference/pipeline-spec/#input)
+{{% notice info %}}
+**See Also**:
+- [Configure Environment Variables](../../../deploy/environment-variables/)
+- [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
+- [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
+- [Pipeline Specification](../../../../reference/pipeline-spec/#input)
+{{% /notice %}}

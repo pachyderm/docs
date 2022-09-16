@@ -64,8 +64,9 @@ a users table, or training data for an ML model. Repos are easy to create
 and do not take much space when empty so do not worry about making
 tons of them.
 
-!!! Info
-    More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
+{{% notice info %}}
+More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
+{{%/notice %}}
 
 For this demo, we create a repo called `images` to hold the
 data we want to process:
@@ -106,8 +107,9 @@ Pachyderm, you write data to an explicit `commit`. Commits are immutable
 snapshots of your data which give Pachyderm its version control properties.
 You can add, remove, or update `files` in a given commit.
 
-!!! Info
-    More about the concept of [`Commit`](../../concepts/data-concepts/commit/#commit) in Pachyderm.
+{{% notice info %}}
+More about the concept of [`Commit`](../../concepts/data-concepts/commit/#commit) in Pachyderm.
+{{%/notice %}}
 
 Let's start by adding a file, in this case an image, to a new
 commit. We have provided some sample images for you that we host on
@@ -303,9 +305,9 @@ input repo (the HEAD commit) as well as **all future commits** that
 occur after the pipeline is created. Our repo already had a commit, so
 Pachyderm automatically launched a `job` to process that data.
 
-!!! Info
-    More about the concept of [`Job`](../../concepts/pipeline-concepts/job/#job) in Pachyderm.
-
+{{% notice info %}}
+More about the concept of [`Job`](../../concepts/pipeline-concepts/job/#job) in Pachyderm.
+{{% /notice %}}
 
 The first time Pachyderm runs a pipeline job, it needs to download the
 Docker image (specified in the pipeline spec) from the specified Docker

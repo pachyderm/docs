@@ -141,10 +141,11 @@ You now need to **give Pachyderm access to your bucket** either by:
 OR
 - Passing your AWS credentials (account ID and KEY) to your values.yaml when installing
 
-!!! Info
-      IAM roles provide finer grained user management and security
-      capabilities than access keys. Pachyderm recommends the use of IAM roles for production
-      deployments.
+{{% notice info %}}
+IAM roles provide finer grained user management and security
+capabilities than access keys. Pachyderm recommends the use of IAM roles for production
+deployments.
+{{%/notice %}}
 
 ### Add An IAM Role And Policy To Your Service Account
 
@@ -207,10 +208,11 @@ master keys. When creating a bucket for your Pachyderm cluster, you can set up e
 of them. Because Pachyderm requests that buckets do not include encryption
 information, the method that you select for the bucket is applied.
 
-!!! Info
-      Setting up communication between Pachyderm object storage clients and AWS KMS
-      to append encryption information to Pachyderm requests is not supported and
-      not recommended. 
+{{% notice info %}}
+Setting up communication between Pachyderm object storage clients and AWS KMS
+to append encryption information to Pachyderm requests is not supported and
+not recommended. 
+{{%/notice %}}
 
 To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html).
 
@@ -268,9 +270,10 @@ It is assumed that you are already familiar with RDS, or will be working with an
 
 ### Create An RDS Instance
 
-!!! Info 
-      Find the details of all the steps highlighted below in [AWS Documentation: "Getting Started" hands-on tutorial](https://aws.amazon.com/getting-started/hands-on/create-connect-postgresql-db/).
- 
+{{% notice info %}}
+Find the details of all the steps highlighted below in [AWS Documentation: "Getting Started" hands-on tutorial](https://aws.amazon.com/getting-started/hands-on/create-connect-postgresql-db/).
+{{% /notice %}}
+
 In the RDS console, create a database **in the region matching your Pachyderm cluster**. Choose the **PostgreSQL** engine and select a PostgreSQL version >= 13.3.
 
 Configure your DB instance as follows.

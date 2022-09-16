@@ -521,5 +521,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyte
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% notice tip %}}
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% /notice %}}

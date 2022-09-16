@@ -29,5 +29,6 @@ The usage of the flag is shown below:
    pachctl update pipeline -f <pipeline name> --push-images --registry <registry> --username <registry user>
    ```
 
-!!! Note
-      For more details on the `--push-images` flag, see [Update a Pipeline](../../pipeline-operations/updating-pipelines/#update-the-code-in-a-pipeline).
+{{% notice note %}}
+For more details on the `--push-images` flag, see [Update a Pipeline](../../pipeline-operations/updating-pipelines/#update-the-code-in-a-pipeline).
+{{%/notice %}}

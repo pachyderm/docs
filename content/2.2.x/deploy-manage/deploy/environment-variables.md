@@ -158,5 +158,6 @@ can connect to is Pachyderm itself. This is generally not recommended as very
 little of the Pachyderm API is idempotent, but in some specific cases it can be
 a viable approach.
 
-!!! Note "See Also"
-    - [transform.env](../../../reference/pipeline-spec/#transform-required)
+{{% notice info %}}
+**See Also**: [transform.env](../../../reference/pipeline-spec/#transform-required)
+{{% /notice %}}

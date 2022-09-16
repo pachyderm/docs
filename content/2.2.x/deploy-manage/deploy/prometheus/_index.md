@@ -71,7 +71,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
         In this case, it looks for anything with the label `suite: pachyderm` -
         which is by default associated with all Pachyderm resources.
 
-    !!! Note
+    {{% notice info %}}
             Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
             to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
             Let's take a quick look at this file:
@@ -90,6 +90,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
                 "targetPort": "prom-metrics"
                 }
             ```
+    {{% /notice %}}
     
 ## Port-Forward
 One last step before you can collect your metrics:
