@@ -1,4 +1,4 @@
-// create a window event listener that checks if the user selects an element with the class delete.
+// create a window event listener that checks if the user selects an element with the class hide.
 
 window.addEventListener ('click', function (event) {
     if (event.target.classList.contains('hide')) {

@@ -1,14 +1,14 @@
-const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c70');
-  
+const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c70')
+  // first value is app id, second is search only api key
   const search = instantsearch({
     indexName: 'pach_public',
     searchClient, 
     searchFunction(helper) {
       if (helper.state.query) {
-        helper.search();
+        helper.search()
       }
       if (!helper.state.query) {
-        document.querySelector('#hits').innerHTML = '';
+        document.querySelector('#hits').innerHTML = ''
       }
     },
   });
@@ -45,32 +45,31 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-1 m-1"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
         item: `
-<div class="stack darken-1 rounded-1 move-l sp-1">
-  <a href="{{relURI}}">
-    <div class="hit spread c-pinned-center is-full c-mr-1">
-      <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
-      <div class="stack c-mb-1">
-        <b class="xxs uppercase is-fit">{{parent}}</b>
-        <h3 class="is-fit s extra-bold">{{title}}</h3>
-        <div class="xs">{{description}}</div>
-      </div>
-    </div>
-  </a>
-  <div class="xxs spread-right c-black c-mt-1 c-mr-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
-</div>
-`
-              
+          <div class="stack darken-1 rounded-1 move-l sp-1">
+            <a href="{{relURI}}">
+              <div class="hit spread c-pinned-center is-full c-mr-1">
+                <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
+                <div class="stack c-mb-1">
+                  <b class="xxs uppercase is-fit">{{parent}}</b>
+                  <h3 class="is-fit s extra-bold">{{title}}</h3>
+                  <div class="xs">{{description}}</div>
+                </div>
+              </div>
+            </a>
+            <div class="xxs spread-right c-black c-mt-1 c-mr-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
+          </div>
+          `
       },
       transformData: {
         item: function(hit) {
-          hit.raw = JSON.stringify(hit, null, 2);
+          hit.raw = JSON.stringify(hit, null, 2)
             return hit;
         }
       }
     })
-  ]);
+  ])
   
-  search.start();
+  search.start()
 
 
 

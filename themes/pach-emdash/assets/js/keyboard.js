@@ -1,3 +1,5 @@
+// TODO: this is a WIP; ideally I'd like to be able to use the arrow keys to navigate between the pages in the site. I'm not sure how to do this yet.
+
 window.onload = function() {
     // get the list of links from the element with the id "arrowNav"
      let arrowNav = document.getElementById("arrowNav");

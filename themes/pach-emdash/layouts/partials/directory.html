@@ -6,56 +6,57 @@
         <div  class="sticky pt-5">
             <div class=""> 
                 {{with .Parent}}
-                    {{/* Displays current page's parent to return. */}}  
+                    {{/* Displays current page's parent for user to go back up one directory level . */}}  
                     <a href="{{ .RelPermalink }}" class="button black gradient-rl-cold sp-1 xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
                 {{end}}
                 {{ if eq .BundleType "branch"}}
-                    {{/* Do not show the relatedArticle button (id related-articles) on list pages */}}
+                    {{/* Does not show the relatedArticle button (id related-articles) on list pages */}}
                 {{else}}
                     {{ with site.RegularPages.RelatedIndices . "tags" }}
-                        {{/* Only show relatedArticle button if related articles exist. See https://gohugo.io/content-management/related/#readout */}}
+                        {{/* Only show relatedArticle button if related articles exist. 
+                        See https://gohugo.io/content-management/related/#readout */}}
                         <button id="see-related"class="button darken-1 grayscale xs sp-1 rounded-1">📌</button> 
                     {{end}}
                 {{end}}
              </div>
 
             <div class="slide">
+                {{/* Displays current page's children. */}}
                 <div class="is-full xs bold c-mt-1 c-ml-1 h-scroll">
                     <p class="p-1 outlined xs is-fit rounded-1"> Contents </p>
-                    {{/* Displays current page's children. */}}
-                {{ if (eq .Params.layout "glossary") }}
-                    {{/*  Don't display children if parent has layout:glossary  */}}
-                {{else if .Pages }}
-                {{ if eq .Kind "term"}}
-                    {{/* Don't display directory on taxonomy (.kind term) pages */}}
-                {{else }}
-                    {{ range sort .Pages "Weight" "$order"}}
-                        {{ if  .Params.hidden  }}
-                            {{/* Do not shot page if frontmatter hidden is TRUE */}}
-                        {{else}}
-                            <div> 
-                                <a href="{{ .RelPermalink }}" class="mt-2"> {{if .Pages}}├ {{else}} {{if .PrevInSection }} │ {{else}} └ {{end}}{{end}}{{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
-                            </div>
-                            {{/* Displays current page's grandchildren when navLevel feature is TRUE. */}}
-                            {{ if .Site.Params.navLevel }}
-                                {{ if (eq .Params.layout "glossary")}}
-                                    {{/*  Don't display grandchild children if parent has layout:glossary  */}}
-                                {{else if .Pages  }}
-                                    {{ range sort .Pages "Weight" "$order"}}
+                    {{ if (eq .Params.layout "glossary") }}
+                        {{/*  Does not display children if parent has layout:glossary  */}}
+                    {{else if .Pages }}
+                    {{ if eq .Kind "term"}}
+                        {{/* Does not display children children if parent is (.kind term) page */}}
+                    {{else }}
+                        {{ range sort .Pages "Weight" "$order"}}
+                            {{ if  .Params.hidden  }}
+                                {{/* Does not show page if frontmatter "hidden" is TRUE */}}
+                            {{else}}
+                                <div> 
+                                    <a href="{{ .RelPermalink }}" class="mt-2"> {{if .Pages}}├ {{else}} {{if .PrevInSection }} │ {{else}} └ {{end}}{{end}}{{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
+                                </div>
+                                {{/* Displays current page's grandchildren when navLevel feature is TRUE. */}}
+                                {{ if .Site.Params.navLevel }}
+                                    {{ if (eq .Params.layout "glossary")}}
+                                        {{/*  Don't display grandchild children if parent has layout:glossary  */}}
+                                    {{else if .Pages  }}
+                                        {{ range sort .Pages "Weight" "$order"}}
                                             <div class="thin"> 
                                                 <a href="{{ .RelPermalink }}" class="pl-2"> {{if .Pages}}
                                                 ├{{else}} {{if .PrevInSection }} │ {{else}} └ {{end}} {{end}} {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
                                             </div>
-                                        {{end}}
+                                            {{end}}
+                                        {{ end }}
                                     {{ end }}
                                 {{ end }}
-                            {{ end }}
+                            {{end}}
                         {{end}}
                     {{end}}
-                {{end}}
-                 {{if ne .Kind "section"}}                      
-                    {{partial "featureTOC" . }}
-                {{end}}          
+                    {{if ne .Kind "section"}}                      
+                        {{partial "featureTOC" . }}
+                    {{end}}          
                 </div>
                 <div class="is-full xs bold c-mt-1 c-ml-1">
                     {{partial "featureRelatedArticles" . }}

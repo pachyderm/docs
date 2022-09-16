@@ -1,5 +1,6 @@
-{{/* All parent pages (_index.md) are considered sections. See: https://gohugo.io/content-management/sections/ 
-    layout-section is an empty class for easier location; do not style against it.*/}}
+{{/* 
+    - All parent pages (_index.md) are considered sections. See: https://gohugo.io/content-management/sections/ 
+*/}}
 
 {{ define "main" }}
         {{ if .Site.Params.heroBanner.section}}
@@ -11,6 +12,7 @@
                         </p>
                     {{end}}
                         <p class="xxs hefty uppercase">
+                            {{/* Displays published date or last build date */}}
                             {{ if .Date }}
                                 {{ .Date | time.Format ":date_long" }} 
                             {{else}} 
@@ -19,7 +21,7 @@
                         </p> 
         </section>
         {{else}}
-            {{/* Don't show the hero section */}}
+            {{/* Does not show the hero section if disabled from config.yaml */}}
         {{end}}
         <section class="stack p-4">
             {{ partial "featureBetaNotice.html" . }}

@@ -1,6 +1,5 @@
 {{/* 
-    - All auto-generated list files use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
-    - layout-list is an empty class for easier location; do not style against it.
+    - Markdown pages with the frontmatter value "layout:glossary" use this template.
 */}}
 
 {{ define "main" }}
@@ -25,22 +24,23 @@
             <div class="pagination-list m-1 c-mt-1">
                 <div class="button black rounded-1 m-1 p-1 gradient-rl-cold xs uppercase bold"> Glossary Pages</div>
                 {{ range .Paginator.Pagers}}
-            
+                    {{/* Paginator Buttons */}}
                     <button data-pager="{{.}}" class="button black darken-3  p-1  mr-1 rounded-1 xxs" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
-            
                 {{end}}
             </div>
         </nav>
-        {{/* Paginator Pages are hidden and revealed with pagination.js */}}
+        {{/* Paginator Pages Starts Here */}}
         <section id="paginator">
             {{  range .Paginator.Pagers }}
+                {{/* Pages are hidden by default and revealed with pagination.js  */}}
                 <section id="{{.}}" class="mt-4 is-hidden">
                     {{ range after 0 .Pages}}
                         {{ if  .Params.hidden }}
-                                {{/* Do not show the hidden child page or its descendants */}}
+                            {{/* Does not show the hidden child pages or their descendants */}}
                         {{else}}
                             <a class="spread-left m-4" href="{{.Permalink}}">
-                                <div class="is-two-fifths"> 
+                                <div class="is-two-fifths">
+                                    {{/* Display title or humanized file's basename (e.g, for pachctl refs) */}}
                                     <h4> 
                                         {{if .Title}}
                                             {{ strings.TrimPrefix "Pachctl" .Title}}
@@ -51,10 +51,11 @@
                                 </div>
                                 <div class="black darken-3 rounded-1 c-sp-1">
                                     <p class="xs"> 
+                                        {{/* Display description or a truncated summary  */}}
                                         {{ if .Description}}
                                             {{.Description}}
                                         {{else }}
-                                            {{.Summary}}
+                                            {{.Summary | truncate 100}}
                                         {{end}}
                                     </p>
                                 </div>

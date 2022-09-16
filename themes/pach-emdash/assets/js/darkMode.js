@@ -4,11 +4,10 @@ function darkMode() {
 
     // Toggle dark mode for html element 
     body.classList.toggle("black");
+    // Toggle grayscale for darkmode button (moon icon)
     button.classList.toggle("grayscale");
-
    // Store the current theme in local storage
     localStorage.setItem("theme-dark-mode", body.classList.contains("black"));
-
 }
 
 // Check if the user has previously selected dark mode

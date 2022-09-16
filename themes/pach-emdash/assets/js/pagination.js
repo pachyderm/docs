@@ -10,8 +10,6 @@ currentPager = paginator.children[0]
       lastVisiblePager.classList.toggle('is-hidden');
       currentPager = document.getElementById(pager)
       currentPager.classList.toggle('is-hidden');
-
    }
-
 }
 

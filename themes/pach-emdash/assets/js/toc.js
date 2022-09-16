@@ -1,7 +1,7 @@
 function styleTOC(){
-    var zzz = document.getElementById('zzz');
-    var pageNodes = document.getElementsByTagName('*');
-    var headings = [];
+    var zzz = document.getElementById('zzz')
+    var pageNodes = document.getElementsByTagName('*')
+    var headings = []
     var toc = []
 
     if (zzz) {
@@ -9,51 +9,47 @@ function styleTOC(){
      // Get every header in the document
 
     for (var i = 0; i < pageNodes.length; i++) {
-        var node = pageNodes[i];
+        var node = pageNodes[i]
         if (node.nodeType == 1) {
-            var nodeName = node.nodeName.toLowerCase();
+            var nodeName = node.nodeName.toLowerCase()
             if (nodeName == 'h2' || nodeName == 'h3') {
-                headings.push(node);
+                headings.push(node)
             }
         }
     }
 
- 
     // Create a TOC from the headings, build links, and apprend to the TOC div found in featureTOC.html 
    
     for (var i = 0; i < headings.length; i++) {
         var heading = headings[i].nodeName
-        var headingText = headings[i].innerText;
+        var headingText = headings[i].innerText
 
         // remove the ' # ' from the heading text
-        var headingText = headingText.replace(/#/g, '');
-        var li = document.createElement('li');
-        var link = document.createElement('a');
+        var headingText = headingText.replace(/#/g, '')
+        var li = document.createElement('li')
+        var link = document.createElement('a')
 
-        li.classList.add('spread-left','xs', 'c-mb-1');
-
+        li.classList.add('spread-left','xs', 'c-mb-1')
         link.href = '#' + headings[i].id
         link.role = headings[i].id;
 
-
         if (headingText.length > 25) {
-            link.innerText =  headingText.substring(0, 25) + '...';
+            link.innerText =  headingText.substring(0, 25) + '...'
         } else {
              link.innerText = headingText;
         }
-        link.classList.add( );
+        link.classList.add( )
         if (heading == 'H3') {
-            link.classList.add('ml-1', 'is-fit','thin');
+            link.classList.add('ml-1', 'is-fit','thin')
         }
 
-        li.appendChild(link);
-        toc.push(link);
-        zzz.appendChild(li);
+        li.appendChild(link)
+        toc.push(link)
+        zzz.appendChild(li)
     }
 
+    // if scrolls past a header, add 's' class (font size) to the header and remove it from the previous header
 
-
-// if scrolls past a header, add is-medium class to the header and remove it from the previous header
     window.addEventListener('scroll', function() {
         var prevHeader = null; 
         var activeHeader = new Set() 
@@ -61,21 +57,19 @@ function styleTOC(){
             if (window.scrollY > headings[i].offsetTop - 100) {
                 activeHeader = headings[i];
                 if (activeHeader.id == toc[i].role) {
-                    toc[i].classList.add('s');
+                    toc[i].classList.add('s')
      
                 } 
             } 
         }
         for (var i =0; i < toc.length; i++) {
             if (toc[i].classList.contains('s') && toc[i].role != activeHeader.id) {
-                toc[i].classList.remove('s');
+                toc[i].classList.remove('s')
             }
         }
-    });
+    })
     }
 
 }
 
-
-
-styleTOC();
+styleTOC()

@@ -1,8 +1,8 @@
 {{/* 
-    - The Series template functions like a list page, but is specific to the "series" taxonomy.
-    - layout-series is an empty class for easier location; do not style against it.  
+    - The series template functions like a list page, but is specific to the "series" taxonomy.
+    - Series pages are ordered by the "seriesPart" parameter, which is a number.
+    - Markdown pages should not have more than one "series" tag value. 
 */}}
-
 
 {{ define "main" }}
     {{ $order := "asc"}}

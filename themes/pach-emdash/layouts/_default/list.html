@@ -1,6 +1,5 @@
 {{/* 
-    - All auto-generated list files use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
-    - layout-list is an empty class for easier location; do not style against it.
+    - All auto-generated list pages use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
 */}}
 
 {{ define "main" }}
@@ -12,7 +11,7 @@
             </div>
         </section>
         {{else}}
-        {{/* Don't show the hero section */}}
+            {{/* Does not show the hero section if turned off in config.yaml */}}
         {{end}}
         {{if .Content}}
             <section class="content"> 
@@ -23,15 +22,15 @@
         <section id="tags" class="spread-left mt-3"> 
                 {{ range sort .Pages "Weight" "$order"}}
                     {{ if  .Params.hidden }}
-                        {{/* Do not show the hidden child page or its descendants */}}
+                        {{/* Does not show hidden child pages or their descendants */}}
                     {{else}}
+                        {{/* versionNumber class is used by tagsResultsFilteredByVersion.js to focus results */}}
                         <div class="is-one-third {{ partial "versionNumber" . }}">
                             <a class="" href="{{ .Permalink }}">
                                     <div class="black darken-3 c-my-2 rounded-1 m-2 p-1">
                                         <h4 class="m"> {{ .Title}}</h4>
-                                        {{partial "versionNumber" . }}
                                         {{if .Pages}} <div class="outlined p-1 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
-                                        <p> {{.Summary | truncate 300 }} </p>
+                                        <p> {{.Summary | truncate 150 }} </p>
                                     </div>
                             </a>
                         </div>

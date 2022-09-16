@@ -1,12 +1,12 @@
 {{/* 
-    - All child pages without children are considered single pages. See: https://gohugo.io/content-management/page-bundles/ 
-    - layout-single is an empty class for easier location; do not style against it.
+    - All child pages without children are single pages. See: https://gohugo.io/content-management/page-bundles/ 
 */}}
 
 {{ define "main" }}
 <div class="is-four-fifths is-fullsize-mobile">
     {{ if .Site.Params.heroBanner.single}}
         <section class="black gradient-rl-cold py-3 m-1 rounded-1 c-sp-1">
+                {{/* Displays a series button if page is part of a series collection  */}}
                 {{ partial "featureSeriesButton.html" . }}
                 <h1>{{.Title}}</h1>
                 {{ if .Description}}
@@ -15,6 +15,7 @@
                     </p>
                 {{end}}
                 <p class="xxs hefty uppercase">
+                    {{/* Displays published date or last build date */}}
                     {{ if .Date }}
                         {{ .Date | time.Format ":date_long" }} 
                     {{else}} 
@@ -23,15 +24,15 @@
                 </p> 
         </section>
     {{else}}
-        {{/* Don't show the hero section */}}
+        {{/* Does not show the hero section if disabled from config.yaml */}}
     {{end}}
     <section class="content p-4">
         {{ partial "featureBetaNotice.html" . }}
         {{ .Content }}
     </section>
     {{ partial "featureNextPrev.html" . }}
-    <section>
-         {{ partial "featureGiscus.html" . }}
+    <section id="comments">
+        {{ partial "featureGiscus.html" . }}
     </section>
 
 </div>
