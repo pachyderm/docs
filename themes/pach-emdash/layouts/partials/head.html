@@ -13,13 +13,15 @@
     {{ $defaultCss := slice $defaultEmdash | resources.Concat "css/defaultBundle.css"}}
     <link rel="stylesheet" href="{{ $defaultCss.Permalink }}" media="screen" />
 {{else}}
+    {{/*  themes/pach-emdash/assets/css/..  */}}
     {{ $algolia := resources.Get "css/algolia.css" | resources.Minify }}
     {{ $emdash := resources.Get "css/emdash.css" | resources.Minify }}
     {{ $font := resources.Get "css/font.css" | resources.Minify }}
-    {{/*  {{ $brand := resources.Get "css/brand.css" | resources.Minify }}  */}}
+    {{/*  Aggregates minified css into one resource  */}}
     {{ $css := slice $emdash $font | resources.Concat "css/bundle.css"}}
     <link rel="stylesheet" href="{{ $css.Permalink }}" media="screen" />
 {{end}}
-
-    <script defer="" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
-    <script defer="" src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>
+    
+{{/*  Algolia scripts  */}}
+<script defer="" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>

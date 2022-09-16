@@ -1,8 +1,9 @@
 {{ if .Site.Params.relatedArticles }}
     <section id="related-articles"> 
         {{ if eq .BundleType "branch"}}
-        {{/*Show nothing*/}}
+            {{/* Does not display on page bundles (_index.md) */}}
         {{else}}
+            {{/* See Related Content: https://gohugo.io/content-management/related/#relatedindices-page-indice1-indice2  */}}
             {{ $related := site.RegularPages.RelatedIndices . "tags"   }}
             {{ with $related }}
                 <p class="p-1 outlined xs is-fit rounded-1"> Related Articles</p>

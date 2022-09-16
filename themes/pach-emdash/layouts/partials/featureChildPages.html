@@ -1,4 +1,6 @@
-{{/* Displays cards with child page titles, their total count, a description or summary, and optionally quick buttons to the first 7 children. */}}
+{{/* 
+    - Displays child pages with titles, descriptions/summaries, & links to up to 7 children (or a count of children) 
+*/}}
 
 
 {{ if .Site.Params.childPages.display}}
@@ -12,29 +14,31 @@
                         <div class="rounded-1  mr-1 my-1 p-1 move-u">
                             <a href="{{.Permalink}}">
                                 <h3 class="m">{{.Title}} <b class="s">></b></h3>
-                            {{if .Description}}
-                                <p class="subtitle-1">{{.Description}}</p>
-                                {{else}}
-                                <p class="subtitle-1">{{.Summary | truncate 100}}</p>
-                            {{end}}
-                            </a>
-                            {{if eq .Params.label "required"}}
-                                        <div class="label black">REQUIRED</div>
-                                    {{else if eq .Params.label "optional"}}
-                                        <div class="label white">OPTIONAL</div>
+                                    {{if .Description}}
+                                        <p class="subtitle-1">{{.Description}}</p>
+                                    {{else}}
+                                        <p class="subtitle-1">{{.Summary | truncate 100}}</p>
                                     {{end}}
+                            </a>
+                            {{/*  Displays the value of the "required" frontmatter attribute if present  */}}
+                            {{if eq .Params.label "required"}}
+                                <div class="label black">REQUIRED</div>
+                            {{else if eq .Params.label "optional"}}
+                                <div class="label white">OPTIONAL</div>
+                            {{end}}
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left mb-3">
                                     {{ range first 7 .Pages }}
-                                    <a class="button outlined p-1  mt-1 mr-1 xs is-fit rounded-1" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 20}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
-                                    </a>
+                                        <a class="button outlined p-1  mt-1 mr-1 xs is-fit rounded-1" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 20}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                        </a>
                                     {{ end }}
                                     {{if .Pages}}
-                                    <a class="button black darken-1 p-1 mt-1 mr-1 xs is-fit rounded-1" href="{{ .Permalink }}"> View All </a>
+                                        <a class="button black darken-1 p-1 mt-1 mr-1 xs is-fit rounded-1" href="{{ .Permalink }}"> View All </a>
                                     {{else}} 
                                     {{end}}
                                 </div>
                             {{else}}
+                                {{/*  Displays a count of child articles if grandchildren are disabled in config.yaml  */}}
                                 <div class="label black darken-1"> {{ len (.Pages) }} articles</div>  
                             {{end}}
                             </div>

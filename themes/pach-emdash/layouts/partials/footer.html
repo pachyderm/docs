@@ -1,5 +1,8 @@
-
-  {{$toc := resources.Get "js/toc.js"  | resources.Minify  }}
+{{/*  
+- themes/pach-emdash/assets/js 
+- each one is minified
+*/}}
+  {{ $toc := resources.Get "js/toc.js"  | resources.Minify  }}
   {{ $clippy := resources.Get "js/clipboard.js"  | resources.Minify }}
   {{ $relatedArticles := resources.Get "js/relatedArticles.js"  | resources.Minify }}
   {{ $darkMode := resources.Get "js/darkMode.js" | resources.Minify   }}
@@ -11,10 +14,11 @@
   {{ $algolia := resources.Get "js/algolia.js"  | resources.Minify  }}
   {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
 
-
+  {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
   {{ $js := slice $darkMode $toc $mermaid $clippy $notices $relatedArticles $pagination $explore $tags $keyboard | resources.Concat "js/bundle.js"}}
 
 <footer class="stack-center black mt-6 p-6">
+    {{/*  Algolia must remain separate due to module type  */}}
     <script src="{{ $algolia.Permalink }}" type="module"></script>
     <script src="{{ $js.Permalink }}" ></script>
     {{if .Params.mermaid}}
@@ -22,15 +26,15 @@
       <script src="{{ $mermaid.Permalink }}" ></script>
     {{else}}
     {{end}}
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <section class="columns"> 
+    <section class="spread"> 
     {{if .IsHome}}
       {{/* Dont add the directory column */}}
     {{else}}
-    <div class="column is-one-fifth is-hidden-mobile"> </div>
+      {{/*  Empty div is used to center footer logo with article on desktop */}}
+      <div class="is-one-fifth is-hidden-mobile"> </div>
     {{end}}
-    <div class="column"> 
+    <div> 
         <div class="content has-text-centered">
           <a href="https://pachyderm.com">
             <img src="{{ .Site.Params.logos.footer }}" alt="{{ .Site.Params.title }}" width="100px" height="100px" loading="lazy" />
