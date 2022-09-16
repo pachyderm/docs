@@ -4,7 +4,7 @@ title:  Troubleshooting Deployments
 description: Learn how to troubleshoot deployments of Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["deployment"]
 series:
 seriesPart:
 ---

@@ -1,18 +1,15 @@
 ---
 # metadata # 
-title:  Language Clients
+title:  Language Clients (SDKs)
 description: Learn about Pachyderm's language clients. 
 date: 
 # taxonomy #
-tags: 
+tags: ["sdks", "golang", "python", "javascript"]
 series:
 seriesPart:
 ---
 
-`pachctl` is the command-line tool you use 
-to interact with a Pachyderm cluster in your terminal. 
-However,  external applications might need to
-interact with Pachyderm directly through our APIs.
+`pachctl` is the command-line tool you use  to interact with a Pachyderm cluster in your terminal. However,  external applications might need to interact with Pachyderm directly through our APIs.
 
 In this case, Pachyderm offers language specific SDKs in Go, Python, and JS.
 

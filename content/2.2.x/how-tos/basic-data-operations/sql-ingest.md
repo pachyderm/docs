@@ -4,7 +4,7 @@ title: SQL Ingest
 description: Learn how to set up the SQL Ingest Tool to import data into Pachyderm.
 date: 
 # taxonomy #
-tags: ["sql","ingest"]
+tags: ["sql","ingest", "data operations"]
 series:
 seriesPart:
 ---

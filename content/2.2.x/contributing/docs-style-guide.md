@@ -4,7 +4,7 @@ title: Documentation Style Guide
 description: Learn how to contribute content to Pachyderm's documentation. 
 date: 
 # taxonomy #
-tags: 
+tags: ["developers"]
 series:
 seriesPart:
 --- 

@@ -4,7 +4,7 @@ title: Deploy
 description: Learn how to deploy the Enterprise edition of Pachyderm.
 date: 
 # taxonomy #
-tags: ["enterprise"]
+tags: ["enterprise", "deployment"]
 series:
 seriesPart:
 ---

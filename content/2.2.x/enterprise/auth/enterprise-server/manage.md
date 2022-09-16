@@ -4,7 +4,7 @@ title: Server Management
 description: Learn how to manage your Pachyderm Enterprise server. 
 date: 
 # taxonomy #
-tags: 
+tags: ["enterprise", "management", "helm"]
 series:
 seriesPart:
 ---

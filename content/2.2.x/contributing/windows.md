@@ -4,7 +4,7 @@ title: Develop on Windows with VSCode
 description: Learn how to set up your Windows machine to contribute to Pachyderm via VS code.
 date: 
 # taxonomy #
-tags: 
+tags: ["windows", "developers"]
 series:
 seriesPart:
 --- 

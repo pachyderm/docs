@@ -4,7 +4,7 @@ title: Okta
 description: Learn how to authenticate with Okta.
 date: 
 # taxonomy #
-tags: 
+tags: ["connectors", "identity providers", "management", "integrations"]
 series:
 seriesPart:
 ---

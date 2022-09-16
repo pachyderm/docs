@@ -4,7 +4,7 @@ title: Manage Commits & Delete Data
 description: Learn how to delete and squash commits. 
 date: 
 # taxonomy #
-tags: 
+tags: ["data operations"]
 series:
 seriesPart:
 ---

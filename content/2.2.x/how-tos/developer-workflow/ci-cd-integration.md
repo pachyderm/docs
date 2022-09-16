@@ -4,7 +4,7 @@ title: CI/CD Workflows
 description: Learn how to incorporate Pachyderm into your overall CI/CD workflows.
 date: 
 # taxonomy #
-tags: 
+tags: ["workflows"]
 series:
 seriesPart:
 ---

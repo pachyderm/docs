@@ -4,7 +4,7 @@ title: Local Installation
 description: Learn how to install Pachyderm locally using your favorite container solution.
 date:
 # taxonomy #
-tags:
+tags: ["deployment"]
 series:
 seriesPart:
 ---

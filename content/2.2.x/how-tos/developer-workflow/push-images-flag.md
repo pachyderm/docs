@@ -4,7 +4,7 @@ title: The Push Images Flag
 description: Learn how to use the --push-images flag to accelerate pipeline development speed.
 date: 
 # taxonomy #
-tags: 
+tags: ["workflows"]
 series:
 seriesPart:
 ---

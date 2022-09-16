@@ -4,7 +4,7 @@ title:  Troubleshooting Pipelines
 description: Learn how to troubleshoot Pachyderm pipelines.
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines"]
 series:
 seriesPart:
 ---

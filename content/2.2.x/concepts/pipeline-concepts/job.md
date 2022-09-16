@@ -4,7 +4,7 @@ title: Job
 description: Learn about the concept of a Job in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines"]
 series:
 seriesPart:
 --- 

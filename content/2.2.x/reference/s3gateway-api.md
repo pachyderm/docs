@@ -4,7 +4,7 @@ title:  S3 Gateway API
 description: Learn about the operations exposed by Pachyderm's S3 Gateway API.
 date: 
 # taxonomy #
-tags: 
+tags: ["configuration", "s3"]
 series:
 seriesPart:
 ---

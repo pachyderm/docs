@@ -4,7 +4,7 @@ title: Group Input
 description: Learn about the concept of a group input in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["datums","pipelines", "data operations"]
 series:
 seriesPart:
 --- 

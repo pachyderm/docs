@@ -4,7 +4,7 @@ title: Export via Egress
 description: Learn how to push pipeline results to an external datastore using the egress pipeline spec attribute.
 date: 
 # taxonomy #
-tags: ["egress"]
+tags: ["egress", "data operations"]
 series:
 seriesPart:
 ---

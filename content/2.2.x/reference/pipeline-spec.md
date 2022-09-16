@@ -4,7 +4,7 @@ title:  Pipeline Specification
 description: Learn about the different attributes of a pipeline spec. 
 date: 
 # taxonomy #
-tags: 
+tags: ["pipelines"]
 series:
 seriesPart:
 ---
