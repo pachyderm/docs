@@ -55,7 +55,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
                 <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
                 <div class="stack c-mb-1">
                   <b class="s uppercase is-fit">{{parent}}</b>
-                  <h3 class="is-fit m  extra-bold">{{title}}</h3>
+                  <h3 class="is-fit m extra-bold">{{title}}</h3>
                   <div class="xs">{{description}}</div>
                 </div>
               </div>
