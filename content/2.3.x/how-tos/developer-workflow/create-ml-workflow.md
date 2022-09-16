@@ -4,7 +4,7 @@ title: Create a Machine Learning Workflow
 description: Learn how to incorporate Pachyderm into your Machine Learning workflows.
 date: 
 # taxonomy #
-tags: 
+tags: ["workflows"]
 series:
 seriesPart:
 ---

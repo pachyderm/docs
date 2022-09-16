@@ -4,7 +4,7 @@ title: Identity Providers
 description: Learn how to enable users to log in to Pachyderm using their preferred identity provider. 
 date: 
 # taxonomy #
-tags: 
+tags: ["identity providers", "permissions", "management", "integrations"]
 series:
 seriesPart:
 ---

@@ -4,7 +4,7 @@ title: Mount a Volume in a Pipeline
 description: Learn how to mount local or network-attached storage and use its data in Pachyderm pipelines
 date: 
 # taxonomy #
-tags: 
+tags: ["data-operations"]
 series:
 seriesPart:
 ---

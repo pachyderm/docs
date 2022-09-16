@@ -4,7 +4,7 @@ title: Egress To An SQL Database
 description: Learn how to use data egress to end data to an SQL database. 
 date: 
 # taxonomy #
-tags: 
+tags: ["sql", "data-operations", "export"]
 series:
 seriesPart:
 ---

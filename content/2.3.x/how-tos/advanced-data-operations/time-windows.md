@@ -4,7 +4,7 @@ title: Analyze Time-Windowed Data
 description: Learn how to process historical data using time windows such as last 24 hours or the past 7 days.
 date: 
 # taxonomy #
-tags: 
+tags: ["data-operations"]
 series:
 seriesPart:
 ---

@@ -4,7 +4,7 @@ title: Server Setup
 description: Learn how to set up a Pachyderm enterprise server.
 date: 
 # taxonomy #
-tags: 
+tags: ["enterprise", "deployment", "helm"]
 series:
 seriesPart:
 ---

@@ -4,7 +4,7 @@ title: Permissions by Role
 description: 
 date: 
 # taxonomy #
-tags: 
+tags: ["permissions", "management"]
 series:
 seriesPart:
 ---

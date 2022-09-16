@@ -4,7 +4,7 @@ title: Manage Secrets
 description: Learn how to create and manage Kubernetes secrets in Pachyderm.
 date: 
 # taxonomy #
-tags: ["secrets"]
+tags: ["secrets", "management", "kubernetes"]
 series:
 seriesPart:
 ---

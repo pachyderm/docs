@@ -4,7 +4,7 @@ title: Export via Pachctl
 description: Learn how to export data using the pachctl get command. 
 date: 
 # taxonomy #
-tags: 
+tags: ["pachctl", "data-operations", "export"]
 series:
 seriesPart:
 ---

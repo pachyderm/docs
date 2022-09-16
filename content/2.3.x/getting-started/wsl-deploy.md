@@ -4,7 +4,7 @@ title:  Deploy on Windows
 description: Learn how to deploy Pachyderm locally on a Windows machine.
 date: 
 # taxonomy #
-tags: ["windows"]
+tags: ["windows", "deployment"]
 series:
 seriesPart:
 ---

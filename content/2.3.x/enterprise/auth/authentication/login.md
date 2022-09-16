@@ -4,7 +4,7 @@ title: Authentication Flows
 description: Learn how to log in to a cluster as an IDP user. 
 date: 
 # taxonomy #
-tags: 
+tags: ["workflows", "permissions", "management"]
 series:
 seriesPart:
 ---

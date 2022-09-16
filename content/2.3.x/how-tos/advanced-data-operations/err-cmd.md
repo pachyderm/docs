@@ -4,7 +4,7 @@ title: Skip Failed Datums
 description: Learn how to skip failed datums to prevent jobs from fully failing.
 date: 
 # taxonomy #
-tags: ["datums"]
+tags: ["datums", "data-operations"]
 series:
 seriesPart:
 ---

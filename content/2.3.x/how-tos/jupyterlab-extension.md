@@ -4,7 +4,7 @@ title:  Pachyderm JupyterLab Mount Extension
 description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm.
 date: 
 # taxonomy #
-tags: ["integrations", "jupyterlab"]
+tags: ["integrations", "jupyterlab", "notebooks"]
 series:
 seriesPart:
 weight: 

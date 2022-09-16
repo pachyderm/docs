@@ -4,7 +4,7 @@ title:  Beginner Tutorial
 description: Learn how to quickly ingest photos, trace their outlines, and output a collage using the transformed data in Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags: ["tutorials"]
 series: ["onboarding"]
 seriesPart: 2
 ---

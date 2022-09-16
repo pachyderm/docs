@@ -4,7 +4,7 @@ title: Role Binding
 description: Learn how to grant and modify permissions on given resources for an IDP or robot  user.
 date: 
 # taxonomy #
-tags: 
+tags: ["permissions", "management"]
 series:
 seriesPart:
 ---
