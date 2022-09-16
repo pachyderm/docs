@@ -46,7 +46,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         list: ['spread-left','brighten-1', 'rounded-1', 'brighten-1', 'is-fullsize-mobile'],
         item: ['is-half', 'is-fullsize-mobile'] },
       templates: {
-        empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-1 m-1"> <div class=" text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
+        empty: `<div class="hit spread mt-5 pinned-top is-full brighten-1 rounded-1 c-sp-1 m-1"> <div class=" text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
         item: `
           <div class="stack darken-1 rounded-1 move-l sp-1">
