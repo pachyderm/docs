@@ -32,7 +32,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
     
     }),
     instantsearch.widgets.configure({
-      hitsPerPage: 8,
+      hitsPerPage: 5,
     }),
     instantsearch.widgets.hits({
       container: '#hits',
@@ -44,16 +44,21 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-1 m-1"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
-        item: `<div class="hit spread c-pinned-center is-full darken-1 rounded-1 c-m-1 m-1 move-l"<a href="{{relURI}}">
-        <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
-                <div class="stack">
-                 <b class="xxs uppercase is-fit">{{parent}}</b>
-                  <h3 class="is-fit s extra-bold">{{title}}</h3>
-                  <div class="xs">{{description}}</div>
-                </div>
-                </a>
-                <div class="xxs stack-right is-fit c-black c-m-1 c-fit">{{#tags}} <a href="/tags/{{.}}">{{.}}</a>{{/tags}}</div>
-              </div>`
+        item: `
+<div class="stack darken-1 rounded-1 move-l sp-1">
+  <a href="{{relURI}}">
+    <div class="hit spread c-pinned-center is-full c-mr-1">
+      <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
+      <div class="stack c-mb-1">
+        <b class="xxs uppercase is-fit">{{parent}}</b>
+        <h3 class="is-fit s extra-bold">{{title}}</h3>
+        <div class="xs">{{description}}</div>
+      </div>
+    </div>
+  </a>
+  <div class="xxs spread-right c-black c-mt-1 c-mr-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
+</div>
+`
               
       },
       transformData: {
@@ -66,3 +71,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
   ]);
   
   search.start();
+
+
+
+

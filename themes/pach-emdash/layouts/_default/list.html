@@ -20,15 +20,16 @@
             </section>
         {{end}}
 
-        <section class="spread-left mt-3"> 
+        <section id="tags" class="spread-left mt-3"> 
                 {{ range sort .Pages "Weight" "$order"}}
                     {{ if  .Params.hidden }}
                         {{/* Do not show the hidden child page or its descendants */}}
                     {{else}}
-                        <div class="is-one-third">
+                        <div class="is-one-third {{ partial "versionNumber" . }}">
                             <a class="" href="{{ .Permalink }}">
                                     <div class="black darken-3 c-my-2 rounded-1 m-2 p-1">
                                         <h4 class="m"> {{ .Title}}</h4>
+                                        {{partial "versionNumber" . }}
                                         {{if .Pages}} <div class="outlined p-1 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
                                         <p> {{.Summary | truncate 300 }} </p>
                                     </div>
