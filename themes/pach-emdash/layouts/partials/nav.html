@@ -12,7 +12,10 @@
       <div class="button is-fit hefty xs rounded-1"> <b>docs</b></div>
     </div>
     <div class="spread-right mr-2 c-rounded-1">
+      {{if .IsHome}}
+      {{else}}
       <div id="searchbox" class=""> </div>
+      {{end}}
       {{ if .Site.Params.versionDropdown }}
         <button class="dropdown black is-fit grayscale bold sp-1"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
           <div class="dropdown-content mt-4">

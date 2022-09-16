@@ -12,6 +12,7 @@
   {{ $mermaid := resources.Get "js/mermaid.js"  | resources.Minify  }}
   {{ $keyboard := resources.Get "js/keyboard.js"  | resources.Minify  }}
   {{ $algolia := resources.Get "js/algolia.js"  | resources.Minify  }}
+  {{ $algoliaHomePage := resources.Get "js/algoliaHomePage.js"  | resources.Minify  }}
   {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
 
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
@@ -19,7 +20,11 @@
 
 <footer class="stack-center black mt-6 p-6">
     {{/*  Algolia must remain separate due to module type  */}}
-    <script src="{{ $algolia.Permalink }}" type="module"></script>
+    {{if .IsHome}}
+      <script src="{{ $algoliaHomePage.Permalink }}" type="module"></script>
+    {{else}}}
+      <script src="{{ $algolia.Permalink }}" type="module"></script>
+    {{end}}
     <script src="{{ $js.Permalink }}" ></script>
     {{if .Params.mermaid}}
       {{ partial "mermaid.html" . }}

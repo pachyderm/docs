@@ -16,8 +16,17 @@
     </div>
   
     {{ partial "featureCommunityDetails.html" . }}
+
+    <div class="stack m-4">
+        <h2 class="text-center mt-3">Explore</h2>
+        <div id="searchbox" class=""> </div>
+    </div>
+    <div id="hits">
+        
+    </div>
+
     
-    <div class="stack-center mt-5 text-center">
+    {{/*  <div class="stack-center mt-5 text-center">
         <h2>Design, Build, & Deploy <br>  Data Transformation Pipelines</h2>
     </div>
     {{with  .Site.GetPage "section" .Site.Params.releaseInfo.latest  }}
@@ -26,7 +35,7 @@
         </section>
     {{end}}
 
-    {{ partial "featureVideos.html" . }}
+    {{ partial "featureVideos.html" . }}  */}}
 
 {{end}}
 

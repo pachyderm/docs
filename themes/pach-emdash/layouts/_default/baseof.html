@@ -8,7 +8,11 @@
     {{ partial "head.html" . }}
     <body class="stack"> 
                 {{ partial "nav.html" . }}
-                {{ partial "algoliaHits" . }}  
+                {{ if .IsHome}}
+                  {{/*  See index.html default layout for homepage algolia hits  */}}
+                {{else}}
+                  {{ partial "algoliaHits" . }}  
+                {{end}}
         <main class="spread theme-fade-in">
                 {{ partial "directory.html" .}}   
             <article class="content">
