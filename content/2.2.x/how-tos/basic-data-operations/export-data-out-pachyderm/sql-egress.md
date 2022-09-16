@@ -4,7 +4,7 @@ title: SQL Egress
 description: Learn how to egress data to an SQL database.
 date: 
 # taxonomy #
-tags: ["sql", "egress", "data operations"]
+tags: ["sql", "egress", "data-operations"]
 series:
 seriesPart:
 ---

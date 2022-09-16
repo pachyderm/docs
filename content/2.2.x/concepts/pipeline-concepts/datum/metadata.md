@@ -4,7 +4,7 @@ title: Metadata
 description: Learn about the concept of metadata in Pachyderm. 
 date: 
 # taxonomy #
-tags: ["datums","pipelines", "data operations"]
+tags: ["datums","pipelines", "data-operations"]
 series:
 seriesPart:
 --- 

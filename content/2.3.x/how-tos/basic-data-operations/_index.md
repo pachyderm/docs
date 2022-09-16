@@ -4,7 +4,7 @@ title: Basic Data Operations
 description:  Learn how to mount, ingest, push, pull, and expose data with Pachyderm.
 date: 
 # taxonomy #
-tags: ["data operations"]
+tags: ["data-operations"]
 series:
 seriesPart:
 ---

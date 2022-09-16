@@ -4,7 +4,7 @@ title:  Troubleshooting Guides
 description: Learn how to resolve issues with deploying, configuring, or running Pachyderm.
 date: 
 # taxonomy #
-tags: ["2.3.x"]
+tags: 
 series:
 seriesPart:
 # other # 

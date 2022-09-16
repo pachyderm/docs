@@ -4,7 +4,7 @@ title: Mount a Repo Locally
 description: Learn how to mount a repository as a local filesystem using the pachctl mount command. 
 date: 
 # taxonomy #
-tags: ["data operations"]
+tags: ["data-operations"]
 series:
 seriesPart:
 ---

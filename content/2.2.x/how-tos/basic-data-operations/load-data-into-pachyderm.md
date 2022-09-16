@@ -4,7 +4,7 @@ title: Ingest Data
 description: Learn how to ingest data using the pachctl put command.
 date: 
 # taxonomy #
-tags: ["ingest", "data operations"]
+tags: ["ingest", "data-operations"]
 series:
 seriesPart:
 ---

@@ -4,7 +4,7 @@ title: Join Input
 description: Learn about the concept of a join input in Pachyderm. 
 date: 
 # taxonomy #
-tags: ["datums","pipelines", "data operations"]
+tags: ["datums","pipelines", "data-operations"]
 series:
 seriesPart:
 --- 

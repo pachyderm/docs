@@ -4,7 +4,7 @@ title: Datum Processing
 description: Learn about the concept of Datum Processing in Pachyderm. 
 date: 
 # taxonomy #
-tags: ["datums","pipelines", "data operations"]
+tags: ["datums","pipelines", "data-operations"]
 series:
 seriesPart:
 --- 

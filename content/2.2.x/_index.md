@@ -4,7 +4,7 @@ title:  2.2.x
 description: Pachyderm Version 2.2.x 
 date: 
 # taxonomy #
-tags: ["2.2.x"]
+tags:
 series:
 seriesPart:
 ---
