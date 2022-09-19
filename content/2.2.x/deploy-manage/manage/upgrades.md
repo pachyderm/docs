@@ -96,50 +96,49 @@ For a specific target release, specify the targeted major/minor version of `pach
 
 - Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
 
-      ```s
-      helm repo add pach https://helm.pachyderm.com
-      helm repo update
-      helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
-      ```
+  ```s
+  helm repo add pach https://helm.pachyderm.com
+  helm repo update
+  helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
+  ```
 
-{{% notice note %}}
- 
-      Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
+{{% notice note %}} 
+Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
 {{% /notice %}}
 
 - The upgrade can take some time. You can run `kubectl get pods` periodically
 to check the status of the deployment. When Pachyderm is deployed, the command
 shows all pods as `READY`:
 
-      ```s
-      kubectl get pods
-      ```
-      Once the pods are up, you should see a pod for `pachd` running 
-      (alongside etcd, pg-bouncer, postgres, console etc... depending on your installation). 
+  ```s
+  kubectl get pods
+  ```
+  Once the pods are up, you should see a pod for `pachd` running 
+  (alongside etcd, pg-bouncer, postgres, console etc... depending on your installation). 
 
-      **System response:**
+  **System response:**
 
-      ```s
-      NAME                     READY     STATUS    RESTARTS   AGE
-      pachd-3677268306-9sqm0   1/1       Running   0          4m
-      ...
+  ```s
+  NAME                     READY     STATUS    RESTARTS   AGE
+  pachd-3677268306-9sqm0   1/1       Running   0          4m
+  ...
       ```
 
 - Verify that the new version has been deployed:
 
-      ```s
-      pachctl version
-      ```
+  ```s
+  pachctl version
+  ```
 
-      **System response:**
+  **System response:**
 
-      ```s
-      COMPONENT           VERSION
-      pachctl             {{< majorMinorVersion >}}
-      pachd               {{< majorMinorVersion >}}
-      ```
+  ```s
+  COMPONENT           VERSION
+  pachctl             {{< majorMinorVersion >}}
+  pachd               {{< majorMinorVersion >}}
+  ```
 
-      The `pachd` and `pachctl` versions must both match the new version.
+  The `pachd` and `pachctl` versions must both match the new version.
 
 ## Troubleshoot upgrades
 
@@ -153,38 +152,36 @@ In general, these values can be provided in three different ways:
 
 - **A - (RECOMMENDED in production) Create your secret(s) ahead of your cluster creation** 
       
-      **Create your secret(s) ahead of your cluster creation** and provide each secret name in your values.yaml at the time of the first installation. 
+  **Create your secret(s) ahead of your cluster creation** and provide each secret name in your values.yaml at the time of the first installation. 
 
-      Find the list of Secret Keys for each setting and their corresponding secret name field in your values.yaml (Column A) in the table below.
+  Find the list of Secret Keys for each setting and their corresponding secret name field in your values.yaml (Column A) in the table below.
 
 - **B - Provide credentials directly in your values.yaml**
 
-      You do not want to create your secrets right away, but provide specific secret credentials directly in your values.yaml or by setting them  with a `--set` argument during the upgrade.
+  You do not want to create your secrets right away, but provide specific secret credentials directly in your values.yaml or by setting them  with a `--set` argument during the upgrade.
 
-      In this case, (see column B), we will read then insert those values in a default secret `pachyderm-bootstrap-config` for you. The associated keys in `pachyderm-bootstrap-config` are listed in column C of the following table.
+  In this case, (see column B), we will read then insert those values in a default secret `pachyderm-bootstrap-config` for you. The associated keys in `pachyderm-bootstrap-config` are listed in column C of the following table.
 
 
 - **C - Neither A nor B**
 
-      You have not created secrets ahead of your installation, nor did you provide values directly in the values.yaml; we created default values for you in the default secret `pachyderm-bootstrap-config` (See column C below for their key). 
-      
+  You have not created secrets ahead of your installation, nor did you provide values directly in the values.yaml; we created default values for you in the default secret `pachyderm-bootstrap-config` (See column C below for their key). 
+  
 
 {{% notice info  %}}
 It is important to note that if no secret name is provided for the fields mentioned in **A**, Pachyderm will retrieve the dedicated plain-text secret values in the helm values (**B**) and populate a generic, default, auto-generated secret (pachyderm-bootstrap-config) at the time of the installation (see keys in **C**). If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. This default secret is reset at each upgrade, and new default values are created causing the upgrade to fail unless they are retrieved and set back into their appropriate fields.
 {{% /notice %}}
 
-
-|Secret KEY name| <div style="width:290px"> Description </div>| A - Create your secrets ahead <br> of your cluster creation| B - Pass credentials in values.yaml| <div style="width:250px"> C - Neither A nor B - KEY name in default `pachyderm-bootstrap-config` secret </div>| 
-|------------|------------|-----|--------|---------|
-|root-token| Root clusterAdmin| pachd.rootTokenSecretName |pachd.rootToken|rootToken|
-|root-token|Root clusterAdmin of the enterprise server|pachd.enterpriseRootTokenSecretName|pachd.enterpriseRootToken|enterpriseRootToken|
-|postgresql-password|Password to your database|global.postgresql.postgresqlExistingSecretName <br> global.postgresql.postgresqlExistingSecretKey |global.postgresql.postgresqlPassword|postgresql-password * in separate secret called `postgres`|
-|OAUTH_CLIENT_SECRET|Oauth client secret for Console <br> Required if you set Console|console.config.oauthClientSecretSecretName |console.config.oauthClientSecret|oidcClients[1].secret|
-|enterprise-license-key|Your enterprise license|pachd.enterpriseLicenseKeySecretName |pachd.enterpriseLicenseKey|license|
-|pachd-oauth-client-secret| Oauth client secret for pachd| pachd.oauthClientSecretSecretName|pachd.oauthClientSecret|oidcClients[0].secret|
-|enterprise-secret|Needed if you connect to an enterprise server|pachd.enterpriseSecretSecretName  |pachd.enterpriseSecret|enterpriseSecret|
-|upstream-idps|The list of dex connectors, each containing Oauth client info connecting to an upstream IDP|oidc.upstreamIDPsSecretName|oidc.upstreamIDPs|idps|
-
+| Secret KEY name | Description | A - Create your secrets ahead of your cluster creation | B - Pass credentials in values.yaml | C - Neither A nor B - KEY name in default pachyderm-bootstrap-config secret |
+|---|---|---|---|---|
+| root-token | Root clusterAdmin | pachd.rootTokenSecretName | pachd.rootToken | rootToken |
+| root-token | Root clusterAdmin of the enterprise server | pachd.enterpriseRootTokenSecretName | pachd.enterpriseRootToken | enterpriseRootToken |
+| postgresql-password | Password to your database | global.postgresql.postgresqlExistingSecretName global.postgresql.postgresqlExistingSecretKey | global.postgresql.postgresqlPassword | postgresql-password * in separate secret called postgres |
+| OAUTH_CLIENT_SECRET | Oauth client secret for Console Required if you set Console | console.config.oauthClientSecretSecretName | console.config.oauthClientSecret | oidcClients[1].secret |
+| enterprise-license-key | Your enterprise license | pachd.enterpriseLicenseKeySecretName | pachd.enterpriseLicenseKey | license |
+| pachd-oauth-client-secret | Oauth client secret for pachd | pachd.oauthClientSecretSecretName | pachd.oauthClientSecret | oidcClients[0].secret |
+| enterprise-secret | Needed if you connect to an enterprise server | pachd.enterpriseSecretSecretName | pachd.enterpriseSecret | enterpriseSecret |
+| upstream-idps | The list of dex connectors, each containing Oauth client info connecting to an upstream IDP | oidc.upstreamIDPsSecretName | oidc.upstreamIDPs | idps |
 
 {{% notice tip %}}
 Run `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve the value corresponding to the key `rootToken` in the default secret `pachyderm-bootstrap-config`.
