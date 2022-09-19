@@ -11,19 +11,9 @@ seriesPart:
 
 A common issue related to a deployment: getting a `CrashLoopBackoff` error. 
 
-## General Pachyderm cluster deployment
+## Pod stuck in `CrashLoopBackoff`
 
-- [General Pachyderm cluster deployment](#general-pachyderm-cluster-deployment)
-  - [Pod stuck in `CrashLoopBackoff`](#pod-stuck-in-crashloopbackoff)
-    - [Symptoms](#symptoms)
-    - [Recourse](#recourse)
-  - [Pod stuck in `CrashLoopBackoff` - with error attaching volume](#pod-stuck-in-crashloopbackoff---with-error-attaching-volume)
-    - [Symptoms](#symptoms-1)
-    - [Recourse](#recourse-1)
-
-### Pod stuck in `CrashLoopBackoff`
-
-#### Symptoms
+### Symptoms
 
 The pachd pod keeps crashing/restarting:
 
@@ -47,7 +37,7 @@ rs/etcd-281005231     1         1         1         7m
 rs/pachd-1333950811   1         1         0         7m
 ```
 
-#### Recourse
+### Recourse
 
 First describe the pod:
 
@@ -75,9 +65,9 @@ These logs will most likely reveal the issue directly, or at the very least, a g
 
 If the error / recourse isn't obvious from the error message, post the error as well as the `pachd` logs in our [Slack channel](https://www.pachyderm.com/slack/), or open a [GitHub Issue](https://github.com/pachyderm/pachyderm/issues/new) and provide the necessary details prompted by the issue template. Please do be sure provide these logs either way as it is extremely helpful in resolving the issue.
 
-### Pod stuck in `CrashLoopBackoff` - with error attaching volume
+## Pod stuck in `CrashLoopBackoff` - with error attaching volume
 
-#### Symptoms
+### Symptoms
 
 A pod (could be the `pachd` pod or a worker pod) fails to startup, and is stuck in `CrashLoopBackoff`. If you execute `kubectl describe po/pachd-xxxx`, you'll see an error message like the following at the bottom of the output:
 
@@ -87,7 +77,7 @@ A pod (could be the `pachd` pod or a worker pod) fails to startup, and is stuck 
 
 This would indicate that the [persistent volume claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) is failing to get attached to the node in your kubernetes cluster.  
 
-#### Recourse
+### Recourse
 
 Your best bet is to manually detach the volume and restart the pod.  
 

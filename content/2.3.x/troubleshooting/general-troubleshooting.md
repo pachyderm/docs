@@ -9,34 +9,9 @@ series:
 seriesPart:
 ---
 
-This section outlines general troubleshooting steps that you can
-attempt to repair your cluster.
-Here are some common issues by symptom along with steps to resolve them. 
+## Cannot connect via `pachctl` - context deadline exceeded
 
-- [Connecting to a Pachyderm Cluster](#connecting-to-a-pachyderm-cluster)
-  - [Cannot connect via `pachctl` - context deadline exceeded](#cannot-connect-via-pachctl---context-deadline-exceeded)
-    - [Symptom](#symptom)
-    - [Recourse](#recourse)
-  - [Certificate Error When Using Kubectl](#certificate-error-when-using-kubectl)
-    - [Symptom](#symptom-1)
-    - [Recourse](#recourse-1)
-  - [Uploads and Downloads are Slow](#uploads-and-downloads-are-slow)
-    - [Symptom](#symptom-2)
-    - [Recourse](#recourse-2)
-  - [Naming a Repo with an Unsupported Symbol](#naming-a-repo-with-an-unsupported-symbol)
-    - [Symptom](#symptom-3)
-    - [Recourse](#recourse-3)
-  - [Failed Uploads](#failed-uploads)
-    - [Symptom](#symptom-4)
-    - [Recourse](#recourse-4)
-
----
-
-## Connecting to a Pachyderm Cluster
-
-### Cannot connect via `pachctl` - context deadline exceeded
-
-#### Symptom
+### Symptom
 
 You may be using the pachd address config value or environment variable to specify how `pachctl` talks to your Pachyderm cluster, or you may be forwarding the pachyderm port.  In any event, you might see something similar to:
 
@@ -49,16 +24,16 @@ context deadline exceeded
 
 Also, you might get this message if `pachd` is not running.
 
-#### Recourse
+### Recourse
 
 It's possible that the connection is just taking a while. Occasionally this can happen if your cluster is far away (deployed in a region across the country). Check your internet connection.
 
 It's also possible that you haven't poked a hole in the firewall to access the node on this port. Usually to do that you adjust a security rule (in AWS parlance a security group). For example, on AWS, if you find your node in the web console and click on it, you should see a link to the associated security group. Inspect that group. There should be a way to "add a rule" to the group. You'll want to enable TCP access (ingress) on port 30650. You'll usually be asked which incoming IPs should be whitelisted. You can choose to use your own, or enable it for everyone (0.0.0.0/0).
 
 
-### Certificate Error When Using Kubectl
+## Certificate Error When Using Kubectl
 
-#### Symptom
+### Symptom
 
 This can happen on any request using `kubectl` (e.g. `kubectl get all`). In particular you'll see:
 
@@ -68,7 +43,7 @@ Client Version: version.Info{Major:"1", Minor:"6", GitVersion:"v1.6.4", GitCommi
 Unable to connect to the server: x509: certificate signed by unknown authority
 ```
 
-#### Recourse
+### Recourse
 
 Check if you're on any sort of VPN or other egress proxy that would break SSL.  Also, there is a possibility that your credentials have expired. In the case where you're using GKE and gcloud, renew your credentials via:
 
@@ -88,24 +63,24 @@ kubectl config current-context
 gke_my-org_us-east1-b_my-cluster-name-dev
 ```
 
-### Uploads and Downloads are Slow
+## Uploads and Downloads are Slow
 
-#### Symptom
+### Symptom
 
 Any `pachctl put file` or `pachctl get file` commands are slow.
 
-#### Recourse
+### Recourse
 
 If you do not explicitly set the pachd address config value, `pachctl` will default to using port forwarding, which throttles traffic to ~1MB/s. If you need to do large downloads/uploads you should consider using pachd address config value. You'll also want to make sure you've allowed ingress access through any firewalls to your k8s cluster.
 
-### Naming a Repo with an Unsupported Symbol
+## Naming a Repo with an Unsupported Symbol
 
-#### Symptom
+### Symptom
 
 A Pachyderm repo was accidentally named starting with a dash (`-`) and the repository
 is treated as a command flag instead of a repository.
 
-#### Recourse
+### Recourse
 
 Pachyderm supports standard `bash` utilities that you can
 use to resolve this and similar problems. For example, in this case,
@@ -115,16 +90,16 @@ rest arguments as filenames and objects.
 
 For more information, see `man bash`.
 
-### Failed Uploads
+## Failed Uploads
 
-#### Symptom
+### Symptom
 
 A file upload, particularly a recursive one of many files, fails. You may see log messages containing the following in either pipeline logs, pachd logs, or from the pachctl command locally:
 - pachctl errror: ``an error occurred forwarding XXXXX -> 650: error forwarding port 650``
 - pachctl error: ``EOF``
 - pachd or worker: ``all SubConns are in TransientFailure, latest connection error: connection error: desc = \"transport: Error while dialing dial tcp  127.0.0.1:653: connect: connection refused\"; retrying in XXXX.XXXXXs"}``
 
-#### Recourse
+### Recourse
 
 Either ``pachd`` or your pipeline's worker sidecar may be getting OOM killed as it grows while getting data from object storage. 
 

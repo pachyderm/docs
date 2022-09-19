@@ -9,29 +9,6 @@ series:
 seriesPart:
 ---
 
-This section outlines general troubleshooting steps that you can
-attempt to repair your cluster.
-Here are some common issues by symptom along with steps to resolve them. 
-
-- [Connecting to a Pachyderm Cluster](#connecting-to-a-pachyderm-cluster)
-  - [Cannot connect via `pachctl` - context deadline exceeded](#cannot-connect-via-pachctl---context-deadline-exceeded)
-    - [Symptom](#symptom)
-    - [Recourse](#recourse)
-  - [Certificate Error When Using Kubectl](#certificate-error-when-using-kubectl)
-    - [Symptom](#symptom-1)
-    - [Recourse](#recourse-1)
-  - [Uploads and Downloads are Slow](#uploads-and-downloads-are-slow)
-    - [Symptom](#symptom-2)
-    - [Recourse](#recourse-2)
-  - [Naming a Repo with an Unsupported Symbol](#naming-a-repo-with-an-unsupported-symbol)
-    - [Symptom](#symptom-3)
-    - [Recourse](#recourse-3)
-  - [Failed Uploads](#failed-uploads)
-    - [Symptom](#symptom-4)
-    - [Recourse](#recourse-4)
-
----
-
 ## Connecting to a Pachyderm Cluster
 
 ### Cannot connect via `pachctl` - context deadline exceeded
