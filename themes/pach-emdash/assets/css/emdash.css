@@ -136,32 +136,23 @@ p { font-size:  var(--small-text); }
 
 /* Tables */
 
-table {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 1em;
-    margin-bottom: 2em;
-}
+ table {
+  font-size: var(--xsmall-text);
+  text-align: left;
+ }
 
-table * { padding: 0px; }
+ th {
+  vertical-align: top;
+ }
 
-table > thead > tr {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px dotted var(--is-gray);
-}
+ td {
+  padding:  var(--xsmall-text);
+  white-space: pre;
+ }
 
-table > thead > tr > th {
-    flex: 1;
-    text-align: left;
-}
-table > tbody * { width: 100%; }
-
-table > tbody > tr {
-    display: flex;
-    flex: 1;        
-}
+ tbody tr:nth-child(odd) {
+  box-shadow: inset 0 9000px 0px rgba(0, 0, 0, 0.1);
+ }
 
 /* Nested Lists */
 
@@ -1616,4 +1607,9 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
 :is(.algoliaHome) :is(ul, ol, ol > li) {
   list-style: none;
   margin: 0;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  max-width: 100%;
 }
