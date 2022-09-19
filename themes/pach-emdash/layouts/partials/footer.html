@@ -23,7 +23,7 @@
     {{/*  Algolia must remain separate due to module type  */}}
     {{if .IsHome}}
       <script src="{{ $algoliaHomePage.Permalink }}" type="module"></script>
-    {{else}}}
+    {{else}}
       <script src="{{ $algolia.Permalink }}" type="module"></script>
     {{end}}
     <script src="{{ $js.Permalink }}" ></script>

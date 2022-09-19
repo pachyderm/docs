@@ -15,7 +15,7 @@ from an outside source**
 (message queue, database transactions logs, event notifications... )
 as schematized in the diagram below.
 
-![spout-tldr](../../../assets/images/concepts/pipeline-concepts/pipeline/spout_tldr.png)
+![spout-tldr](../../../../assets/images/concepts/pipeline-concepts/pipeline/spout_tldr.png)
 
 Generally, 
 spout pipelines are ideal for situations
@@ -49,8 +49,7 @@ as well as your authentication information.
 As a result, the authentication is seamless when using `pachctl`. 
 
 {{% notice note %}}
- 
-Support for a transparent
+ Support for a transparent
 authentication in our SDKs is coming soon.
 In the meantime, check our Spout 101 example
 at the end of this page to learn how to retrieve
@@ -65,18 +64,17 @@ To create a spout pipeline, you will need:
 * A spout pipeline specification file that uses your container.
 
 {{% notice note %}}
- 
-    It is important
-    to remember that you will
-    need to use a `put file` API call
-    from a client of your choice
-    to push your data
-    into the pipeline output repository.
-    Having the entire Pachyderm API
-    available to you
-    allows you to package data
-    into commits and transactions
-    at the granularity your problem requires.
+It is important
+to remember that you will
+need to use a `put file` API call
+from a client of your choice
+to push your data
+into the pipeline output repository.
+Having the entire Pachyderm API
+available to you
+allows you to package data
+into commits and transactions
+at the granularity your problem requires.
 {{% /notice %}}
 
 
@@ -93,18 +91,17 @@ xs
 Here is an example of a minimum spout pipeline specification:
 
 {{% notice note %}}
-
-    The `env` property is an optional argument.
-    You can define your data stream source
-    from within the container
-    in which you run
-    your script.
-    For simplicity, in this example,
-    `env` specifies the
-    source of the Kafka host.
+The `env` property is an optional argument.
+You can define your data stream source
+from within the container
+in which you run
+your script.
+For simplicity, in this example,
+`env` specifies the
+source of the Kafka host.
 {{% /notice %}}
 
-```
+```json
 {
   "pipeline": {
     "name": "my-spout"

@@ -59,17 +59,7 @@ To create a spout pipeline, you will need:
 * A spout pipeline specification file that uses your container.
 
 {{% notice %}}
-It is important
-to remember that you will
-need to use a `put file` API call
-from a client of your choice
-to push your data
-into the pipeline output repository.
-Having the entire Pachyderm API
-available to you
-allows you to package data
-into commits and transactions
-at the granularity your problem requires.
+It is important to remember that you will need to use a `put file` API call from a client of your choice to push your data into the pipeline output repository. Having the entire Pachyderm API available to you allows you to package data into commits and transactions at the granularity your problem requires.
 {{% /notice %}}
 
 A minimum spout specification must include the following
