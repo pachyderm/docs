@@ -131,7 +131,7 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
    * For **macOS or Brew users**, run:  
 
      ```s  
-     brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
+     brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% versionNumber %}} 
      ```  
 
    * For a **Debian-based Linux 64-bit or Windows 10 or later running on WSL** (Choose the command matching your architecture):  
@@ -162,7 +162,7 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
        curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< majorMinorVersion >}}_linux_arm64/pachctl /usr/local/bin 
        ```  
             
-1. Verify that installation was successful by running `pachctl version --client-only`:  
+2. Verify that installation was successful by running `pachctl version --client-only`:  
   
       ```s  
       pachctl version --client-only  

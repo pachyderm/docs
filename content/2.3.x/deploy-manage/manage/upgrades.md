@@ -37,7 +37,7 @@ In the case of a simple upgrade of version on a cluster, and provided that you d
       * For macOS, run:  
   
       ```s  
-      brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
+      brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% versionNumber %}}  
       ```  
   
       * For a Debian-based Linux 64-bit or Windows 10 or later running on  
