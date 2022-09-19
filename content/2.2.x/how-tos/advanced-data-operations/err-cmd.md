@@ -83,5 +83,5 @@ the next job, just as failed datums.
 
 {{% notice info %}}
 **See Also**:
-    [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/err_cmd/)
+    [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion >}}/examples/err_cmd/)
 {{%/notice %}}

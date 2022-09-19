@@ -55,7 +55,7 @@ pachd:
   lokiLogging: true
 ```
 
-In such case, add the following section to your [value.yaml](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L214):
+In such case, add the following section to your [value.yaml](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml#L214):
 
 ```yaml  
 loki-stack:

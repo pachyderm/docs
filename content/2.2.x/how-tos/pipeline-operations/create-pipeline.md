@@ -65,7 +65,7 @@ To create a pipeline, complete the following steps:
       For example, in our opencv beginner tutorial:
 
       ```s
-      pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/examples/opencv/edges.json
+      pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/examples/opencv/edges.json
       ```
    -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
   {{% /notice%}}

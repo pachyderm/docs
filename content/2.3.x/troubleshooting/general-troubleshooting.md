@@ -43,7 +43,7 @@ You may be using the pachd address config value or environment variable to speci
 ```s
 pachctl version
 COMPONENT           VERSION                                          
-pachctl             {{< versionLink >}}  
+pachctl             {{< majorMinorVersion >}}  
 context deadline exceeded
 ```
 

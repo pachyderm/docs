@@ -278,8 +278,8 @@ Jump to [Helm install](#3-helm-install)
 
     ```s
     COMPONENT           VERSION
-    pachctl             {{< versionLink >}}
-    pachd               {{< versionLink >}}
+    pachctl             {{< majorMinorVersion >}}
+    pachd               {{< majorMinorVersion >}}
     ```
 
 ## 5. Connect to Console
@@ -297,7 +297,7 @@ Once your cluster is up and running, you can helm install JupyterHub on your Pac
 
 Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension) page for installation instructions. 
 
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
+Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice note %}}
 

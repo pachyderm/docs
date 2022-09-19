@@ -5,11 +5,12 @@
         {{else}}
             {{/* See Related Content: https://gohugo.io/content-management/related/#relatedindices-page-indice1-indice2  */}}
             {{ $related := site.RegularPages.RelatedIndices . "tags"   }}
+
             {{ with $related }}
                 <p class="p-1 outlined xs is-fit rounded-1"> Related Articles</p>
                 <div class="stack xs bold">
                     {{ range . }}
-                        <a href="{{ .RelPermalink }}" class=""> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
+                        <a href="{{ .RelPermalink }}" class=""> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}} <b>{{.Params.majorMinor}}</b></a>
                     {{ end }}
                 </div>
                 {{else}}

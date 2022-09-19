@@ -65,13 +65,13 @@ Aside from retrieving any generated values and inserting them back as credential
       WSL:  
   
       ```s  
-      curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+      curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
       ```  
   
       * For all other Linux flavors:  
   
       ```s  
-      curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< versionLink >}}_linux_amd64/pachctl /usr/local/bin  
+      curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< majorMinorVersion >}}_linux_amd64/pachctl /usr/local/bin  
       ```  
 
 {{% notice note %}}
@@ -135,8 +135,8 @@ shows all pods as `READY`:
 
       ```s
       COMPONENT           VERSION
-      pachctl             {{< versionLink >}}
-      pachd               {{< versionLink >}}
+      pachctl             {{< majorMinorVersion >}}
+      pachd               {{< majorMinorVersion >}}
       ```
 
       The `pachd` and `pachctl` versions must both match the new version.

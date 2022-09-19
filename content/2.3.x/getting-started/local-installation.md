@@ -139,13 +139,13 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
      - AMD Architectures (amd64):
           
        ```s  
-       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
        ``` 
 
      - ARM Architectures (arm64):
 
        ```s  
-       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
+       curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
        ```  
 
    * For all **other Linux flavors** (Choose the command matching your architecture):  
@@ -153,13 +153,13 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
      - AMD Architectures (amd64):
                
        ```s  
-       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< versionLink >}}_linux_amd64/pachctl /usr/local/bin 
+       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< majorMinorVersion >}}_linux_amd64/pachctl /usr/local/bin 
        ``` 
 
      - ARM Architectures (arm64):
 
        ```s  
-       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< versionLink >}}/pachctl_{{< versionLink >}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< versionLink >}}_linux_arm64/pachctl /usr/local/bin 
+       curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{< majorMinorVersion >}}/pachctl_{{< majorMinorVersion >}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{< majorMinorVersion >}}_linux_arm64/pachctl /usr/local/bin 
        ```  
             
 1. Verify that installation was successful by running `pachctl version --client-only`:  
@@ -172,7 +172,7 @@ Run `uname -m` to identify your architecture, then choose the command in the `AM
   
       ```s  
       COMPONENT           VERSION  
-      pachctl             {{< versionLink >}}  
+      pachctl             {{< majorMinorVersion >}}  
       ```  
   
       If you run `pachctl version` without the flag `--client-only`, the command times  
@@ -303,8 +303,8 @@ pachctl version
 
 ```s  
 COMPONENT           VERSION  
-pachctl             {{< versionLink >}}  
-pachd               {{< versionLink >}}  
+pachctl             {{< majorMinorVersion >}}  
+pachd               {{< majorMinorVersion >}}  
 ```  
 You are all set!  
 
@@ -329,7 +329,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
 {{% /notice %}}
 
-- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
+- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
   ```s
   helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -338,7 +338,7 @@ You do not need a local Pachyderm cluster already running to install Pachyderm J
   ```s
   helm upgrade --cleanup-on-fail \
   --install jupyter jupyterhub/jupyterhub \
-  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml
+  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml
   ```
 
 
@@ -378,8 +378,8 @@ From the cell of a notebook, run:
 
   ```s 
   COMPONENT           VERSION  
-  pachctl             {{< versionLink >}}  
-  pachd               {{< versionLink >}}  
+  pachctl             {{< majorMinorVersion >}}  
+  pachd               {{< majorMinorVersion >}}  
   ```    
 
 {{% notice warning %}}

@@ -57,11 +57,11 @@ Pachyderm's SQL Ingest requires a connection string defined as a [Jsonnet URL pa
 
 ### 3. Create a Pipeline Spec 
 
-Pachyderm provides a [default Jsonnet template](https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet) that has key parameters built in. To use it, you must pass an argument for each [parameter](#parameters). 
+Pachyderm provides a [default Jsonnet template](https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet) that has key parameters built in. To use it, you must pass an argument for each [parameter](#parameters). 
 
 1. Copy the following:
    ```s
-   pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet \
+   pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet \
      --arg name=<pipelineName> \
      --arg url="<connectionStringToDdatabase>" \
      --arg query="<query>" \
@@ -104,7 +104,7 @@ In this example, we are leveraging Snowflake's support for queries traversing [s
 4.  Define the pipeline spec by populating all of the parameter values:
    
    ```s
-      pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet \
+      pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet \
       --arg name=mysnowflakeingest \
       --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
       --arg query="select T, V:city.name, V:data[0].weather[0].description as morning, V:data[12].weather[0].description as pm FROM DAILY_14_TOTAL LIMIT 1" \
@@ -119,7 +119,7 @@ In this example, we are leveraging Snowflake's support for queries traversing [s
 
 ## How Does This Work?
 
-SQL Ingest's Jsonnet pipeline spec, [**`sql_ingest_cron.jsonnet`**](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet), creates all of the following:
+SQL Ingest's Jsonnet pipeline spec, [**`sql_ingest_cron.jsonnet`**](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet), creates all of the following:
 
 - **1 Input Data Repo**: Used to store timestamp files at the cronSpec's set interval rate (`--arg cronSpec="pullInterval" \`) to trigger the pipeline.
 - [**1 Cron Pipeline**](../../../concepts/pipeline-concepts/pipeline/cron/#cron-pipeline): Houses the spec details that define the input type and settings and  data transformation.
@@ -136,7 +136,7 @@ In the default Jsonnet template, the file generated is obtainable from the outpu
 To create an SQL Ingest Jsonnet Pipeline spec, you must have a `.jsonnet` file and several parameters:
 
 ```s
-pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet \
+pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet \
   --arg name=<pipelineName> \
   --arg url="<connectionStringToDdatabase>" \
   --arg query="<query>" \

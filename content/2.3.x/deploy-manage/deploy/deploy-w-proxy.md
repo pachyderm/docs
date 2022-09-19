@@ -36,7 +36,7 @@ The deployment of Pachyderm with a proxy is optional at the moment and will beco
 The diagram below gives a quick overview of the layout of services and pods when using a proxy. In particular, it details how Pachyderm listens to all inbound traffic on one port, then routes each call to the appropriate backend:![Infrastruture Recommendation](../../images/infra-recommendations-with-proxy.png)
 
 {{% notice note %}}
-See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/pachyderm/values.yaml#L827) for all available configurable fields of the proxy.
+See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml#L827) for all available configurable fields of the proxy.
 {{% /notice %}}
 
 Before any deployment in production, we recommend reading the following section to [set up your production infrastructure](#deploy-pachyderm-in-production-with-a-proxy). 
@@ -468,8 +468,8 @@ Open a new tab in your terminal and run `minikube tunnel` (the command creates a
 
       ```  
       COMPONENT           VERSION  
-      pachctl             {{< versionLink >}}  
-      pachd               {{< versionLink >}}  
+      pachctl             {{< majorMinorVersion >}}  
+      pachd               {{< majorMinorVersion >}}  
       ```  
       You are all set!  
 

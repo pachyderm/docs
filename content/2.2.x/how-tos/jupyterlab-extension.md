@@ -27,7 +27,7 @@ We will provide two sets of instructions, depending on whether you know the clus
 - **You know the `pachd_address` of your cluster**:
   - Run:
   ```s
-  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}  lab --allow-root
+  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}  lab --allow-root
   ```
   - Access your JupyterLab session through a local browser (check the link in the stdout).
   - Then [connect your JupyterLab to your Pachyderm cluster](#connect-the-extension-to-your-pachyderm-cluster). 
@@ -39,7 +39,7 @@ We will provide two sets of instructions, depending on whether you know the clus
   - Then, [connect that CLI to your cluster](../../getting-started/local-installation/#connect-pachctl-to-your-cluster).
   - And run:
   ```s
-  docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }} lab --allow-root
+  docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}} lab --allow-root
   ```
   - Access your JupyterLab session through a local browser (check the link in the stdout).
   You are all logged in. Start experimenting.
@@ -112,7 +112,7 @@ Pick the option that fits your use case:
 
 Depending on your setup, you might choose to use our pre-built image containing the extension or add the extension to your image.
 
-- Using Pachyderm's pre-built image `pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}`:
+- Using Pachyderm's pre-built image `pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}`:
 
     {{% notice info %}} 
 
@@ -167,7 +167,7 @@ If you are using our pre-built image:
 - Run the script below:
 
     ```s
-    docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }} lab --allow-root 
+    docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}} lab --allow-root 
     ```
 
 - Click on the link provided in the stdout of your terminal to run JupyterLab in a browser.
@@ -182,10 +182,10 @@ Replace the image name with your own image otherwise.
 find the complete installation instructions of JupyterHub on Kubernetes in [Jupyterhub for Kubernetes documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/#setup-jupyterhub).
 {{%/notice %}}
 
-- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
+- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
   {{% notice note %}}
-  Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image or leave Pachyderm's default image `pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}`.
+  Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image or leave Pachyderm's default image `pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}`.
 
 
 ```yaml
@@ -194,7 +194,7 @@ singleuser:
     cmd:   "start-singleuser.sh"
     image:
         name: pachyderm/notebooks-user
-        tag: {{ config.jupyterlab_extension_image_tag }}
+        tag: {{% jupyterLabExtensionVersion %}}
     uid:   0
     fsGid: 0
     extraEnv:

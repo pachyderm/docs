@@ -42,7 +42,7 @@ Pachyderm's SQL Ingest uses [jsonnet pipeline specs](../../pipeline-operations/j
 Pass in the following parameters and get your results committed to an output repo, ready for the following downstream pipeline:
 
 ```s
-pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet \
+pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet \
   --arg name=myingest \
   --arg url="mysql://root@mysql:3306/test_db" \
   --arg query="SELECT * FROM test_data" \
@@ -75,7 +75,7 @@ In this example, we are leveraging Snowflake's support for queries traversing se
 Note the references to the JSON dataset elements by their hierarchical paths in the query:
 
 ```s
-pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet  \
+pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet  \
 --arg name=mysnowflakeingest \
 --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
 --arg query="select T, V:city.name, V:data[0].weather[0].description as morning, V:data[12].weather[0].description as pm FROM DAILY_14_TOTAL LIMIT 1" \
@@ -156,7 +156,7 @@ For example, Snowflake requires to pass the warehouse as a parameter `warehouse=
 
 ## How Does This Work?
 
-SQL Ingest's jsonnet pipeline specs [**`sql_ingest_cron.jsonnet`**](https://github.com/pachyderm/pachyderm/blob/{{< versionLink >}}/src/templates/sql_ingest_cron.jsonnet) creates two pipelines:
+SQL Ingest's jsonnet pipeline specs [**`sql_ingest_cron.jsonnet`**](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/src/templates/sql_ingest_cron.jsonnet) creates two pipelines:
 
 
 - A **[Cron Pipeline](../../../concepts/pipeline-concepts/pipeline/cron/#cron-pipeline)** `myingest_queries` triggering at an interval set by `cronSpec` and outputting a file `/0000` in its output repo `myingest_queries`. `/0000` contains a timestamp and the SQL statement set in `query`.

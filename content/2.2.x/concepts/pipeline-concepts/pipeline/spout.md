@@ -116,7 +116,7 @@ source of the Kafka host.
 
 
 For a first overview of how spouts work, see
-our [spout101 example](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/spouts/spout101).
+our [spout101 example](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion >}}/examples/spouts/spout101).
 
 
 

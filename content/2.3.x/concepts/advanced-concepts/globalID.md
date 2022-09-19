@@ -187,9 +187,9 @@ Check the list of [all commit origins](../data-concepts/commit.md) in the `Commi
 
     The same origin (`AUTO` ) applies to the commits sharing that same ID in the `montage` output repo as well as `edges.meta` and `montage.meta` system repos. 
 
-    {{% notice info %}}
-    Check the list of [all types of repos](../data-concepts/repo.md) in the `Repo` page.
-    {{% /notice %}}
+ {{% notice info %}}
+ Check the list of [all types of repos](../data-concepts/repo.md) in the `Repo` page.
+ {{% /notice %}}
 
 - Besides  the `USER` and `AUTO` commits, notice a set of `ALIAS` commits in `edges.spec` and `montage.spec`:
 ```s
@@ -200,7 +200,7 @@ They have, however, contributed to the creation of the previous `AUTO` commits.
 To make sure that we have a complete view of all the data and pipeline versions involved in all the commits resulting from the initial 
 `put file`, their version is kept as `ALIAS` commits under the same global ID.
 
-For a full view of GlobalID in action, take a look at our [GlobalID illustration](https://github.com/pachyderm/pachyderm/tree/{{< versionLink >}}/examples/globalID).
+For a full view of GlobalID in action, take a look at our [GlobalID illustration](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion "minor">}}/examples/globalID).
 
 ## Track Provenance Downstream
 

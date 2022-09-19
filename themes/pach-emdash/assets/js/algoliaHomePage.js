@@ -11,8 +11,8 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         document.querySelector('#hits').innerHTML = ''
         // get the input field with the clas ais-SearchBox-input 
         // and set the value to empty
-        helper.state.query = 'getting started + 2.3.x'
-        helper.search("")
+        // helper.state.query = 'getting started + 2.3.x'
+        // helper.search("")
       }
     },
   });
@@ -29,7 +29,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         form: ['spread'],
         submit: ['is-hidden'],
         reset: ['is-hidden'],
-        input: ['is-full','black', 'rounded-1', 'sp-1']
+        input: ['is-full','black', 'rounded-4', 'p-1']
       },
       templates: {
       },
@@ -43,18 +43,18 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       escapeHTML: false,
       cssClasses: {
         root: ['algoliaHome', 'm-4'],
-        list: ['spread-left','brighten-1', 'rounded-1', 'brighten-1', 'is-fullsize-mobile'],
+        list: ['spread-left', 'rounded-1', 'is-fullsize-mobile'],
         item: ['is-half', 'is-fullsize-mobile'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full brighten-1 rounded-1 c-sp-1 m-1"> <div class=" text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
         item: `
-          <div class="stack darken-1 rounded-1 move-l sp-1">
+          <div class="stack darken-2 rounded-1 move-l sp-1">
             <a href="{{relURI}}">
               <div class="hit spread c-pinned-center is-full c-mr-1">
-                <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
+                <div class="black gradient-lr-cold is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
                 <div class="stack c-mb-1">
-                  <b class="s uppercase is-fit">{{parent}}</b>
+                  <p class="xs uppercase is-fit">{{parent}}</p>
                   <h3 class="is-fit m extra-bold">{{title}}</h3>
                   <div class="xs">{{description}}</div>
                 </div>

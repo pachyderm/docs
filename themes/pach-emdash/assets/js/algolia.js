@@ -38,7 +38,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['spread-center','modal', 'darken-3'],
+        root: ['spread-center','modal', 'darken-5'],
         list: ['is-three-fifths','white', 'pr-1', 'rounded-1', 'brighten-1', 'is-fullsize-mobile'],
         item: ['spread'] },
       templates: {
