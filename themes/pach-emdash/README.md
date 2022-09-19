@@ -155,7 +155,7 @@ Hugo comes with [a few pre-built shortcodes](https://gohugo.io/content-managemen
 
 Shortcodes are powerful because of their flexibility and ease of use. Below is our `notice.html` (callout) as an example:
 
-```go
+```html
 {{$type := .Get 0 }}
 
 <section class="rounded-1 {{with $type}} {{.}} {{else}}darken-3{{end}} sp-1"> 
