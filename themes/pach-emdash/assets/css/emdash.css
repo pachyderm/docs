@@ -380,7 +380,6 @@ ol li::marker {
     flex-wrap: wrap;
     align-items: center;
 }
-
 .breadcrumb::after {
     content: "/";
     margin: 0 0.5em;
@@ -420,33 +419,27 @@ button, .button {
     height: auto;
 }
 
-
 .image-1x1 {
     aspect-ratio: 1 / 1;
     width: 100%;
 }
-
 .image-1x2 {
     aspect-ratio: 1 / 2;
     width: 100%;
 }
-
 .image-2x1 {
     aspect-ratio: 2 / 1;
     width: 100%;
     
 }
-
 .image-3x2 {
     aspect-ratio: 3 / 2;
     width: 100%;
 }
-
 .image-4x3 {
     aspect-ratio: 4 / 3;
     width: 100%;
 }
-
 .image-16x9 {
     aspect-ratio: 16 / 9;
     width: 100%;
@@ -460,6 +453,7 @@ button, .button {
     margin-left: -1ch;
 
 }
+
 /* Animations */
 .move-l:hover, .c-move-l:hover > :hover {
   animation-duration: 2s;
@@ -568,11 +562,9 @@ button, .button {
   display: flex;
   align-self: stretch;
 }
-
 .pinned-baseline {
     align-self: baseline;
 }
-
 .c-pinned-center {
     align-items: center;
 }
@@ -846,7 +838,9 @@ button, .button {
 
 .fill-h {
     height: max-content;
-}/* Spacing */
+}
+
+/* Spacing */
 
 .sp-1, .c-sp-1 > * {
   padding-top: calc(100vh / var(--spacing-1));
