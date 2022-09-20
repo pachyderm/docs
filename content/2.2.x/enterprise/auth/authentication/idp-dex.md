@@ -117,44 +117,46 @@ Pachyderm supports the JSON and YAML formats for its connector files.
 {{% /notice %}}
 
 See our oidc connector example in JSON and YAML formats below.
-=== "oidc-dex-connector.json"
 
-    ``` json
-    {
-    "type": "oidc",
-    "id": "auth0",
-    "name": "Auth0",
-    "version": 1,
-    "config":{
-        "issuer": "https://dev-k34x5yjn.us.auth0.com/",
-        "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
-        "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
-        "redirectURI": "http://<ip>:30658/callback",
-        "insecureEnableGroups": true,
-        "insecureSkipEmailVerified": true,
-        "insecureSkipIssuerCallbackDomainCheck": false,
-        "forwardedLoginParams": ["login_hint"] 
-        }
-    }
-    ```
-=== "oidc-dex-connector.yaml"
+##### oidc-dex-connector.json
 
-    ``` yaml
-        type: oidc
-        id: auth0
-        name: Auth0
-        version: 1
-        config:
-            issuer: https://dev-k34x5yjn.us.auth0.com/
-            clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
-            clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
-            redirectURI: http://<ip>:30658/callback
-            insecureEnableGroups: true
-            insecureSkipEmailVerified: true
-            insecureSkipIssuerCallbackDomainCheck: false,
-            forwardedLoginParams:
-            - login_hint
-    ```
+``` json
+{
+"type": "oidc",
+"id": "auth0",
+"name": "Auth0",
+"version": 1,
+"config":{
+  "issuer": "https://dev-k34x5yjn.us.auth0.com/",
+  "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
+  "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
+  "redirectURI": "http://<ip>:30658/callback",
+  "insecureEnableGroups": true,
+  "insecureSkipEmailVerified": true,
+  "insecureSkipIssuerCallbackDomainCheck": false,
+  "forwardedLoginParams": ["login_hint"] 
+  }
+}
+```
+
+#####  oidc-dex-connector.yaml
+
+``` yaml
+  type: oidc
+  id: auth0
+  name: Auth0
+  version: 1
+  config:
+      issuer: https://dev-k34x5yjn.us.auth0.com/
+      clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
+      clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
+      redirectURI: http://<ip>:30658/callback
+      insecureEnableGroups: true
+      insecureSkipEmailVerified: true
+      insecureSkipIssuerCallbackDomainCheck: false,
+      forwardedLoginParams:
+      - login_hint
+```
 
 You will need to replace the following placeholders with relevant values:
 
@@ -185,22 +187,20 @@ to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
 - `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
 - TLS requires all non-localhost redirectURIs to be **HTTPS**.
 - AZURE USERS: 
-    - You must use TLS when deploying on Azure.
-    - When using Azure Active Directory, add the following to the oidc config:
-    ``` yaml
-    "config":{
-        "claimMapping": {
-            "email": "preferred_username"
-        } 
-    }      
-    ```
+  - You must use TLS when deploying on Azure.
+  - When using Azure Active Directory, add the following to the oidc config:
+  ``` yaml
+  "config":{
+      "claimMapping": {
+          "email": "preferred_username"
+      } 
+  }      
+```
 {{% /notice %}}
 
 {{% notice note %}}
-
+Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
 {{% /notice %}}
-
-    Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
 
 #### Create Your Idp-Pachyderm Connection
 Once your Pachyderm application is registered with your IdP (here Auth0), 

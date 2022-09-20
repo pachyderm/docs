@@ -98,7 +98,7 @@ In particular, we will:
     cd testinput && pachctl put file testinput@master -f test.txt
     ```
     A quick `pachctl list repo` will list your new repo and display your access level on that repo as a **clusterAdmin**.
-    ![Admin Repo Access Level](../images/clusteradmin-repo-access.png)
+    ![Admin Repo Access Level](../../images/clusteradmin-repo-access.png)
 
 - **Third, grant `repoReader` access to our user `one-pachyderm-user@gmail.com`:**
     ```s
@@ -191,19 +191,19 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
 - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
   - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
   - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-  ![Authorization Extension Rule Edition](../images/auth0-edit-rule.png)
+  ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
 {{% /notice %}}
 
-- 1- Group creation
+1. Group creation
 
     An Authorization link should now show on your Auth0 webpage.
     In **Authorization/Groups**, create a group. Here `testgroup`:
-    ![Group creation](../images/auth0-create-group.png)
+    ![Group creation](../../images/auth0-create-group.png)
 
-- 2- Add your user to your group
+2. Add your user to your group
 
     In **Authorization/Users**, select your user one-pachyderm-user@gmail.com and add them to your `testgroup` as follow.
-    ![Add User to Group](../images/auth0-add-user-to-group.png)
+    ![Add User to Group](../../images/auth0-add-user-to-group.png)
 
     In **User Mangement/Users**, you user should now show the following addition to their app_metadata:
     ```json
@@ -215,77 +215,77 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
         }
     }
     ```
-- 3- Update your connector
+3. Update your connector
 
-    === "oidc-dex-connector.json"
+ ###  oidc-dex-connector.json
 
-        ```json
-        {
-            "type": "oidc",
-            "id": "auth0",
-            "name": "Auth0",
-            "version": 1,
-            "config":{
-            "issuer": "https://dev-k34x5yjn.us.auth0.com/",
-            "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
-            "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
-            "redirectURI": "http://<ip>:30658/callback",
-            "scopes": ["groups", "email", "profile"],
-            "claimMapping":{
-                "groups": "http://pachyderm.com/groups"
-            },
-            "insecureEnableGroups": true
-            }
-        }
-        ```
+```json
+  {
+      "type": "oidc",
+      "id": "auth0",
+      "name": "Auth0",
+      "version": 1,
+      "config":{
+      "issuer": "https://dev-k34x5yjn.us.auth0.com/",
+      "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
+      "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
+      "redirectURI": "http://<ip>:30658/callback",
+      "scopes": ["groups", "email", "profile"],
+      "claimMapping":{
+          "groups": "http://pachyderm.com/groups"
+      },
+      "insecureEnableGroups": true
+      }
+  }
+ ```
 
-    === "oidc-dex-connector.yaml"
+ ### oidc-dex-connector.yaml
 
-        ``` yaml
-        type: oidc
-        id: auth0
-        name: Auth0
-        version: 1
-        config:
-            issuer: https://dev-k34x5yjn.us.auth0.com/
-            clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
-            clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
-            redirectURI: http://<ip>:30658/callback
-            scopes: 
-            - groups
-            - email
-            - profile
-            claimMapping:
-                groups: http://pachyderm.com/groups
-            insecureEnableGroups: true
-        ```
+  ``` yaml
+  type: oidc
+  id: auth0
+  name: Auth0
+  version: 1
+  config:
+      issuer: https://dev-k34x5yjn.us.auth0.com/
+      clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
+      clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
+      redirectURI: http://<ip>:30658/callback
+      scopes: 
+      - groups
+      - email
+      - profile
+      claimMapping:
+          groups: http://pachyderm.com/groups
+      insecureEnableGroups: true
+  ```
 
-    Note the addition of the `scopes` and `claimMapping` fields to your original connector configuration file.
-    Update your connector:
+ Note the addition of the `scopes` and `claimMapping` fields to your original connector configuration file.
+ Update your connector:
 
-    ```s
-    pachctl idp update-connector auth0 --version 2
-    ```
-    Your group is all set to receive permissions to Pachyderm's ressources.
+ ```s
+ pachctl idp update-connector auth0 --version 2
+ ```
+ Your group is all set to receive permissions to Pachyderm's ressources.
 
-- 4- Grant the group an admin access to a specific repo in Pachyderm.
+4. Grant the group an admin access to a specific repo in Pachyderm.
 
-    ```s
-    pachctl auth set repo testinput repoOwner group:testgroup
-    ```
-    A quick check at this repo should give you its updated list of users an their access level:
+ ```s
+ pachctl auth set repo testinput repoOwner group:testgroup
+ ```
+ A quick check at this repo should give you its updated list of users an their access level:
 
-    ```s
-    pachctl auth get repo testinput
-    ```
-    **System Response**
+ ```s
+ pachctl auth get repo testinput
+ ```
+ **System Response**
 
-    ```s
-    pach:root: [repoOwner]
-    user:another-pachyderm-user@gmail.com: [repoReader]
-    group:testgroup: [repoOwner]
-    ```
-    {{% notice tip %}}
-      The following command `pachctl auth get-groups` lists the groups that have been defined on your cluster.
-    {{% /notice %}}
+ ```s
+ pach:root: [repoOwner]
+ user:another-pachyderm-user@gmail.com: [repoReader]
+ group:testgroup: [repoOwner]
+ ```
+ {{% notice tip %}}
+   The following command `pachctl auth get-groups` lists the groups that have been defined on your cluster.
+ {{% /notice %}}
 

@@ -43,31 +43,29 @@ Rules to keep in mind
   
 - A **repoOwner** of a given repository (or a **clusterAdmin** as mentioned above) can set any level of access to "their" repo to users by running the command:
 
-    ```s
-    pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
-    ```
+  ```s
+  pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
+  ```
 {{% notice note %}}
+Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml#L469). 
 
+For example, grant reader access to all repos to a specific group:
+```yaml
+ pachd:
+    pachAuthClusterRoleBindings:
+        group:data-scientists:
+        - repoReader
+```
+Or, give the user `paul@company.com` the clusterAdmin role, and the robot user `wallie` logReader rights on the cluster. 
+```yaml
+ pachd:
+    pachAuthClusterRoleBindings:
+        user:paul@company.com:
+        - clusterAdmin
+        robot:wallie:
+        - logReader
+```
 {{% /notice %}}
-
-    Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml#L469). 
-
-    For example, grant reader access to all repos to a specific group:
-    ```yaml
-     pachd:
-        pachAuthClusterRoleBindings:
-            group:data-scientists:
-            - repoReader
-    ```
-    Or, give the user `paul@company.com` the clusterAdmin role, and the robot user `wallie` logReader rights on the cluster. 
-    ```yaml
-     pachd:
-        pachAuthClusterRoleBindings:
-            user:paul@company.com:
-            - clusterAdmin
-            robot:wallie:
-            - logReader
-    ```
 
 To keep using our Auth0 example and illustrate the attribution of a given Role to a User,
 let's have our `Root User` (with default clusterAdmin privileges) give `repoReader` access to a repo to our `one-pachyderm-user@gmail.com` user. 
@@ -75,11 +73,9 @@ let's have our `Root User` (with default clusterAdmin privileges) give `repoRead
 In particular, we will:
 
 1. Connect as our Root User again.
-1. Create a repo named `testinput` containing one text file.
-1. Grant `repoReader` access on this repo to our user `one-pachyderm-user@gmail.com` registered with our IdP (Auth0).
-1. See what happens when `one-pachyderm-user@gmail.com` tries to write in the repo without the proper writing access.
-
-<br>
+2. Create a repo named `testinput` containing one text file.
+3. Grant `repoReader` access on this repo to our user `one-pachyderm-user@gmail.com` registered with our IdP (Auth0).
+4. See what happens when `one-pachyderm-user@gmail.com` tries to write in the repo without the proper writing access.
 
 - **First, let's connect as our Root User:**
     ```s
@@ -96,7 +92,7 @@ In particular, we will:
 
     ```
     A quick `pachctl list repo` will list your new repo and display your access level on that repo as a **clusterAdmin**.
-    ![Admin Repo Access Level](../images/clusteradmin-repo-access.png)
+    ![Admin Repo Access Level](../../images/clusteradmin-repo-access.png)
 
 - **Third, grant `repoReader` access to our user `one-pachyderm-user@gmail.com`:**
     ```s
@@ -112,17 +108,17 @@ In particular, we will:
     pach:root: [repoOwner]
     ```
 
-    {{% notice note %}}
-    Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
-    Pachyderm defines 4 prefixes depending on the type of user:
+  {{% notice note %}}
+  Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
+  Pachyderm defines 4 prefixes depending on the type of user:
 
-    - robot
-    - user
-    - group
-    - pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
+  - robot
+  - user
+  - group
+  - pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
 
-    Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
-    {{%/notice %}}
+  Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
+  {{%/notice %}}
 
 - **Finally, have `one-pachyderm-user@gmail.com` try to add a file to `testinput` without proper writing privileges:**
     ```s
@@ -138,30 +134,30 @@ In particular, we will:
     ```
 
 {{% notice info %}}
-    Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
+Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
 {{% /notice %}}
 
 {{% notice note %}}
 
-    - To alter a user's privileges, simply re-run the `pachctl auth set` command above with a different set of Roles. 
-    For example, 
-    ```s
-    pachctl auth set repo testinput repoWriter user:one-pachyderm-user@gmail.com
-    ```
-    will give one-pachyderm-user@gmail.com `repoWriter` privileges when they were inially granted `repoReader` access.
+- To alter a user's privileges, simply re-run the `pachctl auth set` command above with a different set of Roles. 
+For example, 
+```s
+pachctl auth set repo testinput repoWriter user:one-pachyderm-user@gmail.com
+```
+will give one-pachyderm-user@gmail.com `repoWriter` privileges when they were inially granted `repoReader` access.
 {{% /notice %}}
 
-    - You can remove all access level on a repo to a user by using the `none` keyword.
-    For example,
-    ```s
-    pachctl auth set repo testinput none user:one-pachyderm-user@gmail.com
-    ```
-    will remove any previous granted rights on the repo `testinput` to the user one-pachyderm-user@gmail.com.
+- You can remove all access level on a repo to a user by using the `none` keyword.
+For example,
+```s
+pachctl auth set repo testinput none user:one-pachyderm-user@gmail.com
+```
+will remove any previous granted rights on the repo `testinput` to the user one-pachyderm-user@gmail.com.
 
-    - To assign `repoReader` access to `allClusterUsers` on a repo:
-    ```s
-    pachctl auth set repo testinput repoReader allClusterUsers
-    ```   
+- To assign `repoReader` access to `allClusterUsers` on a repo:
+```s
+pachctl auth set repo testinput repoReader allClusterUsers
+```   
 
 ## Set Roles to Groups
 
@@ -184,19 +180,19 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
 - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
   - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
   - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-  ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
+  ![Authorization Extension Rule Edition](../../../images/auth0-edit-rule.png)
 {{% /notice %}}
 
-- 1- Group creation
+1. Group creation
 
     An Authorization link should now show on your Auth0 webpage.
     In **Authorization/Groups**, create a group. Here `testgroup`:
-    ![Group creation](../images/auth0-create-group.png)
+    ![Group creation](../../images/auth0-create-group.png)
 
-- 2- Add your user to your group
+2. Add your user to your group
 
     In **Authorization/Users**, select your user one-pachyderm-user@gmail.com and add them to your `testgroup` as follow.
-    ![Add User to Group](../images/auth0-add-user-to-group.png)
+    ![Add User to Group](../../images/auth0-add-user-to-group.png)
 
     In **User Mangement/Users**, you user should now show the following addition to their app_metadata:
     ```json
@@ -208,7 +204,7 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
         }
     }
     ```
-- 3- Update your connector
+3.  Update your connector
 
     === "oidc-dex-connector.json"
 
@@ -260,7 +256,7 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
     ```
     Your group is all set to receive permissions to Pachyderm's ressources.
 
-- 4- Grant the group an admin access to a specific repo in Pachyderm.
+4.  Grant the group an admin access to a specific repo in Pachyderm.
 
     ```s
     pachctl auth set repo testinput repoOwner group:testgroup

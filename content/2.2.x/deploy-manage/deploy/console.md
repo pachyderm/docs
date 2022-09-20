@@ -77,42 +77,39 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
     - Or manually update your values.yaml with `oidc.mockIDP = false` then [set up an Identity Provider by using `pachctl`](../../../enterprise/auth/authentication/idp-dex).
 
 {{% notice warning %}}
+
 - **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../../enterprise/auth/#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-    However, **this secret is only used when configuring through helm**:
+  However, **this secret is only used when configuring through helm**:
 
-    - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
-    - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
+  - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
+  - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
 {{%/notice %}}
 
     - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
 
 ### Connect to Console
 
-=== "No Ingress set up (Local or Quick Install)"
+#### No Ingress set up (Local or Quick Install)
 
-    - Run `pachctl port-forward` (Background this process in a new tab of your terminal).
-    
-    - Connect to your Console (Pachyderm UI):
+- Run `pachctl port-forward` (Background this process in a new tab of your terminal).
 
-         - Point your browser to `http://localhost:4000` 
-         - Authenticate as the mock User using `admin` & `password` 
+- Connect to your Console (Pachyderm UI):
+  - Point your browser to `http://localhost:4000` 
+  - Authenticate as the mock User using `admin` & `password` 
 
-=== "Ingress / DNS set up"
+#### Ingress / DNS set up
 
-    - Point your browser to:
+- Point your browser to:
+  - `http://<external-IP-address-or-domain-name>:80` or,
+  - `https://<external-IP-address-or-domain-name>:443` if TLS is enabled
 
-         - `http://<external-IP-address-or-domain-name>:80` or,
-         - `https://<external-IP-address-or-domain-name>:443` if TLS is enabled
-
-    - Authenticate:
-
-         - As the mock User using `admin` & `password` if you used the mockIDP.
-         - As a User of your IdP otherwise.
+- Authenticate:
+   - As the mock User using `admin` & `password` if you used the mockIDP.
+   - As a User of your IdP otherwise.
 
 
-You are all set! 
-You should land on the Projects page of Console.
+You are all set!  You should land on the Projects page of Console.
 
 ![Console Landing Page](../../getting-started/images/console_landing_page.png)
 
