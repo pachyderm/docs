@@ -1606,3 +1606,7 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   overflow-x: auto;
   max-width: 100%;
 }
+
+:focus {
+  outline-color:  var(--is-blue);
+}
