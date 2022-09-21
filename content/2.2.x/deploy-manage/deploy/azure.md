@@ -153,8 +153,8 @@ The storage account name must be unique in the Azure location.
 
 * Set up the following variables:
 
-      * STORAGE_ACCOUNT - The name of the storage account where you store your data.
-      * CONTAINER_NAME - The name of the Azure blob container where you store your data.
+  * STORAGE_ACCOUNT - The name of the storage account where you store your data.
+  * CONTAINER_NAME - The name of the Azure blob container where you store your data.
 
 * Create an Azure storage account:
 
@@ -306,7 +306,7 @@ Alternativelly, in the **Connection Security** of your newly created server, *Al
 
 - In the **Essentials** page of your instance, find the full **server name** and **admin username** that will be required in your [values.yaml](#update-your-valuesyaml).
 
-![Instance overview page](../images/azure_postgresql_overview.png)
+![Instance overview page](../../images/azure_postgresql_overview.png)
 
 ### Create Your Databases
 After your instance is created, you will need to create Pachyderm's database(s).

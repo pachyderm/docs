@@ -12,7 +12,7 @@ seriesPart:
 The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 
 {{% notice note %}}
-    **Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
+**Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
 {{% /notice %}}
 
 This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion >}}/etc/helm/pachyderm).
@@ -52,7 +52,7 @@ For Production deployments, Pachyderm strongly recommends that you **[create you
     
 
 {{% notice note %}}
- "**Platform Secrets: READ BEFORE ANY INSTALL OR UPGRADE**" 
+**Platform Secrets: READ BEFORE ANY INSTALL OR UPGRADE**
         
 Pachyderm recommends using **"platform secrets"** to hold the values needed by a cluster at the time of the deployment (such as Postgresql admin login username and password, OAuth information to set up your IdP, or your enterprise license key). 
 You have the option to: 
@@ -73,8 +73,17 @@ pachd.enterpriseRootTokenSecretName
 oidc.upstreamIDPsSecretName 
 ``` 
 
-It is important to note that if no secret name is provided for the fields mentioned above, Pachyderm will retrieve the dedicated plain-text secret values in the helm values and populate a generic, default, auto-generated secret (`pachyderm-bootstrap-config`) at the time of the installation. If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. Check the list of all secret values fields and  `pachyderm-bootstrap-config` keys in our [upgrade section](../../manage/upgrades/#troubleshoot-upgrades).
-This generic secret `pachyderm-bootstrap-config` is reset at each upgrade, and new default values are created, causing the **helm upgrade to fail unless you retrieve your default values (for example: `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}`), create a dedicated secret for each, then manually set each secret name back into their corresponding secret name field above.**
+It is important to note that if no secret name is provided for the fields mentioned above, Pachyderm will retrieve the dedicated plain-text secret values in the helm values and populate a generic, default, auto-generated secret (`pachyderm-bootstrap-config`) at the time of the installation. 
+
+If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. Check the list of all secret values fields and  `pachyderm-bootstrap-config` keys in our [upgrade section](../../manage/upgrades/#troubleshoot-upgrades).
+
+This generic secret `pachyderm-bootstrap-config` is reset at each upgrade, and new default values are created, causing the helm upgrade to fail unless you retrieve your default values, for example:
+
+   ```s
+   {{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}
+   ```
+Create a dedicated secret for each, then manually set each secret name back into their corresponding secret name field above.
+
 {{% /notice %}}
 
 ###  Install Pachyderm's Helm Chart

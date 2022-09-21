@@ -19,7 +19,7 @@ using the **ingress controller** Traefik.
 
 ## Traefik ingress controller on Pachyderm UI's cluster in one diagram
 Here is a quick high-level view of the various components at play.
-![pach-ui-ingress](../../images/console_ingress_traefik.png)
+![pach-ui-ingress](../../../images/console_ingress_traefik.png)
 
 {{% notice warning %}}
 The following installation steps are for **Informational Purposes** ONLY. 
@@ -106,25 +106,25 @@ Please refer to your full Traefik documentation for further installation details
 
 1. Check your new rules by running `kubectl describe ingress console`:
 2. 
-         ```s
-         kubectl describe ingress console
-         ```
-         ```s
-         Name:             console
-         Namespace:        default
-         Address:
-         Default backend:  default-http-backend:80 
-         Rules:
-         Host            Path  Backends
-         console.localhost
-                           /     console:console-http (10.1.0.7:4000)
-         Annotations:      kubernetes.io/ingress.class: traefik
-                           /dex     pachd:identity-port (10.1.0.8:1658)
-         Annotations:      kubernetes.io/ingress.class: traefik
-                           /     pachd:oidc-port (10.1.0.8:1657)
-         Annotations:      kubernetes.io/ingress.class: traefik
-         Events:           <none>
-         ```
+   ```s
+   kubectl describe ingress console
+   ```
+   ```s
+   Name:             console
+   Namespace:        default
+   Address:
+   Default backend:  default-http-backend:80 
+   Rules:
+   Host            Path  Backends
+   console.localhost
+                     /     console:console-http (10.1.0.7:4000)
+   Annotations:      kubernetes.io/ingress.class: traefik
+                     /dex     pachd:identity-port (10.1.0.8:1658)
+   Annotations:      kubernetes.io/ingress.class: traefik
+                     /     pachd:oidc-port (10.1.0.8:1657)
+   Annotations:      kubernetes.io/ingress.class: traefik
+   Events:           <none>
+   ```
        
 3. Check the Traefik Dashboard again (http://127.0.0.1:9000/dashboard/), your new set of rules should now be visible.
 

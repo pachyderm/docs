@@ -12,10 +12,10 @@ seriesPart:
 This page walks you through the fundamentals of what you need to know about Kubernetes, persistent volumes, and object stores to deploy Pachyderm on-premises.
 
 {{% notice note %}}
-"Check Also"
-  - Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
-  - If you are planning to install Pachyderm UI. Read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
-  - Troubleshooting a deployment? Check out [Troubleshooting Deployments](../../troubleshooting/deploy-troubleshooting.md).
+**Check Also**
+- Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
+- If you are planning to install Pachyderm UI. Read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
+- Troubleshooting a deployment? Check out [Troubleshooting Deployments](../../troubleshooting/deploy-troubleshooting.md).
 {{% /notice %}}
 
 ## Introduction
@@ -70,13 +70,12 @@ An object store is used by Pachyderm's `pachd` for storing all your data.
 The object store you use must be accessible via a low-latency, high-bandwidth connection.
 
 {{% notice note %}}
+For an on-premises deployment, 
+it is not advisable to use a cloud-based storage mechanism.
+Do not deploy an on-premises Pachyderm cluster against cloud-based object stores (such as S3, GCS, Azure Blob Storage). 
 
-    For an on-premises deployment, 
-    it is not advisable to use a cloud-based storage mechanism.
-    Do not deploy an on-premises Pachyderm cluster against cloud-based object stores (such as S3, GCS, Azure Blob Storage). 
+You will, however, **access your Object Store using the S3 protocol**. 
 {{% /notice %}}
-
-    You will, however, **access your Object Store using the S3 protocol**. 
 
 Storage providers like [MinIO](https://min.io) (the most common and officially supported option), [EMC's ECS](https://www.delltechnologies.com/en-us/storage/ecs/index.htm), [Ceph](https://ceph.io/en/), or [SwiftStack](https://www.swiftstack.com/) provide S3-compatible access to enterprise storage for on-premises deployment. 
 

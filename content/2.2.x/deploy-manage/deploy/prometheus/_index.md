@@ -10,7 +10,7 @@ seriesPart:
 --- 
 
 {{% notice note %}}
- To monitor a Pachyderm cluster
+To monitor a Pachyderm cluster
 with Prometheus, a ***Pachyderm Enterprise License*** is required. 
 {{% /notice %}}
 
@@ -71,26 +71,26 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
         In this case, it looks for anything with the label `suite: pachyderm` -
         which is by default associated with all Pachyderm resources.
 
-    {{% notice info %}}
-            Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
-            to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
-            Let's take a quick look at this file:
+   {{% notice info %}}
+   Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
+   to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
+   Let's take a quick look at this file:
 
-            ```s
-            kubectl -o json get service/pachd
-            ```
+   ```s
+   kubectl -o json get service/pachd
+   ```
 
-            In the json file, find:
-    
-            ```json
-                {
-                "name": "prom-metrics",
-                "port": 1656,
-                "protocol": "TCP",
-                "targetPort": "prom-metrics"
-                }
-            ```
-    {{% /notice %}}
+   In the json file, find:
+
+   ```json
+      {
+      "name": "prom-metrics",
+      "port": 1656,
+      "protocol": "TCP",
+      "targetPort": "prom-metrics"
+      }
+   ```
+   {{% /notice %}}
     
 ## Port-Forward
 One last step before you can collect your metrics:
@@ -110,8 +110,5 @@ Run a pipeline of your choice. The `pachyderm-scraper` should be visible:
 In the ClassicUI tab, you should be able to see the new pachyderm metrics.
 
 ## References
-<! --* Find the full list of Pachyderm metrics here:
-    - [Pachd metrics](./pachd-metrics)
-    - [Pipeline metrics](./job-metrics) ->
 * [Kube Prometheus Stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) documentation.
 * Prometheus [documentation](https://prometheus.io/docs/introduction/overview/).

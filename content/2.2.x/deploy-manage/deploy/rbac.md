@@ -13,8 +13,6 @@ seriesPart:
 Pachyderm has support for Kubernetes Role-Based Access Controls (RBAC), which is a default part of all Pachyderm deployments. In most use cases, Pachyderm sets all the RBAC permissions automatically. However, if you are deploying Pachyderm on a cluster that your company owns, security policies might not allow certain RBAC permissions by default. Therefore, you need to
 contact your Kubernetes administrator and provide the following list of required permissions:
 
-{% raw %}
-
 ```s
 Rules: []rbacv1.PolicyRule{{
 		APIGroups: []string{""},
@@ -31,8 +29,6 @@ Rules: []rbacv1.PolicyRule{{
 		ResourceNames: []string{client.StorageSecretName},
 		}},
 ```
-
-{% endraw %}
 
 The following table explains how Pachyderm uses those permissions:
 

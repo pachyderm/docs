@@ -30,16 +30,16 @@ we recommend that you:
 
 * **Use a secure connection**
 
-    Make sure that you have Transport
-    Layer Security (TLS) enabled for Ingress connections.
-    You can deploy `pachd` and `console` with different certificates
-    if required. Self-signed certificates might require additional configuration.
-    For instructions on deployment with TLS, 
-    see [Deploy Pachyderm with TLS](../deploy-w-tls/).
+  Make sure that you have Transport
+  Layer Security (TLS) enabled for Ingress connections.
+  You can deploy `pachd` and `console` with different certificates
+  if required. Self-signed certificates might require additional configuration.
+  For instructions on deployment with TLS, 
+  see [Deploy Pachyderm with TLS](../deploy-w-tls/).
 
-    {{% notice note %}}
-        Optionally, you can use a certificate manager such as [cert-manager](https://cert-manager.io/docs/) to refresh certificates and inject them as kubernetes secrets into your cluster for the ingress and load balancer to use.
-    {{% /notice %}}
+  {{% notice note %}}
+  Optionally, you can use a certificate manager such as [cert-manager](https://cert-manager.io/docs/) to refresh certificates and inject them as kubernetes secrets into your cluster for the ingress and load balancer to use.
+  {{% /notice %}}
    
 * **Use Pachyderm authentication/authorization**
 

@@ -12,7 +12,7 @@ seriesPart:
 
 Pachyderm has the ability to trace requests using Jaeger. This can be useful when diagnosing slow clusters.
 
-![Successful Trace](../../assets/images/healthy.png)
+![Successful Trace](../../../assets/images/healthy.png)
 
 # Collecting Traces
 
@@ -93,7 +93,7 @@ collected traces.
 
 2. If you see a trace appear in Jaeger with no subtraces, like so:
 
- ![Trace with no children](../../assets/images/no-traces.png)
+ ![Trace with no children](../../../assets/images/no-traces.png)
 
  This might mean that `pachd` has not connected to Jaeger, but
  `pachctl` has. Restart the `pachd` pods *after* creating the

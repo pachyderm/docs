@@ -40,7 +40,7 @@ Once your tls secret is created:
 - Enable tls in your helm values.
 - Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
 
-{{%notice example %}}
+### Example 
 In this example, you terminate tls at the cluster level by enabling tls directly on pachd:
 
 ```yaml
@@ -49,8 +49,6 @@ In this example, you terminate tls at the cluster level by enabling tls directly
       enabled: true
       secretName: "<the-secret-name-in-your-certificate-ressource>"
 ```
-{{% /notice %}}
-
 Et voila!
 
 
@@ -76,11 +74,11 @@ trusted certificate, you will need to set the `pachd_address` in the
 Pachyderm context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
-{{% notice example %}}
+### Example 
 ```s   
 echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
 ```
-{{% /notice %}}
+
 
 {{% notice note %}}
 [Connect by using a Pachyderm context](../connect-to-cluster/#connect-by-using-a-pachyderm-context)

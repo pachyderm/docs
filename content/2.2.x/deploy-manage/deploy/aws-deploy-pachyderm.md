@@ -12,7 +12,7 @@ seriesPart:
 For a quick test installation of Pachyderm on AWS (suitable for development), jump to our [Quickstart page](../quickstart/).
 
 For deployments in production, refer to the following diagram and follow these step-by-step instructions:
-![AWS Arch](../images/arch-diagram-high-level-aws.svg)
+![AWS Arch](../../images/arch-diagram-high-level-aws.svg)
 
 {{% notice tip %}} 
 Before your start your installation process.
@@ -63,31 +63,31 @@ To deploy an EKS cluster, complete the following steps:
 
 1. Deploy an EKS cluster:
 
-      ```s
-      eksctl create cluster --name <name> --version <version> \
-      --nodegroup-name <name> --node-type <vm-flavor> \
-      --nodes <number-of-nodes> --nodes-min <min-number-nodes> \
-      --nodes-max <max-number-nodes> --node-ami auto
-      ```
+    ```s
+    eksctl create cluster --name <name> --version <version> \
+    --nodegroup-name <name> --node-type <vm-flavor> \
+    --nodes <number-of-nodes> --nodes-min <min-number-nodes> \
+    --nodes-max <max-number-nodes> --node-ami auto
+    ```
 
-      **Example**
+    **Example**
 
-      ```s
-      eksctl create cluster --name pachyderm-cluster --region us-east-2 --profile <your named profile>
-      ```
+    ```s
+    eksctl create cluster --name pachyderm-cluster --region us-east-2 --profile <your named profile>
+    ```
 
-1. Verify the deployment:
+2. Verify the deployment:
 
-      ```s
-      kubectl get all
-      ```
+   ```s
+   kubectl get all
+   ```
 
-      **System Response:**
+   **System Response:**
 
-      ```s
-      NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-      service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   23h
-      ```
+   ```s
+   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+   service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   23h
+   ```
 
 Once your Kubernetes cluster is up, and your infrastructure is configured, 
 you are ready to prepare for the installation of Pachyderm.
@@ -111,29 +111,28 @@ Amazon region.
 
 * Set up the following system variables:
 
-      * `BUCKET_NAME` — A globally unique S3 bucket name.
-      * `AWS_REGION` — The AWS region of your Kubernetes cluster. For example,
-      `us-west-2` and not `us-west-2a`.
+  * `BUCKET_NAME` — A globally unique S3 bucket name.
+  * `AWS_REGION` — The AWS region of your Kubernetes cluster. For example,
+  `us-west-2` and not `us-west-2a`.
 
-* If you are creating an S3 bucket in the `us-east-1` region, run the following
-      command:
+* If you are creating an S3 bucket in the `us-east-1` region, run the following command:
 
-      ```s
-      aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
-      ```
+  ```s
+  aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
+  ```
 
 * If you are creating an S3 bucket in any region but the `us-east-1`
 region, run the following command:
 
-      ```s
-      aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION} --create-bucket-configuration LocationConstraint=${AWS_REGION}
-      ```
+  ```s
+  aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION} --create-bucket-configuration LocationConstraint=${AWS_REGION}
+  ```
 
 * Verify that the S3 bucket was created:
 
-      ```s   
-      aws s3 ls
-      ```
+  ```s   
+  aws s3 ls
+  ```
 
 You now need to **give Pachyderm access to your bucket** either by:
 
@@ -221,11 +220,11 @@ To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](h
 etcd and PostgreSQL (metadata storage) each claim the creation of a pv. 
 
 {{% notice tip %}}
-      The metadata services generally require a small persistent volume size (i.e. 10GB) **but high IOPS (1500)**.
-      Note that Pachyderm out-of-the-box deployment comes with **gp2** default EBS volumes. 
-      While it might be easier to set up for test or development environments, **we highly recommend to use SSD gp3 in production**. A **gp3** EBS volume delivers a baseline performance of 3,000 IOPS and 125MB/s at any volume size. Any other disk choice may require to **oversize the volume significantly to ensure enough IOPS**.
+The metadata services generally require a small persistent volume size (i.e. 10GB) **but high IOPS (1500)**.
+Note that Pachyderm out-of-the-box deployment comes with **gp2** default EBS volumes. 
+While it might be easier to set up for test or development environments, **we highly recommend to use SSD gp3 in production**. A **gp3** EBS volume delivers a baseline performance of 3,000 IOPS and 125MB/s at any volume size. Any other disk choice may require to **oversize the volume significantly to ensure enough IOPS**.
 
-      See [volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).
+See [volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).
 {{% /notice %}}
 
 If you plan on using **gp2** EBS volumes:
@@ -545,9 +544,9 @@ If you are exposing your cluster publicly:
 
   1. Retrieve the external IP address of your TCP load balancer or your domain name:
 
-    ```s
-    kubectl get services | grep pachd-lb | awk '{print $4}'
-    ```
+      ```s
+      kubectl get services | grep pachd-lb | awk '{print $4}'
+      ```
 
   2. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 

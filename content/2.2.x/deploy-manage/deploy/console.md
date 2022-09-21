@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-![Console in action](../images/console.gif)
+![Console in action](../../images/console.gif)
 
 ## What is Console
 
@@ -30,7 +30,7 @@ Request an Enterprise trial token directly from Console CE by hitting the **"Upg
 
 Before diving into Console installation steps, please look at Console's various states, from the Community Edition to Enterprise. It should give you a mental model of the various paths to upgrade your Community Edition and what happens when your Enterprise token expires.
 
-![Console state diagram](../images/console-state-diagram.png)
+![Console state diagram](../../images/console-state-diagram.png)
 
 ## Deploy Console
 
@@ -64,9 +64,8 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 - You can opt for a **quick installation** that will alleviate those infrastructure constraints (Not recommended in Production but an easy way to get started) and speed up your installation by following the steps in our [Quick Cloud Deployment](../quickstart/) page, then [connect to your Console](#connect-to-console): 
 
 {{% notice note %}}
- 
-    - You can "quick install" Pachyderm CE or Enterprise Edition.
-    - Use the mock user (username:`admin`, password: `password`) to login to Console when authentication is enabled but no Identity provider was wired (Enterprise).
+- You can "quick install" Pachyderm CE or Enterprise Edition.
+- Use the mock user (username:`admin`, password: `password`) to login to Console when authentication is enabled but no Identity provider was wired (Enterprise).
 {{% /notice %}}
 
 - For a **production environment**:
@@ -84,9 +83,8 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 
   - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
   - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
-{{%/notice %}}
-
     - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
+{{%/notice %}}
 
 ### Connect to Console
 
@@ -111,5 +109,5 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 
 You are all set!  You should land on the Projects page of Console.
 
-![Console Landing Page](../../getting-started/images/console_landing_page.png)
+![Console Landing Page](../../../getting-started/images/console_landing_page.png)
 

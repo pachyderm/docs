@@ -43,7 +43,7 @@ To get a free-trial token, fill in [this form](https://www.pachyderm.com/trial/)
 Select your favorite cloud provider.
 
 {{% notice tip %}}
-    Note that we often use the acronym `CE` for Community Edition.
+Note that we often use the acronym `CE` for Community Edition.
 {{% /notice %}}
 
 ## 2. Create Your Values.yaml
@@ -303,8 +303,6 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyte
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice note %}}
-
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-    
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
 {{% /notice %}}
 
