@@ -16,6 +16,8 @@ outputs:
   taxonomies: [ "HTML", "JSON"]
 
 params:
+  algolia:
+    latestIndex: pach_public
   # Feature Switches #
 
   ## Branding features

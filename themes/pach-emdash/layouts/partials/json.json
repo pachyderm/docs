@@ -2,6 +2,7 @@
 		"title": "{{if .Title}}{{ .Title }}{{else}}{{.Name}}{{end}}",
 		"version": "{{.Section}}",
 		"isLatest":"{{if eq .Site.Params.releaseInfo.Latest .Section}}Latest{{else}}{{end}}",
+		"pageKind": "{{ .Kind }}",
 		"parent": "{{with .Parent}}{{.Title}}{{end}}",
 		"description": "{{ .Description }}",
 		"date": "{{ .Date | time.Format ":date_long" }}",

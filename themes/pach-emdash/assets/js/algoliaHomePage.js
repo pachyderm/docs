@@ -1,7 +1,12 @@
+// find the element with the id "activeVersion" and get it's data-algolia attribute value 
+
+const indexName = document.getElementById('activeVersion').getAttribute('data-algolia')
+console.log(indexName)
+
 const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c70')
   // first value is app id, second is search only api key
   const search = instantsearch({
-    indexName: 'pach_public',
+    indexName: indexName,
     searchClient, 
     searchFunction(helper) {
       if (helper.state.query) {
