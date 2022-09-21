@@ -45,18 +45,18 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-1 m-1"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
         item: `
-          <div class="stack darken-1 rounded-1 move-l sp-1">
-            <a href="{{relURI}}">
+          <div class="stack">
+            <a href="{{relURI}}" class="sp-1 outlined rounded-1">
               <div class="hit spread c-pinned-center is-full c-mr-1">
-                <div class="black is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
+                <div class="black gradient-lr-cold is-fit xxs rounded-1 darken-3 p-1">{{version}}</div>
                 <div class="stack c-mb-1">
-                  <b class="xxs uppercase is-fit">{{parent}}</b>
+                  <p class="xxs uppercase is-fit">{{parent}}</p>
                   <h3 class="is-fit s extra-bold">{{title}}</h3>
                   <div class="xs">{{description}}</div>
                 </div>
               </div>
             </a>
-            <div class="xxs spread-right c-black c-mt-1 c-mr-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
+            <div class="xxs spread-right c-black c-mb-1 c-mr-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
           </div>
           `
       },
