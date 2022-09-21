@@ -9,6 +9,20 @@
                 {{ if ne .Type "json" }}
                 ,{{ partial "json.json" . }}
                 {{ end }}
+                {{if eq .Kind "section"}}
+                    {{ range .Pages }}
+                        {{ if ne .Type "json" }}
+                        ,{{ partial "json.json" . }}
+                        {{ end }}
+                        {{if eq .Kind "section"}}
+                            {{ range .Pages }}
+                                {{ if ne .Type "json" }}
+                                ,{{ partial "json.json" . }}
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
             {{ end }}
         {{ end }}
     {{ end }}
