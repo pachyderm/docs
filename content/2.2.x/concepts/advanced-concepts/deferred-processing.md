@@ -156,7 +156,7 @@ A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the ma
       because commits in Pachyderm are generally additive, so processing
       the HEAD commit also processes data from previous commits.
 
-![deferred processing](../../assets/images/deferred-processing.gif)
+![deferred processing](../../../assets/images/deferred-processing.gif)
 
 ## Process Specific Commits
 

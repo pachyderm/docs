@@ -106,7 +106,7 @@ The global commit and global job above are the result of a `pachctl put file ima
 
 The following diagram illustrates the global commit and its various components:
 
-    ![global_commit_after_putfile](../images/global_commit_after_putfile.png)
+![global_commit_after_putfile](../../images/global_commit_after_putfile.png)
 
 Let's take a look at the origin of each commit.
 
