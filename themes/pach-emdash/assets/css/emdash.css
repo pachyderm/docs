@@ -1610,3 +1610,30 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
 :focus {
   outline-color:  var(--is-blue);
 }
+
+/* wiggle animation  */
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(.5deg);
+  }
+  40% {
+    transform: rotate(-.5deg);
+  }
+  60% {
+    transform: rotate(.5deg);
+  }
+  80% {
+    transform: rotate(-.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
