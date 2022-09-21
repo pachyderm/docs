@@ -108,9 +108,32 @@ This step comes in 3 flavors:
 
       As an example, see the `tag` parameter in this jsonnet version of opencv's edges pipeline (`edges.jsonnet`):
       
-```json
-{{ gitsnippet('pachyderm/pachyderm', 'examples/opencv/jsonnet/edges.jsonnet', '2.3.x') }}
-```
+   ```json
+   ////
+   // Template arguments:
+   //
+   // suffix : An arbitrary suffix appended to the name of this pipeline, for
+   //          disambiguation when multiple instances are created.
+   // src : the repo from which this pipeline will read the images to which
+   //       it applies edge detection.
+   ////
+   function(suffix, src)
+   {
+     pipeline: { name: "edges-"+suffix },
+     description: "OpenCV edge detection on "+src,
+     input: {
+       pfs: {
+         name: "images",
+         glob: "/*",
+         repo: src,
+       }
+     },
+     transform: {
+       cmd: [ "python3", "/edges.py" ],
+       image: "pachyderm/opencv:0.0.1"
+     }
+   }
+   ```
 
    * Once your pipeline code is updated and your image is built, tagged, and pushed, update your pipeline using this command line. In this case, there is no need to edit the pipeline specification file to update the value of your new tag. This command will take care of it:
 

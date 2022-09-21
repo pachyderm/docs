@@ -114,8 +114,47 @@ By default, Pachyderm workers are spun up and wait for new input. That works gre
 
 Below is an example of a pipeline spec for a GPU-enabled pipeline from our [market sentiment analysis example](https://github.com/pachyderm/examples/tree/master/market-sentiment):
 
+<!-- Maybe parameterize this example later? -->
 ```yaml
-{{ gitsnippet('pachyderm/examples', 'market-sentiment/pachyderm/train_model.json') }}
+
+{
+  "pipeline": {
+    "name": "train_model"
+  },
+  "description": "Fine tune a BERT model for sentiment analysis on financial data.",
+  "input": {
+    "cross": [
+      {
+        "pfs": {
+          "repo": "dataset",
+          "glob": "/"
+        }
+      },
+      {
+        "pfs": {
+          "repo": "language_model",
+          "glob": "/"
+        }
+      }
+    ]
+  },
+  "transform": {
+    "cmd": [
+      "python", "finbert_training.py", "--lm_path", "/pfs/language_model/", "--cl_path", "/pfs/out", "--cl_data_path", "/pfs/dataset/"
+    ],
+    "image": "pachyderm/market_sentiment:dev0.25"
+  },
+  "resource_limits": {
+    "gpu": {
+      "type": "nvidia.com/gpu",
+      "number": 1
+    }
+  },
+  "resource_requests": {
+    "memory": "4G",
+    "cpu": 1
+  }
+}
 ```
 
 
