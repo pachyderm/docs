@@ -49,7 +49,8 @@ In the example below, we first create a repository called `data` on which we con
 a staging branch:
 
 {{% notice tip %}}
-A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
+
+A simple [pipeline](../../pipeline-concepts/pipeline) subscribes to the master branch of the repo `data`:
 
 ```json
       "pfs": {
@@ -156,7 +157,7 @@ A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the ma
       because commits in Pachyderm are generally additive, so processing
       the HEAD commit also processes data from previous commits.
 
-![deferred processing](../../../assets/images/deferred-processing.gif)
+![deferred processing](../../assets/images/deferred-processing.gif)
 
 ## Process Specific Commits
 
@@ -320,7 +321,7 @@ When more than one is specified, a branch repoint will be triggered when any of
 the conditions is met. To guarantee that they all must be met, add
 `--trigger-all`.
 
-To experiment further, see the full [triggers example](https://github.com/pachyderm/examples/tree/master/deferred-processing/triggers).
+To experiment further, see the full [triggers example](https://github.com/pachyderm/examples/tree/master/deferred_processing/triggers).
 
 ## Embed Triggers in Pipelines
 

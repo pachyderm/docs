@@ -16,11 +16,11 @@ to adjust the number of workers and resources that are
 allocated to each job to optimize throughput.
 
 A Pachyderm worker is an identical Kubernetes pod that runs
-the Docker image that you specified in the
-[pipeline spec](../../../reference/pipeline-spec/). Your analysis code
+the Docker image that you specified in the [pipeline spec](../../../reference/pipeline-spec/). Your analysis code
 does not affect how Pachyderm distributes the workload among workers.
 Instead, Pachyderm spreads out the data that needs to be processed
 across the various workers and makes that data available for your code.
+
 
 When you create a pipeline, Pachyderm spins up worker pods that
 continuously run in the cluster waiting for new data to be available
