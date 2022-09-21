@@ -17,10 +17,11 @@
       <div id="searchbox" class=""> </div>
       {{end}}
       {{ if .Site.Params.versionDropdown }}
-        <button id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="dropdown black is-fit grayscale bold sp-1"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
+      {{/* Contains the logic for toggling between docs versions + algolia indices */}}
+        <button id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="dropdown black is-fit grayscale bold sp-1"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
           <div class="dropdown-content mt-4">
             <div class="stack black rounded-1">
-            {{ range after 1 .Site.Sections.ByTitle.Reverse }} 
+            {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
                 {{ if not .Params.hidden }}
                 {{/* Sort Options: https://gohugo.io/templates/lists/#order-content */}}
                   {{$currentVersionOption := print "/" .Section "/"}}
