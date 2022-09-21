@@ -45,13 +45,11 @@ Before any manual backup:
 - Then, suspend any state-mutating operations.
 
 {{% notice note %}}
- 
+- **Backups incur downtime** until operations are resumed.
+- Operational best practices include notifying Pachyderm users of the outage and providing an estimated time when downtime will cease.  
+- Downtime duration is a function of the size of the data be to backed up and the
+networks involved; Testing before going into production and monitoring backup times on an ongoing basis might help make accurate predictions.
 {{% /notice %}}
-
-    - **Backups incur downtime** until operations are resumed.
-    - Operational best practices include notifying Pachyderm users of the outage and providing an estimated time when downtime will cease.  
-    - Downtime duration is a function of the size of the data be to backed up and the
-    networks involved; Testing before going into production and monitoring backup times on an ongoing basis might help make accurate predictions.
 
 
 ### Suspend Operations
@@ -61,31 +59,31 @@ Before any manual backup:
 
 - **Suspend all mutation of state by scaling `pachd` and the worker pods down**:
 
-    {{% notice warning %}}
-    Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate) in our deployment section.
-    {{% /notice %}}
+  {{% notice warning %}}
+  Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate) in our deployment section.
+  {{% /notice %}}
 
-    To pause Pachyderm:
-    
-    - If you are an [***Enterprise***](../../../enterprise/) user: **Run the `pachctl enterprise pause` command**. 
+  To pause Pachyderm:
+  
+  - If you are an [***Enterprise***](../../../enterprise/) user: **Run the `pachctl enterprise pause` command**. 
 
-    - Alternatively, you can use `kubectl`:
+  - Alternatively, you can use `kubectl`:
 
-        Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
-        Run `kubectl config get-contexts` to list all available clusters and contexts (the current context is marked with a `*`), then `kubectl config use-context <your-context-name>` to set the proper active context.
+      Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
+      Run `kubectl config get-contexts` to list all available clusters and contexts (the current context is marked with a `*`), then `kubectl config use-context <your-context-name>` to set the proper active context.
 
-        ```s 
-        kubectl scale deployment pachd --replicas 0 
-        kubectl scale rc --replicas 0 -l suite=pachyderm,component=worker
-        ```
+      ```s 
+      kubectl scale deployment pachd --replicas 0 
+      kubectl scale rc --replicas 0 -l suite=pachyderm,component=worker
+      ```
 
-        Note that it takes some time for scaling down to take effect;
+      Note that it takes some time for scaling down to take effect;
 
-        Run the `watch` command to monitor the state of `pachd` and worker pods terminating:
+      Run the `watch` command to monitor the state of `pachd` and worker pods terminating:
 
-        ```s
-        watch -n 5 kubectl get pods
-        ```
+      ```s
+      watch -n 5 kubectl get pods
+      ```
 
 ### Back Up The Databases And The Object Store
 
@@ -94,42 +92,43 @@ This step is specific to your database and object store hosting.
 - If your PostgreSQL instance is solely dedicated to Pachyderm, 
 you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQL state.  
 
-    Alternatively, you can use targeted `pg_dump` commands to dump the
-    `pachyderm` and `dex` databases, or use your Cloud Provider's backup product.  
-    In any case, make sure to use TLS.
-    Note that if you are using a cloud provider, you might
-    choose to use the provider’s method of making PostgreSQL backups.
-    
-    {{% notice warning %}}
-    A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
-    {{%/notice%}}
+  Alternatively, you can use targeted `pg_dump` commands to dump the
+  `pachyderm` and `dex` databases, or use your Cloud Provider's backup product.  
+  In any case, make sure to use TLS.
+  Note that if you are using a cloud provider, you might
+  choose to use the provider’s method of making PostgreSQL backups.
+  
+  {{% notice warning %}}
+  A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
+  {{%/notice%}}
 
-    {{% notice info %}} 
-    Here are some pointers to the relevant documentation
+  {{% notice info %}} 
+  Here are some pointers to the relevant documentation
 
-   - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-   - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
-   - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
+ - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+ - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
+ - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
 
-   For on-premises Kubernetes deployments, check the vendor documentation
-   for your on-premises PostgreSQL for details on backing up and restoring your databases.
-    {{% /notice %}}
+ For on-premises Kubernetes deployments, check the vendor documentation
+ for your on-premises PostgreSQL for details on backing up and restoring your databases.
+  {{% /notice %}}
 
 - To back up the object store, you can either download all objects or
 use the object store provider’s backup method.  
-    The latter is preferable since it will typically not incur egress costs.
 
-    {{% notice info %}} 
-    Here are some pointers to the relevant documentation
+  The latter is preferable since it will typically not incur egress costs.
 
-   - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-   - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
-   - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
+  {{% notice info %}} 
+  Here are some pointers to the relevant documentation
 
-   For on-premises Kubernetes deployments, check the vendor documentation
-   for your on-premises object store for details on backing up and
-   restoring a bucket.
-    {{% /notice %}}
+ - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+ - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
+ - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
+
+ For on-premises Kubernetes deployments, check the vendor documentation
+ for your on-premises object store for details on backing up and
+ restoring a bucket.
+  {{% /notice %}}
 
 ### Resuming operations
 
@@ -195,16 +194,16 @@ Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check 
 
 - [Pause the Enterprise Server](#suspend-operations) like you would pause a regular cluster by running `pachctl enterprise pause` (Enterprise users), or using `kubectl`.
 
-    {{% notice info %}}
-    **Kubernetes Users**:
-   There is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
+{{% notice info %}}
+**Kubernetes Users**:
+ There is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
 
-   ```s
-   kubectl scale deployment pach-enterprise --replicas 0 
-   ``` 
+ ```s
+ kubectl scale deployment pach-enterprise --replicas 0 
+ ``` 
 
-   There is no need to pause all the Pachyderm clusters registered to the Enterprise Server to backup the enterprise server; however, pausing the Enterprise server will result in your clusters becoming unavailable.
-    {{% /notice %}}
+ There is no need to pause all the Pachyderm clusters registered to the Enterprise Server to backup the enterprise server; however, pausing the Enterprise server will result in your clusters becoming unavailable.
+{{% /notice %}}
 
 - As a reminder, the Enterprise Server does not use any object-store. Therefore, the [backup of the Enterprise Server](#back-up-the-databases-and-the-object-store) only consists in backing up the database `dex`.
 

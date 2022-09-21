@@ -27,14 +27,17 @@ Setting up Pachyderm's User Access Management (also referred to as "Authenticati
 {{% notice warning %}}
 If you have enabled the enterprise features [through Helm, auth is already activated](../auth/).
 
-In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management). Use the following to retrieve it and save it where you see fit:
+```s
+{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}
+``` 
 
 **This secret is only used when configuring through helm**
 {{% /notice %}}
 
 1. [Activate the feature](#activate-user-access-management).
-1. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 
-1. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding.md) on given Pachyderm Ressources. 
+2. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 
+3. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding.md) on given Pachyderm Ressources. 
 
 Any registered IdP user will then be able to log into their IdP and access Pachyderm ressources according to the privileges they were granted.
 
@@ -44,10 +47,9 @@ See the Identity Provider High Level Diagram below:
 
 ## Activate User Access Management
 {{% notice note %}}
-
-    Verify the status of your **Enterprise License** before activating the User Access Management feature
-    by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
-    status along with the expiration date of the Enterprise License.   
+Verify the status of your **Enterprise License** before activating the User Access Management feature
+by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
+status along with the expiration date of the Enterprise License.   
 {{% /notice %}}
 
 To activate Pachyderm's authentication and authorization features,
@@ -63,8 +65,7 @@ Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [
 
 
 {{% notice note %}}
-
-     If you run `pachctl auth activate` after having enabled your enterprise features through Helm, the original `pachyderm-bootstrap-config` K8s secret created with the installation **is not updated**. Instead, the new rootToken is printed in your STDOUT.
+If you run `pachctl auth activate` after having enabled your enterprise features through Helm, the original `pachyderm-bootstrap-config` K8s secret created with the installation **is not updated**. Instead, the new rootToken is printed in your STDOUT.
 {{% /notice %}}
 
 

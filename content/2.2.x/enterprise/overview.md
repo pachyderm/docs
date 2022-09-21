@@ -24,7 +24,7 @@ It delivers the most recent version of the Community Edition of Pachyderm along 
 {{% notice warning %}} 
 THE ENTERPRISE EDITION LIFTS **ALL SCALING LIMITATIONS**
 
-     Note that the activation of the Enterprise Edition [**lifts all scaling limits of the Community Edition**](../../reference/scaling-limits/). You can run as many pipelines as you need and parallelize your jobs without constraints.
+Note that the activation of the Enterprise Edition [**lifts all scaling limits of the Community Edition**](../../reference/scaling-limits/). You can run as many pipelines as you need and parallelize your jobs without constraints.
 {{%/notice %}}
 
 ### Additional Features

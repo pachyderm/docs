@@ -248,9 +248,13 @@ Add the enterprise server's root token, and network addresses to the values.yaml
 
 {{% notice warning %}} 
 **When setting your enterprise server info as part of the Helm deployment of a cluster, auth is automatically activated unless the helm value `pachd.activateAuth` was intentionally set to false.** (i.e., you can skip step 4).
+
+In this case, a `pachyderm-auth` k8s secret is automatically created containing an entry for your rootToken in the key `rootToken`. Use the following to retrieve it and save it where you see fit:
+```s
+{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}
+```
 {{% /notice %}}
 
-In this case, a `pachyderm-auth` k8s secret is automatically created containing an entry for your rootToken in the key `rootToken`. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
 
 ### Register Clusters With pachctl

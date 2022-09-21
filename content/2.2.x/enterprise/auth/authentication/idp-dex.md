@@ -39,14 +39,10 @@ However, Pachyderm's Identity Service is based on [Dex](https://dexidp.io/docs/)
 and can therefore provide connectors to a large [variety of IdPs](https://dexidp.io/docs/connectors/) (LDAP, GitHub, SAML, OIDC...). 
 Use the IdP of your choice.
 
-<! More IdP connectors example:
-
-#- [Okta](./connectors/okta.md)/>
-
 For now, let's configure Pachyderm so that our
 Pachyderm users can log in through Auth0.
 
-### 1- Register a Pachyderm Application with your IdP
+### 1. Register a Pachyderm Application with your IdP
 
 {{% notice info %}}
 **TL;DR**: 
@@ -93,15 +89,15 @@ Then, complete the following steps:
 1. Select **Grant Types**.
 1. Verify that **Authorization Code** and **Refresh Token** are selected.
 
-   ![Auth0 Grant Settings](../images/auth0-grant-settings.png)
+   ![Auth0 Grant Settings](../../images/auth0-grant-settings.png)
 
 {{% notice note %}}
 For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
 We will log in to Pachyderm as this user once our IdP connection is completed.
-![Auth0 Create User](../images/auth0-create-user.png)
+![Auth0 Create User](../../images/auth0-create-user.png)
 {{% /notice %}}
 
-### 2- Set up and create an Idp-Pachyderm connector
+### 2. Set up and create an Idp-Pachyderm connector
 
 #### Create A Connector Configuration File
 To configure your Idp-Pachyderm integration, **create a connector configuration file** corresponding to your IdP. 
@@ -182,6 +178,7 @@ on the application settings page.
 to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
 
 {{% notice warning %}}
+
 **When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
 
 - `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
@@ -189,13 +186,13 @@ to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
 - AZURE USERS: 
   - You must use TLS when deploying on Azure.
   - When using Azure Active Directory, add the following to the oidc config:
-  ``` yaml
-  "config":{
-      "claimMapping": {
-          "email": "preferred_username"
-      } 
-  }      
-```
+    ``` yaml
+      "config":{
+          "claimMapping": {
+              "email": "preferred_username"
+          } 
+      }      
+    ```
 {{% /notice %}}
 
 {{% notice note %}}
@@ -235,7 +232,7 @@ Run `pachctl idp --help` for a full list of commands.
 In particular, those commands let you create, update, delete, list, or get a specific connector.
 {{% /notice %}}
 
-### 3- Login
+### 3. Login
 The users registered with your IdP are now ready to [Log in to Pachyderm](./login.md)
 
 ## User Revocation
@@ -246,11 +243,10 @@ Use the `pachctl auth revoke` command to revoke access for an existing Pachyderm
 - revoke all tokens for a given user `pachctl auth revoke --user=idp:usernamen@pachyderm.io` to log that user out forcibly.
 
 {{% notice note %}}
-
-    Note that a user whose Pachyderm token has been revoked can technically log in to Pachyderm again unless **you have removed that user from the user registry of your IdP**.
+Note that a user whose Pachyderm token has been revoked can technically log in to Pachyderm again unless **you have removed that user from the user registry of your IdP**.
 {{% /notice %}}
 
 Take a look at the sequence diagram below illustrating the OIDC login flow. It highlights the exchange of the original OIDC ID Token for a Pachyderm Token.
 
-![OIDC Login Flow](../images/pachyderm-oidc-dex-flow.png)
+![OIDC Login Flow](../../images/pachyderm-oidc-dex-flow.png)
 

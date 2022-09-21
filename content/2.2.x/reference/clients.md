@@ -25,17 +25,17 @@ To generate the docs:
 
 - Set your GOPATH: 
 
-	```s
-	export PATH=$(go env GOPATH)/bin:$PATH
-	```
+  ```s
+  export PATH=$(go env GOPATH)/bin:$PATH
+  ```
 
 - In Pachyderm's root directory, start the godocs server: 
 
-	```s
-	go run golang.org/x/tools/cmd/godoc -http=:6060 -goroot="<your go root directory - for example: /Users/yourusername/pachyderm>"
-	```
-				
-	See https://pkg.go.dev/golang.org/x/tools/cmd/godoc for the complete list of flags available.
+  ```s
+  go run golang.org/x/tools/cmd/godoc -http=:6060 -goroot="<your go root directory - for example: /Users/yourusername/pachyderm>"
+  ```
+  		
+  See https://pkg.go.dev/golang.org/x/tools/cmd/godoc for the complete list of flags available.
 
 - In your favorite browser, run `localhost:6060/pkg/`
 
@@ -45,9 +45,9 @@ To generate the docs:
 A compatible version of `gRPC` is needed when using the Go client.  You can identify the compatible version by searching for the version number next to `replace google.golang.org/grpc => google.golang.org/grpc` in https://github.com/pachyderm/pachyderm/blob/master/go.mod then:
 
 ```s
-	go get google.golang.org/grpc
-	cd $GOPATH/src/google.golang.org/grpc
-	git checkout v1.29.1
+go get google.golang.org/grpc
+cd $GOPATH/src/google.golang.org/grpc
+git checkout v1.29.1
 ```
 
 {{% /notice %}}

@@ -36,7 +36,7 @@ pipeline and shut down when the pipeline is destroyed.
 The following diagram shows communication between the S3 gateway
 deployed in a sidecar and the Kubeflow pod.
 
-![Kubeflow S3 gateway](../../../assets/images/d_kubeflow_sidecar.png)
+![Kubeflow S3 gateway](../../../../assets/images/d_kubeflow_sidecar.png)
 
 ## S3 Enable your Pipeline 
 Enable your pipeline to use the Sidecar S3 Gateway by following those simple steps:
@@ -58,13 +58,13 @@ Enable your pipeline to use the Sidecar S3 Gateway by following those simple ste
     writing in `/pfs/out`.
     The address of the output repository will be `s3://out`
 
-{{% notice note %}}
+  {{% notice note %}}
 
-    The user code is responsible to:
-{{% /notice %}}
+  The user code is responsible for:
 
-      - provide its own S3 client package as part of the image (boto3).
-      - read and write in the S3 Buckets exposed to the pipeline.
+  - providing its own S3 client package as part of the image (boto3).
+  - reading and writing in the S3 Buckets exposed to the pipeline.
+  {{% /notice %}}
 
 
 * To access the sidecar instance and a bucket, you should use the [S3_ENDPOINT](../../../deploy/environment-variables/#pipeline-worker-environment-variables) environment variable (see example below). No authentication is needed; 
@@ -116,7 +116,7 @@ and output repo writable,
 input bucket(s) are read-only, and the output bucket is initially empty and writable. 
 
 {{% notice info %}}
-**See Also **
+**See Also**
 - [Configure Environment Variables](../../../deploy/environment-variables/)
 - [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
 - [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)

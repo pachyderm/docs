@@ -59,12 +59,9 @@ and others, are located on the App General tab.
 
 To configure Pachyderm Auth, complete the following steps:
 
---------------------------------------//TODO Rewrite beyond this point after re-test on Okta
-
-
 1. Go to the terminal and forward the `pachd` pod to the OIDC port:
 
-   1. Get the `pachd` pod ID:
+   - Get the `pachd` pod ID:
 
       ```s
       kubectl get pod
@@ -77,7 +74,7 @@ To configure Pachyderm Auth, complete the following steps:
       ...
       ```
 
-   1. Forward the `pachd` pod to the OIDC port:
+   - Forward the `pachd` pod to the OIDC port:
 
       **Example:**
 
@@ -85,7 +82,7 @@ To configure Pachyderm Auth, complete the following steps:
       kubectl port-forward pachd-79f7f68c65-9qs8g 30657
       ```
 
-1. Enable Pachyderm authentication:
+2. Enable Pachyderm authentication:
 
       ```s
       pachctl auth activate --initial-admin=robot:admin
@@ -96,7 +93,7 @@ To configure Pachyderm Auth, complete the following steps:
       **WARNING!** You must save the token to a secure location
       to avoid being locked out of your cluster.
 
-1. Log in as the admin user with the token you received in the previous
+3. Log in as the admin user with the token you received in the previous
 step:
 
       ```s
@@ -139,7 +136,7 @@ step:
 1. Log in as the user you have created in the Pachyderm application
 or sign in with Google:
 
-   1. Run:
+   - Run:
 
       ```s
       pachctl auth login

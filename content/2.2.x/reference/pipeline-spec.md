@@ -21,260 +21,260 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
 A pipeline specification file can contain multiple pipeline declarations at once.
 {{% /notice %}}
 
-## Manifest Format
 
+## JSON Full Specifications
 
-=== "JSON Full Specifications"
-    ```json
-    {
-      "pipeline": {
-        "name": string
+  ```json
+  {
+    "pipeline": {
+      "name": string
+    },
+    "description": "string",
+    "metadata": {
+      "annotations": {
+          "annotation": string
       },
-      "description": "string",
-      "metadata": {
-        "annotations": {
-            "annotation": string
-        },
-        "labels": {
-            "label": string
-        }
+      "labels": {
+          "label": string
+      }
+    },
+    "transform": {
+      "image": "string",
+      "cmd": [ string ],
+      "stdin": [ string ],
+      "err_cmd": [ string ],
+      "err_stdin": [ string ],
+      "env": {
+          string: string
       },
-      "transform": {
-        "image": "string",
-        "cmd": [ string ],
-        "stdin": [ string ],
-        "err_cmd": [ string ],
-        "err_stdin": [ string ],
-        "env": {
-            string: string
-        },
-        "secrets": [ {
-            "name": "string",
-            "mount_path": string
-        },
-        {
-            "name": "string",
-            "env_var": "string",
-            "key": string
-        } ],
-        "image_pull_secrets": [ string ],
-        "accept_return_code": [ int ],
-        "debug": bool,
-        "user": "string",
-        "working_dir": "string",
-        "dockerfile": "string",
+      "secrets": [ {
+          "name": "string",
+          "mount_path": string
       },
-      "parallelism_spec": {
-        "constant": int
-      },
-      "resource_requests": {
-        "memory": "string",
-        "cpu": number,
-        "gpu": {
-          "type": "string",
-          "number": int
-        }
-        "disk": "string",
-      },
-      "resource_limits": {
-        "memory": "string",
-        "cpu": number,
-        "gpu": {
-          "type": "string",
-          "number": int
-        }
-        "disk": "string",
-      },
-      "sidecar_resource_limits": {
-        "memory": "string",
-        "cpu": number
-      },
-      "datum_timeout": "string",
-      "datum_tries": int,
-      "job_timeout": "string",
-      "input": {
-        <"pfs", "cross", "union", "join", "group" or "cron" see below>
-      },
-      "s3_out": bool,
-      "reprocess_spec": "string",
-      "output_branch": "string",
-      "egress": {
-        // Egress to an object store
-        "URL": "s3://bucket/dir"
-        // Egress to a database
-        "sql_database": {
-            "url": "string",
-            "file_format": {
-                "type": "string",
-                "columns": [string]
-            },
-            "secret": {
-                "name": "string",
-                "key": "PACHYDERM_SQL_PASSWORD"
-            }
-        }
-      },
-      "autoscaling": bool,
+      {
+          "name": "string",
+          "env_var": "string",
+          "key": string
+      } ],
+      "image_pull_secrets": [ string ],
+      "accept_return_code": [ int ],
+      "debug": bool,
+      "user": "string",
+      "working_dir": "string",
+      "dockerfile": "string",
+    },
+    "parallelism_spec": {
+      "constant": int
+    },
+    "resource_requests": {
+      "memory": "string",
+      "cpu": number,
+      "gpu": {
+        "type": "string",
+        "number": int
+      }
+      "disk": "string",
+    },
+    "resource_limits": {
+      "memory": "string",
+      "cpu": number,
+      "gpu": {
+        "type": "string",
+        "number": int
+      }
+      "disk": "string",
+    },
+    "sidecar_resource_limits": {
+      "memory": "string",
+      "cpu": number
+    },
+    "datum_timeout": "string",
+    "datum_tries": int,
+    "job_timeout": "string",
+    "input": {
+      <"pfs", "cross", "union", "join", "group" or "cron" see below>
+    },
+    "s3_out": bool,
+    "reprocess_spec": "string",
+    "output_branch": "string",
+    "egress": {
+      // Egress to an object store
+      "URL": "s3://bucket/dir"
+      // Egress to a database
+      "sql_database": {
+          "url": "string",
+          "file_format": {
+              "type": "string",
+              "columns": [string]
+          },
+          "secret": {
+              "name": "string",
+              "key": "PACHYDERM_SQL_PASSWORD"
+          }
+      }
+    },
+    "autoscaling": bool,
+    "service": {
+      "internal_port": int,
+      "external_port": int
+    },
+    "spout": {
+      \\ Optionally, you can combine a spout with a service:
       "service": {
         "internal_port": int,
         "external_port": int
-      },
-      "spout": {
-        \\ Optionally, you can combine a spout with a service:
-        "service": {
-          "internal_port": int,
-          "external_port": int
-        }
       }
-      "scheduling_spec": {
-        "node_selector": {string: string},
-        "priority_class_name": string
-      },
-      "pod_spec": "string",
-      "pod_patch": "string",
     }
+    "scheduling_spec": {
+      "node_selector": {string: string},
+      "priority_class_name": string
+    },
+    "pod_spec": "string",
+    "pod_patch": "string",
+  }
 
-    ------------------------------------
-    "pfs" input
-    ------------------------------------
+  ------------------------------------
+  "pfs" input
+  ------------------------------------
 
-    "pfs": {
-      "name": "string",
-      "repo": "string",
-      "branch": "string",
-      "glob": "string",
-      "lazy" bool,
-      "empty_files": bool,
-      "s3": bool
-    }
+  "pfs": {
+    "name": "string",
+    "repo": "string",
+    "branch": "string",
+    "glob": "string",
+    "lazy" bool,
+    "empty_files": bool,
+    "s3": bool
+  }
 
-    ------------------------------------
-    "cross" or "union" input
-    ------------------------------------
+  ------------------------------------
+  "cross" or "union" input
+  ------------------------------------
 
-    "cross" or "union": [
-      {
-        "pfs": {
-          "name": "string",
-          "repo": "string",
-          "branch": "string",
-          "glob": "string",
-          "lazy" bool,
-          "empty_files": bool
-          "s3": bool
-        }
-      },
-      {
-        "pfs": {
-          "name": "string",
-          "repo": "string",
-          "branch": "string",
-          "glob": "string",
-          "lazy" bool,
-          "empty_files": bool
-          "s3": bool
-        }
-      }
-      ...
-    ]
-
-
-    ------------------------------------
-    "join" input
-    ------------------------------------
-
-    "join": [
-      {
-        "pfs": {
-          "name": "string",
-          "repo": "string",
-          "branch": "string",
-          "glob": "string",
-          "join_on": "string",
-          "outer_join": bool,
-          "lazy": bool,
-          "empty_files": bool,
-          "s3": bool
-        }
-      },
-      {
-        "pfs": {
-          "name": "string",
-          "repo": "string",
-          "branch": "string",
-          "glob": "string",
-          "join_on": "string",
-          "outer_join": bool,
-          "lazy": bool,
-          "empty_files": bool,
-          "s3": bool
-        }
-      }
-    ]
-
-
-    ------------------------------------
-    "group" input
-    ------------------------------------
-
-    "group": [
-      {
-        "pfs": {
-          "name": "string",
-          "repo": "string",
-          "branch": "string",
-          "glob": "string",
-          "group_by": "string",
-          "lazy": bool,
-          "empty_files": bool,
-          "s3": bool
-        }
-      },
-      {
-        "pfs": {
-          "name": "string",
-          "repo": "string",
-          "branch": "string",
-          "glob": "string",
-          "group_by": "string",
-          "lazy": bool,
-          "empty_files": bool,
-          "s3": bool
-        }
-      }
-    ]
-
-
-
-    ------------------------------------
-    "cron" input
-    ------------------------------------
-
-    "cron": {
+  "cross" or "union": [
+    {
+      "pfs": {
         "name": "string",
-        "spec": "string",
         "repo": "string",
-        "start": time,
-        "overwrite": bool
+        "branch": "string",
+        "glob": "string",
+        "lazy" bool,
+        "empty_files": bool
+        "s3": bool
+      }
+    },
+    {
+      "pfs": {
+        "name": "string",
+        "repo": "string",
+        "branch": "string",
+        "glob": "string",
+        "lazy" bool,
+        "empty_files": bool
+        "s3": bool
+      }
     }
+    ...
+  ]
 
 
-    ```
-=== "YAML Sample"
-    ```yaml
-    pipeline:
-      name: edges
-    description: A pipeline that performs image edge detection by using the OpenCV library.
-    input:
-      pfs:
-        glob: /*
-        repo: images
-    transform:
-      cmd:
-        - python3
-        - /edges.py
-      image: pachyderm/opencv
-    ```
+  ------------------------------------
+  "join" input
+  ------------------------------------
+
+  "join": [
+    {
+      "pfs": {
+        "name": "string",
+        "repo": "string",
+        "branch": "string",
+        "glob": "string",
+        "join_on": "string",
+        "outer_join": bool,
+        "lazy": bool,
+        "empty_files": bool,
+        "s3": bool
+      }
+    },
+    {
+      "pfs": {
+        "name": "string",
+        "repo": "string",
+        "branch": "string",
+        "glob": "string",
+        "join_on": "string",
+        "outer_join": bool,
+        "lazy": bool,
+        "empty_files": bool,
+        "s3": bool
+      }
+    }
+  ]
+
+
+  ------------------------------------
+  "group" input
+  ------------------------------------
+
+  "group": [
+    {
+      "pfs": {
+        "name": "string",
+        "repo": "string",
+        "branch": "string",
+        "glob": "string",
+        "group_by": "string",
+        "lazy": bool,
+        "empty_files": bool,
+        "s3": bool
+      }
+    },
+    {
+      "pfs": {
+        "name": "string",
+        "repo": "string",
+        "branch": "string",
+        "glob": "string",
+        "group_by": "string",
+        "lazy": bool,
+        "empty_files": bool,
+        "s3": bool
+      }
+    }
+  ]
+
+
+
+  ------------------------------------
+  "cron" input
+  ------------------------------------
+
+  "cron": {
+      "name": "string",
+      "spec": "string",
+      "repo": "string",
+      "start": time,
+      "overwrite": bool
+  }
+
+
+  ```
+
+## YAML Sample
+```yaml
+pipeline:
+  name: edges
+description: A pipeline that performs image edge detection by using the OpenCV library.
+input:
+  pfs:
+    glob: /*
+    repo: images
+transform:
+  cmd:
+    - python3
+    - /edges.py
+  image: pachyderm/opencv
+```
  
 In practice, you rarely need to specify all the fields.
 Most fields either come with sensible defaults or can be empty.
@@ -619,9 +619,8 @@ be especially notable if the job only reads a subset of the files that are
 available to it.
 
 {{% notice note %}}
-
-    `lazy` does not support datums that
-    contain more than 10000 files.
+`lazy` does not support datums that
+contain more than 10000 files.
 {{% /notice %}}
 
 `input.pfs.empty_files` controls how files are exposed to jobs. If
@@ -937,14 +936,13 @@ a PFS input.
 Instead, it consumes data from an outside source.
 
 {{% notice note %}}
-
-    A service pipeline cannot be configured as a spout,
-    but **a spout can have a service added to it**
-    by adding the `service` attribute to the `spout` field.
-    In that case, Kubernetes creates
-    a service endpoint that you can expose externally. 
-    You can get the information
-    about the service by running `kubectl get services`.
+A service pipeline cannot be configured as a spout,
+but **a spout can have a service added to it**
+by adding the `service` attribute to the `spout` field.
+In that case, Kubernetes creates
+a service endpoint that you can expose externally. 
+You can get the information
+about the service by running `kubectl get services`.
 {{% /notice %}}
 
 For more information, see [Spouts](../concepts/pipeline-concepts/pipeline/spout.md).

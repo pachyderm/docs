@@ -349,7 +349,6 @@ ol li::marker {
   white-space: pre-wrap;
   padding: 1ch;
   overflow-x: scroll;
-  font-weight: 900;
  }
 
  code {
@@ -357,7 +356,6 @@ ol li::marker {
   white-space: pre;
   padding: 2px;
   margin: 2px;
-  font-weight:  800;
  }
 
  .content {

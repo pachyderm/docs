@@ -34,9 +34,9 @@ When exceeding the number of pipelines:
 
 - `pachctl update pipeline`  and `pachctl edit pipeline` succeed on existing pipelines, fail when attempting to create pipelines beyond the limit.
 
-    {{% notice info %}}
-    If `update pipeline` fails for any other reason, it does not log any message related to pipeline limits.
-    {{%/notice%}}
+  {{% notice info %}}
+  If `update pipeline` fails for any other reason, it does not log any message related to pipeline limits.
+  {{%/notice%}}
 
 All of the commands listed above create a distinct message to STDERR and to the pachd logs. This message includes information such as the limit on the number of pipelines in the Community Edition, the total number of pipelines deployed, and provides a link to request an Enterprise key to lift those limitations.  
 

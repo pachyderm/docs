@@ -28,8 +28,11 @@ Helm users, setting up your License Key in Helm will activate Auth by default. S
 
 If you enable the enterprise features [through Helm, auth will be activated by default](../deployment/).
 
-In this case, a `pachyderm-auth` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management) in the key `rootToken`. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
-{{% /notice%}}
+In this case, a `pachyderm-auth` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management) in the key `rootToken`. Use the following to retrieve it and save it where you see fit:
+```s
+{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}
+``` 
+{{% /notice %}}
 
 1. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 
 1. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding.md) on given Pachyderm Ressources. 
@@ -60,10 +63,12 @@ Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [
 
 
 **System Response**
+
 ```s
 Pachyderm root token:
 54778a770c554d0fb84563033c9cb808
 ```
+
 {{% notice warning %}}
 You must save the token to a secure location
 to avoid being locked out of your cluster.

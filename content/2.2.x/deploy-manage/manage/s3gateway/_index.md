@@ -21,7 +21,7 @@ The S3 Gateway is designed to work with any S3 Client, among which:
 The operations on the HTTP API exposed by the S3 Gateway largely mirror those documented in [S3’s official docs](https://docs.aws.amazon.com/cli/latest/reference/s3/). It is typically used when you wish to retrieve data from or expose data to object storage tooling (such as MinIO, boto3, and aws s3 cli). 
 
 {{% notice info %}}
-    `pachd` service exposes the S3 gateway (`s3gateway-port`) on port **30600**.
+`pachd` service exposes the S3 gateway (`s3gateway-port`) on port **30600**.
 {{% /notice %}}
 
 {{% notice note  %}} 
