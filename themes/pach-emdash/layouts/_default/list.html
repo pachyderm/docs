@@ -27,7 +27,7 @@
                         {{/* versionNumber class is used by tagsResultsFilteredByVersion.js to focus results */}}
                         <div class="is-one-third {{ partial "utilityVersionNumber" . }}">
                             <a class="" href="{{ .Permalink }}">
-                                    <div class="darken-1 c-my-2 rounded-1 m-2 p-1">
+                                    <div class="darken-1 c-my-2 rounded-1 m-2 p-1 move-l">
                                         <h4 class="m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-1">></b></h4>
                                         {{if .Pages}} <div class="outlined p-1 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
                                         <p> {{if .Description}}{{.Description}}{{else}}{{.Summary | truncate 150 }}{{end}}</p>
