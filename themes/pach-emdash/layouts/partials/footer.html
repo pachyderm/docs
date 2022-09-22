@@ -22,14 +22,14 @@
 <footer class="stack-center black mt-6 p-6">
     {{/*  Algolia must remain separate due to module type  */}}
     {{if .IsHome}}
-      <script src="{{ $algoliaHomePage.Permalink }}" type="module"></script>
+      <script src="{{ $algoliaHomePage.Permalink }}" type="module" defer></script>
     {{else}}
-      <script src="{{ $algolia.Permalink }}" type="module"></script>
+      <script src="{{ $algolia.Permalink }}" type="module" defer></script>
     {{end}}
-    <script src="{{ $js.Permalink }}" ></script>
+    <script src="{{ $js.Permalink }}" defer></script>
     {{if .Params.mermaid}}
       {{ partial "mermaid.html" . }}
-      <script src="{{ $mermaid.Permalink }}" ></script>
+      <script src="{{ $mermaid.Permalink }}" defer></script>
     {{else}}
     {{end}}
 
