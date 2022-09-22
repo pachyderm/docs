@@ -15,7 +15,7 @@ outputs:
   list: [ "HTML", "JSON"]
   taxonomies: [ "HTML", "JSON"]
 
-
+params:
   # Feature Switches #
 
   ## Branding features
@@ -60,7 +60,6 @@ outputs:
   ## Testing Features
   defaultCss: false # displays default bulma css only without branding.
 
- 
 sitemap:
   changeFreq: monthly 
   fileName: sitemap.xml 

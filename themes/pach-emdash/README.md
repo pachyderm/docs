@@ -103,7 +103,7 @@ Partial layouts (`/themes/<themeName>/layouts/partials`) are reusable components
 Default feature config: 
 
 ```yaml
-
+params:
   # Feature Switches #
 
   ## Branding features
