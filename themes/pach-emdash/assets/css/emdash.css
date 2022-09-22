@@ -1637,3 +1637,17 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
 .wiggle {
   animation: wiggle 2s ease-in-out infinite;
 }
+
+.glow {
+  height: 1px;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  bottom: 75px;
+  background-color: #fff;
+  box-shadow:
+    100px 100px 60px 5px var(--is-gradient-cold-pt-5),  /* inner */
+    0 0 100px 15px var(--is-gradient-cold-pt-3), /* middle */
+    0 0 140px 30px var(--is-gradient-cold-pt-1); /* outer  */
+  z-index: -1;
+}

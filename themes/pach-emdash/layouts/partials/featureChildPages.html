@@ -22,9 +22,9 @@
                             </a>
                             {{/*  Displays the value of the "required" frontmatter attribute if present  */}}
                             {{if eq .Params.label "required"}}
-                                <div class="label black">REQUIRED</div>
+                                <div class="darken-1 p-1 is-fit xxs">REQUIRED</div>
                             {{else if eq .Params.label "optional"}}
-                                <div class="label white">OPTIONAL</div>
+                                <div class="darken-1 p-1 is-fit xxs">OPTIONAL</div>
                             {{end}}
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left mb-3">
