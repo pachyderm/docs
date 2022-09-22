@@ -56,7 +56,7 @@
 
 ## Contribute 
 
-When contributing, it's recommended to create a pull request with the following format:
+When contributing, we recommend creating a branch with the following naming convention:
 
 ```s
 <gitHubHandle>/<optionalRelatedTicketNumber>/change-title-here
@@ -104,7 +104,7 @@ When contributing, it's recommended to create a pull request with the following 
 #### B: New Folder 
 
 1. Create a new folder.
-2. Create a new markdown file titled `_index.md` inside the new folder.
+2. Create a new markdown file titled `_index.md` inside the new folder. This is the parent article.
 3. Insert the following frontmatter template:
     ```yaml
     ---
@@ -121,3 +121,26 @@ When contributing, it's recommended to create a pull request with the following 
     --- 
     ```
 4. Begin writing! 
+
+---
+
+## Drafting Tips 
+
+
+### Diagrams 
+
+You can use this [mermaid live editor](https://mermaid.live/) tool to build diagrams before putting them in the documentation.
+
+### Notices
+
+Use the following shortcode in your markdown files to display notices:
+
+```
+{{% notice tip/warning/note/danger/info %}}
+    Content Here
+{{%/notice %}}
+```
+
+### Tables
+
+Use this [table generator tool](https://www.tablesgenerator.com/markdown_tables) to quickly build markdown tables. 
