@@ -2,6 +2,7 @@
 # metadata # 
 title: Commit
 description: Learn about the concept of a commit in Pachyderm. 
+glossaryDefinition: An atomic operation that snapshots and preserves the state of files/directories within a repository.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]

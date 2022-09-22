@@ -2,6 +2,7 @@
 # metadata # 
 title: Branch
 description: Learn about the concept of a branch in Pachyderm. 
+glossaryDefinition: A pointer to a commit that moves along with new commits as they are submitted.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]

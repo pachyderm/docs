@@ -2,6 +2,7 @@
 # metadata # 
 title: File
 description: Learn about the concept of a file in Pachyderm. 
+glossaryDefinition: A Unix filesystem object (directory or file) that stores data.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]

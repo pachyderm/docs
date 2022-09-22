@@ -52,7 +52,9 @@
                                 <div class="black darken-3 rounded-1 c-sp-1">
                                     <p class="xs"> 
                                         {{/* Display description or a truncated summary  */}}
-                                        {{ if .Description}}
+                                        {{ if .Params.glossaryDefinition}}
+                                            {{.Params.glossaryDefinition}}
+                                        {{ else if .Description}}
                                             {{.Description}}
                                         {{else }}
                                             {{.Summary | truncate 100}}

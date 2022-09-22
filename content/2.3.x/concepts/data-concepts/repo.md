@@ -2,6 +2,7 @@
 # metadata # 
 title: Repository
 description: Learn about the concept of a repository in Pachyderm. 
+glossaryDefinition: A top-level data object inside Pachyderm that behaves as a location where data is stored.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]

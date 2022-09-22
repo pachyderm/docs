@@ -2,6 +2,7 @@
 # metadata # 
 title: History
 description: Learn about the concept of history (version control) in Pachyderm. 
+glossaryDefinition: The collective record of version-controlled commits for pipelines and jobs.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]

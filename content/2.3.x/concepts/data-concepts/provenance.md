@@ -2,6 +2,7 @@
 # metadata # 
 title: Provenance
 description: Learn about the concept of provenance in Pachyderm. 
+glossaryDefinition: The recorded data lineage that tracks the dependencies and relationships between datasets. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
@@ -9,8 +10,7 @@ series:
 seriesPart:
 --- 
 
-**Data versioning** ([History](../history/)) enables Pachyderm users to go back in time and see the state
-of a dataset or repository at a particular moment. 
+**Data versioning** ([History](../history/)) enables Pachyderm users to go back in time and see the state of a dataset or repository at a particular moment. 
 
 **Data provenance** (from the French noun *provenance* which means *the place of origin*),
 also known as **data lineage**, tracks the dependencies and relationships
