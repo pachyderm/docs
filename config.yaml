@@ -48,7 +48,7 @@ params:
   ## downloads: true # Enables displaying the download dropdown (requires release.patch)
   releaseInfo:
     latest: "2.3.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
-    ## patch: "2.3.2" # Used to generate download links
+    patch: "2.3.2" # Used for announcements and to generate download links
 
 
   ## Nav features 
