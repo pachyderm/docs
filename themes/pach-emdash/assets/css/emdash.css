@@ -1651,3 +1651,8 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
     0 0 140px 30px var(--is-gradient-cold-pt-1); /* outer  */
   z-index: -1;
 }
+
+.wideless {
+  max-width: 1920px;
+  margin: 0 auto;
+}
