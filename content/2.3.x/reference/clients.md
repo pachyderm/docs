@@ -4,7 +4,7 @@ title:  Language Clients
 description: Learn about Pachyderm's language clients. 
 date: 
 # taxonomy #
-tags: ["sdks", "go", "python","javascript","developers"]
+tags: ["sdks", "golang", "python","javascript","developers"]
 series:
 seriesPart:
 ---

@@ -4,7 +4,7 @@ title:  Set Up AWS Secret Manager
 description: Learn how to securely manage and centralize your secrets.
 date: 
 # taxonomy #
-tags: 
+tags: ["aws", "secrets"]
 series:
 seriesPart:
 --- 

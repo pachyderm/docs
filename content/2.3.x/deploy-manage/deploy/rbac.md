@@ -4,7 +4,7 @@ title:  RBAC
 description: Learn how Pachyderm supports Kubernetes' Role-Base Access Controls (RBAC).
 date: 
 # taxonomy #
-tags: 
+tags: ["configuration", "permissions"]
 series:
 seriesPart:
 --- 

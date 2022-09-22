@@ -4,7 +4,7 @@ title:  Enable Logs Aggregation With Loki
 description: Learn how to enable log aggregation with Loki through the Promtail agent service.
 date: 
 # taxonomy #
-tags: 
+tags: ["loki", "logs"]
 series:
 seriesPart:
 --- 

@@ -4,7 +4,7 @@ title:   Configure Tracing with Jaeger
 description: Learn how to trace requests with Jaeger when diagnosing slow cluster performance. 
 date: 
 # taxonomy #
-tags: 
+tags: ["logs", "jaeger"]
 series:
 seriesPart:
 --- 

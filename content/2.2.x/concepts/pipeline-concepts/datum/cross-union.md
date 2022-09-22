@@ -4,11 +4,10 @@ title: Cross & Union Inputs
 description: Learn about the concepts cross and union inputs in Pachyderm. 
 date: 
 # taxonomy #
-tags: ["datums","pipelines", "data-operations"]
+tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
 series:
 seriesPart:
 --- 
-
 Pachyderm enables you to combine multiple [PFS inputs](../#pfs-input-and-glob-pattern) by using the `union` and
 `cross` operators in the pipeline specification.
 

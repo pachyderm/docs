@@ -4,7 +4,7 @@ title:  Azure
 description: Learn how to deploy a Pachyderm cluster on Microsoft Azure. 
 date: 
 # taxonomy #
-tags: 
+tags: ["azure",]
 series:
 seriesPart:
 --- 

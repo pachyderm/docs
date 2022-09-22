@@ -4,7 +4,7 @@ title: Distributed Computing
 description:  Learn about the concept of distributed computing in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["data-operations", "pipelines"]
 series:
 seriesPart:
 --- 

@@ -4,7 +4,7 @@ title: Global Identifier
 description: Learn about the concept of a global identifier in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags:  ["data-operations", "pipelines"]
 series:
 seriesPart:
 --- 

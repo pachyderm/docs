@@ -21,8 +21,8 @@
                     <div class="is-one-third is-hidden" data-tags="{{ trim  (print .Params.Tags) "[]" }}"> 
                         <a class="is-size-7" href="{{.Permalink}}">
                             <div class="black sp-1 rounded-1">
-                                <h3 class="m">{{.Title}}</h3>
-                                <p>{{if .Description}} {{.Description}} {{else}}{{.Summary | truncate 300}} {{end}} </p>
+                                <h3 class="m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-1">></b></h3>
+                                <p class="subtitle-1">{{if .Description}} {{.Description}} {{else}}{{.Summary | truncate 300}} {{end}} </p>
                             </div>
                         </a>
                     </div>

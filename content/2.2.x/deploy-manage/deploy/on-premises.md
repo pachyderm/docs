@@ -4,7 +4,7 @@ title:  On Premises
 description: Learn how to deploy Pachyderm on-premises. 
 date: 
 # taxonomy #
-tags: 
+tags: ["deployment"]
 series:
 seriesPart:
 --- 

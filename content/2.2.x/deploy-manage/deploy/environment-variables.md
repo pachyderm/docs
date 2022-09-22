@@ -4,7 +4,7 @@ title:  Configure Environment Variables
 description: Learn how to configure environment variables for Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["configuration"]
 series:
 seriesPart:
 --- 

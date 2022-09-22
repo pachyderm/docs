@@ -4,7 +4,7 @@ title:  Google Cloud Platform
 description: Learn how to deploy a Pachyderm cluster on Google's GKE. 
 date: 
 # taxonomy #
-tags: 
+tags: ["gcp"]
 series:
 seriesPart:
 --- 

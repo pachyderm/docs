@@ -4,7 +4,7 @@ title: Provenance
 description: Learn about the concept of provenance in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "data-operations"]
 series:
 seriesPart:
 --- 

@@ -4,7 +4,7 @@ title: File
 description: Learn about the concept of a file in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "data-operations"]
 series:
 seriesPart:
 --- 

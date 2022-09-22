@@ -4,7 +4,7 @@ title: Cross & Union Inputs
 description: Learn about the concept of cross and union inputs in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
 series:
 seriesPart:
 --- 

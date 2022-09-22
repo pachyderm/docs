@@ -4,7 +4,7 @@ title: Spout
 description: Learn about the concept of a Spout pipeline in Pachyderm. 
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["concepts", "pachctl", "data-operations", "pipelines"]
 series:
 seriesPart:
 --- 

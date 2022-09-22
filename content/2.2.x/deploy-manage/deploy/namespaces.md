@@ -4,7 +4,7 @@ title:  Non-Default Namespaces
 description: Learn how to deploy Pachyderm to a non-default namespace for easier admin management.
 date: 
 # taxonomy #
-tags: 
+tags: ["deployment"]
 series:
 seriesPart:
 --- 

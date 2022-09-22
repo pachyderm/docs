@@ -4,7 +4,7 @@ title:  Import a Kubernetes Context
 description: Learn how to import and embed a Kubernetes Context into a Pachyderm context. 
 date: 
 # taxonomy #
-tags: 
+tags: ["kubernetes"]
 series:
 seriesPart:
 --- 

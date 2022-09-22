@@ -4,7 +4,7 @@ title: Commit
 description: Learn about the concept of a commit in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "data-operations"]
 series:
 seriesPart:
 --- 

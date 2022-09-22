@@ -4,7 +4,7 @@ title: Contributor Setup
 description: Learn how to set up your machine to contribute code to Pachyderm.
 date: 
 # taxonomy #
-tags: 
+tags:  ["developers"]
 series:
 seriesPart:
 --- 

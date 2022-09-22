@@ -4,7 +4,7 @@ title: Branch
 description: Learn about the concept of a branch in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "data-operations"]
 series:
 seriesPart:
 --- 

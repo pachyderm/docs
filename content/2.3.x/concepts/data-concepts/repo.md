@@ -4,7 +4,7 @@ title: Repository
 description: Learn about the concept of a repository in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "data-operations"]
 series:
 seriesPart:
 --- 

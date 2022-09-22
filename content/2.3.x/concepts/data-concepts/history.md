@@ -4,7 +4,7 @@ title: History
 description: Learn about the concept of history (version control) in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "data-operations"]
 series:
 seriesPart:
 --- 

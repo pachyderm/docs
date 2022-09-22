@@ -4,7 +4,7 @@ title:  Deploy Pachyderm on AWS
 description: Learn how to deploy a Pachyderm cluster on AWS. 
 date: 
 # taxonomy #
-tags: 
+tags: ["aws", "deployment"]
 series:
 seriesPart:
 --- 

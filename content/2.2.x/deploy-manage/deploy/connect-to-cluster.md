@@ -4,7 +4,7 @@ title:  Connect to a Cluster
 description: Learn how to connect to Pachyderm clusters locally and on the cloud.
 date: 
 # taxonomy #
-tags: 
+tags: ["cli"]
 series:
 seriesPart:
 --- 

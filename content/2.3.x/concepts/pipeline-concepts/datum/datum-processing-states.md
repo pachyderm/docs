@@ -4,7 +4,7 @@ title: Datum Processing States
 description: Learn about the concept of datum processing states in Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
 series:
 seriesPart:
 --- 
