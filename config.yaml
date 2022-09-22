@@ -76,7 +76,7 @@ markup:
   highlight:
     anchorLineNos: false
     codeFences: true
-    guessSyntax: true
+    guessSyntax: false # TRUE will break the mermaid integration for some reason.
     hl_Lines: ""
     hl_inline: false
     lineAnchors: ""
