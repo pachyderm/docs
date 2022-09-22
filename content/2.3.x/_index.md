@@ -7,7 +7,9 @@ date:
 tags:
 series:
 seriesPart:
-alias: "/latest"
+aliases: [
+    "/latest"
+]
 cascade:
     clientPython: 7.3.x
     jupyerLabExtension: 1.0.x 
