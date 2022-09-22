@@ -15,9 +15,7 @@ outputs:
   list: [ "HTML", "JSON"]
   taxonomies: [ "HTML", "JSON"]
 
-params:
-  algolia:
-    latestIndex: pach_public
+
   # Feature Switches #
 
   ## Branding features
@@ -62,9 +60,7 @@ params:
   ## Testing Features
   defaultCss: false # displays default bulma css only without branding.
 
-## Feature Ideas 
-## 1. Create a layouts/partials/brand.css file that has hugo variables to control some css from the config.yaml file. 
-
+ 
 sitemap:
   changeFreq: monthly 
   fileName: sitemap.xml 

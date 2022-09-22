@@ -36,15 +36,20 @@ Almost everything has been converted into variables that you can modify from `:r
 
 ### `/js` 
 
-The JS assets in this theme is hand-rolled; the less dependencies there are, the faster your site will build, load (PageSpeed score), and the easier it will be to collaborate with people who have different machines. If you find this JS is not efficient, *please* say so and optimize it -- but try to avoid adding dependencies. 
+The JS assets in this theme are hand-rolled; the less dependencies there are, the faster your site will build, load (PageSpeed score), and the easier it will be to collaborate with people who have different machines. If you find this JS is not efficient, *please* say so and optimize it -- but try to avoid adding dependencies. 
 
+- **`algolia.js`**: Powers search on all pages except the landing page
+- **`algoliaHomePage.js`**: Powers search on just the home page (index.html default layout)
 - **`clipboard.js`**: Powers copy-to-clipboard functionality on `code`/`pre` blocks
 - **`darkMode.js`**: Powers dark/light mode toggle functionality
 - **`filterByTags.js`**: Powers the `search.html` and `404.html` tag-based search functionality
+- **`keyboard.js`**: Enables moving through articles using your arrow keys; currently WIP.
 - **`mermaid.js`**: Enables using standard code blocks for mermaid diagrams (just pass the `mermaid` lang)
 - **`notices.js`**: Enables dismissing notices by clicking the (x)
 - **`pagination.js`**: Powers pagination UI on pages using the  `glossary.html` layout
 - **`relatedArticles.js`**: Powers the related articles toggle on pages using the `single.html` layout
+- **`tables.js`**: Wraps content tables in a div with overflow-x: scroll.
+- **`tagResultsFilteredByVersion`**: Filters the list of pages on a `tags/` view to only those matching the `?&v=` URL parameter value.
 - **`toc.js`**: Powers the table of contents / scroll highlight on pages using the `single.html` layout
 
 ---
@@ -81,15 +86,15 @@ Contains the `render-heading.html` layout which is responsible for looping over 
 
 | Layout | Partials Used | Description |
 |---|---|---|
-|Baseof |head, nav, directory, footer,  featureBreadcrumbs, feaureEditGithub, featureTags |Contains the opening and closing HTML tags; wraps around the `glossary`, `list`, `search`, `single`, `section`, `series`, and `404` layouts (which are passed in through the `main` block).  |
-|Index | | TBD |
+|Baseof |head, nav, algoliaHits, directory, footer,  featureBreadcrumbs, feaureEditLink, featureKeyboard, featureTags |Contains the opening and closing HTML tags; wraps around the `glossary`, `list`, `search`, `single`, `section`, `series`, and `404` layouts (which are passed in through the `main` block).  |
+|Index | featureCommunityDetails, | Minimalist google-inspired search landing page with custom search UI. |
 | Glossary |  | A standalone default layout for showing child pages as a scrollable stack. To use this layout, define layout: glossary on the parent page of any collection you wish to view as a glossary. Using the glossary layout hides the children from the directory file tree (the assumption being way too many entries will show up and distort your directory.) |
-| List |  | Auto-generated pages like taxonomy pages and the default home page (/index.html) are considered list pages. You can create a unique home page by defining a index.html template in your layouts folder. |
-|Search | | TBD |
+| List | utilityVersionNumber | Auto-generated pages like taxonomy pages and the default home page (/index.html) are considered list pages. You can create a unique home page by defining a index.html template in your layouts folder. |
+|Search | | WIP exploration dashboard that reveals articles by selected tag filters.  |
 | Section | featureBetaNotice,  featureChildPages | A default layout for parent pages (_index.html). This layout defines the main block placed in the baseof template and shows child pages as cards that include a title, a page count, and a summary. |
 | Series | featureBetaNotice | A taxonomy-specific layout for the custom taxonomy key series. This layout aggregates the tagged pages and displays a single, scrollable view. Use the seriesPart front matter field to order your series from 0-999. |
-|Single |featureSeriesButton, featureBetaNotice, featureNextPrev | A default layout for standard pages that have no children/descendants. This layout defines the `main` block placed in the `baseof` template.  |
-|404 | | TBD |
+|Single |featureSeriesButton, featureBetaNotice, featureNextPrev, featureGiscus | A default layout for standard pages that have no children/descendants. This layout defines the `main` block placed in the `baseof` template.  |
+|404 | | Displays the search dashboard when met with a 404. |
 
 #### **`/partials`**
 
@@ -98,8 +103,12 @@ Partial layouts (`/themes/<themeName>/layouts/partials`) are reusable components
 Default feature config: 
 
 ```yaml
-params:
+
   # Feature Switches #
+
+  ## Branding features
+  logos:
+    footer: "/../images/footerLogo.svg"
 
   ## Content features
   childPages: 
@@ -138,9 +147,6 @@ params:
 
   ## Testing Features
   defaultCss: false # displays default bulma css only without branding.
-
-## Feature Ideas 
-## 1. Create a layouts/partials/brand.css file that has hugo variables to control some css from the config.yaml file. 
 ```
 
 ### **`/shortcodes `**
@@ -170,7 +176,7 @@ Shortcodes are powerful because of their flexibility and ease of use. Below is o
 </section>
 ```
 
-1. Define the html and css; in this case a div with the Bulma class `notification`.
+1. Define the html and css; in this case a div with [Emdash](https://emdash.dev) classes.
 2. Define the templating details:
    -  `{{ .Get 0 }}` passes in the first argument of the shortcode as a string
    -  `{{.Inner}}` passes the wrapped markdown content.
@@ -181,14 +187,13 @@ My inner text is here! Supports markdown formatting.
 {{% /notice %}}
 ```
 
-In this case, `tip` is the first argument; it is a CSS class created to style the div beyond Bulma's default `notification` class styling. You can pass multiple arguments to a shortcode, and even use the page's frontmatter or site's global variables. 
+In this case, `tip` is the first argument; it is a CSS class created to style the div. You can pass multiple arguments to a shortcode, and even use the page's frontmatter or site's global variables. 
 
  
 
 ### `/static`
 
 The static folder should contain only **theme** assets that you do not need or want to transform; default images/svgs, fonts, etc. These static assets are served directly from the `/images` path of your site.
-```
 
 **Note**: Your theme's static folder is different from your site's static folder; you can also store static assets from a top-level `/static` folder. 
 
