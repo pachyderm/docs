@@ -2,6 +2,8 @@
     <nav id="breadcrumbs" class="breadcrumbs ml-1" aria-label="breadcrumbs">
         {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
     </nav>
+{{else}}
+<div class=""> {{/* Expands to keep featureEditLink on right side if breadcrumbs are disabled  */}}</div>
 {{ end }}
 
 {{/*  Template definition for building the breadcrumb levels  */}}

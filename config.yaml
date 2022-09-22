@@ -4,9 +4,8 @@ title: Pachyderm's Docs
 enableGitInfo: true 
 enableEmoji: true 
 enableRobotsTXT: true 
-theme: pach-emdash
 
-staticDir: "/themes/pach-emdash/static"
+theme: pach-emdash
 
 outputs: 
   home: [ "HTML", "JSON"]
@@ -46,10 +45,10 @@ params:
   
   ## Release Features
   versionDropdown: true # displays a top-nav dropdown with top-level sections served as versioned documentation. 
-  downloads: true # Enables displaying the download dropdown (requires release.patch)
+  ## downloads: true # Enables displaying the download dropdown (requires release.patch)
   releaseInfo:
     latest: "2.3.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
-    patch: "2.3.2" # Used to generate download links
+    ## patch: "2.3.2" # Used to generate download links
 
 
   ## Nav features 
