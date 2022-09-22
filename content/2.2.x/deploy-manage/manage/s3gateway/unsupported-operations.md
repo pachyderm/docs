@@ -4,7 +4,7 @@ title:  Unsupported operations
 description: Learn which S3 operations are not supported by Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "storage", "s3"]
 series:
 seriesPart:
 --- 

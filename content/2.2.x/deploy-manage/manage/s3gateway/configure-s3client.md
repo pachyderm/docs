@@ -4,7 +4,7 @@ title:  Configure Your S3 Client
 description: Learn how to configure an S3 client.
 date: 
 # taxonomy #
-tags: 
+tags:  ["management", "storage", "s3"]
 series:
 seriesPart:
 --- 

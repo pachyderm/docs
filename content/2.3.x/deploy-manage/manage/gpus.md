@@ -4,7 +4,7 @@ title:  Use GPUs
 description: Learn how to access GPUs on a Kubernetes cluster for Pachyderm data transformations. 
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "deployment"]
 series:
 seriesPart:
 --- 

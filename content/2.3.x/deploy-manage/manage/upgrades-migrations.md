@@ -4,7 +4,7 @@ title: Upgrades & Migrations
 description: Learn about Pachyderm upgrades and migrations. 
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "upgrades"]
 series:
 seriesPart:
 ---

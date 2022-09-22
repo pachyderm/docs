@@ -4,7 +4,7 @@ title: Manage Cluster Access
 description: Learn how to manage Kubernetes cluster access using Pachyderm Contexts.
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "permissions"]
 series:
 seriesPart:
 ---

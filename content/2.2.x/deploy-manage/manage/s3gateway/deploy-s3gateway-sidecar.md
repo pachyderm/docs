@@ -4,7 +4,7 @@ title:  Sidecar S3 Gateway
 description: Learn how to use S3-protocol-enabled pipelines and interact with external input/output data.
 date: 
 # taxonomy #
-tags: 
+tags: ["deployment", "storage", "s3"]
 series:
 seriesPart:
 --- 

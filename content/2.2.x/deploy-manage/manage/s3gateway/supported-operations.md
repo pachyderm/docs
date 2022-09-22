@@ -4,7 +4,7 @@ title:  Supported Operations
 description: Learn which S3 Gateway operations are supported by Pachyderm. 
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "storage", "s3"]
 series:
 seriesPart:
 --- 

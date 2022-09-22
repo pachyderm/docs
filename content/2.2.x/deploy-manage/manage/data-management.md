@@ -4,7 +4,7 @@ title: Storage Use Optimization
 description: Learn how to optimize your data storage to increase data-processing performance. 
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "storage"]
 series:
 seriesPart:
 ---

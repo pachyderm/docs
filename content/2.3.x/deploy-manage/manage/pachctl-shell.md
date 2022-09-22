@@ -4,7 +4,7 @@ title: Using the Pachyderm Shell
 description: Learn how to use the Pachyderm Shell.
 date: 
 # taxonomy #
-tags: 
+tags: ["pachctl", "cli"]
 series:
 seriesPart:
 ---

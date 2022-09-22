@@ -4,7 +4,7 @@ title: Disable Usage Metrics
 description: Learn how to disable automatically collected usage metrics. 
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "metrics"]
 series:
 seriesPart:
 ---

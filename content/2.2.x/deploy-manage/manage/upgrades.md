@@ -4,7 +4,7 @@ title: Upgrade Pachyderm
 description: Learn how to upgrade Pachyderm's pachctl and pachd. 
 date: 
 # taxonomy #
-tags: 
+tags:  ["management", "upgrades", "pachctl","pachd"]
 series:
 seriesPart:
 ---

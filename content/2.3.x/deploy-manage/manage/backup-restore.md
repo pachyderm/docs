@@ -4,7 +4,7 @@ title: Backup & Restore Your Cluster
 description: Learn how to back-up and restore the state of a production Pachyderm cluster.
 date: 
 # taxonomy #
-tags: 
+tags: ["management", "backups"]
 series:
 seriesPart:
 ---
