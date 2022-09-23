@@ -21,14 +21,14 @@
 /* Spacing */
 
 .sp-1, .c-sp-1 > * {
-  padding-top: calc(25vh / var(--spacing-1));
-  padding-bottom: calc(25vh / var(--spacing-1));
-  padding-left: calc(25vw / var(--spacing-1));
-  padding-right: calc(25vw / var(--spacing-1));
-  margin-top: calc(25vh / var(--spacing-1));
-  margin-bottom: calc(25vh / var(--spacing-1));
-  margin-left: calc(25vw / var(--spacing-1));
-  margin-right: calc(25vw / var(--spacing-1));
+  padding-top: calc(50vh / var(--spacing-1));
+  padding-bottom: calc(50vh / var(--spacing-1));
+  padding-left: calc(50vw / var(--spacing-1));
+  padding-right: calc(50vw / var(--spacing-1));
+  margin-top: calc(50vh / var(--spacing-1));
+  margin-bottom: calc(50vh / var(--spacing-1));
+  margin-left: calc(50vw / var(--spacing-1));
+  margin-right: calc(50vw / var(--spacing-1));
 }
 
 .sp-2, .c-sp-2 > * {
@@ -100,10 +100,10 @@
 /*Global Padding*/
 
 .p-1, .c-p-1 > * {
-  padding-top: calc(25vh / var(--spacing-1)) ;
-  padding-bottom: calc(25vh / var(--spacing-1)) ;
-  padding-left: calc(25vw / var(--spacing-1)) ;
-  padding-right: calc(25vw / var(--spacing-1)) ;
+  padding-top: calc(50vh / var(--spacing-1)) ;
+  padding-bottom: calc(50vh / var(--spacing-1)) ;
+  padding-left: calc(50vw / var(--spacing-1)) ;
+  padding-right: calc(50vw / var(--spacing-1)) ;
 }
 
 .p-2, .c-p-2 > * {
@@ -151,7 +151,7 @@
 /* Top Padding */
 
 .pt-1, .c-pt-1 > *, .py-1, .c-py-1 > * {
-padding-top: calc(25vh / var(--spacing-1)) ;
+padding-top: calc(50vh / var(--spacing-1)) ;
 }
 
 .pt-2, .c-pt-2 > *, .py-2, .c-py-2 > * {
@@ -181,7 +181,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 /* Bottom Padding */
 
 .pb-1, .c-pb-1 > *, .py-1, .c-py-1 > * {
-  padding-bottom: calc(25vh / var(--spacing-1)) ;
+  padding-bottom: calc(50vh / var(--spacing-1)) ;
 }
 
 .pb-2, .c-pb-2 > *, .py-2, .c-py-2 > * {
@@ -211,7 +211,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 /* Right Padding */
 
 .pr-1, .c-pr-1 > *, .px-1, .c-px-1 > * {
-  padding-right: calc(25vw / var(--spacing-1)) ;
+  padding-right: calc(50vw / var(--spacing-1)) ;
 }
 
 .pr-2, .c-pr-2 > *, .px-2, .c-px-2 > * {
@@ -241,7 +241,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 /* Left Padding */
 
 .pl-1, .c-pl-1 > *, .px-1, .c-px-1 > * {
-  padding-left: calc(25vw / var(--spacing-1)) ;
+  padding-left: calc(50vw / var(--spacing-1)) ;
 }
 
 .pl-2, .c-pl-2 > *, .px-2, .c-px-2 > * {
@@ -272,10 +272,10 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 
 /* Margin */
 .m-1, .c-m-1 > * {
-  margin-top: calc(25vh / var(--spacing-1)) ;
-  margin-bottom: calc(25vh / var(--spacing-1)) ;
-  margin-left: calc(25vw / var(--spacing-1)) ;
-  margin-right: calc(25vw / var(--spacing-1)) ;
+  margin-top: calc(50vh / var(--spacing-1)) ;
+  margin-bottom: calc(50vh / var(--spacing-1)) ;
+  margin-left: calc(50vw / var(--spacing-1)) ;
+  margin-right: calc(50vw / var(--spacing-1)) ;
 }
 .m-2, .c-m-2 > * {
   margin-top: calc(25vh / var(--spacing-2)) ;
@@ -316,7 +316,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 
 /* Top Margin */
 .mt-1, .c-mt-1 > *, .my-1, .c-my-1 > * {
-  margin-top: calc(25vh / var(--spacing-1)) ;
+  margin-top: calc(50vh / var(--spacing-1)) ;
 }
 .mt-2, .c-mt-2 > *, .my-2, .c-my-2 > * {
   margin-top: calc(25vh / var(--spacing-2)) ;
@@ -339,7 +339,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 
 /* Bottom Margin */
 .mb-1, .c-mb-1 > *, .my-1, .c-my-1 > * {
-  margin-bottom: calc(25vh / var(--spacing-1)) ;
+  margin-bottom: calc(50vh / var(--spacing-1)) ;
 }
 .mb-2, .c-mb-2 > *, .my-2, .c-my-2 > * {
   margin-bottom: calc(25vh / var(--spacing-2)) ;
@@ -363,7 +363,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 
 /* Right Margin */
 .mr-1, .c-mr-1 > *, .mx-1, .c-mx-1 > * {
-  margin-right: calc(25vw / var(--spacing-1)) ;
+  margin-right: calc(50vw / var(--spacing-1)) ;
 }
 .mr-2, .c-mr-2 > *, .mx-2, .c-mx-2 > * {
   margin-right: calc(25vw / var(--spacing-2)) ;
@@ -386,7 +386,7 @@ padding-top: calc(25vh / var(--spacing-1)) ;
 
 /* Left Margin */
 .ml-1, .c-ml-1 > *, .mx-1, .c-mx-1 > * {
-  margin-left: calc(25vw / var(--spacing-1)) ;
+  margin-left: calc(50vw / var(--spacing-1)) ;
 }
 .ml-2, .c-ml-2 > *, .mx-2, .c-mx-2 > * {
   margin-left: calc(25vw / var(--spacing-2)) ;
