@@ -12,7 +12,7 @@ preBlocks.forEach(function(preBlock) {
         // create a new div to hold the mermaid diagram
         let mermaidDiv = document.createElement('div');
         // add the mermaid class to the div
-        mermaidDiv.classList.add('mermaid');
+        mermaidDiv.classList.add('mermaid', 'brighten-3', 'rounded-1', 'py-2');
         // center the diagram
         mermaidDiv.style.textAlign = 'center';
         // add the mermaid diagram code to the div
