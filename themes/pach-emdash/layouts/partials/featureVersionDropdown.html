@@ -7,7 +7,7 @@
     {{if eq .Section  "announcements" "tags" "series"}}
         {{/*  does not display the version dropdown button on .Kind "section" pages that match those listed above  */}}
     {{else}}
-        <button id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="dropdown black is-fit grayscale bold sp-1"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
+        <button id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="dropdown black is-fit grayscale bold m-2 p-2"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
             <div class="dropdown-content mt-4">
             <div class="stack black rounded-1">
             {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
@@ -16,7 +16,7 @@
                     {{$currentVersionOption := print "/" .Section "/"}}
                     {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
                 <!--TODO: IF alternative version does not exist, set link to home page of other version-->
-                <a class="bold p-1 rounded-1 black" href="{{$alternativeVersionPath}}" >
+                <a class="bold rounded-1 p-2 black" href="{{$alternativeVersionPath}}" >
                     v. {{.Title}}
                 </a>
                 {{ end }}

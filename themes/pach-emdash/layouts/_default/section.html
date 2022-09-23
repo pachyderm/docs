@@ -4,7 +4,7 @@
 
 {{ define "main" }}
         {{ if .Site.Params.heroBanner.section}}
-        <section class="stack-left black gradient-lr-cold py-3 m-1 rounded-1 c-sp-1">
+        <section class="stack-left black gradient-lr-cold py-3 m-2 rounded-1 c-sp-2">
                 <h1>{{.Title}}</h1>
                     {{ if .Description}}
                         <p>
@@ -23,7 +23,7 @@
         {{else}}
             {{/* Does not show the hero section if disabled from config.yaml */}}
         {{end}}
-        <section class="stack p-4">
+        <section class="stack pr-4 m-2">
             {{ partial "featureBetaNotice.html" . }}
             {{ .Content }}
             {{ partial "featureChildPages.html" . }}

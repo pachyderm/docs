@@ -4,10 +4,10 @@
 
 {{ define "main" }}
         {{ if .Site.Params.heroBanner.glossary}}
-            <section class="black gradient-lr-cold rounded-1 py-3 m-1 c-sp-1">
+            <section class="black gradient-lr-cold rounded-1 py-3 m-2 c-sp-2">
                 <div class="spread-between c-pinned-center">
                     <h1>{{.Title}} </h1>
-                    <p class="label uppercase outlined xs sp-1">glossary</p>
+                    <p class="label uppercase outlined xs sp-2">glossary</p>
                 </div>
             </section>
         {{else}}
@@ -21,11 +21,11 @@
         {{end}}
         {{/* Paginator Navigation Starts Here */}}
         <nav class="spread-center" role="navigation" aria-label="pagination">
-            <div class="pagination-list m-1 c-mt-1">
-                <div class="button black rounded-1 m-1 p-1 gradient-rl-cold xs uppercase bold"> Glossary Pages</div>
+            <div class="pagination-list m-2 c-mt-2">
+                <div class="button black rounded-1 m-2 p-2 gradient-rl-cold xs uppercase bold"> Glossary Pages</div>
                 {{ range .Paginator.Pagers}}
                     {{/* Paginator Buttons */}}
-                    <button data-pager="{{.}}" class="button black darken-3  p-1  mr-1 rounded-1 xxs" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
+                    <button data-pager="{{.}}" class="button black darken-3  p-2  mr-2 rounded-1 xxs" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
                 {{end}}
             </div>
         </nav>
@@ -49,7 +49,7 @@
                                         {{end}}
                                     </h4>
                                 </div>
-                                <div class="black darken-3 rounded-1 c-sp-1">
+                                <div class="black darken-3 rounded-1 c-sp-2">
                                     <p class="xs"> 
                                         {{/* Display description or a truncated summary  */}}
                                         {{ if .Params.glossaryDefinition}}

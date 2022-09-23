@@ -1,18 +1,18 @@
   <nav class="spread sticky brighten-7 level-top">
     <div class="spread-left is-two-fifths ml-2 is-hidden-mobile">
-      <a class="mt-1" style="max-width:150px;" href="/">
+      <a class="mt-2" style="max-width:150px;" href="/">
         <img src="/images/pachLogo.svg" alt="logo">
       </a>
       <div class="button is-fit hefty xs rounded-1"> <b>docs</b></div>
     </div>
-    <div class="spread-right mr-1 c-rounded-1">
+    <div class="spread-right mr-2 c-rounded-1">
       {{if .IsHome}}
       {{else}}
-      <div id="searchbox" class=""> </div>
+      <div id="searchbox" class="my-2"> </div>
       {{end}}
       {{ partial "featureVersionDropdown.html" . }}
-      <button id="darkModeButton" class="black is-fit grayscale mr-1 my-1 p-1" onclick="darkMode()">🌙</button>
-      <button class="purple is-fit is-hidden-touch bold mr-1 my-1  p-1"> Demo</button>
-      <button class="darken-1 is-fit is-hidden-touch bold my-1 p-1"> Sandbox</button>
+      <button id="darkModeButton" class="black is-fit grayscale mr-2 my-2 p-2" onclick="darkMode()">🌙</button>
+      <button class="purple is-fit is-hidden-touch bold mr-2 my-2  p-2"> Demo</button>
+      <button class="darken-2 is-fit is-hidden-touch bold my-2 p-2"> Sandbox</button>
     </div>
   </nav>

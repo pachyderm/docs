@@ -1,5 +1,5 @@
 {{ if .Site.Params.nextPrev }}
-    <div class="spread-between c-fit c-sp-1 c-purple c-rounded-1  bold">
+    <div class="spread-between c-fit c-sp-2 c-purple c-rounded-1  bold">
         {{/*  This may look weird but "next" seems to be the article before current  */}}
         {{with .NextInSection }}<a href="{{.RelPermalink}}"> 👈 {{.Title | truncate 35}} </a>
         {{else}}

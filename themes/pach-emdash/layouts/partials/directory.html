@@ -7,7 +7,7 @@
             <div class=""> 
                 {{with .Parent}}
                     {{/* Displays current page's parent for user to go back up one directory level . */}}  
-                    <a href="{{ .RelPermalink }}" class="button black gradient-rl-cold sp-1 xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
+                    <a href="{{ .RelPermalink }}" class="button black gradient-rl-cold sp-2 xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
                 {{end}}
                 {{ if eq .BundleType "branch"}}
                     {{/* Does not show the relatedArticle button (id related-articles) on list pages */}}
@@ -15,15 +15,15 @@
                     {{ with site.RegularPages.RelatedIndices . "tags" }}
                         {{/* Only show relatedArticle button if related articles exist. 
                         See https://gohugo.io/content-management/related/#readout */}}
-                        <button id="see-related"class="button darken-1 grayscale xs sp-1 rounded-1">📌</button> 
+                        <button id="see-related"class="button darken-1 grayscale xs sp-2 rounded-1">📌</button> 
                     {{end}}
                 {{end}}
              </div>
 
             <div class="slide">
                 {{/* Displays current page's children. */}}
-                <div class="is-full xs bold c-mt-1 c-ml-1 h-scroll">
-                    <p class="p-1 outlined xs is-fit rounded-1"> Contents </p>
+                <div class="is-full xs bold c-mt-2 c-ml-2 h-scroll">
+                    <p class="p-2 outlined xs is-fit rounded-1"> Contents </p>
                     {{ if (eq .Params.layout "glossary") }}
                         {{/*  Does not display children if parent has layout:glossary  */}}
                     {{else if .Pages }}
@@ -58,7 +58,7 @@
                         {{partial "featureTOC" . }}
                     {{end}}          
                 </div>
-                <div class="is-full xs bold c-mt-1 c-ml-1">
+                <div class="is-full xs bold c-mt-2 c-ml-2">
                     {{partial "featureRelatedArticles" . }}
                 </div>
             </div>  

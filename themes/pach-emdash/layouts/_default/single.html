@@ -5,7 +5,7 @@
 {{ define "main" }}
 <div class="is-four-fifths is-fullsize-mobile">
     {{ if .Site.Params.heroBanner.single}}
-        <section class="black gradient-rl-cold py-3 m-1 rounded-1 c-sp-1">
+        <section class="black gradient-rl-cold py-3 m-2 rounded-1 c-sp-2">
                 {{/* Displays a series button if page is part of a series collection  */}}
                 {{ partial "featureSeriesButton.html" . }}
                 <h1>{{.Title}}</h1>
@@ -26,7 +26,7 @@
     {{else}}
         {{/* Does not show the hero section if disabled from config.yaml */}}
     {{end}}
-    <section class="content p-4">
+    <section class="content pr-4 m-2">
         {{ partial "featureBetaNotice.html" . }}
         {{ .Content }}
     </section>

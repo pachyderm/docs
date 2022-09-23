@@ -13,7 +13,7 @@
                 {{else}}
                   {{ partial "algoliaHits" . }}  
                 {{end}}
-        <main class="spread theme-fade-in">
+        <main class="spread">
                 {{ partial "directory.html" .}}   
             <article class="content">
               {{ if .IsHome}}
@@ -26,7 +26,7 @@
                 {{ if .IsHome}}
                   {{/* Don't show Breadcrumbs or EditLink*/}}
                 {{else}}
-                <div class="spread-between mt-1">
+                <div class="spread-between mt-2">
                       {{ partial "featureBreadcrumbs.html" . }} 
                       {{ partial "featureEditLink.html" . }}
                 </div> 
