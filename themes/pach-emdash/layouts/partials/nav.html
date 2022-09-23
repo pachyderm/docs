@@ -5,14 +5,14 @@
       </a>
       <div class="button is-fit hefty xs rounded-1"> <b>docs</b></div>
     </div>
-    <div class="spread-right mr-2 c-rounded-1">
+    <div class="spread-right mr-1 c-rounded-1">
       {{if .IsHome}}
       {{else}}
       <div id="searchbox" class=""> </div>
       {{end}}
       {{ partial "featureVersionDropdown.html" . }}
-      <button id="darkModeButton" class="black is-fit grayscale sp-1" onclick="darkMode()">🌙</button>
-      <button class="purple is-fit is-hidden-touch bold sp-1"> Demo</button>
-      <button class="outline-black is-fit is-hidden-touch bold sp-1"> Sandbox</button>
+      <button id="darkModeButton" class="black is-fit grayscale mr-1 my-1 p-1" onclick="darkMode()">🌙</button>
+      <button class="purple is-fit is-hidden-touch bold mr-1 my-1  p-1"> Demo</button>
+      <button class="darken-1 is-fit is-hidden-touch bold my-1 p-1"> Sandbox</button>
     </div>
   </nav>
