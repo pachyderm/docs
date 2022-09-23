@@ -27,7 +27,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         form: ['spread'],
         submit: ['is-hidden'],
         reset: ['is-hidden'],
-        input: ['is-full','darken-1', 'rounded-4', 'sp-2']
+        input: ['is-full','darken-1', 'rounded-4', 'sp-1']
       },
       templates: {
       },
