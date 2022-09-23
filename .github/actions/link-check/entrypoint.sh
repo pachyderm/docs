@@ -1,11 +1,11 @@
 #!/bin/bash
 
-LOCAL_HOST="http://localhost:1313/developer"
+LOCAL_HOST="http://localhost:1313/"
 MAX_WAIT_TIME=600 # 5 min
 
 # Provide default options if none are provided
-HUGO_OPTIONS="${HUGO_OPTIONS:=-b http://localhost:1313/developer}"
-MUFFET_OPTIONS="${MUFFET_OPTIONS:=-t 30 -e 'https?' --exclude='/developer/get-workshop'}"
+HUGO_OPTIONS="${HUGO_OPTIONS:=-b http://localhost:1313/}"
+MUFFET_OPTIONS="${MUFFET_OPTIONS:=-t 30 -e 'https?' }"
 
 # Ensure that the git log can be pulled
 git config --global --add safe.directory /github/workspace
