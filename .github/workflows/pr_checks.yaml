@@ -16,4 +16,4 @@ jobs:
         name: Link Check
         env:
           HUGO_OPTIONS: "-b http://localhost:1313/" #"--buildDrafts"
-          MUFFET_OPTIONS: "-t 30 -e 'https?' " # Excludes external links
+          MUFFET_OPTIONS: "-t 30 -i 'http://localhost:1313' " # Excludes external links
