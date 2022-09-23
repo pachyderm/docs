@@ -1670,10 +1670,3 @@ input { border: none  !important; }
 .noscrollbar::-webkit-scrollbar {
   display: none;
 }
-
-.blarg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-}
