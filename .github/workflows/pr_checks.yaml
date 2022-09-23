@@ -6,7 +6,6 @@ on:
 
 jobs:
   broken-link-check:
-    needs: spell-check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,5 +15,5 @@ jobs:
       - uses: ./.github/actions/link-check
         name: Link Check
         env:
-          HUGO_OPTIONS: "-b http://localhost:1313/developer" #"--buildDrafts"
+          HUGO_OPTIONS: "-b http://localhost:1313/" #"--buildDrafts"
           MUFFET_OPTIONS: "-t 30 -e 'https?' " # Excludes external links
