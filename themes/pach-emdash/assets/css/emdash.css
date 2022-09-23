@@ -697,8 +697,33 @@ button, .button {
     .p-1, .c-p-1 > * {
         padding: 10px !important;
     }
+    .pt-1, .c-pt-1 > * {
+        padding-top: 10px !important;
+    }
+    .pb-1, .c-pb-1 > * {
+        padding-bottom: 10px !important;
+    }
+    .pl-1, .c-pl-1 > * {
+        padding-left: 10px !important;
+    }
+    .pr-1, .c-pr-1 > * {
+        padding-right: 10px !important;
+    }
+
     .m-1, .c-m-1 > * {
         margin: 10px !important;
+    }
+    .mt-1, .c-mt-1 > * {
+        margin-top: 10px !important;
+    }
+    .mb-1, .c-mb-1 > * {
+        margin-bottom: 10px !important;
+    }
+    .ml-1, .c-ml-1 > * {
+        margin-left: 10px !important;
+    }
+    .mr-1, .c-mr-1 > * {
+        margin-right: 10px !important;
     }
 }
 
