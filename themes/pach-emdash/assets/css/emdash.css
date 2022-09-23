@@ -675,6 +675,33 @@ button, .button {
 
 }
 
+/* Widescreen TALL */
+
+@media screen and (min-height: 1440px) {
+    .is-hidden-widescreen, .c-hidden-widescreen > * {
+        display: none;
+    }
+    .is-invisible-widescreen, .c-invisible-widescreen > * {
+        visibility: hidden;
+    }
+    .is-fullsize-widescreen, .c-fullsize-widescreen > * {
+        flex-basis: 100%;
+        flex-grow: 1;
+    }
+
+    .sp-1, .c-sp-1 > * {
+        padding: 10px !important;
+        margin: 10px !important;
+    }
+
+    .p-1, .c-p-1 > * {
+        padding: 10px !important;
+    }
+    .m-1, .c-m-1 > * {
+        margin: 10px !important;
+    }
+}
+
 /* Miscellaneous */
 .wrapless, .c-wrapless > * {
     white-space: nowrap;
