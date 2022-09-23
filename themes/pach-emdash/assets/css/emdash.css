@@ -725,6 +725,10 @@ button, .button {
     .mr-1, .c-mr-1 > * {
         margin-right: 10px !important;
     }
+
+    .h-scroll {
+        height: max-content !important;
+    }
 }
 
 /* Miscellaneous */
