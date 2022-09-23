@@ -1670,3 +1670,11 @@ input { border: none  !important; }
 .noscrollbar::-webkit-scrollbar {
   display: none;
 }
+
+code::-webkit-scrollbar {
+  display: none;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
