@@ -4,17 +4,17 @@
 */}}
 
 <!DOCTYPE html>
-<html style="height:100%;">
+<html>
     {{ partial "head.html" . }}
-    <body class="stack"> 
+    <body> 
         {{ partial "nav.html" . }}
             {{ if .IsHome}}
               {{/*  See index.html default layout for homepage algolia hits  */}}
             {{else}}
               {{ partial "algoliaHits" . }}  
             {{end}}
-        <main class="spread-center c-pinned-top wideless">
-                {{ partial "directory.html" .}}   
+        <main class="spread-center c-pinned-stretch wideless">
+            {{ partial "directory.html" .}}  
             <article class="content two-thirds-widescreen">
               {{ if .IsHome}}
                 {{/* Don't show Breadcrumbs or EditLink*/}}

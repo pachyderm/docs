@@ -7,8 +7,8 @@
     --small-text: calc(100vmin / 60);  
     --medium-text: calc(100vmin / 50);  
     --large-text: calc(100vmin / 30);  
-    --xlarge-text: calc(100vmin / 20);  
-    --xxlarge-text: calc(100vmin / 25);  
+    --xlarge-text: calc(100vmin / 25);  
+    --xxlarge-text: calc(100vmin / 20);  
     --xxxlarge-text: calc(100vmin / 15);  
 
     --spacing-1: calc(.2rem);
@@ -530,6 +530,11 @@ button, .button {
 /* Stick to Top  */
 .sticky {
   position: sticky;
+  top:0;
+}
+
+.fixed {
+  position: fixed;
   top:0;
 }
 
@@ -1664,4 +1669,11 @@ input { border: none  !important; }
 
 .noscrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.blarg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
 }
