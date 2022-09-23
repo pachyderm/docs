@@ -4,25 +4,23 @@
 */}}
 
 {{ define "main" }}
-
-    <div class="spread-between c-pinned-bottom m-4">
-        <div>
-            <h1 class="text-left">Pachyderm Docs</h1>
-            <h2 class="subtitle-1 m mt-2 text-left"> Automate <b>data transformations</b> using Pachyderm</h2>
+        <div class="spread-between c-pinned-bottom m-4 two-thirds-widescreen">
+            <div>
+                <h1 class="text-left">Pachyderm Docs</h1>
+                <h2 class="subtitle-1 m mt-2 text-left"> Automate <b>data transformations</b> using Pachyderm</h2>
+            </div>
+            <div class="is-one-fifth text-right is-hidden-mobile">
+                <img src="{{ .Site.Params.logos.footer }}" alt="Pachyderm Docs">
+            </div>
         </div>
-        <div class="is-one-fifth text-right is-hidden-mobile">
-            <img src="{{ .Site.Params.logos.footer }}" alt="Pachyderm Docs">
-        </div>
-    </div>
-  
     {{ partial "featureCommunityDetails.html" . }}
 
-    <div class="stack mx-4 mt-7 mb-7">
-        <h2 class="text-center mt-3 mb-2">Explore Pachyderm</h2>
-        <div id="searchbox" class="p-2 brighten-1 rounded-6"> </div>
-
-        <div id="hits">
-        
+    <div class="spread-center">
+        <div class="stack mx-4 mt-7 mb-7 one-half-widescreen">
+            <h2 class="text-center mt-3 mb-2">Explore Pachyderm</h2>
+            <div id="searchbox" class="p-2 brighten-1 rounded-6"> </div>
+            <div id="hits">
+            </div>
         </div>
     </div>
 

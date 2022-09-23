@@ -16,5 +16,19 @@
     .h-scroll {
         height: max-content !important;
     }
+
+    .one-eighth-widescreen {
+        flex-basis: 12.5%;
+        flex-grow: 0;
+    }
+    .one-half-widescreen {
+        flex-basis: 50%;
+        flex-grow: 0;
+    }
+
+    .two-thirds-widescreen {
+        flex-basis: 66.66666666666666%;
+        flex-grow: 0;
+    }
 }
  
