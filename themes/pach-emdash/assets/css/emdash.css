@@ -4,12 +4,12 @@
     --is-header-line-height: 100%;
     --xxsmall-text: calc(100vmin / 80);   
     --xsmall-text: calc(100vmin / 70);  
-    --small-text: calc(100vmin / 60);  
-    --medium-text: calc(100vmin / 50);  
-    --large-text: calc(100vmin / 30);  
-    --xlarge-text: calc(100vmin / 25);  
-    --xxlarge-text: calc(100vmin / 20);  
-    --xxxlarge-text: calc(100vmin / 15);  
+    --small-text: calc(100vmin / 50);  
+    --medium-text: calc(100vmin / 45);  
+    --large-text: calc(100vmin / 40);  
+    --xlarge-text: calc(100vmin / 35);  
+    --xxlarge-text: calc(100vmin / 30);  
+    --xxxlarge-text: calc(100vmin / 20);  
 
     --spacing-1: calc(.2rem);
     --spacing-2: calc(.4rem);
