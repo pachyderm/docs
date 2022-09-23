@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html style="height:100%;">
     {{ partial "head.html" . }}
-    {{ partial "nav.html" . }}
-    <body class="stack wideless"> 
-                {{ if .IsHome}}
-                  {{/*  See index.html default layout for homepage algolia hits  */}}
-                {{else}}
-                  {{ partial "algoliaHits" . }}  
-                {{end}}
-        <main class="spread">
+    <body class="stack"> 
+        {{ partial "nav.html" . }}
+            {{ if .IsHome}}
+              {{/*  See index.html default layout for homepage algolia hits  */}}
+            {{else}}
+              {{ partial "algoliaHits" . }}  
+            {{end}}
+        <main class="spread wideless">
                 {{ partial "directory.html" .}}   
             <article class="content">
               {{ if .IsHome}}
