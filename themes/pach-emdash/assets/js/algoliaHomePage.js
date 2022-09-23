@@ -25,7 +25,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
   search.addWidgets([
     instantsearch.widgets.searchBox({
       container: "#searchbox",
-      placeholder: "Search...",
+      placeholder: "🔍 Search...",
       showReset: false,
       showSubmit: false,
       autofocus: false,
@@ -34,7 +34,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         form: ['spread'],
         submit: ['is-hidden'],
         reset: ['is-hidden'],
-        input: ['is-full','darken-1', 'rounded-4', 'p-2']
+        input: ['is-full','darken-1', 'rounded-4', 'p-2', "l"]
       },
       templates: {
       },
@@ -59,9 +59,9 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
               <div class="hit spread c-pinned-center is-full c-mr-2">
                 <div class="black gradient-lr-cold is-fit xxs rounded-1 darken-3 p-2">{{version}}</div>
                 <div class="stack c-mb-2">
-                  <div class="xs uppercase is-fit">{{parent}}</div>
-                  <h3 class="is-fit m extra-bold">{{title}}</h3>
-                  <div class="xs">{{description}}</div>
+                  <div class="s uppercase is-fit">{{parent}}</div>
+                  <h3 class="is-fit l extra-bold">{{title}}</h3>
+                  <div class="s">{{description}}</div>
                 </div>
               </div>
             </a>

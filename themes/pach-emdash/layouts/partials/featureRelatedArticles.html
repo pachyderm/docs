@@ -11,7 +11,7 @@
             {{ with $related }}
                 <p class="p-2 outlined xs is-fit rounded-1"> Related Articles</p>
                 <div class="stack xs bold ml-2 c-mb-2">
-                {{ range . }}
+                {{ range first 20 . }}
                     {{ if eq .Params.majorMinor $sectionVersion }}
                     <a href="{{ .RelPermalink }}" class=""> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
                     {{else}}
