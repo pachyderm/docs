@@ -1,7 +1,7 @@
 
 /* Widescreen TALL */
 
-@media screen and (min-height: 1440px) {
+@media screen and (min-width: 1441px) {
     .is-hidden-widescreen, .c-hidden-widescreen > * {
         display: none;
     }
@@ -17,8 +17,8 @@
         height: max-content !important;
     }
 
-    .one-eighth-widescreen {
-        flex-basis: 12.5%;
+    .one-sixth-widescreen {
+        flex-basis: 16.666666666666664%;
         flex-grow: 0;
     }
     .one-half-widescreen {
