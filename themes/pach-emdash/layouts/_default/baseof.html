@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html style="height:100%;">
     {{ partial "head.html" . }}
+    {{ partial "nav.html" . }}
     <body class="stack wideless"> 
-                {{ partial "nav.html" . }}
                 {{ if .IsHome}}
                   {{/*  See index.html default layout for homepage algolia hits  */}}
                 {{else}}
