@@ -4,13 +4,13 @@
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
 
-    {{if eq .Section  "announcements" "tags" "series"}}
+    {{if eq .Section  "announcements" "tags" "series" "support"}}
         {{/*  does not display the version dropdown button on .Kind "section" pages that match those listed above  */}}
     {{else}}
         <button id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="dropdown black is-fit grayscale bold m-2 p-2"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
             <div class="dropdown-content mt-4">
             <div class="stack black rounded-1">
-            {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
+            {{ range after 3 .Site.Sections.ByTitle.Reverse }} 
                 {{ if not .Params.hidden }}
                 {{/* Sort Options: https://gohugo.io/templates/lists/#order-content */}}
                     {{$currentVersionOption := print "/" .Section "/"}}

@@ -15,5 +15,3 @@ cascade:
     jupyerLabExtension: 1.0.x 
     majorMinor: 2.3.x
 ---
-
-

@@ -2,22 +2,22 @@
 :root {
     --is-font-family: 'Montserrat', sans-serif;
     --is-header-line-height: 100%;
-    --xxsmall-text: calc(.5rem + .1vmin); 
-    --xsmall-text: calc(.7rem + .1vmin);
-    --small-text: calc(1rem + .1vmin);
-    --medium-text: calc(1.5rem + .1vmin);
-    --large-text: calc(2rem + .1vmin);
-    --xlarge-text: calc(2.5rem + .1vmin);
-    --xxlarge-text: calc(3rem + .1vmin);
-    --xxxlarge-text: calc(3.5rem + .1vmin);  
+    --xxsmall-text: calc(100vmin / 80);   
+    --xsmall-text: calc(100vmin / 70);  
+    --small-text: calc(100vmin / 60);  
+    --medium-text: calc(100vmin / 50);  
+    --large-text: calc(100vmin / 30);  
+    --xlarge-text: calc(100vmin / 25);  
+    --xxlarge-text: calc(100vmin / 20);  
+    --xxxlarge-text: calc(100vmin / 15);  
 
-    --spacing-1: calc(.2rem + .1vmin);
-    --spacing-2: calc(.4rem + .1vmin);
-    --spacing-3: calc(1rem + .1vmin);
-    --spacing-4: calc(2rem + .1vmin);
-    --spacing-5: calc(3rem + .1vmin);
-    --spacing-6: calc(4rem + .1vmin);
-    --spacing-7: calc(6rem + .1vmin);
+    --spacing-1: calc(.2rem);
+    --spacing-2: calc(.4rem);
+    --spacing-3: calc(1rem);
+    --spacing-4: calc(2rem);
+    --spacing-5: calc(3rem);
+    --spacing-6: calc(4rem);
+    --spacing-7: calc(6rem);
 
     --is-text-color:  var(--is-black);
     --is-text-color-inverted: var(--is-white);
@@ -530,6 +530,11 @@ button, .button {
 /* Stick to Top  */
 .sticky {
   position: sticky;
+  top:0;
+}
+
+.fixed {
+  position: fixed;
   top:0;
 }
 
@@ -1664,4 +1669,11 @@ input { border: none  !important; }
 
 .noscrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.blarg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
 }
