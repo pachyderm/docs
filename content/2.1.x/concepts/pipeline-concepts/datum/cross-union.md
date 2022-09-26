@@ -12,7 +12,8 @@ seriesPart:
 Pachyderm enables you to combine multiple [PFS inputs](../#pfs-input-and-glob-pattern) by using the `union` and
 `cross` operators in the pipeline specification.
 
-You can think of union as a *disjoint union binary operator* and cross as a *cartesian product binary operator*. 
+You can think of union as a *disjoint union binary operator* and cross as a
+*cartesian product binary operator*. 
 
 This section describes how to use `cross` and `union` in your pipelines and how you
 can optimize your code when you work with them.
@@ -20,7 +21,8 @@ can optimize your code when you work with them.
 ## Union Input
 
 The union input combines each of the datums in the input repos as one
-set of datums. The number of datums that are processed is the sum of all the
+set of datums.
+The number of datums that are processed is the sum of all the
 datums in each repo.
 
 For example, you have two input repos, `A` and `B`. Each of these
@@ -28,7 +30,7 @@ repositories contain three files with the following names.
 
 Repository `A` has the following structure:
 
-```s
+```shell
 A
 ├── 1.txt
 ├── 2.txt
@@ -37,7 +39,7 @@ A
 
 Repository `B` has the following structure:
 
-```s
+```shell
 B
 ├── 4.txt
 ├── 5.txt
@@ -49,7 +51,7 @@ separate datum, use a glob pattern of `/*`. Each
 glob is applied to each input independently. The input section
 in the pipeline spec might have the following structure:
 
-```s
+```shell
 "input": {
     "union": [
         {
@@ -73,7 +75,7 @@ directory, so three datums from each input. Therefore, the union of `A` and `B`
 has six datums in total.
 Your pipeline processes the following datums without any specific order:
 
-```s
+```shell
 /pfs/A/1.txt
 /pfs/A/2.txt
 /pfs/A/3.txt
@@ -82,15 +84,14 @@ Your pipeline processes the following datums without any specific order:
 /pfs/B/6.txt
 ```
 
-{{% notice %}}
-Each datum in a pipeline is processed independently by a single
-execution of your code. In this example, your code runs six times, and
-each datum is available to it one at a time. For example, your code
-processes `pfs/A/1.txt` in one of the runs and `pfs/B/5.txt` in a
-different run, and so on. In a union, two or more datums are never
-available to your code at the same time. You can simplify
-your union code by using the `name` property as described below.
-{{% /notice %}}
+!!! note
+    Each datum in a pipeline is processed independently by a single
+    execution of your code. In this example, your code runs six times, and
+    each datum is available to it one at a time. For example, your code
+    processes `pfs/A/1.txt` in one of the runs and `pfs/B/5.txt` in a
+    different run, and so on. In a union, two or more datums are never
+    available to your code at the same time. You can simplify
+    your union code by using the `name` property as described below.
 
 ### Simplifying the Union Pipelines Code
 
@@ -100,7 +101,7 @@ To simplify your code, you can add the `name` field to the `pfs` object and
 give the same name to each of the input repos. For example, you can add, the
 `name` field with the value `C` to the input repositories `A` and `B`:
 
-```json
+```
 "input": {
     "union": [
         {
@@ -123,7 +124,7 @@ give the same name to each of the input repos. For example, you can add, the
 
 Then, in the pipeline, all datums appear in the same directory.
 
-```s
+```shell
 /pfs/C/1.txt  # from A
 /pfs/C/2.txt  # from A
 /pfs/C/3.txt  # from A
@@ -144,13 +145,12 @@ code is provided one of these sets at the time to process.
 For example, you have repositories `A` and `B` with three datums, each
 with the following structure:
 
-{{% notice %}}
-For this example, the glob pattern is set to `/*`.
-{{% /notice %}}
+!!! note
+    For this example, the glob pattern is set to `/*`.
 
 Repository `A` has three files at the top level:
 
-```s
+```shell
 A
 ├── 1.txt
 ├── 2.txt
@@ -159,7 +159,7 @@ A
 
 Repository `B` has three files at the top level:
 
-```s
+```shell
 B
 ├── 4.txt
 ├── 5.txt
@@ -169,11 +169,11 @@ B
 Because you have three datums in each repo, Pachyderm exposes
 a total of nine combinations of datums to your code.
 
-{{% notice tip %}}
-In cross pipelines, both `pfs/A` and `pfs/B` directories are visible during each code run.
-{{% /notice  %}}
+!!! important
+    In cross pipelines, both `pfs/A` and `pfs/B`
+    directories are visible during each code run.
 
-```s
+```shell
 Run 1: /pfs/A/1.txt
        /pfs/B/4.txt
 
@@ -185,15 +185,14 @@ Run 9: /pfs/A/3.txt
        /pfs/B/6.txt
 ```
 
-{{% notice %}}
-In cross inputs, if you use the `name` field, your two inputs cannot have the same name. This could cause file system collisions.
-{{% /notice %}}
+!!! note
+    In cross inputs, if you use the `name` field, your two
+    inputs cannot have the same name. This could cause file system collisions.
 
-{{% notice %}}
-**See Also**:
+!!! note "See Also:"
+
 - [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
 - [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
-- [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion >}}/examples/ml/hyperparameter)
-{{% /notice %}}
+- [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/ml/hyperparameter){target=_blank}
 
 

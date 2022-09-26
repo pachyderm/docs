@@ -38,7 +38,7 @@ WSL because it was tested and verified by our team.
 with Pachyderm. It requires a UNIX environment to run correctly. Therefore,
 you need a WSL to run `pachctl` commands. We recommend that you install an
 Ubuntu WSL. To install WSL, follow the steps in the
-[Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install).
+[Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install){target=_blank}.
 
 ## Enable Hyper-V
 
@@ -70,10 +70,10 @@ you prefer another installation method, it should work too.
 
 To install Minikube, complete the following steps:
 
-1. Install Chocolatey as described in the [Chocolatey documentation](https://docs.chocolatey.org/en-us/choco/setup).
+1. Install Chocolatey as described in the [Chocolatey documentation](https://docs.chocolatey.org/en-us/choco/setup){target=_blank}.
 1. Install Minikube:
 
-   ```s
+   ```shell
    choco install minikube
    ```
 
@@ -86,18 +86,18 @@ machine to the `~/.kube` directory in your Ubuntu WSL machine.
 To install and configure `kubectl`
 
 1. Install `kubectl` on WSL as described in the
-[Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/).
+[Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/){target=_blank}.
 1. Create a `~/.kube` directory.
 1. Copy the Minikube config file from the Windows host system to the Ubuntu
 WSL `/.kube/` directory:
 
-   ```s
+   ```shell
    cp /mnt/c/Users/Svetlana/.kube/config ~/.kube/config
    ```
 
 1. Change the following lines in the configuration file:
 
-   ```s hl_lines="3 4 5"
+   ```shell hl_lines="3 4 5"
     users:
     - name: minikube
       user:
@@ -110,13 +110,13 @@ WSL `/.kube/` directory:
 
 1. Verify that `kubectl` is configured correctly:
 
-   ```s
+   ```shell
    kubectl version
    ```
 
    **System Response:**
 
-   ```s
+   ```shell
    Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.0", GitCommit:"70132b0f130acc0bed193d9ba59dd186f0e634cf", GitTreeState:"clean", BuildDate:"2019-12-07T21:20:10Z", GoVersion:"go1.13.4", Compiler:"gc", Platform:"linux/amd64"}
    Server Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.0", GitCommit:"70132b0f130acc0bed193d9ba59dd186f0e634cf", GitTreeState:"clean", BuildDate:"2019-12-07T21:12:17Z", GoVersion:"go1.13.4", Compiler:"gc", Platform:"linux/amd64"}
    ```
@@ -128,13 +128,13 @@ as described in [Install pachctl](../local-installation/#install-pachctl).
 
 **Example:**
 
-```s
-curl -o /tmp/pachctl.deb -L '{{<latestDownloadLink>}}' && sudo dpkg -i /tmp/pachctl.deb
+```shell
+curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
 ```
 
 **System Response:**
 
-```s
+```shell
 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100   613    0   613    0     0   2043      0 --:--:-- --:--:-- --:--:--  2043
