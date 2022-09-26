@@ -113,7 +113,9 @@ b {
 
 /* Headers */
 
-h1, h2, h3, h4, h5, h6 { line-height: var(--is-header-line-height) }
+h1, h2, h3, h4, h5, h6 { 
+  line-height: var(--is-header-line-height);
+}
 
 h1 { font-size: var(--xxxlarge-text); }
 h2 { font-size: var(--xxlarge-text); }
@@ -442,15 +444,6 @@ button, .button {
 .image-16x9 {
     aspect-ratio: 16 / 9;
     width: 100%;
-}
-
-.anchor {
-    color: var(--is-purple) !important;
-    font-size: .5em;
-    font-weight: 900;
-    float: left;
-    margin-left: -1ch;
-
 }
 
 /* Animations */
