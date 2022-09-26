@@ -17,30 +17,30 @@ Once you have your networking infrastructure set up, apply a helm values file su
 This example uses [Traefik](../ingress/pach-ui-ingress/) as an Ingress controller. To configure other ingress controllers, apply their annotations in `.Values.console.annotations`.
 {{% /notice %}}
 
-=== "values.yaml with activation of an enterprise license and authentication"
+### values.yaml with activation of an enterprise license and authentication
 
-	```yaml
-    ingress:
+```yaml
+ingress:
+    enabled: true
+    host: <DNS-ENTRY>
+    tls:
         enabled: true
-        host: <DNS-ENTRY>
-        tls:
-            enabled: true
-            secretName: "pach-tls"
-    pachd:
-        tls:
-            enabled: true
-            secretName: "pach-tls"
-        externalService:
-            enabled: true
-            loadBalancerIP: <LOAD-BALANCER-IP>
-    console:
+        secretName: "pach-tls"
+pachd:
+    tls:
         enabled: true
-        annotations:
-            ## annotations specific to integrate with your ingress-controller
-            ## the example below is a provided configuration specific to traefik as an ingress-controller
-            traefik.ingress.kubernetes.io/router.tls: "true"
-            kubernetes.io/ingress.class: "traefik"
-	```
+        secretName: "pach-tls"
+    externalService:
+        enabled: true
+        loadBalancerIP: <LOAD-BALANCER-IP>
+console:
+    enabled: true
+    annotations:
+        ## annotations specific to integrate with your ingress-controller
+        ## the example below is a provided configuration specific to traefik as an ingress-controller
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        kubernetes.io/ingress.class: "traefik"
+```
 
 
 

@@ -127,7 +127,7 @@ We can check to make sure the data we just added is in Pachyderm.
 
   **System response:**
 
-  ```
+  ```s
   NAME   CREATED       SIZE (MASTER) ACCESS LEVEL
   images 2 minutes ago ≤ 57.27KiB    [repoOwner]
   ```
@@ -140,7 +140,7 @@ We can check to make sure the data we just added is in Pachyderm.
 
   **System response:**
 
-  ```
+  ```s
   REPO   BRANCH COMMIT                           FINISHED       SIZE     ORIGIN DESCRIPTION
   images master 89a5ab3a23c949949f763943dd7a8aac 55 seconds ago 57.27KiB USER
   ```
@@ -153,7 +153,7 @@ We can check to make sure the data we just added is in Pachyderm.
 
   **System response:**
 
-  ```
+  ```s
   NAME         TYPE SIZE
   /liberty.png file 57.27KiB
   ```
@@ -194,7 +194,7 @@ More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline
 For now, we are going to create a single pipeline spec that takes in images
 and does some simple edge detection.
 
-![image](../assets/images/opencv-liberty.png)
+![image](../../assets/images/opencv-liberty.png)
 
 Below is the `edges.json` pipeline spec. Let's walk
 through the details.
@@ -354,7 +354,7 @@ pachctl get file edges@master:liberty.png | display
 
 The output should look similar to:
 
-![image](../assets/images/edges-screenshot.png)
+![image](../../assets/images/edges-screenshot.png)
 
 ### Processing More Data
 
@@ -418,7 +418,7 @@ pipeline. Specifically, let's add a `montage` pipeline that take our
 original and edge detected images and arranges them into a single
 montage of images:
 
-![image](../assets/images/opencv-liberty-montage.png)
+![image](../../assets/images/opencv-liberty-montage.png)
 
 Below is the pipeline spec for this new pipeline:
 
@@ -506,7 +506,7 @@ pachctl get file montage@master:montage.png | open -f -a Preview.app
 pachctl get file montage@master:montage.png | display
 ```
 
-![image](../assets/images/montage-screenshot.png)
+![image](../../assets/images/montage-screenshot.png)
 
 ## Exploring your DAG in Pachyderm Console
 

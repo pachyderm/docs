@@ -102,7 +102,7 @@ To simplify your code, you can add the `name` field to the `pfs` object and
 give the same name to each of the input repos. For example, you can add, the
 `name` field with the value `C` to the input repositories `A` and `B`:
 
-```
+```json
 "input": {
     "union": [
         {

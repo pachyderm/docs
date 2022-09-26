@@ -71,7 +71,7 @@ state with a `json` file for each city in that state:
 Now let's consider what the following glob patterns would match respectively:
 
 |Glob Pattern| Corresponding match| Example|
-|-----------------|---------------------------------||
+|-----------------|---------------------------------|---|
 | `/`| This pattern matches `/`, the root directory itself, meaning **all the data would be one large datum**. All changes in any of the files and directories trigger Pachyderm to process the whole repository contents as a single datum.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes all changed files and directories in the repo as a single datum.*|
 | `/*`| This pattern matches **everything under the root directory**. It defines **one datum per state**, which means that all the cities for a given state are processed together by a single worker, but each state is processed independently.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes the `California/` datum only*.|
 | `/Colorado/*`| This pattern matches **files only under the `/Colorado` directory**. It defines **one datum per city**.|*If you add a new file `Alamosa.json` to the `Colorado/` directory and `Sacramento.json` to the `California/` directory, Pachyderm processes the `Alamosa.json` datum only.*|
@@ -204,7 +204,7 @@ de9e3703322eff2ab90e89ff01a18c448af9870f17e78438c5b0f56588af9c44 images@7856142d
 ```
 
 {{% notice note %}} 
-    In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
+In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` only processed 2 datums from the images input repo. The rest was skipped as it had been processed by previous jobs already. Notice that the ID of the datums is now showing.
 {{% /notice %}}
 
 {{% notice info %}}  

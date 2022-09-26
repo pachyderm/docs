@@ -161,9 +161,9 @@ p, ul, ol, li { font-size:  var(--small-text); }
 
 :is(.directory, nav) ul > li { list-style: none; }
 
-ul, ol { padding-inline-start: 1vw; }
+ul, ol, li { padding-inline-start: .5rem; }
 
-.content :is(ol,ul) > li { margin-left: 5vw; } /* Flexbox Layout System */
+.content :is(ol,ul) > li { margin-left: 1rem; margin-bottom: .5rem; } /* Flexbox Layout System */
 
 /* Layer things horizontally */
 

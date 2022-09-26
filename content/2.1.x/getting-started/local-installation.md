@@ -185,19 +185,20 @@ Note that you can run both Console and JupyterLab on your local installation.
 
 * Install Pachyderm:  
 
-=== "Pachyderm Community Edition"
-      This command will install Pachyderm's latest available GA version.
+  ### Pachyderm Community Edition
+  This command will install Pachyderm's latest available GA version.
 
-       ```shell  
-       helm install pachd pach/pachyderm --set deployTarget=LOCAL  
-       ```    
-=== "Enterprise (Console)"
-       - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise).
-       - Then, run the following helm command to **install Pachyderm's latest version with Console**: 
-      
-        ```shell  
-        helm install pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
-        ``` 
+   ```shell  
+   helm install pachd pach/pachyderm --set deployTarget=LOCAL  
+   ```    
+  
+  ### Enterprise (Console)
+  - Create a `license.txt` file in which you paste your [Enterprise Key](../../enterprise).
+  - Then, run the following helm command to **install Pachyderm's latest version with Console**: 
+
+  ```shell  
+  helm install pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
+  ``` 
 
 {{% notice warning %}} 
 Deploying locally with Console requires an **Enterprise Key**

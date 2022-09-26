@@ -63,40 +63,41 @@ Install [AWS CLI](https://aws.amazon.com/cli/)
 
 1. Create a values.yaml
 
-=== "Deploy Pachyderm without Console"
+#### Deploy Pachyderm without Console
 
-    ```yaml
-    deployTarget: "AMAZON"
-    pachd:
-      storage:
-        amazon:
-          bucket: "bucket_name"      
-          # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
-          id: "AKIAIOSFODNN7EXAMPLE"                
-          # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          region: "us-east-2"
-      externalService:
-        enabled: true
-    ```
-=== "Deploy Pachyderm with Console"
+```yaml
+deployTarget: "AMAZON"
+pachd:
+storage:
+  amazon:
+    bucket: "bucket_name"      
+    # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+    id: "AKIAIOSFODNN7EXAMPLE"                
+    # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+    secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    region: "us-east-2"
+externalService:
+  enabled: true
+```
 
-    ```yaml
-    deployTarget: "AMAZON"
-    pachd:
-      storage:
-        amazon:
-          bucket: "bucket_name"                
-          # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
-          id: "AKIAIOSFODNN7EXAMPLE"                
-          # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          region: "us-east-2"
-      # pachyderm enterprise key 
-      enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
-    console:
-      enabled: true
-    ```
+##### Deploy Pachyderm with Console
+
+```yaml
+ deployTarget: "AMAZON"
+ pachd:
+   storage:
+     amazon:
+       bucket: "bucket_name"                
+       # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+       id: "AKIAIOSFODNN7EXAMPLE"                
+       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+       region: "us-east-2"
+   # pachyderm enterprise key 
+   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+ console:
+   enabled: true
+```
      
 
 Jump to [Helm install](#3-helm-install)
@@ -113,34 +114,34 @@ Add `--scopes storage-rw` to your `gcloud container clusters create` command.
 
 1. Create a values.yaml
 
-=== "Deploy Pachyderm without Console"
+#### Deploy Pachyderm without Console
 
-    ```yaml
-    deployTarget: "GOOGLE"
-    pachd:
-      storage:
-        google:
-          bucket: "bucket_name"
-          cred: |
-            INSERT JSON CONTENT HERE
-      externalService:
-        enabled: true
-    ```
-=== "Deploy Pachyderm with Console"
+```yaml
+deployTarget: "GOOGLE"
+pachd:
+storage:
+  google:
+    bucket: "bucket_name"
+    cred: |
+      INSERT JSON CONTENT HERE
+externalService:
+  enabled: true
+```
+#### Deploy Pachyderm with Console
 
-    ```yaml
-    deployTarget: "GOOGLE"
-    pachd:
-      storage:
-        google:
-          bucket: "bucket_name"
-          cred: |
-            INSERT JSON CONTENT HERE
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
-    console:
-      enabled: true
-    ```
+```yaml
+deployTarget: "GOOGLE"
+pachd:
+storage:
+  google:
+    bucket: "bucket_name"
+    cred: |
+      INSERT JSON CONTENT HERE
+# pachyderm enterprise key
+enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+console:
+enabled: true
+```
 
 Jump to [Helm install](#3-helm-install)
 
@@ -159,40 +160,41 @@ Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/in
 
 1. Create a values.yaml
 
-=== "Deploy Pachyderm without Console"
+#### Deploy Pachyderm without Console
 
-    ```yaml
-    deployTarget: "MICROSOFT"
-    pachd:
-      storage:
-        microsoft:
-          # storage container name
-          container: "blah"
-          # storage account name
-          id: "AKIAIOSFODNN7EXAMPLE"
-          # storage account key
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-      externalService:
-        enabled: true
-    ```
-=== "Deploy Pachyderm with Console"
+```yaml
+ deployTarget: "MICROSOFT"
+ pachd:
+   storage:
+     microsoft:
+       # storage container name
+       container: "blah"
+       # storage account name
+       id: "AKIAIOSFODNN7EXAMPLE"
+       # storage account key
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+   externalService:
+     enabled: true
+```
 
-    ```yaml    
-    deployTarget: "MICROSOFT"
-    pachd:
-      storage:
-        microsoft:
-          # storage container name
-          container: "blah"
-          # storage account name
-          id: "AKIAIOSFODNN7EXAMPLE"
-          # storage account key
-          secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-      # pachyderm enterprise key
-      enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
-    console:
-      enabled: true
-    ```
+#### Deploy Pachyderm with Console
+
+```yaml    
+ deployTarget: "MICROSOFT"
+ pachd:
+   storage:
+     microsoft:
+       # storage container name
+       container: "blah"
+       # storage account name
+       id: "AKIAIOSFODNN7EXAMPLE"
+       # storage account key
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+   # pachyderm enterprise key
+   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+ console:
+   enabled: true
+```
 
 
 
@@ -201,76 +203,76 @@ Jump to [Helm install](#3-helm-install)
 ## 3. [Helm Install](../helm-install/#install-pachyderms-helm-chart)
 - You will be deploying the [latest GA release](../../../reference/supported-releases/#generally-available-ga) of Pachyderm:
 
-    ```shell
-    helm repo add pach https://helm.pachyderm.com
-    helm repo update
-    helm install pachyderm -f my_pachyderm_values.yaml pach/pachyderm 
-    ```
+  ```shell
+  helm repo add pach https://helm.pachyderm.com
+  helm repo update
+  helm install pachyderm -f my_pachyderm_values.yaml pach/pachyderm 
+  ```
 
 - Check your deployment:
 
-    ```shell
-    kubectl get pods
-    ```
+  ```shell
+  kubectl get pods
+  ```
 
-    Once the pods are up, you should see a pod for `pachd` running 
-    (alongside etcd, pg-bouncer or postgres, console, depending on your installation). 
-    If you are curious about the architecture of Pachyderm, take a look at our [high-level architecture diagram](../../).
-    
-    **System Response:**
+  Once the pods are up, you should see a pod for `pachd` running 
+  (alongside etcd, pg-bouncer or postgres, console, depending on your installation). 
+  If you are curious about the architecture of Pachyderm, take a look at our [high-level architecture diagram](../../).
+  
+  **System Response:**
 
-    ```
-    NAME                           READY   STATUS    RESTARTS   AGE
-    etcd-0                         1/1     Running   0          18h
-    pachd-5db79fb9dd-b2gdq         1/1     Running   2          18h
-    postgres-0                     1/1     Running   0          18h
-    ```
+  ```s
+  NAME                           READY   STATUS    RESTARTS   AGE
+  etcd-0                         1/1     Running   0          18h
+  pachd-5db79fb9dd-b2gdq         1/1     Running   2          18h
+  postgres-0                     1/1     Running   0          18h
+  ```
 
 ## 4. Have 'pachctl' And Your Cluster Communicate
 
-=== "You have deployed Pachyderm without Console"
+### You have deployed Pachyderm without Console
 
-    - Retrieve the external IP address of pachd service:
-        ```shell
-        kubectl get services | grep pachd-lb | awk '{print $4}'
-        ```
-    - Then **update your context for pachctl to point at your cluster**:
+- Retrieve the external IP address of pachd service:
+  ```shell
+  kubectl get services | grep pachd-lb | awk '{print $4}'
+  ```
+- Then **update your context for pachctl to point at your cluster**:
 
-        ```shell
-        echo '{"pachd_address": "grpc://<external-IP-address>:30650"}' | pachctl config set context "<choose-a-cluster-context-name>" --overwrite
-        ```
+  ```shell
+  echo '{"pachd_address": "grpc://<external-IP-address>:30650"}' | pachctl config set context "<choose-a-cluster-context-name>" --overwrite
+  ```
 
-        ```shell
-        pachctl config set active-context "<your-cluster-context-name>"
-        ```
+  ```shell
+  pachctl config set active-context "<your-cluster-context-name>"
+  ```
 
-=== "You have deployed Pachyderm with Console"
-    - To connect to your new Pachyderm instance, run:
+#### You have deployed Pachyderm with Console
+- To connect to your new Pachyderm instance, run:
 
-        ```shell
-        pachctl config import-kube local --overwrite
-        ```
-        ```shell
-        pachctl config set active-context local
-        ```
+  ```shell
+  pachctl config import-kube local --overwrite
+  ```
+  ```shell
+  pachctl config set active-context local
+  ```
 
-    - Then run `pachctl port-forward` (Background this process in a new tab of your terminal).
+- Then run `pachctl port-forward` (Background this process in a new tab of your terminal).
 
-    - Note that you will need to run `pachctl auth login` then authenticate to Pachyderm with the mock User (username:`admin`, password: `password`) to use `pachctl`
+- Note that you will need to run `pachctl auth login` then authenticate to Pachyderm with the mock User (username:`admin`, password: `password`) to use `pachctl`
 
 - Finally, check that your cluster is up and running
 
-    ```shell
-    pachctl version
-    ```
+  ```shell
+  pachctl version
+  ```
 
-    **System Response:**
+  **System Response:**
 
-    ```shell
-    COMPONENT           VERSION
-    pachctl             {{ config.pach_latest_version }}
-    pachd               {{ config.pach_latest_version }}
-    ```
+  ```shell
+  COMPONENT           VERSION
+  pachctl             {{ config.pach_latest_version }}
+  pachd               {{ config.pach_latest_version }}
+  ```
 
 ## 5. Connect to Console
 To connect to your Console (Pachyderm UI):
@@ -290,7 +292,7 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyte
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice note %}}
- Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
 {{% /notice %}}
     
 

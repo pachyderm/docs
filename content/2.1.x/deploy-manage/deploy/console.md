@@ -60,30 +60,30 @@ Use the mock user (username:`admin`, password: `password`) to authenticate to Co
     - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
   {{% /notice %}}
 
-    - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
+  - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
 
 ## Connect to Console
 
-=== "No Ingress set up (Local or Quick Install)"
+### No Ingress set up (Local or Quick Install)
 
-    - Run `pachctl port-forward` (Background this process in a new tab of your terminal).
-    
-    - Connect to your Console (Pachyderm UI):
+- Run `pachctl port-forward` (Background this process in a new tab of your terminal).
 
-         - Point your browser to `http://localhost:4000` 
-         - Authenticate as the mock User using `admin` & `password` 
+- Connect to your Console (Pachyderm UI):
 
-=== "Ingress + DNS set up"
+ - Point your browser to `http://localhost:4000` 
+ - Authenticate as the mock User using `admin` & `password` 
 
-    - Point your browser to:
+### Ingress + DNS set up
 
-         - `http://<external-IP-address-or-domain-name>:80` or,
-         - `https://<external-IP-address-or-domain-name>:443` if TLS is enabled
+- Point your browser to:
 
-    - Authenticate:
+ - `http://<external-IP-address-or-domain-name>:80` or,
+ - `https://<external-IP-address-or-domain-name>:443` if TLS is enabled
 
-         - As the mock User using `admin` & `password` if you used the mockIDP.
-         - As a User of your IdP otherwise.
+- Authenticate:
+
+ - As the mock User using `admin` & `password` if you used the mockIDP.
+ - As a User of your IdP otherwise.
 
 
 You are all set! 

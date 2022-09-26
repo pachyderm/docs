@@ -18,21 +18,21 @@ of work.
 When new data comes in (in the form of commit(s) in its input repo(s)), a Pachyderm pipeline automatically starts a new job. Each Pachyderm job consists of the
 following stages:
 
-### 1- **Creation of input datums** 
+### 1. **Creation of input datums** 
 In this stage, Pachyderm **creates datums based on the input data according to the
 [pipeline input(s)](../#pipeline-inputs)** set
 in the [pipeline specification file](../../../../reference/pipeline-spec/#pipeline-specification).
 
-### 2- **Transformation**
+### 2. **Transformation**
 The pipeline **uses your code to process the datums**.
 
-### 3- **Creation of output files**    
+### 3. **Creation of output files**    
 Your code writes output file(s) in the
 `pfs/out` output directory that Pachyderm 
 creates automatically for
 each pipeline's job.    
 
-### 4- **Final commit in the pipeline's output repo**
+### 4. **Final commit in the pipeline's output repo**
 
 {{% notice note %}}
 The output produced by a pipeline's job is written to an output repo of the same name (i.e., output repo name = pipeline name).

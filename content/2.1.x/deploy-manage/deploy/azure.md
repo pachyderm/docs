@@ -307,7 +307,7 @@ Alternativelly, in the **Connection Security** of your newly created server, *Al
 
 - In the **Essentials** page of your instance, find the full **server name** and **admin username** that will be required in your [values.yaml](#update-your-valuesyaml).
 
-![Instance overview page](../images/azure_postgresql_overview.png)
+![Instance overview page](../../images/azure_postgresql_overview.png)
 
 ### Create Your Databases
 After the instance is created, those two commands create the databases that pachyderm uses.

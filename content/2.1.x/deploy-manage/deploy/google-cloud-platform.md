@@ -88,7 +88,7 @@ Additionally, before you begin your installation:
   - In Google Cloud Console, on your Project's *Dashboard* View, click the *Go to APIs Overview* link in the APIs Section.
   - On the *APIs & Services* page, click the *+Enable APIs and Services* tab, search for `CloudSQL Admin`, then click *Cloud SQL Admin API*. Click the *Enable* button. Et voilà!
 
-  ![Enable CloudSQL Admin API in Console](../images/cloudSQL_admin_api_enable.png)
+  ![Enable CloudSQL Admin API in Console](../../images/cloudSQL_admin_api_enable.png)
 
 
 ## 2. Deploy Kubernetes

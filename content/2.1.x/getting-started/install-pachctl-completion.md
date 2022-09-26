@@ -105,7 +105,7 @@ steps:
 
    **System response:**
 
-   ```
+   ```s
    Completions installed in "_pachctl", you must restart your terminal to enable them.
    ```
 

@@ -12,7 +12,7 @@ seriesPart:
 For a quick test installation of Pachyderm on AWS (suitable for development), jump to our [Quickstart page](../quickstart/).
 
 For deployments in production, refer to the following diagram and follow these step-by-step instructions:
-![AWS Arch](../images/arch-diagram-high-level-aws.svg)
+![AWS Arch](../../images/arch-diagram-high-level-aws.svg)
 
 {{% notice warning %}}  
 Before your start your installation process.
@@ -344,8 +344,8 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
 [Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
 
 
-=== "Gp3 + Service account annotations"   
-      ```yaml
+##### Gp3 + Service account annotations
+```yaml
       deployTarget: AMAZON
       # This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
       # And a storageclass configured named gp3
@@ -381,9 +381,9 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
         # If not using the built in Postgres, you must specify a Postgresql
         # database server to connect to in global.postgresql
         enabled: false
-      ```
-=== "Gp3 + AWS Credentials"   
-      ```yaml
+```
+##### Gp3 + AWS Credentials
+```yaml
       deployTarget: AMAZON
       # This uses GP3 which requires the CSI Driver https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html
       # And a storageclass configured named gp3
@@ -416,14 +416,14 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
         # If not using the built in Postgres, you must specify a Postgresql
         # database server to connect to in global.postgresql
         enabled: false
-      ```
+ ```
 
 #### For gp2 EBS Volumes
 
 [Check out our example of values.yaml for gp2](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/aws-gp2-values.yaml) or use our minimal example below.   
     
-=== "For Gp2 + Service account annotations"
-      ```yaml
+##### For Gp2 + Service account annotations
+```yaml
       deployTarget: AMAZON      
       etcd:
         etcd.storageSize: 500Gi
@@ -457,40 +457,40 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
         # If not using the built in Postgres, you must specify a Postgresql
         # database server to connect to in global.postgresql
         enabled: false
-      ```  
-=== "For Gp2 + AWS Credentials"
-      ```yaml
-      deployTarget: AMAZON      
-      etcd:
-        etcd.storageSize: 500Gi
-      pachd:
-        storage:
-          amazon:
-            bucket: blah
-            region: us-east-2
-            # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-            id: AKIAIOSFODNN7EXAMPLE            
-            # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html           
-            secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-        externalService:
-          enabled: true
-      global:
-        postgresql:
-          postgresqlUsername: "username"
-          postgresqlPassword: "password" 
-          # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-          postgresqlDatabase: "databasename"
-          # The postgresql database host to connect to. Defaults to postgres service in subchart
-          postgresqlHost: "RDS CNAME"
-          # The postgresql database port to connect to. Defaults to postgres server in subchart
-          postgresqlPort: "5432"
+```  
+##### For Gp2 + AWS Credentials
+```yaml
+  deployTarget: AMAZON      
+  etcd:
+    etcd.storageSize: 500Gi
+  pachd:
+    storage:
+      amazon:
+        bucket: blah
+        region: us-east-2
+        # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+        id: AKIAIOSFODNN7EXAMPLE            
+        # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html           
+        secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    externalService:
+      enabled: true
+  global:
+    postgresql:
+      postgresqlUsername: "username"
+      postgresqlPassword: "password" 
+      # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+      postgresqlDatabase: "databasename"
+      # The postgresql database host to connect to. Defaults to postgres service in subchart
+      postgresqlHost: "RDS CNAME"
+      # The postgresql database port to connect to. Defaults to postgres server in subchart
+      postgresqlPort: "5432"
 
-      postgresql:
-        # turns off the install of the bundled postgres.
-        # If not using the built in Postgres, you must specify a Postgresql
-        # database server to connect to in global.postgresql
-        enabled: false
-      ```
+  postgresql:
+    # turns off the install of the bundled postgres.
+    # If not using the built in Postgres, you must specify a Postgresql
+    # database server to connect to in global.postgresql
+    enabled: false
+```
 
 
 Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/pachyderm/values.yaml).
