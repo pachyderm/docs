@@ -14,8 +14,6 @@ affectedVersions:
 
 ## Issue 
 
-Blah blah blah.
-
 |this|is|a|table|:)|
 |-|-|-|-|-|
 |one|two|three|four|five|
