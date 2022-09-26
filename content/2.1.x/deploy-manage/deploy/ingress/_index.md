@@ -19,8 +19,9 @@ define **additional inbound connection rules**.
 Before we dive into the delivery of external traffic to Pachyderm, 
 read the following recommendations to set up your infrastructure in production.
 
-!!! Note
-    - Refer to our generic ["Helm Install"](../helm-install/) page for more information on how to install and get started with `Helm`.
+{{% notice note %}}
+Refer to our generic ["Helm Install"](../helm-install/) page for more information on how to install and get started with `Helm`.
+{{% /notice %}}
 ## Pachyderm Infrastructure Recommendations
 
 For production deployments,
@@ -28,21 +29,22 @@ we recommend that you:
 
 * **Use a secure connection**
 
-    Make sure that you have Transport
-    Layer Security (TLS) enabled for Ingress connections.
-    You can deploy `pachd` and `console` with different certificates
-    if required. Self-signed certificates might require additional configuration.
-    For instructions on deployment with TLS, 
-    see [Deploy Pachyderm with TLS](../deploy-w-tls/).
+  Make sure that you have Transport
+  Layer Security (TLS) enabled for Ingress connections.
+  You can deploy `pachd` and `console` with different certificates
+  if required. Self-signed certificates might require additional configuration.
+  For instructions on deployment with TLS, 
+  see [Deploy Pachyderm with TLS](../deploy-w-tls/).
 
-    !!! Note
-        Optionally, you can use a certificate manager such as [cert-manager](https://cert-manager.io/docs/) to refresh certificates and inject them as kubernetes secrets into your cluster for the ingress and load balancer to use.
-   
+  {{% notice note %}}
+  Optionally, you can use a certificate manager such as [cert-manager](https://cert-manager.io/docs/) to refresh certificates and inject them as kubernetes secrets into your cluster for the ingress and load balancer to use.
+  {{% /notice %}}
+ 
 * **Use Pachyderm authentication/authorization**
 
-    Pachyderm authentication is an additional
-    security layer to protect your data from unauthorized access.
-    See the [authentication and authorization section](../../../enterprise/auth) to activate access control and set up an IdP.
+  Pachyderm authentication is an additional
+  security layer to protect your data from unauthorized access.
+  See the [authentication and authorization section](../../../enterprise/auth) to activate access control and set up an IdP.
 
 * **Add an [Ingress Controller](#ingress) to your cluster** for HTTP/HTTPS incoming traffic.
 
@@ -101,13 +103,13 @@ If your `ingress` is enabled:
 ```
 See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L143) for all available fields.
 
-!!! Info
-    You might choose to deploy your preferred Ingress Controller (Traefik, NGINX). Read about the installation and configuration of [Traefik](./pach-ui-ingress/) on a cluster.
+{{% notice info %}}
+You might choose to deploy your preferred Ingress Controller (Traefik, NGINX). Read about the installation and configuration of [Traefik](./pach-ui-ingress/) on a cluster.
+{{% /notice%}}
 
-
-!!! Warning
-    To have the ingress routes use the https protocol without enabling the cert secret configuration, set `ingress.uriHttpsProtoOverride` to true in your values.yaml.
-
+{{% notice warning %}}
+To have the ingress routes use the https protocol without enabling the cert secret configuration, set `ingress.uriHttpsProtoOverride` to true in your values.yaml.
+{{% /notice %}}
     
 === "Example on AWS EKS"
 
@@ -163,9 +165,10 @@ See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/4246
 
 As of today, few Ingress Controller offer full support of the gRPC protocol. To access `pachd` over gRPC (for example, when using `pachctl` or the s3Gateway, we recommend using a Load Balancer instead.
 
-!!! See "See Also" 
-     * Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
-     * Kubernetes [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
+{{% notice note %}}
+* Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
+* Kubernetes [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
+{{% /notice %}}
 
 ### `LoadBalancer`
 You should load balance **all gRPC and S3 incoming traffic** to a TCP LB (load balanced at L4 of the OSI model) deployed in front of the `pachd` service. To automatically provision an external load balancer in your current cloud (if supported), enable the `externalService` field of the `pachd` service in your values.yaml as follow:
@@ -184,8 +187,9 @@ pachd:
 
 See our [reference values.yaml](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L197) for all available fields.
 
-!!! Note
-        When externalService is enabled, Pachyderm creates a corresponding `pachd-lb` service of `type:LoadBalancer` allowing your cloud platform (AWS, GKE...) to provision a TCP Load Balancer automatically.
+{{% notice note %}}
+When externalService is enabled, Pachyderm creates a corresponding `pachd-lb` service of `type:LoadBalancer` allowing your cloud platform (AWS, GKE...) to provision a TCP Load Balancer automatically.
+{{% /notice %}}
 
 Add the appropriate annotations to attach any Load Balancer configuration information to the metadata of your service.
 

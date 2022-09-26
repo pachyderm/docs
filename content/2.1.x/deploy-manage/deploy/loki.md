@@ -9,10 +9,9 @@ series:
 seriesPart:
 --- 
 
-!!! note 
-    To deploy and configure a Pachyderm cluster
-    to read logs from Loki,
-    a ***Pachyderm Enterprise License*** is required. 
+{{% notice note %}}
+To deploy and configure a Pachyderm cluster to read logs from Loki, a ***Pachyderm Enterprise License*** is required. 
+{{% /notice %}}
 
 ## Shipping logs to Loki
 
@@ -48,11 +47,12 @@ The URI at which Pachyderm reads from the Loki API Server is determined by the `
 If Loki is deployed after the `pachd` container,
 the `pachd` container will need to be redeployed to receive these connection parameters.
 
-!!! note 
-    If you are not running Promtail on the node 
-    where your Pachyderm pods are located, you
-    will be unable to get logs for pipelines running
-    on that node via `pachctl logs -p pipelineName`.
+{{% notice note %}}
+If you are not running Promtail on the node 
+where your Pachyderm pods are located, you
+will be unable to get logs for pipelines running
+on that node via `pachctl logs -p pipelineName`.
+{{% /notice %}}
 
 ## Default Loki Bundle 
 
@@ -80,14 +80,16 @@ loki-stack:
     enabled: true
 ```
 
-!!! Note "Grafana Users"
-       - To use Grafana, deploy with `loki-stack.grafana.enabled: true`.
-       - To access Grafana, run port-forward with `kubectl port-forward svc/pachyderm-grafana 4001:80`. Change the port 4001 to what suits you best.
-       - Login to `localhost:4001` with the username `admin`, and the password found with running `kubectl get secret pachyderm-grafana -o jsonpath="{.data.admin-password}" | base64 -d`.
-         If enterprise is activated, you will be able to inspect containers logs in your console.
-       
-         ![Container logs](../images/grafana_user_logs.png)
+{{% notice note %}} 
+Grafana Users:
 
+- To use Grafana, deploy with `loki-stack.grafana.enabled: true`.
+- To access Grafana, run port-forward with `kubectl port-forward svc/pachyderm-grafana 4001:80`. Change the port 4001 to what suits you best.
+- Login to `localhost:4001` with the username `admin`, and the password found with running `kubectl get secret pachyderm-grafana -o jsonpath="{.data.admin-password}" | base64 -d`.
+  If enterprise is activated, you will be able to inspect containers logs in your console.
+
+  ![Container logs](../images/grafana_user_logs.png)
+{{% /notice %}}
 
     
 ## References

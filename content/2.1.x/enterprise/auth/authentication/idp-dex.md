@@ -43,21 +43,23 @@ Use the IdP of your choice.
 For now, let's configure Pachyderm so that our
 Pachyderm users can log in through Auth0.
 
-## 1- Register a Pachyderm Application with your IdP
+## 1. Register a Pachyderm Application with your IdP
 
-!!! TLDR
-    The one important and invariant element of this step, 
-    no matter what your IdP choice might be, is the **callback URL**.
-    Callback URLs are the URLs that your IdP invokes after the authentication process. 
-    The IdP redirects back to this URL once a user is authenticated.
+{{% notice note %}}
+TL;DR
 
-    For security reasons, you need to add your application's URL to your client's Allowed Callback URLs.
-    This enables your IdP to recognize these URLs as valid. 
+The one important and invariant element of this step, 
+no matter what your IdP choice might be, is the **callback URL**.
+Callback URLs are the URLs that your IdP invokes after the authentication process. 
+The IdP redirects back to this URL once a user is authenticated.
 
-    **For Local or “Quick” deployment cases where you do not have a public DNS entry or public IP address, set the following field `config.insecureSkipIssuerCallbackDomainCheck` to `true` in your connector file below.**
+For security reasons, you need to add your application's URL to your client's Allowed Callback URLs.
+This enables your IdP to recognize these URLs as valid. 
 
-    The format of the URL is described below. 
+**For Local or “Quick” deployment cases where you do not have a public DNS entry or public IP address, set the following field `config.insecureSkipIssuerCallbackDomainCheck` to `true` in your connector file below.**
 
+The format of the URL is described below. 
+{{% /notice %}}
 
 If you do not have an Auth0 account, sign up for one
 at https://auth0.com and create your Pool of Users 
@@ -75,38 +77,41 @@ Then, complete the following steps:
 1. In the **Allowed Callback URLs**, add the Pachyderm callback link in the
    following format:
 
-    ```shell
-    # Dex's issuer URL + "/callback"
-    http://<ip>:30658/callback
-    ```
+ ```shell
+ # Dex's issuer URL + "/callback"
+ http://<ip>:30658/callback
+ ```
 
-    The IP address is the address of your Pachyderm host. For example,
-    if you are running Pachyderm in Minikube, you can find the IP
-    address by running `minikube ip`. 
+ The IP address is the address of your Pachyderm host. For example,
+ if you are running Pachyderm in Minikube, you can find the IP
+ address by running `minikube ip`. 
 
 1. Scroll down to **Show Advanced Settings**.
 1. Select **Grant Types**.
 1. Verify that **Authorization Code** and **Refresh Token** are selected.
 
-   ![Auth0 Grant Settings](../images/auth0-grant-settings.png)
+    ![Auth0 Grant Settings](../images/auth0-grant-settings.png)
 
-!!! Note
-    For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
-    We will log in to Pachyderm as this user once our IdP connection is completed.
-    ![Auth0 Create User](../images/auth0-create-user.png)
+{{% notice note %}}
+For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
+We will log in to Pachyderm as this user once our IdP connection is completed.
+![Auth0 Create User](../images/auth0-create-user.png)
+{{% /notice %}}
 
-## 2- Set up and create an Idp-Pachyderm connector
+## 2. Set up and create an Idp-Pachyderm connector
 
 ### Create A Connector Configuration File
 To configure your Idp-Pachyderm integration, **create a connector configuration file** corresponding to your IdP. 
 
-!!! Info
-    For a list of available connectors and their configuration options, see [Dex documentation](https://dexidp.io/docs/connectors/).
+{{% notice info %}}
+For a list of available connectors and their configuration options, see [Dex documentation](https://dexidp.io/docs/connectors/).
+{{% /notice %}}
 
 In the case of our integration with Auth0, we will use an oidc connector with the following parameters:
 
-!!! Note
-    Pachyderm supports the JSON and YAML formats for its connector files. 
+{{% notice note %}}
+Pachyderm supports the JSON and YAML formats for its connector files. 
+{{% /notice %}}
 
 See our oidc connector example in JSON and YAML formats below.
 === "oidc-dex-connector.json"
@@ -171,26 +176,26 @@ on the application settings page.
 - `redirect_uri` - This parameter should match what you have added
 to **Allowed Callback URLs** when registering Pachyderm on your IdP website.
 
-!!! Warning
-    **When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
+{{% notice warning %}}
+**When using an [ingress](../../../../deploy-manage/deploy/ingress/#ingress)**:
 
-    - `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
-    - TLS requires all non-localhost redirectURIs to be **HTTPS**.
-    - AZURE USERS: 
-        - You must use TLS when deploying on Azure.
-        - When using Azure Active Directory, add the following to the oidc config:
-        ``` yaml
-        "config":{
-            "claimMapping": {
-                "email": "preferred_username"
-            } 
-        }      
-        ```
+- `redirect_uri` must be changed to point to `https://domain-name/dex/callback`. (Note the additional **/dex/**) 
+- TLS requires all non-localhost redirectURIs to be **HTTPS**.
+- AZURE USERS: 
+    - You must use TLS when deploying on Azure.
+    - When using Azure Active Directory, add the following to the oidc config:
+    ``` yaml
+    "config":{
+        "claimMapping": {
+            "email": "preferred_username"
+        } 
+    }      
+    ```
+{{% /notice %}}
 
-
-!!! Note
-
-    Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
+{{% notice note %}}
+Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
+{{% /notice %}}
 
 ### Create Your Idp-Pachyderm Connection
 Once your Pachyderm application is registered with your IdP (here Auth0), 
@@ -219,9 +224,10 @@ or
 ```shell
 pachctl idp update-connector --config oidc-dex-connector.yaml
 ```
-!!! Info
-    Run `pachctl idp --help` for a full list of commands.
-    In particular, those commands let you create, update, delete, list, or get a specific connector.
+{{% notice info %}}
+Run `pachctl idp --help` for a full list of commands.
+In particular, those commands let you create, update, delete, list, or get a specific connector.
+{{% /notice %}}
 
-## 3- Login
+## 3. Login
 The users registered with your IdP are now ready to [Log in to Pachyderm](./login.md)

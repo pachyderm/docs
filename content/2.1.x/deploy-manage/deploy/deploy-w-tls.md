@@ -41,23 +41,24 @@ Once your tls secret is created:
 - Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
 
 
-!!! Example
-    In this example, you terminate tls at the cluster level by enabling tls directly on pachd:
-    
-    ```yaml
-     pachd:
-       tls:
-          enabled: true
-          secretName: "<the-secret-name-in-your-certificate-ressource>"
-    ```
+### Example
+  In this example, you terminate tls at the cluster level by enabling tls directly on pachd:
+  
+  ```yaml
+   pachd:
+     tls:
+        enabled: true
+        secretName: "<the-secret-name-in-your-certificate-ressource>"
+  ```
 
 Et voila!
 
 
-!!! Note
-    When using self signed certificates or custom certificate authority, you will need to set `global.customCaCerts` to true to add Pachyderm's certificate and CA to the list of trusted authorities for console and enterprise, allowing Pachyderm components (pachd, Console, Enterprise Server) to communicate over SSL. 
+{{% notice note %}}
+When using self signed certificates or custom certificate authority, you will need to set `global.customCaCerts` to true to add Pachyderm's certificate and CA to the list of trusted authorities for console and enterprise, allowing Pachyderm components (pachd, Console, Enterprise Server) to communicate over SSL. 
 
-    If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
+If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
+{{% /notice %}}
 
 ## Connect to Pachyderm Via SSL
 
@@ -66,10 +67,13 @@ trusted certificate, you will need to set the `pachd_address` in the
 Pachyderm context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
-!!! example
-    ```shell   
-    echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
-    ```
+###  Example
+```shell   
+echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
+```
 
-!!! note "See Also:"
-    [Connect by using a Pachyderm context](../connect-to-cluster/#connect-by-using-a-pachyderm-context)
+{{% notice note  %}} 
+See Also:
+
+[Connect by using a Pachyderm context](../connect-to-cluster/#connect-by-using-a-pachyderm-context)
+{{% /notice %}}

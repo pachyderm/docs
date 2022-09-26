@@ -9,10 +9,9 @@ series:
 seriesPart:
 --- 
 
-!!! Important  
-    To deploy Pachyderm's Console,
-    an [***Enterprise License***](../../../enterprise/) is required. 
-
+{{% notice note %}}
+To deploy Pachyderm's Console, an [***Enterprise License***](../../../enterprise/) is required. 
+{{% /notice %}}
 
 Note that this section is an add-on to the deployment of Pachyderm, locally or in the cloud. 
 It details the additional steps required to install and access your Console.
@@ -22,17 +21,18 @@ It details the additional steps required to install and access your Console.
 
 ## Deploy Locally
 
-!!! Info "Reminder"
-      A local installation helps you learn
-      some of the Pachyderm basics and experiment with the product. It is not designed to be a production environment.
+{{% notice info %}} 
+A local installation helps you learn some of the Pachyderm basics and experiment with the product. It is not designed to be a production environment.
+{{% /notice %}}
 
 We provide an easy "one line" deployment command to install Pachyderm with Console on a local environment. All you need is your enterprise token and [a Kubernetes cluster running on your local environment](../../../getting-started/local-installation/#prerequisites).
 
 Follow the deployment instructions in our [Local Installation](../../getting-started/local-installation.md#deploy-pachyderm-community-edition-or-enterprise-with-console) page.
 You are all set!
 
-!!! Note
-    When installing, we create a default mock user (username:`admin`, password: `password`) to authenticate to Console without the hassle of connecting your Identity Provider.
+{{% notice note %}}
+When installing, we create a default mock user (username:`admin`, password: `password`) to authenticate to Console without the hassle of connecting your Identity Provider.
+{{% /notice %}}
 
 ## Deploy In The Cloud
 
@@ -40,8 +40,9 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 
 - You can opt for a **quick installation** that will alleviate those infrastructure constraints (Not recommended in Production but an easy way to get started) and speed up your installation by following the steps in our [Quick Cloud Deployment](../quickstart/) page, then [connect to your Console](#connect-to-console): 
 
-!!! Note "Reminder"
-    - Use the mock user (username:`admin`, password: `password`) to authenticate to Console.
+{{% notice note  %}} 
+Use the mock user (username:`admin`, password: `password`) to authenticate to Console.
+{{% /notice %}}
 
 - For a **production environment**:
 
@@ -50,14 +51,14 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
         To configure your Identity Provider as a part of `helm install`, see examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
     - Or manually update your values.yaml with `oidc.mockIDP = false` then [set up an Identity Provider by using `pachctl`](../../../enterprise/auth/authentication/idp-dex).
 
-!!! Warning
-    - **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../../enterprise/auth/#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
-    
-        However, **this secret is only used when configuring through helm**:
+  {{% notice warning %}}
+  - **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../../enterprise/auth/#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-        - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
-        - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
+    However, **this secret is only used when configuring through helm**:
 
+    - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
+    - Same behavior if you [activate enterprise manually](../../../enterprise/deployment/) (`pachctl license activate`) then [activate authentication](../../../enterprise/auth/) (`pachctl auth activate`).
+  {{% /notice %}}
 
     - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
 

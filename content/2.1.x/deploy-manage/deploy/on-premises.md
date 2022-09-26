@@ -11,10 +11,13 @@ seriesPart:
 
 This page walks you through the fundamentals of what you need to know about Kubernetes, persistent volumes, and object stores to deploy Pachyderm on-premises.
 
-!!! Note "Check Also"
-    - Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
-    - If you are planning to install Pachyderm UI. Read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
-    - Troubleshooting a deployment? Check out [Troubleshooting Deployments](../../troubleshooting/deploy-troubleshooting.md).
+{{% notice note %}}
+Check Also:
+
+- Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
+- If you are planning to install Pachyderm UI. Read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
+- Troubleshooting a deployment? Check out [Troubleshooting Deployments](../../troubleshooting/deploy-troubleshooting.md).
+{{% /notice %}}
 
 ## Introduction
 
@@ -39,13 +42,16 @@ Before you start, you will need the following clients installed:
 The Kubernetes docs have instructions for [deploying Kubernetes in a variety of on-premise scenarios](https://kubernetes.io/docs/setup/).
 We recommend following one of these guides to get Kubernetes running.
 
-!!! Attention
-    Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% notice tip %}}
+Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
+{{% /notice %}}
+
 ### Storage Classes 
 Once you deploy Kubernetes, you will also need to configure [storage classes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1) to consume persistent volumes for `etcd` and `postgresql`. 
 
-!!! Warning
-    The database and metadata service (Persistent disks) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your storage provider, you may need to oversize the volume significantly to ensure enough IOPS.
+{{% notice warning %}}
+The database and metadata service (Persistent disks) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your storage provider, you may need to oversize the volume significantly to ensure enough IOPS.
+{{% /notice %}}
 
 Once you have determined the name of the storage classes you are going to use and the sizes, you can add them to your helm values file, specifically:
 
@@ -64,12 +70,13 @@ postgresql:
 An object store is used by Pachyderm's `pachd` for storing all your data. 
 The object store you use must be accessible via a low-latency, high-bandwidth connection.
 
-!!! Note
-    For an on-premises deployment, 
-    it is not advisable to use a cloud-based storage mechanism.
-    Do not deploy an on-premises Pachyderm cluster against cloud-based object stores (such as S3, GCS, Azure Blob Storage). 
+{{% notice note %}}
+For an on-premises deployment, 
+it is not advisable to use a cloud-based storage mechanism.
+Do not deploy an on-premises Pachyderm cluster against cloud-based object stores (such as S3, GCS, Azure Blob Storage). 
 
-    You will, however, **access your Object Store using the S3 protocol**. 
+You will, however, **access your Object Store using the S3 protocol**. 
+{{% /notice %}}
 
 Storage providers like [MinIO](https://min.io) (the most common and officially supported option), [EMC's ECS](https://www.delltechnologies.com/en-us/storage/ecs/index.htm), [Ceph](https://ceph.io/en/), or [SwiftStack](https://www.swiftstack.com/) provide S3-compatible access to enterprise storage for on-premises deployment. 
 

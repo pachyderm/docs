@@ -14,15 +14,15 @@ On this page, you will find simplified deployment instructions and Helm values t
 
 For each cloud provider, we will give you the option to "quick deploy" Pachyderm with or without Console (Pachyderm UI available with Enterprise).
 
-!!! Important 
-    The deployment steps highlighted in this document are **not intended for production**. For production settings, please read our [infrastructure recommendations](../ingress/). In particular, we recommend:
+{{% notice info %}}
+The deployment steps highlighted in this document are **not intended for production**. For production settings, please read our [infrastructure recommendations](../ingress/). In particular, we recommend:
 
-     - the use of a **managed PostgreSQL server** (RDS, CloudSQL, or PostgreSQL Server) rather than Pachyderm's default bundled PostgreSQL.
-     - the setup of a **TCP Load Balancer** in front of your pachd service.
-     - the setup of an **Ingress Controller** in front of Console. 
+  - the use of a **managed PostgreSQL server** (RDS, CloudSQL, or PostgreSQL Server) rather than Pachyderm's default bundled PostgreSQL.
+  - the setup of a **TCP Load Balancer** in front of your pachd service.
+  - the setup of an **Ingress Controller** in front of Console. 
 
-    Then find your targeted Cloud provider in the [Deploy and Manage](../) ection of this documentation.
-
+Then find your targeted Cloud provider in the [Deploy and Manage](../) ection of this documentation.
+{{% /notice %}}
 
 ## 1. Prerequisites
 
@@ -36,17 +36,20 @@ Use the latest available version of the components listed below.
 * Install [`Helm`](https://helm.sh/docs/intro/install/) for your deployment. 
 
 
-!!! Warning "Optional - Quick deployment of Pachyderm Enterprise (with Console)"
-    - The deployment of Console (Pachyderm UI) **requires a valid enterprise token**. To get your free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
-    - When deploying with Console, we create a default mock user (username:`admin`, password: `password`) to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin]().
+{{% notice warning %}} 
+Optional - Quick deployment of Pachyderm Enterprise (with Console)
 
-    For a better understanding of the additional steps and helm values needed when deploying with Console in a production environment, read about the [deployment of Pachyderm with Console](../console/#deploy-in-the-cloud) page. 
+- The deployment of Console (Pachyderm UI) **requires a valid enterprise token**. To get your free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
+- When deploying with Console, we create a default mock user (username:`admin`, password: `password`) to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin]().
 
+For a better understanding of the additional steps and helm values needed when deploying with Console in a production environment, read about the [deployment of Pachyderm with Console](../console/#deploy-in-the-cloud) page. 
+{{% /notice %}}
 
 Select your favorite cloud provider.
 
-!!! Important "Definition"
-    Note that we often use the acronym `CE` for Community Edition.
+{{% notice note %}} 
+Note that we often use the acronym `CE` for Community Edition.
+{{% /notice %}}
 
 ## 2. Create Your Values.yaml
 ### AWS
@@ -143,8 +146,9 @@ Jump to [Helm install](#3-helm-install)
 
 ### Azure
 
-!!! Note
-    - This section assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+{{% notice note %}}
+- This section assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+{{% /notice %}}
 
 1. Additional client installation:
 Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
@@ -285,9 +289,8 @@ Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyte
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
-!!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-
-   
+{{% notice note %}}
+ Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+{{% /notice %}}
     
 

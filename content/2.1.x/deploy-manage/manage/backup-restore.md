@@ -32,10 +32,11 @@ in a consistent state, at a given point in time.
 
 Restoring it involves re-populating the databases and the object store using those backups, then recreating a Pachyderm cluster.
 
-!!! Note
-    - Make sure that you have a bucket for backup use, 
-    separate from the object store used by your cluster.
-    - Depending on the reasons behind your cluster recovery, you might choose to use an existing vs. a new instance of PostgreSQL and/or the object store.
+{{% notice note %}}
+- Make sure that you have a bucket for backup use, 
+separate from the object store used by your cluster.
+- Depending on the reasons behind your cluster recovery, you might choose to use an existing vs. a new instance of PostgreSQL and/or the object store.
+{{% /notice %}}
 
 ## Manual Back Up Of A Pachyderm Cluster
 
@@ -44,13 +45,12 @@ Before any manual backup:
 - Make sure to retain a copy of the Helm values used to deploy your cluster.
 - Then, suspend any state-mutating operations.
 
-!!! Note 
-
-    - **Backups incur downtime** until operations are resumed.
-    - Operational best practices include notifying Pachyderm users of the outage and providing an estimated time when downtime will cease.  
-    - Downtime duration is a function of the size of the data be to backed up and the
-    networks involved; Testing before going into production and monitoring backup times on an ongoing basis might help make accurate predictions.
-
+{{% notice note %}}
+- **Backups incur downtime** until operations are resumed.
+- Operational best practices include notifying Pachyderm users of the outage and providing an estimated time when downtime will cease.  
+- Downtime duration is a function of the size of the data be to backed up and the
+networks involved; Testing before going into production and monitoring backup times on an ongoing basis might help make accurate predictions.
+{{% /notice %}}
 
 ### Suspend Operations
 
@@ -59,27 +59,29 @@ Before any manual backup:
 
 - **Suspend all mutation of state by scaling `pachd` and the worker pods down**:
 
-    Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate) in our deployment section.
+  Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate) in our deployment section.
 
-    To pause Pachyderm, **run the `pachctl pause` command**. 
+  To pause Pachyderm, **run the `pachctl pause` command**. 
 
-    !!! Tip "Alternatively, you can use `kubectl`"
+  {{% notice tip %}} 
+  Alternatively, you can use `kubectl`
 
-         Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
-         Run `kubectl config get-contexts` to list all available clusters and contexts (the current context is marked with a `*`), then `kubectl config use-context <your-context-name>` to set the proper active context.
+   Before starting, make sure that `kubectl` [points to the right cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
+   Run `kubectl config get-contexts` to list all available clusters and contexts (the current context is marked with a `*`), then `kubectl config use-context <your-context-name>` to set the proper active context.
 
-         ```shell 
-         kubectl scale deployment pachd --replicas 0 
-         kubectl scale rc --replicas 0 -l suite=pachyderm,component=worker
-         ```
+   ```shell 
+   kubectl scale deployment pachd --replicas 0 
+   kubectl scale rc --replicas 0 -l suite=pachyderm,component=worker
+   ```
 
-         Note that it takes some time for scaling down to take effect;
+   Note that it takes some time for scaling down to take effect;
 
-         Run the `watch` command to monitor the state of `pachd` and worker pods terminating:
+   Run the `watch` command to monitor the state of `pachd` and worker pods terminating:
 
-         ```shell
-         watch -n 5 kubectl get pods
-         ```
+   ```shell
+   watch -n 5 kubectl get pods
+   ```
+  {{% /notice %}}
 
 ### Back Up The Databases And The Object Store
 
@@ -94,41 +96,48 @@ you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQ
     Note that if you are using a cloud provider, you might
     choose to use the provider’s method of making PostgreSQL backups.
     
-    !!! Warning "Reminder"
-        A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
+    {{% notice warning %}}
+    A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
+    {{% /notice %}}
 
-    !!! Info "Here are some pointers to the relevant documentation"
+    {{% notice info %}} 
+    Here are some pointers to the relevant documentation.
 
-         - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-         - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
-         - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
+     - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+     - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
+     - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
 
-         For on-premises Kubernetes deployments, check the vendor documentation
-         for your on-premises PostgreSQL for details on backing up and restoring your databases.
+     For on-premises Kubernetes deployments, check the vendor documentation
+     for your on-premises PostgreSQL for details on backing up and restoring your databases.
+    {{% /notice %}}
 
 - To back up the object store, you can either download all objects or
 use the object store provider’s backup method.  
     The latter is preferable since it will typically not incur egress costs.
 
-    !!! Info "Here are some pointers to the relevant documentation"
+    {{% notice info %}} 
+    Here are some pointers to the relevant documentation:
 
-         - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-         - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
-         - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
+     - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+     - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
+     - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
 
-         For on-premises Kubernetes deployments, check the vendor documentation
-         for your on-premises object store for details on backing up and
-         restoring a bucket.
+     For on-premises Kubernetes deployments, check the vendor documentation
+     for your on-premises object store for details on backing up and
+     restoring a bucket.
+    {{% /notice %}}
 
 ### Resuming operations
 
 Once your backup is completed, **run `pachctl unpause` to resume your normal operations** by scaling `pachd` back up. It will take care of restoring the worker pods. 
 
-!!! Tip "Alternatively, if you used `kubectl`"
+{{% notice tip %}} 
+Alternatively, if you used `kubectl`
 
-    ```sh
-    kubectl scale deployment pachd --replicas 1
-    ```
+```sh
+kubectl scale deployment pachd --replicas 1
+```
+{{% /notice %}}
 
 ## Restore Pachyderm
 
@@ -144,8 +153,9 @@ Depending on your scenario, pick all or a subset of the following steps:
 - Create a new empty Kubernetes cluster and give it access to your databases and bucket
 - Deploy Pachyderm into your new cluster
 
-!!! Info
-    Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../../../deploy-manage/deploy/)
+{{% notice info %}}
+Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../../../deploy-manage/deploy/)
+{{% /notice %}}
 
 ### Restore The Databases And Objects
 
@@ -158,8 +168,9 @@ method (this is most straightforward when using a cloud provider).
 Finally, update the copy of your original Helm values to point Pachyderm to the new databases and the new object store, then use Helm to install
 Pachyderm into the new cluster.
 
-!!! Info
-    The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
+{{% notice info %}}
+The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
+{{% /notice %}}
 
 ### [Connect 'pachctl' To Your Restored Cluster](../../../deploy-manage/deploy/aws-deploy-pachyderm/#7-have-pachctl-and-your-cluster-communicate)
 
@@ -178,23 +189,26 @@ Backing up / restoring an Enterprise Server is similar to the back up / restore 
 
 - [Pause the Enterprise Server](#suspend-operations) like you would pause a regular cluster by running `pachctl pause`. Make sure that [your active context points to the right cluster](#suspend-operations) first.
 
-    !!! Tip "Alternatively, you can use `kubectl`"
-         Note that there is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
+  {{% notice tip %}} "Alternatively, you can use `kubectl`"
+   Note that there is a difference with the pause of a regular cluster. The deployment of the enterprise server is named `pach-enterprise`; therefore, the first command should be:
 
-         ```shell
-         kubectl scale deployment pach-enterprise --replicas 0 
-         ``` 
+   ```shell
+   kubectl scale deployment pach-enterprise --replicas 0 
+   ``` 
 
-         There is no need to pause all the Pachyderm clusters registered to the Enterprise Server to backup the enterprise server; however, pausing the Enterprise server will result in your clusters becoming unavailable.
+   There is no need to pause all the Pachyderm clusters registered to the Enterprise Server to backup the enterprise server; however, pausing the Enterprise server will result in your clusters becoming unavailable.
+  {{% /notice %}}
 
 - As a reminder, the Enterprise Server does not use any object-store. Therefore, the [backup of the Enterprise Server](#back-up-the-databases-and-the-object-store) only consists in backing up the databases.
 
 - [Resume the operations on your Enterprise Server](#resuming-operations) by running `pachctl unpause` to scale the `pach-enterprise` deployment back up: 
 
-    !!! Tip "Alternatively, if you used `kubectl`"
-        ```shell
-        kubectl scale deployment pach-enterprise --replicas 1
-        ```
+  {{% notice tip %}} 
+  Alternatively, if you used `kubectl`
+  ```shell
+  kubectl scale deployment pach-enterprise --replicas 1
+  ```
+  {{% /notice %}}
 
 ### Restore An Enterprise Server
 

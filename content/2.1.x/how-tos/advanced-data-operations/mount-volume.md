@@ -168,9 +168,9 @@ example, it is `/data`.
       `/pfs/out` directory. If you want to read or write to the `/data`
       directory, you need to change those to `/data`.
 
-!!! important
-      Pachyderm has no notion of the files stored in the mounted directory
-      before it is mounted to Pachyderm. Moreover, if you have mounted a
-      network share to which you write files from other than Pachyderm
-      sources, Pachyderm does not guarantee the provenance of those changes.
-
+{{% notice note %}}
+Pachyderm has no notion of the files stored in the mounted directory
+before it is mounted to Pachyderm. Moreover, if you have mounted a
+network share to which you write files from other than Pachyderm
+sources, Pachyderm does not guarantee the provenance of those changes.
+{{% /notice %}}
