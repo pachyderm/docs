@@ -2,4 +2,4 @@
     - Traverses the heading tree and generates an anchor for each heading
     - See docs for info: https://gohugo.io/templates/render-hooks/#heading-link-example 
 */}}
-<h{{ .Level }} id="{{ .Anchor | safeURL }}"class="mb-2"><a href="#{{ .Anchor | safeURL }}" class="l ml-1 mr-1"><b>#</b></a> {{ .Text | safeHTML }}</h{{ .Level }}>
+<h{{ .Level }} id="{{ .Anchor | safeURL }}"class="mb-2"><a href="#{{ .Anchor | safeURL }}" class="l mx-1"><b>#</b></a> {{ .Text | safeHTML }}</h{{ .Level }}>
