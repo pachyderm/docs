@@ -22,10 +22,11 @@ This guide assumes that you already have Pachyderm running.
 
 - Or check out our [Quick Install](../../deploy-manage/deploy/quickstart/) page to deploy on your favorite cloud.
 
-!!! tip
-    If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
-    This handy tool suggests `pachctl` commands as you type and
-    helps you learn Pachyderm faster.
+{{% notice tip %}} 
+If you are new to Pachyderm, try [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
+This handy tool suggests `pachctl` commands as you type and
+helps you learn Pachyderm faster.
+{{% /notice %}}
 
 ## Image processing with OpenCV
 
@@ -52,8 +53,9 @@ a users table, or training data for an ML model. Repos are easy to create
 and do not take much space when empty so do not worry about making
 tons of them.
 
-!!! Info
-    More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
+{{% notice info %}} 
+More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#repository) and [`Branch`](../../concepts/data-concepts/branch/#branch) in Pachyderm.
+{{% /notice %}}
 
 For this demo, we create a repo called `images` to hold the
 data we want to process:
@@ -86,8 +88,9 @@ Pachyderm, you write data to an explicit `commit`. Commits are immutable
 snapshots of your data which give Pachyderm its version control properties.
 You can add, remove, or update `files` in a given commit.
 
-!!! Info
-    More about the concept of [`Commit`](../../concepts/data-concepts/commit/#commit) in Pachyderm.
+{{% notice info %}} 
+More about the concept of [`Commit`](../../concepts/data-concepts/commit/#commit) in Pachyderm.
+{{% /notice %}}
 
 Let's start by just adding a file, in this case an image, to a new
 commit. We have provided some sample images for you that we host on
@@ -184,8 +187,9 @@ full [Pipeline Specification](../../reference/pipeline-spec) to use
 more advanced options. Options include building your own code into a
 container. In this tutorial, we are using a pre-built Docker image.
 
-!!! Info
-    More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
+{{% notice info %}} 
+More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
+{{% /notice %}}
 
 For now, we are going to create a single pipeline spec that takes in images
 and does some simple edge detection.
@@ -229,9 +233,9 @@ to distribute computation. `/*` means that each file can be
 processed individually, which makes sense for images. Glob patterns are
 one of the most powerful features in Pachyderm.
 
-!!! Info
-    More about the concept of [`Glob Pattern`](../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern) 
-    in Pachyderm and the fundamental notion of [`Datums`](../../concepts/pipeline-concepts/datum/relationship-between-datums/).
+{{% notice info %}} 
+More about the concept of [`Glob Pattern`](../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern) in Pachyderm and the fundamental notion of [`Datums`](../../concepts/pipeline-concepts/datum/relationship-between-datums/).
+{{% /notice %}}
 
 
 The following text is the Python code run in this pipeline:
@@ -280,9 +284,9 @@ input repo (the HEAD commit) as well as **all future commits** that
 occur after the pipeline is created. Our repo already had a commit, so
 Pachyderm automatically launched a `job` to process that data.
 
-!!! Info
-    More about the concept of [`Job`](../../concepts/pipeline-concepts/job/#job) in Pachyderm.
-
+{{% notice info %}} 
+More about the concept of [`Job`](../../concepts/pipeline-concepts/job/#job) in Pachyderm.
+{{% /notice %}}
 
 The first time Pachyderm runs a pipeline job, it needs to download the
 Docker image (specified in the pipeline spec) from the specified Docker
@@ -298,7 +302,7 @@ pachctl list job
 
 **System response:**
 
-```
+```s
 ID                               SUBJOBS PROGRESS CREATED       MODIFIED
 23378d899d3d45738f55df3809841145 1       ▇▇▇▇▇▇▇▇ 5 seconds ago 5 seconds ago
 ```
@@ -307,7 +311,7 @@ You can check the state of your pipeline by running `pachctl list pipeline`.
 
 **System response:**
 
-```
+```s
 NAME  VERSION INPUT     CREATED       STATE / LAST JOB  DESCRIPTION
 edges 1       images:/* 2 minutes ago running / success A pipeline that performs image edge detection by using the OpenCV library.
 ```
@@ -325,7 +329,7 @@ pachctl list repo
 
 **System response:**
 
-```
+```s
 NAME   CREATED        SIZE (MASTER) ACCESS LEVEL
 edges  10 minutes ago ≤ 22.22KiB    [repoOwner]  Output repo for pipeline edges.
 images 3 hours ago    ≤ 57.27KiB    [repoOwner]
@@ -383,7 +387,7 @@ pachctl list job
 
 **System response:**
 
-```
+```s
 ID                               SUBJOBS PROGRESS CREATED        MODIFIED
 1c1a9d7d36944eabb4f6f14ebca25bf1 1       ▇▇▇▇▇▇▇▇ 31 seconds ago 31 seconds ago
 fe5c4f70ac4347fd9c5934f0a9c44651 1       ▇▇▇▇▇▇▇▇ 47 seconds ago 47 seconds ago
@@ -509,9 +513,9 @@ pachctl get file montage@master:montage.png | display
 Console is Pachyderm's GUI. It will help you interactively
 visualize and explore your pipelines, your data, debug jobs, read logs, etc...
 
-!!! Note
-     You will need an Enterprise Key when deploying with Console, locally or otherwise. 
-     To request a FREE trial enterprise license key, [click here](../../enterprise).
+{{% notice note %}} 
+You will need an Enterprise Key when deploying with Console, locally or otherwise. To request a FREE trial enterprise license key, [click here](../../enterprise).
+{{% /notice %}}
 
 If you deployed locally, the Pachyderm Enterprise Console
 is also deployed by default.  To access it, visit

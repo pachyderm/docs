@@ -59,43 +59,44 @@ To create a pipeline, complete the following steps:
     ```shell
     pachctl create pipeline -f <pipeline_spec>
     ```
-    !!! Note
-         -  `pachctl create pipeline -f` also accepts an URL.
+  {{% notice note %}} 
+   -  `pachctl create pipeline -f` also accepts an URL.
 
-            For example, in our opencv beginner tutorial:
-            ```shell
-            pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/edges.json
-            ```
-         -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
+      For example, in our opencv beginner tutorial:
+      ```shell
+      pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/edges.json
+      ```
+   -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
+  {{% /notice %}}
        
 
-1. Verify that the Kubernetes pod has been created for the pipeline:
+2. Verify that the Kubernetes pod has been created for the pipeline:
 
-    ```shell
-    pachctl list pipeline
-    ```
+   ```shell
+   pachctl list pipeline
+   ```
 
-    **System Response:**
+   **System Response:**
 
-    ```shell
-    NAME  VERSION INPUT     CREATED       STATE / LAST JOB   DESCRIPTION
-    edges 1       images:/* 5 seconds ago running / starting A pipeline that performs image edge detection by using the OpenCV library.
-    ```
+   ```shell
+   NAME  VERSION INPUT     CREATED       STATE / LAST JOB   DESCRIPTION
+   edges 1       images:/* 5 seconds ago running / starting A pipeline that performs image edge detection by using the OpenCV library.
+   ```
 
-    You can also run `kubectl` commands to view the pod that has been created:
+   You can also run `kubectl` commands to view the pod that has been created:
 
-    ```shell
-    kubectl get pod
-    ```
+   ```shell
+   kubectl get pod
+   ```
 
-    **System Response:**
+   **System Response:**
 
-    ```shell
-    NAME                      READY   STATUS    RESTARTS   AGE
-    pachd-5485f6ddd-wx8vw     1/1     Running   1          17d
-    pipeline-edges-v1-qhd4f   2/2     Running   0          95s
-    ...
-    ```
+   ```shell
+   NAME                      READY   STATUS    RESTARTS   AGE
+   pachd-5485f6ddd-wx8vw     1/1     Running   1          17d
+   pipeline-edges-v1-qhd4f   2/2     Running   0          95s
+   ...
+   ```
 
     You should see a pod named after your pipeline in the list of pods.
     In this case, it is `pipeline-edges-v1-qhd4f`.
@@ -116,9 +117,11 @@ repository. However, if such a repo already exists, your pipeline will take
 over the master branch. The files that were stored in the repo before
 will still be in the `HEAD` of the branch.
 
-!!! note "See Also:"
-    - [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
-    - [Pipeline Specification](../../../reference/pipeline-spec/)
-    - [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)
-    - [Update a Pipeline](../updating-pipelines/)
-    - [Delete a Pipeline](../delete-pipeline/)
+{{% notice note  %}}  
+See Also:
+- [Pipelines](../../../concepts/pipeline-concepts/pipeline/)
+- [Pipeline Specification](../../../reference/pipeline-spec/)
+- [Jsonnet Pipeline Specification](../jsonnet-pipeline-specs/)
+- [Update a Pipeline](../updating-pipelines/)
+- [Delete a Pipeline](../delete-pipeline/)
+{{% /notice %}}

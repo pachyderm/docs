@@ -27,7 +27,7 @@ A common issue related to a deployment: getting a `CrashLoopBackoff` error.
 
 The pachd pod keeps crashing/restarting:
 
-```
+```s
 kubectl get all
 NAME                        READY     STATUS             RESTARTS   AGE
 po/etcd-281005231-qlkzw     1/1       Running            0          7m
@@ -51,24 +51,25 @@ rs/pachd-1333950811   1         1         0         7m
 
 First describe the pod:
 
-```
+```s
 kubectl describe po/pachd-1333950811-0sm1p
 ```
 
 If you see an error including `Error attaching EBS volume` or similar, see the recourse for that error here under the corresponding section below. If you don't see that error, but do see something like:
 
-```
+```s
   1m    3s    9    {kubelet ip-172-20-48-123.us-west-2.compute.internal}                Warning    FailedSync    Error syncing pod, skipping: failed to "StartContainer" for "pachd" with CrashLoopBackOff: "Back-off 2m40s restarting failed container=pachd pod=pachd-1333950811-0sm1p_default(a92b6665-506a-11e7-8e07-02e3d74c49ac)"
 ```
 
 it means Kubernetes tried running `pachd`, but `pachd` generated an internal error. To see the specifics of this internal error, check the logs for the `pachd` pod:
 
-```
+```s
 kubectl logs po/pachd-1333950811-0sm1p
 ```
 
-!!! note
-    If you're using a log aggregator service (e.g. the default in GKE), you won't see any logs when using `kubectl logs ...` in this way.  You will need to look at your logs UI (e.g. in GKE's case the stackdriver console).
+{{% notice note %}}
+If you're using a log aggregator service (e.g. the default in GKE), you won't see any logs when using `kubectl logs ...` in this way.  You will need to look at your logs UI (e.g. in GKE's case the stackdriver console).
+{{% /notice %}}
 
 These logs will most likely reveal the issue directly, or at the very least, a good indicator as to what's causing the problem. For example, you might see, `BucketRegionError: incorrect region, the bucket is not in 'us-west-2' region`. In that case, your object store bucket in a different region than your pachyderm cluster and the fix would be to recreate the bucket in the same region as your pachydermm cluster.
 
@@ -80,8 +81,8 @@ If the error / recourse isn't obvious from the error message, post the error as 
 
 A pod (could be the `pachd` pod or a worker pod) fails to startup, and is stuck in `CrashLoopBackoff`. If you execute `kubectl describe po/pachd-xxxx`, you'll see an error message like the following at the bottom of the output:
 
-```
-  30s        30s        1    {attachdetach }                Warning        FailedMount    Failed to attach volume "etcd-volume" on node "ip-172-20-44-17.us-west-2.compute.internal" with: Error attaching EBS volume "vol-0c1d403ac05096dfe" to instance "i-0a12e00c0f3fb047d": VolumeInUse: vol-0c1d403ac05096dfe is already attached to an instance
+```s
+30s        30s        1    {attachdetach }                Warning        FailedMount    Failed to attach volume "etcd-volume" on node "ip-172-20-44-17.us-west-2.compute.internal" with: Error attaching EBS volume "vol-0c1d403ac05096dfe" to instance "i-0a12e00c0f3fb047d": VolumeInUse: vol-0c1d403ac05096dfe is already attached to an instance
 ```
 
 This would indicate that the [persistent volume claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/){target=_blank} is failing to get attached to the node in your kubernetes cluster.  
@@ -94,7 +95,7 @@ For example, to resolve this issue when Pachyderm is deployed to AWS, pull up yo
 
 Once it's detached (and marked as available). Restart the pod by killing it, e.g:
 
-```
+```s
 kubectl delete po/pachd-xxx
 ```
 

@@ -15,11 +15,12 @@ is your preferred choice of IdP,
 you can configure Pachyderm to use Okta as an OpenID Connect (OIDC) 
 identity provider using the following steps. 
 
-!!! Note
-    Before you can configure Pachyderm to work with Okta:
-    
-    - Check the [Pachyderm Integration with Identity Providers](../idp-dex.md) general page.
-    - Log in/Create an account at https://www.okta.com/login/. 
+{{% notice note %}} 
+Before you can configure Pachyderm to work with Okta:
+
+- Check the [Pachyderm Integration with Identity Providers](../idp-dex.md) general page.
+- Log in/Create an account at https://www.okta.com/login/. 
+{{% /notice %}}
 
 
 ## Register Pachyderm with Okta
@@ -34,14 +35,14 @@ For more detailed step by step instructions, follow this [documentation](https:/
 1. Click **Create**.
 1. Type the name of your application, such as **Pachyderm**.
 1. Add the following Login redirect URI. 
-      ```shell
-      http://<ip>:30658/callback
-      ```
-      Note: Your port number should be whatever is routing to the Identity Service:658.
+   ```shell
+   http://<ip>:30658/callback
+   ```
+   Note: Your port number should be whatever is routing to the Identity Service:658.
 
-      The IP address is the address of your Pachyderm host. For example,
-      if you are running Pachyderm in Minikube, you can find the IP
-      address by running `minikube ip`.
+   The IP address is the address of your Pachyderm host. For example,
+   if you are running Pachyderm in Minikube, you can find the IP
+   address by running `minikube ip`.
 
 1. Click **Save**
 1. Click **Edit** to change the General Settings pane. In the Allowed grant types section, enable **Authorization Code** and **Refresh Token**.
@@ -58,9 +59,6 @@ and others, are located on the App General tab.
 
 To configure Pachyderm Auth, complete the following steps:
 
---------------------------------------//TODO Rewrite beyond this point after re-test on Okta
-
-
 1. Go to the terminal and forward the `pachd` pod to the OIDC port:
 
    1. Get the `pachd` pod ID:
@@ -76,7 +74,7 @@ To configure Pachyderm Auth, complete the following steps:
       ...
       ```
 
-   1. Forward the `pachd` pod to the OIDC port:
+   2. Forward the `pachd` pod to the OIDC port:
 
       **Example:**
 
@@ -84,7 +82,7 @@ To configure Pachyderm Auth, complete the following steps:
       kubectl port-forward pachd-79f7f68c65-9qs8g 30657
       ```
 
-1. Enable Pachyderm authentication:
+2. Enable Pachyderm authentication:
 
       ```shell
       pachctl auth activate --initial-admin=robot:admin
@@ -95,45 +93,45 @@ To configure Pachyderm Auth, complete the following steps:
       **WARNING!** You must save the token to a secure location
       to avoid being locked out of your cluster.
 
-1. Log in as the admin user with the token you received in the previous
+3. Log in as the admin user with the token you received in the previous
 step:
 
-      ```shell
-      pachctl auth use-auth-token
-      ```
+   ```shell
+   pachctl auth use-auth-token
+   ```
 
 1. Set up the authentication config:
 
-    ```shell
-    pachctl auth set-config <<EOF
-      {
-      "live_config_version": 2,
-      "id_providers": [{
-      "name": "okta",
-      "description": "oidc-based authentication with Okta",
-      "oidc":{
-      "issuer": "https://",
-      "client_id": "",
-      "client_secret": "",
-      "redirect_uri": "your redirect URI",
-      ignore_email_verified: true
-      }
-      }]
-      }
-      EOF
-    ```
+   ```shell
+   pachctl auth set-config <<EOF
+   {
+   "live_config_version": 2,
+   "id_providers": [{
+   "name": "okta",
+   "description": "oidc-based authentication with Okta",
+   "oidc":{
+   "issuer": "https://",
+   "client_id": "",
+   "client_secret": "",
+   "redirect_uri": "your redirect URI",
+   ignore_email_verified: true
+   }
+   }]
+   }
+   EOF
+   ```
 
-    You need to replace the following placeholders with relevant values:
+   You need to replace the following placeholders with relevant values:
 
-    - `issuer` — The domain of your application in Okta. For example,
-    `{yourOktaDomain}/`. Note the trailing slash.
+   - `issuer` — The domain of your application in Okta. For example,
+   `{yourOktaDomain}/`. Note the trailing slash.
 
-    - `client_id` — The Pachyderm **Client ID** in Okta. 
+   - `client_id` — The Pachyderm **Client ID** in Okta. 
 
-    - `client_secret` - The Pachyderm client secret in Okta. 
+   - `client_secret` - The Pachyderm client secret in Okta. 
 
-    - `redirect_uri` - This parameter should match what you have added
-    to **redirect URI** in the previous step.
+   - `redirect_uri` - This parameter should match what you have added
+   to **redirect URI** in the previous step.
 
 1. Log in as the user you have created in the Pachyderm application
 or sign in with Google:
@@ -147,21 +145,21 @@ or sign in with Google:
       You should be prompted to a web-browser. Log in as the user you have
       previously created in Okta or sign in with Google.
 
-    You should see the following message printed out in your browser:
+       You should see the following message printed out in your browser:
 
-    ```
-    You are now logged in. Go back to the terminal to use Pachyderm!
-    ```
+       ```
+       You are now logged in. Go back to the terminal to use Pachyderm!
+       ```
 
 1. In the terminal, check that you are logged in as the Okta user:
 
-      ```shell
-      pachctl auth whoami
-      ```
+   ```shell
+   pachctl auth whoami
+   ```
 
-      **Example of System Response:**
+   **Example of System Response:**
 
-      ```shell
-      You are "okta:test@pachyderm.com"
-      session expires: 07 Aug 20 14:04 PDT
-      ```
+   ```shell
+   You are "okta:test@pachyderm.com"
+   session expires: 07 Aug 20 14:04 PDT
+   ```

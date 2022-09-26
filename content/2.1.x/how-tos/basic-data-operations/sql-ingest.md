@@ -9,9 +9,9 @@ series:
 seriesPart:
 ---
 
-!!! Warning
-    SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental).
-
+{{% notice warning %}} 
+SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{% /notice %}}
 Part of your data might live in databases requiring some level of integration with your warehouse to retrieve and inject them into Pachyderm.
 
 Our **SQL ingest** tool provides a seamless connection between databases and Pachyderm,  allowing you to import data from a SQL database into Pachyderm-powered pipelines. By bringing data-driven pipelines, versioning & lineage to structured data, we are allowing Data Science teams to easily combine structured and unstructured data.
@@ -45,30 +45,31 @@ Where the parameters passed to the jsonnet pipeline spec are:
 | `format`      | The type of your output file containing the results of your query (either `json` or `csv`).|
 | `secretName`  | The kubernetes secret name that contains the [password to the database](#database-secret).|
 
-!!! Example 
+### Example 
 
-    In this example, we are leveraging Snowflake's support for queries traversing semi-structured data (here, JSON).
+In this example, we are leveraging Snowflake's support for queries traversing semi-structured data (here, JSON).
 
-    - Find the [documentation for the support of semi-structured data in Snowflake](https://docs.snowflake.com/en/user-guide/semistructured-concepts.html#:~:text=Snowflake%20provides%20native%20support%20for,fast%20and%20efficient%20SQL%20querying.){target=_blank} here. 
+- Find the [documentation for the support of semi-structured data in Snowflake](https://docs.snowflake.com/en/user-guide/semistructured-concepts.html#:~:text=Snowflake%20provides%20native%20support%20for,fast%20and%20efficient%20SQL%20querying.){target=_blank} here. 
 
-    - The query in the following example will use the WEATHER schema in the public test database SNOWFLAKE_SAMPLE_DATA in the COMPUTE_WH warehouse. The column V of the table DAILY_14_TOTAL stores JSON files.
+- The query in the following example will use the WEATHER schema in the public test database SNOWFLAKE_SAMPLE_DATA in the COMPUTE_WH warehouse. The column V of the table DAILY_14_TOTAL stores JSON files.
 
-        Note the references to the JSON dataset elements by their hierarchical paths in the query:
+  Note the references to the JSON dataset elements by their hierarchical paths in the query:
 
-          ```shell
-          pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet  \
-          --arg name=mysnowflakeingest \
-          --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
-          --arg query="select T, V:city.name, V:data[0].weather[0].description as morning, V:data[12].weather[0].description as pm FROM DAILY_14_TOTAL LIMIT 1" \
-          --arg hasHeader=true \
-          --arg cronSpec="@every 30s" \
-          --arg secretName="snowflakesecret" \
-          --arg format=json
-          ```
+  ```shell
+  pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet  \
+  --arg name=mysnowflakeingest \
+  --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
+  --arg query="select T, V:city.name, V:data[0].weather[0].description as morning, V:data[12].weather[0].description as pm FROM DAILY_14_TOTAL LIMIT 1" \
+  --arg hasHeader=true \
+  --arg cronSpec="@every 30s" \
+  --arg secretName="snowflakesecret" \
+  --arg format=json
+  ```
 
 
-!!! Note
-    `pachctl update pipeline` will create pipelines if none exist, or update your existing pipelines otherwise.
+{{% notice note %}} 
+`pachctl update pipeline` will create pipelines if none exist, or update your existing pipelines otherwise.
+{{% /notice %}}
 
 
 When the command is run, the database will be queried on a schedule defined in your `cronSpec` parameter and a result file committed to the output repo named after `name`.
@@ -76,26 +77,29 @@ When the command is run, the database will be queried on a schedule defined in y
 ### Database Secret
 Before you create your SQL Ingest pipelines, make sure to create a [generic secret](../../advanced-data-operations/secrets/#create-a-secret) containing your database password in the field `PACHYDERM_SQL_PASSWORD`.
 
-!!! Example
-    ```yaml
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: mysql-creds
-    data:
-      "PACHYDERM_SQL_PASSWORD": "cm9vdA==" # base64 encoded
-    ```
+#### Example
 
-!!! Info "TL;DR"
-    - Run the following command to generate your secret:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-creds
+data:
+  "PACHYDERM_SQL_PASSWORD": "cm9vdA==" # base64 encoded
+```
 
-        `kubectl create secret generic <secret-name>  --from-literal=PACHYDERM_SQL_PASSWORD=<password-to-warehouse> --dry-run=client --output=json > yourwarehousesecret.json`
+{{% notice info %}}  
+TL;DR
+- Run the following command to generate your secret:
 
-    - Then apply it to your Pachyderm cluster:
+  `kubectl create secret generic <secret-name>  --from-literal=PACHYDERM_SQL_PASSWORD=<password-to-warehouse> --dry-run=client --output=json > yourwarehousesecret.json`
 
-        `pachctl create secret -f yourwarehousesecret.json`
+- Then apply it to your Pachyderm cluster:
 
-    - The list returned by `kubectl get secret` should feature the secret name. 
+    `pachctl create secret -f yourwarehousesecret.json`
+
+- The list returned by `kubectl get secret` should feature the secret name. 
+
 ### Database Connection URL
 Pachyderm's SQL Ingest will take an URL as its connection string to the database of your choice.
 
@@ -116,34 +120,36 @@ Where:
 
 
 
-!!! Attention "Snowflake users, you will need a variant of the URL above."
-     Pachyderm supports two connection URL patterns to  query Snowflake: 
+{{% notice warning %}} 
+Snowflake users, you will need a variant of the URL above.
 
-      - `snowflake://username@<account_identifier>/<db_name>/<schema_name>?warehouse=<warehouse_name>`
-      - `snowflake://username@hostname:port/<db_name>/<schema_name>?account=<account_identifier>&warehouse=<warehouse_name>`
+Pachyderm supports two connection URL patterns to  query Snowflake: 
 
-     where:
+- `snowflake://username@<account_identifier>/<db_name>/<schema_name>?warehouse=<warehouse_name>`
+- `snowflake://username@hostname:port/<db_name>/<schema_name>?account=<account_identifier>&warehouse=<warehouse_name>`
 
-      - The *[`account_identifier`](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html){target=_blank}* takes one of the following forms for most URLs:
+where:
 
-        - Option 1 - [Account Name](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-1-account-name-in-your-organization){target=_blank}:`organization_name`-`account_name`
-        - Option 2 - [Account Locator](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-2-account-locator-in-a-region){target=_blank}: `account_locator`.`region`.`cloud`
-    
-        In both cases, if you are used to connecting to Snowflake via an URL such as `https://account_identifier.snowflakecomputing.com`, you can use the full domain name `account_identifier.snowflakecomputing.com` in the url.
+- The *[`account_identifier`](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html){target=_blank}* takes one of the following forms for most URLs:
 
-      - And *`db_name`/`schema_name`* are respectively the Database Name and the Schema (namespace) targeted.
-      - Additionally, a *[`warehouse`](https://docs.snowflake.com/en/user-guide/warehouses.html#virtual-warehouses){target=_blank}*, or “compute resource” is required for all queries. Pass your warehouse as a parameter to the url: `warehouse=<warehouse_name>`
+  - Option 1 - [Account Name](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-1-account-name-in-your-organization){target=_blank}:`organization_name`-`account_name`
+  - Option 2 - [Account Locator](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-2-account-locator-in-a-region){target=_blank}: `account_locator`.`region`.`cloud`
 
-     Here is an example of connection string to Snowflake: 
+  In both cases, if you are used to connecting to Snowflake via an URL such as `https://account_identifier.snowflakecomputing.com`, you can use the full domain name `account_identifier.snowflakecomputing.com` in the url.
 
-     `"snowflake://username@GVCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH"`
+- And *`db_name`/`schema_name`* are respectively the Database Name and the Schema (namespace) targeted.
+- Additionally, a *[`warehouse`](https://docs.snowflake.com/en/user-guide/warehouses.html#virtual-warehouses){target=_blank}*, or “compute resource” is required for all queries. Pass your warehouse as a parameter to the url: `warehouse=<warehouse_name>`
 
+Here is an example of connection string to Snowflake: 
 
+`"snowflake://username@GVCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH"`
+{{% /notice%}}
 
-!!! Note 
-    - The password is not included in the URL.  It is retrieved from a [kubernetes secret](#database-secret) or file on disk at the time of the query.
-    - The additional parameters (`<param1>=<value1>`) are optional and specific to the driver.
-    For example, Snowflake requires to pass the warehouse as a parameter `warehouse=<your-warehouse>`.
+{{% notice note %}} 
+- The password is not included in the URL.  It is retrieved from a [kubernetes secret](#database-secret) or file on disk at the time of the query.
+- The additional parameters (`<param1>=<value1>`) are optional and specific to the driver.
+For example, Snowflake requires to pass the warehouse as a parameter `warehouse=<your-warehouse>`.
+{{% /notice%}}
 
 ## How Does This Work?
 
@@ -153,8 +159,9 @@ SQL Ingest's jsonnet pipeline specs [**`sql_ingest_cron.jsonnet`**](https://gith
 - A **[Cron Pipeline](../../../concepts/pipeline-concepts/pipeline/cron/#cron-pipeline)** `myingest_queries` triggering at an interval set by `cronSpec` and outputting a file `/0000` in its output repo `myingest_queries`. `/0000` contains a timestamp and the SQL statement set in `query`.
 - The following pipeline `myingest` takes the `/0000` file as input and runs the query against the database set in `url`. The query's result is then materialized in a file (JSON or CSV) of the same name `/0000` committed to the output repo `myingest`.
 
-!!! Note
-    The name of each pipeline and related input and output repos are derived from the `name` parameter. In the example above, we have set `--arg name=myingest`.
+{{% notice note %}} 
+The name of each pipeline and related input and output repos are derived from the `name` parameter. In the example above, we have set `--arg name=myingest`.
+{{% /notice %}}
 
 The same base image [pachctf](https://hub.docker.com/repository/docker/pachyderm/pachtf){target=_blank} is used in both pipelines.
 
@@ -166,11 +173,11 @@ In your terminal:
 
 - The list of the DAG's pipelines (`pachctl list pipeline`) looks like this:
 
-     ![List pipeline](../images/sqlingest-list-pipeline.png)
+    ![List pipeline](../images/sqlingest-list-pipeline.png)
 
 - 3 repos are created:
 
-     ![List repo](../images/sqlingest-list-repo.png)
+    ![List repo](../images/sqlingest-list-repo.png)
 
 ## How To Inspect The Result Of A Query?
 
@@ -178,31 +185,31 @@ You have run a query using SQL Ingest. How do you inspect its result?
 
 - Check what the query looked like:
 
-    ```shell
-    pachctl get file myingest_queries@master:/0000
-    ```
-    ```
-    -- 1643235475
-    SELECT * FROM test_data
-    ```
+  ```shell
+  pachctl get file myingest_queries@master:/0000
+  ```
+  ```
+  -- 1643235475
+  SELECT * FROM test_data
+  ```
 
 - Read the file written to the output repo `myingest`:
 
-    ```shell
-    pachctl list file myingest@master
-    ```
-    ```
-    NAME  TYPE SIZE
-    /0000 file 52B
-    ```
+  ```shell
+  pachctl list file myingest@master
+  ```
+  ```
+  NAME  TYPE SIZE
+  /0000 file 52B
+  ```
 
-    ```shell
-    pachctl get file myingest@master:/0000
-    ```
-    ```yaml
-    {"mycolumn":"hello world","id":1}
-    {"mycolumn":"hello you","id":2}
-    ```
+  ```shell
+  pachctl get file myingest@master:/0000
+  ```
+  ```yaml
+  {"mycolumn":"hello world","id":1}
+  {"mycolumn":"hello you","id":2}
+  ```
 
 ## Formats and SQL DataTypes 
 
@@ -220,37 +227,37 @@ We support the following SQL datatypes. Some of those Data Types are specific to
 
 - All **numeric** values are converted into strings in your CSV and JSON. 
 
-    Note that infinite (Inf) and not a number (NaN) values will also be stored as strings in JSON files. 
+  Note that infinite (Inf) and not a number (NaN) values will also be stored as strings in JSON files. 
 
-    ***Examples***
+  ***Examples***
 
-    |Database|CSV|JSON|
-    |--------|---|----|
-    | 12345 | 12345 | "12345" |
-    | 123.45 | 123.45 | "123.45" |
+  |Database|CSV|JSON|
+  |--------|---|----|
+  | 12345 | 12345 | "12345" |
+  | 123.45 | 123.45 | "123.45" |
 
 - **Date/Timestamps** 
 
-    ***Examples***
+  ***Examples***
 
-    |Type|Database|CSV|JSON|
-    |----|--------|---|----|
-    |Date|2022-05-09|2022-05-09T00:00:00|"2022-05-09T00:00:00"|
-    |Timestamp ntz|2022-05-09 16:43:00|2022-05-09 16:43:00|"2022-05-09 16:43:00"|
-    |Timestamp tz|2022-05-09 16:43:00-05:00|2022-05-09T16:43:00-05:00|"2022-05-09T16:43:00-05:00"|
+  |Type|Database|CSV|JSON|
+  |----|--------|---|----|
+  |Date|2022-05-09|2022-05-09T00:00:00|"2022-05-09T00:00:00"|
+  |Timestamp ntz|2022-05-09 16:43:00|2022-05-09 16:43:00|"2022-05-09 16:43:00"|
+  |Timestamp tz|2022-05-09 16:43:00-05:00|2022-05-09T16:43:00-05:00|"2022-05-09T16:43:00-05:00"|
 
 - **Strings**
 
-    Keep in mind when parsing your CSVs in your user code that we escape `"` with `""` in CSV files.
+  Keep in mind when parsing your CSVs in your user code that we escape `"` with `""` in CSV files.
 
-    ***Examples***
+  ***Examples***
 
-    |Database|CSV|
-    |--------|---|
-    |"null"|null|
-    |\`""\`|""""""|
-    |""|""|
-    |nil||
-    |`"my string"`|"""my string"""|
-    |"this will be enclosed in quotes because it has a ,"|"this will be enclosed in quotes because it has a ,"|
+  |Database|CSV|
+  |--------|---|
+  |"null"|null|
+  |\`""\`|""""""|
+  |""|""|
+  |nil||
+  |`"my string"`|"""my string"""|
+  |"this will be enclosed in quotes because it has a ,"|"this will be enclosed in quotes because it has a ,"|
 

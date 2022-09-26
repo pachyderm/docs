@@ -17,8 +17,9 @@ An organization can have **many Pachyderm clusters registered with one single En
 The following diagram gives you a quick overview of an organization with multiple Pachyderm clusters behind a single Enterprise Server.
 ![Enterprise Server General Deployment](../images/enterprise-server.png)
 
-!!! Note
-	For POCs and smaller organizations with one single Pachyderm cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single Pachyderm cluster can run the Enterprise Server services embedded within pachd.
+{{% notice note %}} 
+For POCs and smaller organizations with one single Pachyderm cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single Pachyderm cluster can run the Enterprise Server services embedded within pachd.
+{{% /notice %}}
 
 The setup of an Enterprise Server requires to:
 
@@ -36,30 +37,30 @@ Deploying and configuring an enterprise server can be done in one of two flavors
 ### As Part Of A Regular Pachyderm Helm Deployment
 Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/local-dev-values.yaml){target=_blank}) or insert our minimal example below to your values.yaml.
 
-!!! Warning
-		- If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
+{{% notice warning %}} 
+- If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
 
-			```shell
-			kubectl create namespace enterprise
-			helm install ... --set enterpriseServer.enabled=true  --namespace enterprise
-			```
+```shell
+kubectl create namespace enterprise
+helm install ... --set enterpriseServer.enabled=true  --namespace enterprise
+```
 
-			This command deploys postgres, etcd and a deployment and service called `pach-enterprise`. 
-			`pach-enterprise` uses the same docker image and pachd binary, but it **listens on a different set of ports (31650, 31657, 31658)** to avoid conflicts with pachd.
+This command deploys postgres, etcd and a deployment and service called `pach-enterprise`. 
+`pach-enterprise` uses the same docker image and pachd binary, but it **listens on a different set of ports (31650, 31657, 31658)** to avoid conflicts with pachd.
 
-		- Check the state of your deployment by running:
-			```shell
-			kubectl get all --namespace enterprise
-			```
-			**System Response**
-			```
-			NAME                                   READY   STATUS    RESTARTS   AGE
-			pod/etcd-5fd7c675b6-46kz7              1/1     Running   0          113m
-			pod/pach-enterprise-6dc9cb8f66-rs44t   1/1     Running   0          105m
-			pod/postgres-6bfd7bfc47-9mz28          1/1     Running   0          113m
+- Check the state of your deployment by running:
+```shell
+kubectl get all --namespace enterprise
+```
+**System Response**
+```s
+NAME                                   READY   STATUS    RESTARTS   AGE
+pod/etcd-5fd7c675b6-46kz7              1/1     Running   0          113m
+pod/pach-enterprise-6dc9cb8f66-rs44t   1/1     Running   0          105m
+pod/postgres-6bfd7bfc47-9mz28          1/1     Running   0          113m
 
-			```
-
+```
+{{%/notice %}}
 === "values.yaml for an **embedded single-cluster deployment**"
 
 	```yaml
@@ -150,26 +151,28 @@ Update your values.yaml with your enterprise license key and auth configurations
 	```
 
 
-!!! Note
-     Update the following values as follow:
+{{% notice note %}} 
+Update the following values as follow:
 
-	 - `PACHD-IP`: The address of Pachyderm's IP. Retrieve Pachyderm external IP address if necessary.
-	 - `ISSUER`, `CLIENT-ID`, `CLIENT-SECRET`: Refer to our [Identity Provider Configuration page](../../authentication/idp-dex/#create-a-connector-configuration-file).
+- `PACHD-IP`: The address of Pachyderm's IP. Retrieve Pachyderm external IP address if necessary.
+- `ISSUER`, `CLIENT-ID`, `CLIENT-SECRET`: Refer to our [Identity Provider Configuration page](../../authentication/idp-dex/#create-a-connector-configuration-file).
+{{% /notice %}}
 
 
 Check the [list of all available helm values](../../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/pachyderm/values.yaml){target=_blank}.
 
 
 
-!!! Warning
-		- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit. In such a case, skip step 2.
+{{% notice warning %}} 
+- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-bootstrap-config` k8s secret is created containing an entry for your [rootToken](../../#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit. In such a case, skip step 2.
 
-			However, **this secret is only used when configuring through helm**:
+  However, **this secret is only used when configuring through helm**:
 
-			- If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
-			- Same behavior if you [activate enterprise manually](../../../deployment/) (`pachctl license activate`) then [activate authentication](../../) (`pachctl auth activate`).
+  - If you run `pachctl auth activate`, the secret is not updated. Instead, the rootToken is printed in your STDOUT for you to save.
+  - Same behavior if you [activate enterprise manually](../../../deployment/) (`pachctl license activate`) then [activate authentication](../../) (`pachctl auth activate`).
 
-		- **Set the helm value `pachd.activateAuth` to false to prevent the automatic  bootstrap of auth on the cluster**.
+- **Set the helm value `pachd.activateAuth` to false to prevent the automatic  bootstrap of auth on the cluster**.
+{{% /notice %}}
 
 ### On An Existing Pachyderm Cluster
 
@@ -181,18 +184,19 @@ To enable the Enterprise Server on an existing cluster:
 ## 2- Activate Enterprise Licensing And Enable Authentication
 
 - Use your enterprise key to activate your enterprise server: 
-	```shell
-	echo <your-activation-token> | pachctl license activate
-	```
+  ```shell
+  echo <your-activation-token> | pachctl license activate
+  ```
 - Then enable Authentication at the Enterprise Server level:
-	```shell
-	pachctl auth activate --enterprise
-	```
+  ```shell
+  pachctl auth activate --enterprise
+  ```
 
-	!!! Warning
-		Enabling Auth will return a `root token` for the enterprise server. 
-		**This is separate from the root tokens for each pachd (cluster)**. 
-		They should all be stored securely.
+  {{% notice warning %}} 
+    Enabling Auth will return a `root token` for the enterprise server. 
+    **This is separate from the root tokens for each pachd (cluster)**. 
+    They should all be stored securely.
+  {{% /notice %}}
 
 Once the enterprise server is deployed, 
 deploy your cluster(s) (`helm install...`) and [register it(them) with the enterprise server](#3-register-your-cluster-with-the-enterprise-server). Note that you have the option to register your clusters directly in your values.yaml when deploying or after its deployment, using `pachctl`.
@@ -218,77 +222,79 @@ Add the enterprise server's root token, and network addresses to the values.yaml
   		enterpriseRootToken: "<ENTERPRISE-ROOT-TOKEN>" # the same root token of the enterprise cluster
 	```
 
-!!! Warning
-		**When setting your enterprise server info as part of the Helm deployment of a cluster, unless 		the helm value `pachd.activateAuth` was intentionally set to false, auth is automatically activated** (i.e., you can skip step 4).
+{{% notice warning %}} 
+**When setting your enterprise server info as part of the Helm deployment of a cluster, unless 		the helm value `pachd.activateAuth` was intentionally set to false, auth is automatically activated** (i.e., you can skip step 4).
 
-		In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created on the cluster. It contains an entry for your clusters' [rootToken](../../#activate-user-access-management). This is separate from the enterprise server root token. Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created on the cluster. It contains an entry for your clusters' [rootToken](../../#activate-user-access-management). This is separate from the enterprise server root token. Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-	  **This secret is only used when configuring through helm**
+**This secret is only used when configuring through helm**
+{{% /notice %}}
 
 ### Register Clusters With pachctl
 
 - Run this command for each of the clusters you wish to register using `pachctl`:
 
-	```shell
-	pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:650 --pachd-address <pachd-IP>:650
-	```
+  ```shell
+  pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:650 --pachd-address <pachd-IP>:650
+  ```
 
-	* `--id` is the name of the context pointing to your cluster in `~/.pachyderm/config.json`.
+  * `--id` is the name of the context pointing to your cluster in `~/.pachyderm/config.json`.
 
-	* `--enterprise-server-address` is the host and port where pachd can reach the enterprise server. 
-	In production, the enterprise server may be exposed on the internet.
+  * `--enterprise-server-address` is the host and port where pachd can reach the enterprise server. 
+  In production, the enterprise server may be exposed on the internet.
 
-	* `--pachd-address` is the host and port where the enterprise server can reach pachd. 
-	This may be internal to the kubernetes cluster, or over the internet.
+  * `--pachd-address` is the host and port where the enterprise server can reach pachd. 
+  This may be internal to the kubernetes cluster, or over the internet.
 
 - Display the list of all registered clusters with your enterprise server: 
-	```shell
-	pachctl license list-clusters
-	```
+    ```shell
+    pachctl license list-clusters
+    ```
 
-	```shell
-	Using enterprise context: my-enterprise-context-name
-	id: john
-	address: ae1ba915f8b5b477c98cd26c67d7563b-66539067.us-west-2.elb.amazonaws.com:650
-	version: 2.0.0
-	auth_enabled: true
-	last_heartbeat: 2021-05-21 18:37:36.072156 +0000 UTC
+    ```shell
+    Using enterprise context: my-enterprise-context-name
+    id: john
+    address: ae1ba915f8b5b477c98cd26c67d7563b-66539067.us-west-2.elb.amazonaws.com:650
+    version: 2.0.0
+    auth_enabled: true
+    last_heartbeat: 2021-05-21 18:37:36.072156 +0000 UTC
 
-	---
-	id: doe
-	address: 34.71.247.191:650
-	version: 2.0.0
-	auth_enabled: true
-	last_heartbeat: 2021-05-21 18:43:42.157027 +0000 UTC
-	---
-	```
+    ---
+    id: doe
+    address: 34.71.247.191:650
+    version: 2.0.0
+    auth_enabled: true
+    last_heartbeat: 2021-05-21 18:43:42.157027 +0000 UTC
+    ---
+    ```
 
 ## 4- Enable Auth On Each Cluster
 Finally, if your clusters were registered with the Enterprise Server using `pachctl`, you might choose to activate auth on each (or some) of them. 
 This is an **optional step**. Clusters can be registered with the enterprise server without authentication being enabled.
 
 - Before enabling authentication, set up the issuer in the idp config between the enterprise server and your cluster:
-	```shell
-	echo "issuer: http://<enterprise-server-IP>:658" | pachctl idp set-config --config -
-	```
-	Check that your config has been updated properly: `pachctl idp get-config`
+  ```shell
+  echo "issuer: http://<enterprise-server-IP>:658" | pachctl idp set-config --config -
+  ```
+  Check that your config has been updated properly: `pachctl idp get-config`
 
 - For each registered cluster you want to enable auth on:
-	```shell
-	pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<pachd-IP>:657/authorization-code/callback 
-	```
-!!! Note
-	- Note the **`/authorization-code/callback`** appended after `<pachd-IP>:657` in `--redirect`.
-	- `--client-id` is to `pachctl auth activate` what `--id` is to `pachctl enterprise register`: In both cases, enter `<my-pachd-config-name>`. 
+  ```shell
+  pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<pachd-IP>:657/authorization-code/callback 
+  ```
+  {{% notice note %}} 
+  - Note the **`/authorization-code/callback`** appended after `<pachd-IP>:657` in `--redirect`.
+  - `--client-id` is to `pachctl auth activate` what `--id` is to `pachctl enterprise register`: In both cases, enter `<my-pachd-config-name>`. 
+  {{% /notice %}}
 
 -	Make sure than your enterprise context is set up properly: 
-	```shell
-	pachctl config get active-enterprise-context
-	```
-	If not: 
-	```shell
-	pachctl config set active-enterprise-context <my-enterprise-context-name>
-	```
+  ```shell
+  pachctl config get active-enterprise-context
+  ```
+  If not: 
+  ```shell
+  pachctl config set active-enterprise-context <my-enterprise-context-name>
+  ```
 
  
 To manage you server, its context, or connect your IdP, visit the [**Manage your Enterprise Server**](../manage/) page.

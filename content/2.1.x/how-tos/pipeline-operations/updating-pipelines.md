@@ -39,9 +39,10 @@ you have updated your pipeline specification JSON file.
 pachctl update pipeline -f pipeline.json
 ```
 
-!!! Note
-    Similar to `create pipeline`, `update pipeline` with the `-f` flag can 
-    take a URL if your JSON manifest is hosted on GitHub or other remote location.
+{{% notice note %}} 
+Similar to `create pipeline`, `update pipeline` with the `-f` flag can 
+take a URL if your JSON manifest is hosted on GitHub or other remote location.
+{{% /notice %}}
 
 ## Using Jsonnet Pipeline Specification Files
 
@@ -51,10 +52,10 @@ apply your changes at once by running:
 ```shell
 pachctl update pipeline --jsonnet <your jsonnet pipeline specs path or URL> --arg <param 1>=<value 1> --arg <param 2>=<value 2>
 ```
-!!! Example
-      ```shell
-      pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
-      ```
+### Example
+```shell
+pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
+```
 
 ## Update the Code in a Pipeline
 To update the code in your pipeline, complete the following steps:
@@ -64,21 +65,21 @@ To update the code in your pipeline, complete the following steps:
 the Docker distribution that you use, steps for enabling it might
 vary:
 
-     ```shell
-     docker ps
-     ```
-     If you get an error message similar to the following:
+   ```shell
+   docker ps
+   ```
+   If you get an error message similar to the following:
 
-     ```shell
-     Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
-     ```
-     enable the Docker daemon (see the Docker documentation for your operating system and platform).
-     For example, if you use `minikube` on  macOS, run the following
-     command:
+   ```shell
+   Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+   ```
+   enable the Docker daemon (see the Docker documentation for your operating system and platform).
+   For example, if you use `minikube` on  macOS, run the following
+   command:
 
-     ```shell
-     eval $(minikube docker-env)
-     ```
+   ```shell
+   eval $(minikube docker-env)
+   ```
 
 Then build, tag, and push the new image to your image registry and update the pipeline. 
 This step comes in 3 flavors:
@@ -90,8 +91,9 @@ This step comes in 3 flavors:
 
    1. Update the [`transform.image`](../../../reference/pipeline-spec/#transform-required) field of your pipeline spec with your new tag.
    
-      !!! Important
-            Make sure to update your tag every time you re-build. Our pull policy is `IfNotPresent` (Only pull the image if it does not already exist on the node.). Failing to update your tag will result in your pipeline running on a previous version of your code.
+      {{% notice warning %}} 
+      Make sure to update your tag every time you re-build. Our pull policy is `IfNotPresent` (Only pull the image if it does not already exist on the node.). Failing to update your tag will result in your pipeline running on a previous version of your code.
+      {{% /notice %}}
 
    1. Update the pipeline:
 
@@ -109,11 +111,11 @@ This step comes in 3 flavors:
 {{ gitsnippet('pachyderm/pachyderm', 'examples/opencv/jsonnet/edges.jsonnet', '2.1.x') }}
 ```
 
-   * Once your pipeline code is updated and your image is built, tagged, and pushed, update your pipeline using this command line. In this case, there is no need to edit the pipeline specification file to update the value of your new tag. This command will take care of it:
+    * Once your pipeline code is updated and your image is built, tagged, and pushed, update your pipeline using this command line. In this case, there is no need to edit the pipeline specification file to update the value of your new tag. This command will take care of it:
 
-      ```shell
-      pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
-      ```
+     ```shell
+     pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
+     ```
 
 ### **If you use Pachyderm commands**
 

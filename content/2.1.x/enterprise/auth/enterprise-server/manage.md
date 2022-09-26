@@ -20,10 +20,11 @@ To check the active enterprise context, run:
 pachctl config get active-enterprise-context
 ```
 
-!!! Warning "Important Notes"
-    - In a single-cluster deployment, the **active enterprise context will be the same as the enterprise context**.
-    - The `pachctl  license` and `pachctl idp` commands **run against the enterprise context**. 
+{{% notice note %}} 
+- In a single-cluster deployment, the **active enterprise context will be the same as the enterprise context**.
+- The `pachctl  license` and `pachctl idp` commands **run against the enterprise context**. 
 `pachctl auth` commands accept an `--enterprise` flag to run against the enterprise context.
+{{%/notice %}}
 
 ## Configuring IDPs
 To configure IDP integrations, use `pachctl idp create-connector` as documented in 
@@ -34,6 +35,7 @@ the [**Pachyderm Integration with Identity Providers**](../../authentication/idp
 ### Add Users As Administrators
 By default, only the `root token` (Root User) can administer the Enterprise Server. 
 Run the following command to add more ClusterAdmin to your Enterprise Server:
+
 ```shell
 pachctl auth set enterprise clusterAdmin user:<email>
 ```
@@ -43,7 +45,7 @@ pachctl auth set enterprise clusterAdmin user:<email>
 pachctl license list-clusters
 ```	
 The output includes the pachd version, whether auth is enabled, and the last heartbeat:
-```
+```s
 id: pach-2
 address: 34.71.247.191:650
 version: 2.0.0

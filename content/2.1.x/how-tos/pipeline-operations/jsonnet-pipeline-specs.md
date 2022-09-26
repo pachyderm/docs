@@ -9,8 +9,9 @@ series:
 seriesPart:
 ---
 
-!!! Warning
-    `Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{% notice warning %}} 
+`Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).
+{{% /notice %}}
 
 Pachyderm [pipeline's specification](../../../reference/pipeline-spec){target=_blank} files are intuitive, simple, and language agnostic.
 They are, however, very static.
@@ -36,19 +37,19 @@ of the edges pipeline spec `edges.json` in the opencv example, used to inject a 
 and an input repository name into the original pipeline specifications.
 
 
-!!! Example 
-    In this snippet of `edges.jsonnet`, the parameter `src` sits in place of what would have been
-    the value of the field `repo`, as a placeholder for any parameter that will be passed to the jsonnet pipeline spec.
+### Example 
+In this snippet of `edges.jsonnet`, the parameter `src` sits in place of what would have been
+the value of the field `repo`, as a placeholder for any parameter that will be passed to the jsonnet pipeline spec.
 
-    ```yaml
-    input: {
-        pfs: {
-          name: "images",
-          glob: "/*",
-          repo: src,
-        }
-      },
-    ```
+```yaml
+input: {
+    pfs: {
+        name: "images",
+        glob: "/*",
+        repo: src,
+    }
+    },
+```
 
 See the full `edges.jsonnet` here:
 ```yaml
@@ -62,15 +63,16 @@ To create or update a pipeline using a jsonnet pipeline specification file:
 - add the `--jsonnet` flag to your `pipeline create` or `pipeline update` commands, followed by a local path to your jsonnet file or an url.
 - add `--arg <parameter-name>=value` for each variable.
 
-!!! Example
-    ```shell
-    pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
-    ```
+### Example 
+```shell
+pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
+```
 
-    The command above will generate a JSON file named `edges-1.json` then create a pipeline of the same name taking the repository `images` as its input.
+The command above will generate a JSON file named `edges-1.json` then create a pipeline of the same name taking the repository `images` as its input.
 
-!!! Information 
-    Read jsonnet's complete [standard library documentation](https://jsonnet.org/ref/stdlib.html){target=_blank} to learn about all the variables types, string manipulation and mathematical functions, or assertions available to you.
+{{% notice info %}} 
+Read jsonnet's complete [standard library documentation](https://jsonnet.org/ref/stdlib.html) to learn about all the variables types, string manipulation and mathematical functions, or assertions available to you.
+{{% /notice %}}
 
 
 At the minimum, your function should always have a parameter that acts as a name modifier. 
@@ -78,8 +80,9 @@ Pachyderm's pipeline names are unique.
 You can quickly generate several pipelines from the same jsonnet pipeline specification file
 by adding a prefix or a suffix to its generic name.
 
-!!! Info 
-    Your .jsonnet file can create multiple pipelines at once as illustrated in our [group example](https://github.com/pachyderm/pachyderm/tree/2.1.x/examples/group){target=_blank}.
+{{% notice info %}} 
+Your .jsonnet file can create multiple pipelines at once as illustrated in our [group example](https://github.com/pachyderm/pachyderm/tree/2.1.x/examples/group).
+{{% /notice %}}
 
 ## Use Cases
 

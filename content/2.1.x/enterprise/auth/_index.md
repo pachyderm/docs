@@ -10,9 +10,10 @@ seriesPart:
 ---
 
 
-!!! Note
-    User Access Management is an [enterprise feature](..) that requires
-    an active enterprise token.
+{{% notice note %}} 
+User Access Management is an [enterprise feature](..) that requires
+an active enterprise token.
+{{% /notice %}}
 
 Pachyderm delegates its authentication to third party Identity Providers.
 
@@ -22,14 +23,14 @@ As a result, users can authenticate **using their existing credentials from vari
 
 Setting up Pachyderm's User Access Management (also referred to as "Authentication and Authorization" or "Auth" in this documentation) requires to follow those 3 simple steps:
 
-!!! Attention 
-      If you have enabled the enterprise features [through Helm, auth is already activated](.).
+{{% notice warning %}} 
+If you have enabled the enterprise features [through Helm, auth is already activated](.).
 
-      In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created containing an entry for your [rootToken](#activate-user-access-management). Use `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
-	  **This secret is only used when configuring through helm**
-
-
+**This secret is only used when configuring through helm**
+{{% /notice %}}
+ 
 1. [Activate the feature](#activate-user-access-management).
 2. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 
 3. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding.md) on given Pachyderm Ressources. 
@@ -41,10 +42,11 @@ See the Identity Provider High Level Diagram below:
 ![IdP - Dex diagram](./images/identity-provider-diagram.svg)
 
 ## Activate User Access Management
-!!! Note
-    Verify the status of your **Enterprise License** before activating the User Access Management feature
-    by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
-    status along with the expiration date of the Enterprise License.   
+{{% notice note %}} 
+Verify the status of your **Enterprise License** before activating the User Access Management feature
+by running `pachctl enterprise get-state`. The command should return an `ACTIVE`
+status along with the expiration date of the Enterprise License.   
+{{% /notice %}}
 
 To activate Pachyderm's authentication and authorization features,
 run the following command in your terminal:
@@ -58,24 +60,26 @@ This `Root user` (or initial admin) has irrevokable `clusterAdmin` privileges on
 Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [here](authorization#users-types).
 
 
-!!! Note
-     If you run `pachctl auth activate` after having enabled your enterprise features through Helm, the original `pachyderm-bootstrap-config` K8s secret created with the installation **is not updated**. Instead, the new rootToken is printed in your STDOUT.
+{{% notice note %}} 
+If you run `pachctl auth activate` after having enabled your enterprise features through Helm, the original `pachyderm-bootstrap-config` K8s secret created with the installation **is not updated**. Instead, the new rootToken is printed in your STDOUT.
+{{%/notice%}}
 
 
 **System Response**
-```
+```s
 Pachyderm root token:
 54778a770c554d0fb84563033c9cb808
 ```
-!!! Warning 
-    You must save the token to a secure location
-    to avoid being locked out of your cluster.
-    
-    When needed, use this token to log back in as this initial admin user:
+{{% notice warning %}} 
+You must save the token to a secure location
+to avoid being locked out of your cluster.
 
-    ```shell
-    pachctl auth use-auth-token
-    ```
+When needed, use this token to log back in as this initial admin user:
+
+```shell
+pachctl auth use-auth-token
+```
+{{% /notice %}}
 
 As a *Root User* (or initial admin), 
 you can now configure Pachyderm to work with

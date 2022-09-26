@@ -11,8 +11,9 @@ seriesPart:
 
 ## `pachctl put file`
 
-!!! Note
-    At any time, run `pachctl put file --help` for the complete list of flags available to you.
+{{% notice note %}} 
+At any time, run `pachctl put file --help` for the complete list of flags available to you.
+{{% /notice %}}
 
 1. Load your data into Pachyderm by using `pachctl` requires that one or several input repositories have been created. 
 
@@ -47,8 +48,9 @@ seriesPart:
 
 ## Filepath Formats
 
-!!! Important
-    Pachyderm uses `*?[]{}!()@+^` as reserved characters for [glob patterns](../../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern). Because of this, you cannot use these characters in your filepath.
+{{% notice warning %}} 
+Pachyderm uses `*?[]{}!()@+^` as reserved characters for [glob patterns](../../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern). Because of this, you cannot use these characters in your filepath.
+{{% /notice %}}
 
 In Pachyderm, you specify the path to file by using the `-f` option. A path
 to file can be a **local path or a URL to an external resource**. You can add
@@ -70,25 +72,26 @@ in your filepath:
 	pachctl put file <repo>@<branch>:</path/to/file> -f s3://object_store_url
   	```
 
-!!! note
-    If you are configuring a local cluster to access an external bucket,
-    make sure that Pachyderm has been given the proper access.
+{{% notice note %}} 
+If you are configuring a local cluster to access an external bucket,
+make sure that Pachyderm has been given the proper access.
+{{% /notice %}}
 
 * Add multiple files at once by using the `-i` option or multiple `-f` flags.
 In the case of `-i`, the target file must be a list of files, paths, or URLs
 that you want to input all at once:
 
-  	```shell
-	pachctl put file <repo>@<branch> -i <file containing list of files, paths, or URLs>
-  	```
+  ```shell
+  pachctl put file <repo>@<branch> -i <file containing list of files, paths, or URLs>
+  ```
 
 * Add an entire directory or all of the contents at a particular URL, either
 HTTP(S) or object store URL, `s3://`, `gcs://`, and `as://`, by using the
 recursive flag, `-r`:
 
-  	```shell
-  	pachctl put file <repo>@<branch> -r -f <dir>
-  	```
+  ```shell
+  pachctl put file <repo>@<branch> -r -f <dir>
+  ```
 
 ## Loading Your Data Partially
 

@@ -12,10 +12,11 @@ seriesPart:
 A typical Pachyderm workflow involves multiple iterations of
 experimenting with your code and pipeline specs.
 
-!!! info
-    Before you read this section, make sure that you
-    understand basic Pachyderm pipeline concepts described in
-    [Concepts](../../concepts/pipeline-concepts/_index.md).
+{{% notice info %}} 
+Before you read this section, make sure that you
+understand basic Pachyderm pipeline concepts described in
+[Concepts](../../concepts/pipeline-concepts/_index.md).
+{{% /notice %}}
 
 In general, there are five steps to working with a pipeline. The stages can be summarized in the image below. 
 
@@ -77,9 +78,10 @@ The reason is that Pachyderm cannot execute your code immediately when
 your container starts, so it runs a shim process in your container
 instead, and then, it calls your pipeline specification's `cmd` from there.
 
-!!! note
-    The `Dockerfile` example below is provided for your reference
-    only. Your `Dockerfile` might look completely different.
+{{% notice note %}} 
+The `Dockerfile` example below is provided for your reference
+only. Your `Dockerfile` might look completely different.
+{{% /notice %}}
 
 To build a Docker image, complete the following steps:
 
@@ -109,22 +111,23 @@ with the `--push-images` flag. For more information, see
 
 1. Log in to an image registry.
 
-    If you use DockerHub, run:
+   If you use DockerHub, run:
 
-     ```shell
-     docker login --username=<dockerhub-username> --password=<dockerhub-password> <dockerhub-fqdn>
-     ```
+   ```shell
+   docker login --username=<dockerhub-username> --password=<dockerhub-password> <dockerhub-fqdn>
+   ```
 
 1. Push your image to your image registry.
 
-    If you use DockerHub, run:
+   If you use DockerHub, run:
 
-     ```shell
-     docker push <image>:tag
-     ```
+   ```shell
+   docker push <image>:tag
+   ```
 
-!!! note
-    Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
+{{% notice note %}} 
+Pipelines require a unique tag to ensure the appropriate image is pulled. If a floating tag, such as `latest`, is used, the Kubernetes cluster may become out of sync with the Docker registry, concluding it already has the `latest` image.
+{{% /notice %}}
 
 ## Step 4: Create/Edit the Pipeline Config
 
@@ -139,10 +142,11 @@ parameters:
 - `transform`
 - `input`
 
-!!! note
-    Some special types of pipelines, such as a spout pipeline, do not
-    require you to specify all of these parameters. 
-    Spout pipelines, for example, do not have input repos.
+{{% notice note %}} 
+Some special types of pipelines, such as a spout pipeline, do not
+require you to specify all of these parameters. 
+Spout pipelines, for example, do not have input repos.
+{{% /notice %}}
 
 Check our reference [pipeline specification](../../../reference/pipeline-spec) page, for a list of all available fields in a pipeline specification file.
 
@@ -180,22 +184,22 @@ parameter, as well as many others, in the pipeline specification.
 
 1. Create a Pachyderm pipeline from the spec:
 
-     ```shell
-     pachctl create pipeline -f my-pipeline.json
-     ```
+   ```shell
+   pachctl create pipeline -f my-pipeline.json
+   ```
 
-     You can specify a local file or a file stored in a remote
-     location, such as a GitHub repository. For example,
-     `https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/edges.json`.
+   You can specify a local file or a file stored in a remote
+   location, such as a GitHub repository. For example,
+   `https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/edges.json`.
 
-1. If your pipeline specification changes, you can update the pipeline 
-   by running
+1. If your pipeline specification changes, you can update the pipeline by running:
 
-     ```shell
-     pachctl update pipeline -f my-pipeline.json
-     ```
+   ```shell
+   pachctl update pipeline -f my-pipeline.json
+   ```
 
-!!! note "See Also:"
-    - [Updating Pipelines](../../pipeline-operations/updating-pipelines)
-    - Advanced users, parameterize your pipeline specifications with [Jsonnet pipeline specification files](../../pipeline-operations/jsonnet-pipeline-specs).
-
+{{% notice note %}} 
+See Also:
+- [Updating Pipelines](../../pipeline-operations/updating-pipelines)
+- Advanced users, parameterize your pipeline specifications with [Jsonnet pipeline specification files](../../pipeline-operations/jsonnet-pipeline-specs).
+{{% /notice %}}

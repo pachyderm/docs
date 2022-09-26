@@ -9,10 +9,11 @@ series:
 seriesPart:
 ---
 
-!!! Info
-    Before you read this section, make sure that you are familiar 
-    with Pachyderm's concepts of [Data](../../concepts/data-concepts/_index.md) and
-    [Pipeline](../../concepts/pipeline-concepts/_index.md).
+{{% notice info %}} 
+Before you read this section, make sure that you are familiar 
+with Pachyderm's concepts of [Data](../../concepts/data-concepts/_index.md) and
+[Pipeline](../../concepts/pipeline-concepts/_index.md).
+{{% /notice %}}
 
 
 There are many strategies available to get data in and out of Pachyderm, 

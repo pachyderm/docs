@@ -32,9 +32,9 @@ You must have all of the following installed before you can start development:
 1. Open VS Code.
 2. Open your terminal (`` ctrl+` ``).
 3. Add the following to your `settings.json`: 
-     ```
-       "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-     ``` 
+  ```s
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  ``` 
 This path may vary depending on where your `git bash` actually exists. 
 
 ---
@@ -82,7 +82,7 @@ The following commands are used frequently when working with Pachyderm:
 #### Minikube 
 If you'd like to completely restart, use the following terminal commands:
 
-```
+```s
 minikube delete
 kubectl delete pvc -l suite=pachyderm 
 minikube start --memory=10000mb --cpus=4 --disk-size=40000mb

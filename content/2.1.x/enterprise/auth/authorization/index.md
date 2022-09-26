@@ -9,21 +9,22 @@ series:
 seriesPart:
 ---
 
-!!! Note
-    Go back to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/){target=_blank} if you do not have a key.
-    Before setting up a Role-Based access control to Pachyderm resources, verify that:
+{{% notice note %}} 
+Go back to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have a key.
+Before setting up a Role-Based access control to Pachyderm resources, verify that:
 
-    - the [User Access Management](../#activate-user-access-management) feature is on by running `pachctl auth whoami`. The command should return `You are "pach:root"` (i.e., your are the **Root User** with `clusterAdmin` privileges). Run `pachctl auth use-auth-token` to login as a Root User.
-    - your [IdP connector is set](../authentication/idp-dex.md).
+- the [User Access Management](../#activate-user-access-management) feature is on by running `pachctl auth whoami`. The command should return `You are "pach:root"` (i.e., your are the **Root User** with `clusterAdmin` privileges). Run `pachctl auth use-auth-token` to login as a Root User.
+- your [IdP connector is set](../authentication/idp-dex.md).
+{{% /notice %}}
 
 Pachyderm authorization feature follows a **Role Based Access Control** model (RBAC).
-The access control is based on **Roles**  assigned to **Users**, granting them a set of permissions on Pachyderm's **Ressources** (**Role Bindings**). 
+The access control is based on **Roles**  assigned to **Users**, granting them a set of permissions on Pachyderm's **Resources** (**Role Bindings**). 
 
-In this page we will introduce Pachyderm's various Type of Users, Ressources, and Roles.
+In this page we will introduce Pachyderm's various Type of Users, Resources, and Roles.
 
 This preamble will set the contextual knowledge to better understand how to:
 
-- Grant Users permissions on Pachyderm Ressources.
+- Grant Users permissions on Pachyderm Resources.
 - Revoke Users.
 
 in the next [**Role Binding**](role-binding.md) page.
@@ -38,7 +39,7 @@ Pachyderm defines 5 type of User:
 
 - A **Robot User**: A Service account used for third party applications/systems integrating with Pachyderm APIs/Clients.
 
-- A **Pipeline User**: An internal Service Account used for Pipelines when interacting with Pachyderm ressources.
+- A **Pipeline User**: An internal Service Account used for Pipelines when interacting with Pachyderm resources.
 
 - A **All Cluster Users** (`allClusterUsers`) : A general subject that represents **everyone who has logged in to a cluster**.
 ## Resources
@@ -72,8 +73,9 @@ These roles are only applicable at the cluster level. `clusterAdmin` is a catch-
 
 - **clusterAdmin**: A clusterAdmin can perform any action on the cluster.
 
-!!! Info
-    Activating auth (`pachctl auth activate`) creates a Root User with irrevocable `clusterAdmin` rights. This Role must be set at the cluster level only.
+{{% notice info %}} 
+Activating auth (`pachctl auth activate`) creates a Root User with irrevocable `clusterAdmin` rights. This Role must be set at the cluster level only.
+{{% /notice %}}
 
 - **secretAdmin**: A secretAdmin has the ability to create, update, delete Kubernetes secrets on a cluster.
 

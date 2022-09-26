@@ -9,8 +9,9 @@ series:
 seriesPart:
 ---
 
-!!! Note
-     To get more information about Pachyderm Enterprise Edition, to ask questions, or to get access for evaluation, don't hesitate to get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io) or on our [Slack](https://www.pachyderm.com/slack/){target=_blank}. 
+{{% notice note %}}
+To get more information about Pachyderm Enterprise Edition, to ask questions, or to get access for evaluation, don't hesitate to get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io) or on our [Slack](https://www.pachyderm.com/slack/). 
+{{%/notice %}}
 
 
 ## Enterprise Features List
@@ -19,8 +20,11 @@ Pachyderm Enterprise Edition helps you scale and manage Pachyderm data pipelines
 
 It delivers the most recent version of the Community Edition of Pachyderm along with additional features and a UI (Console) for visualizing pipelines and exploring data.
 
-!!! Warning "THE ENTERPRISE EDITION LIFTS **ALL SCALING LIMITATIONS**"
-     Note that the activation of the Enterprise Edition [**lifts all scaling limits of the Community Edition**](../../reference/scaling-limits/). You can run as many pipelines as you need and parallelize your jobs without constraints.
+{{% notice warning %}} 
+THE ENTERPRISE EDITION LIFTS **ALL SCALING LIMITATIONS**
+
+Note that the activation of the Enterprise Edition [**lifts all scaling limits of the Community Edition**](../../reference/scaling-limits/). You can run as many pipelines as you need and parallelize your jobs without constraints.
+{{% /notice %}}
 
 
 ### Additional Features

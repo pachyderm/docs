@@ -9,20 +9,21 @@ series:
 seriesPart:
 ---
 
-!!! Note
-    - Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/){target=_blank} if you do not have an enterprise key.
-    - Before connecting your IdP to Pachyderm, verify that
-    the [Authentication](../../#activate-user-access-management) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges). 
-    Alternatively, [**you have the option to set your IdP values directly through Helm**](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/pachyderm/values.yaml#L489){target=_blank}. 
-    In any case, we recommend going through this page to understand the specifics of all the fields you will need to set up.
-    - Run `pachctl auth use-auth-token` to login as a Root User.
+{{% notice note %}} 
+- Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/){target=_blank} if you do not have an enterprise key.
+- Before connecting your IdP to Pachyderm, verify that
+the [Authentication](../../#activate-user-access-management) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges). 
+Alternatively, [**you have the option to set your IdP values directly through Helm**](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/pachyderm/values.yaml#L489){target=_blank}. 
+In any case, we recommend going through this page to understand the specifics of all the fields you will need to set up.
+- Run `pachctl auth use-auth-token` to login as a Root User.
+{{% /notice %}}
     
 
 Enable your users to authenticate to Pachyderm by logging into their favorite Identity Provider in 3 steps:
 
 1. [Register the Pachyderm Application with your IdP](#1-register-a-pachyderm-application-with-your-idp).
-1. [Set up and create your Idp-Pachyderm connector](#2-set-up-and-create-an-idp-pachyderm-connector).
-1. [Login](#3-login).
+2. [Set up and create your Idp-Pachyderm connector](#2-set-up-and-create-an-idp-pachyderm-connector).
+3. [Login](#3-login).
 
 Your users should now be able to [login to Pachyderm](./login.md).
 
