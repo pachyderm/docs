@@ -31,14 +31,14 @@ Pachyderm is deployed on a Kubernetes Cluster.
 Install the following clients on your machine before you start creating your cluster. 
 Use the latest available version of the components listed below.
 
-* [kubectl](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli){target=_blank}: the cli to interact with your cluster.
+* [kubectl](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli): the cli to interact with your cluster.
 * [pachctl](../../../getting-started/local-installation#install-pachctl): the cli to interact with Pachyderm.
-* Install [`Helm`](https://helm.sh/docs/intro/install/){target=_blank} for your deployment. 
+* Install [`Helm`](https://helm.sh/docs/intro/install/) for your deployment. 
 
 
 !!! Warning "Optional - Quick deployment of Pachyderm Enterprise (with Console)"
-    - The deployment of Console (Pachyderm UI) **requires a valid enterprise token**. To get your free-trial token, fill in [this form](https://www.pachyderm.com/trial/){target=_blank}, get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/){target=_blank}. 
-    - When deploying with Console, we create a default mock user (username:`admin`, password: `password`) to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](){target=_blank}.
+    - The deployment of Console (Pachyderm UI) **requires a valid enterprise token**. To get your free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
+    - When deploying with Console, we create a default mock user (username:`admin`, password: `password`) to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin]().
 
     For a better understanding of the additional steps and helm values needed when deploying with Console in a production environment, read about the [deployment of Pachyderm with Console](../console/#deploy-in-the-cloud) page. 
 
@@ -52,7 +52,7 @@ Select your favorite cloud provider.
 ### AWS
 
 1. Additional client installation:
-Install [AWS CLI](https://aws.amazon.com/cli/){target=_blank}
+Install [AWS CLI](https://aws.amazon.com/cli/)
 
 1. [Create an EKS cluster](../aws-deploy-pachyderm/#2-deploy-kubernetes-by-using-eksctl) 
 
@@ -100,7 +100,7 @@ Jump to [Helm install](#3-helm-install)
 
 ### Google
 1. Additional client installation:
-Install [Google Cloud SDK](https://cloud.google.com/sdk/){target=_blank}
+Install [Google Cloud SDK](https://cloud.google.com/sdk/)
 
 1. [Create a GKE cluster](../google-cloud-platform/#2-deploy-kubernetes)
 Note: 
@@ -144,10 +144,10 @@ Jump to [Helm install](#3-helm-install)
 ### Azure
 
 !!! Note
-    - This section assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing){target=_blank}.
+    - This section assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
 1. Additional client installation:
-Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli){target=_blank}.
+Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 1. [Create an AKS cluster](../azure/#2-deploy-kubernetes) 
 
@@ -281,12 +281,12 @@ You are all set!
 
 Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
 
-Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension){target=_blank} page for installation instructions. 
+Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension) page for installation instructions. 
 
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml){target=_blank} or follow the instructions to update your own.
+Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 !!! Note
-       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples){target=_blank} running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+       Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
 
    
     

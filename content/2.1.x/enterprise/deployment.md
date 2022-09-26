@@ -19,7 +19,7 @@ registering for the Enterprise Edition.
 
 {{% notice info %}} 
 - If you are a new user evaluating Pachyderm,
-you can request a [FREE trial token](https://www.pachyderm.com/trial/){target=_blank}.
+you can request a [FREE trial token](https://www.pachyderm.com/trial/).
 - If you are having trouble locating your activation code, contact [support@pachyderm.io](mailto:support@pachyderm.io).
 {{% /notice %}}
 

@@ -49,7 +49,7 @@ Where the parameters passed to the jsonnet pipeline spec are:
 
 In this example, we are leveraging Snowflake's support for queries traversing semi-structured data (here, JSON).
 
-- Find the [documentation for the support of semi-structured data in Snowflake](https://docs.snowflake.com/en/user-guide/semistructured-concepts.html#:~:text=Snowflake%20provides%20native%20support%20for,fast%20and%20efficient%20SQL%20querying.){target=_blank} here. 
+- Find the [documentation for the support of semi-structured data in Snowflake](https://docs.snowflake.com/en/user-guide/semistructured-concepts.html#:~:text=Snowflake%20provides%20native%20support%20for,fast%20and%20efficient%20SQL%20querying.) here. 
 
 - The query in the following example will use the WEATHER schema in the public test database SNOWFLAKE_SAMPLE_DATA in the COMPUTE_WH warehouse. The column V of the table DAILY_14_TOTAL stores JSON files.
 
@@ -130,15 +130,15 @@ Pachyderm supports two connection URL patterns to  query Snowflake:
 
 where:
 
-- The *[`account_identifier`](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html){target=_blank}* takes one of the following forms for most URLs:
+- The *[`account_identifier`](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)* takes one of the following forms for most URLs:
 
-  - Option 1 - [Account Name](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-1-account-name-in-your-organization){target=_blank}:`organization_name`-`account_name`
-  - Option 2 - [Account Locator](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-2-account-locator-in-a-region){target=_blank}: `account_locator`.`region`.`cloud`
+  - Option 1 - [Account Name](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-1-account-name-in-your-organization):`organization_name`-`account_name`
+  - Option 2 - [Account Locator](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#option-2-account-locator-in-a-region): `account_locator`.`region`.`cloud`
 
   In both cases, if you are used to connecting to Snowflake via an URL such as `https://account_identifier.snowflakecomputing.com`, you can use the full domain name `account_identifier.snowflakecomputing.com` in the url.
 
 - And *`db_name`/`schema_name`* are respectively the Database Name and the Schema (namespace) targeted.
-- Additionally, a *[`warehouse`](https://docs.snowflake.com/en/user-guide/warehouses.html#virtual-warehouses){target=_blank}*, or “compute resource” is required for all queries. Pass your warehouse as a parameter to the url: `warehouse=<warehouse_name>`
+- Additionally, a *[`warehouse`](https://docs.snowflake.com/en/user-guide/warehouses.html#virtual-warehouses)*, or “compute resource” is required for all queries. Pass your warehouse as a parameter to the url: `warehouse=<warehouse_name>`
 
 Here is an example of connection string to Snowflake: 
 
@@ -163,7 +163,7 @@ SQL Ingest's jsonnet pipeline specs [**`sql_ingest_cron.jsonnet`**](https://gith
 The name of each pipeline and related input and output repos are derived from the `name` parameter. In the example above, we have set `--arg name=myingest`.
 {{% /notice %}}
 
-The same base image [pachctf](https://hub.docker.com/repository/docker/pachyderm/pachtf){target=_blank} is used in both pipelines.
+The same base image [pachctf](https://hub.docker.com/repository/docker/pachyderm/pachtf) is used in both pipelines.
 
 Check the visual representation of the SQL Ingest DAG created above in Console: 
 

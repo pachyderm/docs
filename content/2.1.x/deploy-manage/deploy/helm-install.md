@@ -9,12 +9,12 @@ series:
 seriesPart:
 --- 
 
-The package manager [Helm](https://helm.sh/docs/intro/install/#helm){target=_blank} is the authoritative deployment method for Pachyderm.
+The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 
 !!! Reminder
     **Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
 
-This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm){target=_blank} or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/pachyderm){target=_blank}.
+This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/pachyderm).
 
 !!! Important "Before your start your installation process." 
       - Refer to this generic page for more information on  how to install and get started with `Helm`.
@@ -22,27 +22,27 @@ This page gives a high level view of the steps to follow to install Pachyderm us
       - If you are planning to install Pachyderm UI. Read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of an Ingress and the activation of authentication.
 ## Install
 ### Prerequisites
-1. Install [`Helm`](https://helm.sh/docs/intro/install/){target=_blank}. 
+1. Install [`Helm`](https://helm.sh/docs/intro/install/). 
 
 1. Install [`pachctl`](../../../getting-started/local-installation/#install-pachctl), the command-line utility for interacting with a Pachyderm cluster. 
 
-1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/){target=_blank} that apply to you:
+1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/) that apply to you:
     * **Find the deployment page that applies to your Cloud provider** (or custom deployment, or on-premises deployment).
     It will help list the various installation prerequisites, Kubernetes deployment instructions, and kubectl installation that fit your own use case:
     
-        For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform){target=_blank} page.
+        For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{ config.pach_branch }}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform) page.
 
     * Additionally, those instructions will also help you configure the various elements (object store, credentials...) that relate to your deployment needs. Those parameters values will **be specified in a YAML configuration file** as follows.
 
 ### Edit a Values.yaml File
-Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/examples){target=_blank}. Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.   
+Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/etc/helm/examples). Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.   
 
 See the reference [values.yaml](../../../reference/helm-values/) for the list of all available helm values at your disposal.
 
 !!! Warning
     **No default k8s CPU and memory requests and limits** are created for pachd.  If you don't provide values in the values.yaml file, then those requests and limits are simply not set. 
     
-    For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml){target=_blank}** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
+    For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
 
 !!! Note "**Platform Secrets: READ BEFORE ANY INSTALL OR UPGRADE**" 
         Pachyderm recommends using **"platform secrets"** to hold the values needed by a cluster at the time of the deployment (such as Postgresql admin login username and password, OAuth information to set up your IdP, or your enterprise license key). 
@@ -63,7 +63,7 @@ See the reference [values.yaml](../../../reference/helm-values/) for the list of
         oidc.upstreamIDPsSecretName 
         ``` 
         
-        It is important to note that if no secret name is provided for the fields mentioned above, Pachyderm will retrieve the dedicated plain-text secret values in the helm values and populate a generic, default, auto-generated secret (`pachyderm-bootstrap-config`) at the time of the installation. If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. Check the list of all secret values fields and  `pachyderm-bootstrap-config` keys in our [upgrade section](../../manage/upgrades/#troubleshoot-upgrades){target=_blank}.
+        It is important to note that if no secret name is provided for the fields mentioned above, Pachyderm will retrieve the dedicated plain-text secret values in the helm values and populate a generic, default, auto-generated secret (`pachyderm-bootstrap-config`) at the time of the installation. If no value is found in either one of those two cases, default values are used in `pachyderm-bootstrap-config`. Check the list of all secret values fields and  `pachyderm-bootstrap-config` keys in our [upgrade section](../../manage/upgrades/#troubleshoot-upgrades).
 
         This generic secret `pachyderm-bootstrap-config` is reset at each upgrade, and new default values are created, causing the **helm upgrade to fail unless you retrieve your default values (for example: `{{"kubectl get secret pachyderm-bootstrap-config -o go-template='{{.data.rootToken | base64decode }}'"}}`), create a dedicated secret for each, then manually set each secret name back into their corresponding secret name field above.**
        
@@ -81,7 +81,7 @@ See the reference [values.yaml](../../../reference/helm-values/) for the list of
     helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
     ```
     !!! Info "To choose a specific helm chart version"
-        **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm){target=_blank}.
+        **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
         
 
         - You can choose a specific helm chart version by adding a `--version` flag (for example, `--version 0.3.0`) to your `helm install.`
@@ -162,7 +162,7 @@ pachd               {{ config.pach_latest_version }}
 ```
 
 ## Uninstall Pachyderm's Helm Chart
-[Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/){target=_blank} a release as easily as you installed it.
+[Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) a release as easily as you installed it.
 ```shell
 helm uninstall pachd 
 ```
@@ -179,7 +179,7 @@ We recommend making sure that everything is properly removed following a helm un
 - If your uninstall failed, there might be config jobs still running. Run `kubectl get jobs.batch | grep pachyderm` and delete any remaining job.
 
 ## Upgrade Pachyderm's Helm Chart
-When a new version of Pachyderm's chart is released, or when you want to change the configuration of your release, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/){target=_blank} command:
+When a new version of Pachyderm's chart is released, or when you want to change the configuration of your release, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
 
 ```shell
 helm upgrade pachd -f my_new_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>        

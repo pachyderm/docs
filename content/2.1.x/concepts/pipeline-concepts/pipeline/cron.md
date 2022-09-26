@@ -28,7 +28,7 @@ A minimum cron pipeline must include the following parameters:
 | Parameter  | Description  |
 | ---------- | ------------ |
 | `"name"`   | A descriptive name of the cron pipeline. |
-| `"spec"`   | An interval between scheduled cron jobs. You can specify any value that is <br> formatted according to [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt){target=_blank}. <br> For example, if you set `*/10 * * * *`, the pipeline runs every ten minutes. |
+| `"spec"`   | An interval between scheduled cron jobs. You can specify any value that is <br> formatted according to [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt). <br> For example, if you set `*/10 * * * *`, the pipeline runs every ten minutes. |
 
 ## Example of a Cron Pipeline
 
@@ -36,16 +36,14 @@ For example, you want to query a database every ten seconds and update your
 dataset with the new data every time the pipeline is triggered. The following
 pipeline extract illustrates how you can specify this configuration.
 
-!!! example
-
-    ```json
-      "input": {
-        "cron": {
-          "name": "tick",
-          "spec": "@every 10s"
-        }
-      }
-    ```
+```json
+  "input": {
+    "cron": {
+      "name": "tick",
+      "spec": "@every 10s"
+    }
+  }
+```
 
 When you create this pipeline, Pachyderm creates a new input data repository
 that corresponds to the `cron` input. Then, Pachyderm automatically commits
@@ -62,17 +60,18 @@ previous one. You can set the overwrite flag to true to overwrite the
 timestamp file on each tick. To learn more about overwriting commits in
 Pachyderm, see [Datum processing](../datum/_index.md).
 
-!!! example
+```json
+  "input": {
+    "cron": {
+      "name": "tick",
+      "spec": "@every 10s",
+      "overwrite": true
+    }
+  }
+```
 
-    ```json
-      "input": {
-        "cron": {
-          "name": "tick",
-          "spec": "@every 10s",
-          "overwrite": true
-        }
-      }
-    ```
+{{% notice note %}} 
+See Also:
 
-!!! note "See Also:"
-    [Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/db){target=_blank}
+[Periodic Ingress from MongoDB](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/db)
+{{% /notice %}}

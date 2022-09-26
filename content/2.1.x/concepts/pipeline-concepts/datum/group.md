@@ -26,7 +26,7 @@ or to control the granularity of your datums through file name-matching.
 When you configure a group input, you must specify a glob pattern that
 includes a capture group. The capture group defines the specific string in
 the file path that is used to match files in other grouped repos.
-Capture groups work analogously to the [regex capture group](https://www.regular-expressions.info/refcapture.html){target=_blank}.
+Capture groups work analogously to the [regex capture group](https://www.regular-expressions.info/refcapture.html).
 You define the capture group inside parenthesis. Capture groups are numbered
 from left to right and can also be nested within each other. Numbering for
 nested capture groups is based on their opening parenthesis.
@@ -49,7 +49,7 @@ following capture groups:
 | `/*/(bar-(123))/*`  | Capture group 1: `bar-123`, capture group 2: `123`. |
 
 
-Also, groups require you to specify a [replacement group](https://www.regular-expressions.info/replacebackref.html){target=_blank}
+Also, groups require you to specify a [replacement group](https://www.regular-expressions.info/replacebackref.html)
 in the `group_by` parameter to define which capture groups you want to try
 to match.
 
@@ -63,8 +63,10 @@ You can test your glob pattern and capture groups by using the
 `pachctl list datum -f <your_pipeline_spec.json>` command as described in
 [List Datum](../../datum/glob-pattern/#test-your-datums).
 
-!!! Important "Useful"
-    The content of the capture group defined in the `group_by` parameter is available to your pipeline's code in an environment variable: `PACH_DATUM_<input.name>_GROUP_BY`.
+{{% notice note %}} 
+The content of the capture group defined in the `group_by` parameter is available to your pipeline's code in an environment variable: `PACH_DATUM_<input.name>_GROUP_BY`.
+{{% /notice %}}
+
 ## Example
 
 For example, a repository `labresults` contains the lab results of patients. 
@@ -72,14 +74,14 @@ The files at the root of your repository have the following naming convention. Y
 
 * `labresults` repo:
 
-   ```shell
-   ├── LIPID-patientID1-labID1.txt (1)
-   ├── LIPID-patientID2-labID1.txt (2)
-   ├── LIPID-patientID1-labID2.txt (3)
-   ├── LIPID-patientID3-labID3.txt (4)
-   ├── LIPID-patientID1-labID3.txt (5)
-   ├── LIPID-patientID2-labID3.txt (6)
-   ```
+ ```shell
+ ├── LIPID-patientID1-labID1.txt (1)
+ ├── LIPID-patientID2-labID1.txt (2)
+ ├── LIPID-patientID1-labID2.txt (3)
+ ├── LIPID-patientID3-labID3.txt (4)
+ ├── LIPID-patientID1-labID3.txt (5)
+ ├── LIPID-patientID2-labID3.txt (6)
+ ```
 
 Pachyderm runs your code on the set of files that match
 the glob pattern and capture groups.
@@ -121,12 +123,12 @@ The pipeline will process 3 datums for this job.
 
 The `pachctl list datum -f <your_pipeline_spec.json>` command is a useful tool to check your datums: 
 
-```code
+```s
 ID FILES                                                                                                                                                                                                                        STATUS TIME
 -  labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID1-labID1.txt, labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID1-labID3.txt, labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID1-labID2.txt -      -
 -  labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID2-labID1.txt, labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID2-labID3.txt                                                                           -      -
 -  labresults@722665ed49474db0aab5cbe4d8a20ff8:/LIPID-patientID3-labID3.txt
 ```
 
-To experiment further, see the full [group example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/group){target=_blank}.
+To experiment further, see the full [group example](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/group).
 

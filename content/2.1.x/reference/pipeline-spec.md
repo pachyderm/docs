@@ -12,12 +12,15 @@ seriesPart:
 This document discusses each of the fields present in a pipeline specification.
 To see how to use a pipeline spec to create a pipeline, refer to the [create pipeline](../../how-tos/pipeline-operations/create-pipeline/#create-a-pipeline) section.
 
-!!! Info
-    - Pachyderm's pipeline specifications can be written in JSON or YAML.
-    - Pachyderm uses its json parser if the first character is `{`.
+{{% notice info %}} 
+- Pachyderm's pipeline specifications can be written in JSON or YAML.
+- Pachyderm uses its json parser if the first character is `{`.
+{{% /notice %}}
 
-!!! Tip
+{{% notice tip %}} 
     A pipeline specification file can contain multiple pipeline declarations at once.
+{{% /notice %}}
+
 ## Manifest Format
 
 === "JSON Full Specifications"
@@ -302,7 +305,7 @@ This parameter enables you to add metadata to your pipeline pods by using Kubern
 
 Similarly to labels, you can add metadata through annotations. The difference is that you can specify any arbitrary metadata through annotations.
 
-Both parameters require a key-value pair.  Do not confuse this parameter with `pod_patch` which adds metadata to the user container of the pipeline pod. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){target=_blank} and [Kubernetes Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/){target=_blank} in the Kubernetes documentation.
+Both parameters require a key-value pair.  Do not confuse this parameter with `pod_patch` which adds metadata to the user container of the pipeline pod. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) and [Kubernetes Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes documentation.
 
 ### Transform (required)
 
@@ -349,7 +352,7 @@ Kubernetes secrets by name and specify a path to map the secrets or
 an environment variable (`env_var`) that the value should be bound to. Secrets
 must set `name` which should be the name of a secret in Kubernetes. Secrets
 must also specify either `mount_path` or `env_var` and `key`. See more
-information about Kubernetes secrets [here](https://kubernetes.io/docs/concepts/configuration/secret/){target=_blank}.
+information about Kubernetes secrets [here](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 `transform.image_pull_secrets` is an array of image pull secrets, image pull
 secrets are similar to secrets except that they are mounted before the
@@ -363,7 +366,7 @@ kubectl create secret docker-registry myregistrykey --docker-server=DOCKER_REGIS
 
 And then, notify your pipeline about it by using
 `"image_pull_secrets": [ "myregistrykey" ]`. Read more about image pull secrets
-[here](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod){target=_blank}.
+[here](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod).
 
 `transform.accept_return_code` is an array of return codes, such as exit codes
 from your Docker command that are considered acceptable.
@@ -442,7 +445,7 @@ workers because no machine has enough unclaimed memory. `cpu` works
 similarly, but for CPU time.
 
 For more information about resource requests and limits see the
-[Kubernetes docs](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/){target=_blank}
+[Kubernetes docs](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 on the subject.
 
 ### Resource Limits (optional)
@@ -457,7 +460,7 @@ requesting a GPU the worker will have sole access to that GPU while it is
 running. It's recommended to enable `autoscaling` if you are using GPUs so other
 processes in the cluster will have access to the GPUs while the pipeline has
 nothing to process. For more information about scheduling GPUs see the
-[Kubernetes docs](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/){target=_blank}
+[Kubernetes docs](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/)
 on the subject.
 
 ### Sidecar Resource Limits (optional)
@@ -516,8 +519,10 @@ output repository will be `s3://<output_repo>`.
 If you want to expose an input repository through an S3 gateway, see
 `input.pfs.s3` in [PFS Input](#pfs-input). 
 
-!!! note "See Also:"
-    [Environment Variables](../../deploy-manage/deploy/environment-variables/)
+{{% notice note %}}  
+See Also:
+[Environment Variables](../../deploy-manage/deploy/environment-variables/)
+{{% /notice%}}
 
 ### Input
 
@@ -599,9 +604,9 @@ with pipes must use them since they are more performant. The difference will
 be especially notable if the job only reads a subset of the files that are
 available to it.
 
-!!! note
-    `lazy` does not support datums that
-    contain more than 10000 files.
+{{% notice note %}} 
+`lazy` does not support datums that contain more than 10000 files.
+{{% /notice %}}
 
 `input.pfs.empty_files` controls how files are exposed to jobs. If
 set to `true`, it causes files from this PFS to be presented as empty files.
@@ -640,7 +645,7 @@ Alternatively, each of these datums might have come from separate repositories
 with the glob pattern set to `/` and being the only file system objects in these
 repositories.
 
-```
+```s
 | inputA | inputB | inputA ∪ inputB |
 | ------ | ------ | --------------- |
 | foo    | fizz   | foo             |
@@ -673,7 +678,7 @@ Alternatively, each of these datums might have come from separate repositories
 with the glob pattern set to `/` and being the only file system objects in these
 repositories.
 
-```
+```s
 | inputA | inputB | inputA ⨯ inputB |
 | ------ | ------ | --------------- |
 | foo    | fizz   | (foo, fizz)     |
@@ -700,10 +705,10 @@ one or more Cron inputs, `pachd` creates a repo for each of them. The start
 time for Cron input is specified in its spec.
 When a Cron input triggers,
 `pachd` commits a single file, named by the current [RFC
-3339 timestamp](https://www.ietf.org/rfc/rfc3339.txt){target=_blank} to the repo which
+3339 timestamp](https://www.ietf.org/rfc/rfc3339.txt) to the repo which
 contains the time which satisfied the spec.
 
-```
+```s
 {
     "name": string,
     "spec": string,
@@ -718,7 +723,7 @@ those of `input.pfs.name`. Except that it is not optional.
 
 `input.cron.spec` is a cron expression which specifies the schedule on
 which to trigger the pipeline. To learn more about how to write schedules,
-see the [Wikipedia page on cron](https://en.wikipedia.org/wiki/Cron){target=_blank}.
+see the [Wikipedia page on cron](https://en.wikipedia.org/wiki/Cron).
 Pachyderm supports non-standard schedules, such as `"@daily"`.
 
 `input.cron.repo` is the repo which Pachyderm creates for the input. This
@@ -731,7 +736,7 @@ time when the pipeline was created is used by default. Specifying a
 time enables you to run on matching times from the past or skip times
 from the present and only start running
 on matching times in the future. Format the time value according to [RFC
-3339](https://www.ietf.org/rfc/rfc3339.txt){target=_blank}.
+3339](https://www.ietf.org/rfc/rfc3339.txt).
 
 `input.cron.overwrite` is a flag to specify whether you want the timestamp file
 to be overwritten on each tick. This parameter is optional, and if you do not
@@ -865,12 +870,15 @@ thus will consume no resources.
 
 ### Reprocess Datums (optional)
 
-Per default, Pachyderm avoids repeated processing of unchanged datums (i.e., it processes only the datums that have changed and skip the unchanged datums). This [**incremental behavior**](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#example-1-one-file-in-the-input-datum-one-file-in-the-output-datum){target=_blank} ensures efficient resource utilization. However, you might need to alter this behavior for specific use cases and **force the reprocessing of all of your datums systematically**. This is especially useful when your pipeline makes an external call to other resources, such as a deployment or triggering an external pipeline system.  Set `"reprocess_spec": "every_job"` in order to enable this behavior. 
+Per default, Pachyderm avoids repeated processing of unchanged datums (i.e., it processes only the datums that have changed and skip the unchanged datums). This [**incremental behavior**](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#example-1-one-file-in-the-input-datum-one-file-in-the-output-datum) ensures efficient resource utilization. However, you might need to alter this behavior for specific use cases and **force the reprocessing of all of your datums systematically**. This is especially useful when your pipeline makes an external call to other resources, such as a deployment or triggering an external pipeline system.  Set `"reprocess_spec": "every_job"` in order to enable this behavior. 
 
-!!! Note "About the default behavior"
-    `"reprocess_spec": "until_success"` is the default behavior.
-    To mitigate datums failing for transient connection reasons,
-    Pachyderm automatically [retries user code three (3) times before marking a datum as failed](https://docs.pachyderm.com/latest/troubleshooting/pipeline-troubleshooting/#introduction){target=_blank}. Additionally, you can [set the  `datum_tries`](https://docs.pachyderm.com/latest/reference/pipeline-spec/#datum-tries-optional){target=_blank} field to determine the number of times a job attempts to run on a datum when a failure occurs.
+{{% notice note %}}  
+About the default behavior
+
+`"reprocess_spec": "until_success"` is the default behavior.
+To mitigate datums failing for transient connection reasons,
+Pachyderm automatically [retries user code three (3) times before marking a datum as failed](https://docs.pachyderm.com/latest/troubleshooting/pipeline-troubleshooting/#introduction). Additionally, you can [set the  `datum_tries`](https://docs.pachyderm.com/latest/reference/pipeline-spec/#datum-tries-optional) field to determine the number of times a job attempts to run on a datum when a failure occurs.
+{{% /notice %}}
 
 
 Let's compare `"until_success"` and `"every_job"`:
@@ -880,16 +888,18 @@ Let's compare `"until_success"` and `"every_job"`:
 
   - When adding 3 text files to the input repo (file1.txt, file2.txt, file3.txt), the 2 pipelines (reprocess_until_success and reprocess_at_every_job) will process the 3 datums (here, the glob pattern `/*` creates one datum per file).
   - Now, let's add a 4th file file4.txt to our input repo or modify the content of file2.txt for example.
-      - **Case of our default `reprocess_until_success.json pipeline`**: A quick check at the [list datum on the job id](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/glob-pattern/#running-list-datum-on-a-past-job){target=_blank} shows 4 datums, of which 3 were skipped. (Only the changed file was processed)
+      - **Case of our default `reprocess_until_success.json pipeline`**: A quick check at the [list datum on the job id](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/glob-pattern/#running-list-datum-on-a-past-job) shows 4 datums, of which 3 were skipped. (Only the changed file was processed)
       - **Case of `reprocess_at_every_job.json`**: A quick check at the list datum on the job id shows that all 4 datums were reprocessed, none were skipped.
 
-!!! Warning
-    `"reprocess_spec": "every_job` will not take advantage of Pachyderm's default de-duplication. In effect, this can lead to slower pipeline performance. Before using this setting, consider other options such as including metadata in your file, naming your files with a timestamp, UUID, or other unique identifiers in order to take advantage of de-duplication. Review how [datum processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/){target=_blank} works to understand more.
+{{% notice warning %}} 
+`"reprocess_spec": "every_job` will not take advantage of Pachyderm's default de-duplication. In effect, this can lead to slower pipeline performance. Before using this setting, consider other options such as including metadata in your file, naming your files with a timestamp, UUID, or other unique identifiers in order to take advantage of de-duplication. Review how [datum processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/) works to understand more.
+{{% /notice %}}
 
 ### Service (optional)
 
-!!! Warning
-    Service Pipelines are an [experimental feature](../../reference/supported-releases/#experimental).
+{{% notice warning %}} 
+Service Pipelines are an [experimental feature](../../reference/supported-releases/#experimental).
+{{% /notice %}}
 
 `service` specifies that the pipeline should be treated as a long running
 service rather than a data transformation. This means that `transform.cmd` is
@@ -910,14 +920,15 @@ a spout pipeline does not have
 a PFS input.
 Instead, it consumes data from an outside source.
 
-!!! Note
-    A service pipeline cannot be configured as a spout,
-    but **a spout can have a service added to it**
-    by adding the `service` attribute to the `spout` field.
-    In that case, Kubernetes creates
-    a service endpoint that you can expose externally. 
-    You can get the information
-    about the service by running `kubectl get services`.
+{{% notice note %}} 
+A service pipeline cannot be configured as a spout,
+but **a spout can have a service added to it**
+by adding the `service` attribute to the `spout` field.
+In that case, Kubernetes creates
+a service endpoint that you can expose externally. 
+You can get the information
+about the service by running `kubectl get services`.
+{{% /notice %}}
 
 For more information, see [Spouts](../concepts/pipeline-concepts/pipeline/spout.md).
 
@@ -947,12 +958,12 @@ For more information, see [Spouts](../concepts/pipeline-concepts/pipeline/spout.
 `scheduling_spec` specifies how the pods for a pipeline should be scheduled.
 
 `scheduling_spec.node_selector` allows you to select which nodes your pipeline
-will run on. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector){target=_blank}
+will run on. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)
 on node selectors for more information about how this works.
 
 `scheduling_spec.priority_class_name` allows you to select the prioriy class
 for the pipeline, which will how Kubernetes chooses to schedule and deschedule
-the pipeline. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass){target=_blank}
+the pipeline. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass)
 on priority and preemption for more information about how this works.
 
 ### Pod Spec (optional)
@@ -961,7 +972,7 @@ that haven't been explicitly exposed in the rest of the pipeline spec. A good
 way to figure out what JSON you should pass is to create a pod in Kubernetes
 with the proper settings, then do:
 
-```
+```s
 kubectl get po/<pod-name> -o json | jq .spec
 ```
 
@@ -969,12 +980,12 @@ this will give you a correctly formated piece of JSON, you should then remove
 the extraneous fields that Kubernetes injects or that can be set else where.
 
 The JSON is applied after the other parameters for the `pod_spec` have already
-been set as a [JSON Merge Patch](https://tools.ietf.org/html/rfc7386){target=_blank}. This
+been set as a [JSON Merge Patch](https://tools.ietf.org/html/rfc7386). This
 means that you can modify things such as the storage and user containers.
 
 ### Pod Patch (optional)
 `pod_patch` is similar to `pod_spec` above but is applied as a [JSON
-Patch](https://tools.ietf.org/html/rfc6902){target=_blank}. Note, this means that the
+Patch](https://tools.ietf.org/html/rfc6902). Note, this means that the
 process outlined above of modifying an existing pod spec and then manually
 blanking unchanged fields won't work, you'll need to create a correctly
 formatted patch by diffing the two pod specs.
@@ -984,11 +995,11 @@ formatted patch by diffing the two pod specs.
 Each PFS input needs to **specify a [glob pattern](../../concepts/pipeline-concepts/datum/glob-pattern/)**.
 
 Pachyderm uses the glob pattern to determine how many "datums" an input
-consists of.  [Datums](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/#datum){target=_blank} are the *unit of parallelism* in Pachyderm.  
+consists of.  [Datums](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/#datum) are the *unit of parallelism* in Pachyderm.  
 Per default,
 Pachyderm auto-scales its workers to process datums in parallel. 
 You can override this behaviour by setting your own parameter
-(see [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/){target=_blank}).
+(see [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/)).
 
 
 ## PPS Mounts and File Access

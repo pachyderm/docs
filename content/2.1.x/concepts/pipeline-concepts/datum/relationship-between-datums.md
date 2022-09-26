@@ -34,16 +34,21 @@ each pipeline's job.
 
 ### 4- **Final commit in the pipeline's output repo**
 
-!!! Note "Reminder"
-        The output produced by a pipeline's job is written to an output repo of the same name (i.e., output repo name = pipeline name).
+{{% notice note %}}
+The output produced by a pipeline's job is written to an output repo of the same name (i.e., output repo name = pipeline name).
+{{% /notice %}}
 
 The content of all `/pfs/out` is combined in a commit to the pipeline's output repo. 
 This generally means unioning all the files together.
 
-!!! Important "The Single Datum Provenance Rule"
-     If two outputted files have the same name (i.e., two datums wrote to the same output file, creating a conflict), then an error is raised, resulting in your pipeline failure. 
+{{% notice tip %}}  
+The Single Datum Provenance Rule
 
-     Avoid this anti-pattern from the start by **having each datum write in separate files**. Pachyderm provides an **environment variable `PACH_DATUM_ID`** that stores the datum ID. This variable is available in the pipeline's user code. To ensure that each datum outputs distinct file paths, you can use this variable in the name of your outputted files.
+If two outputted files have the same name (i.e., two datums wrote to the same output file, creating a conflict), then an error is raised, resulting in your pipeline failure. 
+
+Avoid this anti-pattern from the start by **having each datum write in separate files**. Pachyderm provides an **environment variable `PACH_DATUM_ID`** that stores the datum ID. This variable is available in the pipeline's user code. To ensure that each datum outputs distinct file paths, you can use this variable in the name of your outputted files.
+{{% /notice %}}
+
 ### 5. **Next: Add a `Reduce` (Merge) pipeline**
 
 If you need files from different datums merged into single files in a particular way:
@@ -60,11 +65,11 @@ The files can then be further
 appended or overwritten with other files to create the final result. Below, a second pipeline appends the content of all files in each directory into one final document.
 
 
-!!! Note "Worth Noting"
-    - In the example, the files are named after the datum itself. Depending on your use case, there might be more logical ways to name the files produced by a datum. However, in any case, make sure that this **name is unique for each datum** to avoid duplicate
-    files with the same file path.
-    - Each file is put in specific directories. This directory structure has been thought to facilitate the aggregation of the content in the following pipeline. Think about your directory structure so that the next glob pattern will aggregate your data as needed.
-
+{{% notice note %}} 
+- In the example, the files are named after the datum itself. Depending on your use case, there might be more logical ways to name the files produced by a datum. However, in any case, make sure that this **name is unique for each datum** to avoid duplicate
+files with the same file path.
+- Each file is put in specific directories. This directory structure has been thought to facilitate the aggregation of the content in the following pipeline. Think about your directory structure so that the next glob pattern will aggregate your data as needed.
+{{% /notice %}}
 
 ![Map Reduce](../../../images/parallel_data_processing.png)
 

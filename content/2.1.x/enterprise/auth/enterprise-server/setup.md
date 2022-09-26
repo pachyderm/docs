@@ -35,7 +35,7 @@ Deploying and configuring an enterprise server can be done in one of two flavors
 1. Or, [install a bare-bones version of Pachyderm with Helm](../../../../deploy-manage/deploy/helm-install/), then use `pachctl` commands to set up licensing and authentication.
 
 ### As Part Of A Regular Pachyderm Helm Deployment
-Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/local-dev-values.yaml){target=_blank}) or insert our minimal example below to your values.yaml.
+Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/local-dev-values.yaml)) or insert our minimal example below to your values.yaml.
 
 {{% notice warning %}} 
 - If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
@@ -159,7 +159,7 @@ Update the following values as follow:
 {{% /notice %}}
 
 
-Check the [list of all available helm values](../../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/pachyderm/values.yaml){target=_blank}.
+Check the [list of all available helm values](../../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/pachyderm/values.yaml).
 
 
 
@@ -210,7 +210,7 @@ Similarly to the enterprise server, we can configure our pachyderm clusters to l
 1. Register a cluster with the Enterprise Server using pachctl commands.
 
 ### Register Clusters With Helm
-Add the enterprise server's root token, and network addresses to the values.yaml of each cluster you plan to deploy and register, for the cluster and enterprise server to communicate ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/enterprise-member-values.yaml){target=_blank}), or insert our minimal example below to your values.yaml.
+Add the enterprise server's root token, and network addresses to the values.yaml of each cluster you plan to deploy and register, for the cluster and enterprise server to communicate ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/master/etc/helm/examples/enterprise-member-values.yaml)), or insert our minimal example below to your values.yaml.
 
 === "values.yaml with activation of an enterprise license and authentication"
 

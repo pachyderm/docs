@@ -48,8 +48,11 @@ The service section specifies the following parameters:
 | `"internal_port"` | The port that the code running inside the container binds to. |
 | `"external_port"` | The port that is exposed outside of the container. You must set this value in the range of `30000 — 32767`. You can access the service from any Kubernetes node through the following address: `http://<kubernetes-host>:<external_port>`. |
 
-!!! Info
-        The Service starts running *at the first commit* in the input repo.
+{{% notice info %}} 
+The Service starts running *at the first commit* in the input repo.
+{{% /notice %}}
 
-!!! Note "See Also:"    
-        - [Service](../../../../reference/pipeline-spec/#service-optional)
+{{% notice note %}}  
+See Also:
+- [Service](../../../../reference/pipeline-spec/#service-optional)
+{{% /notice %}}

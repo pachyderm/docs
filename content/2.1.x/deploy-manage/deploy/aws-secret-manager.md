@@ -17,7 +17,7 @@ This section will walk you through the steps to enable your EKS cluster to retri
 ## 1. Prerequisites
 
 Note that the following steps start right after installing your EKS cluster. 
-For informations on how to set your cluster up in production, refer to the [deploy Kubernetes](../aws-deploy-pachyderm/#2-deploy-kubernetes-by-using-eksctl){target=_blank} section of our deployment instructions on AWS.
+For informations on how to set your cluster up in production, refer to the [deploy Kubernetes](../aws-deploy-pachyderm/#2-deploy-kubernetes-by-using-eksctl) section of our deployment instructions on AWS.
 
 
 ## 2. Install The AWS Secrets and Configuration Provider (ASCP)
@@ -27,29 +27,36 @@ To retrieve your secrets through your workloads running on your cluster, you wil
 - A Secrets Store CSI driver
 - AWS Secrets Manager and Config Provider
 
-!!! Warning
-      The ASCP works with Amazon Elastic Kubernetes Service (Amazon EKS) 1.17+.
+{{% notice warning %}}
+The ASCP works with Amazon Elastic Kubernetes Service (Amazon EKS) 1.17+.
+{{% /notice %}}
 
 ### Install the Secrets Store CSI Driver
-Deploy the [**Secrets Store CSI driver**](https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html){target=_blank} by following the installation steps.
+Deploy the [**Secrets Store CSI driver**](https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html) by following the installation steps.
 
-!!! Important
-      Make sure to enable the [`Sync as Kubernetes Secret` feature](https://secrets-store-csi-driver.sigs.k8s.io/topics/sync-as-kubernetes-secret.html){target=_blank} explicitly by setting the helm parameter `syncSecret.enabled` to true.
+{{% notice warning %}}
+Make sure to enable the [`Sync as Kubernetes Secret` feature](https://secrets-store-csi-driver.sigs.k8s.io/topics/sync-as-kubernetes-secret.html) explicitly by setting the helm parameter `syncSecret.enabled` to true.
+{{% /notice %}}
 
-!!! Note "TL;DR"
-      ``` shell
-      helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
-      helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver --namespace kube-system --set syncSecret.enabled=true
-      ```
+{{% notice note  %}}
+TL;DR 
+
+``` shell
+helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver --namespace kube-system --set syncSecret.enabled=true
+```
+{{% /notice%}}
 
 ### Install the AWS Provider
 **AWS provider** for the Secrets Store CSI Driver allows you to make secrets stored in Secrets Manager appear as files mounted in Kubernetes pods.
 
-!!! Note "TL;DR"
-      ``` shell
-      kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
-      ```
+{{% notice tip %}}
+TL;DR
 
+``` shell
+kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
+```
+{{% /notice %}}
 ## 3. Store Pachyderm's Secrets in Secrets Manager
 In your Secret Manager Console, click on **Store a new secret**, select the **Other type of Secret** (for generic secrets), provide the following Key/Value pairs, then choose a secret name. 
 
@@ -76,16 +83,16 @@ To use IAM roles for service accounts, an IAM OIDC provider must exist for your 
 
 Before granting your EKS pods the proper permissions to access your secrets, you need to **create an IAM OIDC provider** for your cluster or retrieve the arn of your provider if you already have one created.  
 
-Follow the steps in [AWS user guide](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html){target=_blank}
+Follow the steps in [AWS user guide](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
 
-!!! Example "TL;DR"
-      ```shell
-      eksctl utils associate-iam-oidc-provider --cluster="<cluster-name>"
-      ```
+#### Example 
+```shell
+eksctl utils associate-iam-oidc-provider --cluster="<cluster-name>"
+```
 
 ### Create An IAM Policy That Grants Read Access To Your Secret 
 
-- Create a new [Policy from your IAM Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html){target=_blank}
+- Create a new [Policy from your IAM Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html)
 - Select the JSON tab.
 - Copy/Paste the following text in the JSON tab
 
@@ -109,23 +116,23 @@ Follow the steps in [AWS user guide](https://docs.aws.amazon.com/eks/latest/user
 }
 ```
 
-This [policy limits the access to the secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_examples_read){target=_blank} that your EKS cluster needs to access.
+This [policy limits the access to the secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_examples_read) that your EKS cluster needs to access.
 
 ### Attach Your Policy To An IAM Role and The Role To Your Service Account
 
-[Create an IAM role and attach the IAM policy](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html){target=_blank} that you specified to it. 
+[Create an IAM role and attach the IAM policy](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html) that you specified to it. 
 The role is associated with a Kubernetes service account created in the namespace that you specify (your cluster's) and annotated with `eks.amazonaws.com/role-arn:arn:aws:iam::111122223333:role/my-role-name`.
 
 
-!!! Example "TL;DR"
-    ``` shell
-    eksctl create iamserviceaccount \
-    --name "<my-service-account>" \
-    --cluster "<my-cluster>" \
-    --attach-policy-arn \ "<Copy the arn of your policy HERE>" \
-    --approve \ 
-    --override-existing-serviceaccounts
-    ```
+####  Example 
+``` shell
+eksctl create iamserviceaccount \
+--name "<my-service-account>" \
+--cluster "<my-cluster>" \
+--attach-policy-arn \ "<Copy the arn of your policy HERE>" \
+--approve \ 
+--override-existing-serviceaccounts
+```
 
 
 ## 5. Mount Your Secrets In Your EKS Cluster

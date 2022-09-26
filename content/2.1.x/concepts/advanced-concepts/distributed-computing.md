@@ -72,12 +72,12 @@ You can control the number of worker pods that Pachyderm runs in a
 pipeline by defining the `parallelism` parameter in the
 [pipeline specification](../../../reference/pipeline-spec/).
 
-!!! example
-    ```json
-    "parallelism_spec": {
-       // Exactly one of these two fields should be set
-       "constant": int
-    ```
+### Example 
+```json
+"parallelism_spec": {
+    // Exactly one of these two fields should be set
+    "constant": int
+```
 
 Pachyderm has the following parallelism strategies that you
 can set in the pipeline spec:
@@ -101,7 +101,9 @@ Multiple jobs can run in parallel and cause new workers to spin up. For example,
 
 One limitation of autoscaling is that **it cannot dynamically scale down**. Suppose a job with many datums is near completion, only one worker is still working while the others are idle. Pachyderm does not yet have a way for the idle workers to steal work, and there are a few issues that prevent us from spinning down the idle workers. Kubernetes does not have a good way to scale down a controller and specify which pods should be killed, so scaling down may kill the worker pod that is still doing work. This means another worker will have to restart that work from scratch, and the job will take longer. Additionally, we want to keep the workers around to participate in the **distributed merge process** at the end of the job.
 
-!!! note "See Also:"
+{{% notice note %}} 
+See Also:
 
-    * [Glob Pattern](../../pipeline-concepts/datum/glob-pattern/)
-    * [Pipeline Specification](../../../reference/pipeline-spec/)
+* [Glob Pattern](../../pipeline-concepts/datum/glob-pattern/)
+* [Pipeline Specification](../../../reference/pipeline-spec/)
+{{% /notice %}}

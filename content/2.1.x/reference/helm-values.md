@@ -14,11 +14,12 @@ seriesPart:
 This document discusses each of the fields present in the `values.yaml` that can be used to deploy with Helm.
 To see how to use a helm values files to customize your deployment, refer to our [Helm Deployment Documentation](../../deploy-manage/deploy/helm-install/) section.
 
-!!! Note
-    You rarely need to specify all the fields. Most fields either come with sensible defaults or can be empty.
-    Values that are unchanged from the defaults can be omitted from the values file you supply at installation.
-    
-    Take a look at our deployment instructions [locally](../../getting-started/local-installation/) or [in the cloud](../../deploy-manage/deploy/quickstart/) to identify which of those are required for your deployment target.
+{{% notice note %}} 
+You rarely need to specify all the fields. Most fields either come with sensible defaults or can be empty.
+Values that are unchanged from the defaults can be omitted from the values file you supply at installation.
+
+Take a look at our deployment instructions [locally](../../getting-started/local-installation/) or [in the cloud](../../deploy-manage/deploy/quickstart/) to identify which of those are required for your deployment target.
+{{% /notice %}}
 
 ## Values.yaml
 The following section displays the complete list of fields available in the [values.yaml](https://github.com/pachyderm/pachyderm/blob/2.1.x/etc/helm/pachyderm/values.yaml). 
@@ -311,7 +312,7 @@ If you're using Microsoft Blob Storage as your storage backend, configure it her
 
 ##### pachd.storage.minio
 
-If you're using [MinIO](https://min.io/){target=_blank} as your storage backend, configure it here.
+If you're using [MinIO](https://min.io/) as your storage backend, configure it here.
 
 - `storage.minio.bucket` sets the bucket to use.
 
@@ -354,20 +355,23 @@ This section is to configure the PostgresQL Subchart, if used.
 
 - `persistence.storageClass` specifies the storage class for the postgresql Persistent Volume (PV)
 
-!!! Note "More"
-    See notes in Bitnami chart values.yaml file for more information.
-    More info for setting up storage classes on various cloud providers:
+{{% notice note %}} 
+More
+See notes in Bitnami chart values.yaml file for more information.
+More info for setting up storage classes on various cloud providers:
 
-      - AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
-      - GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
-      - Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+  - AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
+  - GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
+  - Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+{{% /notice %}}
 
 - `storageSize` specifies the size of the volume to use for postgresql.
 
-!!! Attention
-    - Recommended Minimum Disk size for Microsoft/Azure: 256Gi  - 1,100 IOPS https://azure.microsoft.com/en-us/pricing/details/managed-disks/
-    - Recommended Minimum Disk size for Google/GCP: 50Gi        - 1,500 IOPS https://cloud.google.com/compute/docs/disks/performance
-    - Recommended Minimum Disk size for Amazon/AWS: 500Gi (GP2) - 1,500 IOPS https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
+{{% notice warning %}} 
+- Recommended Minimum Disk size for Microsoft/Azure: 256Gi  - 1,100 IOPS https://azure.microsoft.com/en-us/pricing/details/managed-disks/
+- Recommended Minimum Disk size for Google/GCP: 50Gi        - 1,500 IOPS https://cloud.google.com/compute/docs/disks/performance
+- Recommended Minimum Disk size for Amazon/AWS: 500Gi (GP2) - 1,500 IOPS https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
+{{% /notice %}}
 
 ### cloudsqlAuthProxy
 

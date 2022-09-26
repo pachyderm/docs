@@ -13,7 +13,7 @@ seriesPart:
 `Jsonnet pipeline specifications` is an [experimental feature](../../../reference/supported-releases/#experimental).
 {{% /notice %}}
 
-Pachyderm [pipeline's specification](../../../reference/pipeline-spec){target=_blank} files are intuitive, simple, and language agnostic.
+Pachyderm [pipeline's specification](../../../reference/pipeline-spec) files are intuitive, simple, and language agnostic.
 They are, however, very static.
 
 A **jsonnet pipeline specification file** is a thin wrapping layer atop of your JSON file, 
@@ -26,7 +26,7 @@ while experimenting with various values of given fields.
 ## Jsonnet Specs
 
 Pachyderm's Jsonnet pipeline specs are written in 
-the open-source templating language [jsonnet](https://jsonnet.org/){target=_blank}.
+the open-source templating language [jsonnet](https://jsonnet.org/).
 Jsonnet wraps the baseline of a JSON file into a function, 
 allowing the injection of parameters to a pipeline specification file. 
 
@@ -56,7 +56,7 @@ See the full `edges.jsonnet` here:
 {{ gitsnippet('pachyderm/pachyderm', 'examples/opencv/jsonnet/edges.jsonnet', 'master') }}
 ```
 
-Or check our full ["jsonnet-ed" opencv example](https://github.com/pachyderm/pachyderm/tree/2.1.x/examples/opencv/jsonnet){target=_blank}.
+Or check our full ["jsonnet-ed" opencv example](https://github.com/pachyderm/pachyderm/tree/2.1.x/examples/opencv/jsonnet).
 
 To create or update a pipeline using a jsonnet pipeline specification file:
 

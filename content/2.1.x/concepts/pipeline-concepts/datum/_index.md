@@ -10,10 +10,12 @@ seriesPart:
 layout: glossary
 --- 
 
-!!! note "TL;DR"
-    Datums define what input data is seen by your code. It can be
-    all data at once, each directory independently, individual
-    files one by one, or combined data from multiple inputs together.
+{{% notice note %}} 
+TL;DR
+Datums define what input data is seen by your code. It can be
+all data at once, each directory independently, individual
+files one by one, or combined data from multiple inputs together.
+{{% /notice %}}
 
 ## Definition
 A datum is **the smallest indivisible unit of computation within a job**.
@@ -82,10 +84,11 @@ aggregation methods, each configurable in the "input" section of the pipeline sp
      on file paths, not the actual file content.
 
 
-!!! Important
-     Pipeline inputs, number of workers, parallelism parameters, and other
-     performance knobs can all be configured through their
-     corresponding fields in the [pipeline specification](../../../reference/pipeline-spec.md).
+{{% notice warning %}} 
+Pipeline inputs, number of workers, parallelism parameters, and other
+performance knobs can all be configured through their
+corresponding fields in the [pipeline specification](../../../reference/pipeline-spec.md).
+{{% /notice %}}
 
 To understand how datums affect data processing in Pachyderm, you need to
 understand the following subconcepts:

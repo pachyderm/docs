@@ -17,21 +17,21 @@ skip to [Configure GPUs in Pipelines](#configure-gpus-in-pipelines).
 
 Pachyderm leverages [Kubernetes Device Plugins](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) to let Kubernetes Pods access specialized hardware such as GPUs.
 For instructions on how to set up a GPU-enabled Kubernetes cluster
-through device plugins, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/){target=_blank}.
+through device plugins, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/).
 
 ## Pachyderm on NVIDIA DGX A100
 
-Let’s walk through the main steps allowing Pachyderm to leverage the AI performance of your [DGX A100](https://www.nvidia.com/en-in/data-center/dgx-a100/){target=_blank} GPUs.
+Let’s walk through the main steps allowing Pachyderm to leverage the AI performance of your [DGX A100](https://www.nvidia.com/en-in/data-center/dgx-a100/) GPUs.
 
 !!! Info
-    Read about NVIDIA DGX A100's full [userguide](https://docs.nvidia.com/dgx/pdf/dgxa100-user-guide.pdf){target=_blank}.
+    Read about NVIDIA DGX A100's full [userguide](https://docs.nvidia.com/dgx/pdf/dgxa100-user-guide.pdf).
 
 
 !!! Important "TL;DR"
     Support for scheduling GPU workloads in Kubernetes requires a fair amount of trial and effort. To ease the process:
 
-    - This [setup page](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html){target=_blank} will **walk you through very detailed installation steps** to prepare your Kubernetes cluster.
-    - Take advantage of a user's past experience in [this blog](https://discuss.kubernetes.io/t/my-adventures-with-microk8s-to-enable-gpu-and-use-mig-on-a-dgx-a100/15366){target=_blank}.
+    - This [setup page](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html) will **walk you through very detailed installation steps** to prepare your Kubernetes cluster.
+    - Take advantage of a user's past experience in [this blog](https://discuss.kubernetes.io/t/my-adventures-with-microk8s-to-enable-gpu-and-use-mig-on-a-dgx-a100/15366).
 
 Here is a quick recap of what will be needed:
 
@@ -41,23 +41,23 @@ Here is a quick recap of what will be needed:
 
 Now that the DGX is added to your API server, you can then proceed to:
  
-1. Enable the GPU worker node in the Kubernetes cluster by installing [NVIDIA's dependencies](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-dependencies){target=_blank}:
+1. Enable the GPU worker node in the Kubernetes cluster by installing [NVIDIA's dependencies](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-dependencies):
 
     Dependencies packages and deployment methods may vary. The following list is not exhaustive and is intended to serve as a general guideline.
 
     - **NVIDIA drivers**
 
-        For complete instructions on setting up NVIDIA drivers, visit this [quickstart guide](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html){target=_blank} or check this [summary of the steps](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-drivers){target=_blank}. 
+        For complete instructions on setting up NVIDIA drivers, visit this [quickstart guide](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) or check this [summary of the steps](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-drivers). 
 
-    - **NVIDIA [Container Toolkit (nvidia-docker2)](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-container-toolkit-nvidia-docker2){target=_blank}**
+    - **NVIDIA [Container Toolkit (nvidia-docker2)](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-container-toolkit-nvidia-docker2)**
 
         You may need to use different packages depending on your container engine.
       
     - **NVIDIA Kubernetes Device Plugin**
 
-        To use GPUs in Kubernetes, the [NVIDIA Device Plugin](https://github.com/NVIDIA/k8s-device-plugin/){target=_blank} is required. The NVIDIA Device Plugin is a daemonset that enumerates the number of GPUs on each node of the cluster and allows pods to be run on GPUs. Follow those [steps](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-device-plugin){target=_blank} to deploy the device plugin as a daemonset using helm. 
+        To use GPUs in Kubernetes, the [NVIDIA Device Plugin](https://github.com/NVIDIA/k8s-device-plugin/) is required. The NVIDIA Device Plugin is a daemonset that enumerates the number of GPUs on each node of the cluster and allows pods to be run on GPUs. Follow those [steps](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/install-k8s.html#install-nvidia-device-plugin) to deploy the device plugin as a daemonset using helm. 
 
-    Checkpoint: Run [NVIDIA System Management Interface](https://developer.nvidia.com/nvidia-system-management-interface#:~:text=The%20NVIDIA%20System%20Management%20Interface,monitoring%20of%20NVIDIA%20GPU%20devices.&text=Nvidia-smi%20can%20report%20query,standard%20output%20or%20a%20file.){target=_blank} (nvidia-smi) on the CLI. It should return the list of NVIDIA GPUs.
+    Checkpoint: Run [NVIDIA System Management Interface](https://developer.nvidia.com/nvidia-system-management-interface#:~:text=The%20NVIDIA%20System%20Management%20Interface,monitoring%20of%20NVIDIA%20GPU%20devices.&text=Nvidia-smi%20can%20report%20query,standard%20output%20or%20a%20file.) (nvidia-smi) on the CLI. It should return the list of NVIDIA GPUs.
 
 1. Test a sample container with GPU:
 
@@ -94,9 +94,9 @@ Now that the DGX is added to your API server, you can then proceed to:
 !!! Important "Note"
     Note that you have the option to use GPUs for compute-intensive workloads on:
 
-    - [Google Container Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus){target=_blank}.
-    - [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/blogs/containers/utilizing-nvidia-multi-instance-gpu-mig-in-amazon-ec2-p4d-instances-on-amazon-elastic-kubernetes-service-eks/){target=_blank}.
-    - [Azure Kubermnetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/gpu-cluster){target=_blank}.
+    - [Google Container Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus).
+    - [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/blogs/containers/utilizing-nvidia-multi-instance-gpu-mig-in-amazon-ec2-p4d-instances-on-amazon-elastic-kubernetes-service-eks/).
+    - [Azure Kubermnetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/gpu-cluster).
 
 ## Configure GPUs in Pipelines
 
@@ -111,7 +111,7 @@ by [setting up GPU resource limits](../../../reference/pipeline-spec/#resource-r
       - Additionally, specify how much of GPU your pipeline worker will need via the `resource_requests` fields in your [pipeline specification](../../../reference/pipeline-spec/#resource-requests-optional) with `ressource_requests` <= `resource_limits`.
 
 
-Below is an example of a pipeline spec for a GPU-enabled pipeline from our [market sentiment analysis example](https://github.com/pachyderm/examples/tree/master/market-sentiment){target=_blank}:
+Below is an example of a pipeline spec for a GPU-enabled pipeline from our [market sentiment analysis example](https://github.com/pachyderm/examples/tree/master/market-sentiment):
 
 ```yaml
 {{ gitsnippet('pachyderm/examples', 'market-sentiment/pachyderm/train_model.json') }}

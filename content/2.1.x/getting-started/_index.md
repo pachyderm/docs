@@ -18,7 +18,7 @@ For a quick start, deploy Pachyderm on your [local machine](./local-installation
 
 {{% notice note %}}  
 Got questions?
-[Request a demo](https://www.pachyderm.com/request-a-demo/){target=_blank}, join our [Users Slack Channel](https://www.pachyderm.com/slack/), or [Contact our Support Team](mailto:support@pachyderm.io).
+[Request a demo](https://www.pachyderm.com/request-a-demo/), join our [Users Slack Channel](https://www.pachyderm.com/slack/), or [Contact our Support Team](mailto:support@pachyderm.io).
 {{% /notice %}}
 
 {{% notice warning %}} 

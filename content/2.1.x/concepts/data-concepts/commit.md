@@ -9,8 +9,9 @@ series:
 seriesPart:
 --- 
 
-!!! Note "Attention"
-         Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID){target=_blank} for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+{{% notice note %}} 
+Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+{{% /notice %}}
 
 ## Definition
 
@@ -24,14 +25,16 @@ you can finish your modifications by running the `pachctl finish commit` command
 This command saves your changes and closes that repository's commit,
 indicating the data is ready for processing by downstream pipelines.
 
-!!! Warning
-    `start commit` can only be used on input repos without [provenance](./provenance.md). Such repos are the entry points of a DAG.
-    You cannot manually start a commit from a pipeline [output or meta repo](./repo.md).
+{{% notice warning %}} 
+`start commit` can only be used on input repos without [provenance](./provenance.md). Such repos are the entry points of a DAG.
+You cannot manually start a commit from a pipeline [output or meta repo](./repo.md).
+{{% /notice %}}
 
  When you create a new commit, the previous commit on which the new commit is based becomes the parent of the new commit. Your repo history consists of those parent-child relationships between your data commits.
 
-!!! Note
-    An initial commit has `<none>` as a parent.
+{{% notice note %}} 
+An initial commit has `<none>` as a parent.
+{{% /notice %}}
 
 Additionally, **commits have an "origin"**.
 You can see an origin as the answer to: **"What triggered the production of this commit?"**.
@@ -40,8 +43,9 @@ That origin can be of 3 types:
 
 - `USER`: The commit is the result of a user change (`put file`, `update pipeline`, `delete file`...)
     
-    !!! Info
-        Every `USER` change is an initial commit.
+  {{% notice info %}} 
+  Every `USER` change is an initial commit.
+  {{% /notice %}}
 
 - `AUTO`: Pachyderm's pipelines are data-driven. A data commit to a data repository may
     trigger downstream processing jobs in your pipeline(s). The output commits from
@@ -50,10 +54,10 @@ That origin can be of 3 types:
     They have the same content as their parent commit and are mainly used for [global IDs](../../advanced-concepts/globalID/).
 
 
-!!! Note
-    To track provenance, Pachyderm requires **all commits to belong to exactly one branch**.
-    When moving a commit from one [branch](./branch.md) to another, Pachyderm creates an `ALIAS` commit on the other branch.
-
+{{% notice note %}} 
+To track provenance, Pachyderm requires **all commits to belong to exactly one branch**.
+When moving a commit from one [branch](./branch.md) to another, Pachyderm creates an `ALIAS` commit on the other branch.
+{{% /notice %}}
 
 Each commit has an alphanumeric identifier (ID) that you can reference in the `<repo>@<commitID>` format (or `<repo>@<branch>=<commitID>` if the commit has multiple branches from the same repo) .
 
@@ -70,18 +74,18 @@ by running `pachctl list commit <commitID>` or restrict to a particular reposito
 
 - The `pachctl list commit <repo>@<branch>` command returns the commits in the given branch of a repo.
 
-    !!! example
-        ```shell
-        pachctl list commit images@master
-        ```
+  ### Example 
+    ```shell
+    pachctl list commit images@master
+    ```
 
-        **System Response:**
+    **System Response:**
 
-        ```shell
-        REPO   BRANCH COMMIT                           FINISHED        SIZE       ORIGIN DESCRIPTION
-        images master c6d7be4a13614f2baec2cb52d14310d0 33 minutes ago  5.121MiB    USER
-        images master 385b70f90c3247e69e4bdadff12e44b2 2 hours ago     2.561MiB    USER
-        ```
+    ```shell
+    REPO   BRANCH COMMIT                           FINISHED        SIZE       ORIGIN DESCRIPTION
+    images master c6d7be4a13614f2baec2cb52d14310d0 33 minutes ago  5.121MiB    USER
+    images master 385b70f90c3247e69e4bdadff12e44b2 2 hours ago     2.561MiB    USER
+    ```
 
 - `list commit <repo>`, without mention of a branch, displays results from all branches of the specified repository.
 
@@ -95,48 +99,48 @@ of when the commit was opened and finished.
 - If you specify a branch instead of a specific commit (`pachctl inspect commit <repo>@<branch>`),
 Pachyderm displays the information about the HEAD of the branch.
 
-!!! example
-    Add a `--raw` flag to output a detailed JSON version of the commit.
-    ```shell
-    pachctl inspect commit images@c6d7be4a13614f2baec2cb52d14310d0 --raw
-    ```
+### Example
+Add a `--raw` flag to output a detailed JSON version of the commit.
+```shell
+pachctl inspect commit images@c6d7be4a13614f2baec2cb52d14310d0 --raw
+```
 
-    **System Response:**
+**System Response:**
 
-    ```json
-    {
-        "commit": {
-            "branch": {
-            "repo": {
-                "name": "images",
-                "type": "user"
-            },
-            "name": "master"
-            },
-            "id": "c6d7be4a13614f2baec2cb52d14310d0"
+```json
+{
+    "commit": {
+        "branch": {
+        "repo": {
+            "name": "images",
+            "type": "user"
         },
-        "origin": {
-            "kind": "USER"
+        "name": "master"
         },
-        "parent_commit": {
-            "branch": {
-            "repo": {
-                "name": "images",
-                "type": "user"
-            },
-            "name": "master"
-            },
-            "id": "385b70f90c3247e69e4bdadff12e44b2"
+        "id": "c6d7be4a13614f2baec2cb52d14310d0"
+    },
+    "origin": {
+        "kind": "USER"
+    },
+    "parent_commit": {
+        "branch": {
+        "repo": {
+            "name": "images",
+            "type": "user"
         },
-        "started": "2021-08-02T20:13:10.393036120Z",
-        "finishing": "2021-08-02T20:13:10.393036120Z",
-        "finished": "2021-08-02T20:13:11.851931210Z",
-        "size_bytes_upper_bound": "244068",
-        "details": {
-            "size_bytes": "244068"
-        }
+        "name": "master"
+        },
+        "id": "385b70f90c3247e69e4bdadff12e44b2"
+    },
+    "started": "2021-08-02T20:13:10.393036120Z",
+    "finishing": "2021-08-02T20:13:10.393036120Z",
+    "finished": "2021-08-02T20:13:11.851931210Z",
+    "size_bytes_upper_bound": "244068",
+    "details": {
+        "size_bytes": "244068"
     }
-    ```
+}
+```
 
 ## Squash And Delete Commit
 

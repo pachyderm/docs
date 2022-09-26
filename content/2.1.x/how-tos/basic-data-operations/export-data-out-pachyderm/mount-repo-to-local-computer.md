@@ -10,11 +10,12 @@ seriesPart:
 ---
 
 
-!!! warning
-    Pachyderm uses FUSE to mount repositories as local filesystems.
-    Because Apple has announced phasing out support for macOS
-    kernel extensions, including FUSE, this functionality is no
-    longer stable on macOS Catalina (10.15) or later.
+{{% notice warning %}} 
+Pachyderm uses FUSE to mount repositories as local filesystems.
+Because Apple has announced phasing out support for macOS
+kernel extensions, including FUSE, this functionality is no
+longer stable on macOS Catalina (10.15) or later.
+{{% /notice %}}
 
 Pachyderm enables you to mount a repository
 as a local filesystem on your computer by using the
@@ -54,7 +55,7 @@ Yosemite or later.
 
     For more information, see:
 
-  * [FUSE for macOS](https://osxfuse.github.io/){target=_blank}
+  * [FUSE for macOS](https://osxfuse.github.io/)
 
 ## Mounting Repositories in Read-Only Mode
 
@@ -66,24 +67,25 @@ the data, without modifying it. For example, you can mount your
 repo to a local computer and then open that directory in a Jupyter
 Notebook for exploration. 
 
-!!! Note
-      The `pachctl mount` command allows you to mount not only the default
-      branch, typically a `master` branch, but also other Pachyderm
-      branches. By default, Pachyderm mounts the `master` branch. However,
-      if you add a branch to the name of the repo, the `HEAD` of that branch
-      will be mounted.
+{{% notice note %}} 
+The `pachctl mount` command allows you to mount not only the default
+branch, typically a `master` branch, but also other Pachyderm
+branches. By default, Pachyderm mounts the `master` branch. However,
+if you add a branch to the name of the repo, the `HEAD` of that branch
+will be mounted.
 
-      **Example:**
+**Example:**
 
-      ```shell
-      pachctl mount images --repos images@staging
-      ```
+```shell
+pachctl mount images --repos images@staging
+```
 
-      You can also mount a specific commit, but because commits
-      might be on multiple branches, modifying them might result in data deletion
-      in the `HEAD` of the branches. Therefore, you can only mount commits in
-      read-only mode. If you want to write to a specific commit that is not
-      the `HEAD` of a branch, you can create a new branch with that commit as `HEAD`.
+You can also mount a specific commit, but because commits
+might be on multiple branches, modifying them might result in data deletion
+in the `HEAD` of the branches. Therefore, you can only mount commits in
+read-only mode. If you want to write to a specific commit that is not
+the `HEAD` of a branch, you can create a new branch with that commit as `HEAD`.
+{{% /notice %}}
 
 ## Mounting Repositories in Read-Write Mode
 
@@ -92,8 +94,9 @@ write access to the mounted repositories, which means that you can
 open the files for editing and put them back to the Pachyderm
 repository. 
 
-!!! Warning
-    Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+{{% notice warning %}} 
+Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+{{% /notice %}}
 
 For example, you have the [OpenCV example pipeline](../../../../getting-started/beginner-tutorial/#image-processing-with-opencv)
 up and running. If you want to edit files in the `images`
@@ -115,17 +118,11 @@ locally, their changes will likely be overwritten when you exit
 `pachctl mount`. This happens because  Therefore, make sure that you do not work on the
 same files while someone else is working on them.
 
-!!! Note
-    
-    - Use writable mount **ONLY** when you have sole ownership
-    over the mounted data. Otherwise, merge conflicts or
-    unexpected data overwrites can occur.
+{{% notice note %}} 
+- Use writable mount **ONLY** when you have sole ownership over the mounted data. Otherwise, merge conflicts or unexpected data overwrites can occur.
 
-    - Because output repositories are created by the Pachyderm
-      pipelines, they are immutable. Only a pipeline
-      can change and update files in these repositories. If you try to change
-      a file in an output repo, you will get an error message.
-
+- Because output repositories are created by the Pachyderm pipelines, they are immutable. Only a pipeline can change and update files in these repositories. If you try to change a file in an output repo, you will get an error message.
+{{% /notice %}}
 
 ### How to Mount/Unmount a Pachyderm Repo
 
@@ -138,78 +135,77 @@ For example, `mydirectory`.
 
 1. Run `pachctl mount` for a repository and branch that you want to mount:
 
-      ```shell
-      pachctl mount <path-on-your-computer> [flags]
-      ```
+   ```shell
+   pachctl mount <path-on-your-computer> [flags]
+   ```
 
-      **Example:**
+   **Example:**
 
-      * If you want to mount all the repositories in your Pachyderm cluster 
-      to a `mydirectory` directory on your computer and give `WRITE` access to them, run:
+   * If you want to mount all the repositories in your Pachyderm cluster 
+   to a `mydirectory` directory on your computer and give `WRITE` access to them, run:
 
-      ```shell
-      pachctl mount mydirectory --write
-      ```
+   ```shell
+   pachctl mount mydirectory --write
+   ```
 
-      * If you want to mount the master branch of the `images` repo
-      and enable file editing in this repository, run:
+   * If you want to mount the master branch of the `images` repo
+   and enable file editing in this repository, run:
 
-      ```shell
-      pachctl mount mydirectory --repos images@master+w
-      ```
+   ```shell
+   pachctl mount mydirectory --repos images@master+w
+   ```
 
-      To give read-only access, omit `+w`.
+   To give read-only access, omit `+w`.
 
-      **System Response:**
+   **System Response:**
 
-      ```
-      ro for images: &{Branch:master Write:true}
-      ri: repo:<name:"montage" > created:<seconds:1591812554 nanos:348079652 > size_bytes:1345398 description:"Output repo for pipeline montage." branches:<repo:<name:"montage" > name:"master" >
-      continue
-      ri: repo:<name:"edges" > created:<seconds:1591812554 nanos:201592492 > size_bytes:136795 description:"Output repo for pipeline edges." branches:<repo:<name:"edges" > name:"master" >
-      continue
-      ri: repo:<name:"images" > created:<seconds:1591812554 nanos:28450609 > size_bytes:244068 branches:<repo:<name:"images" > name:"master" >
-      MkdirAll /var/folders/jl/mm3wrxqd75l9r1_d0zktphdw0000gn/T/pfs201409498/images
-      ```
+   ```s
+   ro for images: &{Branch:master Write:true}
+   ri: repo:<name:"montage" > created:<seconds:1591812554 nanos:348079652 > size_bytes:1345398 description:"Output repo for pipeline montage." branches:<repo:<name:"montage" > name:"master" >
+   continue
+   ri: repo:<name:"edges" > created:<seconds:1591812554 nanos:201592492 > size_bytes:136795 description:"Output repo for pipeline edges." branches:<repo:<name:"edges" > name:"master" >
+   continue
+   ri: repo:<name:"images" > created:<seconds:1591812554 nanos:28450609 > size_bytes:244068 branches:<repo:<name:"images" > name:"master" >
+   MkdirAll /var/folders/jl/mm3wrxqd75l9r1_d0zktphdw0000gn/T/pfs201409498/images
+   ```
 
-      The command runs in your terminal until you terminate it
-      by pressing `CTRL+C`.
+   The command runs in your terminal until you terminate it
+   by pressing `CTRL+C`.
 
-      * Tip
-      Mount multiple repos at once by appending each mount instruction to the same command.
-      For example, the following will mount both repos to the `/mydirectory` directory.
-      ```shell
-      pachctl mount ./mydirectory -r first_repo@master -r second_repo@master
-      ```  
+   * Tip
+   Mount multiple repos at once by appending each mount instruction to the same command.
+   For example, the following will mount both repos to the `/mydirectory` directory.
+   ```shell
+   pachctl mount ./mydirectory -r first_repo@master -r second_repo@master
+   ```  
 1. You can check that the repo was mounted by running the mount command
 in your terminal:
 
-      ```shell hl_lines="7"
-      mount
-      /dev/disk1s1 on / (apfs, local, read-only, journaled)
-      devfs on /dev (devfs, local, nobrowse)
-      /dev/disk1s2 on /System/Volumes/Data (apfs, local, journaled, nobrowse)
-      /dev/disk1s5 on /private/var/vm (apfs, local, journaled, nobrowse)
-      map auto_home on /System/Volumes/Data/home (autofs, automounted, nobrowse)
-      pachctl@osxfuse0 on /Users/testuser/mydirectory (osxfuse, nodev, nosuid, synchronous, mounted by testuser)
-      ```
+   ```shell hl_lines="7"
+   mount
+   /dev/disk1s1 on / (apfs, local, read-only, journaled)
+   devfs on /dev (devfs, local, nobrowse)
+   /dev/disk1s2 on /System/Volumes/Data (apfs, local, journaled, nobrowse)
+   /dev/disk1s5 on /private/var/vm (apfs, local, journaled, nobrowse)
+   map auto_home on /System/Volumes/Data/home (autofs, automounted, nobrowse)
+   pachctl@osxfuse0 on /Users/testuser/mydirectory (osxfuse, nodev, nosuid, synchronous, mounted by testuser)
+   ```
 
 1. Access your mountpoint.
+   For example, in macOS, open Finder, press
+   `CMD + SHIFT + G`, and type the mountpoint location. If you have mounted
+   the repo to `~/mydirectory`, type `~/mydirectory`.
 
-      For example, in macOS, open Finder, press
-      `CMD + SHIFT + G`, and type the mountpoint location. If you have mounted
-      the repo to `~/mydirectory`, type `~/mydirectory`.
-
-      ![finder-repo-mount](../../../assets/images/s_finder_repo_mount.png)
+   ![finder-repo-mount](../../../assets/images/s_finder_repo_mount.png)
 
 1. Edit the files as needed.
 1. When ready, **add your changes to the Pachyderm repo by stopping
 the `pachctl mount` command with `CTRL+C` or by running `pachctl unmount
 <mountpoint>`** (or `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`).
 
-      If you have mounted a writable Pachyderm share, **interrupting the
-      `pachctl mount` command results in the upload of
-      your changes to the corresponding repo and branch**, which is equivalent
-      to running the `pachctl put file` command. You can check that
-      Pachyderm runs a new job for this work by listing current jobs with
-      `pachctl list job`.
+   If you have mounted a writable Pachyderm share, **interrupting the
+   `pachctl mount` command results in the upload of
+   your changes to the corresponding repo and branch**, which is equivalent
+   to running the `pachctl put file` command. You can check that
+   Pachyderm runs a new job for this work by listing current jobs with
+   `pachctl list job`.

@@ -9,13 +9,14 @@ series:
 seriesPart:
 ---
 
-!!! info
-    Before you read this section, make sure that you understand the concepts
-    described in the following sections:
+{{% notice info %}} 
+Before you read this section, make sure that you understand the concepts
+described in the following sections:
 
-    - [Datum](../../concepts/pipeline-concepts/datum/_index.md)
-    - [Distributed Computing](../../concepts/advanced-concepts/distributed-computing.md)
-    - [Developer Workflow](../../developer-workflow/)
+- [Datum](../../concepts/pipeline-concepts/datum/_index.md)
+- [Distributed Computing](../../concepts/advanced-concepts/distributed-computing.md)
+- [Developer Workflow](../../developer-workflow/)
+{{% /notice %}}
 
 If you are analyzing data that is changing over time, you might
 need to analyze historical data. For example, you might need to
@@ -55,7 +56,7 @@ For example, if you have monthly time windows of sales data stored
 in JSON format that needs to be analyzed, you can create a `sales`
 data repository with the following data:
 
-```
+```s
 sales
 ├── January
 |   ├── 01-01-17.json
@@ -269,9 +270,10 @@ in `moving_sales_window` can use the `/` or `/*` glob pattern, depending
 on whether you need to process all of the time-windowed files together
 or if they can be processed in parallel.
 
-!!! warning
-    When you create this type of moving time-windowed data set,
-    the concept of *now* or *today* is relative. You must define the time
-    based on your use case. For example, by configuring to use `UTC`. Do not use
-    functions such as `time.now()` to determine the current time. The actual
-    time when this pipeline runs might vary.
+{{% notice warning %}} 
+When you create this type of moving time-windowed data set,
+the concept of *now* or *today* is relative. You must define the time
+based on your use case. For example, by configuring to use `UTC`. Do not use
+functions such as `time.now()` to determine the current time. The actual
+time when this pipeline runs might vary.
+{{% /notice %}}

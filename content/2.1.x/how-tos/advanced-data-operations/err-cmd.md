@@ -9,14 +9,17 @@ series:
 seriesPart:
 ---
 
-!!! note "TL;DR"
-    The `err_cmd` parameter enables you to fail a datum without failing the
-    whole job.
+{{% notice note %}}  
+TL;DR
 
-!!! note
-    Before you read this section, make sure that you understand such
-    concepts as [Datum](../../../concepts/pipeline-concepts/datum/) and
-    [Pipeline](../../../concepts/pipeline-concepts/pipeline/).
+The `err_cmd` parameter enables you to fail a datum without failing the whole job.
+{{% /notice %}}
+
+{{% notice note %}} 
+Before you read this section, make sure that you understand such
+concepts as [Datum](../../../concepts/pipeline-concepts/datum/) and
+[Pipeline](../../../concepts/pipeline-concepts/pipeline/).
+{{% /notice %}}
 
 When Pachyderm processes your data, it breaks it up into units of
 computation called datums. Each datum is processed separately.
@@ -79,5 +82,8 @@ written to the output, set `"err_cmd" : ["true"]`. The failed datums,
 which are "recovered" by `err_cmd` in this way, will be retried on
 the next job, just as failed datums.
 
-!!! note "See Also:"
-    [Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/err_cmd/){target=_blank}
+{{% notice note %}}  
+See Also:
+
+[Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/err_cmd/)
+{{% /notice %}}

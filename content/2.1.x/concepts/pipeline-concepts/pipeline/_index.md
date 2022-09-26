@@ -56,24 +56,24 @@ A minimum pipeline specification must include the following parameters:
   run, as well as a `cmd` field for the specific code within the
   container that you want to execute, such as a Python script.
 
-!!! example
-    ```json
-    {
-      "pipeline": {
-        "name": "wordcount"
-      },
-      "transform": {
-        "image": "wordcount-image",
-        "cmd": ["python3", "/my_python_code.py"]
-      },
-      "input": {
-            "pfs": {
-                "repo": "data",
-                "glob": "/*"
-            }
+## Example
+```json
+{
+  "pipeline": {
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["python3", "/my_python_code.py"]
+  },
+  "input": {
+        "pfs": {
+            "repo": "data",
+            "glob": "/*"
         }
     }
-    ```
+}
+```
 
 Pachyderm has the following special types of pipelines whose behavior might slightly differ from the 'regular' pipelines described above:
 

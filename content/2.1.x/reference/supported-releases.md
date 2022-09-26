@@ -59,7 +59,7 @@ A release under development may undergo several pre-release stages before becomi
 `End of Life` or `EOL` indicates the release will no longer receive support.
 
 - Documentation will be archived.
-- Release artifacts will remain available. We keep release artifacts on [Github](https://github.com/pachyderm/pachyderm/releases){target=_blank} and [Docker Hub](https://hub.docker.com/u/pachyderm){target=_blank}.
+- Release artifacts will remain available. We keep release artifacts on [Github](https://github.com/pachyderm/pachyderm/releases) and [Docker Hub](https://hub.docker.com/u/pachyderm).
 - Support is no longer available for End of Life (EOL) releases. Support can assist with upgrading to a newer version.
 
 ## Supported Features

@@ -16,8 +16,9 @@ Azure Blob Storage. After the user code has finished running, but
 before the job is marked as successful, Pachyderm pushes the data
 to the specified destination.
 
-!!! Note
-      Make sure that your cluster has been configured to work with your object store.
+{{% notice note %}} 
+Make sure that your cluster has been configured to work with your object store.
+{{% /notice %}}
 
 Pick the `egress` protocol that applies to your storage:
 
@@ -27,9 +28,10 @@ Pick the `egress` protocol that applies to your storage:
 | Amazon S3 | `s3://` |  `s3://s3-endpoint/s3-bucket/s3-dir` |
 | Azure Blob Storage | `wasb://` | `wasb://default-container@storage-account/az-dir` |
 
-!!! example
-    ```json
-    "egress": {
-       "URL": "s3://bucket/dir"
-    },
-    ```
+## Example 
+
+```json
+"egress": {
+      "URL": "s3://bucket/dir"
+},
+```

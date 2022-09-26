@@ -80,7 +80,7 @@ Then, connect to `localhost:16686` in your browser, and you should see all
 collected traces.
 
 !!! note "See Also:"
-    [Kubernetes Service Environment Variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables){target=_blank}
+    [Kubernetes Service Environment Variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables)
 
 ## Troubleshooting
 
