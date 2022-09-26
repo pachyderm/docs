@@ -6,9 +6,10 @@ date:
 label: arbitrary label
 mermaid: true 
 tags: ["2.3.x", "2.2.x"]
-versions:
+affectedVersions:
     2.3x: ["2.3.1", "2.3.2"]
-    2.4.x: ["2.2.2"]
+    2.2.x: ["2.2.2"]
+    2.1.x: ["2.2.0"]
 ---
 
 ## Issue 

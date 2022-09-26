@@ -2,14 +2,14 @@
 :root {
     --is-font-family: 'Montserrat', sans-serif;
     --is-header-line-height: 100%;
-    --xxsmall-text: calc(100vmin / 80);   
-    --xsmall-text: calc(100vmin / 70);  
-    --small-text: calc(100vmin / 50);  
-    --medium-text: calc(100vmin / 45);  
-    --large-text: calc(100vmin / 40);  
-    --xlarge-text: calc(100vmin / 35);  
-    --xxlarge-text: calc(100vmin / 30);  
-    --xxxlarge-text: calc(100vmin / 20);  
+    --xxsmall-text: calc(.5rem);   
+    --xsmall-text: calc(.75rem);  
+    --small-text: calc(1rem);  
+    --medium-text: calc(1.25rem);  
+    --large-text: calc(1.5rem);  
+    --xlarge-text: calc(1.75rem);
+    --xxlarge-text: calc(2rem);
+    --xxxlarge-text: calc(2.25rem);
 
     --spacing-1: calc(.2rem);
     --spacing-2: calc(.4rem);
