@@ -1693,7 +1693,7 @@ pre::-webkit-scrollbar {
 
 .max-w-3 {
   max-width: 200px;
-  transition: all 1s ease-in-out;
+  transition: max-width 1s ease-in-out;
 }
 
 .max-w-3:hover {

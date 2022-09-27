@@ -8,15 +8,16 @@
     <div class="spread-right mr-2 c-rounded-1">
     {{if .IsHome}}
     {{else}}
-      <div class="spread my-2 brighten-1 rounded-6 outlined  c-pinned-center max-w-3">
+      <div class="spread my-2 brighten-1 rounded-6 outlined c-pinned-center max-w-3">
         <div class="is-fit s pl-2">🔍</div>
-        <div id="searchbox" class="" style="color:black"></div>
+        <div id="searchbox" class="" style="color:black;"></div>
       </div>
-    </div>
     {{end}}
-    {{ partial "featureVersionDropdown.html" . }}
-    <button id="darkModeButton" class="black is-fit grayscale mr-2 my-2 p-2" onclick="darkMode()">🌙</button>
-    <button class="purple is-fit is-hidden-touch bold my-2  p-2"> Demo</button>
-    {{/*  <button class="darken-2 is-fit is-hidden-touch bold my-2 p-2"> Sandbox</button>  */}}
+      {{ partial "featureVersionDropdown.html" . }}
+       <button id="darkModeButton" class="black is-fit grayscale mr-2 my-2 p-2" onclick="darkMode()">🌙</button>
+      <button class="purple is-fit is-hidden-touch bold my-2 p-2"> Demo</button>
     </div>
+ 
+  
+    {{/*  <button class="darken-2 is-fit is-hidden-touch bold my-2 p-2"> Sandbox</button>  */}}
   </nav>
