@@ -1683,3 +1683,19 @@ pre::-webkit-scrollbar {
   display: none;
 }
 
+.max-w-1 {
+  max-width: 100px;
+}
+
+.max-w-2 {
+  max-width: 200px;
+}
+
+.max-w-3 {
+  max-width: 300px;
+}
+
+.max-w-3:hover {
+  max-width: 100%;
+  transition:  1s;
+}

@@ -6,13 +6,17 @@
       <div class="button is-fit hefty xs rounded-1"> <b>docs</b></div>
     </div>
     <div class="spread-right mr-2 c-rounded-1">
-      {{if .IsHome}}
-      {{else}}
-      <div id="searchbox" class="my-2"> </div>
-      {{end}}
-      {{ partial "featureVersionDropdown.html" . }}
-      <button id="darkModeButton" class="black is-fit grayscale mr-2 my-2 p-2" onclick="darkMode()">🌙</button>
-      <button class="purple is-fit is-hidden-touch bold my-2  p-2"> Demo</button>
-      {{/*  <button class="darken-2 is-fit is-hidden-touch bold my-2 p-2"> Sandbox</button>  */}}
+    {{if .IsHome}}
+    {{else}}
+      <div class="spread my-2 brighten-1 rounded-6 outlined  c-pinned-center max-w-3">
+        <div class="is-fit s pl-2">🔍</div>
+        <div id="searchbox" class=""></div>
+      </div>
+    </div>
+    {{end}}
+    {{ partial "featureVersionDropdown.html" . }}
+    <button id="darkModeButton" class="black is-fit grayscale mr-2 my-2 p-2" onclick="darkMode()">🌙</button>
+    <button class="purple is-fit is-hidden-touch bold my-2  p-2"> Demo</button>
+    {{/*  <button class="darken-2 is-fit is-hidden-touch bold my-2 p-2"> Sandbox</button>  */}}
     </div>
   </nav>
