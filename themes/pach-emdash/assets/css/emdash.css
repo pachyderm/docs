@@ -1696,5 +1696,5 @@ pre::-webkit-scrollbar {
 }
 
 .max-w-3:hover {
-  max-width: 100%;
+  max-width: 500px;
 }
