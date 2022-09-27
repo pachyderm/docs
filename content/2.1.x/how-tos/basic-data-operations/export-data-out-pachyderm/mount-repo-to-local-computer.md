@@ -196,7 +196,7 @@ in your terminal:
    `CMD + SHIFT + G`, and type the mountpoint location. If you have mounted
    the repo to `~/mydirectory`, type `~/mydirectory`.
 
-   ![finder-repo-mount](../../../assets/images/s_finder_repo_mount.png)
+   ![finder-repo-mount](../../../../assets/images/s_finder_repo_mount.png)
 
 1. Edit the files as needed.
 1. When ready, **add your changes to the Pachyderm repo by stopping

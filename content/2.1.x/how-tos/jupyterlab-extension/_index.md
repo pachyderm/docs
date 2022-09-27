@@ -28,7 +28,7 @@ We will provide two sets of instructions, depending on whether you know the clus
 
   - Run:
   ```shell
-  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}  lab --allow-root
+  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}  lab --allow-root
   ```
   - Access your JupyterLab session through a local browser (check the link in the stdout).
   - Then [connect your JupyterLab to your Pachyderm cluster](#connect-the-extension-to-your-pachyderm-cluster). 
@@ -41,7 +41,7 @@ We will provide two sets of instructions, depending on whether you know the clus
   - Then, [connect that CLI to your cluster](../../getting-started/local-installation/#connect-pachctl-to-your-cluster).
   - And run:
   ```shell
-  docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }} lab --allow-root
+  docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}} lab --allow-root
   ```
   - Access your JupyterLab session through a local browser (check the link in the stdout).
   You are all logged in. Start experimenting.
@@ -114,53 +114,53 @@ Just before your installation...
 
 Depending on your setup, you might choose to use our pre-built image containing the extension or add the extension to your image.
 
-- Using Pachyderm's pre-built image `pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}`:
+- Using Pachyderm's pre-built image `pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}`:
 
-    {{% notice note %}} 
+  {{% notice note %}} 
 
-    Find the latest available tag of the image [`pachyderm/notebooks-user` in DockerHub](https://hub.docker.com/r/pachyderm/notebooks-user/tags) to get the latest copy of the extension.
+  Find the latest available tag of the image [`pachyderm/notebooks-user` in DockerHub](https://hub.docker.com/r/pachyderm/notebooks-user/tags) to get the latest copy of the extension.
 
-    Our image comes with a pre-installed suite of packages, including:
+  Our image comes with a pre-installed suite of packages, including:
 
-    - The extension `jupyterlab-pachyderm`. 
-    - A custom version of our Command-Line Tool `pachctl`. 
-    - FUSE 
-    - Additionally, it pre-creates the `/pfs` directory files that will be mounted to and grants ownership to the JupyterLab USER.
+  - The extension `jupyterlab-pachyderm`. 
+  - A custom version of our Command-Line Tool `pachctl`. 
+  - FUSE 
+  - Additionally, it pre-creates the `/pfs` directory files that will be mounted to and grants ownership to the JupyterLab USER.
 
-    The image is based on a GPU-enabled version of [jupyter/base-notebook¶](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook).
-    {{% /notice %}}
+  The image is based on a GPU-enabled version of [jupyter/base-notebook¶](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook).
+  {{% /notice %}}
 
 - Add the extension to your existing Jupyterlab Docker image:
 
-    {{% notice note  %}} 
-    Replace the following `${PACHCTL_VERSION}` with the version of `pachctl` that matches your cluster's, and update `<version>` with the release number of the extension.
-    {{% /notice %}}
+  {{% notice note  %}} 
+  Replace the following `${PACHCTL_VERSION}` with the version of `pachctl` that matches your cluster's, and update `<version>` with the release number of the extension.
+  {{% /notice %}}
 
-    ```shell 
-    # This runs the following section as root; if adding to an existing Dockerfile, set the user back to whatever you need. 
-    USER root
+  ```shell 
+  # This runs the following section as root; if adding to an existing Dockerfile, set the user back to whatever you need. 
+  USER root
 
-    # This is the directory files will be mounted to, mirroring how pipelines are run. 
-    RUN mkdir -p /pfs 
+  # This is the directory files will be mounted to, mirroring how pipelines are run. 
+  RUN mkdir -p /pfs 
 
-    # If you are not using "jovyan" as your notebook user, replace the user here. 
-    RUN chown $NB_USER /pfs
+  # If you are not using "jovyan" as your notebook user, replace the user here. 
+  RUN chown $NB_USER /pfs
 
-    # Fuse is a requirement for the mount extension 
-    RUN apt-get clean && RUN apt-get update && apt-get -y install curl fuse 
+  # Fuse is a requirement for the mount extension 
+  RUN apt-get clean && RUN apt-get update && apt-get -y install curl fuse 
 
-    # Install Pachctl - Set the version of Pachctl that matches your cluster deployment. 
-    RUN curl -f -o pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v${PACHCTL_VERSION}/pachctl_${PACHCTL_VERSION}_amd64.deb 
-    RUN dpkg -i pachctl.deb
+  # Install Pachctl - Set the version of Pachctl that matches your cluster deployment. 
+  RUN curl -f -o pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v${PACHCTL_VERSION}/pachctl_${PACHCTL_VERSION}_amd64.deb 
+  RUN dpkg -i pachctl.deb
 
-    # This sets the user back to the notebook user account (i.e., Jovyan) 
-    USER $NB_UID
+  # This sets the user back to the notebook user account (i.e., Jovyan) 
+  USER $NB_UID
 
-    # Replace the version here with the version of the extension you would like to install from https://pypi.org/project/jupyterlab-pachyderm/ 
-    RUN pip install jupyterlab-pachyderm==<version> 
-    ```
+  # Replace the version here with the version of the extension you would like to install from https://pypi.org/project/jupyterlab-pachyderm/ 
+  RUN pip install jupyterlab-pachyderm==<version> 
+  ```
 
-    Then, [build, tag, and push your image](../developer-workflow/working-with-pipelines/#step-2-build-your-docker-image).
+  Then, [build, tag, and push your image](../developer-workflow/working-with-pipelines/#step-2-build-your-docker-image).
 
 ### Running the JupyterLab Container
 
@@ -169,7 +169,7 @@ If you are using our pre-built image:
 - Run the script below:
 
   ```shell
-  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }} lab --allow-root 
+  docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}} lab --allow-root 
   ```
 
 - Click on the link provided in the stdout of your terminal to run JupyterLab in a browser.
@@ -184,43 +184,43 @@ Replace the image name with your own image otherwise.
 Find the complete installation instructions of JupyterHub on Kubernetes in [Jupyterhub for Kubernetes documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/#setup-jupyterhub).
 {{% /notice %}}
 
-- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml):
+- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion "minor">}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
-    {{% notice notice  %}} 
-    Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image or leave Pachyderm's default image `pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}`.
-    {{% /notice %}}
+  {{% notice notice  %}} 
+  Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image or leave Pachyderm's default image `pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}`.
+  {{% /notice %}}
 
-    ```yaml
-    singleuser:
-        defaultUrl: "/lab"
-        cmd:   "start-singleuser.sh"
-        image:
-            name: pachyderm/notebooks-user
-            tag: {{ config.jupyterlab_extension_image_tag }}
-        uid:   0
-        fsGid: 0
-        extraEnv:
-            "GRANT_SUDO": "yes"
-            "NOTEBOOK_ARGS": "--allow-root"
-            "JUPYTER_ENABLE_LAB": "yes"
-            "CHOWN_HOME": "yes"
-            "CHOWN_HOME_OPTS": "-R"
-    hub:
-        extraConfig:
-            enableRoot: |
-                from kubernetes import client
-                def modify_pod_hook(spawner, pod):
-                    pod.spec.containers[0].security_context = client.V1SecurityContext(
-                        allow_privilege_escalation=True,
-                        run_as_user=0,
-                        privileged=True,
-                        capabilities=client.V1Capabilities(
-                            add=['SYS_ADMIN']
-                        )
-                    )
-                    return pod
-                c.KubeSpawner.modify_pod_hook = modify_pod_hook
-    ```
+  ```yaml
+  singleuser:
+      defaultUrl: "/lab"
+      cmd:   "start-singleuser.sh"
+      image:
+          name: pachyderm/notebooks-user
+          tag: {{% jupyterLabExtensionVersion %}}
+      uid:   0
+      fsGid: 0
+      extraEnv:
+          "GRANT_SUDO": "yes"
+          "NOTEBOOK_ARGS": "--allow-root"
+          "JUPYTER_ENABLE_LAB": "yes"
+          "CHOWN_HOME": "yes"
+          "CHOWN_HOME_OPTS": "-R"
+  hub:
+      extraConfig:
+          enableRoot: |
+              from kubernetes import client
+              def modify_pod_hook(spawner, pod):
+                  pod.spec.containers[0].security_context = client.V1SecurityContext(
+                      allow_privilege_escalation=True,
+                      run_as_user=0,
+                      privileged=True,
+                      capabilities=client.V1Capabilities(
+                          add=['SYS_ADMIN']
+                      )
+                  )
+                  return pod
+              c.KubeSpawner.modify_pod_hook = modify_pod_hook
+  ```
 
 - Run the following commands to install JupyterHub:
 

@@ -358,7 +358,6 @@ ol li::marker {
   white-space: pre;
   padding: 2px;
   margin: 2px;
-  font-size: var(--small-text);
  }
 
  .content {

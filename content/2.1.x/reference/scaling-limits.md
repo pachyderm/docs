@@ -1,4 +1,13 @@
-# Pipeline Scaling Limits in Community Edition
+---
+# metadata # 
+title:  Pipeline Scaling Limits (CE)
+description: Learn about the built-in scaling limitations of Pachyderm's Community Edition.
+date: 
+# taxonomy #
+tags: ["community-edition"]
+series:
+seriesPart:
+---
 
 Our free Pachyderm Community Edition contains **built-in scaling limitations and parallelism thresholds**. To scale beyond these limits, request a [Pachyderm Enterprise trial token](https://www.pachyderm.com/trial/) and enjoy unlimited scaling, access to Pachyderm web UI Console, and more.
 
@@ -25,9 +34,9 @@ When exceeding the number of pipelines:
 
 - `pachctl update pipeline`  and `pachctl edit pipeline` succeed on existing pipelines, fail when attempting to create pipelines beyond the limit.
 
-    {{% notice note %}} 
-    If `update pipeline` fails for any other reason, it does not log any message related to pipeline limits.
-    {{% /notice %}}
+  {{% notice note %}} 
+  If `update pipeline` fails for any other reason, it does not log any message related to pipeline limits.
+  {{% /notice %}}
 
 All of the commands listed above create a distinct message to STDERR and to the pachd logs. This message includes information such as the limit on the number of pipelines in the Community Edition, the total number of pipelines deployed, and provides a link to request an Enterprise key to lift those limitations.  
 

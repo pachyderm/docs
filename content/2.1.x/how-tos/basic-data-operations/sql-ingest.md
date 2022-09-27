@@ -23,7 +23,7 @@ Pachyderm's SQL Ingest uses [jsonnet pipeline specs](../../pipeline-operations/j
 
 Pass in the following parameters and get your results committed to an output repo, ready for the following downstream pipeline:
 ```shell
-pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet \
+pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion "minor">}}/src/templates/sql_ingest_cron.jsonnet \
   --arg name=myingest \
   --arg url="mysql://root@mysql:3306/test_db" \
   --arg query="SELECT * FROM test_data" \
@@ -56,7 +56,7 @@ In this example, we are leveraging Snowflake's support for queries traversing se
   Note the references to the JSON dataset elements by their hierarchical paths in the query:
 
   ```shell
-  pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet  \
+  pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion "minor">}}/src/templates/sql_ingest_cron.jsonnet  \
   --arg name=mysnowflakeingest \
   --arg url="snowflake://username@VCNYTW-MH64356/SNOWFLAKE_SAMPLE_DATA/WEATHER?warehouse=COMPUTE_WH" \
   --arg query="select T, V:city.name, V:data[0].weather[0].description as morning, V:data[12].weather[0].description as pm FROM DAILY_14_TOTAL LIMIT 1" \
@@ -99,6 +99,8 @@ TL;DR
     `pachctl create secret -f yourwarehousesecret.json`
 
 - The list returned by `kubectl get secret` should feature the secret name. 
+
+{{% /notice %}}
 
 ### Database Connection URL
 Pachyderm's SQL Ingest will take an URL as its connection string to the database of your choice.
@@ -153,7 +155,7 @@ For example, Snowflake requires to pass the warehouse as a parameter `warehouse=
 
 ## How Does This Work?
 
-SQL Ingest's jsonnet pipeline specs [**`sql_ingest_cron.jsonnet`**](https://github.com/pachyderm/pachyderm/blob/{{ config.pach_branch }}/src/templates/sql_ingest_cron.jsonnet) creates two pipelines:
+SQL Ingest's jsonnet pipeline specs [**`sql_ingest_cron.jsonnet`**](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion "minor">}}/src/templates/sql_ingest_cron.jsonnet) creates two pipelines:
 
 
 - A **[Cron Pipeline](../../../concepts/pipeline-concepts/pipeline/cron/#cron-pipeline)** `myingest_queries` triggering at an interval set by `cronSpec` and outputting a file `/0000` in its output repo `myingest_queries`. `/0000` contains a timestamp and the SQL statement set in `query`.
@@ -167,17 +169,17 @@ The same base image [pachctf](https://hub.docker.com/repository/docker/pachyderm
 
 Check the visual representation of the SQL Ingest DAG created above in Console: 
 
-![SQL Ingest DAG](../images/sqlingest-pipelines.png)
+![SQL Ingest DAG](../../images/sqlingest-pipelines.png)
 
 In your terminal:
 
 - The list of the DAG's pipelines (`pachctl list pipeline`) looks like this:
 
-    ![List pipeline](../images/sqlingest-list-pipeline.png)
+    ![List pipeline](../../images/sqlingest-list-pipeline.png)
 
 - 3 repos are created:
 
-    ![List repo](../images/sqlingest-list-repo.png)
+    ![List repo](../../images/sqlingest-list-repo.png)
 
 ## How To Inspect The Result Of A Query?
 
@@ -188,7 +190,7 @@ You have run a query using SQL Ingest. How do you inspect its result?
   ```shell
   pachctl get file myingest_queries@master:/0000
   ```
-  ```
+  ```s
   -- 1643235475
   SELECT * FROM test_data
   ```
@@ -198,7 +200,7 @@ You have run a query using SQL Ingest. How do you inspect its result?
   ```shell
   pachctl list file myingest@master
   ```
-  ```
+  ```s
   NAME  TYPE SIZE
   /0000 file 52B
   ```

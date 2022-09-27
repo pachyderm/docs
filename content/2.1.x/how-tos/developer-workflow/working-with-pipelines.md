@@ -15,12 +15,12 @@ experimenting with your code and pipeline specs.
 {{% notice info %}} 
 Before you read this section, make sure that you
 understand basic Pachyderm pipeline concepts described in
-[Concepts](../../concepts/pipeline-concepts/_index.md).
+[Concepts](../../../concepts/pipeline-concepts/).
 {{% /notice %}}
 
 In general, there are five steps to working with a pipeline. The stages can be summarized in the image below. 
 
-![Developer workflow](../../assets/images/d_steps_analysis_pipeline.svg)
+![Developer workflow](../../../assets/images/d_steps_analysis_pipeline.svg)
 
 We will walk through each of the stages in detail.
 
@@ -32,7 +32,7 @@ be written in any language and can use any libraries of choice. Whether
 your code is as simple as a bash command or as complicated as a
 TensorFlow neural network, it needs to be built with all the required
 dependencies into a container that can run anywhere, including inside
-of Pachyderm. See [Examples](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples).
+of Pachyderm. See [Examples](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion "minor">}}/examples).
 
 Your code does not have to import any special Pachyderm
 functionality or libraries. However, it must meet the

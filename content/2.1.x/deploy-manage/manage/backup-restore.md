@@ -90,42 +90,41 @@ This step is specific to your database and object store hosting.
 - If your PostgreSQL instance is solely dedicated to Pachyderm, 
 you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQL state.  
 
-    Alternatively, you can use targeted `pg_dump` commands to dump the
-    `pachyderm` and `dex` databases, or use your Cloud Provider's backup product.  
-    In any case, make sure to use TLS.
-    Note that if you are using a cloud provider, you might
-    choose to use the provider’s method of making PostgreSQL backups.
-    
-    {{% notice warning %}}
-    A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
-    {{% /notice %}}
+  Alternatively, you can use targeted `pg_dump` commands to dump the
+  `pachyderm` and `dex` databases, or use your Cloud Provider's backup product.  
+  In any case, make sure to use TLS.
+  Note that if you are using a cloud provider, you might
+  choose to use the provider’s method of making PostgreSQL backups.
+  
+  {{% notice warning %}}
+  A production setting of Pachyderm implies that you are running a managed PostgreSQL instance.
+  {{% /notice %}}
 
-    {{% notice info %}} 
-    Here are some pointers to the relevant documentation.
+  {{% notice info %}} 
+  Here are some pointers to the relevant documentation.
 
-     - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-     - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
-     - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
+   - [PostgreSQL on AWS RDS backup](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+   - [GCP Cloud SQL backup](https://cloud.google.com/sql/docs/postgres/backup-recovery/backing-up)
+   - [Azure Database for PostgreSQL backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql)
 
-     For on-premises Kubernetes deployments, check the vendor documentation
-     for your on-premises PostgreSQL for details on backing up and restoring your databases.
-    {{% /notice %}}
+   For on-premises Kubernetes deployments, check the vendor documentation
+   for your on-premises PostgreSQL for details on backing up and restoring your databases.
+  {{% /notice %}}
 
 - To back up the object store, you can either download all objects or
-use the object store provider’s backup method.  
-    The latter is preferable since it will typically not incur egress costs.
+use the object store provider’s backup method. The latter is preferable since it will typically not incur egress costs.
 
-    {{% notice info %}} 
-    Here are some pointers to the relevant documentation:
+  {{% notice info %}} 
+  Here are some pointers to the relevant documentation:
 
-     - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
-     - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
-     - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
+   - [AWS backup for S3](https://aws.amazon.com/backup/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+   - [GCP Cloud storage bucket backup](https://cloud.google.com/storage-transfer/docs/overview)
+   - [Azure blob backup](https://docs.microsoft.com/en-us/azure/backup/blob-backup-configure-manage)
 
-     For on-premises Kubernetes deployments, check the vendor documentation
-     for your on-premises object store for details on backing up and
-     restoring a bucket.
-    {{% /notice %}}
+   For on-premises Kubernetes deployments, check the vendor documentation
+   for your on-premises object store for details on backing up and
+   restoring a bucket.
+  {{% /notice %}}
 
 ### Resuming operations
 

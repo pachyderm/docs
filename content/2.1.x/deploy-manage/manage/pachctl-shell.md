@@ -29,7 +29,7 @@ When you enter `pachctl` shell, your prompt changes to display your current
 Pachyderm context, as well as displays a list of available commands in a
 drop-down list.
 
-![Pachyderm Shell](../../assets/images/s_pach_shell.png)
+![Pachyderm Shell](../../../assets/images/s_pach_shell.png)
 
 To scroll through the list, press `TAB` and then use arrows to move up or
 down. Press `SPACE` to select a command.
@@ -39,17 +39,17 @@ When in the Pachyderm Shell, you do not need to prepend your commands with
 scenes. For example, instead of running `pachctl list repo`, run `list
 repo`:
 
-![Pachyderm Shell list repo](../../assets/images/s_pach_shell_list_repo.png)
+![Pachyderm Shell list repo](../../../assets/images/s_pach_shell_list_repo.png)
 
 With nested commands, `pachctl shell` can do even more. For example, if you
 type `list file <repo>@<branch>/`, you can preview and select files from that
 branch:
 
-![Pachyderm Shell list file](../../assets/images/s_pach_shell_list_file.png)
+![Pachyderm Shell list file](../../../assets/images/s_pach_shell_list_file.png)
 
 Similarly, you can select a commit:
 
-![Pachyderm Shell list commit](../../assets/images/s_pach_shell_list_commit.png)
+![Pachyderm Shell list commit](../../../assets/images/s_pach_shell_list_commit.png)
 
 ### Exit the Pachyderm Shell
 

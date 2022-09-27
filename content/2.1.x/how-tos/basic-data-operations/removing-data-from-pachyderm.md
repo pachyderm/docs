@@ -79,7 +79,7 @@ pachctl squash commit <commit-ID>
 
   We then run `pachctl squash commit ID1`, then `pachctl squash commit ID2`, and look at our branch and remaining commit(s).
 
-  ![Squash example](../images/squash-delete.png)
+  ![Squash example](../../images/squash-delete.png)
   * A’ and C' are altered versions of files A and C.
 
   At any moment, `pachctl list file repo@master` invariably returns the same files A’, B, C’. `pachctl list commit` however, differs in each case, since, by squashing commits, we have deleted them from the branch. 
@@ -127,7 +127,7 @@ How would we do that?
 
 For now, `pachctl list file repo@master` returns the files A’, B, C’, E, F.
 
-![Delete data example](../images/delete-data.png)
+![Delete data example](../../images/delete-data.png)
 * A’ and C' are altered versions of files A and C.
 
 - We create a new commit in which we surgically remove file C:

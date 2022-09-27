@@ -106,7 +106,7 @@ a `pachctl put file images@master -i images.txt` in the images repo of [the open
 {{% /notice %}}
 
 The following diagram illustrates the global commit and its various components:
-    ![global_commit_after_putfile](../images/global_commit_after_putfile.png)
+![global_commit_after_putfile](../../images/global_commit_after_putfile.png)
 
 Let's take a look at the origin of each commit.
 
@@ -202,7 +202,7 @@ They have, however, contributed to the creation of the previous `AUTO` commits.
 To make sure that we have a complete view of all the data and pipeline versions involved in all the commits resulting from the initial 
 `put file`, their version is kept as `ALIAS` commits under the same global ID.
 
-For a full view of GlobalID in action, take a look at our [GlobalID illustration](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/globalID).
+For a full view of GlobalID in action, take a look at our [GlobalID illustration](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion "minor">}}/examples/globalID).
 
 ## Track Provenance Downstream
 

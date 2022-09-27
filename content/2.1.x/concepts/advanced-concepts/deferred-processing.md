@@ -106,7 +106,7 @@ A simple [pipeline](../pipeline-concepts/pipeline/_index.md) subscribes to the m
    ```shell
    pachctl list branch data
    ```
-   ```
+   ```s
    BRANCH  HEAD                              TRIGGER
    
    staging f3506f0fab6e483e8338754081109e69   -
@@ -132,7 +132,7 @@ A simple [pipeline](../pipeline-concepts/pipeline/_index.md) subscribes to the m
    ```shell
    pachctl list branch data
    ```
-   ```
+   ```s
    staging f3506f0fab6e483e8338754081109e69
    master  f3506f0fab6e483e8338754081109e69
    ```

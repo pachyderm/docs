@@ -48,7 +48,7 @@ to run the second pipeline.
 The following diagram describes how Pachyderm transformation and error
 code work:
 
-![err_cmd logic](../../assets/images/err_cmd_workflow.svg)
+![err_cmd logic](../../../assets/images/err_cmd_workflow.svg)
 
 Here is what is happening in the diagram above:
 
@@ -68,7 +68,7 @@ as failed, and, consequently, the job is marked as failed.
 You can view the processed, skipped, and recovered datums in the `PROGRESS`
 field in the output of the `pachctl list job -p <pipeline name>` command:
 
-![Datums in progress](../images/datums_in_progress.png)
+![Datums in progress](../../images/datums_in_progress.png)
 
 Pachyderm writes only processed datums of successful jobs to the output
 commit so that these datums can be processed by downstream pipelines.
@@ -85,5 +85,5 @@ the next job, just as failed datums.
 {{% notice note %}}  
 See Also:
 
-[Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{ config.pach_branch }}/examples/err_cmd/)
+[Example err_cmd pipeline](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion "minor">}}/examples/err_cmd/)
 {{% /notice %}}

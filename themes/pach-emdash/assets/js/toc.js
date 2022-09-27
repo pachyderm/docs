@@ -33,8 +33,8 @@ function styleTOC(){
         link.href = '#' + headings[i].id
         link.role = headings[i].id;
 
-        if (headingText.length > 25) {
-            link.innerText =  headingText.substring(0, 25) + '...'
+        if (headingText.length > 35) {
+            link.innerText =  headingText.substring(0, 35) + '...'
         } else {
              link.innerText = headingText;
         }

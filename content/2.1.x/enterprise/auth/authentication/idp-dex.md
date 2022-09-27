@@ -36,9 +36,7 @@ However, Pachyderm's Identity Service is based on [Dex](https://dexidp.io/docs/)
 and can therefore provide connectors to a large [variety of IdPs](https://dexidp.io/docs/connectors/) (LDAP, GitHub, SAML, OIDC...). 
 Use the IdP of your choice.
 
-<! More IdP connectors example:
 
-#- [Okta](./connectors/okta.md)/>
 
 For now, let's configure Pachyderm so that our
 Pachyderm users can log in through Auth0.
@@ -90,7 +88,7 @@ Then, complete the following steps:
 1. Select **Grant Types**.
 1. Verify that **Authorization Code** and **Refresh Token** are selected.
 
-    ![Auth0 Grant Settings](../images/auth0-grant-settings.png)
+    ![Auth0 Grant Settings](../../images/auth0-grant-settings.png)
 
 {{% notice note %}}
 For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
@@ -114,44 +112,45 @@ Pachyderm supports the JSON and YAML formats for its connector files.
 {{% /notice %}}
 
 See our oidc connector example in JSON and YAML formats below.
-=== "oidc-dex-connector.json"
+#### oidc-dex-connector.json
 
-    ``` json
-    {
-    "type": "oidc",
-    "id": "auth0",
-    "name": "Auth0",
-    "version": 1,
-    "config":{
-        "issuer": "https://dev-k34x5yjn.us.auth0.com/",
-        "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
-        "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
-        "redirectURI": "http://<ip>:30658/callback",
-        "insecureEnableGroups": true,
-        "insecureSkipEmailVerified": true,
-        "insecureSkipIssuerCallbackDomainCheck": false,
-        "forwardedLoginParams": ["login_hint"] 
-        }
-    }
-    ```
-=== "oidc-dex-connector.yaml"
+ ``` json
+ {
+ "type": "oidc",
+ "id": "auth0",
+ "name": "Auth0",
+ "version": 1,
+ "config":{
+     "issuer": "https://dev-k34x5yjn.us.auth0.com/",
+     "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
+     "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
+     "redirectURI": "http://<ip>:30658/callback",
+     "insecureEnableGroups": true,
+     "insecureSkipEmailVerified": true,
+     "insecureSkipIssuerCallbackDomainCheck": false,
+     "forwardedLoginParams": ["login_hint"] 
+     }
+ }
+ ```
 
-    ``` yaml
-        type: oidc
-        id: auth0
-        name: Auth0
-        version: 1
-        config:
-            issuer: https://dev-k34x5yjn.us.auth0.com/
-            clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
-            clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
-            redirectURI: http://<ip>:30658/callback
-            insecureEnableGroups: true
-            insecureSkipEmailVerified: true
-            insecureSkipIssuerCallbackDomainCheck: false,
-            forwardedLoginParams:
-            - login_hint
-    ```
+#### oidc-dex-connector.yaml
+
+ ``` yaml
+     type: oidc
+     id: auth0
+     name: Auth0
+     version: 1
+     config:
+         issuer: https://dev-k34x5yjn.us.auth0.com/
+         clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
+         clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
+         redirectURI: http://<ip>:30658/callback
+         insecureEnableGroups: true
+         insecureSkipEmailVerified: true
+         insecureSkipIssuerCallbackDomainCheck: false,
+         forwardedLoginParams:
+         - login_hint
+ ```
 
 You will need to replace the following placeholders with relevant values:
 

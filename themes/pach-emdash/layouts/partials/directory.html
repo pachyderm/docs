@@ -34,7 +34,7 @@
                             {{/* Does not show page if frontmatter "hidden" is TRUE */}}
                         {{else}}
                             <div> 
-                                <a href="{{ .RelPermalink }}" class="mt-2"> {{if .Pages}}├ {{else}} {{if .PrevInSection }} │ {{else}} └ {{end}}{{end}}{{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
+                                <a href="{{ .RelPermalink }}" class="mt-2"> {{if .Pages}}├ {{else}} {{if .PrevInSection }} │ {{else}} └ {{end}}{{end}}{{if .Title}}{{.Title | truncate 40}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
                             </div>
                             {{/* Displays current page's grandchildren when navLevel feature is TRUE. */}}
                             {{ if .Site.Params.navLevel }}
@@ -44,7 +44,7 @@
                                     {{ range sort .Pages "Weight" "$order"}}
                                         <div class="thin"> 
                                             <a href="{{ .RelPermalink }}" class="pl-2"> {{if .Pages}}
-                                            ├{{else}} {{if .PrevInSection }} │ {{else}} └ {{end}} {{end}} {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
+                                            ├{{else}} {{if .PrevInSection }} │ {{else}} └ {{end}} {{end}} {{if .Title}}{{.Title | truncate 40}}{{else}}{{ path.BaseName . | humanize | truncate 40}}{{end}}</a>
                                         </div>
                                         {{end}}
                                     {{ end }}
