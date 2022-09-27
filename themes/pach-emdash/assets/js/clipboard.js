@@ -8,10 +8,10 @@
             element.parentElement.parentElement.addEventListener('click', function(e) {
                 var code = this.getElementsByTagName('code')[0];
                 navigator.clipboard.writeText(code.innerText)
-                this.parentElement.parentElement.getElementsByClassName('clippy')[0].innerHTML = 'Copied!';
+                this.getElementsByClassName('clippy')[0].innerHTML = 'Copied!';
                 // reset the button text after a few seconds
                 setTimeout(function() {
-                    this.parentElement.parentElement.getElementsByClassName('clippy')[0].innerHTML = 'Copy';
+                    this.getElementsByClassName('clippy')[0].innerHTML = 'Copy';
                 }.bind(this), 2000);
             })
         }
