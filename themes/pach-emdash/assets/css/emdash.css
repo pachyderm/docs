@@ -1379,6 +1379,11 @@ padding-top: var(--spacing-1);
   color: var(--is-text-color) ;
 }
 
+.inherit-color, .c-inherit-color > * {
+  background-color: inherit;
+  color: inherit;
+}
+
 
 .gradient-lr-warm {
   background-image: linear-gradient(
@@ -1596,9 +1601,16 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   font-weight: 700;
 }
 
-:is(.algoliaHome) :is(ul, ol, ol > li) {
+:is(.algoliaHome) :is(ul, ol, li) {
   list-style: none;
   margin: 0;
+  padding: 0;
+}
+
+:is(.algoliaHome > ol) :is(ul, ol, li) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .tableWrapper {
@@ -1607,7 +1619,7 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
 }
 
 :focus {
-  outline-color:  var(--is-blue);
+  outline: 0;
 }
 
 /* wiggle animation  */
@@ -1670,3 +1682,4 @@ code::-webkit-scrollbar {
 pre::-webkit-scrollbar {
   display: none;
 }
+

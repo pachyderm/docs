@@ -25,16 +25,16 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
   search.addWidgets([
     instantsearch.widgets.searchBox({
       container: "#searchbox",
-      placeholder: "🔍 Search...",
+      placeholder: "Search...",
       showReset: false,
       showSubmit: false,
       autofocus: false,
       showLoadingIndicator: false,
       cssClasses: {
-        form: ['spread'],
+        form: ['spread','rounded-4' ],
         submit: ['is-hidden'],
         reset: ['is-hidden'],
-        input: ['is-full','darken-1', 'rounded-4', 'p-2', "l"]
+        input: ['is-full' 'p-2', 'm','inherit-color']
       },
       templates: {
       },
@@ -47,7 +47,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['algoliaHome', 'm-4'],
+        root: ['algoliaHome', 'mx-4'],
         list: ['spread-left', 'rounded-1', 'is-fullsize-mobile'],
         item: ['is-half', 'is-fullsize-mobile'] },
       templates: {
