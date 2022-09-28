@@ -28,14 +28,14 @@
 
     --is-note-color: var(--is-gray);
     --is-note-text: var(--is-black);
-    --is-info-color: var(--is-gray);
-    --is-info-text: var(--is-black);
-    --is-success-color: var(--is-gray);
-    --is-success-text: var(--is-black);
-    --is-warning-color: var(--is-gray);
+    --is-info-color: #118873;
+    --is-info-text: var(--is-white);
+    --is-success-color: #118873;
+    --is-success-text: var(--is-white);
+    --is-warning-color: #ffae00;
     --is-warning-text: var(--is-black);
-    --is-danger-color: var(--is-gray);
-    --is-danger-text: var(--is-black);
+    --is-danger-color: #bf444f;
+    --is-danger-text: var(--is-white);
     
     --is-red: #ce6767;
     --is-green: #b1ffba;
@@ -1555,14 +1555,14 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   color: var(--is-note-text);
 }
 
-.info, .tip {
+.info, .tip, .success {
   background-color: var(--is-info-color);
   color: var(--is-info-text);
 }
 
-.success {
-  background-color: var(--is-success-color);
-  color: var(--is-success-text);
+:is(.info, .tip, .success) :is(code) {
+  color: var(--is-info-text);
+  font-weight: bold;
 }
 
 .warning, .attention {
@@ -1570,9 +1570,19 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   color: var(--is-warning-text);
 }
 
+:is(.warning, .attention) :is(code) {
+  color: var(--is-warning-text);
+  font-weight: bold;
+}
+
 .danger {
   background-color: var(--is-danger-color);
   color: var(--is-danger-text);
+}
+
+:is(.danger) :is(code) {
+  color: var(--is-danger-text);
+  font-weight: bold;
 }
 
 .h-scroll {
