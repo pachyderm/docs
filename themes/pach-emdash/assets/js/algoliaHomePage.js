@@ -41,7 +41,6 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
     
     }),
     instantsearch.widgets.configure({
-      hitsPerPage: 8,
     }),
     instantsearch.widgets.hits({
       container: '#hits',
