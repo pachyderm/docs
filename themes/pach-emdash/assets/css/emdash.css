@@ -42,11 +42,11 @@
     --is-blue: #5ba3b1;
     --is-yellow: #fffbb1;
     --is-orange: #ffc3b1;
-    --is-purple: #582f6b;
+    --is-purple: #62028f;
     --is-pink: #ff0080;
-    --is-white: #ffffff;
-    --is-black: #212529;
-    --is-gray: #ecf5f7;
+    --is-white: #fafafa;
+    --is-black: #0e0e0f;
+    --is-gray: #dbdbdb;
     --is-dark-gray: #404040;
     --is-graident-warm-pt-1: #ff0000;
     --is-graident-warm-pt-2: #ff4000;
@@ -57,7 +57,7 @@
     --is-gradient-cold-pt-2: #4E6587;
     --is-gradient-cold-pt-3: #4B5379;
     --is-gradient-cold-pt-4: #4A3D6A;
-    --is-gradient-cold-pt-5: #582f6b;
+    --is-gradient-cold-pt-5: #62028f;
 
     --rounded-1: 5px;
     --rounded-2: 10px; 
@@ -100,7 +100,16 @@ a {
     text-decoration: none;
     color: inherit;
 }
-a:hover, button:hover, .label:hover { opacity: 0.7; }
+
+
+button.purple:hover, .button.purple:hover {
+  background-color: #a114cc;
+}
+
+.outlined-purple:hover {
+  border-color: #a114cc;
+  color:  #a114cc;
+}
 
 b {
     background: linear-gradient(0.25turn, var(--is-gradient-cold-pt-1), var(--is-gradient-cold-pt-2),var(--is-gradient-cold-pt-3),var(--is-gradient-cold-pt-4),var(--is-gradient-cold-pt-5)); 
@@ -610,6 +619,11 @@ button, .button {
 }
 .outlined-white, .c-outlined-white > * {
     border: 1px solid #fff;
+}
+
+.outlined-purple, .c-outlined-purple > * {
+    border: 1px solid var(--is-purple);
+    color: var(--is-purple);
 }
 
 

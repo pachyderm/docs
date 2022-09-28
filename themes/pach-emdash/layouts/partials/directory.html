@@ -7,7 +7,7 @@
 
     {{with .Parent}}
         {{/* Displays current page's parent for user to go back up one directory level . */}}  
-        <a href="{{ .RelPermalink }}" class="button black gradient-rl-cold sp-2 xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
+        <a href="{{ .RelPermalink }}" class="button purple sp-2 xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
     {{end}}
     {{ if eq .BundleType "branch"}}
         {{/* Does not show the relatedArticle button (id related-articles) on list pages */}}
