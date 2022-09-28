@@ -57,16 +57,15 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
           <div class="stack outlined rounded-1 move-l sp-2">
             <a href="{{relURI}}">
               <div class="hit spread c-pinned-center is-full c-mr-2">
-                <div class="black gradient-lr-cold is-fit xxs rounded-1 darken-3 p-2">{{version}}</div>
                 <div class="stack c-mb-2">
                   <div class="xs uppercase is-fit">{{parent}}</div>
                   <h3 class="is-fit l extra-bold">{{title}}</h3>
-                  <div class="s">{{description}}</div>
+                  <div class="s">{{description}}</div></div>
                 </div>
               </div>
             </a>
+                      <div class="xs spread-right c-black c-mt-3 c-mr-2 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}} <div class="is-invisible my-3"></div></div>
           </div>
-          <div class="xs spread-right c-black c-mb-3 c-mr-2 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
           `
       },
       transformData: {
