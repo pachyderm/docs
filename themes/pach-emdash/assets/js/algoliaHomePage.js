@@ -47,15 +47,15 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       escapeHTML: false,
       cssClasses: {
         root: ['algoliaHome', 'mx-4'],
-        list: ['spread-left', 'rounded-1', 'is-fullsize-mobile'],
+        list: ['spread-left', 'is-fullsize-mobile'],
         item: ['is-half', 'is-fullsize-mobile'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full brighten-1 rounded-1 c-sp-2 m-2"> <div class=" text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
         item: `
-          <div class="stack outlined rounded-1 move-l m-2">
-            <a href="{{relURI}}" class="sp-2">
-              <div class="hit spread c-pinned-center is-full c-mr-3">
+          <div class="stack outlined rounded-4 move-l m-3 c-m-3">
+            <a href="{{relURI}}" class="">
+              <div class="hit spread c-pinned-center is-full ">
                 <div class="stack c-mb-2">
                   <div class="xxs uppercase is-fit">{{parent}}</div>
                   <h3 class="is-fit m extra-bold">{{title}}</h3>
@@ -63,7 +63,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
                 </div>
               </div>
             </a>
-            <div class="xs spread-right c-black c-mb-2 c-mr-2 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
+            <div class="xs spread-right c-black c-mr-2 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
           </div>
           `
       },
