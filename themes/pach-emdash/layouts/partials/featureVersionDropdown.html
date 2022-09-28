@@ -2,18 +2,18 @@
 {{ if .Site.Params.versionDropdown }}
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
-    <div class="dropdown-alt is-fit mx-2">
-        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" "support" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption outlined-purple bold sp-1 rounded-1"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
+    <button class="dropdown-alt is-fit  mx-2">
+        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" "support" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption outlined-purple sp-1 rounded-1 s bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
         <div class="is-full dropdown-options white rounded-1 outlined-purple"> 
             <div class="stack"> 
             {{ range after 3 .Site.Sections.ByTitle.Reverse }} 
                 {{ if not .Params.hidden }}
                 {{$currentVersionOption := print "/" .Section "/"}}
                 {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
-                    <a class="bold is-fit p-1" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                    <a class="bold is-fit p-1 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
                 {{end}}
             {{end}}
             </div>
         </div>
-    </div>
+    </button>
 {{end}}
