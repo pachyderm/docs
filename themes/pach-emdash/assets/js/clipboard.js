@@ -8,6 +8,10 @@
             element.parentElement.parentElement.addEventListener('click', function(e) {
                 var code = this.getElementsByTagName('code')[0];
                 navigator.clipboard.writeText(code.innerText)
+                // remove extra lines from the copied text
+                .then(() => {
+                    code.innerText = code.innerText.replace(/^\s*\n/gm, '');
+                })
                 this.getElementsByClassName('clippy')[0].innerHTML = 'Copied!';
                 // reset the button text after a few seconds
                 setTimeout(function() {
