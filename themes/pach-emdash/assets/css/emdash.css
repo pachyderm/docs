@@ -1543,19 +1543,18 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
 
 
 .dropdown {
-  display: flex;
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
   z-index: 1;
-  top: 6px;
+  white-space: nowrap;
 }
 
 .dropdown:hover .dropdown-content {
-  position: absolute;
-  z-index: 1;
   display: block;
 }
 
@@ -1724,4 +1723,24 @@ pre::-webkit-scrollbar {
 
 .max-w-3:hover {
   max-width: 500px;
+}
+
+.dropdown-alt {
+  position: relative;
+  display: inline-block;
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  white-space: nowrap;
+  top: 7.5px;
+}
+
+.dropdown-alt:hover .dropdown-options {
+  display: block;
 }
