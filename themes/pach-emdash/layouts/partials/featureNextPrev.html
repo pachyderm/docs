@@ -1,12 +1,12 @@
 {{ if .Site.Params.nextPrev }}
-    <div class="spread-between c-fit c-sp-2 c-purple c-rounded-1  bold">
+    <div class="spread-between c-fit c-sp-2  c-rounded-1 semi-bold ">
         {{/*  This may look weird but "next" seems to be the article before current  */}}
-        {{with .NextInSection }}<a href="{{.RelPermalink}}"> 👈 {{.Title | truncate 35}} </a>
+        {{with .NextInSection }}<a href="{{.RelPermalink}}" class="button purple"> 👈 {{.Title | truncate 35}} </a>
         {{else}}
             {{/*  Fills the empty space of not having anything before the current article  */}}
             <div class="is-invisible"></div>
     {{end}}
     {{/*  This may look weird but "prev" seems to be the article after current  */}}
-    {{with .PrevInSection }}<a href="{{.RelPermalink}}"> {{.Title | truncate 35}} 👉 </a>{{end}}
+    {{with .PrevInSection }}<a href="{{.RelPermalink}}" class="button purple"> {{.Title | truncate 35}} 👉 </a>{{end}}
 </div>
 {{end}}
