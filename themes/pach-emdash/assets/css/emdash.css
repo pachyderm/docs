@@ -1741,6 +1741,6 @@ pre::-webkit-scrollbar {
   top: 7.5px;
 }
 
-.dropdown-alt:hover .dropdown-options {
+.dropdown-alt:hover .dropdown-options, .dropdown-alt:focus .dropdown-options, .dropdown-alt:active .dropdown-options, .dropdown-alt:target .dropdown-options {
   display: block;
 }
