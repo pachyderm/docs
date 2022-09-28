@@ -6,7 +6,7 @@
         {{/*  does not display the version dropdown button on .Kind "section" pages that match those listed above  */}}
         <button id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "announcements" "support" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="dropdown outlined-purple is-fit bold m-2 p-2 {{if eq .Section  "announcements" "tags" "series" "support"}}is-invisible{{end}}"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}
             <div class="dropdown-content">
-            <div class="stack white outlined-purple rounded-1">
+            <div class="stack white outlined-purple rounded-1 mt-1">
             {{ range after 3 .Site.Sections.ByTitle.Reverse }} 
                 {{ if not .Params.hidden }}
                 {{/* Sort Options: https://gohugo.io/templates/lists/#order-content */}}
