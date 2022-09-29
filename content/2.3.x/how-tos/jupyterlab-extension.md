@@ -37,7 +37,11 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 - [jupyterlab pachyderm](https://pypi.org/search/?q=jupyterlab+pachyderm) (`pip install python-pachyderm`)
 - [mount-server binary](https://github.com/pachyderm/pachyderm/releases/tag/v{{% latestPatchVersion %}})
 
-< WIP>
+#### Local Installation Steps
+1. Open your terminal.
+2. Run the `jupyter lab` command.
+
+If you have an existing pachyderm config file at `~/.pachyderm/config.json`, the extension automatically connects to the active context. Otherwise, you must enter the cluster address manually in the extension UI.
 
 
 ### Install to Existing Docker Image 
@@ -121,6 +125,16 @@ Then, [build, tag, and push your image](../developer-workflow/working-with-pipel
 
 ### Install to JupyterHub With Helm
 
+{{% notice info %}}
+**Connecting to your cluster**
+
+For each option in this section, you can connect to your cluster using the following steps:
+
+1. Find the **IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
+2. Click on the link provided in the `stdout` of your terminal to run JupyterLab in a browser.
+3. Connect to your cluster using the `grpc://<cluster-ip>:<port>` format.
+{{% /notice %}}
+
 #### Pre-requisites 
 
 - You must install the Jupyterlab Helm repository:
@@ -143,7 +157,7 @@ Then, [build, tag, and push your image](../developer-workflow/working-with-pipel
 
 ##### With a Custom Chart
 
-1. Add the following to your Jupyterhub helm chart `values.YAML` file:
+Add the following to your Jupyterhub helm chart `values.YAML` file:
 ```yaml
  singleuser:
      defaultUrl: "/lab"
@@ -175,9 +189,7 @@ Then, [build, tag, and push your image](../developer-workflow/working-with-pipel
                  return pod
              c.KubeSpawner.modify_pod_hook = modify_pod_hook
 ```
-2. Find the **IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
-3. Click on the link provided in the `stdout` of your terminal to run JupyterLab in a browser.
-4. Connect to your cluster using the `grpc://<cluster-ip>:<port>` format.
+ 
 
 
 #### Option 2: Notebooks in Unprivileged Context & Mount Server in Privileged Context
