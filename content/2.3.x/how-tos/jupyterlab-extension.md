@@ -27,7 +27,7 @@ The JupyterLab Mount Extension is an [experimental feature](../../reference/supp
 
 - You must have a Pachyderm cluster running.
 
-## Install The Extension 
+## Install the Extension 
 
 There are three main ways to install the Jupyter Lab extension:
 
@@ -337,7 +337,7 @@ pkill -f "mount-server"
 ```
 The server restarts by itself.
 
-### M1 users with Docker Desktop < `4.6`
+### M1 Users With Docker Desktop < `4.6`
 
 A [documented issue between qemu and Docker Desktop](https://gitlab.com/qemu-project/qemu/-/issues/340) prevents you from running our pre-built Mount Extension Image in Docker Desktop.
 
