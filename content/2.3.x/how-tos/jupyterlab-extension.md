@@ -37,6 +37,8 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 - [jupyterlab pachyderm](https://pypi.org/search/?q=jupyterlab+pachyderm) (`pip install python-pachyderm`)
 - [mount-server binary](https://github.com/pachyderm/pachyderm/releases/tag/v{{% latestPatchVersion %}})
 
+< WIP>
+
 
 ### Install to Existing Docker Image 
 
@@ -121,16 +123,25 @@ Then, [build, tag, and push your image](../developer-workflow/working-with-pipel
 
 #### Pre-requisites 
 
-#### Option 1: Pachyderm Defaults
+- You must install the Jupyterlab Helm repository:
+  ```s
+  helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/ 
+  helm repo update
+  ```
+
+#### Option 1: Notebooks in Privileged Context
+
+##### With Pachyderm's Default Chart
 
 1. Open a terminal.
 2. Run the following:
    ```s
    helm upgrade --cleanup-on-fail \
    --install jupyter jupyterhub/jupyterhub \
-   --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{ config.pach_branch }}/etc/helm/examples/jupyterhub-ext-values.yaml
+   --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% versionNumber %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml
    ```
-#### Option 2: Custom
+
+##### With a Custom Chart
 
 1. Add the following to your Jupyterhub helm chart `values.YAML` file:
 ```yaml
@@ -139,7 +150,7 @@ Then, [build, tag, and push your image](../developer-workflow/working-with-pipel
      cmd:   "start-singleuser.sh"
      image:
          name: pachyderm/notebooks-user
-         tag: {{ config.jupyterlab_extension_image_tag }}
+         tag: {{% extensionJupyterLab %}}
      uid:   0
      fsGid: 0
      extraEnv:
@@ -164,26 +175,47 @@ Then, [build, tag, and push your image](../developer-workflow/working-with-pipel
                  return pod
              c.KubeSpawner.modify_pod_hook = modify_pod_hook
 ```
-2. Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image.
-3. Run the following commands to install JupyterHub:
- ```s
- helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
- helm repo update
+2. Find the **IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
+3. Click on the link provided in the `stdout` of your terminal to run JupyterLab in a browser.
+4. Connect to your cluster using the `grpc://<cluster-ip>:<port>` format.
 
- helm upgrade --cleanup-on-fail \
- --install jupyter jupyterhub/jupyterhub \
- --values <your-jupyterhub-values.yaml>
- ```
-4. Find the **IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
-5. Click on the link provided in the `stdout` of your terminal to run JupyterLab in a browser.
-6. Connect to your cluster using the `grpc://<cluster-ip>:<port>` format.
-7. Run the following command to refresh the mount server:
 
- ```s
- umount /pfs
- ```
+#### Option 2: Notebooks in Unprivileged Context & Mount Server in Privileged Context
 
-##### Automate Cluster Details
+With this option, you will run a sidecar Docker image called `pachyderm/mount-server` to work in tandem with the `pachyderm/notebooks-user` image. This option is good for those who have security restrictions and can't run notebooks in a privileged manner. 
+
+###### Helm Chart 
+
+```yaml
+singleuser:
+    defaultUrl: "/lab"
+    image:
+        name: pachyderm/notebooks-user
+        tag: <latest-release>
+    extraEnv:
+        "SIDECAR_MODE": "True"
+    extraContainers:
+        - name: mount-server-manager
+          image: pachyderm/mount-server:<latest-release>
+          command: ["/bin/bash"]
+          args: ["-c", "mount-server"]
+          volumeMounts:
+              - name: shared-pfs
+                mountPath: /pfs
+                mountPropagation: Bidirectional
+          securityContext:
+              privileged: true
+              runAsUser: 0
+    storage:
+        extraVolumeMounts:
+            - name: shared-pfs
+              mountPath: /pfs
+              mountPropagation: HostToContainer
+        extraVolumes:
+            - name: shared-pfs
+              emptyDir: {}
+```
+###### Automate Cluster Details
 
 You can specify your `pachd` cluster details in your Helm chart via `extraFiles` to avoid having to provide them every time Jupyter Hub starts. The `mountPath` input is required, however the location does not matter.
 
