@@ -353,17 +353,3 @@ We recommend the following:
   ```
   then replace the keyword `docker` with `podman` in all the commands above. 
   - Or make sure that your qemu version is > `6.2`.
-
-
-
-
-
-///
-
-
-- You must install the Jupyterlab Helm repository.
-  ```s
-  helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-  helm repo update
-  ```
---- 

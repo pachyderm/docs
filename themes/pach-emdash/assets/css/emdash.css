@@ -354,8 +354,6 @@ ol li::marker {
     display: inline-block;
 }
 
-:is(.content) > :is(h1, h2, h3, h4, h5, h6) { margin-top: var(--xxxlarge-text); }
-
 .content  pre { 
   max-width: 100%;
   white-space: pre-wrap;
@@ -1743,4 +1741,13 @@ pre::-webkit-scrollbar {
 
 .dropdown-alt:hover .dropdown-options, .dropdown-alt:focus .dropdown-options, .dropdown-alt:active .dropdown-options, .dropdown-alt:target .dropdown-options {
   display: block;
+}
+
+.searchContainer {
+  display: flex;
+}
+
+.searchContainer input {
+
+  background-color: red;
 }
