@@ -19,7 +19,7 @@
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
   {{ $js := slice $darkMode $toc $mermaid $clippy $notices $tables $pagination $explore $tags $keyboard | resources.Concat "js/bundle.js"}}
 
-<footer class="spread-center mt-7 p-4 c-pinned-top">
+<footer class="spread-center mt-7 px-4 py-7 c-pinned-top">
     {{/*  Algolia must remain separate due to module type  */}}
     {{if .IsHome}}
       <script src="{{ $algoliaHomePage.Permalink }}" type="module" defer></script>
@@ -36,54 +36,54 @@
 
     <div class="stack-left c-mb-2 xs">
       <h2 class="s bold">Products</h2>
-      <a href="">Product Overview</a>
-      <a href="">Product Pricing</a>
-      <a href="">Book a Demo</a>
-      <a href="">Download Community Edition</a>
+      <a href="https://www.pachyderm.com/products/">Product Overview</a>
+      <a href="https://www.pachyderm.com/pricing/">Product Pricing</a>
+      <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/">Book a Demo</a>
+      <a href="https://docs.pachyderm.com/latest/deploy-manage/deploy/">Download Community Edition</a>
       <h2 class="s bold mt-2">Documentation</h2>
-      <a href="">Documentation Home</a>
-      <a href="">Getting Started</a>
-      <a href="">Key Concepts</a>
+      <a href="/">Documentation Home</a>
+      <a href="{{.Site.Params.releaseInfo.latest}}/getting-started">Getting Started</a>
+      <a href="{{.Site.Params.releaseInfo.latest}}/concepts">Key Concepts</a>
     </div>
     <div class="stack-left c-mb-2 xs ">
       <h2 class="s bold">Learn</h2>
-      <a href="">Blog</a>
-      <a href="">Case Studies</a>
-      <a href="">eBooks</a>
-      <a href="">Events</a>
-      <a href="">GitHub Examples</a>
-      <a href="">Glossary</a>
-      <a href="">Partners</a>
-      <a href="">Pachyderm on AWS</a>
+      <a href="https://www.pachyderm.com/blog/">Blog</a>
+      <a href="https://www.pachyderm.com/resources/type/case-studies/">Case Studies</a>
+      <a href="https://www.pachyderm.com/resources/type/collateral/">eBooks</a>
+      <a href="https://www.pachyderm.com/resources/type/events/">Events</a>
+      <a href="https://www.pachyderm.com/resources/type/examples/">GitHub Examples</a>
+      <a href="https://www.pachyderm.com/glossary/">Glossary</a>
+      <a href="https://www.pachyderm.com/partners/">Partners</a>
+      <a href="https://www.pachyderm.com/partners/aws/">Pachyderm on AWS</a>
     </div>
     <div class="stack-left c-mb-2 xs">
       <h2 class="s bold">Solutions</h2>
-      <a href="">Overview</a>
-      <a href="">MLOps</a>
-      <a href="">Unstructured Data</a>
-      <a href="">Data Warehouse</a>
-      <a href="">Data Centric AI</a>
+      <a href="https://www.pachyderm.com/solutions/">Overview</a>
+      <a href="https://www.pachyderm.com/solutions/mlops/">MLOps</a>
+      <a href="https://www.pachyderm.com/solutions/unstructured-data/">Unstructured Data</a>
+      <a href="https://www.pachyderm.com/solutions/data-warehouse-integration/">Data Warehouse</a>
+      <a href="https://www.pachyderm.com/data-centric-ai/">Data Centric AI</a>
       <h2 class="s bold mt-2">Industries</h2>
-      <a href="">Overview</a>
-      <a href="">Biotech & Life Sciences</a>
-      <a href="">Financial Services</a>
+      <a href="https://www.pachyderm.com/solutions/industries/">Overview</a>
+      <a href="https://www.pachyderm.com/solutions/industries/bio-tech/">Biotech & Life Sciences</a>
+      <a href="https://www.pachyderm.com/solutions/industries/fin-tech/">Financial Services</a>
       <h2 class="s bold mt-2">Use Cases</h2>
-      <a href="">Natural Language Processing</a>
-      <a href="">Video and Image ETL</a>
+      <a href="https://www.pachyderm.com/natural-language-processing/">Natural Language Processing</a>
+      <a href="https://www.pachyderm.com/video-and-image/">Video and Image ETL</a>
     </div>
     <div class="stack-left c-mb-2 xs">
       <h2 class="s bold">Company</h2>
-      <a href="">About Us</a>
-      <a href="">Careers</a>
-      <a href="">Terms of Service</a>
-      <a href="">Privacy Notice</a>
-      <a href="">Cookie Policy</a>
+      <a href="https://www.pachyderm.com/company/">About Us</a>
+      <a href="https://www.pachyderm.com/careers/">Careers</a>
+      <a href="https://www.pachyderm.com/terms/">Terms of Service</a>
+      <a href="https://www.pachyderm.com/privacy/">Privacy Notice</a>
+      <a href="https://www.pachyderm.com/cookie-policy/">Cookie Policy</a>
       <h2 class="s bold mt-2">Connect</h2>
-      <a href="">Slack</a>
-      <a href="">Newsletter</a>
-      <a href="">Github</a>
-      <a href="">Twitter</a>
-      <a href="">YouTube</a>
+      <a href="https://www.pachyderm.com/slack/">Slack</a>
+      <a href="https://www.pachyderm.com/community/">Newsletter</a>
+      <a href="https://github.com/pachyderm/pachyderm">Github</a>
+      <a href="https://twitter.com/pachyderminc">Twitter</a>
+      <a href="https://www.youtube.com/c/Pachyderm">YouTube</a>
     </div>
      <div class="is-fit"> 
         <div class="content has-text-centered">
