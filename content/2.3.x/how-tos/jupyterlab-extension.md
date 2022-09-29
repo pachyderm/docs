@@ -11,11 +11,7 @@ weight:
 beta: true 
 ---
 
-
-
-# Pachyderm JupyterLab Mount Extension
-
-{{% notice warning%}}
+{{% notice warning %}}
 The JupyterLab Mount Extension is an [experimental feature](../../reference/supported-releases/#experimental). We hope you'll try it out (and work with us to improve it! [Get in touch](https://www.pachyderm.com/slack/)), but it's not ready for self-service usage in production, as it may make sudden, breaking changes
 {{% /notice %}}
 
@@ -30,28 +26,33 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 ## Before You Start 
 
 - You must have a Pachyderm cluster running.
-- You must install the Jupyterlab Helm repository.
-  ```s
-  helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-  helm repo update
-  ```
---- 
 
 ## Install The Extension 
 
+### Local Installation 
+
+#### Pre-requisites
+
+- FUSE
+- [jupyterlab pachyderm](https://pypi.org/search/?q=jupyterlab+pachyderm) (`pip install python-pachyderm`)
+- [mount-server binary](https://github.com/pachyderm/pachyderm/releases/tag/v{{% latestPatchVersion %}})
+
+
+### Install to Existing Docker Image 
+
 You can choose between Pachyderm's pre-built image (a custom version of [`jupyter/scipy-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook)) or add the extension to your own image. Pachyderm's image includes:
 
-- The extension jupyterlab-pachyderm.
-- FUSE
+- The extension jupyterlab-pachyderm
+- [FUSE](https://osxfuse.github.io/)
 - A pre-created `/pfs` directory that mounts to and grants ownership to the JupyterLab User
-- A `mount-server` binary. 
+- A `mount-server` binary 
 
-### Local Installation (Using Provided Image)
+#### Option 1: Pre-Built Image
 
 1. Open your terminal.
 2. Run the following:
  ```s
- docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{ config.jupyterlab_extension_image_tag }}  lab --allow-root
+ docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% extensionJupyterLab %}}  lab --allow-root
  ```
 3. Open the UI using the link provided in the terminal following:
  ```s
@@ -79,7 +80,8 @@ You can choose between Pachyderm's pre-built image (a custom version of [`jupyte
  ```
 10. If you see a `pachctl` and `pachd` version, you are good to go.
 
-### Install to Existing Docker Image 
+
+#### Option 2: Custom Dockerfile 
 
 Replace the following `${PACHCTL_VERSION}` with the version of `pachctl` that matches your cluster's, and update `<version>` with the release number of the extension.
 
@@ -116,6 +118,8 @@ RUN pip install jupyterlab-pachyderm==<version>
 Then, [build, tag, and push your image](../developer-workflow/working-with-pipelines/#step-2-build-your-docker-image).
 
 ### Install to JupyterHub With Helm
+
+#### Pre-requisites 
 
 #### Option 1: Pachyderm Defaults
 
@@ -296,3 +300,16 @@ We recommend the following:
   then replace the keyword `docker` with `podman` in all the commands above. 
   - Or make sure that your qemu version is > `6.2`.
 
+
+
+
+
+///
+
+
+- You must install the Jupyterlab Helm repository.
+  ```s
+  helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+  helm repo update
+  ```
+--- 
