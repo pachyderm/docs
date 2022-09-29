@@ -19,7 +19,7 @@
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
   {{ $js := slice $darkMode $toc $mermaid $clippy $notices $tables $pagination $explore $tags $keyboard | resources.Concat "js/bundle.js"}}
 
-<footer class="stack-center mt-6 p-6">
+<footer class="spread-center mt-7 p-4 c-pinned-top">
     {{/*  Algolia must remain separate due to module type  */}}
     {{if .IsHome}}
       <script src="{{ $algoliaHomePage.Permalink }}" type="module" defer></script>
@@ -34,14 +34,58 @@
     {{else}}
     {{end}}
 
-    <section class="spread"> 
-    {{if .IsHome}}
-      {{/* Dont add the directory column */}}
-    {{else}}
-      {{/*  Empty div is used to center footer logo with article on desktop */}}
-      <div class="is-one-fifth is-hidden-mobile"> </div>
-    {{end}}
-    <div> 
+    <div class="stack-left c-mb-2 xs">
+      <h2 class="s bold">Products</h2>
+      <a href="">Product Overview</a>
+      <a href="">Product Pricing</a>
+      <a href="">Book a Demo</a>
+      <a href="">Download Community Edition</a>
+      <h2 class="s bold mt-2">Documentation</h2>
+      <a href="">Documentation Home</a>
+      <a href="">Getting Started</a>
+      <a href="">Key Concepts</a>
+    </div>
+    <div class="stack-left c-mb-2 xs ">
+      <h2 class="s bold">Learn</h2>
+      <a href="">Blog</a>
+      <a href="">Case Studies</a>
+      <a href="">eBooks</a>
+      <a href="">Events</a>
+      <a href="">GitHub Examples</a>
+      <a href="">Glossary</a>
+      <a href="">Partners</a>
+      <a href="">Pachyderm on AWS</a>
+    </div>
+    <div class="stack-left c-mb-2 xs">
+      <h2 class="s bold">Solutions</h2>
+      <a href="">Overview</a>
+      <a href="">MLOps</a>
+      <a href="">Unstructured Data</a>
+      <a href="">Data Warehouse</a>
+      <a href="">Data Centric AI</a>
+      <h2 class="s bold mt-2">Industries</h2>
+      <a href="">Overview</a>
+      <a href="">Biotech & Life Sciences</a>
+      <a href="">Financial Services</a>
+      <h2 class="s bold mt-2">Use Cases</h2>
+      <a href="">Natural Language Processing</a>
+      <a href="">Video and Image ETL</a>
+    </div>
+    <div class="stack-left c-mb-2 xs">
+      <h2 class="s bold">Company</h2>
+      <a href="">About Us</a>
+      <a href="">Careers</a>
+      <a href="">Terms of Service</a>
+      <a href="">Privacy Notice</a>
+      <a href="">Cookie Policy</a>
+      <h2 class="s bold mt-2">Connect</h2>
+      <a href="">Slack</a>
+      <a href="">Newsletter</a>
+      <a href="">Github</a>
+      <a href="">Twitter</a>
+      <a href="">YouTube</a>
+    </div>
+     <div class="is-fit"> 
         <div class="content has-text-centered">
           <a href="https://pachyderm.com">
             <img src="{{ .Site.Params.logos.footer }}" alt="{{ .Site.Params.title }}" width="100px" height="100px" loading="lazy" />
