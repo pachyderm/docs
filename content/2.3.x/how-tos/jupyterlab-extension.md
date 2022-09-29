@@ -11,17 +11,17 @@ weight:
 beta: true 
 ---
 
-{{% notice warning %}}
-The JupyterLab Mount Extension is an [experimental feature](../../reference/supported-releases/#experimental). We hope you'll try it out (and work with us to improve it! [Get in touch](https://www.pachyderm.com/slack/)), but it's not ready for self-service usage in production, as it may make sudden, breaking changes
+Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) to:
+
+- Connect your Notebook to a Pachyderm cluster
+- Browse, explore, and analyze data stored in Pachyderm directly from your Notebook
+- Run and test out your pipeline code before creating a Docker image
+
+{{% notice danger %}}
+The JupyterLab Mount Extension is an [experimental feature](../../reference/supported-releases/#experimental). We hope you'll try it out (and work with us to improve it! [Get in touch](https://www.pachyderm.com/slack/)), but it's not ready for self-service usage in production, as it may make sudden, breaking changes.
 {{% /notice %}}
 
 ![Mount extension in action](../images/mount-extension.gif)
-
-Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) to:
-
-- Connect your Notebook to a Pachyderm cluster.
-- Browse, explore, analyze data stored in Pachyderm directly from your Notebook.
-- Run and test out your pipeline code before creating a Docker image. 
 
 ## Before You Start 
 
@@ -38,7 +38,7 @@ There are three main ways to install the Jupyter Lab extension:
 ### Local Installation 
 
 {{% notice warning %}}
-Local installation needs to use FUSE, which may require you to reboot your Mac to access your **Startup Security Utility**.
+Local installation requires a reboot to access your [Startup Security Utility](https://support.apple.com/en-us/HT208198) and [enable kernel extensions (kexts)](https://support.apple.com/guide/security/kernel-extensions-sec8e454101b) after you have downloaded all of the necessary pre-requisites.
 {{% /notice %}}
 
 #### Pre-requisites 
@@ -317,8 +317,8 @@ At the bottom of the **Mounted Repositories** tab, you'll find the file browser.
 
 - Mounted repositories are nested within the root `/pfs` (Pachyderm's File System)
 - These repositories are **read-only**
-- Mounted repositories have a `/` glob pattern applied to their directories and files.
-- Files only downloaded locally when you access them (saving you time).
+- Mounted repositories have a `/` glob pattern applied to their directories and files
+- Files only downloaded locally when you access them (saving you time)
 
 Using the previous example, while the **Demo** repository is mounted, you can select the **demo** folder to reveal the example `myfile.txt`. 
 
@@ -351,5 +351,5 @@ We recommend the following:
   podman machine ssh
   sudo rpm-ostree install qemu-user-static && sudo systemctl reboot THEN
   ```
-  then replace the keyword `docker` with `podman` in all the commands above. 
-  - Or make sure that your qemu version is > `6.2`.
+   then replace the keyword `docker` with `podman` in all the commands above. 
+  - Or make sure that your qemu version is > `6.2`
