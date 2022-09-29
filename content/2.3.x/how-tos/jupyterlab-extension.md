@@ -29,11 +29,21 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 
 ## Install The Extension 
 
+There are three main ways to install the Jupyter Lab extension:
+
+- [Locally](#local-installation) 
+- [Via Docker](#install-to-existing-docker-image)
+- [Via JupyterHub + Helm](#install-to-jupyterhub-with-helm)
+
 ### Local Installation 
 
-#### Pre-requisites
+{{% notice warning %}}
+Local installation needs to use FUSE, which may require you to reboot your Mac to access your **Startup Security Utility**.
+{{% /notice %}}
 
-- FUSE
+#### Pre-requisites 
+
+- [FUSE](https://osxfuse.github.io/)
 - [jupyterlab pachyderm](https://pypi.org/search/?q=jupyterlab+pachyderm) (`pip install python-pachyderm`)
 - [mount-server binary](https://github.com/pachyderm/pachyderm/releases/tag/v{{% latestPatchVersion %}})
 
