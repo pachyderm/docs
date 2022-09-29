@@ -1736,7 +1736,7 @@ pre::-webkit-scrollbar {
   position: absolute;
   z-index: 1;
   white-space: nowrap;
-  top: 7px;
+  top: 5px;
 }
 
 .dropdown-alt:hover .dropdown-options, .dropdown-alt:focus .dropdown-options, .dropdown-alt:active .dropdown-options, .dropdown-alt:target .dropdown-options {
