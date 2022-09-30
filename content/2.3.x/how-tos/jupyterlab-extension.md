@@ -37,19 +37,37 @@ There are three main ways to install the Jupyter Lab extension:
 
 ### Local Installation 
 
-{{% notice warning %}}
-Local installation requires a reboot to access your [Startup Security Utility](https://support.apple.com/en-us/HT208198) and [enable kernel extensions (kexts)](https://support.apple.com/guide/security/kernel-extensions-sec8e454101b) after you have downloaded all of the necessary pre-requisites.
-{{% /notice %}}
-
 #### Pre-requisites 
 
-- [FUSE](https://osxfuse.github.io/)
-- [jupyterlab pachyderm](https://pypi.org/search/?q=jupyterlab+pachyderm) (`pip install python-pachyderm`)
-- [mount-server binary](https://github.com/pachyderm/pachyderm/releases/tag/v{{% latestPatchVersion %}})
+- Install [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html) (`pip install jupyterlab`)
+- Install [FUSE](https://osxfuse.github.io/)
+  {{% notice warning %}}
+  Local installation of FUSE requires a reboot to access your [Startup Security Utility](https://support.apple.com/en-us/HT208198) and [enable kernel extensions (kexts)](https://support.apple.com/guide/security/kernel-extensions-sec8e454101b) after you have downloaded all of the necessary pre-requisites.
+  {{% /notice %}}
+- Install [jupyterlab pachyderm](https://pypi.org/search/?q=jupyterlab+pachyderm) (`pip install jupyterlab-pachyderm`)
+- Download [mount-server binary](https://github.com/pachyderm/pachyderm/releases/tag/v{{% latestPatchVersion %}}) 
 
 #### Local Installation Steps
-1. Open your terminal.
-2. Run the `jupyter lab` command.
+
+1. Open your terminal
+2. Navigate to your downloads folder. 
+3. Copy the `mount-server` binary you downloaded from the pre-requisites into a folder included within your `$PATH` so that your `jupyterlab-pachyderm` extension can find it:
+   ```s 
+   sudo cp mount-server /urs/local/bin
+   ```
+4. Open your `zshrc` profile:
+   ```s
+   vim ~/.zshrc
+   ```
+5. Define an empty output folder that PFS should mount to:
+  ```s
+  PFS_MOUNT_DIR=/Users/<you>/Documents/pfs
+  ```
+5. Update the source by restarting your computer or executing the following command:
+  ```s
+  source ~/.zshrc
+  ```
+6. Run `jupyter lab`. 
 
 If you have an existing pachyderm config file at `~/.pachyderm/config.json`, the extension automatically connects to the active context. Otherwise, you must enter the cluster address manually in the extension UI.
 
