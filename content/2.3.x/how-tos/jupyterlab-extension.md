@@ -31,9 +31,9 @@ The JupyterLab Mount Extension is an [experimental feature](../../reference/supp
 
 There are three main ways to install the Jupyter Lab extension:
 
-- [Locally](#local-installation) 
-- [Via Docker](#install-to-existing-docker-image)
-- [Via JupyterHub + Helm](#install-to-jupyterhub-with-helm)
+- 🧪 [Locally](#local-installation): Great for development and testing
+- ⭐ [Via Docker](#install-to-existing-docker-image): Fastest implementation!
+- 🚀 [Via JupyterHub + Helm](#install-to-jupyterhub-with-helm): Best for production requirements with highest security requirements
 
 ### Local Installation 
 
