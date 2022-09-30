@@ -53,20 +53,20 @@ There are three main ways to install the Jupyter Lab extension:
 2. Navigate to your downloads folder. 
 3. Copy the `mount-server` binary you downloaded from the pre-requisites into a folder included within your `$PATH` so that your `jupyterlab-pachyderm` extension can find it:
    ```s 
-   sudo cp mount-server /urs/local/bin
+   sudo cp mount-server /usr/local/bin
    ```
 4. Open your `zshrc` profile:
    ```s
    vim ~/.zshrc
    ```
 5. Define an empty output folder that PFS should mount to:
-  ```s
-  PFS_MOUNT_DIR=/Users/<you>/Documents/pfs
-  ```
+   ```s
+   export PFS_MOUNT_DIR=/Users/<you>/Documents/pfs
+   ```
 5. Update the source by restarting your computer or executing the following command:
-  ```s
-  source ~/.zshrc
-  ```
+   ```s
+   source ~/.zshrc
+   ```
 6. Run `jupyter lab`. 
 
 If you have an existing pachyderm config file at `~/.pachyderm/config.json`, the extension automatically connects to the active context. Otherwise, you must enter the cluster address manually in the extension UI.
