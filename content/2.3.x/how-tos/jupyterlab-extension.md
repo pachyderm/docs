@@ -59,7 +59,7 @@ There are three main ways to install the Jupyter Lab extension:
    ```s
    vim ~/.zshrc
    ```
-5. Create a `/pfs` directory to mount your data to. This is the default directory used; alternatively, you can define an empty output folder that PFS should mount by adding `export PFS_MOUNT_DIR=/<directory>/<path>/` to your bash/zshrc profile.
+5. Create a `/pfs` directory to mount your data to. This is the default directory used; alternatively, you can define an empty output folder that PFS should mount by adding `export PFS_MOUNT_DIR=/<directory>/<path>` to your bash/zshrc profile.
 6. Update the source by restarting your computer or executing the following command:
    ```s
    source ~/.zshrc
