@@ -139,7 +139,7 @@ hr {
     margin-bottom: var(--large-text);
 }
 
-p, ul, ol, li { font-size:  var(--small-text); }
+
 
 ::selection {
     background: var(--is-highlight-color);

@@ -33,7 +33,7 @@ There are three main ways to install the Jupyter Lab extension:
 
 - 🧪 [Locally](#local-installation): Great for development and testing
 - ⭐ [Via Docker](#install-to-existing-docker-image): Fastest implementation!
-- 🚀 [Via JupyterHub + Helm](#install-to-jupyterhub-with-helm): Best for production requirements with highest security requirements
+- 🚀 [Via JupyterHub + Helm](#install-to-jupyterhub-with-helm): Best for production deployments with strict security requirements
 
 ### Local Installation 
 
@@ -49,7 +49,7 @@ There are three main ways to install the Jupyter Lab extension:
 
 #### Local Installation Steps
 
-1. Open your terminal
+1. Open your terminal.
 2. Navigate to your downloads folder. 
 3. Copy the `mount-server` binary you downloaded from the pre-requisites into a folder included within your `$PATH` so that your `jupyterlab-pachyderm` extension can find it:
    ```s 
@@ -185,9 +185,9 @@ For each option in this section, you can connect to your cluster using the follo
 
 ##### With a Custom Chart
 
-Add the following to your Jupyterhub helm chart `values.YAML` file:
+1. Add the following to your Jupyterhub helm chart `values.YAML` file:
 ```yaml
- singleuser:
+singleuser:
      defaultUrl: "/lab"
      cmd:   "start-singleuser.sh"
      image:
@@ -217,6 +217,13 @@ Add the following to your Jupyterhub helm chart `values.YAML` file:
                  return pod
              c.KubeSpawner.modify_pod_hook = modify_pod_hook
 ```
+2. Open a terminal.
+3. Run the following:
+  ```s
+  helm upgrade --cleanup-on-fail \
+  --install jupyter jupyterhub/jupyterhub \
+  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% versionNumber %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml
+  ```
  
 
 
@@ -231,12 +238,12 @@ singleuser:
     defaultUrl: "/lab"
     image:
         name: pachyderm/notebooks-user
-        tag: <latest-release>
+        tag: {{% extensionJupyterLab %}}
     extraEnv:
         "SIDECAR_MODE": "True"
     extraContainers:
         - name: mount-server-manager
-          image: pachyderm/mount-server:<latest-release>
+          image: pachyderm/mount-server:{{% extensionJupyterLab %}}
           command: ["/bin/bash"]
           args: ["-c", "mount-server"]
           volumeMounts:
@@ -264,12 +271,12 @@ singleuser:
     defaultUrl: "/lab"
     image:
         name: pachyderm/notebooks-user
-        tag: <latest-release>
+        tag: {{% extensionJupyterLab %}}
     extraEnv:
         "SIDECAR_MODE": "True"
     extraContainers:
         - name: mount-server-manager
-          image: pachyderm/mount-server:<latest-release> 
+          image: pachyderm/mount-server:{{% extensionJupyterLab %}} 
           command: ["/bin/bash"]
           args: ["-c", "mkdir -p ~/.pachyderm && cp /config/config.json ~/.pachyderm && mount-server"]
           volumeMounts:
@@ -325,7 +332,8 @@ singleuser:
  echo "Version 1 of file" | pachctl put file demo@master:/myfile.txt
  ```
 8. Unmount and re-mount your repo to attach to the latest commit containing the new file.
-9. Read the file using the following:
+   ![re-mount repo](/images/jupyterlab-extension/mount-repo.gif)
+9.  Read the file using the following:
  ```s
  cat /pfs/demo/myfile.txt
  ```
