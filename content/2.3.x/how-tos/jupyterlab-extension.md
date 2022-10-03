@@ -322,9 +322,10 @@ singleuser:
 6. Select **Mount** next to the **Demo** repository. 
 7. Input the following to create a simple text file:
  ```s
- echo "Version 1 of file!" | pachctl put file demo@master:/myfile.txt
+ echo "Version 1 of file" | pachctl put file demo@master:/myfile.txt
  ```
-8. You can read the file using the following:
+8. Unmount and re-mount your repo to attach to the latest commit containing the new file.
+9. Read the file using the following:
  ```s
  cat /pfs/demo/myfile.txt
  ```
