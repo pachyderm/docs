@@ -411,6 +411,7 @@ button, .button {
     border: none;
     background-color: inherit;
     cursor: pointer;
+    line-height: 100%;
 }
 
 /* Labels  */ 
@@ -1758,4 +1759,12 @@ pre::-webkit-scrollbar {
 .searchContainer input {
 
   background-color: red;
+}
+
+.anchor {
+  display: none;
+}
+
+.anchor:hover {
+  display: block;
 }
