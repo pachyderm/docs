@@ -29,7 +29,7 @@ function styleTOC(){
         var li = document.createElement('div')
         var link = document.createElement('a')
 
-        li.classList.add('spread-left','xs', 'c-mb-1')
+        li.classList.add('spread-left','xs', 'c-mb-2')
         link.href = '#' + headings[i].id
         link.role = headings[i].id;
 
