@@ -85,7 +85,7 @@ markup:
     lineNumbersInTable: true
     noClasses: true
     noHl: false
-    style: api # swapoff is another nice theme for pachyderm
+    style: 
     tabWidth: 4
 
 
