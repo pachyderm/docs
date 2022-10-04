@@ -57,14 +57,14 @@ function styleTOC(){
             if (window.scrollY > headings[i].offsetTop - 100) {
                 activeHeader = headings[i];
                 if (activeHeader.id == toc[i].role) {
-                    toc[i].classList.add('black','gradient-rl-cold')
+                    toc[i].classList.add('purple')
      
                 } 
             } 
         }
         for (var i =0; i < toc.length; i++) {
-            if (toc[i].classList.contains('gradient-rl-cold') && toc[i].role != activeHeader.id) {
-                toc[i].classList.remove('black','gradient-rl-cold')
+            if (toc[i].classList.contains('purple') && toc[i].role != activeHeader.id) {
+                toc[i].classList.remove('purple')
             }
         }
     })
