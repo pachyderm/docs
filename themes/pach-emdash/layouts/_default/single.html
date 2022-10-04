@@ -8,7 +8,7 @@
         <section class="black gradient-rl-cold py-3 m-2 rounded-1 c-sp-2">
                 {{/* Displays a series button if page is part of a series collection  */}}
                 {{ partial "featureSeriesButton.html" . }}
-                <h1>{{.Title}}</h1>
+                <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
                 {{ if .Description}}
                     <p>
                         {{ .Description}}
