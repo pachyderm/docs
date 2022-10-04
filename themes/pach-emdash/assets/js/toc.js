@@ -26,7 +26,7 @@ function styleTOC(){
 
         // remove the ' # ' from the heading text
         var headingText = headingText.replace(/#/g, '')
-        var li = document.createElement('li')
+        var li = document.createElement('div')
         var link = document.createElement('a')
 
         li.classList.add('spread-left','xs', 'c-mb-1')

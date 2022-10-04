@@ -7,7 +7,7 @@
 
     {{with .Parent}}
         {{/* Displays current page's parent for user to go back up one directory level . */}}  
-        <a href="{{ .RelPermalink }}" class="button purple sp-2 xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
+        <a href="{{ .RelPermalink }}" class="button purple p-2  xs bold rounded-1"> < {{ .Title | truncate 18}}</a>
     {{end}}
     {{ if eq .BundleType "branch"}}
         {{/* Does not show the relatedArticle button (id related-articles) on list pages */}}
@@ -21,7 +21,7 @@
 
         <div class="slide">
             {{/* Displays current page's children. */}}
-            <div class="is-full xs bold c-mt-2 c-ml-2 h-scroll noscrollbar">
+            <div class="is-full xs bold c-mt-2  h-scroll noscrollbar">
                 <p class="p-2 outlined xs is-fit rounded-1"> Contents </p>
                 {{ if (eq .Params.layout "glossary") }}
                     {{/*  Does not display children if parent has layout:glossary  */}}
