@@ -9,7 +9,7 @@
             {{$sectionVersion := .Section}}
 
             {{ with $related }}
-                <p class="p-2 outlined xs is-fit rounded-1"> Related Articles</p>
+                <button class="p-2 outlined xs bold is-fit rounded-1 mb-2"> Related Articles </button>
                 <div class="stack xs bold ml-2 c-mb-2">
                 {{ range first 20 . }}
                     {{ if eq .Params.majorMinor $sectionVersion }}
