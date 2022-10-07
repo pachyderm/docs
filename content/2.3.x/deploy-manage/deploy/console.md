@@ -15,10 +15,6 @@ seriesPart:
 
 Pachyderm **Console is a complete web UI for visualizing running pipelines and exploring your data**. By clicking on individual pipeline segments, users can check their jobs' status, visualize their commits' content, access logs, and much more! It is a valuable companion when troubleshooting pipelines.
 
-{{% notice warning %}}
-Console has been part of Pachyderm Community Edition since Pachyderm `2.2.3`. Refer to an [earlier version of the deployment instructions](https://docs.pachyderm.com/2.1.x/deploy-manage/deploy/console/) for previous versions of Pachyderm (`2.2.2` and under).
-{{% /notice %}}
-
 Pachyderm Community Edition comes with Console per default. Upon upgrading to Pachyderm Enterprise, you will be able to:
 
 - Benefit from our Authentication/Authorization features and control which users, groups, or roles have access to specific Pachyderm resources.
@@ -48,7 +44,7 @@ A local installation helps you learn some of the Pachyderm basics and experiment
 
 We provide an easy "one line" deployment command to install Pachyderm with Console on a local environment. All you need is a Kubernetes cluster running locally.
 
-Follow the deployment instructions in our [Local Installation](../../getting-started/local-installation.md#deploy-pachyderm) page.
+Follow the deployment instructions in our [Local Installation](../../../getting-started/local-installation#deploy-pachyderm) page.
 You are all set!
 
 {{% notice note %}}
@@ -71,11 +67,11 @@ The deployment of Console in your favorite Cloud usually requires, at a minimum,
 
     - Set up your [Ingress](../ingress/#ingress) and DNS.
     - Set up your IDP during deployment.
-        To configure your Identity Provider as a part of `helm install`, see examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../enterprise/auth/authentication/idp-dex.md) for a better understanding of each field. 
+        To configure your Identity Provider as a part of `helm install`, see examples for the `oidc.upstreamIDPs` value in the [helm chart values specification](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L461) and read [our IDP Configuration page](../../../enterprise/auth/authentication/idp-dex) for a better understanding of each field. 
     - Or manually update your values.yaml with `oidc.mockIDP = false` then [set up an Identity Provider by using `pachctl`](../../../enterprise/auth/authentication/idp-dex).
 
 {{% notice warning %}}
-- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-auth` k8s secret is created containing a [rootToken](../../enterprise/auth/index.md#activate-user-access-management) key. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
+- **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-auth` k8s secret is created containing a [rootToken](../../../enterprise/auth#activate-user-access-management) key. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
 
   However, **this secret is only used when configuring through helm**:
 

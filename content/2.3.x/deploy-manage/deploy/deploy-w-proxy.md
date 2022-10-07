@@ -329,7 +329,7 @@ This section is an alternative to the default [local deployment instructions](..
 
 Follow the [Prerequisites](#prerequisites) before [deploying Pachyderm](#deploy-pachyderm-community-edition-or-enterprise) (with or without Console) on your local cluster, then [Connect 'pachctl' To Your Cluster](#connect-pachctl-to-your-cluster).
 
-JupyterLab users, [**you can also install Pachyderm JupyterLab Mount Extension**](../../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local Pachyderm cluster to experience Pachyderm from your familiar notebooks. 
+JupyterLab users, [**you can also install Pachyderm JupyterLab Mount Extension**](../../../how-tos/jupyterlab-extension#pachyderm-jupyterlab-mount-extension) on your local Pachyderm cluster to experience Pachyderm from your familiar notebooks. 
 
 Note that you can run both Console and JupyterLab on your local installation.
 ### Prerequisites
@@ -479,7 +479,7 @@ and authenticate using the mock User (username: `admin`, password: `password`).
 - To use `pachctl`, run `pachctl auth login` then
 authenticate again (to Pachyderm this time) with the mock User (username: `admin`, password: `password`).
 
-- Notebook users, if you have installed [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/index.md) on the same cluster, the connection url to your Pachyderm cluster in the login form (click on the mount extension icon in the far left tab ) is now: `grpc://pachd.<namespace>.svc.cluster.local:30650`
+- Notebook users, if you have installed [JupyterHub and the Mount Extension](../../../how-tos/jupyterlab-extension/) on the same cluster, the connection url to your Pachyderm cluster in the login form (click on the mount extension icon in the far left tab ) is now: `grpc://pachd.<namespace>.svc.cluster.local:30650`
 
 ## Changes to the S3 Gateway
 
@@ -502,7 +502,7 @@ You can use a standalone enterprise server instead.
 
 Follow your regular [enterprise server deployment and configuration instructions](../../../enterprise/auth/enterprise-server/setup), except for those few steps:
 
-- [Section 1: Deploy an enterprise server](../../enterprise/auth/enterprise-server/setup.md#1-deploy-an-enterprise-server)):
+- [Section 1: Deploy an enterprise server](../../../enterprise/auth/enterprise-server/setup#1-deploy-an-enterprise-server)):
    
     In the values.yaml provided as examples:
 
@@ -520,15 +520,15 @@ Follow your regular [enterprise server deployment and configuration instructions
     - Your `redirect_uri` must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback` in your IdP connector as mentioned in the [IdP section of the documentation](../../../enterprise/auth/authentication/idp-dex/#pachyderm-integration-with-identity-providers)
 
 
-- [Section 3: Register your cluster with the enterprise server](../../enterprise/auth/enterprise-server/setup.md#3-register-your-cluster-with-the-enterprise-server):
+- [Section 3: Register your cluster with the enterprise server](../../../enterprise/auth/enterprise-server/setup#3-register-your-cluster-with-the-enterprise-server):
 
-    If you chose to [register a cluster to an enterprise server using pachctl](../../enterprise/auth/enterprise-server/setup.md#register-clusters-with-pachctl), change all the port numbers to 80(http)/443(https) in the `pachctl enterprise register` command:
+    If you chose to [register a cluster to an enterprise server using pachctl](../../../enterprise/auth/enterprise-server/setup#register-clusters-with-pachctl), change all the port numbers to 80(http)/443(https) in the `pachctl enterprise register` command:
 
     ```s
     pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:80 --pachd-address <pachd-IP>:80
     ```
 
-- [Section 4: Enable auth on each cluster](../../enterprise/auth/enterprise-server/setup.md#4-enable-auth-on-each-cluster), use these instructions to:
+- [Section 4: Enable auth on each cluster](../../../enterprise/auth/enterprise-server/setup#4-enable-auth-on-each-cluster), use these instructions to:
 
     - Set up the issuer in the idp config between the enterprise server and your cluster:
     
