@@ -16,7 +16,7 @@ more powerful by integrating it with your existing
 continuous integration and continuous deployment (CI/CD)
 workflows and systems. If you are just starting to use Pachyderm
 and not setting up automation for your Pachyderm build
-processes, see [Working with Pipelines](working-with-pipelines.md).
+processes, see [Working with Pipelines](../working-with-pipelines).
 
 The following diagram demonstrates automated Pachyderm
 development workflow with CI:

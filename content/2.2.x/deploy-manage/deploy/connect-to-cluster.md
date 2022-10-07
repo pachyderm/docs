@@ -98,7 +98,7 @@ if you place the data that is consumed by your pipeline in object
 store buckets located in the same region.
 
 For more information about Pachyderm contexts, see
-[Manage Cluster Access](../manage/cluster-access.md).
+[Manage Cluster Access](../../manage/cluster-access).
 
 To connect by using a Pachyderm context, complete the following
 steps:

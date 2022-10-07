@@ -12,7 +12,7 @@ seriesPart:
 Upgrades between minor releases or patch releases, such as `2.1.0` to version `2.2.0`,
 should be seamless.
 Therefore, the upgrade procedure is simple and requires little to no downtime.
-As a good practice, we recommend that you check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before an upgrade to get an understanding of the changes introduced between your current version and your target. 
+As a good practice, we recommend that you check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG) before an upgrade to get an understanding of the changes introduced between your current version and your target. 
 
 {{% notice warning %}}
 Do not use these steps to upgrade between major versions as it might result in data corruption.

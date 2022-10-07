@@ -12,13 +12,13 @@ seriesPart:
 A join is a special type of pipeline input that enables you to combine
 files that reside in separate Pachyderm repositories and match a
 particular naming pattern. The join operator must be used in combination
-with a [glob pattern](../datum/glob-pattern.md) that reflects a specific naming convention.
+with a [glob pattern](../glob-pattern) that reflects a specific naming convention.
 Note that in Pachyderm, matches are made on file paths
 only, not the files' content. 
 
 Pachyderm supports two types of joins: 
 
-- A default join setting, similar to a database *equi-join* or *inner-join* operation. Unlike the [cross input](../datum/cross-union.md), which creates datums from every combination of files in each input repository,  inner joins **only create datums where there is a *match***.  You can use inner joins to combine data from different Pachyderm repositories and ensure that only specific files from each repo are processed together. If Pachyderm does not find any matching files, you get a zero-[datum](../datum/index.md) job.
+- A default join setting, similar to a database *equi-join* or *inner-join* operation. Unlike the [cross input](../cross-union), which creates datums from every combination of files in each input repository,  inner joins **only create datums where there is a *match***.  You can use inner joins to combine data from different Pachyderm repositories and ensure that only specific files from each repo are processed together. If Pachyderm does not find any matching files, you get a zero-[datum](../) job.
 - Pachyderm also supports a join close to a database `outer-join`, allowing you to **create datums for all files in a repo, even if there is no match**. The `outer-join` behavior can be set on any repository in your join.
 
 When you configure a join input (inner or outer), you must specify a glob pattern that
@@ -55,7 +55,7 @@ For example, `$1` indicates that you want Pachyderm to match based on
 capture group `1`. Similarly, `$2` matches the capture group `2`.
 `$1$2` means that it must match both capture groups `1` and `2`.
 
-See the full `join` input configuration in the [pipeline specification](../../../reference/pipeline-spec.md).
+See the full `join` input configuration in the [pipeline specification](../../../../reference/pipeline-spec).
 
 You can test your glob pattern and capture groups by using the
 `pachctl list datum -f <your_pipeline_spec.json>` command as described in

@@ -121,5 +121,5 @@ If you run the delete command with the `--all` flag, all
 repositories will be deleted.
 
 {{% notice tip %}}
-**See Also**: [Pipeline](../pipeline-concepts/pipeline/index.md)
+**See Also**: [Pipeline](../../pipeline-concepts/pipeline)
 {{% /notice%}}

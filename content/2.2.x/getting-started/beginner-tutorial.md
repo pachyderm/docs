@@ -545,9 +545,9 @@ You can use what you have learned to build on or
 change these pipelines. 
 You can also dig in and learn more details about:
 
-- [Working with Pipelines](../how-tos/developer-workflow/working-with-pipelines.md)
-- [Load Your Data into Pachyderm](../how-tos/basic-data-operations/load-data-into-pachyderm.md)
-- [Deploying Pachyderm to the cloud or on prem](../deploy-manage/deploy/index.md)
+- [Working with Pipelines](../../how-tos/developer-workflow/working-with-pipelines)
+- [Load Your Data into Pachyderm](../../how-tos/basic-data-operations/load-data-into-pachyderm)
+- [Deploying Pachyderm to the cloud or on prem](../../deploy-manage/deploy/)
 
 Again, we would love to help and see what you come up with! Submit any
 questions, comment, contribution on

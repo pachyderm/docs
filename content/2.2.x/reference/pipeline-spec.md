@@ -649,7 +649,7 @@ gateway, see [S3 Output Repository](#s3-output-repository).
 `input.pfs.trigger`
 Specifies a trigger that must be met for the pipeline to trigger on this input.
 To learn more about triggers read the
-[deferred process docs](../concepts/advanced-concepts/deferred-processing.md).
+[deferred process docs](../../concepts/advanced-concepts/deferred-processing).
 
 #### Union Input
 
@@ -873,7 +873,7 @@ store or an SQL Database. Data will be pushed
 after the user code has finished running but before the job is marked as
 successful.
 
-For more information, see [Egress Data to an object store](../how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress.md) or [Egress Data to a database](../how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress.md) .
+For more information, see [Egress Data to an object store](../../how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress) or [Egress Data to a database](../../how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress) .
 
 
 ### Autoscaling (optional)
@@ -945,7 +945,7 @@ You can get the information
 about the service by running `kubectl get services`.
 {{% /notice %}}
 
-For more information, see [Spouts](../concepts/pipeline-concepts/pipeline/spout.md).
+For more information, see [Spouts](../../concepts/pipeline-concepts/pipeline/spout).
 
 ### Datum Set Spec (optional)
 `datum_set_spec` specifies how a pipeline should group its datums.

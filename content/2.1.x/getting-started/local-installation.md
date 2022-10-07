@@ -366,7 +366,7 @@ Make sure to check our [data science notebook examples](https://github.com/pachy
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  
   
 {{% notice note %}} 
-[General Troubleshooting](../troubleshooting/general-troubleshooting.md)  
+[General Troubleshooting](../../troubleshooting/general-troubleshooting)  
 {{% /notice %}}
 
 

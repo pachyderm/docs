@@ -15,7 +15,7 @@ This is useful when your pipeline code wants to interact with input and/or
 output data through the S3 protocol. For example, running Kubeflow or Apache™ Spark with Pachyderm. 
 
 {{% notice note %}}
-Note that this use case of the S3 Gateway differs from the [Global use case](index.md). The latter runs directly on the `pachd` pod and exists independently and outside of any pipeline lifecycle. 
+Note that this use case of the S3 Gateway differs from the [Global use case](../). The latter runs directly on the `pachd` pod and exists independently and outside of any pipeline lifecycle. 
 The *"Sidecar S3 Gateway"* (also referred to as *"S3 Enabled Pipelines"*), on the other hand, is a separate S3 gateway instance **running in a `sidecar` container in the `pipeline worker` pod**.
 {{% /notice %}}
 
@@ -116,7 +116,7 @@ input bucket(s) are read-only, and the output bucket is initially empty and writ
 {{% notice note %}} 
 See Also
 - [Configure Environment Variables](../../../deploy/environment-variables/)
-- [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
+- [Pachyderm S3 Gateway Supported Operations](../supported-operations)
 - [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
 - [Pipeline Specification](../../../../reference/pipeline-spec/#input)
 {{% /notice %}}

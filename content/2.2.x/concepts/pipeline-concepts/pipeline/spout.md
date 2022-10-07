@@ -24,7 +24,7 @@ is sporadic, and the latency requirement
 to start the processing is short. 
 
 In these workloads,
-a regular pipeline with a [cron input](./cron.md)
+a regular pipeline with a [cron input](../cron)
 that polls for new data
 at a consistent time interval
 might not be an optimal solution.
@@ -63,7 +63,7 @@ It is important to remember that you will need to use a `put file` API call from
 {{% /notice %}}
 
 A minimum spout specification must include the following
-parameters in the [pipeline specification](../../../reference/pipeline-spec.md):
+parameters in the [pipeline specification](../../../../reference/pipeline-spec):
 
 | Parameter   | Description |
 | ----------- | ----------- |
@@ -71,7 +71,7 @@ parameters in the [pipeline specification](../../../reference/pipeline-spec.md):
 | `spout`     | This attribute can be left empty. Optional: Add a `service` field to expose your spout as a service. |
 | `transform` | Specifies the command that you want to call to ingest your data and the Docker image it is packaged in. |
 
-xs
+
 Here is an example of a minimum spout pipeline specification:
 
 {{% notice %}}

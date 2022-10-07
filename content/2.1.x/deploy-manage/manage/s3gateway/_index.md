@@ -27,7 +27,7 @@ The operations on the HTTP API exposed by the S3 Gateway largely mirror those do
 {{% notice note %}} 
 Before using the S3 Gateway:
 
-Make sure to install and configure the S3 client of your choice as documented [here](configure-s3client.md).
+Make sure to install and configure the S3 client of your choice as documented [here](.).
 {{% /notice %}}
 
 ## Quick Start
@@ -48,11 +48,11 @@ and the equivalent call to a real s3 Bucket.
 
 Find the exhaustive list of:
 
-- [all of Pachyderm's supported `aws s3` commands](supported-operations.md).
-- and the [unsupported ones](unsupported-operations.md).
+- [all of Pachyderm's supported `aws s3` commands](../supported-operations).
+- and the [unsupported ones](../unsupported-operations).
 
 ## If Authentication Is Enabled
-If [auth is enabled](../../../enterprise/auth/) on the Pachyderm cluster, credentials must be passed with
+If [auth is enabled](../../../enterprise/auth) on the Pachyderm cluster, credentials must be passed with
 each S3 gateway endpoint as mentioned in the [**Configure Your S3 Client**](./configure-s3client/#set-your-credentials) page.
 
 {{% notice warning %}}

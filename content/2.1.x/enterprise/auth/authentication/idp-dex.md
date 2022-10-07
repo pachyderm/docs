@@ -25,7 +25,7 @@ Enable your users to authenticate to Pachyderm by logging into their favorite Id
 2. [Set up and create your Idp-Pachyderm connector](#2-set-up-and-create-an-idp-pachyderm-connector).
 3. [Login](#3-login).
 
-Your users should now be able to [login to Pachyderm](./login.md).
+Your users should now be able to [login to Pachyderm](./login).
 
 We chose to illustrate those steps
 by using Auth0 as our Identity Provider.
@@ -229,4 +229,4 @@ In particular, those commands let you create, update, delete, list, or get a spe
 {{% /notice %}}
 
 ## 3. Login
-The users registered with your IdP are now ready to [Log in to Pachyderm](./login.md)
+The users registered with your IdP are now ready to [Log in to Pachyderm](./login)

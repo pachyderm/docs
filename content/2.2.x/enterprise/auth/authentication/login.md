@@ -10,7 +10,7 @@ seriesPart:
 ---
 
 {{% notice note %}}
-In order for the users registered with your IdP to log in to Pachyderm, your [IdP connector must be set](./idp-dex.md).
+In order for the users registered with your IdP to log in to Pachyderm, your [IdP connector must be set](../idp-dex).
 {{% /notice %}}
 
 ## Login to a cluster as an IDP user
@@ -48,7 +48,7 @@ by login in as the [user created in Auth0](../idp-dex/#1-register-a-pachyderm-ap
 
 Your Authentication is all set. 
 
-Next - (Optional)[Configure the User Access to Pachyderm Ressources](../authorization/role-binding.md).
+Next - (Optional)[Configure the User Access to Pachyderm Resources](../../authorization/role-binding).
 
 
 

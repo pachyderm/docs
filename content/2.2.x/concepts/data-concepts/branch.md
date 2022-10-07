@@ -21,7 +21,7 @@ use the master branch for all their work. Although the concept of a
 branch is similar to Git branches, in most cases, branches are not
 used as extensively as in source code version-control systems.
 
-A branch also stores information about [provenance](provenance.md), the other
+A branch also stores information about [provenance](../provenance), the other
 branches it uses as input and which rely on its output. These branch relationships
 are how Pachyderm knows which data each pipeline relies on, and which branches and
 repos should be included in each commit.

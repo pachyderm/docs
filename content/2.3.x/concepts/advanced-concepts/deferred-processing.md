@@ -43,7 +43,7 @@ In the example below, we first create a repository called `data` on which we con
 a staging branch:
 
 {{% notice tip %}}
-A simple [pipeline](../pipeline-concepts/pipeline/index.md) subscribes to the master branch of the repo `data`:
+A simple [pipeline](../../pipeline-concepts/pipeline) subscribes to the master branch of the repo `data`:
 
 ```json
 {

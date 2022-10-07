@@ -10,7 +10,7 @@ seriesPart:
 ---
 
 {{% notice info %}}
-Before you read this section, make sure that you are familiar with Pachyderm's concepts of [Data](../../concepts/data-concepts/index.md) and [Pipeline](../../concepts/pipeline-concepts/index.md).
+Before you read this section, make sure that you are familiar with Pachyderm's concepts of [Data](../../concepts/data-concepts/) and [Pipeline](../../concepts/pipeline-concepts/).
 {{% /notice  %}}
 
 

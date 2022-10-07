@@ -108,7 +108,7 @@ The following diagram illustrates the global commit and its various components:
 Let's take a look at the origin of each commit.
 
 {{% notice note %}}
-Check the list of [all commit origins](../data-concepts/commit.md) in the `Commit` page.
+Check the list of [all commit origins](../../data-concepts/commit) in the `Commit` page.
 {{% /notice %}}
 
 
@@ -188,7 +188,7 @@ Check the list of [all commit origins](../data-concepts/commit.md) in the `Commi
     The same origin (`AUTO` ) applies to the commits sharing that same ID in the `montage` output repo as well as `edges.meta` and `montage.meta` system repos. 
 
  {{% notice info %}}
- Check the list of [all types of repos](../data-concepts/repo.md) in the `Repo` page.
+ Check the list of [all types of repos](../../data-concepts/repo) in the `Repo` page.
  {{% /notice %}}
 
 - Besides  the `USER` and `AUTO` commits, notice a set of `ALIAS` commits in `edges.spec` and `montage.spec`:

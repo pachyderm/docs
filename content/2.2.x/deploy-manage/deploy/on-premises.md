@@ -15,7 +15,7 @@ This page walks you through the fundamentals of what you need to know about Kube
 **Check Also**
 - Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
 - If you are planning to install Pachyderm UI. Read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
-- Troubleshooting a deployment? Check out [Troubleshooting Deployments](../../troubleshooting/deploy-troubleshooting.md).
+- Troubleshooting a deployment? Check out [Troubleshooting Deployments](../../../troubleshooting/deploy-troubleshooting).
 {{% /notice %}}
 
 ## Introduction
@@ -27,7 +27,7 @@ Before you can deploy Pachyderm, you will need to perform the following actions:
 1. [Deploy Kubernetes](#deploying-kubernetes) on-premises.
 1. [Deploy two Kubernetes persistent volumes](#storage-classes ) that Pachyderm will use to store its metadata.
 1. [Deploy an on-premises object store](#deploying-an-object-store) using a storage provider like [MinIO](https://min.io), [EMC's ECS](https://www.delltechnologies.com/en-us/storage/ecs/index.htm), or [SwiftStack](https://www.swiftstack.com/) to provide S3-compatible access to your data storage.
-1. Finally, [Deploy Pachyderm using Helm](./helm-install.md) by running the `helm install` command with the appropriate values configured in your values.yaml. We recommend reading these generic deployment steps if you are unfamiliar with Helm.
+1. Finally, [Deploy Pachyderm using Helm](../helm-install) by running the `helm install` command with the appropriate values configured in your values.yaml. We recommend reading these generic deployment steps if you are unfamiliar with Helm.
 
 ## Prerequisites
 Before you start, you will need the following clients installed: 
@@ -108,4 +108,4 @@ pachd:
 ```
 
 ### Next Step: Proceed to your Helm installation
-Once you have Kubernetes deployed, your storage classes setup, and your object store configured, follow those steps [to Helm install Pachyderm on your cluster](./helm-install.md).
+Once you have Kubernetes deployed, your storage classes setup, and your object store configured, follow those steps [to Helm install Pachyderm on your cluster](../helm-install).

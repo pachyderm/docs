@@ -13,8 +13,8 @@ seriesPart:
 Before you read this section, make sure that you understand the concepts
 described in the following sections:
 
-- [Datum](../../concepts/pipeline-concepts/datum/index.md)
-- [Distributed Computing](../../concepts/advanced-concepts/distributed-computing.md)
+- [Datum](../../../concepts/pipeline-concepts/datum/)
+- [Distributed Computing](../../../concepts/advanced-concepts/distributed-computing)
 - [Developer Workflow](../../developer-workflow/)
 {{% /notice %}}
 
@@ -35,7 +35,7 @@ two-week windows.
 
 ## Fixed Time Windows
 
-[Datum](../../concepts/pipeline-concepts/datum/index.md) is the basic
+[Datum](../../../concepts/pipeline-concepts/datum/) is the basic
 unit of data partitioning in Pachyderm. The glob pattern property
 in the pipeline specification defines a datum. When you analyze data
 within fixed time windows, such as the data that corresponds to
@@ -56,7 +56,7 @@ For example, if you have monthly time windows of sales data stored
 in JSON format that needs to be analyzed, you can create a `sales`
 data repository with the following data:
 
-```
+```s
 sales
 ├── January
 |   ├── 01-01-17.json
