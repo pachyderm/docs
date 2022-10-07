@@ -5,15 +5,19 @@
     <button class="dropdown-alt is-fit outlined-purple m-2 {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
         <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-2 rounded-1 s bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
         <div class="is-full dropdown-options white rounded-1 outlined-purple"> 
-            <div class="stack {{if eq .Section "tags" "series" "knowledge-base"}}is-hidden{{end}}"> 
-            {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
-                {{ if not .Params.hidden }}
-                {{$currentVersionOption := print "/" .Section "/"}}
-                {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
-                    <a class="bold is-fit p-2 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+             {{if eq .Section "tags" "series" "knowledge-base"}}
+             {{else}}
+                <div class="stack"> 
+                {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
+                    {{ if not .Params.hidden }}
+                    {{$currentVersionOption := print "/" .Section "/"}}
+                    {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
+                        <a class="bold is-fit p-2 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                    {{end}}
                 {{end}}
-            {{end}}
-            </div>
+                </div>
+             {{end}}
+
         </div>
     </button>
 {{end}}
