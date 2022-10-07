@@ -38,7 +38,7 @@ Pachyderm uses `Helm` for all deployments.
 We are now shipping Pachyderm with an **optional embedded proxy** 
 allowing your cluster to expose one single port externally. This deployment setup is optional.
 
-If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-manage/deploy/deploy-w-proxy.md).
+If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../../deploy-manage/deploy/deploy-w-proxy).
 {{% /notice%}}
 
 ## Prerequisites  
@@ -329,7 +329,7 @@ authenticate again (to Pachyderm this time) with the mock User (username: `admin
 You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
 {{% /notice %}}
 
-- To install [JupyterHub and the Mount Extension](../how-tos/jupyterlab-extension/index.md#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
+- To install [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
   ```s
   helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -393,5 +393,5 @@ Make sure to check our [data science notebook examples](https://github.com/pachy
 Complete the [Beginner Tutorial](../beginner-tutorial) to learn the basics of Pachyderm, such as adding data to a repository and building analysis pipelines.  
   
 {{% notice note %}}
-See Also: [General Troubleshooting](../troubleshooting/general-troubleshooting.md) 
+See Also: [General Troubleshooting](../../troubleshooting/general-troubleshooting) 
 {{% /notice %}}

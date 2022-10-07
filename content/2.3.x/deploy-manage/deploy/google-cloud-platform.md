@@ -521,48 +521,48 @@ Check the [list of all available helm values](../../../reference/helm-values/) a
 
 - You can now deploy a Pachyderm cluster by running this command:
 
-    ```s
-    helm repo add pach https://helm.pachyderm.com
-    helm repo update
-    helm install pachyderm -f my_values.yaml pach/pachyderm
-    ```
+  ```s
+  helm repo add pach https://helm.pachyderm.com
+  helm repo update
+  helm install pachyderm -f my_values.yaml pach/pachyderm
+  ```
 
-    **System Response:**
+  **System Response:**
 
-    ```
-    NAME: pachyderm
-    LAST DEPLOYED: Mon Nov  8 16:48:49 2021
-    NAMESPACE: default
-    STATUS: deployed
-    REVISION: 1
-    ```
+  ```s
+  NAME: pachyderm
+  LAST DEPLOYED: Mon Nov  8 16:48:49 2021
+  NAMESPACE: default
+  STATUS: deployed
+  REVISION: 1
+  ```
 
-    {{% notice warning %}}
-    If RBAC authorization is a requirement or you run into any RBAC errors see [Configure RBAC](rbac.md).
-    {{% /notice %}}
+  {{% notice warning %}}
+  If RBAC authorization is a requirement or you run into any RBAC errors see [Configure RBAC](../rbac).
+  {{% /notice %}}
 
-    It may take a few minutes for the pachd nodes to be running because Pachyderm
-    pulls containers from DockerHub. You can see the cluster status with
-    `kubectl`, which should output the following when Pachyderm is up and running:
+  It may take a few minutes for the pachd nodes to be running because Pachyderm
+  pulls containers from DockerHub. You can see the cluster status with
+  `kubectl`, which should output the following when Pachyderm is up and running:
 
-    ```s
-    kubectl get pods
-    ```
-    Once the pods are up, you should see a pod for `pachd` running 
-    (alongside etcd, pg-bouncer or postgres, console, depending on your installation). 
+  ```s
+  kubectl get pods
+  ```
+  Once the pods are up, you should see a pod for `pachd` running 
+  (alongside etcd, pg-bouncer or postgres, console, depending on your installation). 
 
-    **System Response:**
+  **System Response:**
 
-    ```
-    NAME                     READY   STATUS    RESTARTS   AGE
-    etcd-0                   1/1     Running   0          4m50s
-    pachd-5db79fb9dd-b2gdq   1/1     Running   2          4m49s
-    postgres-0               1/1     Running   0          4m50s
-    ```
+  ```s
+  NAME                     READY   STATUS    RESTARTS   AGE
+  etcd-0                   1/1     Running   0          4m50s
+  pachd-5db79fb9dd-b2gdq   1/1     Running   2          4m49s
+  postgres-0               1/1     Running   0          4m50s
+  ```
 
-    If you see a few restarts on the `pachd` pod, you can safely ignore them.
-    That simply means that Kubernetes tried to bring up those containers
-    before other components were ready, so it restarted them.
+  If you see a few restarts on the `pachd` pod, you can safely ignore them.
+  That simply means that Kubernetes tried to bring up those containers
+  before other components were ready, so it restarted them.
 
 - Finally, make sure that [`pachctl` talks with your cluster](#7-have-pachctl-and-your-cluster-communicate)
 
@@ -624,7 +624,7 @@ pachd               {{< majorMinorVersion >}}
 
 Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
 
-Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterlab-extension/index.md) page for installation instructions. 
+Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension/) page for installation instructions. 
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 

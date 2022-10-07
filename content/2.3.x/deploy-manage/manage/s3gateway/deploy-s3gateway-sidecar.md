@@ -102,7 +102,7 @@ The `Access Key` must equal the `Secret Key`.
 {{% notice info %}}
 **See Also**:
 - [Configure Environment Variables](../../../deploy/environment-variables/)
-- [Pachyderm S3 Gateway Supported Operations](./supported-operations.md)
+- [Pachyderm S3 Gateway Supported Operations](../supported-operations)
 - [Complete S3 Gateway API reference](../../../../reference/s3gateway-api/)
 - [Pipeline Specification](../../../../reference/pipeline-spec/#input)
 {{% /notice %}}

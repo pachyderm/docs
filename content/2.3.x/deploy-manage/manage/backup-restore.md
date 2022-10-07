@@ -20,7 +20,7 @@ Refer to your provider's documentation.
 ## Overview
 
 Pachyderm state is stored in two main places
-(See our high-level [architecture diagram](../../deploy-manage/index.md#overview)):
+(See our high-level [architecture diagram](../../../deploy-manage#overview)):
 
 - an **object-store** holding Pachyderm's data.
 - a PostgreSQL instance made up of **one or two databases**: `pachyderm` holding Pachyderm's metadata and `dex` holding authentication data. 
@@ -152,7 +152,7 @@ Depending on your scenario, pick all or a subset of the following steps:
 - Deploy Pachyderm into your new cluster
 
 {{% notice info %}}
-Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../deploy/index.md)
+Find the detailed installations instructions of your PostgreSQL instance, bucket, Kubernetes cluster, permissions setup, and Pachyderm deployment for each Cloud Provider in the [Deploy section of our Documentation](../../deploy)
 {{%/notice %}}
 
 ### Restore The Databases And Objects
@@ -184,7 +184,7 @@ Backing up / restoring an Enterprise Server is similar to the back up / restore 
 ### Backup A Standalone Enterprise Server
 
 {{% notice warning %}}
-Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check your [Enterprise Server](../../enterprise/auth/enterprise-server/setup.md) context: `pachctl config get active-enterprise-context`, or `pachctl config set active-enterprise-context <my-enterprise-context-name> --overwrite` to set it.
+Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check your [Enterprise Server](../../../enterprise/auth/enterprise-server/setup) context: `pachctl config get active-enterprise-context`, or `pachctl config set active-enterprise-context <my-enterprise-context-name> --overwrite` to set it.
 {{% /notice%}}
 
 - [Pause the Enterprise Server](#suspend-operations) like you would pause a regular cluster by running `pachctl enterprise pause` (Enterprise users), or using `kubectl`.
@@ -212,7 +212,7 @@ Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check 
 
 - [Follow the steps above](#restore-pachyderm) while skipping all tasks related to creating and populating a new object-store.
 
-- Once your cluster is up and running, check that all [your clusters are automatically registered with your new Enterprise Server](../../enterprise/auth/enterprise-server/manage.md#list-all-registered-clusters).
+- Once your cluster is up and running, check that all [your clusters are automatically registered with your new Enterprise Server](../../../enterprise/auth/enterprise-server/manage#list-all-registered-clusters).
 
 ## Additional Info
    

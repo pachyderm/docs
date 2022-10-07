@@ -97,7 +97,7 @@ Install [AWS CLI](https://aws.amazon.com/cli/)
    enabled: true
 ```
 #### Deploy Pachyderm Enterprise with Console
- Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/index.md#cluster-roles) per default.
+ Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization#cluster-roles) per default.
 
 ```yaml
  deployTarget: "AMAZON"
@@ -147,7 +147,7 @@ Add `--scopes storage-rw` to your `gcloud container clusters create` command.
    enabled: true
 ```
 #### Deploy Pachyderm Enterprise with Console
- Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/index.md#cluster-roles) per default.
+ Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization#cluster-roles) per default.
 
 ```yaml
  deployTarget: "GOOGLE"
@@ -199,7 +199,7 @@ Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/in
    enabled: true
 ```
 #### Deploy Pachyderm Enterprise with Console
- Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../enterprise/auth/authorization/permissions.md#clusteradminrole) per default.
+ Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization/permissions#clusteradminrole) per default.
 
 ```yaml    
  deployTarget: "MICROSOFT"
@@ -309,7 +309,7 @@ You are all set!
 
 Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
 
-Check out our [JupyterHub and Pachyderm Mount Extension](../../how-tos/jupyterlab-extension/index.md) page for installation instructions. 
+Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension) page for installation instructions. 
 
 Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 

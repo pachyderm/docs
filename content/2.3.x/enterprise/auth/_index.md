@@ -34,8 +34,8 @@ In this case, a `pachyderm-auth` k8s secret is automatically created containing 
 ``` 
 {{% /notice %}}
 
-1. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md). 
-1. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding.md) on given Pachyderm Ressources. 
+1. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex). 
+1. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding) on given Pachyderm Ressources. 
 
 Any registered IdP user will then be able to log into their IdP and access Pachyderm ressources according to the privileges they were granted.
 
@@ -84,7 +84,7 @@ As a *Root User* (or initial admin),
 you can now configure Pachyderm to work with
 the identity management provider (IdP) of your choice.
 
-Next: [Connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex.md)
+Next: [Connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex)
 
 ## Deactivating User Access Management
 The deactivation of the User Access Management on a Pachyderm cluster
