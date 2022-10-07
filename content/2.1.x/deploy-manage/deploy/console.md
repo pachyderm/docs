@@ -27,7 +27,7 @@ A local installation helps you learn some of the Pachyderm basics and experiment
 
 We provide an easy "one line" deployment command to install Pachyderm with Console on a local environment. All you need is your enterprise token and [a Kubernetes cluster running on your local environment](../../../getting-started/local-installation/#prerequisites).
 
-Follow the deployment instructions in our [Local Installation](../../getting-started/local-installation.md#deploy-pachyderm-community-edition-or-enterprise-with-console) page.
+Follow the deployment instructions in our [Local Installation](../../../getting-started/local-installation#deploy-pachyderm-community-edition-or-enterprise-with-console) page.
 You are all set!
 
 {{% notice note %}}

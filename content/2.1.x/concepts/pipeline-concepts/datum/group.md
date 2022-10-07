@@ -17,8 +17,8 @@ with a glob pattern that reflects a specific naming convention.
 By analogy, a Pachyderm group is similar to a database *group-by*,
 but it matches on file paths only, not the content of the files.
 
-Unlike the [join](../datum/join.md) datum that will always contain a single match (even partial) from each input repo,
-**a group creates one datum for each set of matching files accross its input repos**.
+Unlike the [join](../join) datum that will always contain a single match (even partial) from each input repo,
+**a group creates one datum for each set of matching files across its input repos**.
 You can use group to aggregate data that is not adequately captured by your directory structure 
 or to control the granularity of your datums through file name-matching. 
 

@@ -48,7 +48,7 @@ you can define a different glob pattern for each PFS input.
 You can additionally combine the resulting datums
 by using the `cross`, `union`, `join`, or `group` operator to
 create the final datums that your code processes.
-For more information, see [Cross and Union](./cross-union.md), [Join](./join.md), [Group](./group.md).
+For more information, see [Cross and Union](./cross-union), [Join](./join), [Group](./group).
 
 ## Example of Defining Datums
 Let's consider an input repo with the following structure where each top-level directory represents a US

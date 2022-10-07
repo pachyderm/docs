@@ -58,7 +58,7 @@ repository, accumulating more datums over time. This behavior works for some
 pipelines. For others, you might want each tick file to overwrite the
 previous one. You can set the overwrite flag to true to overwrite the
 timestamp file on each tick. To learn more about overwriting commits in
-Pachyderm, see [Datum processing](../datum/_index.md).
+Pachyderm, see [Datum processing](../../datum/).
 
 ```json
   "input": {

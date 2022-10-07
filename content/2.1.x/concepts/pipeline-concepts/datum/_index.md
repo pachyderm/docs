@@ -52,7 +52,7 @@ The most primitive input of a pipeline is a [**PFS input**](../../../reference/p
 
 - a repo containing the data you want your pipeline to consider
 - a branch to watch for commits
-- and **a [glob pattern](glob-pattern.md) to determine how the input data is partitioned**.
+- and **a [glob pattern](../datum/glob-pattern) to determine how the input data is partitioned**.
 
 A pipeline input can have one or multiple PFS inputs.
 In the latter case, Pachyderm provides a variety of options to aggregate several PFS inputs together.
@@ -87,11 +87,11 @@ aggregation methods, each configurable in the "input" section of the pipeline sp
 {{% notice warning %}} 
 Pipeline inputs, number of workers, parallelism parameters, and other
 performance knobs can all be configured through their
-corresponding fields in the [pipeline specification](../../../reference/pipeline-spec.md).
+corresponding fields in the [pipeline specification](../../../reference/pipeline-spec).
 {{% /notice %}}
 
 To understand how datums affect data processing in Pachyderm, you need to
 understand the following subconcepts:
 
-* [Glob Pattern](glob-pattern.md)
-* [Datum Processing](relationship-between-datums.md)
+* [Glob Pattern](../datum/glob-pattern)
+* [Datum Processing](../datum/relationship-between-datums)

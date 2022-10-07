@@ -24,7 +24,7 @@ is sporadic, and the latency requirement
 to start the processing is short. 
 
 In these workloads,
-a regular pipeline with a [cron input](./cron.md)
+a regular pipeline with a [cron input](./cron)
 that polls for new data
 at a consistent time interval
 might not be an optimal solution.
@@ -79,7 +79,7 @@ at the granularity your problem requires.
 {{% /notice %}}
 
 A minimum spout specification must include the following
-parameters in the [pipeline specification](../../../reference/pipeline-spec.md):
+parameters in the [pipeline specification](../../../../reference/pipeline-spec):
 
 | Parameter   | Description |
 | ----------- | ----------- |

@@ -106,8 +106,8 @@ Use meaningful link descriptions, such as the original article's title or a one-
 **Examples:**
 
 >
-    - See the [Pachyderm Technical Documentation Style Guide](docs-style-guide.md)
-    - Use the [official Pachyderm style guide](docs-style-guide.md).
+    - See the [Pachyderm Technical Documentation Style Guide](../docs-style-guide)
+    - Use the [official Pachyderm style guide](../docs-style-guide).
 
 ### Lists
 

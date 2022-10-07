@@ -72,5 +72,5 @@ See the [Effective Go Style Guide](https://go.dev/doc/effective_go) for standard
 
 ## Documentation
 
-- When writing documentation, follow the [Style Guide](docs-style-guide.md) conventions.
+- When writing documentation, follow the [Style Guide](../docs-style-guide) conventions.
 - PRs that have only documentation changes, such as typos, is a great place to start and we welcome your help!

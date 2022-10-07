@@ -122,7 +122,3 @@ operation is irreversible and results in a
 complete cleanup of your Pachyderm cluster.
 If you run the delete command with the `--all` flag, all
 repositories will be deleted.
-
-{{% notice note %}} 
-[Pipeline](../pipeline-concepts/pipeline/_index.md)
-{{% /notice %}}
