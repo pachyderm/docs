@@ -22,6 +22,10 @@ the pipeline worker pods.
 The files output by all of the datums are then combined together to
 create the final output commit.
 
+### Zero-Datum Jobs 
+
+A "zero-datum" job is a job that is successfully executed but has no matching files to transform with the provided user code.
+
 ## Data distribution
 Think of datums as a way to **divide your input data** 
 and **distribute processing workloads**.
