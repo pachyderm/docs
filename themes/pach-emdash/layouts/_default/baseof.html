@@ -8,6 +8,7 @@
     {{ partial "head.html" . }}
     <body class="white"> 
         {{ partial "nav.html" . }}
+        {{ partial "featureToastMessage.html" . }}
             {{ if .IsHome}}
               {{/*  See index.html default layout for homepage algolia hits  */}}
             {{else}}
