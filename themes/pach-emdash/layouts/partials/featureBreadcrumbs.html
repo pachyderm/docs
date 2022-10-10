@@ -1,5 +1,5 @@
 {{ if .Site.Params.breadcrumbs}}
-    <nav id="breadcrumbs" class="breadcrumbs ml-2" aria-label="breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs ml-2 content" aria-label="breadcrumbs">
         {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
     </nav>
 {{else}}
@@ -11,6 +11,6 @@
   {{ if .p1.Parent }}{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
   {{ else if not .p1.IsHome }}{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}{{ end }}
     <div class="breadcrumb">
-      <a href="{{ .p1.Permalink }}" class="xs uppercase">{{ .p1.Title | truncate 15 }}</a>
+      <a href="{{ .p1.Permalink }}" class="xs">{{ .p1.Title | truncate 15 }}</a>
     </div>
 {{ end }}

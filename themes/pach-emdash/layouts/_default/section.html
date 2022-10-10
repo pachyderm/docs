@@ -7,11 +7,11 @@
         <section class="stack-left black gradient-lr-cold py-3 m-2 rounded-1 c-sp-2">
                 <h1>{{.Title}}</h1>
                     {{ if .Description}}
-                        <p>
+                        <p class="s bold">
                             {{ .Description}}
                         </p>
                     {{end}}
-                        <p class="xxs hefty uppercase">
+                        <p class="xs bold">
                             {{/* Displays published date or last build date */}}
                             {{ if .Date }}
                                 {{ .Date | time.Format ":date_long" }} 
