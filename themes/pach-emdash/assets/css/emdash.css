@@ -648,6 +648,10 @@ button, .button {
         flex-basis: 100%;
         flex-grow: 1;
     }
+    .is-half-mobile, .c-half-mobile > * {
+        flex-basis: 50%;
+        flex-grow: 1;
+    }
 }
 
 /* Tablet */
@@ -662,6 +666,11 @@ button, .button {
         flex-basis: 100%;
         flex-grow: 1;
     }
+    .is-half-tablet, .c-half-tablet > * {
+        flex-basis: 50%;
+        flex-grow: 1;
+    }
+
 }
 
 /* Touch */
@@ -675,6 +684,10 @@ button, .button {
     }
     .is-fullsize-touch, .c-fullsize-touch > * {
         flex-basis: 100%;
+        flex-grow: 1;
+    }
+    .is-half-touch, .c-half-touch > * {
+        flex-basis: 50%;
         flex-grow: 1;
     }
 }
