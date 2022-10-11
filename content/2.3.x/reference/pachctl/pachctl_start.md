@@ -2,7 +2,11 @@
 # metadata # 
 title:  pachctl start
 description: "Start a Pachyderm resource."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - start-commit
+  - start-pipeline
+  - start-transaction
 ---
 
 ### Synopsis

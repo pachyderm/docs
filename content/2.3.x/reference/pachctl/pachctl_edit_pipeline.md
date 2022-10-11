@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl edit pipeline
 description: "Edit the manifest for a pipeline in your text editor."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - edit
 ---
 
 ### Synopsis

@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl create branch
 description: "Create a new branch, or update an existing branch, on a repo, starting a commit on the branch will also create it, so there's often no need to call this."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - create
 ---
 
 ### Synopsis

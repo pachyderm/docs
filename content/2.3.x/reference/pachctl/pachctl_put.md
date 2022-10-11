@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl put
 description: "Insert data into Pachyderm."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - put-file
 ---
 
 ### Synopsis

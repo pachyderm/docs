@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl config set context
 description: "Set a context config from a given name and a JSON configuration file on stdin"
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - set
 ---
 
 ### Synopsis

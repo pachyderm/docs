@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl debug binary
 description: "Collect a set of binaries."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - debug
 ---
 
 ### Synopsis

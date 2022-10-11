@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl completion zsh
 description: "Print or install the zsh completion code."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - completion
 ---
 
 ### Synopsis

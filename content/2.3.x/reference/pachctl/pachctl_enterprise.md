@@ -2,7 +2,16 @@
 # metadata # 
 title:  pachctl enterprise
 description: "Enterprise commands enable Pachyderm Enterprise features"
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - enterprise-deactivate
+  - enterprise-get-state
+  - enterprise-heartbeat
+  - enterprise-pause
+  - enterprise-pause-status
+  - enterprise-register
+  - enterprise-sync-contexts
+  - enterprise-unpause
 ---
 
 ### Synopsis

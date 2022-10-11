@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl update pipeline
 description: "Update a Pachyderm pipeline with a new pipeline specification. For details on the format, see https://docs.pachyderm.com/latest/reference/pipeline-spec/."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - update
 ---
 
 ### Synopsis

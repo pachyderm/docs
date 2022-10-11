@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl auth get enterprise
 description: "Get the role bindings for the enterprise server"
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - get
 ---
 
 ### Synopsis

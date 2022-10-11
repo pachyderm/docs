@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl debug analyze
 description: "Start a local pachd server to analyze a debug dump."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - debug
 ---
 
 ### Synopsis

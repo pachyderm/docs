@@ -2,7 +2,11 @@
 # metadata # 
 title:  pachctl update
 description: "Change the properties of an existing Pachyderm resource."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - update-pipeline
+  - update-project
+  - update-repo
 ---
 
 ### Synopsis

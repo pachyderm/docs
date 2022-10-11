@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl update repo
 description: "Update a repo."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - update
 ---
 
 ### Synopsis

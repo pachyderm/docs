@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl list commit
 description: "Return a list of commits, either across the entire pachyderm cluster or restricted to a single repo."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - list
 ---
 
 ### Synopsis

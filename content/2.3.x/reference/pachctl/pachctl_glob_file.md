@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl glob file
 description: "Return files that match a glob pattern in a commit (that is, match a glob pattern in a repo at the state represented by a commit). Glob patterns are documented [here](https://golang.org/pkg/path/filepath/#Match)."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - glob
 ---
 
 ### Synopsis

@@ -2,7 +2,10 @@
 # metadata # 
 title:  pachctl config delete
 description: "Commands for deleting pachyderm config values"
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - config
+  - config-delete-context
 ---
 
 ### Synopsis

@@ -2,7 +2,12 @@
 # metadata # 
 title:  pachctl auth set
 description: "Set the role bindings for a resource"
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - auth
+  - auth-set-cluster
+  - auth-set-enterprise
+  - auth-set-repo
 ---
 
 ### Synopsis

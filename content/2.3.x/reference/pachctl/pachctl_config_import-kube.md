@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl config import-kube
 description: "Import a kubernetes context as a Pachyderm context. By default the current kubernetes context is used."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - config
 ---
 
 ### Synopsis

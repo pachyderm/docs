@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl create pipeline
 description: "Create a new pipeline from a pipeline specification. For details on the format, see https://docs.pachyderm.com/latest/reference/pipeline_spec/."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - create
 ---
 
 ### Synopsis

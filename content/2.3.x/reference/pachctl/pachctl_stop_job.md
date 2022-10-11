@@ -2,7 +2,9 @@
 # metadata # 
 title:  pachctl stop job
 description: "Stop a job.  The job will be stopped immediately."
-date:  2022-10-11T14:56:32-04:00
+date:  2022-10-11T16:50:12-04:00
+tags:
+  - stop
 ---
 
 ### Synopsis
