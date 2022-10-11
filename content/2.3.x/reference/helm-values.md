@@ -1074,6 +1074,7 @@ This section is to configure an ingress resource for an existing ingress control
 - `host` your domain name, external IP address, or localhost.
 
 - `uriHttpsProtoOverride` when set to true, uriHttpsProtoOverride will add the https protocol to the ingress URI routes without configuring certs
+  
 #### ingress.tls
 
 There are three options for configuring TLS on the ingress under `ingress.tls`.
@@ -1081,6 +1082,25 @@ There are three options for configuring TLS on the ingress under `ingress.tls`.
 1. `disabled`. TLS is not used.
 1. `enabled`, using an existing secret. You must set enabled to true and provide a secret name where the exiting cert and key are stored.
 1. `enabled`, using a new secret. You must set enabled to true and `newSecret.create` to true and specify a secret name, and a cert and key in string format
+
+
+### loki-stack 
+
+The `loki-stack` section contains all the values passed to the `loki-stack` subchart.
+
+#### loki 
+
+See the official [Loki storage documentation](https://grafana.com/docs/loki/latest/operations/storage/) for the most up-to-date information.
+
+#### grafana
+
+See the official [Grafana documentation](https://grafana.com/docs/) for the most up-to-date information.
+
+#### promtail 
+
+See the official [Promtail documentation](https://grafana.com/docs/loki/latest/clients/promtail/configuration/) for the most up-to-date information.
+
+
 
 ### pachd
 
