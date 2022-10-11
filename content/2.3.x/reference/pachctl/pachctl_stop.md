@@ -1,6 +1,9 @@
-## pachctl stop
-
-Cancel an ongoing task.
+---
+# metadata # 
+title:  pachctl stop
+description: "Cancel an ongoing task."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Cancel an ongoing task.
   -h, --help   help for stop
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

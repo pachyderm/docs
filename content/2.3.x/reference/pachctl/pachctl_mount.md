@@ -1,6 +1,9 @@
-## pachctl mount
-
-Mount pfs locally. This command blocks.
+---
+# metadata # 
+title:  pachctl mount
+description: "Mount pfs locally. This command blocks."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -15,11 +18,12 @@ pachctl mount <path/to/mount/point> [flags]
 ```
   -d, --debug            Turn on debug messages.
   -h, --help             help for mount
+      --project string   Project to mount.
   -r, --repos []string   Repos and branches / commits to mount, arguments should be of the form "repo[@branch=commit][+w]", where the trailing flag "+w" indicates write. You can omit the branch when specifying a commit unless the same commit ID is on multiple branches in the repo. (default [])
   -w, --write            Allow writing to pfs through the mount.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl inspect file
-
-Return info about a file.
+---
+# metadata # 
+title:  pachctl inspect file
+description: "Return info about a file."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -18,7 +21,7 @@ pachctl inspect file <repo>@<branch-or-commit>:<path/in/pfs> [flags]
       --raw             Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

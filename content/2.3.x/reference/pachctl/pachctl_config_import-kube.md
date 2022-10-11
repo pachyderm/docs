@@ -1,6 +1,9 @@
-## pachctl config import-kube
-
-Import a kubernetes context as a Pachyderm context, and set the active Pachyderm context.
+---
+# metadata # 
+title:  pachctl config import-kube
+description: "Import a kubernetes context as a Pachyderm context. By default the current kubernetes context is used."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -20,7 +23,7 @@ pachctl config import-kube <context> [flags]
   -o, --overwrite           Overwrite a context if it already exists.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

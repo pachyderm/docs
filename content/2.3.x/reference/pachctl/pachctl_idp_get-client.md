@@ -1,6 +1,9 @@
-## pachctl idp get-client
-
-Get an OIDC client.
+---
+# metadata # 
+title:  pachctl idp get-client
+description: "Get an OIDC client."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl idp get-client <client ID> [flags]
   -h, --help   help for get-client
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

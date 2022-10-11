@@ -1,6 +1,9 @@
-## pachctl inspect repo
-
-Return info about a repo.
+---
+# metadata # 
+title:  pachctl inspect repo
+description: "Return info about a repo."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -19,7 +22,7 @@ pachctl inspect repo <repo> [flags]
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

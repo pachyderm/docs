@@ -1,6 +1,9 @@
-## pachctl delete file
-
-Delete a file.
+---
+# metadata # 
+title:  pachctl delete file
+description: "Delete a file."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl delete file <repo>@<branch-or-commit>:<path/in/pfs> [flags]
   -r, --recursive   Recursively delete the files in a directory.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

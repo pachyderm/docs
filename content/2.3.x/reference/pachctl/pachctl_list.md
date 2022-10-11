@@ -1,6 +1,9 @@
-## pachctl list
-
-Print a list of Pachyderm resources of a specific type.
+---
+# metadata # 
+title:  pachctl list
+description: "Print a list of Pachyderm resources of a specific type."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Print a list of Pachyderm resources of a specific type.
   -h, --help   help for list
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

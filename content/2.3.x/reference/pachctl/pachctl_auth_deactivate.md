@@ -1,6 +1,9 @@
-## pachctl auth deactivate
-
-Delete all ACLs, tokens, admins, IDP integrations and OIDC clients, and deactivate Pachyderm auth
+---
+# metadata # 
+title:  pachctl auth deactivate
+description: "Deactivate Pachyderm's auth and identity systems, which will delete ALL auth tokens, ACLs and admins, IDP integrations and OIDC clients, and expose all data in the cluster to any user with cluster access. Use with caution."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl auth deactivate [flags]
   -h, --help         help for deactivate
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

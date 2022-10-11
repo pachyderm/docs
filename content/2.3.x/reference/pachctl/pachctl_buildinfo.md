@@ -1,6 +1,9 @@
-## pachctl buildinfo
-
-Print go buildinfo.
+---
+# metadata # 
+title:  pachctl buildinfo
+description: "Print information about the build environment."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl buildinfo [flags]
   -h, --help   help for buildinfo
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

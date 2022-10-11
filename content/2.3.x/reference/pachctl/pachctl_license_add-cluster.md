@@ -1,6 +1,9 @@
-## pachctl license add-cluster
-
-Register a new cluster with the license server.
+---
+# metadata # 
+title:  pachctl license add-cluster
+description: "Register a new cluster with the license server."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -19,7 +22,7 @@ pachctl license add-cluster [flags]
       --secret string    The shared secret to use to authenticate this cluster
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

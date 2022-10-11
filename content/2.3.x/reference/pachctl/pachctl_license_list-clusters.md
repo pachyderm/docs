@@ -1,6 +1,9 @@
-## pachctl license list-clusters
-
-List clusters registered with the license server.
+---
+# metadata # 
+title:  pachctl license list-clusters
+description: "List clusters registered with the license server."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl license list-clusters [flags]
   -h, --help   help for list-clusters
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl start commit
-
-Start a new commit.
+---
+# metadata # 
+title:  pachctl start commit
+description: "Start a new commit with parent-commit as the parent on the given branch; if the branch does not exist, it will be created."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -33,7 +36,7 @@ $ pachctl start commit test@fork -p XXX
   -p, --parent string        The parent of the new commit, unneeded if branch is specified and you want to use the previous head of the branch as the parent.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

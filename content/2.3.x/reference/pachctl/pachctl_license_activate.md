@@ -1,6 +1,9 @@
-## pachctl license activate
-
-Activate the license server with an activation code
+---
+# metadata # 
+title:  pachctl license activate
+description: "Activate the license server with an activation code"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl license activate [flags]
       --no-register   Activate auth on the active enterprise context
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl config get context
-
-Gets a context.
+---
+# metadata # 
+title:  pachctl config get context
+description: "Gets the config of a context by its name."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl config get context <context> [flags]
   -h, --help   help for context
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

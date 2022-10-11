@@ -1,6 +1,9 @@
-## pachctl copy file
-
-Copy files between pfs paths.
+---
+# metadata # 
+title:  pachctl copy file
+description: "Copy files between pfs paths."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl copy file <src-repo>@<src-branch-or-commit>:<src-path> <dst-repo>@<dst-b
   -h, --help     help for file
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

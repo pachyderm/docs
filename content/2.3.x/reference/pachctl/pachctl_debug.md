@@ -1,6 +1,9 @@
-## pachctl debug
-
-Debug commands for analyzing a running cluster.
+---
+# metadata # 
+title:  pachctl debug
+description: "Debug commands for analyzing a running cluster."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Debug commands for analyzing a running cluster.
   -h, --help   help for debug
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

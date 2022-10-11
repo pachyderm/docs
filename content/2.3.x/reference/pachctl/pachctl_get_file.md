@@ -1,6 +1,9 @@
-## pachctl get file
-
-Return the contents of a file.
+---
+# metadata # 
+title:  pachctl get file
+description: "Return the contents of a file."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -45,7 +48,7 @@ $ pachctl get file foo@master:XXX -r
       --retry           {true|false} Whether to append the missing bytes to an existing file. No-op if the file doesn't exist.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

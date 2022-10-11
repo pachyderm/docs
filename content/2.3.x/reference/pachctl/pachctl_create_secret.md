@@ -1,6 +1,9 @@
-## pachctl create secret
-
-Create a secret on the cluster.
+---
+# metadata # 
+title:  pachctl create secret
+description: "Create a secret on the cluster."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl create secret [flags]
   -h, --help          help for secret
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

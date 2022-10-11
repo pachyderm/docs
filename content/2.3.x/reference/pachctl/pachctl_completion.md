@@ -1,6 +1,9 @@
-## pachctl completion
-
-Print or install terminal completion code.
+---
+# metadata # 
+title:  pachctl completion
+description: "Print or install terminal completion code."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Print or install terminal completion code.
   -h, --help   help for completion
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

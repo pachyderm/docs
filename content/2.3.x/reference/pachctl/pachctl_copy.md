@@ -1,6 +1,9 @@
-## pachctl copy
-
-Copy a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl copy
+description: "Copy a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Copy a Pachyderm resource.
   -h, --help   help for copy
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

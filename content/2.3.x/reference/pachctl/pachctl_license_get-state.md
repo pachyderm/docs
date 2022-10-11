@@ -1,6 +1,9 @@
-## pachctl license get-state
-
-Get the configuration of the license service.
+---
+# metadata # 
+title:  pachctl license get-state
+description: "Get the configuration of the license service."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl license get-state [flags]
   -h, --help   help for get-state
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

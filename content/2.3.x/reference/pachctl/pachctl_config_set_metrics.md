@@ -1,6 +1,9 @@
-## pachctl config set metrics
-
-Sets whether metrics are enabled.
+---
+# metadata # 
+title:  pachctl config set metrics
+description: "Sets whether metrics are enabled."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl config set metrics (true | false) [flags]
   -h, --help   help for metrics
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl diff file
-
-Return a diff of two file trees stored in Pachyderm
+---
+# metadata # 
+title:  pachctl diff file
+description: "Return a diff of two file trees stored in Pachyderm"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -34,7 +37,7 @@ $ pachctl diff file foo@master:path1 bar@master:path2
   -s, --shallow               Don't descend into sub directories.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

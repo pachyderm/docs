@@ -1,6 +1,9 @@
-## pachctl inspect
-
-Show detailed information about a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl inspect
+description: "Show detailed information about a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Show detailed information about a Pachyderm resource.
   -h, --help   help for inspect
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

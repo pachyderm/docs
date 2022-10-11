@@ -1,6 +1,9 @@
-## pachctl list file
-
-Return the files in a directory.
+---
+# metadata # 
+title:  pachctl list file
+description: "Return the files in a directory."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -42,7 +45,7 @@ $ pachctl list file 'foo@master:dir\[1\]'
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

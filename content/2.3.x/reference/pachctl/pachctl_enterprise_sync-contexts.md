@@ -1,6 +1,9 @@
-## pachctl enterprise sync-contexts
-
-Pull all available Pachyderm Cluster contexts into your pachctl config
+---
+# metadata # 
+title:  pachctl enterprise sync-contexts
+description: "Pull all available Pachyderm Cluster contexts into your pachctl config"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl enterprise sync-contexts [flags]
   -h, --help   help for sync-contexts
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

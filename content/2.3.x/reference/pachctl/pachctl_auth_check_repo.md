@@ -1,6 +1,9 @@
-## pachctl auth check repo
-
-Check the permissions a user has on 'repo'
+---
+# metadata # 
+title:  pachctl auth check repo
+description: "Check the permissions a user has on 'repo'"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl auth check repo <repo> [<user>] [flags]
   -h, --help   help for repo
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl config update
-
-Commands for updating pachyderm config values
+---
+# metadata # 
+title:  pachctl config update
+description: "Commands for updating pachyderm config values"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Commands for updating pachyderm config values
   -h, --help   help for update
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

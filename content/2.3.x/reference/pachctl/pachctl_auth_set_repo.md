@@ -1,6 +1,9 @@
-## pachctl auth set repo
-
-Set the roles that 'username' has on 'repo'
+---
+# metadata # 
+title:  pachctl auth set repo
+description: "Set the roles that 'username' has on 'repo'"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl auth set repo <repo> [role1,role2 | none ] <subject> [flags]
   -h, --help   help for repo
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

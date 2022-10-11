@@ -1,6 +1,9 @@
-## pachctl run
-
-Manually run a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl run
+description: "Manually run a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Manually run a Pachyderm resource.
   -h, --help   help for run
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

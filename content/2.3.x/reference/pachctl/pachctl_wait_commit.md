@@ -1,6 +1,9 @@
-## pachctl wait commit
-
-Wait for the specified commit to finish and return it.
+---
+# metadata # 
+title:  pachctl wait commit
+description: "Wait for the specified commit to finish and return it."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -27,7 +30,7 @@ $ pachctl wait commit foo@XXX -b bar@baz
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl auth
-
-Auth commands manage access to data in a Pachyderm cluster
+---
+# metadata # 
+title:  pachctl auth
+description: "Auth commands manage access to data in a Pachyderm cluster"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Auth commands manage access to data in a Pachyderm cluster
   -h, --help   help for auth
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

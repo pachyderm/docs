@@ -1,6 +1,9 @@
-## pachctl stop pipeline
-
-Stop a running pipeline.
+---
+# metadata # 
+title:  pachctl stop pipeline
+description: "Stop a running pipeline."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -13,10 +16,11 @@ pachctl stop pipeline <pipeline> [flags]
 ### Options
 
 ```
-  -h, --help   help for pipeline
+  -h, --help             help for pipeline
+      --project string   Project containing pipeline.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

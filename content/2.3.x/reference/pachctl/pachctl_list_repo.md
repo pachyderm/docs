@@ -1,6 +1,9 @@
-## pachctl list repo
-
-Return a list of repos.
+---
+# metadata # 
+title:  pachctl list repo
+description: "Return a list of repos. By default, hide system repos like pipeline metadata"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -21,7 +24,7 @@ pachctl list repo [flags]
       --type string       only include repos of the given type
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

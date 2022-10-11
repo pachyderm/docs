@@ -1,6 +1,9 @@
-## pachctl auth whoami
-
-Print your Pachyderm identity
+---
+# metadata # 
+title:  pachctl auth whoami
+description: "Print your Pachyderm identity."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl auth whoami [flags]
   -h, --help         help for whoami
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl auth get enterprise
-
-Get the role bindings for the enterprise server
+---
+# metadata # 
+title:  pachctl auth get enterprise
+description: "Get the role bindings for the enterprise server"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl auth get enterprise [flags]
   -h, --help   help for enterprise
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl subscribe commit
-
-Print commits as they are created (finished).
+---
+# metadata # 
+title:  pachctl subscribe commit
+description: "Print commits as they are created in the specified repo and branch.  By default, all existing commits on the specified branch are returned first.  A commit is only considered 'created' when it's been finished."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -37,7 +40,7 @@ $ pachctl subscribe commit test@master --new
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

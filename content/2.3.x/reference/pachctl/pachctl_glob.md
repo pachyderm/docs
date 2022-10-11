@@ -1,6 +1,9 @@
-## pachctl glob
-
-Print a list of Pachyderm resources matching a glob pattern.
+---
+# metadata # 
+title:  pachctl glob
+description: "Print a list of Pachyderm resources matching a glob pattern."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Print a list of Pachyderm resources matching a glob pattern.
   -h, --help   help for glob
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

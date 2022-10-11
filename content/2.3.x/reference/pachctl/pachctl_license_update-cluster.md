@@ -1,6 +1,9 @@
-## pachctl license update-cluster
-
-Update an existing cluster registered with the license server.
+---
+# metadata # 
+title:  pachctl license update-cluster
+description: "Update an existing cluster registered with the license server."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -20,7 +23,7 @@ pachctl license update-cluster [flags]
       --user-address string            The host and port where the cluster can be reached by a user
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl delete branch
-
-Delete a branch
+---
+# metadata # 
+title:  pachctl delete branch
+description: "Delete a branch, while leaving the commits intact"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl delete branch <repo>@<branch> [flags]
   -h, --help    help for branch
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

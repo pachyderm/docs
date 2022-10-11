@@ -1,6 +1,9 @@
-## pachctl config get
-
-Commands for getting pachyderm config values
+---
+# metadata # 
+title:  pachctl config get
+description: "Commands for getting pachyderm config values"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Commands for getting pachyderm config values
   -h, --help   help for get
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

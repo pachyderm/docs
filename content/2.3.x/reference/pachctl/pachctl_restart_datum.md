@@ -1,10 +1,13 @@
-## pachctl restart datum
-
-Restart a datum.
+---
+# metadata # 
+title:  pachctl restart datum
+description: "Restart a stuck datum during a currently running job; does not solve failed datums. Optionally, you can configure a job to skip failed datums via the transform.err_cmd setting of your pipeline spec."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
-Restart a datum.
+Restart a stuck datum during a currently running job; does not solve failed datums. Optionally, you can configure a job to skip failed datums via the transform.err_cmd setting of your pipeline spec.
 
 ```
 pachctl restart datum <pipeline>@<job> <datum-path1>,<datum-path2>,... [flags]
@@ -13,10 +16,11 @@ pachctl restart datum <pipeline>@<job> <datum-path1>,<datum-path2>,... [flags]
 ### Options
 
 ```
-  -h, --help   help for datum
+  -h, --help             help for datum
+      --project string   Project containing the datum job
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

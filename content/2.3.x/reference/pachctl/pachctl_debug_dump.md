@@ -1,6 +1,9 @@
-## pachctl debug dump
-
-Collect a standard set of debugging information.
+---
+# metadata # 
+title:  pachctl debug dump
+description: "Collect a standard set of debugging information."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -21,7 +24,7 @@ pachctl debug dump <file> [flags]
   -w, --worker string     Only collect the dump from the given worker pod.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

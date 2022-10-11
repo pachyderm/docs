@@ -1,6 +1,9 @@
-## pachctl list job
-
-Return info about jobs.
+---
+# metadata # 
+title:  pachctl list job
+description: "Return info about jobs."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -51,7 +54,7 @@ $ pachctl list job -p foo -i bar@YYY
       --state stringArray   Return only sub-jobs with the specified state. Can be repeated to include multiple states
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

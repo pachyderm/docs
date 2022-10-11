@@ -1,6 +1,9 @@
-## pachctl put file
-
-Put a file into the filesystem.
+---
+# metadata # 
+title:  pachctl put file
+description: "Put a file into the filesystem.  This command supports a number of ways to insert data into PFS."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -60,9 +63,10 @@ $ pachctl put file repo@branch -i http://host/path
   -p, --parallelism int     The maximum number of files that can be uploaded in parallel. (default 10)
       --progress            Print progress bars. (default true)
   -r, --recursive           Recursively put the files in a directory.
+      --untar               If true, file(s) with the extension .tar are untarred and put as a separate file for each file within the tar stream(s). gzipped (.tar.gz) tar file(s) are handled as well
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

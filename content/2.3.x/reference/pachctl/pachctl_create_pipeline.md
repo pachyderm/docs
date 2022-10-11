@@ -1,6 +1,9 @@
-## pachctl create pipeline
-
-Create a new pipeline.
+---
+# metadata # 
+title:  pachctl create pipeline
+description: "Create a new pipeline from a pipeline specification. For details on the format, see https://docs.pachyderm.com/latest/reference/pipeline_spec/."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -22,7 +25,7 @@ pachctl create pipeline [flags]
   -u, --username string   The username to push images as.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

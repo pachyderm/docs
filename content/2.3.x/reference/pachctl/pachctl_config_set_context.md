@@ -1,6 +1,9 @@
-## pachctl config set context
-
-Set a context.
+---
+# metadata # 
+title:  pachctl config set context
+description: "Set a context config from a given name and a JSON configuration file on stdin"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl config set context <context> [flags]
       --overwrite   Overwrite a context if it already exists.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl start transaction
-
-Start a new transaction.
+---
+# metadata # 
+title:  pachctl start transaction
+description: "Start a new transaction."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl start transaction [flags]
   -h, --help   help for transaction
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

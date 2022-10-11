@@ -1,6 +1,9 @@
-## pachctl auth activate
-
-Activate Pachyderm's auth system
+---
+# metadata # 
+title:  pachctl auth activate
+description: "Activate Pachyderm's auth system, and restrict access to existing data to the root user"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -24,7 +27,7 @@ pachctl auth activate [flags]
       --trusted-peers strings   Comma-separated list of OIDC client IDs to trust
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

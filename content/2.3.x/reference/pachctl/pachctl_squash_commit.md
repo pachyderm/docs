@@ -1,6 +1,9 @@
-## pachctl squash commit
-
-Squash the sub-commits of a commit.
+---
+# metadata # 
+title:  pachctl squash commit
+description: "Squash the sub-commits of a commit.  The data in the sub-commits will remain in their child commits.\nThe squash will fail if it includes a commit with no children"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl squash commit <commit-id> [flags]
   -h, --help   help for commit
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

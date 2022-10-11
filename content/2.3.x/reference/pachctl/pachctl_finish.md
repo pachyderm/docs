@@ -1,6 +1,9 @@
-## pachctl finish
-
-Finish a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl finish
+description: "Finish a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Finish a Pachyderm resource.
   -h, --help   help for finish
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

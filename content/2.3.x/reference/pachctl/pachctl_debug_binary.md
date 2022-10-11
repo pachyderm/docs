@@ -1,6 +1,9 @@
-## pachctl debug binary
-
-Collect a set of binaries.
+---
+# metadata # 
+title:  pachctl debug binary
+description: "Collect a set of binaries."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -19,7 +22,7 @@ pachctl debug binary <file> [flags]
   -w, --worker string     Only collect the binary from the given worker pod.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

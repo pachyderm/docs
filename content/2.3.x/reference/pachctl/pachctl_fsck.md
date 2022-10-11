@@ -1,6 +1,9 @@
-## pachctl fsck
-
-Run a file system consistency check on pfs.
+---
+# metadata # 
+title:  pachctl fsck
+description: "Run a file system consistency check on the pachyderm file system, ensuring the correct provenance relationships are satisfied."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -19,7 +22,7 @@ pachctl fsck [flags]
       --zombie-all      Check all pipelines for zombie files: files corresponding to old inputs that were not properly deleted
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

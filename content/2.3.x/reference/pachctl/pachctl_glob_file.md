@@ -1,6 +1,9 @@
-## pachctl glob file
-
-Return files that match a glob pattern in a commit.
+---
+# metadata # 
+title:  pachctl glob file
+description: "Return files that match a glob pattern in a commit (that is, match a glob pattern in a repo at the state represented by a commit). Glob patterns are documented [here](https://golang.org/pkg/path/filepath/#Match)."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -34,7 +37,7 @@ $ pachctl glob file "foo@master:data/*"
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

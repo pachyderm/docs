@@ -1,6 +1,9 @@
-## pachctl delete all
-
-Delete everything.
+---
+# metadata # 
+title:  pachctl delete all
+description: "Delete all repos, commits, files, pipelines and jobs.\nThis resets the cluster to its initial state."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl delete all [flags]
   -h, --help   help for all
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

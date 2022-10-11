@@ -1,6 +1,9 @@
-## pachctl list secret
-
-List all secrets from a namespace in the cluster.
+---
+# metadata # 
+title:  pachctl list secret
+description: "List all secrets from a namespace in the cluster."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl list secret [flags]
   -h, --help   help for secret
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

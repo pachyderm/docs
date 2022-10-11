@@ -1,6 +1,9 @@
-## pachctl shell
-
-Run the pachyderm shell.
+---
+# metadata # 
+title:  pachctl shell
+description: "Run the pachyderm shell."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl shell [flags]
       --max-completions int   The maximum number of completions to show in the shell, defaults to 64.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

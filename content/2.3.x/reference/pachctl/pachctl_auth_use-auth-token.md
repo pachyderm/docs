@@ -1,6 +1,9 @@
-## pachctl auth use-auth-token
-
-Read a Pachyderm auth token from stdin, and write it to the current user's Pachyderm config file
+---
+# metadata # 
+title:  pachctl auth use-auth-token
+description: "Read a Pachyderm auth token from stdin, and write it to the current user's Pachyderm config file"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl auth use-auth-token [flags]
   -h, --help         help for use-auth-token
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

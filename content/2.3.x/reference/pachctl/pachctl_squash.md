@@ -1,6 +1,9 @@
-## pachctl squash
-
-Squash an existing Pachyderm resource.
+---
+# metadata # 
+title:  pachctl squash
+description: "Squash an existing Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Squash an existing Pachyderm resource.
   -h, --help   help for squash
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

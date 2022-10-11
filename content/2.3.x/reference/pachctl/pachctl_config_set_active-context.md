@@ -1,6 +1,9 @@
-## pachctl config set active-context
-
-Sets the currently active context.
+---
+# metadata # 
+title:  pachctl config set active-context
+description: "Sets the currently active context."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl config set active-context <context> [flags]
   -h, --help   help for active-context
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

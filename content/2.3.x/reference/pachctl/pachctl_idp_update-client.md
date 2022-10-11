@@ -1,6 +1,9 @@
-## pachctl idp update-client
-
-Update an OIDC client.
+---
+# metadata # 
+title:  pachctl idp update-client
+description: "Update an OIDC client."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl idp update-client [flags]
   -h, --help            help for update-client
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

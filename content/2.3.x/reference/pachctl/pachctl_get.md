@@ -1,6 +1,9 @@
-## pachctl get
-
-Get the raw data represented by a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl get
+description: "Get the raw data represented by a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Get the raw data represented by a Pachyderm resource.
   -h, --help   help for get
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

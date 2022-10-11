@@ -1,6 +1,9 @@
-## pachctl list branch
-
-Return all branches on a repo.
+---
+# metadata # 
+title:  pachctl list branch
+description: "Return all branches on a repo."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -18,7 +21,7 @@ pachctl list branch <repo> [flags]
       --raw             Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

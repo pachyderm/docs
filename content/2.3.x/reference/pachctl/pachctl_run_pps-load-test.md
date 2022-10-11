@@ -1,6 +1,9 @@
-## pachctl run pps-load-test
-
-Run a PPS load test.
+---
+# metadata # 
+title:  pachctl run pps-load-test
+description: "Run a PPS load test."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -20,7 +23,7 @@ pachctl run pps-load-test <spec-file>  [flags]
   -s, --seed int           The seed to use for generating the load.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

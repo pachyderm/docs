@@ -1,6 +1,9 @@
-## pachctl resume
-
-Resume a stopped task.
+---
+# metadata # 
+title:  pachctl resume
+description: "Resume a stopped task."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Resume a stopped task.
   -h, --help   help for resume
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

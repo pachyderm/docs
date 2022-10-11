@@ -1,6 +1,9 @@
-## pachctl put
-
-Insert data into Pachyderm.
+---
+# metadata # 
+title:  pachctl put
+description: "Insert data into Pachyderm."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Insert data into Pachyderm.
   -h, --help   help for put
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

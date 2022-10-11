@@ -1,6 +1,9 @@
-## pachctl run pfs-load-test
-
-Run a PFS load test.
+---
+# metadata # 
+title:  pachctl run pfs-load-test
+description: "Run a PFS load test."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -103,7 +106,7 @@ validator: {}
   -s, --seed int        The seed to use for generating the load.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl run cron
-
-Run an existing Pachyderm cron pipeline now
+---
+# metadata # 
+title:  pachctl run cron
+description: "Run an existing Pachyderm cron pipeline now"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -21,10 +24,11 @@ pachctl run cron <pipeline> [flags]
 ### Options
 
 ```
-  -h, --help   help for cron
+  -h, --help             help for cron
+      --project string   Project containing pipeline.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl create
-
-Create a new instance of a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl create
+description: "Create a new instance of a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Create a new instance of a Pachyderm resource.
   -h, --help   help for create
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

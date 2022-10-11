@@ -1,6 +1,9 @@
-## pachctl idp create-client
-
-Create a new OIDC client.
+---
+# metadata # 
+title:  pachctl idp create-client
+description: "Create a new OIDC client."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -17,7 +20,7 @@ pachctl idp create-client [flags]
   -h, --help            help for create-client
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

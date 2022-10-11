@@ -1,6 +1,9 @@
-## pachctl inspect cluster
-
-Returns info about the pachyderm cluster
+---
+# metadata # 
+title:  pachctl inspect cluster
+description: "Returns info about the pachyderm cluster"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl inspect cluster [flags]
   -h, --help   help for cluster
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

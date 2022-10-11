@@ -1,6 +1,9 @@
-## pachctl idp list-connector
-
-List identity provider connectors
+---
+# metadata # 
+title:  pachctl idp list-connector
+description: "List identity provider connectors"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl idp list-connector [flags]
   -h, --help   help for list-connector
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl enterprise register
-
-Register the cluster with an enterprise license server
+---
+# metadata # 
+title:  pachctl enterprise register
+description: "Register the cluster with an enterprise license server"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -21,7 +24,7 @@ pachctl enterprise register [flags]
       --pachd-user-address string          the address for a user to reach this pachd
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

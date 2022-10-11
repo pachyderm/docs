@@ -1,6 +1,9 @@
-## pachctl auth get-config
-
-Retrieve Pachyderm's current auth configuration
+---
+# metadata # 
+title:  pachctl auth get-config
+description: "Retrieve Pachyderm's current auth configuration"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -18,7 +21,7 @@ pachctl auth get-config [flags]
   -o, --output-format string   output format ("json" or "yaml") (default "json")
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

@@ -1,6 +1,9 @@
-## pachctl subscribe
-
-Wait for notifications of changes to a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl subscribe
+description: "Wait for notifications of changes to a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Wait for notifications of changes to a Pachyderm resource.
   -h, --help   help for subscribe
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

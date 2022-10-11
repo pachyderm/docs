@@ -1,6 +1,9 @@
-## pachctl finish commit
-
-Finish a started commit.
+---
+# metadata # 
+title:  pachctl finish commit
+description: "Finish a started commit. Commit-id must be a writeable commit."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -19,7 +22,7 @@ pachctl finish commit <repo>@<branch-or-commit> [flags]
   -m, --message string       A description of this commit's contents (overwrites any existing commit description)
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

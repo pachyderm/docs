@@ -1,6 +1,9 @@
-## pachctl license
-
-License commmands manage the Enterprise License service
+---
+# metadata # 
+title:  pachctl license
+description: "License commands manage the Enterprise License service"
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ License commands manage the Enterprise License service
   -h, --help   help for license
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

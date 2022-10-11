@@ -1,6 +1,9 @@
-## pachctl start
-
-Start a Pachyderm resource.
+---
+# metadata # 
+title:  pachctl start
+description: "Start a Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Start a Pachyderm resource.
   -h, --help   help for start
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

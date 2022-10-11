@@ -1,6 +1,9 @@
-## pachctl edit
-
-Edit the value of an existing Pachyderm resource.
+---
+# metadata # 
+title:  pachctl edit
+description: "Edit the value of an existing Pachyderm resource."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -12,7 +15,7 @@ Edit the value of an existing Pachyderm resource.
   -h, --help   help for edit
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

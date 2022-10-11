@@ -1,6 +1,9 @@
-## pachctl update pipeline
-
-Update an existing Pachyderm pipeline.
+---
+# metadata # 
+title:  pachctl update pipeline
+description: "Update a Pachyderm pipeline with a new pipeline specification. For details on the format, see https://docs.pachyderm.com/latest/reference/pipeline-spec/."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -23,7 +26,7 @@ pachctl update pipeline [flags]
   -u, --username string   The username to push images as.
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.

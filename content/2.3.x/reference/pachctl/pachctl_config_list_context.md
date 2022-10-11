@@ -1,6 +1,9 @@
-## pachctl config list context
-
-Lists contexts.
+---
+# metadata # 
+title:  pachctl config list context
+description: "Lists contexts."
+date:  2022-10-11T14:56:32-04:00
+---
 
 ### Synopsis
 
@@ -16,7 +19,7 @@ pachctl config list context [flags]
   -h, --help   help for context
 ```
 
-### Options inherited from parent commands
+### Inherited Options
 
 ```
       --no-color   Turn off colors.
