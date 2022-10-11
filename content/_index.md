@@ -1,5 +1,5 @@
 ---
-title: PachDocs
+title: Home
 description: Welcome to Pachyderm's documentation.
 ---
 

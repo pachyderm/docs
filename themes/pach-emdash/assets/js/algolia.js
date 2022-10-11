@@ -57,7 +57,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
                 </div>
               </div>
             </a>
-            <div class="xs spread-right c-black m-1 c-mr-2 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
+            <div class="xs spread-right c-black m-1 c-mr-2 c-px-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
           </div>
           `
       },
