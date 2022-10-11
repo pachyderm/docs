@@ -1353,7 +1353,7 @@ port exposed directly to the Internet.
   ingress is also enabled, any ingress traffic will be routed through the proxy before being sent.
   
   - `proxy.replicas` : The number of proxy replicas to run.  1 is a default but can be increased
-  for higher availability. Each replica can handle 50,000 concurrent connections.There is an affinity rule to prefer scheduling the proxy pods **on the same node as pachd**, so a number here that matches the number of pachd replicas is a fine configuration.
+  for higher availability. Each replica can handle 50,000 concurrent connections. There is an affinity rule to prefer scheduling the proxy pods **on the same node as pachd**, so a number here that matches the number of pachd replicas is a fine configuration. Use this setting to scale pachd instances horizontally; horizontal scaling spreads the load from PFS across each instance.
   
 {{% notice note %}}
  We don't guarantee to keep the proxy<->pachd traffic on-node or even in-region.
