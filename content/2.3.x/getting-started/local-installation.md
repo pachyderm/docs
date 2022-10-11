@@ -8,6 +8,10 @@ tags:  ["deployment"]
 series: ["onboarding"]
 seriesPart: 1
 ---
+
+{{% notice tip %}}
+Looking to upgrade to **pachd** 2.3.0+ from an older version? Remember to also upgrade **pachctl** for the best experience.
+{{% /notice %}}
   
 This guide covers how you can quickly get started using Pachyderm locally on macOS®, Linux®, or Microsoft® Windows®. To install Pachyderm on Windows, first look at [Deploy Pachyderm on Windows](../wsl-deploy).
 
