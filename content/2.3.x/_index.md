@@ -8,7 +8,7 @@ tags:
 series:
 seriesPart:
 aliases: [
-    "/latest"
+    "/latest",
 ]
 cascade:
     latestPatch: 2.3.5
