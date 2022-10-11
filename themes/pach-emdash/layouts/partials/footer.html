@@ -19,7 +19,7 @@
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
   {{ $js := slice $darkMode $toc $mermaid $clippy $notices $tables $pagination $explore $tags $keyboard | resources.Concat "js/bundle.js"}}
 
-<footer class="spread-center mt-7 px-5 py-7 c-pinned-top">
+<footer class="spread-center mt-7 px-3 py-7 c-pinned-top">
     {{/*  Algolia must remain separate due to module type  */}}
     {{if .IsHome}}
       <script src="{{ $algoliaHomePage.Permalink }}" type="module" defer></script>

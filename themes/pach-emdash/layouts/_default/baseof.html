@@ -14,9 +14,9 @@
             {{else}}
               {{ partial "algoliaHits" . }}  
             {{end}}
-        <main class="spread-center c-pinned-stretch wideless px-4">
+        <main class="spread-center c-pinned-stretch wideless">
             {{ partial "directory.html" .}}  
-            <article class="content two-thirds-widescreen pinned-top">
+            <article class="content two-thirds-widescreen pinned-top px-2">
               {{ if .IsHome}}
                 {{/* Don't show Breadcrumbs or EditLink*/}}
               {{else}}
