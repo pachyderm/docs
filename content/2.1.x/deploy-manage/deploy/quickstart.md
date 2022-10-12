@@ -270,8 +270,8 @@ Jump to [Helm install](#3-helm-install)
 
   ```shell
   COMPONENT           VERSION
-  pachctl             {{ config.pach_latest_version }}
-  pachd               {{ config.pach_latest_version }}
+  pachctl             {{% majorMinorVersion %}}
+  pachd               {{% majorMinorVersion %}}
   ```
 
 ## 5. Connect to Console

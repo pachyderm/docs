@@ -72,15 +72,15 @@ The Python client `python-pachyderm` is officially supported by the Pachyderm te
 It implements most of the functionalities provided with the `pachctl` CLI tool allowing you to easily integrate operations like `create repo`, `put a file,` or `create pipeline` into your python applications.
 
 {{% notice note %}} 
-Use **python-pachyderm v{{ config.python_pachyderm_version }}** with Pachyderm {{% majorMinorVersion %}}. 
+Use **python-pachyderm {{% pythonClientVersion %}}** with Pachyderm {{% majorMinorVersion %}}. 
 {{% /notice %}}
 
-You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/), namely:
+You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/stable/), namely:
 
-- The [installation instructions](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/getting_started.html#installation) and links to PyPI.
-- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}x/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
-- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/v{{ config.python_pachyderm_version }}/examples). 
-- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/v{{ config.python_pachyderm_version }}/python_pachyderm.html).
+- The [installation instructions](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#installation) and links to PyPI.
+- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
+- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/master/examples). 
+- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/stable/python_pachyderm.html).
 
 ## Node Client
 

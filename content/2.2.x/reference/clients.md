@@ -75,12 +75,12 @@ It implements most of the functionalities provided with the `pachctl` CLI tool a
 Use **python-pachyderm {{% pythonClientVersion %}}** with Pachyderm {{% majorMinorVersion %}}. 
 {{% /notice %}}
 
-You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}/), namely:
+You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/stable/), namely:
 
-- The [installation instructions](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}/getting_started.html#installation) and links to PyPI.
-- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}x/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
-- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/{{% pythonClientVersion %}}/examples). 
-- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}/python_pachyderm.html).
+- The [installation instructions](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#installation) and links to PyPI.
+- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
+- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/master/examples). 
+- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/stable/python_pachyderm.html).
 
 ## Node Client
 

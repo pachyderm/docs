@@ -121,20 +121,20 @@ with a Pachyderm cluster in your terminal.
    * For macOS, run:  
 
    ```shell  
-   brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{ config.pach_major_minor_version }}  
+   brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorVersion%}} 
    ```  
 
    * For a Debian-based Linux 64-bit or Windows 10 or later running on  
    WSL:  
 
    ```shell  
-   curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+   curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% majorMinorVersion %}}/pachctl_{{% majorMinorVersion %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
    ```  
 
    * For all other Linux flavors:  
 
    ```shell  
-   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{ config.pach_latest_version }}/pachctl_{{ config.pach_latest_version }}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{ config.pach_latest_version }}_linux_amd64/pachctl /usr/local/bin  
+   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% majorMinorVersion %}}/pachctl_{{% majorMinorVersion %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% majorMinorVersion %}}_linux_amd64/pachctl /usr/local/bin  
    ```  
   
 1. Verify that installation was successful by running `pachctl version --client-only`:  
@@ -147,7 +147,7 @@ with a Pachyderm cluster in your terminal.
 
    ```shell  
    COMPONENT           VERSION  
-   pachctl             {{ config.pach_latest_version }}  
+   pachctl             {{% majorMinorVersion %}}  
    ```  
 
    If you run `pachctl version` without the flag `--client-only`, the command times  
@@ -291,8 +291,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION  
-pachctl             {{ config.pach_latest_version }}  
-pachd               {{ config.pach_latest_version }}  
+pachctl             {{% majorMinorVersion %}}  
+pachd               {{% majorMinorVersion %}}  
 ```  
 You are all set!  
 
@@ -352,8 +352,8 @@ From the cell of a notebook, run:
 
   ```s
   COMPONENT           VERSION  
-  pachctl             {{ config.pach_latest_version }}  
-  pachd               {{ config.pach_latest_version }}  
+  pachctl             {{% majorMinorVersion %}}  
+  pachd               {{% majorMinorVersion %}}  
   ```
 
 {{% notice warning %}}  
