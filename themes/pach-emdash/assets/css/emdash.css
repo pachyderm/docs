@@ -1610,7 +1610,6 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
 }
 
 :is(.warning, .attention) :is(code) {
-  color: var(--is-warning-text);
   font-weight: bold;
 }
 
