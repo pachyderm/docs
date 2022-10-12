@@ -182,7 +182,7 @@ Replace the image name with your own image otherwise.
 find the complete installation instructions of JupyterHub on Kubernetes in [Jupyterhub for Kubernetes documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/#setup-jupyterhub).
 {{%/notice %}}
 
-- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml):
+- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml):
 
   {{% notice note %}}
   Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image or leave Pachyderm's default image `pachyderm/notebooks-user:{{% jupyterLabExtensionVersion %}}`.

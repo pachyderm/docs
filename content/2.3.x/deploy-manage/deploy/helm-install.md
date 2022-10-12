@@ -16,7 +16,7 @@ The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the auth
 **Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
 {{% /notice %}}
 
-This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion >}}/etc/helm/pachyderm).
+This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}.x/etc/helm/pachyderm).
 
 {{% notice warning %}}
 We are now shipping Pachyderm with an **optional embedded proxy** 
@@ -40,17 +40,17 @@ Before your start your installation process.
 
 1. Install [`pachctl`](../../../getting-started/local-installation/#install-pachctl), the command-line utility for interacting with a Pachyderm cluster. 
 
-1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{< majorMinorVersion >}}/deploy-manage/deploy/) that apply to you:
+1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{% majorMinorVersion %}}.x/deploy-manage/deploy/) that apply to you:
     * **Find the deployment page that applies to your Cloud provider** (or custom deployment, or on-premises deployment).
     It will help list the various installation prerequisites, and deployment instructions (Kubernetes, PostgreSQL, Object Store, IdP etc...) that fit your own use case.
     
-         For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{< majorMinorVersion >}}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform) page.
+         For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{% majorMinorVersion %}}.x/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform) page.
 
     * Additionally, those instructions will help identify the configuration parameters needed. Those parameter values will **be set in your YAML configuration file** as follows.
 
 ### Edit a Values.yaml File
 
-Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion >}}/etc/helm/examples). Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.
+Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}.x/etc/helm/examples). Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.
 
 - Refer to this section to [understand Pachyderm's main configuration values (License Key, IdP configuration, etc...)](#read-before-any-install-or-upgrade-pachyderm-configuration-values-and-platform-secrets) and how you can set them. 
 
@@ -59,7 +59,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
 {{% notice warning %}}
 **No default k8s CPU and memory requests and limits** are created for pachd.  If you don't provide values in the values.yaml file, then those requests and limits are simply not set. 
 
-For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
+For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
 {{% /notice %}}
      
 ###  Install Pachyderm's Helm Chart
@@ -152,8 +152,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION
-pachctl             {{< majorMinorVersion >}}
-pachd               {{< majorMinorVersion >}}
+pachctl             {{% majorMinorVersion %}}
+pachd               {{% majorMinorVersion %}}
 ```
 
 ## Uninstall Pachyderm's Helm Chart

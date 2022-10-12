@@ -219,9 +219,9 @@ and your IdP-Pachyderm connector config file created (here with the Auth0 parame
 
 - Reference your connector in Helm
 
-    Provide your connector info in the [oidc.upstreamIDPs](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml#L774) field of your helm values. Pachyderm will store this value in the platform secret `pachyderm-identity` in the key upstream-idps.
+    Provide your connector info in the [oidc.upstreamIDPs](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/pachyderm/values.yaml#L774) field of your helm values. Pachyderm will store this value in the platform secret `pachyderm-identity` in the key upstream-idps.
 
-    Alternatively, you can [create a secret](../../../../how-tos/advanced-data-operations/secrets/#generate-your-secret-configuration-file) containing your dex connectors (Key: upstream-idps) and reference its name in the field [oidc.upstreamIDPsSecretName](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml#L805).
+    Alternatively, you can [create a secret](../../../../how-tos/advanced-data-operations/secrets/#generate-your-secret-configuration-file) containing your dex connectors (Key: upstream-idps) and reference its name in the field [oidc.upstreamIDPsSecretName](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/pachyderm/values.yaml#L805).
 
 ##### Example 
 Below, a yaml example of the `stringData` section of an IdP generic secret.

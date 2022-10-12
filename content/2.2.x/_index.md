@@ -10,5 +10,5 @@ seriesPart:
 cascade:
     clientPython: 7.3.x
     extensionJupyterLab: 1.0.x
-    majorMinor: 2.2.x
+    majorMinor: 2.2 # do not add .x
 ---

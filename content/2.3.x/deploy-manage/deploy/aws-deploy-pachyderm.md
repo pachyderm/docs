@@ -343,7 +343,7 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
 {{% /notice %}}
 
 #### For gp3 EBS Volumes
-[Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
+[Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
 
 
 #####  Gp3 + Service account annotations
@@ -425,7 +425,7 @@ postgresql:
 
 #### For gp2 EBS Volumes
 
-[Check out our example of values.yaml for gp2](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/aws-gp2-values.yaml) or use our minimal example below.   
+[Check out our example of values.yaml for gp2](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/aws-gp2-values.yaml) or use our minimal example below.   
     
 ##### For Gp2 + Service account annotations
 ```yaml
@@ -498,7 +498,7 @@ postgresql:
 ```
 
 
-Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/pachyderm/values.yaml).
+Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/pachyderm/values.yaml).
 
 {{% notice tip %}}
 Retain (ideally in version control) a copy of the Helm values used to deploy your cluster. It might be useful if you need to [restore a cluster from a backup](../../manage/backup-restore).
@@ -593,8 +593,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION
-pachctl             {{< majorMinorVersion >}}
-pachd               {{< majorMinorVersion >}}
+pachctl             {{% majorMinorVersion %}}
+pachd               {{% majorMinorVersion %}}
 ```
 
 ## 9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
@@ -603,7 +603,7 @@ Once your cluster is up and running, you can helm install JupyterHub on your Pac
 
 Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension) page for installation instructions. 
 
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{< majorMinorVersion >}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
+Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice info %}}
 Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.

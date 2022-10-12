@@ -39,7 +39,7 @@ A basic pipeline must have all of the following:
 1. Find a pipeline specification hosted in a public or internal repository.
 2. Pass the pipeline configuration to Pachyderm:
   ```s
-  pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{< majorMinorVersion >}}/examples/opencv/edges.json
+  pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}.x/examples/opencv/edges.json
   ```
 
 ### Via Jsonnet

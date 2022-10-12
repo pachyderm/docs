@@ -194,5 +194,5 @@ In cross inputs, if you use the `name` field, your two inputs cannot have the sa
 {{% notice note %}} 
 - [Cross Input in a pipeline specification](../../../../reference/pipeline-spec/#cross-input)
 - [Union Input in a pipeline specification](../../../../reference/pipeline-spec/#union-input)
-- [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{< majorMinorVersion "minor">}}/examples/ml/hyperparameter)
+- [Distributed hyperparameter tuning example](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}.x/examples/ml/hyperparameter)
 {{% /notice %}}

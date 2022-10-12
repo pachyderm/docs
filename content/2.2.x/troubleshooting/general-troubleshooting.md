@@ -20,7 +20,7 @@ You may be using the pachd address config value or environment variable to speci
 ```
 pachctl version
 COMPONENT           VERSION                                          
-pachctl             {{< majorMinorVersion >}}  
+pachctl             {{% majorMinorVersion %}}  
 context deadline exceeded
 ```
 
