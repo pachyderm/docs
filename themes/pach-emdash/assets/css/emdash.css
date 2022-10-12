@@ -367,7 +367,7 @@ ol li::marker {
  }
 
  .highlight *, span * {
-  font-size: var(--xsmall-text) !important;
+  font-size: 1rem;
  }
  
  .content {
