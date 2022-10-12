@@ -8,7 +8,8 @@ tags:
 series:
 seriesPart:
 cascade:
-    clientPython: 7.3.x
-    jupyerLabExtension: 1.0.x 
-    majorMinor: 2.1 # do not add .x 
+    latestPatch: 2.1.9
+    clientPython: 7.3
+    extensionJupyterLab: 0.6.0
+    majorMinor: 2.1
 ---

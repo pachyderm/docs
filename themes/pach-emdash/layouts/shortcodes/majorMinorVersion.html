@@ -1,1 +1,4 @@
-{{- .Page.Params.MajorMinor -}}
+{{$value := print .Page.Params.MajorMinor ".x" }}
+
+
+{{- $value -}}

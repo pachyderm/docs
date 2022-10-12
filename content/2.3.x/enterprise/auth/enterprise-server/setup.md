@@ -47,7 +47,7 @@ Deploying and configuring an enterprise server can be done in one of two flavors
 1. Or, [install a bare-bones version of Pachyderm with Helm](../../../../deploy-manage/deploy/helm-install/), then use `pachctl` commands to set up licensing and authentication.
 
 ### As Part Of A Regular Pachyderm Helm Deployment
-Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/local-dev-values.yaml)) or check our minimal example below to your values.yaml.
+Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/local-dev-values.yaml)) or check our minimal example below to your values.yaml.
 
 {{% notice warning %}} 
    - If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
@@ -183,7 +183,7 @@ Update the following values as follows:
  `ISSUER`, `CLIENT-ID`, `CLIENT-SECRET`: Refer to our [Identity Provider Configuration page](../../authentication/idp-dex#create-a-connector-configuration-file).
 {{% /notice %}}
 
-Check the [list of all available helm values](../../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/pachyderm/values.yaml).
+Check the [list of all available helm values](../../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml).
 
 {{% notice warning %}} 
 - **When enterprise is enabled through Helm, auth is automatically activated** (i.e., you do not need to run `pachctl auth activate`) and a `pachyderm-auth` k8s secret is created containing a rootToken key. Use `{{"kubectl get secret pachyderm-auth -o go-template='{{.data.rootToken | base64decode }}'"}}` to retrieve it and save it where you see fit.
@@ -230,7 +230,7 @@ Similarly to the enterprise server, we can configure our pachyderm clusters to l
 1. Register a cluster with the Enterprise Server using pachctl commands.
 
 ### Register Clusters With Helm
-Add the enterprise server's root token, and network addresses to the values.yaml of each cluster you plan to deploy and register, for the cluster and enterprise server to communicate ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/enterprise-member-values.yaml)), or insert our minimal example below to your values.yaml.
+Add the enterprise server's root token, and network addresses to the values.yaml of each cluster you plan to deploy and register, for the cluster and enterprise server to communicate ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/enterprise-member-values.yaml)), or insert our minimal example below to your values.yaml.
 
 #### values.yaml with activation of an enterprise license and authentication
 

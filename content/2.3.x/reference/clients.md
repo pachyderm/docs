@@ -63,7 +63,7 @@ Make sure that you use your `pachd_address` in `client.NewFromAddress("<your-pac
 For example, if you are testing on `minikube`, run
 `minikube ip` to get this information.
 
-See the [OpenCV Example in Go](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}.x/examples/opencv) for more
+See the [OpenCV Example in Go](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/examples/opencv) for more
 information.
 
 ## Python Client
@@ -72,15 +72,15 @@ The Python client `python-pachyderm` is officially supported by the Pachyderm te
 It implements most of the functionalities provided with the `pachctl` CLI tool allowing you to easily integrate operations like `create repo`, `put a file,` or `create pipeline` into your python applications.
 
 {{% notice note %}}
-Use **python-pachyderm v{{% pythonClientVersion %}}** with Pachyderm {{% majorMinorVersion %}}. 
+Use **python-pachyderm {{% pythonClientVersion %}}** with Pachyderm {{% majorMinorVersion %}}. 
 {{% /notice %}}
 
-You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/v{{% pythonClientVersion %}}/), namely:
+You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}/), namely:
 
-- The [installation instructions](https://python-pachyderm.readthedocs.io/en/v{{% pythonClientVersion %}}/getting_started.html#installation) and links to PyPI.
-- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/v{{% pythonClientVersion %}}x/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
-- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/v{{% pythonClientVersion %}}/examples). 
-- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/v{{% pythonClientVersion %}}/python_pachyderm.html).
+- The [installation instructions](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}/getting_started.html#installation) and links to PyPI.
+- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}x/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
+- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/{{% pythonClientVersion %}}/examples). 
+- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/{{% pythonClientVersion %}}/python_pachyderm.html).
 
 ## Node Client
 

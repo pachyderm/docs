@@ -47,7 +47,7 @@ Rules to keep in mind
   pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
   ```
 {{% notice note %}}
-Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/pachyderm/values.yaml#L469). 
+Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml#L469). 
 
 For example, grant reader access to all repos to a specific group:
 ```yaml

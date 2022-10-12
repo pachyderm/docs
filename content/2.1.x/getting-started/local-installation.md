@@ -302,7 +302,7 @@ You are all set!
 You do not need a local Pachyderm cluster already running to install Pachyderm JupyterLab Mount Extension. However, **you need a running cluster to connect your Mount Extension to**; therefore, we recommend that you [install Pachyderm locally](#local-installation) first.
 {{% /notice %}}
 
-- To install [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml):
+- To install [JupyterHub and the Mount Extension](../../how-tos/jupyterlab-extension/#pachyderm-jupyterlab-mount-extension) on your local cluster,  run the following commands. You will be using our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml):
 
   ```shell
   helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -311,7 +311,7 @@ You do not need a local Pachyderm cluster already running to install Pachyderm J
   ```shell
   helm upgrade --cleanup-on-fail \
   --install jupyter jupyterhub/jupyterhub \
-  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml
+  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml
   ```
 
 - Check the state of your pods `kubectl get all`. Look for the pods `hub-xx` and `proxy-xx`; their state should be `Running`. 

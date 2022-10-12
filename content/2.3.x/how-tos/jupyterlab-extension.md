@@ -177,7 +177,7 @@ For each option in this section, you can connect to your cluster using the follo
    ```s
    helm upgrade --cleanup-on-fail \
    --install jupyter jupyterhub/jupyterhub \
-   --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% versionNumber %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml
+   --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml
    ```
 
 ##### With a Custom Chart
@@ -219,7 +219,7 @@ singleuser:
   ```s
   helm upgrade --cleanup-on-fail \
   --install jupyter jupyterhub/jupyterhub \
-  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% versionNumber %}}.x/etc/helm/examples/jupyterhub-ext-values.yaml
+  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml
   ```
  
 

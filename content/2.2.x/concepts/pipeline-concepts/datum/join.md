@@ -144,7 +144,7 @@ All files with indices from `1` to `5` match. The files
 with indices from `6` to `8` do not match. Therefore, you only get five
 datums for this job.
 
-To experiment further, see the full [joins example](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}.x/examples/joins).
+To experiment further, see the full [joins example](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/examples/joins).
 
 ## Outer Join
 
@@ -202,4 +202,4 @@ handle (not crash) the case where input files are missing from `/pfs/readings`.
 
 
 
-To experiment further, see the full [join example](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}.x/examples/joins).
+To experiment further, see the full [join example](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/examples/joins).

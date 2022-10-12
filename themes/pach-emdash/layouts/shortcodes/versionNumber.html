@@ -1,1 +1,0 @@
-{{$url := .Page.RelPermalink}}{{$version := substr $url 1 5 }}{{$version := strings.TrimPrefix "v." $version}}{{$version := strings.TrimSuffix ".x" $version}}{{- $version -}}
