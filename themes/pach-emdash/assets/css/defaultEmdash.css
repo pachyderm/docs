@@ -222,7 +222,7 @@ ol > li { list-style: decimal inside; }/* Flexbox Layout System */
 :is(.spread, .spread-left, .spread-right, .spread-around, .spread-center, .spread-stretch, .spread-between, .c-spread > *) {
     display: flex;
     flex-flow: row wrap;
-    scroll-snap-type: y mandatory;
+
 }
 
 :is(.spread, .spread-left, .spread-right, .spread-around, .spread-center, .spread-stretch, .spread-between) > * { flex: 1; }
@@ -297,7 +297,7 @@ ol > li { list-style: decimal inside; }/* Flexbox Layout System */
 :is(.stack, .stack-left, .stack-center, .stack-right, .c-stack > *) {
     display:flex;
     flex-direction: column;
-    scroll-snap-type: y mandatory;
+
 }
 
 .stack-left { align-items: baseline; }
@@ -314,14 +314,13 @@ ol > li { list-style: decimal inside; }/* Flexbox Layout System */
 .slide {
     display: flex;
     flex-flow: row nowrap;
-    scroll-snap-type: x mandatory;
+
     overflow-x: scroll;
 }
 
 .slide-reverse {
     display: flex;
     flex-flow: row-reverse nowrap;
-    scroll-snap-type: x mandatory;
     overflow-x: scroll;
 }
 
