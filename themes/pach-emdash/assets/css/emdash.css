@@ -90,6 +90,10 @@
 html, body { 
   font-family: var(--is-font-family); 
   color: var(--is-text-color); 
+  text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%; 
+    -moz-text-size-adjust: 100%; 
+    -webkit-text-size-adjust: 100%;
 }
 
 body, div, section, button, h1, h2, h3, h4, h5, h6  {
