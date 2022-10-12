@@ -1,8 +1,6 @@
 # Pachyderm Documentation
 
 
-<-- blurb about pachyderm -->
-
 **Note**:  For theme documentation, see the theme [README](themes/pach-emdash/README.md).
 
 ---
