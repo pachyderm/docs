@@ -3,13 +3,12 @@
     <section class="stack"> 
             {{/* See Related Content: https://gohugo.io/content-management/related/#relatedindices-page-indice1-indice2  */}}
             {{ $related := site.RegularPages.RelatedIndices . "tags"   }}
-            {{$sectionVersion := .Section}}
             {{$majorMinor := print .Params.majorMinor ".x"}}
             {{ with $related }}
             <div class="l text-center bold mt-5 mb-2">Related Commands</div>
             <div class="spread c-pinned-top">
                 {{ range first 20 . }}
-                    {{ if eq $majorMinor $sectionVersion }}
+                    {{ if eq $majorMinor .Section }}
                         <div class="is-half is-fullsize-mobile"> 
                             <div class="sp-1 text-center outlined rounded-1"> 
                                 <a href="{{ .RelPermalink }}" class="s bold "> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
