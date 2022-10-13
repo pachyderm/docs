@@ -5,7 +5,7 @@
 
 {{ if .Site.Params.childPages.display}}
     {{if .Pages }}
-        <aside class="spread-left c-pinned-top rounded-1 sp-2 mt-5">
+        <aside class="spread-left c-pinned-top rounded-1 mt-5">
             {{ range sort .Pages "Weight" "$order"}}
                 {{ if  .Params.hidden }}
                     {{/* Do not show the hidden child page or its descendants */}}
