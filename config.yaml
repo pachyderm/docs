@@ -85,7 +85,7 @@ markup:
     lineNumbersInTable: true
     noClasses: true
     noHl: false
-    style: 
+    style: rrt
     tabWidth: 4
 
 
