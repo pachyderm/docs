@@ -4,9 +4,16 @@
     - Markdown pages should not have more than one "series" tag value. 
 */}}
 
+ 
+
+
+
 {{ define "main" }}
-    {{ $order := "asc"}}
-        <section class="black py-3 m-2 gradient-rl-cold rounded-1 c-sp-2">
+<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
+    {{partial "directory.html" . }}
+    <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+            {{ $order := "asc"}}
+        <section class="black py-3  gradient-rl-cold rounded-1 c-sp-2">
             <div class="spread-between c-pinned-center">
                 <h1>{{.Title}} </h1>
                 <p class="label uppercase outlined xs sp-2"> series</p>
@@ -14,13 +21,15 @@
         </section>
         <section class="stack">
             {{ range .Pages.ByParam "seriesPart" }}
-                <article class="content"> 
+                <div class="content"> 
                         <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.Permalink}}">{{.Params.seriesPart}} {{.Title}} </a>
                     {{ partial "featureBetaNotice.html" . }}
-                    <div class="content ml-2 p-4"> 
+                    <div class="content"> 
                     {{.Content}}
                     </div>
-                </article>
+                </div>
             {{ end }}
         </section>
+</article>
+</main>
 {{end}}
