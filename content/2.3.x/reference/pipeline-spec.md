@@ -25,7 +25,7 @@ A pipeline specification file can contain multiple pipeline declarations at once
 
 ### JSON Full Specifications
 
-  ```json
+  ```s 
   {
     "pipeline": {
       "name": string
