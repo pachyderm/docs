@@ -1,3 +1,9 @@
+var darkModeColor = "white";
+
+if (localStorage.getItem("theme-dark-mode") == "true") {
+    darkModeColor = "black";
+}
+
 const indexName = document.getElementById('activeVersion').getAttribute('data-algolia')
 
 const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c70')
@@ -39,8 +45,8 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['spread-center','modal', 'white',],
-        list: ['white','rounded-1', 'is-three-fifths','is-fullsize-mobile','pt-7' ],
+        root: ['spread-center','modal', `${darkModeColor}`,],
+        list: ['is-three-fifths','is-fullsize-mobile','pt-7' ],
         item: ['spread', 'pr-3'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-2 m-2"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>

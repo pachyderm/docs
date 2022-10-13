@@ -1,12 +1,17 @@
 function darkMode() {
     var body = document.getElementsByTagName('body')[0];
     var button = document.getElementById('darkModeButton');
+    // get searchModal element by class name "ais-Hits"
+    var searchModal = document.getElementsByClassName('ais-Hits')[0];
 
     // Toggle dark mode for html element 
     body.classList.toggle("black");
     body.classList.toggle("white");
     // Toggle grayscale for darkmode button (moon icon)
     button.classList.toggle("grayscale");
+    // Toggle dark mode for search modal
+    searchModal.classList.toggle("black");
+    searchModal.classList.toggle("white");
    // Store the current theme in local storage
     localStorage.setItem("theme-dark-mode", body.classList.contains("black"));
 }
