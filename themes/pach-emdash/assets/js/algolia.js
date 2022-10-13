@@ -1,8 +1,10 @@
-var darkModeColor = "white";
+var darkModeColor = "";
 
 if (localStorage.getItem("theme-dark-mode") == "true") {
-    darkModeColor = "black";
+    var darkModeColor = "black";
 }
+else { var darkModeColor = "white"; }
+
 
 const indexName = document.getElementById('activeVersion').getAttribute('data-algolia')
 
