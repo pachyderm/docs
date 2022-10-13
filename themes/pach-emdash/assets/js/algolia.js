@@ -39,9 +39,9 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['spread-stretch','modal', 'darken-5',],
-        list: ['white','rounded-1', 'brighten-1', 'is-fullsize-mobile','pt-7'],
-        item: ['spread'] },
+        root: ['spread-center','modal', 'white',],
+        list: ['white','rounded-1', 'is-three-fifths','is-fullsize-mobile','pt-7' ],
+        item: ['spread', 'pr-3'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-2 m-2"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,
