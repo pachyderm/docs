@@ -14,7 +14,7 @@
                         {{ .Description}}
                     </p>
                 {{end}}
-                <p class="xs bold">
+                <p class="s">
                     {{/* Displays published date or last build date */}}
                     {{ if .Date }}
                         {{ .Date | time.Format ":date_long" }} 

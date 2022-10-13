@@ -6,11 +6,11 @@
     --xxsmall-text: calc(.5rem);   
     --xsmall-text: calc(.75rem);  
     --small-text: calc(1rem);  
-    --medium-text: calc(1.25rem);  
-    --large-text: calc(1.5rem);  
-    --xlarge-text: calc(1.75rem);
-    --xxlarge-text: calc(2rem);
-    --xxxlarge-text: calc(2.25rem);
+    --medium-text: calc(1rem);  
+    --large-text: calc(1.125rem);  
+    --xlarge-text: calc(1.625rem);
+    --xxlarge-text: calc(1.875rem);
+    --xxxlarge-text: calc(2.5rem);
 
     --spacing-1: calc(.2rem);
     --spacing-2: calc(.4rem);
