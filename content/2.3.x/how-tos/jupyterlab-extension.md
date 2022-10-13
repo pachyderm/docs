@@ -219,7 +219,7 @@ singleuser:
   ```s
   helm upgrade --cleanup-on-fail \
   --install jupyter jupyterhub/jupyterhub \
-  --values https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml
+  --values <your-values.yaml-chart-path>
   ```
  
 
