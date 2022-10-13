@@ -85,7 +85,7 @@ markup:
     lineNumbersInTable: true
     noClasses: true
     noHl: false
-    style: rrt
+    style: paraiso-dark
     tabWidth: 4
 
 
