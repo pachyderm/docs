@@ -25,7 +25,6 @@
     --is-link-color: var(--is-purple);
     --is-shadow-color: var(--is-dark-gray);
     --is-highlight-color: var(--is-purple);
-    --is-code-color: var(--is-dark-grey);
 
     --is-note-color: var(--is-gray);
     --is-note-text: var(--is-black);
@@ -363,7 +362,7 @@ ol li::marker {
  }
 
  code {
-  color: var(--is-code-color);
+
   white-space: pre;
   padding: 2px;
   margin: 2px;
