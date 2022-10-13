@@ -34,14 +34,13 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
     
     }),
     instantsearch.widgets.configure({
-      hitsPerPage: 5,
     }),
     instantsearch.widgets.hits({
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['spread-center','modal', 'darken-5',],
-        list: ['is-three-fifths','white', 'pr-2', 'rounded-1', 'brighten-1', 'is-fullsize-mobile', 'mt-6'],
+        root: ['spread-stretch','modal', 'darken-5',],
+        list: ['white','rounded-1', 'brighten-1', 'is-fullsize-mobile','pt-7'],
         item: ['spread'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-2 m-2"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
