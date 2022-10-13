@@ -6,7 +6,10 @@
 <main class="spread-around c-pinned-stretch wideless c-mx-4"> 
     {{partial "directory.html" . }}
     <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
-        {{partial "featureBreadcrumbs.html" . }}
+        <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div> 
 
             {{ if .Site.Params.heroBanner.section}}
                 <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
