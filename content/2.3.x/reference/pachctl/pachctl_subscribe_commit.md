@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl subscribe commit
 description: "Print commits as they are created in the specified repo and branch.  By default, all existing commits on the specified branch are returned first.  A commit is only considered 'created' when it's been finished."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - subscribe
+cliGlossary:  s
 ---
 
 ### Synopsis

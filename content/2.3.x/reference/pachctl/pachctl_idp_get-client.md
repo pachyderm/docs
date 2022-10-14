@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl idp get-client
 description: "Get an OIDC client."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - idp
+cliGlossary:  i
 ---
 
 ### Synopsis

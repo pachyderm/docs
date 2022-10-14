@@ -2,8 +2,9 @@
 # metadata # 
 title:  pachctl port-forward
 description: "Forward a port on the local machine to pachd. This command blocks."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
+cliGlossary:  p
 ---
 
 ### Synopsis

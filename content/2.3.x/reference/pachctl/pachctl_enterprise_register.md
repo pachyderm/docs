@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl enterprise register
 description: "Register the cluster with an enterprise license server"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - enterprise
+cliGlossary:  e
 ---
 
 ### Synopsis

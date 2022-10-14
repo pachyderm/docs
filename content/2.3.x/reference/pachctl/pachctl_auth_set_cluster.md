@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl auth set cluster
 description: "Set the roles that 'username' has on the cluster"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
-  - set
+  - auth-set
+cliGlossary:  a
 ---
 
 ### Synopsis

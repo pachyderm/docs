@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl inspect transaction
 description: "Print information about an open transaction."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - inspect
+cliGlossary:  i
 ---
 
 ### Synopsis

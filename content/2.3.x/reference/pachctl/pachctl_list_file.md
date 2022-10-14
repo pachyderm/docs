@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl list file
 description: "Return the files in a directory."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - list
+cliGlossary:  l
 ---
 
 ### Synopsis

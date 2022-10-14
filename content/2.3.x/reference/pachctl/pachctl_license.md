@@ -2,7 +2,7 @@
 # metadata # 
 title:  pachctl license
 description: "License commands manage the Enterprise License service"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - license-activate
   - license-add-cluster
@@ -11,6 +11,7 @@ tags:
   - license-get-state
   - license-list-clusters
   - license-update-cluster
+cliGlossary:  l
 ---
 
 ### Synopsis

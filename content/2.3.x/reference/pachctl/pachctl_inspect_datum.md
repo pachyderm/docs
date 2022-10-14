@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl inspect datum
 description: "Display detailed info about a single datum. Requires the pipeline to have stats enabled."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - inspect
+cliGlossary:  i
 ---
 
 ### Synopsis

@@ -2,8 +2,9 @@
 # metadata # 
 title:  pachctl fsck
 description: "Run a file system consistency check on the pachyderm file system, ensuring the correct provenance relationships are satisfied."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
+cliGlossary:  f
 ---
 
 ### Synopsis

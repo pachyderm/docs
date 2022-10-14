@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl finish transaction
 description: "Execute and clear the currently active transaction."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - finish
+cliGlossary:  f
 ---
 
 ### Synopsis

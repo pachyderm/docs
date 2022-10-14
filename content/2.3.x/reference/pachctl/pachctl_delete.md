@@ -2,7 +2,7 @@
 # metadata # 
 title:  pachctl delete
 description: "Delete an existing Pachyderm resource."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - delete-all
   - delete-branch
@@ -14,6 +14,7 @@ tags:
   - delete-repo
   - delete-secret
   - delete-transaction
+cliGlossary:  d
 ---
 
 ### Synopsis

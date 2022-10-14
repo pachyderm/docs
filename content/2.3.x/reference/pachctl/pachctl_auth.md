@@ -2,7 +2,7 @@
 # metadata # 
 title:  pachctl auth
 description: "Auth commands manage access to data in a Pachyderm cluster"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - auth-activate
   - auth-check
@@ -20,6 +20,7 @@ tags:
   - auth-set-config
   - auth-use-auth-token
   - auth-whoami
+cliGlossary:  a
 ---
 
 ### Synopsis

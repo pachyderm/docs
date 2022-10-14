@@ -2,10 +2,11 @@
 # metadata # 
 title:  pachctl finish
 description: "Finish a Pachyderm resource."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - finish-commit
   - finish-transaction
+cliGlossary:  f
 ---
 
 ### Synopsis

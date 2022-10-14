@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl auth rotate-root-token
 description: "Rotate the root user's auth token"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - auth
+cliGlossary:  a
 ---
 
 ### Synopsis

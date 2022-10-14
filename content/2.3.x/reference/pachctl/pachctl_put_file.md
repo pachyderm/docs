@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl put file
 description: "Put a file into the filesystem.  This command supports a number of ways to insert data into PFS."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - put
+cliGlossary:  p
 ---
 
 ### Synopsis

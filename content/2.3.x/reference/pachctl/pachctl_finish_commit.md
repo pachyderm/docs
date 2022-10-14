@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl finish commit
 description: "Finish a started commit. Commit-id must be a writeable commit."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - finish
+cliGlossary:  f
 ---
 
 ### Synopsis

@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl auth get-groups
 description: "Get the list of groups a user belongs to. If no user is specified, the current user's groups are listed."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - auth
+cliGlossary:  a
 ---
 
 ### Synopsis

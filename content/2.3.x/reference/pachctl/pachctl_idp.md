@@ -2,7 +2,7 @@
 # metadata # 
 title:  pachctl idp
 description: "Commands to manage identity provider integrations"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - idp-create-client
   - idp-create-connector
@@ -16,6 +16,7 @@ tags:
   - idp-set-config
   - idp-update-client
   - idp-update-connector
+cliGlossary:  i
 ---
 
 ### Synopsis

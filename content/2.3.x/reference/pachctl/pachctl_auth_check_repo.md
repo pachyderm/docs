@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl auth check repo
 description: "Check the permissions a user has on 'repo'"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
-  - check
+  - auth-check
+cliGlossary:  a
 ---
 
 ### Synopsis

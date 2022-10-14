@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl auth get-robot-token
 description: "Get an auth token for a robot user with the specified name."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - auth
+cliGlossary:  a
 ---
 
 ### Synopsis

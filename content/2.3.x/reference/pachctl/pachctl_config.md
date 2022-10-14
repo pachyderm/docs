@@ -2,7 +2,7 @@
 # metadata # 
 title:  pachctl config
 description: "Gets/sets pachyderm config values."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - config-delete
   - config-get
@@ -10,6 +10,7 @@ tags:
   - config-list
   - config-set
   - config-update
+cliGlossary:  c
 ---
 
 ### Synopsis

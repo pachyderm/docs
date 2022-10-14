@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl auth get repo
 description: "Get the role bindings for 'repo'"
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
-  - get
+  - auth-get
+cliGlossary:  a
 ---
 
 ### Synopsis

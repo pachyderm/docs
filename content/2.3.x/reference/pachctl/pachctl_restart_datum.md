@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl restart datum
 description: "Restart a stuck datum during a currently running job; does not solve failed datums. Optionally, you can configure a job to skip failed datums via the transform.err_cmd setting of your pipeline spec."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - restart
+cliGlossary:  r
 ---
 
 ### Synopsis

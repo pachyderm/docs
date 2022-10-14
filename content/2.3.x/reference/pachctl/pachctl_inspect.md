@@ -2,7 +2,7 @@
 # metadata # 
 title:  pachctl inspect
 description: "Show detailed information about a Pachyderm resource."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - inspect-branch
   - inspect-cluster
@@ -15,6 +15,7 @@ tags:
   - inspect-repo
   - inspect-secret
   - inspect-transaction
+cliGlossary:  i
 ---
 
 ### Synopsis

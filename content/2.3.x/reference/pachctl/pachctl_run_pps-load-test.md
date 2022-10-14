@@ -2,9 +2,10 @@
 # metadata # 
 title:  pachctl run pps-load-test
 description: "Run a PPS load test."
-date:  2022-10-11T16:50:12-04:00
+date:  2022-10-14T09:34:42-04:00
 tags:
   - run
+cliGlossary:  r
 ---
 
 ### Synopsis
