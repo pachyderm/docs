@@ -39,11 +39,11 @@
         {{end}}
         {{/* Paginator Navigation Starts Here */}}
         <nav class="spread-center" role="navigation" aria-label="pagination">
-            <div class="spread-center pagination-list c-m-1 c-pinned-center">
+            <div class="spread-left pagination-list c-m-1 c-pinned-center">
                 <div class="button black rounded-1 m-2 p-2 gradient-rl-cold xs uppercase bold is-fit"> Glossary Pages</div>
                 {{ range .Paginator.Pagers}}
                     {{/* Paginator Buttons */}}
-                    <button data-pager="{{.}}" class="button black darken-7  p-2  mr-2 rounded-1 xxs outlined" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
+                    <button data-pager="{{.}}" class="button black darken-7  p-2  mr-2 rounded-1 xxs outlined is-fit" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
                 {{end}}
             </div>
         </nav>
