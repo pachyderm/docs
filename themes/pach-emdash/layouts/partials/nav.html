@@ -5,18 +5,18 @@
       </a>
       <div class="button is-fit bold xs rounded-1"> docs</div>
     </div>
-    <div class="spread-right is-one-third is-half-tablet is-fullsize-mobile  c-rounded-1">
+    <div class="spread-right is-one-third is-half-tablet is-fullsize-mobile c-rounded-1 c-ml-1 c-my-2">
     {{if .IsHome}}
     
     {{else}}
-      <div class="spread my-2 rounded-6 outlined c-pinned-center">
+      <div class="spread rounded-6 outlined c-pinned-center">
         <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
         <div id="searchbox"></div>
       </div>
     {{end}}
       {{ partial "featureVersionDropdown.html" . }}
-      <button class="purple is-fit is-hidden-touch bold my-2 p-2 mr-2"> Demo</button>
-      <button id="darkModeButton" class="black is-fit grayscale  my-2 p-2" onclick="darkMode()">🌙</button>
+      <button class="purple is-fit is-hidden-touch bold p-2"> Demo</button>
+      <button id="darkModeButton" class="black is-fit grayscale p-2" onclick="darkMode()">🌙</button>
     </div>
  
   
