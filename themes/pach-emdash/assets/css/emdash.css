@@ -173,7 +173,7 @@ hr {
 
 /* Nested Lists */
 
-:is(.directory, nav) ul > li { list-style: none; }
+:is(.directory, nav) ul > li { list-style: none;  }
 
 ul, ol, li { padding-inline-start: .5rem; }
 
@@ -395,6 +395,7 @@ ol li::marker {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    font-family: 'Public Sans';
 }
 .breadcrumb {
     display: flex;

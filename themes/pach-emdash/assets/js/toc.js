@@ -42,6 +42,9 @@ function styleTOC(){
         if (heading == 'H3') {
             link.classList.add('ml-1', 'is-fit','thin')
         }
+        if (heading == 'H2') {
+            link.classList.add('is-fit')
+        }
 
         li.appendChild(link)
         toc.push(link)

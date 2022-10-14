@@ -15,9 +15,9 @@
                             <a href="{{.Permalink}}">
                                 <h3 class="m">{{- .Title -}}<b class="s ml-2">></b></h3>
                                     {{if .Description}}
-                                        <p class="s bold">{{.Description}}</p>
+                                        <p class="s light">{{.Description}}</p>
                                     {{else}}
-                                        <p class="s bold" bold>{{.Summary | truncate 100}}</p>
+                                        <p class="s light" bold>{{.Summary | truncate 100}}</p>
                                     {{end}}
                             </a>
                             {{/*  Displays the value of the "required" frontmatter attribute if present  */}}
