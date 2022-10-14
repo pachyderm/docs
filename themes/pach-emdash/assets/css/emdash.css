@@ -2133,19 +2133,10 @@ pre::-webkit-scrollbar {
   display: flex;
 }
 
-.searchContainer input {
-
-  background-color: red;
-}
-
 .anchor {
-  display: none;
+  visibility: hidden;
 }
 
-.anchor:hover {
-  display: block;
-}
-
-.meow {
-  width: 50px;
+h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
+  visibility: visible;
 }
