@@ -14,31 +14,7 @@
             {{else}}
               {{ partial "algoliaHits" . }}  
             {{end}}
-        <main class="spread-center c-pinned-stretch wideless">
-            {{ partial "directory.html" .}}  
-            <article class="content two-thirds-widescreen pinned-top px-2">
-              {{ if .IsHome}}
-                {{/* Don't show Breadcrumbs or EditLink*/}}
-              {{else}}
-              {{end}}
-              {{ if .Params.hidden }}
-                This content is not ready for public viewing.
-              {{ else }}
-                {{ if .IsHome}}
-                  {{/* Don't show Breadcrumbs or EditLink*/}}
-                {{else}}
-                <div class="spread-between mt-2">
-                      {{ partial "featureBreadcrumbs.html" . }} 
-                      {{ partial "featureEditLink.html" . }}
-                </div> 
-                {{end}}
-                    
-                    {{ block "main" . }}
-                    {{end}}
-              {{end}}
-              {{ partial "featureTags.html" . }}
-            </article>
-        </main>
+            {{ block "main" . }}{{end}}
     </body>
 {{ partial "footer.html" . }}
 {{ partial "featureKeyboard.html" . }}

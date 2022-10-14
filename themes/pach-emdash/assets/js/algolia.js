@@ -1,3 +1,11 @@
+var darkModeColor = "";
+
+if (localStorage.getItem("theme-dark-mode") == "true") {
+    var darkModeColor = "black";
+}
+else { var darkModeColor = "white"; }
+
+
 const indexName = document.getElementById('activeVersion').getAttribute('data-algolia')
 
 const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c70')
@@ -27,22 +35,21 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         form: ['spread', ],
         submit: ['is-hidden'],
         reset: ['is-hidden'],
-        input: ['sp-1', 'inherit-color']
+        input: ['sp-1', 'inherit-color', 'meow']
       },
       templates: {
       },
     
     }),
     instantsearch.widgets.configure({
-      hitsPerPage: 5,
     }),
     instantsearch.widgets.hits({
       container: '#hits',
       escapeHTML: false,
       cssClasses: {
-        root: ['spread-center','modal', 'darken-5',],
-        list: ['is-three-fifths','white', 'pr-2', 'rounded-1', 'brighten-1', 'is-fullsize-mobile', 'mt-6'],
-        item: ['spread'] },
+        root: ['spread-center','modal', `${darkModeColor}`,],
+        list: ['is-three-fifths','is-fullsize-mobile','pt-7' ],
+        item: ['spread', 'pr-3'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full darken-1 rounded-1 c-sp-2 m-2"> <div class="white text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
         <div class="subtitle-1"> Could not locate results matching <strong>{{query}}</strong>. </div> `,

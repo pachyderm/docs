@@ -3,38 +3,50 @@
 */}}
 
 {{ define "main" }}
-<div class="is-four-fifths is-fullsize-mobile">
-    {{ if .Site.Params.heroBanner.single}}
-        <section class="black gradient-rl-cold py-3 m-2 rounded-1 c-sp-2">
-                {{/* Displays a series button if page is part of a series collection  */}}
-                {{ partial "featureSeriesButton.html" . }}
-                <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
-                {{ if .Description}}
-                    <p class="s bold">
-                        {{ .Description}}
-                    </p>
-                {{end}}
-                <p class="s">
-                    {{/* Displays published date or last build date */}}
-                    {{ if .Date }}
-                        {{ .Date | time.Format ":date_long" }} 
-                    {{else}} 
-                        {{ now | time.Format ":date_long" }} 
-                    {{end}}
-                </p> 
-        </section>
-    {{else}}
-        {{/* Does not show the hero section if disabled from config.yaml */}}
-    {{end}}
-    <section class="content px-2 m-2">
-        {{ partial "featureBetaNotice.html" . }}
-        {{ .Content }}
-        {{ partial "pachctlRelatedCommands.html" . }}
-    </section>
-    {{ partial "featureNextPrev.html" . }}
-    <section id="comments">
-        {{ partial "featureGiscus.html" . }}
-    </section>
+<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
+    {{partial "directory.html" . }}
+    <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+        <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div> 
 
-</div>
+            {{ if .Site.Params.heroBanner.single}}
+                <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
+                        {{/* Displays a series button if page is part of a series collection  */}}
+                        {{ partial "featureSeriesButton.html" . }}
+                        <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
+                        {{ if .Description}}
+                            <p class="s bold">
+                                {{ .Description}}
+                            </p>
+                        {{end}}
+                        <p class="s">
+                            {{/* Displays published date or last build date */}}
+                            {{ if .Date }}
+                                {{ .Date | time.Format ":date_long" }} 
+                            {{else}} 
+                                {{ now | time.Format ":date_long" }} 
+                            {{end}}
+                        </p> 
+                </section>
+            {{else}}
+                {{/* Does not show the hero section if disabled from config.yaml */}}
+            {{end}}
+            <section class="content">
+                {{ partial "featureBetaNotice.html" . }}
+                {{ .Content }}
+                {{ partial "pachctlRelatedCommands.html" . }}
+            </section>
+            {{ partial "featureNextPrev.html" . }}
+            <section id="comments">
+                {{ partial "featureGiscus.html" . }}
+            </section>
+
+
+
+        {{ partial "featureTags.html" . }}
+</article>
+</main>
 {{end}}
+

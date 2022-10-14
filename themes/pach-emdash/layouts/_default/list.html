@@ -2,40 +2,45 @@
     - All auto-generated list pages use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
 */}}
 
+
 {{ define "main" }}
-        {{ if .Site.Params.heroBanner.list }}
-        <section class="black gradient-lr-cold py-3 m-2 rounded-1 c-sp-2">
-            <div class="spread-between c-pinned-center">
-                <h1>{{.Title}} </h1>
-                <p class="label uppercase outlined xs sp-2"> taxonomy</p>
-            </div>
-        </section>
-        {{else}}
-            {{/* Does not show the hero section if turned off in config.yaml */}}
-        {{end}}
-        {{if .Content}}
-            <section class="content"> 
-                {{.Content}}
+<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
+    {{partial "directory.html" . }}
+    <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+
+            {{ if .Site.Params.heroBanner.list}}
+                <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
+                        {{/* Displays a series button if page is part of a series collection  */}}
+                        {{ partial "featureSeriesButton.html" . }}
+                        <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
+                        {{ if .Description}}
+                            <p class="s bold">
+                                {{ .Description}}
+                            </p>
+                        {{end}}
+                        <p class="s">
+                            {{/* Displays published date or last build date */}}
+                            {{ if .Date }}
+                                {{ .Date | time.Format ":date_long" }} 
+                            {{else}} 
+                                {{ now | time.Format ":date_long" }} 
+                            {{end}}
+                        </p> 
+                </section>
+            {{else}}
+                {{/* Does not show the hero section if disabled from config.yaml */}}
+            {{end}}
+            <section class="content">
+                {{ partial "featureBetaNotice.html" . }}
+                {{ .Content }}
+                {{ partial "featureChildPages.html" . }}
             </section>
-        {{end}}
-
-        <section id="tags" class="spread-left mt-3"> 
-                {{ range sort .Pages "Weight" "$order"}}
-                    {{ if  .Params.hidden }}
-                        {{/* Does not show hidden child pages or their descendants */}}
-                    {{else}}
-                        {{/* versionNumber class is used by tagsResultsFilteredByVersion.js to focus results */}}
-                        <div class="is-one-third is-half-touch {{ partial "utilityVersionNumber" . }}">
-                            <a class="" href="{{ .Permalink }}">
-                                    <div class="c-my-2 rounded-1 m-2 p-2 move-l">
-                                        <h4 class="m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-2">></b></h4>
-                                        {{if .Pages}} <div class="outlined p-2 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
-                                        <p> {{if .Description}}{{.Description}}{{else}}{{.Summary | truncate 150 }}{{end}}</p>
-                                    </div>
-                            </a>
-                        </div>
-                    {{end}}
-                {{ end }}
-        </section>
-
+            {{ partial "featureNextPrev.html" . }}
+            <section id="comments">
+                {{ partial "featureGiscus.html" . }}
+            </section>
+        {{ partial "featureTags.html" . }}
+</article>
+</main>
 {{end}}
+
