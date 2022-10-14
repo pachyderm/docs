@@ -5,12 +5,12 @@
             {{ $related := site.RegularPages.RelatedIndices . "tags"   }}
             {{$majorMinor := print .Params.majorMinor ".x"}}
             {{ with $related }}
-            <div class="l text-center bold mt-5 mb-2">Related Commands</div>
+            <div class="l text-center bold mt-5 mb-5">Related Commands</div>
             <div class="spread c-pinned-top">
                 {{ range first 20 . }}
                     {{ if eq $majorMinor .Section }}
                         <div class="is-half is-fullsize-mobile"> 
-                            <div class="sp-1 text-center outlined rounded-1"> 
+                            <div class="mx-4 my-2 p-1 text-center outlined rounded-1 move-l"> 
                                 <a href="{{ .RelPermalink }}" class="s bold "> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                 <p class="xs text-justify mx-3">{{.Description}}</p></a>
                             </div>
