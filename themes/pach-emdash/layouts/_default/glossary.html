@@ -39,11 +39,11 @@
         {{end}}
         {{/* Paginator Navigation Starts Here */}}
         <nav class="spread-center" role="navigation" aria-label="pagination">
-            <div class="pagination-list m-2 c-mt-2">
-                <div class="button black rounded-1 m-2 p-2 gradient-rl-cold xs uppercase bold"> Glossary Pages</div>
+            <div class="spread-center pagination-list c-m-1 c-pinned-center">
+                <div class="button black rounded-1 m-2 p-2 gradient-rl-cold xs uppercase bold is-fit"> Glossary Pages</div>
                 {{ range .Paginator.Pagers}}
                     {{/* Paginator Buttons */}}
-                    <button data-pager="{{.}}" class="button black darken-3  p-2  mr-2 rounded-1 xxs" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
+                    <button data-pager="{{.}}" class="button black darken-7  p-2  mr-2 rounded-1 xxs outlined" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
                 {{end}}
             </div>
         </nav>
@@ -57,7 +57,7 @@
                             {{/* Does not show the hidden child pages or their descendants */}}
                         {{else}}
                             <a class="spread-left m-4" href="{{.Permalink}}">
-                                <div class="is-two-fifths">
+                                <div class="spread-center is-two-fifths">
                                     {{/* Display title or humanized file's basename (e.g, for pachctl refs) */}}
                                     <h4> 
                                         {{if .Title}}
@@ -67,7 +67,7 @@
                                         {{end}}
                                     </h4>
                                 </div>
-                                <div class="black darken-3 rounded-1 c-sp-2">
+                                <div class="black darken-7 rounded-1 c-sp-2">
                                     <p class="xs"> 
                                         {{/* Display description or a truncated summary  */}}
                                         {{ if .Params.glossaryDefinition}}
