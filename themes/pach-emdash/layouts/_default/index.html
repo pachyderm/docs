@@ -4,19 +4,19 @@
 */}}
 
 {{ define "main" }}
-        <div class="spread-between c-pinned-bottom m-4 two-thirds-widescreen">
+        <div class="spread-between c-pinned-top m-4 two-thirds-widescreen">
             <div>
                 <h1 class="text-left">Pachyderm Docs</h1>
                 <h2 class="subtitle-1 l mt-2 text-left"> Automate data transformations <br> with data versioning and lineage.
             </div>
             <div class="is-one-fifth text-right is-hidden-mobile">
-                <img src="{{ .Site.Params.logos.footer }}" alt="Pachyderm Docs">
+                <img src="{{ .Site.Params.logos.footer }}" alt="Pachyderm Docs" style="height: 100px;">
             </div>
         </div>
     {{ partial "featureCommunityDetails.html" . }}
 
     <div class="spread-center">
-        <div class="stack mx-4 mt-7 mb-3 is-two-thirds">
+        <div class="stack mx-4 mt-7 mb-7 is-two-thirds">
             <h2 class="text-center mt-3 mb-4">Explore Pachyderm</h2>
             <div class="spread p-2 brighten-1 rounded-6 outlined  c-pinned-center">
                 <div class="is-fit l is-hidden-mobile ml-2">🔍</div>
