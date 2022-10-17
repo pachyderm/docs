@@ -314,7 +314,7 @@ ol > li { list-style: decimal inside; }/* Flexbox Layout System */
 .slide {
     display: flex;
     flex-flow: row nowrap;
-
+    scroll-snap-type: mandatory;
     overflow-x: scroll;
 }
 

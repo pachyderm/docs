@@ -19,9 +19,9 @@
         {{end}}
     {{end}}
 
-        <div class="slide">
+        <div id="slide-container" class="slide">
             {{/* Displays current page's children. */}}
-            <div class="is-full xs bold c-mt-2  h-scroll noscrollbar">
+            <div id="contents-container" class="is-full xs bold c-mt-2  h-scroll noscrollbar">
                 <button class="p-2 outlined xs bold is-fit rounded-1 mb-2"> Contents </button>
                 {{ if (eq .Params.layout "glossary") }}
                     {{/*  Does not display children if parent has layout:glossary  */}}
