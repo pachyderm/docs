@@ -7,7 +7,10 @@
 <main class="spread-around c-pinned-stretch wideless c-mx-4"> 
     {{partial "directory.html" . }}
     <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
-
+        <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div>     
             {{ if .Site.Params.heroBanner.list}}
                 <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
                         {{/* Displays a series button if page is part of a series collection  */}}
@@ -30,10 +33,30 @@
             {{else}}
                 {{/* Does not show the hero section if disabled from config.yaml */}}
             {{end}}
+            {{if .Content}}
             <section class="content">
                 {{ partial "featureBetaNotice.html" . }}
                 {{ .Content }}
                 {{ partial "featureChildPages.html" . }}
+            </section>
+            {{end}}
+            <section id="tags" class="spread-left mt-3"> 
+                {{ range sort .Pages "Weight" "$order"}}
+                    {{ if  .Params.hidden }}
+                        {{/* Does not show hidden child pages or their descendants */}}
+                    {{else}}
+                        {{/* versionNumber class is used by tagsResultsFilteredByVersion.js to focus results */}}
+                        <div class="is-one-third is-half-touch {{ partial "utilityVersionNumber" . }}">
+                            <a class="" href="{{ .Permalink }}">
+                                    <div class="c-my-2 rounded-1 m-2 p-2 move-l">
+                                        <h4 class="m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-2">></b></h4>
+                                        {{if .Pages}} <div class="outlined p-2 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
+                                        <p> {{if .Description}}{{.Description}}{{else}}{{.Summary | truncate 150 }}{{end}}</p>
+                                    </div>
+                            </a>
+                        </div>
+                    {{end}}
+                {{ end }}
             </section>
             {{ partial "featureNextPrev.html" . }}
             <section id="comments">

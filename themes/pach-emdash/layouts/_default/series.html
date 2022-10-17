@@ -12,6 +12,10 @@
 <main class="spread-around c-pinned-stretch wideless c-mx-4"> 
     {{partial "directory.html" . }}
     <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+        <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div>    
             {{ $order := "asc"}}
         <section class="black py-3  gradient-rl-cold rounded-1 c-sp-2">
             <div class="spread-between c-pinned-center">
