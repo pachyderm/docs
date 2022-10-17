@@ -27,7 +27,7 @@
       <script src="{{ $algolia.Permalink }}" type="module" defer></script>
     {{end}}
     <script src="{{ $js.Permalink }}" defer></script>
-    {{ partial "marketoMunchkin.html" . }}
+    {{ partial "marketingScripts.html" . }}
     {{if .Params.mermaid}}
       {{ partial "mermaid.html" . }}
       <script src="{{ $mermaid.Permalink }}" defer></script>

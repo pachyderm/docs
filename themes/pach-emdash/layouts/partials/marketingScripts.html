@@ -1,0 +1,62 @@
+<script type=“text/javascript”>
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init(‘462-KNG-116’);
+    }
+  }
+  var s = document.createElement(‘script’);
+  s.type = ‘text/javascript’;
+  s.async = true;
+  s.src = ‘//munchkin.marketo.net/munchkin.js’;
+  s.onreadystatechange = function() {
+    if (this.readyState == ‘complete’ || this.readyState == ‘loaded’) {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName(‘head’)[0].appendChild(s);
+})();
+</script>
+
+<script id="term-e7e5d07437489" src="https://wec-assets.terminus.services/0d5c53b2-ce18-4585-b2b1-d0358cdd4a06/t.js"></script>
+
+<script src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
+<script>Bugsnag.start({ apiKey: '8f81cbe33181807ab3d63705fe0546db' })</script>
+<script> 
+  rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load("1iJtD7UiXR23JlGPtE8YnzQH3KG","https://pachyderm-dataplane.rudderstack.com"),rudderanalytics.page();
+  
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  var anonymous_id = rudderanalytics.getAnonymousId();
+  var latest_utm_source =  getUrlParameter('utm_source');
+  var latest_utm_campaign =  getUrlParameter('utm_campaign');
+  var latest_utm_medium =  getUrlParameter('utm_medium');
+  var latest_utm_content =  getUrlParameter('utm_content');
+  var latest_utm_term =  getUrlParameter('utm_term');
+  
+  if (latest_utm_content) {
+    rudderanalytics.track(
+      "UTM",
+      {
+        context: {
+          traits: {
+            latest_utm_source,
+            latest_utm_campaign,
+            latest_utm_medium,
+            latest_utm_content,
+            latest_utm_term
+          }
+        }
+      }
+    );
+  }
+</script>
+<script src="https://cdn.rudderlabs.com/sm/rudder-analytics.min.js"></script>
