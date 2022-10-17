@@ -5,48 +5,48 @@
 
 [[redirects]]
   from = "/latest/getting-started/*"
-  to = "/2.3.x/getting-started/"
+  to = "/2.4.x/getting-started/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/concepts/*"
-  to = "/2.3.x/concepts/"
+  to = "/2.4.x/concepts/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/how-tos/*"
-  to = "/2.3.x/how-tos/"
+  to = "/2.4.x/how-tos/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/deploy-manage/*"
-  to = "/2.3.x/deploy-manage/"
+  to = "/2.4.x/deploy-manage/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/deploy-manage/*"
-  to = "/2.3.x/deploy-manage/"
+  to = "/2.4.x/deploy-manage/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/enterprise/*"
-  to = "/2.3.x/enterprise/"
+  to = "/2.4.x/enterprise/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/enterprise/*"
-  to = "/2.3.x/enterprise/"
+  to = "/2.4.x/enterprise/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/troubleshooting/*"
-  to = "/2.3.x/troubleshooting/"
+  to = "/2.4.x/troubleshooting/"
   status = 301
   force = true
