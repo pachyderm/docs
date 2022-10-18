@@ -30,12 +30,12 @@
             {{else}}
                 {{/* Does not show the hero section if disabled from config.yaml */}}
             {{end}}
-            <section class="content">
+            <section class="content mt-6">
                 {{ partial "featureBetaNotice.html" . }}
                 Looks like this page doesn't exist. Are you looking for an article from our previous docs site? If so, you can either:
                 <ul>
                     <li>Search for it in the search bar above</li>
-                    <li>Visit the <a href="https://docs.pachyderm.com/">previous docs site</a></li>
+                    <li>Visit the <a href="https://archive-docs.pachyderm.com/">legacy docs site</a></li>
                 </ul>
                 {{ partial "pachctlRelatedCommands.html" . }}
             </section>
