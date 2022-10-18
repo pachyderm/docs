@@ -2,9 +2,9 @@
 {{ if .Site.Params.versionDropdown }}
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
-    <button class="dropdown-alt is-fit outlined-purple {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
+    <button class="montserrat dropdown-alt is-fit outlined-purple {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
         <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-2 rounded-1 s bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
-        <div class="is-full dropdown-options white rounded-1 outlined-purple"> 
+        <div class="montserrat is-full dropdown-options white rounded-1 outlined-purple"> 
              {{if eq .Section "tags" "series" "knowledge-base"}}
              {{else if eq .Title "search" }}
              {{else}}
