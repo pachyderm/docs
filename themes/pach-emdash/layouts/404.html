@@ -1,35 +1,53 @@
 {{/*  404 pages do not show up on local deploy previews; can only view them live & staging.  */}}
 {{ define "main" }}
-         {{ if .Site.Params.heroBanner.list }}
-            <section class="black gradient-rl-cold py-3 mt-1 rounded-1 c-sp-1">
-                    <h1>How can we help you?</h1>
-                    <p> Select multiple tags to find related articles.</p>
+<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
+    {{partial "directory.html" . }}
+    <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+        <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div> 
+
+            {{ if .Site.Params.heroBanner.single}}
+                <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
+                        {{/* Displays a series button if page is part of a series collection  */}}
+                        {{ partial "featureSeriesButton.html" . }}
+                        <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
+                        {{ if .Description}}
+                            <p class="s bold">
+                                {{ .Description}}
+                            </p>
+                        {{end}}
+                        <p class="s">
+                            {{/* Displays published date or last build date */}}
+                            {{ if .Date }}
+                                {{ .Date | time.Format ":date_long" }} 
+                            {{else}} 
+                                {{ now | time.Format ":date_long" }} 
+                            {{end}}
+                        </p> 
+                </section>
+            {{else}}
+                {{/* Does not show the hero section if disabled from config.yaml */}}
+            {{end}}
+            <section class="content">
+                {{ partial "featureBetaNotice.html" . }}
+                Looks like this page doesn't exist. Are you looking for an article from our previous docs site? If so, you can either:
+                <ul>
+                    <li>Search for it in the search bar above</li>
+                    <li>Visit the <a href="https://docs.pachyderm.com/">previous docs site</a></li>
+                </ul>
+                {{ partial "pachctlRelatedCommands.html" . }}
             </section>
-        {{else}}
-        {{/* Don't show the hero section */}}
-        {{end}}
-
-        <section class="p-1"> 
-            {{ range .Site.Taxonomies.tags }}
-                <button class="button purple xs p-1 mr-1 mt-1 rounded-1 " onClick="Filter({{ .Page.Title }}, this)"># {{ .Page.Title }}</button> 
-            {{ end }}
-        </section>
-
-        <section id="potentialResults" class="spread-left mt-4"> 
-
-            {{ range .Site.Pages }}
-                {{ if .Params.Tags}}
-                    <div class="is-one-third is-hidden" data-tags="{{ trim  (print .Params.Tags) "[]" }}"> 
-                        <a class="sp-1 c-sp-1" href="{{.Permalink}}">
-                            <div class="darken-1 rounded-1 move-l">
-                                <h3 class="mt-1 m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-1">></b></h3>
-                                <p class="subtitle-1">{{if .Description}} {{.Description}} {{else}}{{.Summary | truncate 300}} {{end}} </p>
-                            </div>
-                        </a>
-                    </div>
-                {{else}}
-                {{end}}
-            {{ end }}
+            {{ partial "featureNextPrev.html" . }}
+            <section id="comments">
+                {{ partial "featureGiscus.html" . }}
             </section>
-{{ end }}
+
+
+
+        {{ partial "featureTags.html" . }}
+</article>
+</main>
+{{end}}
 
