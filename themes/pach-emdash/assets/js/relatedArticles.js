@@ -4,7 +4,9 @@
 var seeRelated = document.getElementById('see-related');
 var relatedArticles = document.getElementById('related-articles');
 
-seeRelated.addEventListener('click', function() {
-    relatedArticles.scrollIntoView({behavior: "smooth"});
-});
+if (seeRelated) {
+  seeRelated.addEventListener('click', function() {
+    relatedArticles.scrollIntoView({behavior: 'smooth'});
+  });
+}
 
