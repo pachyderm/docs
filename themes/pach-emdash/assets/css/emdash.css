@@ -175,7 +175,7 @@ hr {
 
 :is(.directory, nav) ul > li { list-style: none;  }
 
-ul, ol, li { padding-inline-start: .5rem; }
+
 
 .content :is(ol,ul) > li { margin-left: 1rem; margin-bottom: .5rem; } /* Flexbox Layout System */
 
