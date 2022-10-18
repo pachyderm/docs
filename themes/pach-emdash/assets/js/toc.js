@@ -34,7 +34,7 @@ function styleTOC(){
         link.role = headings[i].id;
 
         if (headingText.length > 35) {
-            link.innerText =  headingText.substring(0, 35) + '...'
+            link.innerText =  headingText.substring(0, 27) + '...'
         } else {
              link.innerText = headingText;
         }
