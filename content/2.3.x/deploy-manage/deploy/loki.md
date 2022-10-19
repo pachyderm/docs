@@ -81,7 +81,16 @@ loki-stack:
   ![Container logs](../../images/grafana_user_logs.png)
 {{% /notice %}}
 
+Instead of deploying a local loki instance in your pachyderm namespace, you can configure pachyderm to use a loki running in another namespace. To do so, you must set lokiHost and lokiPort. You should also set lokiDeploy: false to prevent the chart from deploying a local loki instance.:
 
+## Using Loki in Another Namespace
+
+```yaml
+pachd:
+  lokiDeploy: false
+  lokiHost: "<loki-namespace>.<loki-service-name>.svc.cluster.local."
+  lokiPort: 3100
+```
     
 ## References
 
