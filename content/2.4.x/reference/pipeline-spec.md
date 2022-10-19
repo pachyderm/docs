@@ -456,6 +456,12 @@ accomplished with a `USER` directive in your `Dockerfile`.
 `transform.working_dir` sets the directory that your command runs from. You
 can also specify the `WORKDIR` directive in your `Dockerfile`.
 
+`transform.memory_volume` sets pachyderm-worker's `emptyDir.Medium` to `Memory`, allowing Kubernetes to mount a memory-backed volume. Depending on your environment, `emptyDir` volumes are stored on the medium that backs the node (such as disk, SSD, or network storage). However, if you set the `emptyDir.medium` field to `Memory`, Kubernetes mounts a `tmpfs` (RAM-backed filesystem) for you instead. 
+
+{{% notice tip %}}
+While `tmpfs` is very fast, be aware that unlike disks, `tmpfs` is cleared on node reboot and any files you write count against your container's memory limit. This may be useful for workloads that are IO heavy or use memory caches.
+{{% /notice %}}
+
 ### Parallelism Spec (optional)
 
 `parallelism_spec` describes how Pachyderm parallelizes your pipeline.
