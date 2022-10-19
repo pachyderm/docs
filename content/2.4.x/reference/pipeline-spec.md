@@ -30,7 +30,7 @@ A pipeline specification file can contain multiple pipeline declarations at once
     "pipeline": {
       "name": string
     },
-    "description": "string",
+    "description": string,
     "metadata": {
       "annotations": {
           "annotation": string
@@ -39,82 +39,99 @@ A pipeline specification file can contain multiple pipeline declarations at once
           "label": string
       }
     },
+    "tf_job": {
+      "tf_job": string,
+    },
     "transform": {
-      "image": "string",
+      "image": string,
       "cmd": [ string ],
-      "stdin": [ string ],
       "err_cmd": [ string ],
-      "err_stdin": [ string ],
       "env": {
           string: string
       },
       "secrets": [ {
-          "name": "string",
+          "name": string,
           "mount_path": string
       },
       {
-          "name": "string",
-          "env_var": "string",
+          "name": string,
+          "env_var": string,
           "key": string
       } ],
       "image_pull_secrets": [ string ],
+      "stdin": [ string ],
+      "err_stdin": [ string ],
       "accept_return_code": [ int ],
       "debug": bool,
-      "user": "string",
-      "working_dir": "string",
-      "dockerfile": "string",
+      "user": string,
+      "working_dir": string,
+      "dockerfile": string,
+      "memory_volume": bool,
     },
     "parallelism_spec": {
       "constant": int
     },
-    "resource_requests": {
-      "memory": "string",
-      "cpu": number,
-      "gpu": {
-        "type": "string",
-        "number": int
-      }
-      "disk": "string",
-    },
-    "resource_limits": {
-      "memory": "string",
-      "cpu": number,
-      "gpu": {
-        "type": "string",
-        "number": int
-      }
-      "disk": "string",
-    },
-    "sidecar_resource_limits": {
-      "memory": "string",
-      "cpu": number
-    },
-    "datum_timeout": "string",
-    "datum_tries": int,
-    "job_timeout": "string",
-    "input": {
-      <"pfs", "cross", "union", "join", "group" or "cron" see below>
-    },
-    "s3_out": bool,
-    "reprocess_spec": "string",
-    "output_branch": "string",
     "egress": {
       // Egress to an object store
       "URL": "s3://bucket/dir"
       // Egress to a database
       "sql_database": {
-          "url": "string",
+          "url": string,
           "file_format": {
-              "type": "string",
+              "type": string,
               "columns": [string]
           },
           "secret": {
-              "name": "string",
+              "name": string,
               "key": "PACHYDERM_SQL_PASSWORD"
           }
       }
     },
-    "autoscaling": bool,
+    "update": bool,
+    "output_branch": string,
+    [
+      {
+        "worker_id": string,
+        "job_id": string,
+        "datum_status" : {
+          "started": timestamp,
+          "data": []
+        }
+      }
+    ],
+    "s3_out": bool,
+    "resource_requests": {
+      "cpu": number,
+      "memory": string,
+      "gpu": {
+        "type": string,
+        "number": int
+      }
+      "disk": string,
+    },
+    "resource_limits": {
+      "cpu": number,
+      "memory": string,
+      "gpu": {
+        "type": string,
+        "number": int
+      }
+      "disk": string,
+    },
+    "sidecar_resource_limits": {
+      "cpu": number,
+      "memory": string,
+      "gpu": {
+        "type": string,
+        "number": int
+      }
+      "disk": string,
+    },
+    "input": {
+      <"pfs", "cross", "union", "join", "group" or "cron" see below>
+    },
+    "description": string,
+    "reprocess": bool,
     "service": {
       "internal_port": int,
       "external_port": int
@@ -125,13 +142,44 @@ A pipeline specification file can contain multiple pipeline declarations at once
         "internal_port": int,
         "external_port": int
       }
+    },
+    "datum_set_spec": {
+      "number": int,
+      "size_bytes": int,
+      "per_worker": int,
     }
+    "datum_timeout": string,
+    "job_timeout": string,
+    "salt": string,
+    "datum_tries": int,
     "scheduling_spec": {
       "node_selector": {string: string},
       "priority_class_name": string
     },
-    "pod_spec": "string",
-    "pod_patch": "string",
+    "pod_spec": string,
+    "pod_patch": string,
+    "spec_commit": {
+      "option": false,
+      "branch": {
+        "option": false,
+        "repo": {
+          "option": false,
+          "name": string,
+          "type": string,
+          "project":{
+            "option": false,
+            "name": string,
+          },
+        },
+        "name": string
+      },
+      "id": string,
+    }
+    "metadata": {
+
+    },
+    "reprocess_spec": string,
+    "autoscaling": bool
   }
 
   ------------------------------------
@@ -139,13 +187,23 @@ A pipeline specification file can contain multiple pipeline declarations at once
   ------------------------------------
 
   "pfs": {
-    "name": "string",
-    "repo": "string",
-    "branch": "string",
-    "glob": "string",
+    "name": string,
+    "repo": string,
+    "repo_type":string,
+    "branch": string,
+    "commit":string,
+    "glob": string,
+    "join_on":string,
+    "outer_join": bool,
+    "group_by": string,
     "lazy" bool,
     "empty_files": bool,
-    "s3": bool
+    "s3": bool,
+    "trigger": {
+      "branch": string,
+      "all": bool,
+      "cron_spec": string,
+    },
   }
 
   ------------------------------------
@@ -155,10 +213,10 @@ A pipeline specification file can contain multiple pipeline declarations at once
   "cross" or "union": [
     {
       "pfs": {
-        "name": "string",
-        "repo": "string",
-        "branch": "string",
-        "glob": "string",
+        "name": string,
+        "repo": string,
+        "branch": string,
+        "glob": string,
         "lazy" bool,
         "empty_files": bool,
         "s3": bool
@@ -166,10 +224,10 @@ A pipeline specification file can contain multiple pipeline declarations at once
     },
     {
       "pfs": {
-        "name": "string",
-        "repo": "string",
-        "branch": "string",
-        "glob": "string",
+        "name": string,
+        "repo": string,
+        "branch": string,
+        "glob": string,
         "lazy" bool,
         "empty_files": bool,
         "s3": bool
@@ -186,11 +244,11 @@ A pipeline specification file can contain multiple pipeline declarations at once
   "join": [
     {
       "pfs": {
-        "name": "string",
-        "repo": "string",
-        "branch": "string",
-        "glob": "string",
-        "join_on": "string",
+        "name": string,
+        "repo": string,
+        "branch": string,
+        "glob": string,
+        "join_on": string,
         "outer_join": bool,
         "lazy": bool,
         "empty_files": bool,
@@ -199,11 +257,11 @@ A pipeline specification file can contain multiple pipeline declarations at once
     },
     {
       "pfs": {
-        "name": "string",
-        "repo": "string",
-        "branch": "string",
-        "glob": "string",
-        "join_on": "string",
+        "name": string,
+        "repo": string,
+        "branch": string,
+        "glob": string,
+        "join_on": string,
         "outer_join": bool,
         "lazy": bool,
         "empty_files": bool,
@@ -220,11 +278,11 @@ A pipeline specification file can contain multiple pipeline declarations at once
   "group": [
     {
       "pfs": {
-        "name": "string",
-        "repo": "string",
-        "branch": "string",
-        "glob": "string",
-        "group_by": "string",
+        "name": string,
+        "repo": string,
+        "branch": string,
+        "glob": string,
+        "group_by": string,
         "lazy": bool,
         "empty_files": bool,
         "s3": bool
@@ -232,11 +290,11 @@ A pipeline specification file can contain multiple pipeline declarations at once
     },
     {
       "pfs": {
-        "name": "string",
-        "repo": "string",
-        "branch": "string",
-        "glob": "string",
-        "group_by": "string",
+        "name": string,
+        "repo": string,
+        "branch": string,
+        "glob": string,
+        "group_by": string,
         "lazy": bool,
         "empty_files": bool,
         "s3": bool
@@ -251,9 +309,9 @@ A pipeline specification file can contain multiple pipeline declarations at once
   ------------------------------------
 
   "cron": {
-      "name": "string",
-      "spec": "string",
-      "repo": "string",
+      "name": string,
+      "spec": string,
+      "repo": string,
       "start": time,
       "overwrite": bool
   }
@@ -550,7 +608,7 @@ these fields be set for any instantiation of the object. While most types
 of pipeline specifications require an `input` repository, there are
 exceptions, such as a spout, which does not need an `input`.
 
-```json
+```s
 {
     "pfs": pfs_input,
     "union": union_input,
@@ -566,20 +624,20 @@ exceptions, such as a spout, which does not need an `input`.
 PFS inputs are the simplest inputs, they take input from a single branch on a
 single repo.
 
-```json
+```s
 {
-    "name": "string",
-    "repo": "string",
-    "branch": "string",
-    "glob": "string",
+    "name": string,
+    "repo": string,
+    "branch": string,
+    "glob": string,
     "lazy" bool,
     "empty_files": bool,
     "s3": bool,
     "trigger": {
-        "branch": "string",
+        "branch": string,
         "all": bool,
-        "cron_spec": "string",
-        "size": "string",
+        "cron_spec": string,
+        "size": string,
         "commits": int
     }
 }
@@ -723,11 +781,11 @@ When a Cron input triggers,
 3339 timestamp](https://www.ietf.org/rfc/rfc3339.txt) to the repo which
 contains the time which satisfied the spec.
 
-```json
+```s
 {
-    "name": "string",
-    "spec": "string",
-    "repo": "string",
+    "name": string,
+    "spec": string,
+    "repo": string,
     "start": time,
     "overwrite": bool
 }
