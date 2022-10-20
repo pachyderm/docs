@@ -197,6 +197,15 @@ Pachyderm often releases new pachctl commands in major/minor releases. You can a
 5. Open the docs repo.
 6. Replace the pachctl command reference files with the newly generated ones.
 
+#### Search Index Update 
+
+1. Navigate to the docs site (either locally or deploy preview).
+2. Add the following to the path: `/{{version}}/index.json`.
+3. Copy the JSON.
+4. Log in to Algolia.
+5. Create a new index with the version name. (e.g., `2.4.x`).
+6. Add the records by selecting **add records** > **add manually** and pasting in the json.
+
 ### Patch Version Updates
 
 1. Open the docs repo and navigate to the latest release directory's top-level `_index.md` page (e.g., `/content/2.4.x/_index.md`.
