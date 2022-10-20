@@ -185,3 +185,21 @@ Use this [table generator tool](https://www.tablesgenerator.com/markdown_tables)
 8. Update the redirects for `/latest` to point to the new version. (This step may be deprecated in the future.)
 
 You now have a staged release branch that is ready for all of your new major/minor release documentation updates. You can submit this as a pull request, set that to draft, and safely share previews of the next version for feedback.
+
+#### Pachctl Command Doc Generation
+
+Pachyderm often releases new pachctl commands in major/minor releases. You can auto-generate markdown docs for these commands from the Pachyderm repo and then migrate them to the docs site. This should be done closer to the release date to ensure all changes are captured.
+
+1. Open the Pachyderm repo.
+2. In a terminal, run `make install-doc`.
+3. Run `sh ./etc/build/reference_refresh.sh`. 
+4. Copy the files that get generated.
+5. Open the docs repo.
+6. Replace the pachctl command reference files with the newly generated ones.
+
+### Patch Version Updates
+
+1. Open the docs repo and navigate to the latest release directory's top-level `_index.md` page (e.g., `/content/2.4.x/_index.md`.
+2. Update the `latestPatch` attribute value.
+3. Open the `config.yaml` file.
+4. Update the `releaseInfo.patch` attribute value.
