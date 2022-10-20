@@ -142,3 +142,46 @@ Use the following shortcode in your markdown files to display notices:
 ### Tables
 
 Use this [table generator tool](https://www.tablesgenerator.com/markdown_tables) to quickly build markdown tables. 
+
+---
+
+## Update Docs Version
+
+### Major/Minor Version Updates
+
+1. Open the docs repo and create a new branch named similar to: `/username/2.4.x/release-prep`.
+2. Copy the most recent release directory in `/content` and give it the new release version name (e.g., `2.4.x`).
+3. Navigate to your new release directory's top `_index.md` file.
+4. Update the following front-matter attributes: 
+   ```yaml
+    ---
+      # metadata # 
+      title:  2.4.x
+      description: Pachyderm Version 2.4.x 
+      date: 
+      # taxonomy #
+      tags:
+      series:
+      seriesPart:
+      cascade:
+          latestPatch: 2.4.0
+          majorMinor: 2.4
+          clientPython: 7.3 
+          extensionJupyterLab: 0.6.3
+          mountServerBinary: 2.4
+    ---
+   ```
+5. Open the `config.yaml` file.
+6. Find the following section and update to the new version:
+```yaml
+  ## Release Features
+  versionDropdown: true # displays a top-nav dropdown with top-level sections served as versioned documentation. 
+  ## downloads: true # Enables displaying the download dropdown (requires release.patch)
+  releaseInfo: # Note: See the new directory's /content/x.x.x./_index.md page to set release-related frontmatter variables. 
+    latest: "2.4.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
+    patch: "2.4.0" # Used for announcements and to generate download links
+```
+7. Open the `netlify.toml` file.
+8. Update the redirects for `/latest` to point to the new version. (This step may be deprecated in the future.)
+
+You now have a staged release branch that is ready for all of your new major/minor release documentation updates. You can submit this as a pull request, set that to draft, and safely share previews of the next version for feedback.
