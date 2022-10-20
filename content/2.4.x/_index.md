@@ -7,9 +7,6 @@ date:
 tags:
 series:
 seriesPart:
-aliases: [
-    "/latest",
-]
 cascade:
     latestPatch: 2.4.0
     majorMinor: 2.4
