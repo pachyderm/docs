@@ -83,7 +83,7 @@ All documentation is written using Markdown syntax in `.md` files. See this offi
 
 Use ` ``` ` to wrap long code samples into a code block.
 
-```
+```s
 This is a code block.
 ```
 

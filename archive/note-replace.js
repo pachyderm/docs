@@ -20,7 +20,6 @@ traverse('./content', function(filepath) {
 
         let regex = /^!!! Note[\s\S]*?(?=\n\n)/gm;
         let matches = file.match(regex);
-        console.log(matches);
         // wrap the matches in "{{% notice %}} ... {{% /notice %}}"
         if (matches) {
             matches.forEach(match => {

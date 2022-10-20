@@ -17,7 +17,7 @@
   {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
 
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
-  {{ $js := slice $darkMode $toc $relatedArticles $mermaid $clippy $notices $tables $pagination $explore $tags $keyboard | resources.Concat "js/bundle.js"}}
+  {{ $js := slice $darkMode $toc $relatedArticles $clippy $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
 
 <footer class="spread  mt-7 px-4 py-7 c-pinned-top c-mt-4">
     {{/*  Algolia must remain separate due to module type  */}}
