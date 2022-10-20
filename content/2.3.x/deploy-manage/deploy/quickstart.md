@@ -292,8 +292,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION
-pachctl             {{% majorMinorVersion %}}
-pachd               {{% majorMinorVersion %}}
+pachctl             {{% latestPatchNumber %}}
+pachd               {{% latestPatchNumber %}}
 ```
 
 ## 5. Connect to Console
