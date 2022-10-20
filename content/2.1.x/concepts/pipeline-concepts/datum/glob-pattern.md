@@ -126,13 +126,13 @@ top-level filesystem objects in the `train` repository as one
 datum:
 
 ### Example
-```shell
+```s
 pachctl glob file train@master:/
 ```
 
 **System Response:**
 
-```shell
+```s
 NAME TYPE SIZE
 /    dir  15.11KiB
 ```
@@ -142,13 +142,13 @@ top-level filesystem object in the `train` repository as a separate
 datum:
 
 ### Example
-```shell
+```s
 pachctl glob file train@master:/*
 ```
 
 **System Response:**
 
-```shell
+```s
 NAME                   TYPE SIZE
 /IssueSummarization.py file 1.224KiB
 /requirements.txt      file 74B
@@ -171,7 +171,7 @@ The pipeline does not need to have been created for the command to return the li
 {{% /notice %}}
 
 ### Example
-```shell
+```s
 pachctl list datum -f edges.json
 ```
 **System Response:**
@@ -189,7 +189,7 @@ pachctl list datum -f edges.json
 You can use the `pachctl list datum <pipeline>@<job_ID>` command to check the datums processed by a given job.
 
 #### Example
-```shell
+```s
 pachctl list datum edges@b8687e9720f04b7ab53ae8c64541003b
 ```
 **System Response:**
@@ -213,7 +213,7 @@ Stats and Datum Metadata
 - Running `list datum` on a given job execution of a pipeline allows you to additionally display the STATUS (running, failed, success) and TIME of each datum.
 - You might want to follow up with [inspect datum pipeline@job_number datum ID](https://docs.pachyderm.com/latest/reference/pachctl/pachctl_inspect_datum/) to detail the files that a specific datum includes.
 
-  ```shell
+  ```s
   pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8
   ```
   **System Response:**

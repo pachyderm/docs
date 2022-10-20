@@ -24,7 +24,7 @@ The Pachyderm S3 gateway supports the following operations:
 When using the AWS S3 CLI, simply append `--profile <name-your-profile>` at the end of your command to reference a given profile. If none, the session token will be retrieved from the default profile. More info in the [**Configure your S3 client**](../configure-s3client/#configure-your-s3-client) page. 
 
 For example, in the **Create Bucket** section below, the command would become:
-```shell
+```s
 aws --endpoint-url http://localhost:30600/ s3 mb s3://master.test --profile <name-your-profile>
 ```
 {{% /notice %}}
@@ -35,7 +35,7 @@ For example, let's create the `master` branch of the repo `test`.
 
 1. In MinIO, 
  - this would look like:
-   ```shell
+   ```s
    mc mb local/master.test
    ```
    **System Response:**
@@ -43,7 +43,7 @@ For example, let's create the `master` branch of the repo `test`.
    Bucket created successfully `local/master.test`.
    ```
   - verify that the S3 bucket has been successfully created:
-    ```shell
+    ```s
     mc ls local
     ```
     **System Response:**
@@ -52,7 +52,7 @@ For example, let's create the `master` branch of the repo `test`.
     ```
 1. If you are using AWS S3 CLI,
  - this would look like:
-   ```shell
+   ```s
    aws --endpoint-url http://localhost:30600/ s3 mb s3://master.test
    ```
    **System Response:**
@@ -60,7 +60,7 @@ For example, let's create the `master` branch of the repo `test`.
    make_bucket: master.test
    ```
   - verify that the S3 bucket has been successfully created:
-    ```shell
+    ```s
     aws --endpoint-url http://localhost:30600/ s3 ls
     ```
     **System Response:**
@@ -80,7 +80,7 @@ The repo must be completely empty.
 {{% /notice %}}
 
 1. In MinIO, 
- ```shell
+ ```s
  mc rb local/master.test
  ```
  **System Response:**
@@ -88,7 +88,7 @@ The repo must be completely empty.
  Removed `local/master.test` successfully.
  ```
 1. If you are using AWS S3 CLI,
- ```shell
+ ```s
  aws --endpoint-url http://localhost:30600/ s3 rb s3://master.test
  ```
  **System Response:**
@@ -101,7 +101,7 @@ You can check the list of filesystem objects in your Pachyderm
 repository by running an S3 client `ls` command.
 
 1. In MinIO,
-  ```shell
+  ```s
   mc ls local
   ```
   **System Response:**
@@ -114,7 +114,7 @@ repository by running an S3 client `ls` command.
 
 1. If you are using AWS S3 CLI,
 
-  ```shell
+  ```s
   aws --endpoint-url http://localhost:30600 s3 ls
   ```
   **System Response:**
@@ -129,7 +129,7 @@ repository by running an S3 client `ls` command.
 For example, list the contents of the repository raw_data.
 
 1. In MinIO,
-  ```shell
+  ```s
   mc ls local/master.raw_data
   ```
   **System Response:**
@@ -138,7 +138,7 @@ For example, list the contents of the repository raw_data.
   ```
 
 1. If you are using AWS S3 CLI,
-  ```shell
+  ```s
   aws --endpoint-url http://localhost:30600/ s3 ls s3://master.raw_data
   ```
   **System Response:**
@@ -160,7 +160,7 @@ in order to be able to add files to it.
 
 1. In MinIO,
  - this would look like:
-   ```shell
+   ```s
    mc cp test.csv local/master.raw_data/test.csv
    ```
    **System Response:**
@@ -168,7 +168,7 @@ in order to be able to add files to it.
    test.csv:                  62 B / 62 B  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100.00% 206 B/s 0s
    ```
  - Check that the file was added:
-   ```shell
+   ```s
    mc ls local/master.raw_data
    ```
    **System Response:**
@@ -180,7 +180,7 @@ in order to be able to add files to it.
 
 1. If you are using AWS S3 CLI,
  - this would look like:
-   ```shell
+   ```s
    aws --endpoint-url http://localhost:30600/ s3 cp test.csv s3://master.raw_data
    ```
    **System Response:**
@@ -188,7 +188,7 @@ in order to be able to add files to it.
    upload: ./test.csv to s3://master.raw_data/test.csv
    ```
  - Check that the file was added:
-   ```shell
+   ```s
    aws --endpoint-url http://localhost:30600/ s3 ls s3://master.raw_data/
    ```
    **System Response:**
@@ -201,7 +201,7 @@ in order to be able to add files to it.
 For example, download the file `github_issues_medium.csv` from the `master` branch of the repo `raw_data`.
 
 1. In MinIO,
-  ```shell
+  ```s
   mc cp local/master.raw_data/github_issues_medium.csv .
   ```
   **System Response:**
@@ -210,7 +210,7 @@ For example, download the file `github_issues_medium.csv` from the `master` bran
   ```
 
 1. If you are using AWS S3 CLI,
-  ```shell
+  ```s
   aws --endpoint-url http://localhost:30600/ s3 cp s3://master.raw_data/test.csv .
   ```
   **System Response:**
@@ -222,7 +222,7 @@ For example, download the file `github_issues_medium.csv` from the `master` bran
 For example, delete the file `test.csv` in the `HEAD` of the `master` branch of the `raw_data` repo.
 
 1. In MinIO,
-  ```shell
+  ```s
   mc rm local/master.raw_data/test.csv
   ```
   **System Response:**
@@ -231,7 +231,7 @@ For example, delete the file `test.csv` in the `HEAD` of the `master` branch of 
   ```
 
 1. If you are using AWS S3 CLI,
-  ```shell
+  ```s
   aws --endpoint-url http://localhost:30600/ s3 rm s3://master.raw_data/test.csv
   ```
   **System Response:**

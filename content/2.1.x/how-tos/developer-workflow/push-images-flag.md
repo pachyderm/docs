@@ -24,7 +24,7 @@ The `--push-images` flag performs the following steps after you have built your 
 1. Submits the updated pipeline to the Pachyderm cluster
 
 The usage of the flag is shown below:
-   ```shell
+   ```s
    pachctl update pipeline -f <pipeline name> --push-images --registry <registry> --username <registry user>
    ```
 

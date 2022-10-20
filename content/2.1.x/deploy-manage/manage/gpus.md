@@ -84,11 +84,11 @@ Now that the DGX is added to your API server, you can then proceed to:
  ```
 
  Save it as gpu-pod.yaml then deploy the application:
- ```shell
+ ```s
  kubectl apply -f gpu-pod.yaml
  ```
  Check the logs to make sure that the app completed successfully:
- ```shell
+ ```s
  kubectl get pods gpu-test
  ```
 

@@ -80,7 +80,7 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
 
 1. [Log in](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli) to Azure:
 
-    ```shell
+    ```s
     az login
     ```
 
@@ -90,13 +90,13 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
     
 1. Create an [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) or retrieve an existing group.
 
-    ```shell
+    ```s
     az group create --name ${RESOURCE_GROUP} --location ${LOCATION}
     ```
 
     **Example:**
 
-    ```shell
+    ```s
     az group create --name test-group --location centralus
     ```
 
@@ -120,13 +120,13 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
 
     For more configuration options: Find the list of [all available flags of the `az aks create` command](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_create).
 
-      ```shell
+      ```s
       az aks create --resource-group ${RESOURCE_GROUP} --name ${CLUSTER_NAME} --node-vm-size ${NODE_SIZE} --node-count <node_pool_count> --location ${LOCATION}
       ```
 
       **Example:**
 
-      ```shell
+      ```s
       az aks create --resource-group test-group --name test-cluster --generate-ssh-keys --node-vm-size Standard_DS4_v2 --location centralus
       ```
 
@@ -159,7 +159,7 @@ The storage account name must be unique in the Azure location.
 
 * Create an Azure storage account:
 
-  ```shell
+  ```s
   az storage account create \
     --resource-group="${RESOURCE_GROUP}" \
     --location="${LOCATION}" \
@@ -194,13 +194,13 @@ The storage account name must be unique in the Azure location.
 
 * Verify that your storage account has been successfully created:
 
-  ```shell
+  ```s
   az storage account list
   ```
 
 * Obtain the key for the storage account (`STORAGE_ACCOUNT`) and the resource group to be used to deploy Pachyderm:
 
-  ```shell
+  ```s
   STORAGE_KEY="$(az storage account keys list \
                 --account-name="${STORAGE_ACCOUNT}" \
                 --resource-group="${RESOURCE_GROUP}" \
@@ -216,7 +216,7 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
 
 * Create a new storage container within your storage account:
 
-  ```shell
+  ```s
   az storage container create --name ${CONTAINER_NAME} \
             --account-name ${STORAGE_ACCOUNT} \
             --account-key "${STORAGE_KEY}"
@@ -270,7 +270,7 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 You are ready to create your instance. 
 
 #### Example
-```shell
+```s
 az postgres server create \
     --resource-group <your_resource_group> \
     --name <your_server_name>  \
@@ -312,7 +312,7 @@ Alternativelly, in the **Connection Security** of your newly created server, *Al
 ### Create Your Databases
 After the instance is created, those two commands create the databases that pachyderm uses.
 
-```shell
+```s
 az postgres db create -g <your_group> -s <server_name> -n pachyderm
 az postgres db create -g <your_group> -s <server_name> -n dex
 ```
@@ -366,7 +366,7 @@ make sure that you are using the right Kubernetes context first.
 
 1. Verify cluster context:
 
- ```shell
+ ```s
  kubectl config current-context
  ```
 
@@ -376,13 +376,13 @@ make sure that you are using the right Kubernetes context first.
  If you have a different context displayed, configure `kubectl`
  to use your Azure configuration:
 
- ```shell
+ ```s
  az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${CLUSTER_NAME}
  ```
 
  **System Response:**
 
- ```shell
+ ```s
  Merged "${CLUSTER_NAME}" as current context in /Users/test-user/.kube/config
  ```
 
@@ -427,7 +427,7 @@ make sure that you are using the right Kubernetes context first.
 - Now you can deploy a Pachyderm cluster by running this command:
 
 
-  ```shell
+  ```s
   helm repo add pach https://helm.pachyderm.com
   helm repo update
   helm install pachd -f values.yaml pach/pachyderm --version <version-of-the-chart>
@@ -435,7 +435,7 @@ make sure that you are using the right Kubernetes context first.
 
   **System Response:**
 
-  ```shell
+  ```s
   NAME: pachd
   LAST DEPLOYED: Mon Jul 12 18:28:59 2021
   NAMESPACE: default
@@ -450,7 +450,7 @@ make sure that you are using the right Kubernetes context first.
 
   When pachyderm is up and running, get the information about the pods:
 
-  ```shell
+  ```s
   kubectl get pods
   ```
 
@@ -459,7 +459,7 @@ make sure that you are using the right Kubernetes context first.
    
   **System Response:**
 
-  ```shell
+  ```s
   NAME                      READY     STATUS    RESTARTS   AGE
   pachd-1971105989-mjn61    1/1       Running   0          54m
   ...
@@ -477,22 +477,22 @@ Assuming your `pachd` is running as shown above, make sure that `pachctl` can ta
 If you are exposing your cluster publicly:
   1. Retrieve the external IP address of your TCP load balancer or your domain name:
   
-  ```shell
+  ```s
   kubectl get services | grep pachd-lb | awk '{print $4}'
   ```
 
   1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
-   ```shell
+   ```s
    echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set context "<your-cluster-context-name>" --overwrite
    ```
-   ```shell
+   ```s
    pachctl config set active-context "<your-cluster-context-name>"
    ```
 
   1. Check that your are using the right context: 
 
-  ```shell
+  ```s
   pachctl config get active-context
   ```
 
@@ -500,7 +500,7 @@ If you are exposing your cluster publicly:
 
 If you're not exposing `pachd` publicly, you can run:
 
-```shell
+```s
 # Background this process because it blocks.
 pachctl port-forward
 ``` 
@@ -511,13 +511,13 @@ pachctl port-forward
 If Authentication is activated (When you deploy Console, for example), you will need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
 {{% /notice %}}
 
-```shell
+```s
 pachctl version
 ```
 
 **System Response:**
 
-```shell
+```s
 COMPONENT           VERSION
 pachctl             {{% latestPatchNumber %}}
 pachd               {{% latestPatchNumber %}}

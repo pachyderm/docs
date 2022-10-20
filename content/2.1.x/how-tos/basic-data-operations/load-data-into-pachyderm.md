@@ -80,7 +80,7 @@ make sure that Pachyderm has been given the proper access.
 In the case of `-i`, the target file must be a list of files, paths, or URLs
 that you want to input all at once:
 
-  ```shell
+  ```s
   pachctl put file <repo>@<branch> -i <file containing list of files, paths, or URLs>
   ```
 
@@ -88,7 +88,7 @@ that you want to input all at once:
 HTTP(S) or object store URL, `s3://`, `gcs://`, and `as://`, by using the
 recursive flag, `-r`:
 
-  ```shell
+  ```s
   pachctl put file <repo>@<branch> -r -f <dir>
   ```
 

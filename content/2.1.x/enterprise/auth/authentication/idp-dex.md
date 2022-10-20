@@ -75,7 +75,7 @@ Then, complete the following steps:
 1. In the **Allowed Callback URLs**, add the Pachyderm callback link in the
    following format:
 
- ```shell
+ ```s
  # Dex's issuer URL + "/callback"
  http://<ip>:30658/callback
  ```
@@ -200,15 +200,15 @@ Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample c
 Once your Pachyderm application is registered with your IdP (here Auth0), 
 and your IdP-Pachyderm connector config file created (here with the Auth0 parameters), **connect your IdP to Pachyderm** by running the following command:
 
-```shell
+```s
 pachctl idp create-connector --config oidc-dex-connector.json
 ```
 or
-```shell
+```s
 pachctl idp create-connector --config oidc-dex-connector.yaml
 ```
 Check your connector's parameters by running:
-```shell
+```s
 pachctl idp get-connector <your connector id: auth0>
 ```
 
@@ -216,11 +216,11 @@ Per default, the `version` field of the connector is set to 0 when created.
 However, you can set its value to a different integer.
 
 You will specifically need to increment this value when updating your connector.
-```shell
+```s
 pachctl idp update-connector <your connector id: auth0> --version 1
 ```
 or
-```shell
+```s
 pachctl idp update-connector --config oidc-dex-connector.yaml
 ```
 {{% notice info %}}

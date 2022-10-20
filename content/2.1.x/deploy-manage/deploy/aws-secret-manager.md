@@ -86,7 +86,7 @@ Before granting your EKS pods the proper permissions to access your secrets, you
 Follow the steps in [AWS user guide](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
 
 #### Example 
-```shell
+```s
 eksctl utils associate-iam-oidc-provider --cluster="<cluster-name>"
 ```
 

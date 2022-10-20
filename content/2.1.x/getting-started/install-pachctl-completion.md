@@ -34,7 +34,7 @@ To install `pachctl` autocompletion for `bash`, perform the following steps:
    For example, if you have installed bash completion by using Homebrew,
    type:
 
-   ```shell
+   ```s
    brew info bash-completion
    ```
 
@@ -48,7 +48,7 @@ To install `pachctl` autocompletion for `bash`, perform the following steps:
 
 1. Install `pachctl` autocompletion:
 
-   ```shell
+   ```s
 
    pachctl completion bash --install --path <path/to/bash-completion>
    ```

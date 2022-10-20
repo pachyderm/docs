@@ -13,7 +13,7 @@
 
 1. Open a terminal.
 2. Run the following or view their [official quickstart guide](https://gohugo.io/getting-started/quick-start/):
-    ```
+    ```s
     brew install hugo
     ```
 
@@ -22,7 +22,7 @@
 1. Open a terminal.
 2. Navigate to a directory like `/Documents/GitHub/`.
 3. Run the following:
-    ```
+    ```s
     gh repo clone pachyderm/docs
     ```
 
@@ -33,7 +33,7 @@
 1. Open a terminal.
 2. Navigate into the `/docs ` root directory. 
 3. Run the following:
-    ```
+    ```s
     hugo server
     ```
 4. View your docs at the listed url (typically **`localhost:1313`**).
@@ -133,7 +133,7 @@ You can use this [mermaid live editor](https://mermaid.live/) tool to build diag
 
 Use the following shortcode in your markdown files to display notices:
 
-```
+```s
 {{% notice tip/warning/note/danger/info %}}
     Content Here
 {{%/notice %}}

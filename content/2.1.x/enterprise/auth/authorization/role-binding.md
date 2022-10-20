@@ -42,7 +42,7 @@ Rules to keep in mind
 - A **clusterAdmin** can grant admin privileges on a cluster or any lower level ressources to other users.     
   
 - A **repoOwner** of a given repository (or a **clusterAdmin** as mentioned above) can set any level of access to "their" repo to users by running the command:
-  ```shell
+  ```s
   pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
   ```
   {{% notice note %}} 
@@ -77,13 +77,13 @@ In particular, we will:
 1. See what happens when `one-pachyderm-user@gmail.com` tries to write in the repo without the proper writing access.
 
 - **First, let's connect as our Root User:**
-  ```shell
+  ```s
   pachctl auth use-auth-token
   ```
   You will be asked to re-enter your Root token.
 
 - **Second, create a Repo as follow:**
-  ```shell
+  ```s
   mkdir -p ./testinput 
   printf "this is a test" >./testinput/test.txt
   pachctl create repo testinput
@@ -94,11 +94,11 @@ In particular, we will:
   ![Admin Repo Access Level](../images/clusteradmin-repo-access.png)
 
 - **Third, grant `repoReader` access to our user `one-pachyderm-user@gmail.com`:**
-  ```shell
+  ```s
   pachctl auth set repo testinput repoReader user:one-pachyderm-user@gmail.com
   ```
   ... and take a quick look at his access level:
-  ```shell
+  ```s
   pachctl auth get repo testinput
   ```
   The command returns the list of users granted access to this repo and their associated access level. 
@@ -120,7 +120,7 @@ In particular, we will:
     {{% /notice %}}
 
 - **Finally, have `one-pachyderm-user@gmail.com` try to add a file to `testinput` without proper writing privileges:**
-  ```shell
+  ```s
   # Login as `one-pachyderm-user@gmail.com`
   pachctl auth login
   # Try to write into testinput repo
@@ -139,20 +139,20 @@ In particular, we will:
 {{% notice note %}} 
   - To alter a user's privileges, simply re-run the `pachctl auth set` command above with a different set of Roles. 
   For example, 
-  ```shell
+  ```s
   pachctl auth set repo testinput repoWriter user:one-pachyderm-user@gmail.com
   ```
   will give one-pachyderm-user@gmail.com `repoWriter` privileges when they were inially granted `repoReader` access.
 
   - You can remove all access level on a repo to a user by using the `none` keyword.
   For example,
-  ```shell
+  ```s
   pachctl auth set repo testinput none user:one-pachyderm-user@gmail.com
   ```
   will remove any previous granted rights on the repo `testinput` to the user one-pachyderm-user@gmail.com.
 
   - To assign `repoReader` access to `allClusterUsers` on a repo:
-  ```shell
+  ```s
   pachctl auth set repo testinput repoReader allClusterUsers
   ```   
 {{% /notice %}}
@@ -247,18 +247,18 @@ Let's keep using our Auth0 example as an illustration, and:
 
  Note the addition of the `scopes` and `claimMapping` fields to your original connector configuration file.
  Update your connector:
- ```shell
+ ```s
  pachctl idp update-connector auth0 --version 2
  ```
  Your group is all set to receive permissions to Pachyderm's resources.
 
 - 4- Grant the group an admin access to a specific repo in Pachyderm.
 
-  ```shell
+  ```s
   pachctl auth set repo testinput repoOwner group:testgroup
   ```
   A quick check at this repo should give you its updated list of users an their access level:
-  ```shell
+  ```s
   pachctl auth get repo testinput
   ```
   **System Response**

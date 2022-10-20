@@ -78,7 +78,7 @@ This generic secret `pachyderm-bootstrap-config` is reset at each upgrade, and n
        
 ###  Install Pachyderm's Helm Chart
 1. Get your Helm Repo Info
- ```shell
+ ```s
  helm repo add pach https://helm.pachyderm.com
  helm repo update
  ```
@@ -86,7 +86,7 @@ This generic secret `pachyderm-bootstrap-config` is reset at each upgrade, and n
 1. Install Pachyderm
 
  You are ready to deploy Pachyderm on the environment of your choice.
- ```shell
+ ```s
  helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
  ```
  {{% notice info  %}} 
@@ -106,7 +106,7 @@ This generic secret `pachyderm-bootstrap-config` is reset at each upgrade, and n
     
 
 1. Check your deployment
- ```shell
+ ```s
  kubectl get pods
  ```
 
@@ -131,22 +131,22 @@ Assuming your `pachd` is running as shown above, make sure that `pachctl` can ta
 If you are exposing your cluster publicly:
 
   1. Retrieve the external IP address of your TCP load balancer or your domain name:
-    ```shell
+    ```s
     kubectl get services | grep pachd-lb | awk '{print $4}'
     ```
 
   1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
-   ```shell
+   ```s
    echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set 
    ```
-   ```shell
+   ```s
    context "<your-cluster-context-name>" --overwrite
    ```
 
   1. Check that your are using the right context: 
 
-   ```shell
+   ```s
    pachctl config get active-context
    ```
 
@@ -154,14 +154,14 @@ If you are exposing your cluster publicly:
 
 If you're not exposing `pachd` publicly, you can run:
 
-```shell
+```s
 # Background this process because it blocks.
 pachctl port-forward
 ``` 
 
 Verify that `pachctl` and your cluster are connected:
 
-```shell
+```s
 pachctl version
 ```
 
@@ -175,7 +175,7 @@ pachd               {{% latestPatchNumber %}}
 
 ## Uninstall Pachyderm's Helm Chart
 [Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) a release as easily as you installed it.
-```shell
+```s
 helm uninstall pachd 
 ```
 
@@ -194,7 +194,7 @@ Deleting pvs will result in the loss of your data.
 ## Upgrade Pachyderm's Helm Chart
 When a new version of Pachyderm's chart is released, or when you want to change the configuration of your release, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
 
-```shell
+```s
 helm upgrade pachd -f my_new_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>        
 ```
 

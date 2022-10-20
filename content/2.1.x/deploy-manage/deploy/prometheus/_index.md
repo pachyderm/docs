@@ -25,19 +25,19 @@ for further installation details and any troubleshooting advice.
 Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
 
  - Get Repo Info
- ```shell
+ ```s
  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
  helm repo update
  ```
 
  - Install the Prometheus-operator helm chart
- ```shell
+ ```s
  helm install <a-release-name> prometheus-community/kube-prometheus-stack
  ```
 
 1. Create a ServiceMonitor for Pachyderm in Kubernetes:
  - Create a myprometheusservice.yaml
-     ```shell
+     ```s
      apiVersion: monitoring.coreos.com/v1
      kind: ServiceMonitor
      metadata:
@@ -56,7 +56,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
            interval: 30s
      ```
  - Create a ServiceMonitor looking to scrape metrics from `suite: pachyderm`:
-     ```shell
+     ```s
      kubectl create -f myprometheusservice.yaml
      ```
      The prometheus-operator will search for the pods based on the label selector `<a-release-name>`
@@ -70,7 +70,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
    to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
    Let's take a quick look at this file:
    
-   ```shell
+   ```s
    kubectl -o json get service/pachd
    ```
    In the json file, find:
@@ -88,7 +88,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
 One last step before you can collect your metrics:
 If you followed the instruction above, you can connect to Prometheus by using kubectl port-forward.
 
-```shell
+```s
   kubectl port-forward pod/prometheus-<a-release-name>-kube-prometheus-stack-prometheus-0 9090
 ```
 If you have an existing Prometheus deployment, please navigate to your Prometheus GUI.

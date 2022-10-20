@@ -32,26 +32,26 @@ for further installation details and any troubleshooting advice.
 1. Helm install [Traefik](https://github.com/traefik/traefik-helm-chart):
 
     - Get Repo Info
-    ```shell
+    ```s
     helm repo add traefik https://helm.traefik.io/traefik
     ```
-    ```shell
+    ```s
     helm repo update
     ```
 
     - Install the Traefik helm chart ([helm v3](https://helm.sh/docs/intro/))
-    ```shell
+    ```s
     helm install traefik traefik/traefik
     ```
 
    - Run a quick check:
-    ```shell
+    ```s
     kubectl get all 
     ```
     You should see your Traefik pod, service, deployments.apps, and replicaset.app.
 
     You can now access your Traefik Dashboard at http://127.0.0.1:9000/dashboard/ following the port-forward instructions (You can choose to apply your own Ingress Ressource instead.):
-    ```shell
+    ```s
     kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
     ```
 
@@ -101,13 +101,13 @@ for further installation details and any troubleshooting advice.
       console:
          enabled: true
       ```
-      ```shell
+      ```s
       helm install pachd -f my_pachyderm_values.yaml pach/pachyderm
       ```
       The deployment of Pachyderm automatically creates the required set of rules.
 
 1. Check your new rules by running `kubectl describe ingress console`:
-         ```shell
+         ```s
          kubectl describe ingress console
          ```
          ```

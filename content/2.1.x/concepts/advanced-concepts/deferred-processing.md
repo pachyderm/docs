@@ -63,19 +63,19 @@ A simple [pipeline](../../pipeline-concepts/pipeline/) subscribes to the master 
 
 1. Create a repository. For example, `data`.
 
-   ```shell
+   ```s
    pachctl create repo data
    ```
 
 1. Create a `master` branch.
 
-   ```shell
+   ```s
    pachctl create branch data@master
    ```
 
 1. View the created branch:
 
-   ```shell
+   ```s
    pachctl list commit data
    ```
    ```s
@@ -92,7 +92,7 @@ A simple [pipeline](../../pipeline-concepts/pipeline/) subscribes to the master 
 
 1. Commit a file to the staging branch:
 
-   ```shell
+   ```s
    pachctl put file data@staging -f <file>
    ```
 
@@ -103,7 +103,7 @@ A simple [pipeline](../../pipeline-concepts/pipeline/) subscribes to the master 
 
 1. Verify that the branches were created:
 
-   ```shell
+   ```s
    pachctl list branch data
    ```
    ```s
@@ -122,14 +122,14 @@ A simple [pipeline](../../pipeline-concepts/pipeline/) subscribes to the master 
 1. When you are ready to process the data, update the `master` branch
    to point it to the head of the staging branch:
 
-   ```shell
+   ```s
    pachctl create branch data@master --head staging
    ```
 
 1. List your branches to verify that the master branch's `HEAD`
    commit has changed:
 
-   ```shell
+   ```s
    pachctl list branch data
    ```
    ```s
@@ -142,7 +142,7 @@ A simple [pipeline](../../pipeline-concepts/pipeline/) subscribes to the master 
 
 1. Verify that the pipeline has new jobs:
 
-   ```shell
+   ```s
    pachctl list job test@f3506f0fab6e483e8338754081109e69
 
    ID                               PIPELINE STARTED        DURATION           RESTART PROGRESS  DL   UL  STATE
@@ -168,7 +168,7 @@ For example, if you submitted ten commits in the `staging` branch and you
 want to process the seventh, third, and most recent commits, you need
 to run the following commands respectively:
 
-```shell
+```s
 pachctl create branch data@master --head staging^7
 pachctl create branch data@master --head staging^3
 pachctl create branch data@master --head staging
@@ -186,7 +186,7 @@ latest commits. For example, if you want to change the final output to be
 the result of processing `staging^1`, you can *roll back* your HEAD commit
 by running the following command:
 
-```shell
+```s
 pachctl create branch data@master --head staging^1
 ```
 
@@ -209,13 +209,13 @@ To copy files from one branch to another, complete the following steps:
 
 1. Start a commit:
 
-   ```shell
+   ```s
    pachctl start commit data@master
    ```
 
 1. Copy files:
 
-   ```shell
+   ```s
    pachctl copy file data@staging:file1 data@master:file1
    pachctl copy file data@staging:file2 data@master:file2
    ...
@@ -223,7 +223,7 @@ To copy files from one branch to another, complete the following steps:
 
 1. Close the commit:
 
-   ```shell
+   ```s
    pachctl finish commit data@master
    ```
 
@@ -252,7 +252,7 @@ following steps:
 
 1. When you want to process data, run:
 
-   ```shell
+   ```s
    pachctl create branch pipeline@master --head staging
    ```
 
@@ -272,7 +272,7 @@ trigger condition is met.
 Building on the example above, to make `master` automatically trigger when
 there's 1 Megabyte of new data on `staging`, run:
 
-```shell
+```s
 pachctl create branch data@master --trigger staging --trigger-size 1MB
 pachctl list branch data
 ```
@@ -290,7 +290,7 @@ is still empty. If you don't see `staging` when you `list branch` that's ok,
 triggers can point to branches that don't exist yet. The head of `master` will
 update if you add a MB of new data to `staging`:
 
-```shell
+```s
 dd if=/dev/urandom bs=1MiB count=1 | pachctl put file data@staging:/file
 pachctl list branch data
 ```
@@ -304,7 +304,7 @@ Triggers automate deferred processing, but they don't prevent manually updating
 the head of a branch. If you ever want to trigger `master` even though the
 trigger condition hasn't been met you can run:
 
-```shell
+```s
 pachctl create branch data@master --head staging
 ```
 

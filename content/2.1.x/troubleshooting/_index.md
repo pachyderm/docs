@@ -25,12 +25,12 @@ include the following:
 
 * Get the list of all Kubernetes objects:
 
-  ```shell
+  ```s
   kubectl get all
   ```
 
 * Get the information about a pod:
 
-  ```shell
+  ```s
   kubectl describe pod <podname>
   ```

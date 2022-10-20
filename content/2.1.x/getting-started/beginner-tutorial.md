@@ -60,19 +60,19 @@ More about the concepts of [`Repository`](../../concepts/data-concepts/repo/#rep
 For this demo, we create a repo called `images` to hold the
 data we want to process:
 
-```shell
+```s
 pachctl create repo images
 ```
 
 Verify that the repository was created:
 
-```shell
+```s
 pachctl list repo
 ```
 
 **System response:**
 
-```shell
+```s
 NAME   CREATED       SIZE (MASTER) ACCESS LEVEL
 images 4 seconds ago ≤ 0B          [repoOwner]
 ```
@@ -113,7 +113,7 @@ and the file name: `"liberty.png"`.
 Here is an example atomic commit of the file `liberty.png` to the
 `images` repo `master` branch:
 
-```shell
+```s
 pachctl put file images@master:liberty.png -f http://imgur.com/46Q8nDz.png
 ```
 
@@ -121,7 +121,7 @@ We can check to make sure the data we just added is in Pachyderm.
 
 * Use the `pachctl list repo` command to check that data has been added:
 
-  ```shell
+  ```s
   pachctl list repo
   ```
 
@@ -134,7 +134,7 @@ We can check to make sure the data we just added is in Pachyderm.
 
 * View the commit that was just created:
 
-  ```shell
+  ```s
   pachctl list commit images
   ```
 
@@ -147,7 +147,7 @@ We can check to make sure the data we just added is in Pachyderm.
 
 * View the file in that commit:
 
-  ```shell
+  ```s
   pachctl list file images@master
   ```
 
@@ -164,13 +164,13 @@ command will let you view it:
 
 * On macOS, run:
 
-```shell
+```s
 pachctl get file images@master:liberty.png | open -f -a Preview.app
 ```
 
 * On Linux 64-bit, run:
 
-```shell
+```s
 pachctl get file images@master:liberty.png | display
 ```
 
@@ -273,7 +273,7 @@ to the appropriate output repo of your pipeline.
 
 Now, let's create the pipeline in Pachyderm:
 
-```shell
+```s
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/edges.json
 ```
 
@@ -296,7 +296,7 @@ connection. Subsequent runs will be much faster.
 
 You can view the job with:
 
-```shell
+```s
 pachctl list job
 ```
 
@@ -323,7 +323,7 @@ output repo. In our example, the `edges` pipeline created an output repo
 called `edges` to store the results written to `/pfs/out`.
 
 
-```shell
+```s
 pachctl list repo
 ```
 
@@ -342,13 +342,13 @@ that we viewed the input data.
 
 * On macOS, run:
 
-```shell
+```s
 pachctl get file edges@master:liberty.png | open -f -a Preview.app
 ```
 
 * On Linux 64-bit, run:
 
-```shell
+```s
 pachctl get file edges@master:liberty.png | display
 ```
 
@@ -369,7 +369,7 @@ will simply do two more `put file` commands and by specifying `master`
 as the branch, it automatically parents our commits onto each other.
 Branch names are just references to a particular HEAD commit.
 
-```shell
+```s
 pachctl put file images@master:AT-AT.png -f http://imgur.com/8MN9Kg0.png
 pachctl put file images@master:kitten.png -f http://imgur.com/g2QnNqa.png
 ```
@@ -381,7 +381,7 @@ new outputs.
 
 View the list of jobs that have started:
 
-```shell
+```s
 pachctl list job
 ```
 
@@ -398,14 +398,14 @@ View the output data
 
 * On macOS, run:
 
-  ```shell
+  ```s
   pachctl get file edges@master:AT-AT.png | open -f -a Preview.app
   pachctl get file edges@master:kitten.png | open -f -a Preview.app
   ```
 
 * On Linux, run:
 
-  ```shell
+  ```s
   pachctl get file edges@master:AT-AT.png | display
   pachctl get file edges@master:kitten.png | display
   ```
@@ -470,20 +470,20 @@ and
 
 We create the `montage` pipeline as before, with `pachctl`:
 
-```shell
+```s
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/montage.json
 ```
 
 The pipeline creation triggers a job that generates a montage for all the
 current HEAD commits of the input repos:
 
-```shell
+```s
 pachctl list job
 ```
 
 **System response:**
 
-```shell
+```s
 ID                               SUBJOBS PROGRESS CREATED        MODIFIED
 01e0c8040e18429daf7f67ce34c3a5d7 1       ▇▇▇▇▇▇▇▇ 11 seconds ago 11 seconds ago
 1c1a9d7d36944eabb4f6f14ebca25bf1 1       ▇▇▇▇▇▇▇▇ 12 minutes ago 12 minutes ago
@@ -496,13 +496,13 @@ the following commands:
 
 * On macOS, run:
 
-```shell
+```s
 pachctl get file montage@master:montage.png | open -f -a Preview.app
 ```
 
 * On Linux 64-bit, run:
 
-```shell
+```s
 pachctl get file montage@master:montage.png | display
 ```
 
