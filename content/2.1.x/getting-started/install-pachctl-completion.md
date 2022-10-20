@@ -59,7 +59,7 @@ To install `pachctl` autocompletion for `bash`, perform the following steps:
 
    **System response:**
 
-   ```
+   ```s
    Bash completions installed in /usr/local/etc/bash_completion.d/pachctl, you must restart bash to enable completions.
    ```
 

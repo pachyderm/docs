@@ -147,7 +147,7 @@ or sign in with Google:
 
        You should see the following message printed out in your browser:
 
-       ```
+       ```s
        You are now logged in. Go back to the terminal to use Pachyderm!
        ```
 

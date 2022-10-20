@@ -21,16 +21,16 @@ described on the [MinIO download page](https://min.io/download).
 1. Verify that MinIO components are successfully installed by running
 the following command:
 
-      ```s
-      minio version
-      mc version
-      ```
-      **System Response:**
-      ```
-      Version: 2019-07-11T19:31:28Z
-      Release-tag: RELEASE.2019-07-11T19-31-28Z
-      Commit-id: 31e5ac02bdbdbaf20a87683925041f406307cfb9
-      ```
+   ```s
+   minio version
+   mc version
+   ```
+   **System Response:**
+   ```s
+   Version: 2019-07-11T19:31:28Z
+   Release-tag: RELEASE.2019-07-11T19-31-28Z
+   Commit-id: 31e5ac02bdbdbaf20a87683925041f406307cfb9
+   ```
 
 1. Set up the MinIO configuration file to use the S3 Gateway port `30600` for your host:
 
@@ -40,7 +40,7 @@ the following command:
       You should see a configuration similar to the following.
       For a minikube deployment, verify the
       `local` configuration:
-      ```
+      ```s
       "local": {
                   "url": "http://localhost:30600",
                   "accessKey": "YOUR-PACHYDERM-AUTH-TOKEN",
@@ -80,7 +80,7 @@ in the [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-
    should be set as mentioned in the [# Set Your Credentails](#set-your-credentials) section of this page.
 
    **System Response:**
-   ```
+   ```s
    AWS Access Key ID: YOUR-PACHYDERM-AUTH-TOKEN
    AWS Secret Access Key: YOUR-PACHYDERM-AUTH-TOKEN
    Default region name:

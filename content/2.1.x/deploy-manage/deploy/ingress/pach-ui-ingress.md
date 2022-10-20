@@ -107,25 +107,25 @@ for further installation details and any troubleshooting advice.
       The deployment of Pachyderm automatically creates the required set of rules.
 
 1. Check your new rules by running `kubectl describe ingress console`:
-         ```s
-         kubectl describe ingress console
-         ```
-         ```
-         Name:             console
-         Namespace:        default
-         Address:
-         Default backend:  default-http-backend:80 
-         Rules:
-         Host            Path  Backends
-         console.localhost
-                           /     console:console-http (10.1.0.7:4000)
-         Annotations:      kubernetes.io/ingress.class: traefik
-                           /dex     pachd:identity-port (10.1.0.8:1658)
-         Annotations:      kubernetes.io/ingress.class: traefik
-                           /     pachd:oidc-port (10.1.0.8:1657)
-         Annotations:      kubernetes.io/ingress.class: traefik
-         Events:           <none>
-         ```
+   ```s
+   kubectl describe ingress console
+   ```
+   ```s
+   Name:             console
+   Namespace:        default
+   Address:
+   Default backend:  default-http-backend:80 
+   Rules:
+   Host            Path  Backends
+   console.localhost
+                     /     console:console-http (10.1.0.7:4000)
+   Annotations:      kubernetes.io/ingress.class: traefik
+                     /dex     pachd:identity-port (10.1.0.8:1658)
+   Annotations:      kubernetes.io/ingress.class: traefik
+                     /     pachd:oidc-port (10.1.0.8:1657)
+   Annotations:      kubernetes.io/ingress.class: traefik
+   Events:           <none>
+   ```
        
 1. Check the Traefik Dashboard again (http://127.0.0.1:9000/dashboard/), your new set of rules should now be visible.
 

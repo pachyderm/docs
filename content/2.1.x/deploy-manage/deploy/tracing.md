@@ -36,7 +36,7 @@ To use tracing in Pachyderm, complete the following steps:
 
    * For `pachd`, run:
 
-     ```
+     ```s
      kubectl delete po -l suite=pachyderm,app=pachd
      ```
 
@@ -55,7 +55,7 @@ To use tracing in Pachyderm, complete the following steps:
    command (note that `JAEGER_ENDPOINT` must also be
    set/exported):
 
-   ```
+   ```s
    PACH_TRACE=true pachctl list job # for example
    ```
 
@@ -72,7 +72,7 @@ To use tracing in Pachyderm, complete the following steps:
 
 To view traces, run:
 
-```
+```s
 kubectl port-forward svc/jaeger-query 16686:80 & # UI service
 ```
 

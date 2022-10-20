@@ -128,12 +128,12 @@ In particular, we will:
   cd testinput && pachctl put file testinput@master -f anothertest.txt
   ```
   The command returns an error message: 
-  ```
+  ```s
   user:one-pachyderm-user@pachyderm.io is not authorized to perform this operation - needs permissions [REPO_WRITE] on REPO testinput
   ```
 
 {{% notice info %}} 
-    Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
+Use `--help` to display the list of all available commands, arguments, and flags of the command `pachctl auth set`.
 {{% /notice %}}
 
 {{% notice note %}} 
@@ -262,7 +262,7 @@ Let's keep using our Auth0 example as an illustration, and:
   pachctl auth get repo testinput
   ```
   **System Response**
-  ```
+  ```s
   pach:root: [repoOwner]
   user:another-pachyderm-user@gmail.com: [repoReader]
   group:testgroup: [repoOwner]

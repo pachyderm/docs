@@ -133,7 +133,7 @@ Once your backup is completed, **run `pachctl unpause` to resume your normal ope
 {{% notice tip %}} 
 Alternatively, if you used `kubectl`
 
-```sh
+```s
 kubectl scale deployment pachd --replicas 1
 ```
 {{% /notice %}}
