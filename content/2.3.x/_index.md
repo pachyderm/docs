@@ -11,7 +11,7 @@ aliases: [
     "/latest",
 ]
 cascade:
-    latestPatch: 2.3.5
+    latestPatch: 2.3.6
     majorMinor: 2.3
     clientPython: 7.3
     extensionJupyterLab: 0.6.3
