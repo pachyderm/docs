@@ -10,10 +10,10 @@
                 var copied = code.innerText.replace(/^\s*\n/gm, '');
                 navigator.clipboard.writeText(copied)
     
-                this.getElementsByClassName('clippy')[0].innerHTML = 'Copied!';
+                this.getElementsByClassName('clippy')[0].innerHTML = '<img src="/images/copyClicked.svg">';
                 // reset the button text after a few seconds
                 setTimeout(function() {
-                    this.getElementsByClassName('clippy')[0].innerHTML = 'Copy';
+                    this.getElementsByClassName('clippy')[0].innerHTML = '<img src="/images/copy.svg">';
                 }.bind(this), 2000);
             })
         }
