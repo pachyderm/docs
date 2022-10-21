@@ -1,10 +1,10 @@
 {
-		"title": "{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}",
-		"version": "{{.Section}}",
+		"title": "{{if .Title}}{{- .Title -}}{{else}}{{- humanize .File.TranslationBaseName -}}{{end}}",
+		"version": {{- .Section  | jsonify -}},
 		"isLatest":"{{if eq .Site.Params.releaseInfo.Latest .Section}}Latest{{else}}{{end}}",
-		"pageKind": "{{ .Kind }}",
-		"parent": "{{with .Parent}}{{.Title}}{{end}}",
-		"description": "{{ .Description }}",
+		"pageKind": {{- .Kind  | jsonify -}},
+		"parent": "{{with .Parent}}{{- .Title -}}{{end}}",
+		"description": {{- .Description | jsonify -}},
 		"date": "{{ .Date | time.Format ":date_long" }}",
 		"uri": "{{ .Permalink }}",
 		"relURI": "{{ .RelPermalink }}",
@@ -12,5 +12,5 @@
 		"beta": "{{ .Params.beta}}",
 		"hidden": "{{ .Params.hidden}}",
 		"categories": [{{ range $cindex, $cat := .Params.categories }}{{ if $cindex }}, {{ end }}"{{ $cat| htmlEscape }}"{{ end }}],
-		"tags": [{{ range $tindex, $tag := .Params.tags }}{{ if $tindex }}, {{ end }}"{{ $tag| htmlEscape }}"{{ end }}]
+		"tags": [{{- range $tindex, $tag := .Params.tags -}}{{ if $tindex }}, {{ end }}"{{- $tag| htmlEscape -}}"{{- end -}}]
 }
