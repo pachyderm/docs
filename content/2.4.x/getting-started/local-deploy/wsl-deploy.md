@@ -7,6 +7,7 @@ date:
 tags: ["windows", "deployment"]
 series:
 seriesPart:
+weight: 6
 ---
 
 You can deploy Pachyderm locally on your Microsoft Windows computer to

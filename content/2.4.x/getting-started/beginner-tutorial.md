@@ -6,7 +6,8 @@ date:
 # taxonomy #
 tags: ["tutorials"]
 series: ["onboarding"]
-seriesPart: 2
+seriesPart: 
+weight: 4
 ---
 
 Welcome to the beginner tutorial for Pachyderm! 

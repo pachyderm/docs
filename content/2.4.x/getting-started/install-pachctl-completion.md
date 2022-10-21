@@ -6,7 +6,8 @@ date:
 # taxonomy #
 tags: ["deployment"]
 series:
-seriesPart:
+seriesPart: 
+weight: 3
 ---
 
 Pachyderm autocompletion allows you to automatically finish
