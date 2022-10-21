@@ -17,3 +17,9 @@ weight: 1
 ## 1. Install Pachctl CLI
 
 ### Brew
+
+ ```s  
+brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}} 
+```
+
+###
