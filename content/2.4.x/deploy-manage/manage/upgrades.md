@@ -36,20 +36,20 @@ In the case of a simple upgrade of version on a cluster, and provided that you d
       * For macOS, run:  
   
       ```s  
-      brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorVersion %}}  
+      brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
       ```  
   
       * For a Debian-based Linux 64-bit or Windows 10 or later running on  
       WSL:  
   
       ```s  
-      curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% majorMinorVersion %}}/pachctl_{{% majorMinorVersion %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+      curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
       ```  
   
       * For all other Linux flavors:  
   
       ```s  
-      curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% majorMinorVersion %}}/pachctl_{{% majorMinorVersion %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% majorMinorVersion %}}_linux_amd64/pachctl /usr/local/bin  
+      curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin  
       ```  
 
 {{% notice note %}}
@@ -67,7 +67,7 @@ For a specific target release, specify the targeted major/minor version of `pach
   
       ```s  
       COMPONENT           VERSION  
-      pachctl             <This should display the version you installed>  
+      pachctl             {{% latestPatchNumber %}} 
       ```  
 
 ## 4. Helm Upgrade
@@ -110,8 +110,8 @@ Each chart version is associated with a given version of Pachyderm. You will fin
 
   ```s
   COMPONENT           VERSION
-  pachctl             {{% majorMinorVersion %}}
-  pachd               {{% majorMinorVersion %}}
+  pachctl             {{% latestPatchNumber %}}
+  pachd               {{% latestPatchNumber %}}
   ```
 
   The `pachd` and `pachctl` versions must both match the new version.

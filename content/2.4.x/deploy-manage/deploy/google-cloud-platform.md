@@ -616,8 +616,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION
-pachctl             {{% majorMinorVersion %}}
-pachd               {{% majorMinorVersion %}}
+pachctl             {{% latestPatchNumber %}}
+pachd               {{% latestPatchNumber %}}
 ```
 
 ## 9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension

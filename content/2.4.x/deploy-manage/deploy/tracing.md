@@ -21,7 +21,7 @@ To use tracing in Pachyderm, complete the following steps:
 1. Run Jaeger in Kubernetes
 
     ```s
-    kubectl apply -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/etc/deploy/tracing/jaeger-all-in-one.yaml
+    kubectl apply -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{% latestPatchNumber %}}/etc/deploy/tracing/jaeger-all-in-one.yaml
     ```
 
 2. Point Pachyderm at Jaeger
