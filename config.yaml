@@ -46,10 +46,10 @@ params:
   ## Release Features
   versionDropdown: true # displays a top-nav dropdown with top-level sections served as versioned documentation. 
   ## downloads: true # Enables displaying the download dropdown (requires release.patch)
+
   releaseInfo: # Note: See the new directory's /content/x.x.x./_index.md page to set release-related frontmatter variables. 
     latest: "2.4.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
     patch: "2.4.0" # Used for announcements and to generate download links
-    
 
 
   ## Nav features 

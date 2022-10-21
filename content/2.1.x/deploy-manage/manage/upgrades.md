@@ -58,21 +58,21 @@ Aside from retrieving any generated values and inserting them back as credential
   
   * For macOS, run:  
 
-  ```shell  
-  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorVersion %}}
+  ```s  
+  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}
   ```  
 
   * For a Debian-based Linux 64-bit or Windows 10 or later running on  
   WSL:  
 
-  ```shell  
-  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% majorMinorVersion %}}/pachctl_{{% majorMinorVersion %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
+  ```s  
+  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
   ```  
 
   * For all other Linux flavors:  
 
-  ```shell  
-  curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% majorMinorVersion %}}/pachctl_{{% majorMinorVersion %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% majorMinorVersion %}}_linux_amd64/pachctl /usr/local/bin  
+  ```s  
+  curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin  
   ```  
 
   {{% notice note %}}
@@ -81,13 +81,13 @@ Aside from retrieving any generated values and inserting them back as credential
 
  - Verify that the installation was successful by running `pachctl version --client-only`:  
   
-  ```shell  
+  ```s  
   pachctl version --client-only  
   ```  
 
   **System Response:**  
 
-  ```shell  
+  ```s  
   COMPONENT           VERSION  
   pachctl             <This should display the version you installed>  
   ```  
@@ -96,7 +96,7 @@ Aside from retrieving any generated values and inserting them back as credential
 
 - Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
 
-  ```shell
+  ```s
   helm repo add pach https://helm.pachyderm.com
   helm repo update
   helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
@@ -110,7 +110,7 @@ Aside from retrieving any generated values and inserting them back as credential
 to check the status of the deployment. When Pachyderm is deployed, the command
 shows all pods as `READY`:
 
-  ```shell
+  ```s
   kubectl get pods
   ```
   Once the pods are up, you should see a pod for `pachd` running 
@@ -118,7 +118,7 @@ shows all pods as `READY`:
 
   **System response:**
 
-  ```shell
+  ```s
   NAME                     READY     STATUS    RESTARTS   AGE
   pachd-3677268306-9sqm0   1/1       Running   0          4m
   ...
@@ -126,16 +126,16 @@ shows all pods as `READY`:
 
 - Verify that the new version has been deployed:
 
-  ```shell
+  ```s
   pachctl version
   ```
 
   **System response:**
 
-  ```shell
+  ```s
   COMPONENT           VERSION
-  pachctl             {{% majorMinorVersion %}}
-  pachd               {{% majorMinorVersion %}}
+  pachctl             {{% latestPatchNumber %}}
+  pachd               {{% latestPatchNumber %}}
   ```
 
   The `pachd` and `pachctl` versions must both match the new version.

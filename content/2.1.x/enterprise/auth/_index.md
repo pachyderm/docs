@@ -51,7 +51,7 @@ status along with the expiration date of the Enterprise License.
 To activate Pachyderm's authentication and authorization features,
 run the following command in your terminal:
 
-```shell
+```s
 pachctl auth activate 
 ```
 The enablement of the User Access Management **creates
@@ -76,7 +76,7 @@ to avoid being locked out of your cluster.
 
 When needed, use this token to log back in as this initial admin user:
 
-```shell
+```s
 pachctl auth use-auth-token
 ```
 {{% /notice %}}

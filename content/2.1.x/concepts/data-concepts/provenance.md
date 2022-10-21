@@ -53,13 +53,13 @@ originates in.
 
 ### Example
 
-```shell
+```s
 pachctl inspect commit edges@71c791f3252c492a8f8ad9a51e5a5cd5 --raw
 ```
 
 **System Response:**
 
-```shell
+```s
 {
     "commit": {
         "branch": {

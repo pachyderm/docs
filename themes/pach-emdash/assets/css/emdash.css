@@ -175,7 +175,7 @@ hr {
 
 :is(.directory, nav) ul > li { list-style: none;  }
 
-ul, ol, li { padding-inline-start: .5rem; }
+
 
 .content :is(ol,ul) > li { margin-left: 1rem; margin-bottom: .5rem; } /* Flexbox Layout System */
 
@@ -2146,3 +2146,11 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
   width: 100px;
 }
  
+
+.publicSans {
+  font-family: 'Public Sans', sans-serif;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}

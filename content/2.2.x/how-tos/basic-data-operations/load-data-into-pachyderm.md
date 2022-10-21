@@ -16,10 +16,9 @@ At any time, run `pachctl put file --help` for the complete list of flags availa
 {{% /notice %}}
 
 1. Load your data into Pachyderm by using `pachctl` requires that one or several input repositories have been created. 
-
-    ```s
-    pachctl create repo <repo name>
-    ```
+   ```s
+   pachctl create repo <repo name>
+   ```
 
 1. Use the `pachctl put file` command to put your data into the created repository. Select from the following options:
     - Atomic commit: no open commit exists in your input repo. Pachyderm automatically starts a new commit, adds your data, and finishes the commit.
@@ -68,9 +67,9 @@ various filepaths and data sources:
 * Put data from an object store. You can use `s3://`, `gcs://`, or `as://`
 in your filepath:
 
-  	```s
-	pachctl put file <repo>@<branch>:</path/to/file> -f s3://object_store_url
-  	```
+  ```s
+  pachctl put file <repo>@<branch>:</path/to/file> -f s3://object_store_url
+  ```
 
 {{% notice note %}}
 If you are configuring a local cluster to access an external bucket,
@@ -81,17 +80,17 @@ make sure that Pachyderm has been given the proper access.
 In the case of `-i`, the target file must be a list of files, paths, or URLs
 that you want to input all at once:
 
-  	```s
-	pachctl put file <repo>@<branch> -i <file containing list of files, paths, or URLs>
-  	```
+  ```s
+  pachctl put file <repo>@<branch> -i <file containing list of files, paths, or URLs>
+  ```
 
 * Add an entire directory or all of the contents at a particular URL, either
 HTTP(S) or object store URL, `s3://`, `gcs://`, and `as://`, by using the
 recursive flag, `-r`:
 
-  	```s
-  	pachctl put file <repo>@<branch> -r -f <dir>
-  	```
+  ```s
+  pachctl put file <repo>@<branch> -r -f <dir>
+  ```
 
 ## Loading Your Data Partially
 

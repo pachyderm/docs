@@ -13,7 +13,7 @@
 
 1. Open a terminal.
 2. Run the following or view their [official quickstart guide](https://gohugo.io/getting-started/quick-start/):
-    ```
+    ```s
     brew install hugo
     ```
 
@@ -22,7 +22,7 @@
 1. Open a terminal.
 2. Navigate to a directory like `/Documents/GitHub/`.
 3. Run the following:
-    ```
+    ```s
     gh repo clone pachyderm/docs
     ```
 
@@ -33,7 +33,7 @@
 1. Open a terminal.
 2. Navigate into the `/docs ` root directory. 
 3. Run the following:
-    ```
+    ```s
     hugo server
     ```
 4. View your docs at the listed url (typically **`localhost:1313`**).
@@ -133,7 +133,7 @@ You can use this [mermaid live editor](https://mermaid.live/) tool to build diag
 
 Use the following shortcode in your markdown files to display notices:
 
-```
+```s
 {{% notice tip/warning/note/danger/info %}}
     Content Here
 {{%/notice %}}
@@ -142,3 +142,73 @@ Use the following shortcode in your markdown files to display notices:
 ### Tables
 
 Use this [table generator tool](https://www.tablesgenerator.com/markdown_tables) to quickly build markdown tables. 
+
+---
+
+## Update Docs Version
+
+### Major/Minor Version Updates
+
+1. Open the docs repo and create a new branch named similar to: `/username/2.4.x/release-prep`.
+2. Copy the most recent release directory in `/content` and give it the new release version name (e.g., `2.4.x`).
+3. Navigate to your new release directory's top `_index.md` file.
+4. Update the following front-matter attributes: 
+   ```yaml
+    ---
+      # metadata # 
+      title:  2.4.x
+      description: Pachyderm Version 2.4.x 
+      date: 
+      # taxonomy #
+      tags:
+      series:
+      seriesPart:
+      cascade:
+          latestPatch: 2.4.0
+          majorMinor: 2.4
+          clientPython: 7.3 
+          extensionJupyterLab: 0.6.3
+          mountServerBinary: 2.4
+    ---
+   ```
+5. Open the `config.yaml` file.
+6. Find the following section and update to the new version:
+```yaml
+  ## Release Features
+  versionDropdown: true # displays a top-nav dropdown with top-level sections served as versioned documentation. 
+  ## downloads: true # Enables displaying the download dropdown (requires release.patch)
+  releaseInfo: # Note: See the new directory's /content/x.x.x./_index.md page to set release-related frontmatter variables. 
+    latest: "2.4.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
+    patch: "2.4.0" # Used for announcements and to generate download links
+```
+7. Open the `netlify.toml` file.
+8. Update the redirects for `/latest` to point to the new version. (This step may be deprecated in the future.)
+
+You now have a staged release branch that is ready for all of your new major/minor release documentation updates. You can submit this as a pull request, set that to draft, and safely share previews of the next version for feedback.
+
+#### Pachctl Command Doc Generation
+
+Pachyderm often releases new pachctl commands in major/minor releases. You can auto-generate markdown docs for these commands from the Pachyderm repo and then migrate them to the docs site. This should be done closer to the release date to ensure all changes are captured.
+
+1. Open the Pachyderm repo.
+2. In a terminal, run `make install-doc`.
+3. Run `sh ./etc/build/reference_refresh.sh`. 
+4. Copy the files that get generated.
+5. Open the docs repo.
+6. Replace the pachctl command reference files with the newly generated ones.
+
+#### Search Index Update 
+
+1. Navigate to the docs site (either locally or deploy preview).
+2. Add the following to the path: `/{{version}}/index.json`.
+3. Copy the JSON.
+4. Log in to Algolia.
+5. Create a new index with the version name. (e.g., `2.4.x`).
+6. Add the records by selecting **add records** > **add manually** and pasting in the json.
+
+### Patch Version Updates
+
+1. Open the docs repo and navigate to the latest release directory's top-level `_index.md` page (e.g., `/content/2.4.x/_index.md`.
+2. Update the `latestPatch` attribute value.
+3. Open the `config.yaml` file.
+4. Update the `releaseInfo.patch` attribute value.

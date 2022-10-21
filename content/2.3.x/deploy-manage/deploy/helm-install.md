@@ -152,8 +152,8 @@ pachctl version
 
 ```s
 COMPONENT           VERSION
-pachctl             {{% majorMinorVersion %}}
-pachd               {{% majorMinorVersion %}}
+pachctl             {{% latestPatchNumber %}}
+pachd               {{% latestPatchNumber %}}
 ```
 
 ## Uninstall Pachyderm's Helm Chart

@@ -50,3 +50,9 @@
   to = "/2.4.x/troubleshooting/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/latest/reference/*"
+  to = "/2.3.x/reference/"
+  status = 301
+  force = true

@@ -29,18 +29,18 @@ function styleTOC(){
         var li = document.createElement('div')
         var link = document.createElement('a')
 
-        li.classList.add('spread-left','xs', 'c-mb-2')
+        li.classList.add('spread-left','s', 'c-mb-2')
         link.href = '#' + headings[i].id
         link.role = headings[i].id;
 
         if (headingText.length > 35) {
-            link.innerText =  headingText.substring(0, 35) + '...'
+            link.innerText =  headingText.substring(0, 27) + '...'
         } else {
              link.innerText = headingText;
         }
         link.classList.add( )
         if (heading == 'H3') {
-            link.classList.add('ml-1', 'is-fit','thin')
+            link.classList.add('ml-1', 'is-fit','thin', 'publicSans')
         }
         if (heading == 'H2') {
             link.classList.add('is-fit')

@@ -20,7 +20,7 @@ by login in as the [user created in Auth0](../idp-dex/#1-register-a-pachyderm-ap
 
    To start a login flow, run the following command in your terminal:
 
-   ```shell
+   ```s
    pachctl auth login
    ```
 
@@ -35,13 +35,13 @@ by login in as the [user created in Auth0](../idp-dex/#1-register-a-pachyderm-ap
    ![Login Success](../images/auth0-login-success.png)
 
 1. Check who you logged in as:
-   ```shell
+   ```s
    pachctl auth whoami
    ```
 
    **Example of System Response:**
 
-   ```shell
+   ```s
    You are "user:one-pachyderm-user@gmail.com"
    session expires: 08 May 21 13:59 EDT
    ```

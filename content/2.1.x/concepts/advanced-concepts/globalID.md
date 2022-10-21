@@ -36,7 +36,7 @@ This ability to track down related commits and jobs with one global identifier b
 
 ## List All Global Commits And Global Jobs
 You can list all global commits by running the following command: 
-```shell
+```s
 pachctl list commit
 ```
 Each global commit displays how many (sub) commits it is made of.
@@ -47,7 +47,7 @@ ID                               SUBCOMMITS PROGRESS CREATED        MODIFIED
 e050771b5c6f4082aed48a059e1ac203 4          ▇▇▇▇▇▇▇▇ 24 seconds ago 24 seconds ago
 ```
 Similarly, if you run the equivalent command for global jobs:
-```shell
+```s
 pachctl list job
 ```
 you will notice that the job IDs are shared with the global commit IDs.
@@ -72,7 +72,7 @@ pipeline execution.
 ## List All Commits And Jobs With A Global ID
 
 To list all (sub) commits involved in a global commit:
-```shell
+```s
 pachctl list commit 1035715e796f45caae7a1d3ffd1f93ca
 ```
 ```s
@@ -87,7 +87,7 @@ montage      master 1035715e796f45caae7a1d3ffd1f93ca 4 minutes ago 1.292MiB    A
 ```
 
 Similarly, change `commit` in `job` to list all (sub) jobs linked to your global job ID.
-```shell
+```s
 pachctl list job 1035715e796f45caae7a1d3ffd1f93ca
 ```
 ```s
@@ -116,7 +116,7 @@ Check the list of [all commit origins](../../data-concepts/commit) in the `Commi
 
 1. Inspect the commit ID 1035715e796f45caae7a1d3ffd1f93ca in the `images` repo,  the repo in which our change (`put file`) has originated:
 
- ```shell
+ ```s
  pachctl inspect commit images@1035715e796f45caae7a1d3ffd1f93ca --raw
  ```
  Note that this original commit is of `USER` origin (i.e., the result of a user change).
@@ -128,7 +128,7 @@ Check the list of [all commit origins](../../data-concepts/commit) in the `Commi
  ```
 
 1. Inspect the following commit 1035715e796f45caae7a1d3ffd1f93ca produced in the output repos of the edges pipeline:
- ```shell
+ ```s
  pachctl inspect commit edges@1035715e796f45caae7a1d3ffd1f93ca --raw
  ```
  ```json
@@ -194,7 +194,7 @@ Check the list of [all commit origins](../../data-concepts/commit) in the `Commi
  {{% /notice %}}
 
 - Besides  the `USER` and `AUTO` commits, notice a set of `ALIAS` commits in `edges.spec` and `montage.spec`:
-```shell
+```s
 pachctl inspect commit edges.spec@336f02bdbbbb446e91ba27d2d2b516c6 --raw
 ```
 The version of each pipeline within their respective `.spec` repos are neither the result of a user change, nor of an automatic change.

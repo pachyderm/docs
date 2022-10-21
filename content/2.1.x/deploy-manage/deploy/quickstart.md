@@ -203,7 +203,7 @@ Jump to [Helm install](#3-helm-install)
 ## 3. [Helm Install](../helm-install/#install-pachyderms-helm-chart)
 - You will be deploying the [latest GA release](../../../reference/supported-releases/#generally-available-ga) of Pachyderm:
 
-  ```shell
+  ```s
   helm repo add pach https://helm.pachyderm.com
   helm repo update
   helm install pachyderm -f my_pachyderm_values.yaml pach/pachyderm 
@@ -211,7 +211,7 @@ Jump to [Helm install](#3-helm-install)
 
 - Check your deployment:
 
-  ```shell
+  ```s
   kubectl get pods
   ```
 
@@ -233,26 +233,26 @@ Jump to [Helm install](#3-helm-install)
 ### You have deployed Pachyderm without Console
 
 - Retrieve the external IP address of pachd service:
-  ```shell
+  ```s
   kubectl get services | grep pachd-lb | awk '{print $4}'
   ```
 - Then **update your context for pachctl to point at your cluster**:
 
-  ```shell
+  ```s
   echo '{"pachd_address": "grpc://<external-IP-address>:30650"}' | pachctl config set context "<choose-a-cluster-context-name>" --overwrite
   ```
 
-  ```shell
+  ```s
   pachctl config set active-context "<your-cluster-context-name>"
   ```
 
 #### You have deployed Pachyderm with Console
 - To connect to your new Pachyderm instance, run:
 
-  ```shell
+  ```s
   pachctl config import-kube local --overwrite
   ```
-  ```shell
+  ```s
   pachctl config set active-context local
   ```
 
@@ -262,16 +262,16 @@ Jump to [Helm install](#3-helm-install)
 
 - Finally, check that your cluster is up and running
 
-  ```shell
+  ```s
   pachctl version
   ```
 
   **System Response:**
 
-  ```shell
+  ```s
   COMPONENT           VERSION
-  pachctl             {{% majorMinorVersion %}}
-  pachd               {{% majorMinorVersion %}}
+  pachctl             {{% latestPatchNumber %}}
+  pachd               {{% latestPatchNumber %}}
   ```
 
 ## 5. Connect to Console

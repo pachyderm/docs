@@ -368,7 +368,7 @@ A [documented issue between qemu and Docker Desktop](https://gitlab.com/qemu-pro
 We recommend the following:
 
   - Use [Podman](https://podman.io) (See installation instructions)
-  ```shell
+  ```s
   brew install podman
   podman machine init --disk-size 50
   podman machine start

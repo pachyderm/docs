@@ -40,7 +40,7 @@ Update your values.yaml with your enterprise license key and auth configurations
 {{% notice warning %}} 
 - If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
 
-```shell
+```s
 kubectl create namespace enterprise
 helm install ... --set enterpriseServer.enabled=true  --namespace enterprise
 ```
@@ -49,7 +49,7 @@ This command deploys postgres, etcd and a deployment and service called `pach-en
 `pach-enterprise` uses the same docker image and pachd binary, but it **listens on a different set of ports (31650, 31657, 31658)** to avoid conflicts with pachd.
 
 - Check the state of your deployment by running:
-```shell
+```s
 kubectl get all --namespace enterprise
 ```
 **System Response**
@@ -184,11 +184,11 @@ To enable the Enterprise Server on an existing cluster:
 ## 2- Activate Enterprise Licensing And Enable Authentication
 
 - Use your enterprise key to activate your enterprise server: 
-  ```shell
+  ```s
   echo <your-activation-token> | pachctl license activate
   ```
 - Then enable Authentication at the Enterprise Server level:
-  ```shell
+  ```s
   pachctl auth activate --enterprise
   ```
 
@@ -234,7 +234,7 @@ In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created
 
 - Run this command for each of the clusters you wish to register using `pachctl`:
 
-  ```shell
+  ```s
   pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:650 --pachd-address <pachd-IP>:650
   ```
 
@@ -247,11 +247,11 @@ In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created
   This may be internal to the kubernetes cluster, or over the internet.
 
 - Display the list of all registered clusters with your enterprise server: 
-    ```shell
+    ```s
     pachctl license list-clusters
     ```
 
-    ```shell
+    ```s
     Using enterprise context: my-enterprise-context-name
     id: john
     address: ae1ba915f8b5b477c98cd26c67d7563b-66539067.us-west-2.elb.amazonaws.com:650
@@ -273,13 +273,13 @@ Finally, if your clusters were registered with the Enterprise Server using `pach
 This is an **optional step**. Clusters can be registered with the enterprise server without authentication being enabled.
 
 - Before enabling authentication, set up the issuer in the idp config between the enterprise server and your cluster:
-  ```shell
+  ```s
   echo "issuer: http://<enterprise-server-IP>:658" | pachctl idp set-config --config -
   ```
   Check that your config has been updated properly: `pachctl idp get-config`
 
 - For each registered cluster you want to enable auth on:
-  ```shell
+  ```s
   pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<pachd-IP>:657/authorization-code/callback 
   ```
   {{% notice note %}} 
@@ -288,11 +288,11 @@ This is an **optional step**. Clusters can be registered with the enterprise ser
   {{% /notice %}}
 
 -	Make sure than your enterprise context is set up properly: 
-  ```shell
+  ```s
   pachctl config get active-enterprise-context
   ```
   If not: 
-  ```shell
+  ```s
   pachctl config set active-enterprise-context <my-enterprise-context-name>
   ```
 

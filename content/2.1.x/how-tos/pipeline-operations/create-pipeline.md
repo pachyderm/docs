@@ -56,14 +56,14 @@ To create a pipeline, complete the following steps:
 
 1. Create a pipeline by passing the pipeline configuration to Pachyderm:
 
-    ```shell
+    ```s
     pachctl create pipeline -f <pipeline_spec>
     ```
   {{% notice note %}} 
    -  `pachctl create pipeline -f` also accepts an URL.
 
       For example, in our opencv beginner tutorial:
-      ```shell
+      ```s
       pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/master/examples/opencv/edges.json
       ```
    -  `pachctl update pipeline -f` will create the pipeline is it does not exist.
@@ -72,26 +72,26 @@ To create a pipeline, complete the following steps:
 
 2. Verify that the Kubernetes pod has been created for the pipeline:
 
-   ```shell
+   ```s
    pachctl list pipeline
    ```
 
    **System Response:**
 
-   ```shell
+   ```s
    NAME  VERSION INPUT     CREATED       STATE / LAST JOB   DESCRIPTION
    edges 1       images:/* 5 seconds ago running / starting A pipeline that performs image edge detection by using the OpenCV library.
    ```
 
    You can also run `kubectl` commands to view the pod that has been created:
 
-   ```shell
+   ```s
    kubectl get pod
    ```
 
    **System Response:**
 
-   ```shell
+   ```s
    NAME                      READY   STATUS    RESTARTS   AGE
    pachd-5485f6ddd-wx8vw     1/1     Running   1          17d
    pipeline-edges-v1-qhd4f   2/2     Running   0          95s
@@ -107,7 +107,7 @@ To create a pipeline, complete the following steps:
 You can, for example, create multiple pipelines out of the same jsonnet pipeline spec file while pointing each of them at different input repositories, parameterize a command line in the transform field of your pipelines, or dynamically pass various docker images to train different models on the same dataset. 
 
 For illustration purposes, in the following example, we are creating a pipeline named `edges-1` and pointing its input repository at the repo 'images':
-```shell
+```s
 pachctl create pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg src=images
 ```
 ## Creating a Pipeline When an Output Repository Already Exists

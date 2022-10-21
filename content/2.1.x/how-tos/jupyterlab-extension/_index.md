@@ -27,7 +27,7 @@ We will provide two sets of instructions, depending on whether you know the clus
 - **You know the `pachd_address` of your cluster**:
 
   - Run:
-  ```shell
+  ```s
   docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% extensionJupyterLab %}}  lab --allow-root
   ```
   - Access your JupyterLab session through a local browser (check the link in the stdout).
@@ -40,7 +40,7 @@ We will provide two sets of instructions, depending on whether you know the clus
   - Install `pachctl` (Pachyderm command line tool) on your machine (see [`pachctl` installation instructions](../../getting-started/local-installation/#install-pachctl) ).
   - Then, [connect that CLI to your cluster](../../getting-started/local-installation/#connect-pachctl-to-your-cluster).
   - And run:
-  ```shell
+  ```s
   docker run -it -v ~/.pachyderm/config.json:/home/jovyan/.pachyderm/config.json -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% extensionJupyterLab %}} lab --allow-root
   ```
   - Access your JupyterLab session through a local browser (check the link in the stdout).
@@ -54,7 +54,7 @@ Note that we are assuming that you **already have a Pachyderm cluster running** 
 Troubleshooting - When in doubt, restart your mount server
 
 JupyterLab Mount Extension is an [experimental feature](https://docs.pachyderm.com/latest/reference/supported-releases/#experimental). Many issues can be resolved by restarting the mount server, should you find yourself in an odd situation. To kill/restart your server, run the following command from the terminal window in jupyterlab:
-```shell
+```s
 pkill -f "pachctl mount-server" 
 ```
 The server will restart by itself.
@@ -136,7 +136,7 @@ Depending on your setup, you might choose to use our pre-built image containing 
   Replace the following `${PACHCTL_VERSION}` with the version of `pachctl` that matches your cluster's, and update `<version>` with the release number of the extension.
   {{% /notice %}}
 
-  ```shell 
+  ```s 
   # This runs the following section as root; if adding to an existing Dockerfile, set the user back to whatever you need. 
   USER root
 
@@ -168,7 +168,7 @@ If you are using our pre-built image:
 
 - Run the script below:
 
-  ```shell
+  ```s
   docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% extensionJupyterLab %}} lab --allow-root 
   ```
 
@@ -224,7 +224,7 @@ Find the complete installation instructions of JupyterHub on Kubernetes in [Jupy
 
 - Run the following commands to install JupyterHub:
 
-  ```shell
+  ```s
   helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
   helm repo update
 
@@ -257,7 +257,7 @@ A [documented issue between qemu and Docker Desktop](https://gitlab.com/qemu-pro
 We recommend to:
 
 - Use [Podman](https://podman.io) (See installation instructions)
-  ```shell
+  ```s
   brew install podman
   podman machine init --disk-size 50
   podman machine start

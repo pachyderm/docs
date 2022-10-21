@@ -78,13 +78,13 @@ You can view the list of all user repositories in your Pachyderm cluster
 by running the `pachctl list repo` command.
 
 ###  Example
-```shell
+```s
 pachctl list repo
 ```
 
 **System Response:**
 
-```shell
+```s
 NAME       CREATED      SIZE (MASTER) ACCESS LEVEL
 montage    19 hours ago 1.664MiB      [repoOwner]  Output repo for pipeline montage.
 edges      19 hours ago 133.6KiB      [repoOwner]  Output repo for pipeline edges.
@@ -99,13 +99,13 @@ The `pachctl inspect repo` command provides a more detailed overview
 of a specified repository.
 
 ### Example
-```shell
+```s
 pachctl inspect repo raw_data
 ```
 
 **System Response:**
 
-```shell
+```s
 Name: raw_data
 Description: A raw data repository
 Created: 6 hours ago
