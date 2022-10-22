@@ -2,12 +2,12 @@
 {{ if .IsHome}}
 {{else}}
 
-<nav class="sticky is-one-fifth is-hidden-mobile pinned-top">
+<nav class="sticky-3 is-one-fifth is-hidden-mobile pinned-top">
     <div class="pt-6">
 
     {{with .Parent}}
         {{/* Displays current page's parent for user to go back up one directory level . */}}  
-        <a href="{{ .RelPermalink }}" class="button purple p-1 text-xxs bold rounded-4 mb-2"> < {{ .Title | truncate 18}}</a>
+        <a href="{{ .RelPermalink }}" class="button purple p-1 text-s bold rounded-4 mb-2"> < {{ .Title | truncate 18}}</a>
     {{end}}
     {{ if eq .BundleType "branch"}}
         {{/* Does not show the relatedArticle button (id related-articles) on list pages */}}
@@ -22,7 +22,7 @@
         <div id="slide-container" class="slide">
             {{/* Displays current page's children. */}}
             <div id="contents-container" class="is-full text-s bold c-mt-2  h-scroll noscrollbar">
-                <button class="p-1 outlined text-xxs bold is-fit rounded-4 mb-2"> Contents </button>
+                <button class="p-1 outlined text-s bold is-fit rounded-4 mb-2"> Contents </button>
                 {{ if (eq .Params.layout "glossary") }}
                     {{/*  Does not display children if parent has layout:glossary  */}}
                 {{else if .Pages }}

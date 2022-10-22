@@ -166,7 +166,7 @@ Shortcodes are powerful because of their flexibility and ease of use. Below is o
 
 <section class="rounded-1 {{with $type}} {{.}} {{else}}darken-3{{end}} sp-1"> 
 <div class="spread-between">
-    <div class="is-fit l mt-1">{{if eq $type "warning"}}⚠️{{else if eq $type "info"}}📖{{else if eq $type "tip"}}💡{{else if eq $type "danger"}}☠️{{else if eq $type "example"}}✍️{{else if eq $type "success"}}🎉{{else}}ℹ️{{end}}
+    <div class="is-fit text-l mt-1">{{if eq $type "warning"}}⚠️{{else if eq $type "info"}}📖{{else if eq $type "tip"}}💡{{else if eq $type "danger"}}☠️{{else if eq $type "example"}}✍️{{else if eq $type "success"}}🎉{{else}}ℹ️{{end}}
     </div>
     <button class="is-fit darken-1 sp-1 rounded-3 uppercase xxs hide">toggle</button>
 </div>
