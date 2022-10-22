@@ -8,8 +8,8 @@
             {{$majorMinor := print .Params.majorMinor ".x"}}
         
             {{ with $related }}
-                <button class="p-1 outlined s bold is-fit rounded-4 mb-2"> Related Articles </button>
-                <div class="stack s bold ml-2 c-mb-2">
+                <button class="p-1 outlined text-s bold is-fit rounded-4 mb-2"> Related Articles </button>
+                <div class="stack text-s bold ml-2 c-mb-2">
                 {{ range first 20 . }}
                     {{ if eq $majorMinor .Section }}
                     <a href="{{ .RelPermalink }}" class=""> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
@@ -18,7 +18,7 @@
                 {{ end }}
                 </div>
                 {{else}}
-                <p class="p-1 outlined xs is-fit rounded-4"> No Related Articles</p>
+                <p class="p-1 outlined text-xs is-fit rounded-4"> No Related Articles</p>
             {{ end }}
          {{end}}
      </section>

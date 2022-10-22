@@ -2,7 +2,7 @@
     {{$url := ""}}
     {{with .File}} {{$url = .File.Path}} {{end}}
     
-    <button class="black darken-7 is-fit p-1 xs rounded-4 is-hidden-touch">
+    <button class="black darken-7 is-fit p-1 text-xs rounded-4 is-hidden-touch">
     <a href="{{ print .Site.Params.editLink.githubUrl $url }} "> <img src="/images/github-white.svg" height="15px" class="" alt="GitHub"> </a>
     </button>
 {{end}}

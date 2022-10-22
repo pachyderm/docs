@@ -3,7 +3,7 @@
 */}}
 
 {{ define "main" }}
-<main class="spread-around c-pinned-stretch  c-mx-4"> 
+<main class="spread-around c-pinned-stretch c-mx-4"> 
     {{partial "directory.html" . }}
     <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
         <div class="spread-between my-2">
@@ -17,11 +17,11 @@
                         {{ partial "featureSeriesButton.html" . }}
                         <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
                         {{ if .Description}}
-                            <p class="s bold">
+                            <p class="text-s bold">
                                 {{ .Description}}
                             </p>
                         {{end}}
-                        <p class="s">
+                        <p class="text-s">
                             {{/* Displays published date or last build date */}}
                             {{ if .Date }}
                                 {{ .Date | time.Format ":date_long" }} 

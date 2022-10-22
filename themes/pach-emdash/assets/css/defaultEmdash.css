@@ -5,7 +5,7 @@
     --custom-font-2: "none";
     
     --is-header-line-height: 100%;
-    --is-line-height: 1.56vw;
+    --is-text-line-height: 150%;
 
 
     --xxsmall-text: calc((.5rem) + (.2vw));   
@@ -157,22 +157,11 @@ b {
 /* Code */ 
 
 code {
-  color: var(--is-code-color);
-  white-space: pre;
-  padding: 2px;
-  margin: 2px;
-  font-weight:  var(--code-text);
-  overflow-y: hidden;
-  display: inline;
+  overflow-x: scroll;
 }
 
 pre {
-width: 100%;
- white-space: pre-wrap;
- overflow-x: scroll;
- overflow-y: hidden;
- margin: 0 auto;
- display: inline-block;
+  overflow-x: scroll;
 }
 
 
@@ -192,7 +181,7 @@ hr {
     margin-bottom: var(--large-text);
 }
 
-p { font-size:  var(--small-text); }
+p { font-size:  var(--small-text); line-height: var(--is-text-line-height);}
 
 ::selection {
     background: var(--is-highlight-color);
@@ -1009,6 +998,11 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
   position: absolute;
 }
 
+.is-hidden {
+  display: none;
+}
+
+
 
 /* Spacing */
 
@@ -1475,28 +1469,28 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 .ml-11, .c-ml-11 > *, .mx-11, .c-mx-11 > * {
   margin-left: calc(100vh / var(--margin-11)) ;
 }/* Text Size */
-.xxs  {
+.text-xxs  {
     font-size: var(--xxsmall-text);
 }
-.xs {
+.text-xs {
     font-size: var(--xsmall-text);
 }
-.s {
+.text-s {
     font-size: var(--small-text);
 }
-.m {
+.text-m {
     font-size: var(--medium-text);
 }
-.l {
+.text-l {
     font-size: var(--large-text);
 }
-.xl {
+.text-xl {
     font-size: var(--xlarge-text);
 }
-.xxl {
+.text-xxl {
     font-size: var(--xxlarge-text);
 }
-.xxxl {
+.text-xxxl {
     font-size: var(--xxxlarge-text);
 }
 

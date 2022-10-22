@@ -7,7 +7,7 @@
 
     {{with .Parent}}
         {{/* Displays current page's parent for user to go back up one directory level . */}}  
-        <a href="{{ .RelPermalink }}" class="button purple p-1  xxs bold rounded-4 mb-2"> < {{ .Title | truncate 18}}</a>
+        <a href="{{ .RelPermalink }}" class="button purple p-1 text-xxs bold rounded-4 mb-2"> < {{ .Title | truncate 18}}</a>
     {{end}}
     {{ if eq .BundleType "branch"}}
         {{/* Does not show the relatedArticle button (id related-articles) on list pages */}}
@@ -15,14 +15,14 @@
         {{ with site.RegularPages.RelatedIndices . "tags" }}
             {{/* Only show relatedArticle button if related articles exist. 
             See https://gohugo.io/content-management/related/#readout */}}
-            <button id="see-related"class="button darken-1 grayscale s sp-1 rounded-4">📌</button> 
+            <button id="see-related"class="button darken-1 grayscale text-s sp-1 rounded-4">📌</button> 
         {{end}}
     {{end}}
 
         <div id="slide-container" class="slide">
             {{/* Displays current page's children. */}}
-            <div id="contents-container" class="is-full s bold c-mt-2  h-scroll noscrollbar">
-                <button class="p-1 outlined xxs bold is-fit rounded-4 mb-2"> Contents </button>
+            <div id="contents-container" class="is-full text-s bold c-mt-2  h-scroll noscrollbar">
+                <button class="p-1 outlined text-xxs bold is-fit rounded-4 mb-2"> Contents </button>
                 {{ if (eq .Params.layout "glossary") }}
                     {{/*  Does not display children if parent has layout:glossary  */}}
                 {{else if .Pages }}
@@ -33,7 +33,7 @@
                         {{ if  .Params.hidden  }}
                             {{/* Does not show page if frontmatter "hidden" is TRUE */}}
                         {{else}}
-                            <div class="s"> 
+                            <div class="text-s"> 
                                 <a href="{{ .RelPermalink }}" class="mt-2"> {{if .Pages}}├ {{else}} {{if .PrevInSection }} │ {{else}} └ {{end}}{{end}}{{if .Title}}{{.Title | truncate 40}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}</a>
                             </div>
                             {{/* Displays current page's grandchildren when navLevel feature is TRUE. */}}
@@ -42,7 +42,7 @@
                                     {{/*  Don't display grandchild children if parent has layout:glossary  */}}
                                 {{else if .Pages  }}
                                     {{ range sort .Pages "Weight" "$order"}}
-                                        <div class="light s publicSans"> 
+                                        <div class="light text-s publicSans"> 
                                             <a href="{{ .RelPermalink }}" class="pl-2"> {{if .Pages}}
                                             ├{{else}} {{if .PrevInSection }} │ {{else}} └ {{end}} {{end}} {{if .Title}}{{.Title | truncate 27}}{{else}}{{ path.BaseName . | humanize | truncate 27}}{{end}}</a>
                                         </div>
@@ -57,7 +57,7 @@
                     {{partial "featureTOC" . }}
                 {{end}}          
             </div>
-            <div class="is-full xs bold c-mt-2">
+            <div class="is-full text-xs bold c-mt-2">
                 {{partial "featureRelatedArticles" . }}
             </div>
         </div>  

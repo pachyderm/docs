@@ -3,23 +3,21 @@
       <a class="" style="max-width:150px;" href="/">
         <img src="/images/pachLogo.svg" alt="logo">
       </a>
-      <div class=" is-fit bold xs rounded-4"> docs</div>
+      <div class=" is-fit bold text-xs rounded-4"> docs</div>
     </div>
     <div class="spread-right is-half-tablet is-fullsize-mobile c-rounded-4 c-ml-1">
     {{if .IsHome}}
     
     {{else}}
       <div class="spread rounded-6 outlined c-pinned-center">
-        <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
+        <div class="is-fit text-xs pl-2 is-hidden-mobile">🔍</div>
         <div id="searchbox"></div>
       </div>
     {{end}}
       {{ partial "featureVersionDropdown.html" . }}
-      <button class="p-1 xxs bold purple is-fit"><a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/">Demo</a></button>
+      <button class="p-1 text-xxs bold purple is-fit"><a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/">Demo</a></button>
       <button id="darkModeButton" class="black is-fit grayscale p-1 xxs" onclick="darkMode()">🌙</button>
-      <button class="p-1 xxs bold black is-fit is-hidden-mobile"><a href="https://archive-docs.pachyderm.com">📖</a></button>
+      <button class="p-1 text-xxs bold black is-fit is-hidden-mobile"><a href="https://archive-docs.pachyderm.com">📖</a></button>
     </div>
  
-  
-    {{/*  <button class="darken-2 is-fit is-hidden-touch bold my-2 p-1"> Sandbox</button>  */}}
   </nav>

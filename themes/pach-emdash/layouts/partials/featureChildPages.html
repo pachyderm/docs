@@ -13,21 +13,21 @@
                     <section class="is-one-third is-fullsize-mobile">
                         <div class="move-u p-1">
                             <a href="{{.Permalink}}">
-                                <h3 class="s mb-1">{{- .Title -}}<b class="s ml-2">></b></h3>
+                                <h3 class="text-s mb-1">{{- .Title -}}<b class="text-s ml-2">></b></h3>
                                     {{if .Description}}
-                                        <p class="s light">{{.Description}}</p>
+                                        <p class="text-s light">{{.Description}}</p>
                                     {{else}}
-                                        <p class="s light" bold>{{.Summary | truncate 100}}</p>
+                                        <p class="text-s light" bold>{{.Summary | truncate 100}}</p>
                                     {{end}}
                             </a>
                             {{/*  Displays the value of the "required" frontmatter attribute if present  */}}
                             {{if .Params.label}}
-                                <div class="darken-1 p-1 is-fit xxs uppercase">{{.Params.label}}</div>
+                                <div class="darken-1 p-1 is-fit text-xxs uppercase">{{.Params.label}}</div>
                             {{end}}
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left">
                                     {{ range first 7 .Pages }}
-                                        <a class="button outlined p-1 mt-1 mr-1 xxs bold is-fit rounded-4" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                        <a class="button outlined p-1 mt-1 mr-1 text-xxs bold is-fit rounded-4" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                         </a>
                                     {{ end }}
                                     {{/*  {{if .Pages}}
