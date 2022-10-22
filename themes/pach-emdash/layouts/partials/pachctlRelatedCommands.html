@@ -10,7 +10,7 @@
                 {{ range first 20 . }}
                     {{ if eq $majorMinor .Section }}
                         <div class="is-half is-fullsize-mobile"> 
-                            <div class="mx-4 my-2 p-1 text-center outlined rounded-1 move-l"> 
+                            <div class="mx-4 my-2 p-1 text-center outlined rounded-4 move-l"> 
                                 <a href="{{ .RelPermalink }}" class="s bold "> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                 <p class="xs text-justify mx-3">{{.Description}}</p></a>
                             </div>

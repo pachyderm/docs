@@ -1,9 +1,9 @@
 {{ if .Params.tags }}
     {{$v := .Section }}
-    <aside class="spread-left c-fit c-rounded-1 mt-3">
+    <aside class="spread-left c-fit c-rounded-4 mt-3">
         {{range .Params.tags }}
             {{/*  Includes a URL param that enables filtering out other versions via tagResultsFilteredByVersion.js  */}}
-            <a class="button purple p-2 mr-2 mt-2 xxs rounded-1" href="/tags/{{ . }}?&v={{$v}}"> # {{.}} </a>
+            <a class="button purple p-1 mr-2 mt-2 xxs rounded-4" href="/tags/{{ . }}?&v={{$v}}"> # {{.}} </a>
         {{end}}
     </aside>
 {{end}}

@@ -57,7 +57,7 @@ params:
   nextPrev: true #  displays the next and previous article available on single page.
 
   ## Testing Features
-  defaultCss: false # displays default bulma css only without branding.
+  defaultCss: true # displays default bulma css only without branding.
 
 sitemap:
   changeFreq: monthly 

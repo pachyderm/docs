@@ -3,8 +3,8 @@
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
     <button class="montserrat dropdown-alt is-fit outlined-purple {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
-        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-2 rounded-1 s bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
-        <div class="montserrat is-full dropdown-options white rounded-1 outlined-purple"> 
+        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-1 rounded-4 xs bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
+        <div class="montserrat is-full dropdown-options white rounded-4 outlined-purple"> 
              {{if eq .Section "tags" "series" "knowledge-base"}}
              {{else if eq .Title "search" }}
              {{else}}
@@ -13,7 +13,7 @@
                     {{ if not .Params.hidden }}
                     {{$currentVersionOption := print "/" .Section "/"}}
                     {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
-                        <a class="bold is-fit p-2 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                        <a class="bold is-fit p-1 xs" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
                     {{end}}
                 {{end}}
                 </div>

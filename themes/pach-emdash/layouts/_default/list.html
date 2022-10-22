@@ -4,7 +4,7 @@
 
 
 {{ define "main" }}
-<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
+<main class="spread-around c-pinned-stretch  c-mx-4"> 
     {{partial "directory.html" . }}
     <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
         <div class="spread-between my-2">
@@ -12,7 +12,7 @@
             {{ partial "featureEditLink.html" . }}
          </div>     
             {{ if .Site.Params.heroBanner.list}}
-                <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
+                <section class="black gradient-rl-cold py-3 rounded-4 c-sp-1">
                         {{/* Displays a series button if page is part of a series collection  */}}
                         {{ partial "featureSeriesButton.html" . }}
                         <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
@@ -48,9 +48,9 @@
                         {{/* versionNumber class is used by tagsResultsFilteredByVersion.js to focus results */}}
                         <div class="is-one-third is-half-touch {{ partial "utilityVersionNumber" . }}">
                             <a class="" href="{{ .Permalink }}">
-                                    <div class="c-my-2 rounded-1 m-2 p-2 move-l">
+                                    <div class="c-my-2 rounded-4 m-2 p-1 move-l">
                                         <h4 class="m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-2">></b></h4>
-                                        {{if .Pages}} <div class="outlined p-2 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
+                                        {{if .Pages}} <div class="outlined p-1 is-fit xs"> {{ len (.Pages) }} articles</div> {{end}}
                                         <p> {{if .Description}}{{.Description}}{{else}}{{.Summary | truncate 150 }}{{end}}</p>
                                     </div>
                             </a>
