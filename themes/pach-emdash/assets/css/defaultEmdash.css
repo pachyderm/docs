@@ -1909,3 +1909,14 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
         flex-grow: 0;
     }
 }
+
+/* Search Inputs */
+
+.is-search-input-1 {
+    border: none;
+    background: transparent;
+}
+
+.is-search-input-1:focus {
+    outline: 0;
+}
