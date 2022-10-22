@@ -1005,9 +1005,7 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 
 .listless {
   list-style: none;
-}
-
-/* Spacing */
+}/* Spacing */
 
 .sp-1, .c-sp-1 > * {
   padding: calc(100vw / var(--padding-1));
