@@ -1,23 +1,24 @@
-  <nav class="spread sticky-0 white level-top px-9 py-1">
-    <div class="spread-left is-two-fifths is-hidden-mobile">
-      <a class="" style="max-width:150px;" href="/">
-        <img src="/images/pachLogo.svg" alt="logo">
-      </a>
-      <div class=" is-fit bold text-xs rounded-4"> docs</div>
-    </div>
-    <div class="spread-right is-half-tablet is-fullsize-mobile c-rounded-4 c-ml-1">
-    {{if .IsHome}}
-    
-    {{else}}
-      <div class="spread rounded-6 outlined c-pinned-center">
-        <div class="is-fit text-xs pl-2 is-hidden-mobile">🔍</div>
-        <div id="searchbox"></div>
+  <nav class="sticky-0 white level-top py-4">
+    <section class="spread mx-4">
+      <div class="spread-left is-two-fifths is-hidden-mobile">
+        <a class="" style="max-width:150px;" href="/">
+          <img src="/images/pachLogo.svg" alt="logo">
+        </a>
+        <div class=" is-fit bold text-xs rounded-4"> docs</div>
       </div>
-    {{end}}
-      {{ partial "featureVersionDropdown.html" . }}
-      <button class="p-1 text-xxs bold purple is-fit"><a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/">Demo</a></button>
-      <button id="darkModeButton" class="black is-fit grayscale p-1 text-xxs" onclick="darkMode()">🌙</button>
-      <button class="p-1 text-xxs bold black is-fit is-hidden-mobile"><a href="https://archive-docs.pachyderm.com">📖</a></button>
-    </div>
- 
+      <div class="spread-right is-half-tablet is-fullsize-mobile c-rounded-11 c-ml-1">
+      {{if .IsHome}}
+      
+      {{else}}
+        <div class="spread rounded-11 outlined c-pinned-center">
+          <div class="is-fit text-xs pl-2 is-hidden-mobile">🔍</div>
+          <div id="searchbox"></div>
+        </div>
+      {{end}}
+        {{ partial "featureVersionDropdown.html" . }}
+        <button class="py-1 px-6 text-xxs bold purple is-fit"><a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/">Demo</a></button>
+        <button id="darkModeButton" class="black is-fit grayscale py-1 px-6 text-xxs" onclick="darkMode()">🌙</button>
+        <button class="py-1 px-6 text-xxs bold black is-fit is-hidden-mobile button-wide-1"><a href="https://archive-docs.pachyderm.com">📖</a></button>
+      </div>
+  </section>
   </nav>

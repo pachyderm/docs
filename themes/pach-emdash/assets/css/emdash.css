@@ -9,13 +9,13 @@
 
 
     --xxsmall-text: calc((.5rem) + (.2vw));   
-    --xsmall-text: calc((.75rem) + (.2vw));  
-    --small-text: calc((1rem) + (.2vw));  
-    --medium-text: calc((1rem) + (1vw));
+    --xsmall-text: calc((.75rem) + (.4vw));  
+    --small-text: calc((1rem) + (.1vw));  
+    --medium-text: calc((1rem) + (.5vw));
     --large-text: calc((1rem) + (1.5vw));
     --xlarge-text: calc((1rem) + (2vw));
-    --xxlarge-text: calc((1rem) + (3vw));
-    --xxxlarge-text: calc((1rem) + (4vw));
+    --xxlarge-text: calc((1rem) + (2.5vw));
+    --xxxlarge-text: calc((1rem) + (3vw));
 
     --padding-1: 300;
     --padding-2: 250;
@@ -50,6 +50,8 @@
     --is-note-text: var(--is-black);
     --is-info-color: #118873;
     --is-info-text: var(--is-white);
+    --is-tip-color: #118873;
+    --is-tip-text: var(--is-white);
     --is-success-color: #118873;
     --is-success-text: var(--is-white);
     --is-warning-color: #ffae00;
@@ -587,6 +589,8 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 .is-search-input-1 {
     border: none;
     background: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 .is-search-input-1:focus {
@@ -712,6 +716,11 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
   top: 4vh;
 }
 
+.sticky-5 {
+  position: sticky;
+  top: 5vh;
+}
+
 /* Fit */
 .is-fit, .c-fit > * {
   max-width: fit-content !important;
@@ -771,37 +780,37 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 
 /* Round the Object  */
 .rounded-1, .c-rounded-1 > * {
-  border-radius: var(--rounded-1) !important;
+  border-radius: calc(3px + var(--rounded-1)) !important;
 }
 .rounded-2, .c-rounded-2 > * {
-  border-radius: var(--rounded-2) !important;
+  border-radius: calc(4px + var(--rounded-2)) !important;
 }
 .rounded-3, .c-rounded-3 > * {
-  border-radius: var(--rounded-3) !important;
+  border-radius: calc(4px + var(--rounded-3)) !important;
 }
 .rounded-4, .c-rounded-4 > * {
-  border-radius: var(--rounded-4) !important;
+  border-radius: calc(5px + var(--rounded-4)) !important;
 }
 .rounded-5, .c-rounded-5 > * {
-    border-radius: var(--rounded-5) !important;
+    border-radius: calc(5px + var(--rounded-5)) !important;
 }
 .rounded-6, .c-rounded-6 > * {
-    border-radius: var(--rounded-6) !important;
+    border-radius: calc(6px + var(--rounded-6)) !important;
 }
 .rounded-7, .c-rounded-7 > * {
-    border-radius: var(--rounded-7) !important;
+    border-radius: calc(6px + var(--rounded-7)) !important;
 }
 .rounded-8, .c-rounded-8 > * {
-    border-radius: var(--rounded-8) !important;
+    border-radius: calc(7px + var(--rounded-8)) !important;
 }
 .rounded-9, .c-rounded-9 > * {
-    border-radius: var(--rounded-9) !important;
+    border-radius: calc(7px + var(--rounded-9)) !important;
 }
 .rounded-10, .c-rounded-10 > * {
-    border-radius: var(--rounded-10) !important;
+    border-radius: calc(8px + var(--rounded-10)) !important;
 }
 .rounded-11, .c-rounded-11 > * {
-    border-radius: var(--rounded-11) !important;
+    border-radius: calc(8px + var(--rounded-11)) !important;
 }
 
 
@@ -1476,7 +1485,7 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 .text-l {
     font-size: var(--large-text);
 }
-. text-xxl {
+.text-xxl {
     font-size: var(--xlarge-text);
 }
 .text-xxl {
@@ -1900,4 +1909,10 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
         flex-basis: 66.66666666666666%;
         flex-grow: 0;
     }
+}
+
+/* flex */
+
+.flex {
+    display: flex;
 }

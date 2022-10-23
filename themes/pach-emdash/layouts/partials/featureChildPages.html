@@ -11,9 +11,9 @@
                     {{/* Do not show the hidden child page or its descendants */}}
                 {{else}}
                     <section class="is-one-third is-fullsize-mobile">
-                        <div class="move-u p-1 mb-2">
+                        <div class="move-u p-1 mb-5">
                             <a href="{{.Permalink}}">
-                                <h3 class="text-s">{{- .Title -}}<b class="text-s ml-2">></b></h3>
+                                <h3 class="text-m">{{- .Title -}}<b class="text-s ml-2">></b></h3>
                                     {{if .Description}}
                                         <p class="text-s light">{{.Description}}</p>
                                     {{else}}
@@ -27,7 +27,7 @@
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left">
                                     {{ range first 7 .Pages }}
-                                        <a class="button outlined p-1 mt-1 mr-1 text-xs bold is-fit rounded-4" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                        <a class="button outlined p-4 mt-1 mr-1 text-xs  is-fit rounded-4" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                         </a>
                                     {{ end }}
                                     {{/*  {{if .Pages}}
