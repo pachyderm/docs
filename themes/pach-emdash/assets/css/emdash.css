@@ -699,26 +699,26 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 }
 .sticky-1 {
   position: sticky;
-  top: 1vh;
+  top: calc(100vh / var(--margin-1) * 2);
 }
 .sticky-2 {
   position: sticky;
-  top: 2vh;
+  top: calc(100vh / var(--margin-2) * 2);
 }
 
 .sticky-3 {
   position: sticky;
-  top: 3vh;
+  top: calc(100vh / var(--margin-3) * 2);
 }
 
 .sticky-4 {
   position: sticky;
-  top: 4vh;
+  top: calc(100vh / var(--margin-4) * 2);
 }
 
 .sticky-5 {
   position: sticky;
-  top: 5vh;
+  top: calc(100vh / var(--margin-5) * 2);
 }
 
 /* Fit */
