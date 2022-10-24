@@ -19,6 +19,8 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 
 ![Mount extension in action](../images/mount-extension.gif)
 
+---
+
 ## Install the Extension 
 
 There are three main ways to install the Jupyter Lab extension:
@@ -27,6 +29,10 @@ There are three main ways to install the Jupyter Lab extension:
 - 🚀 [Via JupyterHub + Helm](./jupyterhub-install): Best for production deployments with strict security requirements
 - 🧪 [Locally](./local-install): Great for development and testing
 
+---
+
 ## Examples 
 
 Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. You will also find integration examples with open-source products, such as labeling or model serving applications. 
+
+---
