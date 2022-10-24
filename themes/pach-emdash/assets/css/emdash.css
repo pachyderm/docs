@@ -2155,3 +2155,7 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
   font-family: 'Montserrat', sans-serif;
 }
  
+img {
+  min-width: 0;
+  max-width: 100%;
+}

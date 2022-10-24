@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="title" content="{{ .Title }}" />
+<meta name="title" content="{{with .Parent}}{{.Title}}{{end}}: {{ .Title }}" />
 <meta name="description" content="{{ .Description }}" />
 <meta name="keywords" content="{{ .Keywords }}" />
 <meta name="author" content="{{ .Params.author }}" />
