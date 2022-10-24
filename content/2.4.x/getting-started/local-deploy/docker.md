@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  ⭐ Docker (Fastest)
+title:  ⭐ Docker Desktop(Fastest)
 description: Learn how to install Pachyderm locally with Docker for any operating system.
 date: 
 # taxonomy #
