@@ -17,6 +17,7 @@
   {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
   {{ $wizard := resources.Get "js/wizard.js"  | resources.Minify  }}
 
+
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
   {{ $js := slice $darkMode $wizard $toc $relatedArticles $clippy $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
 

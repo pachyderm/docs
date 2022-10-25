@@ -7,14 +7,13 @@ date:
 tags:  ["docker","linux", "mac","windows", "getting-started", "local-deploy"]
 series: 
 seriesPart: 
-weight: 1
-label: recommended
+weight: 2
 ---
 
 ## Before You Start
 
 - You should be familiar with using the terminal
-- **Windows Users**: You should be familiar with [WSL](https://learn.microsoft.com/en-us/windows/wsl/install). 
+- **Windows Users**: You should be familiar with [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ## 1. Install Docker Desktop
 

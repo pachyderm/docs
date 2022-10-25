@@ -7,16 +7,15 @@ date:
 tags:  ["kind", "getting-started", "local-deploy"]
 series: 
 seriesPart: 
-weight: 2
+weight: 3
 ---
 
 Kind is a tool that quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. It's a great solution for trying out Pachyderm locally.
 
 ## Before You Start 
 
-{{% notice tip %}}
-Looking for the easiest way to get started? We recommend trying [Docker Desktop](../docker).
-{{% /notice %}}
+- You should be familiar with using the terminal
+- **Windows Users**: You should be familiar with [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ## 1. Install Kind 
 
