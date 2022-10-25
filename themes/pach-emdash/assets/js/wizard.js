@@ -9,6 +9,8 @@ if (document.querySelector('[data-type="wizard"]')) {
 
     // get all result elements with the data-wizard-answer attribute
     let answers = wizard.querySelectorAll('[data-wizard-answer]')
+
+    let answerText = ""
     
     //show pre-selected answer if any
     getAnswers()
@@ -39,6 +41,7 @@ if (document.querySelector('[data-type="wizard"]')) {
 
         // get all buttons with the purple class
         let activeButtons = wizard.querySelectorAll('button.purple')
+
         // get the text of all the buttons with the purple class
         let activeButtonText = []
 
@@ -46,27 +49,21 @@ if (document.querySelector('[data-type="wizard"]')) {
             activeButtonText.push(button.getAttribute('data-wizard-option'))
         })
 
-        // compare the text of the buttons with the data-wizard-answer attribute and show the result
+        let convertedText = activeButtonText.join('/')
+
+
+        // hide all other answers
         answers.forEach((answer) => {
-            // get the text of the data-wizard-answer attribute
-            let answerText = answer.getAttribute('data-wizard-answer')
-            // turn the activeButtonText array into a string
-            let activeButtonTextString = activeButtonText.join('/')
-            console.log(answerText)
-            console.log(activeButtonTextString)
-            // if the the activeButtonText is included in the answerText, show the answer
-            if (activeButtonTextString === answerText) {
+            let value = answer.getAttribute('data-wizard-answer')
+            console.log(`value: ` + value)
+            console.log(`convertedText: ` + convertedText)
+            if (value !== convertedText) {
+                answer.classList.add('is-hidden')
+            } else {
                 answer.classList.remove('is-hidden')
             }
-            // if the the activeButtonText is not included in the answerText, hide the answer
-            else {
-                answer.classList.add('is-hidden')
-            }
-            
-        } )
-
+        })
     }
-
 }
 
 

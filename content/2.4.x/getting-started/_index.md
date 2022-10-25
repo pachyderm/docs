@@ -9,4 +9,15 @@ series:
 seriesPart:
 weight: 1
 ---
-Pachyderm is a **data-centric pipelining and versioning tool** that allows ML and Data-Science teams to automate and collaborate on their organization's data while maintaining full reproducibility.
+## What is Pachyderm? 
+
+Pachyderm is a data-centric pipeline and data versioning application written in [go](https://go.dev/) that runs on top of a Kubernetes cluster.
+
+## Local vs Cloud Installation
+
+| Local | Cloud |
+|---|---|
+|Used for learning & testing |Used in production|
+| Allocates your local machine's resources to spin up a K8s cluster. | Uses a cloud provider (AWS, Azure, GCP) to to spin up K8s clusters. |
+| Uses **Docker Desktop**, **Minikube**, or **Kind**.  | Uses **EKS**, **GKE**, or **AKS** |
+|Free|Metered by cloud provider|

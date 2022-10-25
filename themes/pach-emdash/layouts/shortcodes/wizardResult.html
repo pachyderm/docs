@@ -1,3 +1,25 @@
-<div class="spread c-sp-1 is-hidden" data-wizard-answer="{{.Get "val1"}}/{{.Get "val2"}}/{{.Get "val3"}}">
+{{$val1 := .Get "val1"}}
+{{$val2 := .Get "val2"}}
+{{$val3 := .Get "val3"}}
+{{$val4 := .Get "val4"}}
+
+{{$answer := $val1}}
+
+{{ with $val2 }}
+    {{$answer = printf "%s/%s" $answer .}}
+{{ end }}
+
+{{ with $val3 }}
+    {{$answer = printf "%s/%s" $answer .}}
+{{ end }}
+
+{{ with $val4 }}
+    {{$answer = printf "%s/%s" $answer .}}
+{{ end }}
+
+<div class="spread c-sp-1 is-hidden is-fullsize-mobile" data-wizard-answer="{{$answer}}">
     {{.Inner}}
 </div>
+
+
+

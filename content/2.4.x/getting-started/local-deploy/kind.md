@@ -1,33 +1,35 @@
 ---
 # metadata # 
-title:  Docker Desktop
-description: Learn how to install Pachyderm locally with Docker for any operating system.
+title:  Kind 
+description: Learn how to install Pachyderm locally with Kind.
 date: 
 # taxonomy #
-tags:  ["docker","linux", "mac","windows", "getting-started", "local-deploy"]
+tags:  ["kind", "getting-started", "local-deploy"]
 series: 
 seriesPart: 
-weight: 1
-label: recommended
+weight: 2
 ---
 
-## Before You Start
+Kind is a tool that quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. It's a great solution for trying out Pachyderm locally.
 
-- You should be familiar with using the terminal
-- **Windows Users**: You should be familiar with [WSL](https://learn.microsoft.com/en-us/windows/wsl/install). 
+## Before You Start 
 
-## 1. Install Docker Desktop
+{{% notice tip %}}
+Looking for the easiest way to get started? We recommend trying [Docker Desktop](../docker).
+{{% /notice %}}
 
-1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your machine.
-2. Register and log in to Docker Desktop.
-3. Navigate to **Settings** for [Mac](https://docs.docker.com/desktop/settings/mac/), [Windows](https://docs.docker.com/desktop/settings/windows/), or [Linux](https://docs.docker.com/desktop/settings/linux/). 
-   - Adjust your resources (~4 CPUs and ~12GB Memory) 
-   - [Enable Kubernetes](https://docs.docker.com/desktop/kubernetes/)
-4. Select **Apply & Restart**.
+## 1. Install Kind 
+
+1. See the [official Kind getting started guide](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) for the most up-to-date installation steps. 
+2. Install `kubectl`:
+    - [MacOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+    - [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+    - [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
 
 
-## 2. Install Pachctl CLI
- 
+
+## 2. Install Pachctl CLI 
+
 {{< stack type="wizard" >}}
  {{% wizardRow id="operating-system" %}}
   {{% wizardButton option="macOS" state="active" %}}
@@ -41,90 +43,88 @@ label: recommended
  {{% /wizardRow %}}
  
 
- <!-- Results  -->
- {{% wizardResults %}}
- <!-- MacOS  -->
- {{% wizardResult val1="operating-system/macos" val2="architecture/amd" %}}
+<!-- Results  -->
+{{% wizardResults %}}
+<!-- MacOS  -->
+{{% wizardResult val1="operating-system/macos" val2="architecture/amd" %}}
  ```s
  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/macos" val2="architecture/arm" %}}
+{{% wizardResult val1="operating-system/macos" val2="architecture/arm" %}}
  ```s
  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- <!-- Windows  -->
+<!-- Windows  -->
  
- {{% wizardResult val1="operating-system/windows" val2="architecture/amd"  %}}
-
+{{% wizardResult val1="operating-system/windows" val2="architecture/amd"  %}}
  ```s
  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/windows" val2="architecture/arm"  %}}
-
+{{% wizardResult val1="operating-system/windows" val2="architecture/arm"  %}}
  ```s
  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- <!-- Linux  -->
- {{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
+<!-- Linux  -->
+{{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
  ```s
  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/debian" val2="architecture/amd" %}}
+{{% wizardResult val1="operating-system/debian" val2="architecture/amd" %}}
  ```s
  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/debian" val2="architecture/amd"  %}}
+{{% wizardResult val1="operating-system/debian" val2="architecture/amd"  %}}
  ```s
   curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
+{{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
  ```s
  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- <!-- Other Linux  -->
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
+<!-- Other Linux  -->
+{{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
  ```s
  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
+{{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
  ```s
  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
+{{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
  ```s
   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin 
  ```
- {{% /wizardResult %}}
+{{% /wizardResult %}}
 
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
- ```s
-   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_arm64/pachctl /usr/local/bin 
- ```
- {{% /wizardResult %}}
+{{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
+```s
+curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_arm64/pachctl /usr/local/bin 
+```
+{{% /wizardResult %}}
  
- {{% /wizardResults %}}
+{{% /wizardResults %}}
 
- {{< /stack >}}
+{{< /stack >}}
 
 ## 3. Install & Configure Helm
 
