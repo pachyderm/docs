@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Docker Desktop
-description: Learn how to install Pachyderm locally with Docker for any operating system.
+description: Learn how to install Pachyderm locally with Docker Desktop.
 date: 
 # taxonomy #
 tags:  ["docker","linux", "mac","windows", "getting-started", "local-deploy"]

@@ -4,7 +4,7 @@ title:  Minikube
 description: Learn how to install Pachyderm locally with Minikube.
 date: 
 # taxonomy #
-tags:  ["minikube", "getting-started", "local-deploy"]
+tags:  ["minikube", "getting-started", "local-deploy", "linux", "mac","windows"]
 series: 
 seriesPart: 
 weight: 1

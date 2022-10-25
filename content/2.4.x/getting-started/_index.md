@@ -17,7 +17,7 @@ Pachyderm is a data-centric pipeline and data versioning application written in 
 
 | Local | Cloud |
 |---|---|
-|Used for learning & testing |Used in production|
+|Used for learning & testing. |Used in production environments.|
 | Allocates your local machine's resources to spin up a K8s cluster. | Uses a cloud provider (AWS, Azure, GCP) to to spin up K8s clusters. |
 | Uses **Docker Desktop**, **Minikube**, or **Kind**.  | Uses **EKS**, **GKE**, or **AKS** |
-|Free|Metered by cloud provider|
+|Free.|Metered by cloud provider.|

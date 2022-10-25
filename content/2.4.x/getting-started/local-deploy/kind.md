@@ -4,7 +4,7 @@ title:  Kind
 description: Learn how to install Pachyderm locally with Kind.
 date: 
 # taxonomy #
-tags:  ["kind", "getting-started", "local-deploy"]
+tags:  ["kind", "getting-started", "local-deploy", "linux", "mac","windows"]
 series: 
 seriesPart: 
 weight: 3

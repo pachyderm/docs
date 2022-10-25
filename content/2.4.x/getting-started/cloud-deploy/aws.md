@@ -12,10 +12,15 @@ weight:
 
 ## Before You Start 
 
-Make sure you have already installed all of the following.
+Make sure you have already installed all of the following: **kubectl**, **pachctl**, **Helm**, and **AWS CLI**.
 
 ### Install Kubectl 
 
+See the official Kubernetes installation guides for the most up-to-date steps:
+
+- [MacOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+- [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
 
 ### Install Pachctl CLI
  
