@@ -1,43 +1,44 @@
 // check if the page has an element with data-type="wizard"
 
-if (document.querySelector('[data-type="wizard"]')) {
-    // grab the wizard element
-    let wizard = document.querySelector('[data-type="wizard"]')
-
-    // get each child step element with data-wizard-id attribute
-    let wizardSteps = wizard.querySelectorAll('[data-wizard-id]')
-
-    // get all result elements with the data-wizard-answer attribute
-    let answers = wizard.querySelectorAll('[data-wizard-answer]')
-
+if (document.querySelectorAll('[data-type="wizard"]')) {
+    // grab all wizard elements
+    var wizards = document.querySelectorAll('[data-type="wizard"]');
+    let allAnswers = document.querySelectorAll('[data-wizard-answer]');
     let answerText = ""
     
-    //show pre-selected answer if any
-    getAnswers()
 
-    // listen for click on button elements within each step
-    wizardSteps.forEach((step) => {
-        // get all of the buttons within the step
-        let buttons = step.querySelectorAll('button')
+    
+    wizards.forEach(function(wizard) {
+        // get each child step element with the data-wizard-id attribute
+        let steps = wizard.querySelectorAll('[data-wizard-id]');
+        let answers = wizard.querySelectorAll('[data-wizard-answer]');
+        getAnswers({wizard, answers}) 
+        // listen for click on button elements within each step
+        steps.forEach((step) => {
+            // get all of the buttons within the step
+            let buttons = step.querySelectorAll('button')
 
-        // listen for click on each button
-        buttons.forEach((button) => {
-            button.addEventListener('click', (e) => {
-                // add purple class to the clicked button
-                e.target.classList.add('purple')
-                // remove purple class from the other buttons
-                buttons.forEach((button) => {
-                    if (button !== e.target) {
-                        button.classList.remove('purple')
-                    }
-                } )
+            // listen for click on each button
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    // add purple class to the clicked button
+                    e.target.classList.add('purple')
+                    // remove purple class from the other buttons
+                    buttons.forEach((button) => {
+                        if (button !== e.target) {
+                            button.classList.remove('purple')
+                        }
+                    } )
 
-                getAnswers()
-            })
-        }) 
-    })
+                    getAnswers({wizard, answers})
+                })
+            }) 
+        })
+    });
 
-    function getAnswers(){
+
+
+    function getAnswers({wizard, answers}){
 
         // get all buttons with the purple class
         let activeButtons = wizard.querySelectorAll('button.purple')

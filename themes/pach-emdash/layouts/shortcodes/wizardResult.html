@@ -17,8 +17,9 @@
     {{$answer = printf "%s/%s" $answer .}}
 {{ end }}
 
-<div class="spread c-sp-1 is-hidden is-fullsize-mobile" data-wizard-answer="{{$answer}}">
+<div class="stack c-sp-1 is-hidden is-fullsize-mobile content" data-wizard-answer="{{$answer}}">
     {{.Inner}}
+
 </div>
 
 
