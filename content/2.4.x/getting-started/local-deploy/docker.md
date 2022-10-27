@@ -59,7 +59,7 @@ sudo apt upgrade -y
 ```s
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-All installation steps after this point must be run through the WSL terminal (Ubuntu) and not in Powershell. 
+All installation steps after [1. Install Docker Desktop](#1-install-docker-desktop) must be run through the WSL terminal (Ubuntu) and not in Powershell. 
 
 You are now ready to continue to Step 1.
  {{% /wizardResult %}}
@@ -75,11 +75,10 @@ You are now ready to continue to Step 1.
 ## 1. Install Docker Desktop
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your machine.
-2. Register and log in to Docker Desktop.
-3. Navigate to **Settings** for [Mac](https://docs.docker.com/desktop/settings/mac/), [Windows](https://docs.docker.com/desktop/settings/windows/), or [Linux](https://docs.docker.com/desktop/settings/linux/). 
+2. Navigate to **Settings** for [Mac](https://docs.docker.com/desktop/settings/mac/), [Windows](https://docs.docker.com/desktop/settings/windows/), or [Linux](https://docs.docker.com/desktop/settings/linux/). 
    - Adjust your resources (~4 CPUs and ~12GB Memory) 
    - [Enable Kubernetes](https://docs.docker.com/desktop/kubernetes/)
-4. Select **Apply & Restart**.
+3. Select **Apply & Restart**.
 
 
 ## 2. Install Pachctl CLI
