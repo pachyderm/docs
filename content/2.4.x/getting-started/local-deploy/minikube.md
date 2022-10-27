@@ -24,9 +24,9 @@ Minikube is a tool that quickly sets up a local Kubernetes cluster on macOS, Lin
 {{% wizardResults %}}
  {{% wizardResult val1="operating-system/macos" %}}
   - You must have [Homebrew](https://brew.sh/) installed. 
-    ```s
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+```s
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
   - You must have [Docker Desktop](https://www.docker.com/) installed with [Kubernetes enabled](https://docs.docker.com/desktop/kubernetes/).
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/windows" %}}
@@ -70,9 +70,9 @@ You are now ready to continue to Step 1.
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/linux" %}}
   - You must have [Homebrew](https://brew.sh/) installed. 
-    ```s
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+```s
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
   - You must have [Docker Desktop](https://www.docker.com/) installed.
  {{% /wizardResult %}}
 {{% /wizardResults %}}
@@ -100,75 +100,73 @@ See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/d
 
 1. Launch Docker Desktop.
 2. Start Minikube: 
-   ```s
-   minikube start
-   ```
+```s
+minikube start
+```
 
 ## 3. Install Pachctl CLI 
 
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
+```s
+brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
+```
 
 ## 4. Install & Configure Helm
 
 1. Install [Helm](https://helm.sh/docs/intro/install/):
-   ```s
-   brew install helm
-   ```
+```s
+brew install helm
+```
 2. Add the Pachyderm repo to Helm:
-   ```s
-   helm repo add pach https://helm.pachyderm.com  
-   helm repo update  
-   ```
+```s
+helm repo add pach https://helm.pachyderm.com  
+helm repo update  
+```
 3. Install PachD: 
-   ```s
-   helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
-   ```
+```s
+helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
+```
    This may take several minutes to complete. 
 
 ## 5. Verify Installation 
 
 1. Run the following command in a new terminal to check the status of your pods:
-    ```s
-    kubectl get po -A
-    ```
-    ```s
-    NAMESPACE              NAME                                         READY   STATUS    RESTARTS        AGE
-   default                console-6b9bb8766d-f2gm4                     1/1     Running   0             41m
-   default                etcd-0                                       1/1     Running   0             41m
-   default                pachd-76896d6b5d-kmfvw                       1/1     Running   0             41m
-   default                pachd-loki-0                                 1/1     Running   0             41m
-   default                pachd-promtail-rm5ss                         1/1     Running   0             41m
-   default                pachyderm-kube-event-tail-b9b554fb6-dpcsr    1/1     Running   0             41m
-   default                pg-bouncer-5c9494c678-z57qh                  1/1     Running   0             41m
-   default                postgres-0                                   1/1     Running   0             41m
-   kube-system            coredns-6d4b75cb6d-jnl5f                     1/1     Running   3 (42m ago)   97d
-   kube-system            etcd-minikube                                1/1     Running   4 (42m ago)   97d
-   kube-system            kube-apiserver-minikube                      1/1     Running   3 (42m ago)   97d
-   kube-system            kube-controller-manager-minikube             1/1     Running   4 (42m ago)   97d
-   kube-system            kube-proxy-bngzv                             1/1     Running   3 (42m ago)   97d
-   kube-system            kube-scheduler-minikube                      1/1     Running   3 (42m ago)   97d
-   kube-system            storage-provisioner                          1/1     Running   5 (42m ago)   97d
-   kubernetes-dashboard   dashboard-metrics-scraper-78dbd9dbf5-swttf   1/1     Running   3 (42m ago)   97d
-   kubernetes-dashboard   kubernetes-dashboard-5fd5574d9f-c7ptx        1/1     Running   4 (42m ago)   97d
-    ```
+ ```s
+ kubectl get po -A
+ ```
+ ```s
+ NAMESPACE              NAME                                         READY   STATUS    RESTARTS        AGE
+default                console-6b9bb8766d-f2gm4                     1/1     Running   0             41m
+default                etcd-0                                       1/1     Running   0             41m
+default                pachd-76896d6b5d-kmfvw                       1/1     Running   0             41m
+default                pachd-loki-0                                 1/1     Running   0             41m
+default                pachd-promtail-rm5ss                         1/1     Running   0             41m
+default                pachyderm-kube-event-tail-b9b554fb6-dpcsr    1/1     Running   0             41m
+default                pg-bouncer-5c9494c678-z57qh                  1/1     Running   0             41m
+default                postgres-0                                   1/1     Running   0             41m
+kube-system            coredns-6d4b75cb6d-jnl5f                     1/1     Running   3 (42m ago)   97d
+kube-system            etcd-minikube                                1/1     Running   4 (42m ago)   97d
+kube-system            kube-apiserver-minikube                      1/1     Running   3 (42m ago)   97d
+kube-system            kube-controller-manager-minikube             1/1     Running   4 (42m ago)   97d
+kube-system            kube-proxy-bngzv                             1/1     Running   3 (42m ago)   97d
+kube-system            kube-scheduler-minikube                      1/1     Running   3 (42m ago)   97d
+kube-system            storage-provisioner                          1/1     Running   5 (42m ago)   97d
+kubernetes-dashboard   dashboard-metrics-scraper-78dbd9dbf5-swttf   1/1     Running   3 (42m ago)   97d
+kubernetes-dashboard   kubernetes-dashboard-5fd5574d9f-c7ptx        1/1     Running   4 (42m ago)   97d
+ ```
 2. Re-run this command after a few minutes if `pachd` is not ready.
 
 ## 6. Connect to Cluster
 
-Run the following commands:
+```s
+pachctl config import-kube local --overwrite
+pachctl config set active-context local
+pachctl port-forward
+```
+{{% notice note %}}
+If the connection commands did not work together, run each separately.
+{{%/notice %}}
 
-1. ```s
-    pachctl config import-kube local --overwrite
-    ```
-2. ```s
-    pachctl config set active-context local
-    ```
-3.  ```s
-    pachctl port-forward
-    ```
-4. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
 You can check your Pachyderm version and connection to `pachd` at any time with the following command:

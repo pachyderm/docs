@@ -23,9 +23,9 @@ label: recommended
 {{% wizardResults %}}
  {{% wizardResult val1="operating-system/macos" %}}
   - You must have [Homebrew](https://brew.sh/) installed. 
-    ```s
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+  ```s
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/windows" %}}
  - You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if Linux does not boot in your WSL terminal after downloading from the Microsoft store, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
@@ -65,9 +65,9 @@ You are now ready to continue to Step 1.
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/linux" %}}
   - You must have [Homebrew](https://brew.sh/) installed. 
-    ```s
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+```s
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
  {{% /wizardResult %}}
 {{% /wizardResults %}}
 {{< /stack >}}
@@ -131,7 +131,7 @@ pachctl port-forward
 If the connection commands did not work together, run each separately.
 {{%/notice %}}
 
-1. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
 You can check your Pachyderm version and connection to `pachd` at any time with the following command:
