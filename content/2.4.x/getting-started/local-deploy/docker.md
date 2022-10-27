@@ -12,8 +12,48 @@ weight: 2
 
 ## Before You Start
 
-- You should be familiar with using the terminal
-- **Windows Users**: You should be familiar with [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+{{< stack type="wizard" >}}
+ {{% wizardRow id="operating-system" %}}
+  {{% wizardButton option="macOS" state="active" %}}
+  {{% wizardButton option="Windows" %}}
+  {{% wizardButton option="Linux" %}}
+ {{% /wizardRow %}}
+
+{{% wizardResults %}}
+ {{% wizardResult val1="operating-system/macos" %}}
+  No pre-requisites. 
+ {{% /wizardResult %}}
+ {{% wizardResult val1="operating-system/windows" %}}
+ You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if that does not work, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
+
+{{% notice tip %}}
+**Quickstart**:
+1. Open a Powershell terminal.
+2.  Run each of the following:
+
+```s
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+2. Download the latest [WSL2 Linux Kernel for x64 machines](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
+3. Run each the following:
+```s
+wsl --set-default-version 2
+
+wsl --install -d Ubuntu 
+```
+4. Restart your machine
+5. Start WSL and set up your first Ubuntu user.
+
+You are now ready to use WSL + Linux with other setup steps.
+{{%/notice%}}
+ {{% /wizardResult %}}
+ {{% wizardResult val1="operating-system/linux" %}}
+  No pre-requisites. 
+ {{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack >}}
 
 ## 1. Install Docker Desktop
 
@@ -38,7 +78,6 @@ weight: 2
   {{% wizardButton option="ARM" %}}
   {{% wizardButton option="AMD" state="active" %}}
  {{% /wizardRow %}}
- 
 
  <!-- Results  -->
  {{% wizardResults %}}
@@ -175,3 +214,4 @@ You can check your Pachyderm version and connection to `pachd` at any time with 
    pachd               {{% latestPatchNumber %}}  
    ```
 {{% /notice %}}
+
