@@ -7,7 +7,7 @@ date:
 tags:  ["docker","linux", "mac","windows", "getting-started", "local-deploy"]
 series: 
 seriesPart: 
-weight: 2
+weight: 1
 label: recommended
 ---
 
