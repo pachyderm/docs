@@ -133,7 +133,7 @@ helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL
  ```s
  kubectl get po -A
  ```
- ```s
+ ```
  NAMESPACE              NAME                                         READY   STATUS    RESTARTS        AGE
 default                console-6b9bb8766d-f2gm4                     1/1     Running   0             41m
 default                etcd-0                                       1/1     Running   0             41m
@@ -173,7 +173,7 @@ You can check your Pachyderm version and connection to `pachd` at any time with 
    ```s
    pachctl version
    ```
-   ```s
+   ```
    COMPONENT           VERSION  
    pachctl             {{% latestPatchNumber %}}  
    pachd               {{% latestPatchNumber %}}  
