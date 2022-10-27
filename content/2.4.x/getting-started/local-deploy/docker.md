@@ -21,15 +21,19 @@ weight: 2
 
 {{% wizardResults %}}
  {{% wizardResult val1="operating-system/macos" %}}
-  No pre-requisites. 
+  - You must have [Homebrew](https://brew.sh/) installed. 
+    ```s
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/windows" %}}
- You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if that does not work, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
+ - You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if that does not work, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
 
-{{% notice tip %}}
-**Quickstart**:
+
+**Manual Step Summary**:
+
 1. Open a Powershell terminal.
-2.  Run each of the following:
+2. Run each of the following:
 
 ```s
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -43,14 +47,26 @@ wsl --set-default-version 2
 
 wsl --install -d Ubuntu 
 ```
-4. Restart your machine
-5. Start WSL and set up your first Ubuntu user.
+4. Restart your machine.
+5. Start a WSL terminal and set up your first Ubuntu user.
+6. Update Ubuntu.
+```s
+sudo apt update
+sudo apt upgrade -y
+```
+7. Install Homebrew in Ubuntu so you can complete the rest of this guide:
+```s
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+All installation steps after this point must be run through the WSL terminal (Ubuntu) and not in Powershell. 
 
-You are now ready to use WSL + Linux with other setup steps.
-{{%/notice%}}
+You are now ready to continue to Step 1.
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/linux" %}}
-  No pre-requisites. 
+  - You must have [Homebrew](https://brew.sh/) installed. 
+    ```s
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
  {{% /wizardResult %}}
 {{% /wizardResults %}}
 {{< /stack >}}
@@ -67,116 +83,27 @@ You are now ready to use WSL + Linux with other setup steps.
 
 ## 2. Install Pachctl CLI
  
-{{< stack type="wizard" >}}
- {{% wizardRow id="operating-system" %}}
-  {{% wizardButton option="macOS" state="active" %}}
-  {{% wizardButton option="Windows" %}}
-  {{% wizardButton option="Debian" %}}
-  {{% wizardButton option="Other Linux" %}}
- {{% /wizardRow %}}
- {{% wizardRow id="architecture" %}}
-  {{% wizardButton option="ARM" %}}
-  {{% wizardButton option="AMD" state="active" %}}
- {{% /wizardRow %}}
-
- <!-- Results  -->
- {{% wizardResults %}}
- <!-- MacOS  -->
- {{% wizardResult val1="operating-system/macos" val2="architecture/amd" %}}
  ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
+  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
  ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/macos" val2="architecture/arm" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- <!-- Windows  -->
- 
- {{% wizardResult val1="operating-system/windows" val2="architecture/amd"  %}}
-
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/windows" val2="architecture/arm"  %}}
-
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- <!-- Linux  -->
- {{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/debian" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/debian" val2="architecture/amd"  %}}
- ```s
-  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- <!-- Other Linux  -->
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
- ```s
-  curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin 
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
- ```s
-   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_arm64/pachctl /usr/local/bin 
- ```
- {{% /wizardResult %}}
- 
- {{% /wizardResults %}}
-
- {{< /stack >}}
 
 ## 3. Install & Configure Helm
 
-1. [Install Helm](https://helm.sh/docs/intro/install/).
-2. Run the following to add the Pachyderm repo to Helm:
-    ```s
-    helm repo add pach https://helm.pachyderm.com  
-    helm repo update 
-    ```
-3. Run the following to install Pachyderm:
-    ```s
-    helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  
-    ```
-
+1. Install [Helm](https://helm.sh/docs/intro/install/):
+   ```s
+   brew install helm
+   ```
+2. Add the Pachyderm repo to Helm:
+   ```s
+   helm repo add pach https://helm.pachyderm.com  
+   helm repo update  
+   ```
+3. Install PachD: 
+   ```s
+   helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
+   ```
+   This may take several minutes to complete. 
+   
 ## 4. Verify Installation 
 
 1. Run the following command to check the status of your pods:

@@ -24,18 +24,22 @@ Minikube is a tool that quickly sets up a local Kubernetes cluster on macOS, Lin
 
 {{% wizardResults %}}
  {{% wizardResult val1="operating-system/macos" %}}
-  You must have [Homebrew](https://brew.sh/) installed. 
-  ```s
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  ```
+  - You must have [Homebrew](https://brew.sh/) installed. 
+    ```s
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+  - You must have [Docker Desktop](https://www.docker.com/) installed with [Kubernetes enabled](https://docs.docker.com/desktop/kubernetes/).
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/windows" %}}
- You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if that does not work, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
 
-{{% notice tip %}}
-**Quickstart**:
+ - You must have [Docker Desktop](https://www.docker.com/) installed with [Kubernetes enabled](https://docs.docker.com/desktop/kubernetes/). 
+ - You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if that does not work, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
+
+
+**Manual Step Summary**:
+
 1. Open a Powershell terminal.
-2.  Run each of the following:
+2. Run each of the following:
 
 ```s
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -64,13 +68,13 @@ All installation steps after this point must be run through the WSL terminal (Ub
 
 You are now ready to continue to Step 1.
 
-{{%/notice%}}
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/linux" %}}
-  You must have [Homebrew](https://brew.sh/) installed. 
-  ```s
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  ```
+  - You must have [Homebrew](https://brew.sh/) installed. 
+    ```s
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+  - You must have [Docker Desktop](https://www.docker.com/) installed.
  {{% /wizardResult %}}
 {{% /wizardResults %}}
 {{< /stack >}}
@@ -95,9 +99,11 @@ See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/d
 
 ### Start 
 
-```s
-minikube start
-```
+1. Launch Docker Desktop.
+2. Start Minikube: 
+   ```s
+   minikube start
+   ```
 
 ## 3. Install Pachctl CLI 
 
