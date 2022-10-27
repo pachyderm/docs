@@ -360,8 +360,10 @@ ol li::marker {
 
 .content  pre { 
   white-space: pre-wrap;
-  padding: 1ch;
   overflow-x: scroll;
+  padding: 0;
+  margin:0;
+  height: fit-content;
  }
 
  code {

@@ -83,64 +83,64 @@ You are now ready to continue to Step 1.
 
 ## 2. Install Pachctl CLI
  
- ```s
-  brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
+```s
+brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
+```
 
 ## 3. Install & Configure Helm
 
 1. Install [Helm](https://helm.sh/docs/intro/install/):
-   ```s
-   brew install helm
-   ```
+```s
+brew install helm
+```
 2. Add the Pachyderm repo to Helm:
-   ```s
-   helm repo add pach https://helm.pachyderm.com  
-   helm repo update  
-   ```
+```s
+helm repo add pach https://helm.pachyderm.com  
+helm repo update  
+```
 3. Install PachD: 
-   ```s
-   helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
-   ```
+```s
+helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
+```
    This may take several minutes to complete. 
 
 ## 4. Verify Installation 
 
 1. In a new terminal, run the following command to check the status of your pods:
-    ```s
-    kubectl get pods
-    ```
-    ```s
-    NAME                                           READY   STATUS      RESTARTS   AGE
-   pod/console-5b67678df6-s4d8c                   1/1     Running     0          2m8s
-   pod/etcd-0                                     1/1     Running     0          2m8s
-   pod/pachd-c5848b5c7-zwb8p                      1/1     Running     0          2m8s
-   pod/pg-bouncer-7b855cb797-jqqpx                1/1     Running     0          2m8s
-   pod/postgres-0                                 1/1     Running     0          2m8s
-    ```
+ ```s
+ kubectl get pods
+ ```
+ ```
+ NAME                                           READY   STATUS      RESTARTS   AGE
+pod/console-5b67678df6-s4d8c                   1/1     Running     0          2m8s
+pod/etcd-0                                     1/1     Running     0          2m8s
+pod/pachd-c5848b5c7-zwb8p                      1/1     Running     0          2m8s
+pod/pg-bouncer-7b855cb797-jqqpx                1/1     Running     0          2m8s
+pod/postgres-0                                 1/1     Running     0          2m8s
+ ```
 2. Re-run this command after a few minutes if `pachd` is not ready.
 
 ## 5. Connect to Cluster
 
-Run the following commands :
-1. ```s
-    pachctl config import-kube local --overwrite
-    ```
-2. ```s
-    pachctl config set active-context local
-    ```
-3.  ```s
-    pachctl port-forward
-    ```
-4. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+```s
+pachctl config import-kube local --overwrite
+pachctl config set active-context local
+pachctl port-forward
+```
+{{% notice note %}}
+If the connection commands did not work together, run each separately.
+{{%/notice %}}
+
+1. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
 You can check your Pachyderm version and connection to `pachd` at any time with the following command:
    ```s
    pachctl version
    ```
-   ```s
+   ```
    COMPONENT           VERSION  
+
    pachctl             {{% latestPatchNumber %}}  
    pachd               {{% latestPatchNumber %}}  
    ```
