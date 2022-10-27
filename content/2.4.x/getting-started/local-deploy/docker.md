@@ -103,7 +103,7 @@ You are now ready to continue to Step 1.
    helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
    ```
    This may take several minutes to complete. 
-   
+
 ## 4. Verify Installation 
 
 1. Run the following command to check the status of your pods:
@@ -122,13 +122,17 @@ You are now ready to continue to Step 1.
 
 ## 5. Connect to Cluster
 
-1. Run the following command:
-    ```s
+Run the following commands :
+1. ```s
     pachctl config import-kube local --overwrite
+    ```
+2. ```s
     pachctl config set active-context local
+    ```
+3.  ```s
     pachctl port-forward
     ```
-2. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+4. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
 You can check your Pachyderm version and connection to `pachd` at any time with the following command:
