@@ -50,8 +50,7 @@ if (document.querySelectorAll('[data-type="wizard"]')) {
             activeButtonText.push(button.getAttribute('data-wizard-option'))
         })
 
-        let convertedText = activeButtonText.join('/')
-
+        let convertedText = activeButtonText.join('/').toLowerCase()
 
         // hide all other answers
         answers.forEach((answer) => {

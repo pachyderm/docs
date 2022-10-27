@@ -62,40 +62,49 @@ You are now ready to use WSL + Linux with other setup steps.
 
 ### Install
 
-See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/docs/start/) for the most up-to-date installation steps. Make sure to also install `kubectl` (mentioned in Step 3: Interact with your cluster).
+See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/docs/start/) for the most up-to-date installation steps. Make sure to also install `kubectl` (mentioned in Step 3: Interact with your cluster) if it is not automatically included.
 
 ### Start 
 
 {{< stack type="wizard" >}}
-
- {{% wizardRow id="operating-system" %}}
-  {{% wizardButton option="macOS" state="active" %}}
-  {{% wizardButton option="Windows" %}}
-  {{% wizardButton option="Linux" %}}
+ {{% wizardRow id="Driver" %}}
+  {{% wizardButton option="Auto" state="active" %}}
+  {{% wizardButton option="Docker" %}}
+  {{% wizardButton option="VirtualBox" %}}
+  {{% wizardButton option="KMV2" %}}
  {{% /wizardRow %}}
 
  <!-- Results  -->
 {{% wizardResults %}}
-{{% wizardResult val1="operating-system/macos" %}}
+
+{{% wizardResult val1="driver/auto" %}}
+Discovers the available [minikube drivers](https://minikube.sigs.k8s.io/docs/drivers/) (if any); requires at least one; [Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/) is preferred by Minikube for Mac, Windows, and Linux.
  ```s
  minikube start 
  ```
 {{% /wizardResult %}}
-{{% wizardResult val1="operating-system/windows" %}}
+
+{{% wizardResult val1="driver/docker" %}}
+Requires [Docker Desktop](https://www.docker.com/)
+ ```s
+ minikube start --driver=docker
+ ```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="driver/virtualbox" %}}
 Requires [Virtualbox](https://www.virtualbox.org/wiki/Downloads).
  ```s
  minikube start --driver=virtualbox
  ```
 {{% /wizardResult %}}
-{{% wizardResult val1="operating-system/linux" %}}
+
+{{% wizardResult val1="driver/kmv2" %}}
 Requires [KVM2](https://minikube.sigs.k8s.io/docs/drivers/kvm2/).
  ```s
  minikube start --driver=kvm2
  ```
 {{% /wizardResult %}}
-
 {{% /wizardResults%}}
-
 {{< /stack >}}
 
 ## 2. Install Pachctl CLI 
