@@ -107,7 +107,7 @@ You are now ready to continue to Step 1.
 
 ## 4. Verify Installation 
 
-1. Run the following command to check the status of your pods:
+1. In a new terminal, run the following command to check the status of your pods:
     ```s
     kubectl get pods
     ```
