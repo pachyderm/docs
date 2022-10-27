@@ -6,6 +6,7 @@
 [[redirects]]
   from = "/latest/getting_started/*"
   to = "/2.4.x/getting-started/"
+
   status = 301
   force = true
 

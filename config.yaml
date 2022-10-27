@@ -8,11 +8,11 @@ enableRobotsTXT: true
 theme: pach-emdash
 
 outputs: 
-  home: [ "HTML", "JSON"]
-  page: [ "HTML", "JSON"]
-  section: [ "HTML", "JSON"]
-  list: [ "HTML", "JSON"]
-  taxonomies: [ "HTML", "JSON"]
+  home: [ "HTML", "JSON", "RSS"]
+  page: [ "HTML", "JSON", "RSS"]
+  section: [ "HTML", "JSON", "RSS"]
+  list: [ "HTML", "JSON", "RSS"]
+  taxonomies: [ "HTML", "JSON", "RSS"]
 
 params:
   # Feature Switches #
