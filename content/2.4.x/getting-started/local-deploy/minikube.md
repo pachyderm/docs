@@ -78,7 +78,7 @@ See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/d
 {{% wizardResults %}}
 
 {{% wizardResult val1="driver/auto" %}}
-Discovers the available [minikube drivers](https://minikube.sigs.k8s.io/docs/drivers/) (if any); requires at least one; [Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/) is preferred by Minikube for Mac, Windows, and Linux.
+Discovers the available [minikube drivers](https://minikube.sigs.k8s.io/docs/drivers/) (if any) and starts minikube. Requires at least one driver; [Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/) is preferred by Minikube for Mac, Windows, and Linux.
  ```s
  minikube start 
  ```
