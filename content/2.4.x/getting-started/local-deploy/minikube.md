@@ -24,7 +24,10 @@ Minikube is a tool that quickly sets up a local Kubernetes cluster on macOS, Lin
 
 {{% wizardResults %}}
  {{% wizardResult val1="operating-system/macos" %}}
-  No pre-requisites. 
+  You must have [Homebrew](https://brew.sh/) installed. 
+  ```s
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/windows" %}}
  You must have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) enabled (`wsl --install`) and a Linux distribution installed; if that does not work, see the [manual installation guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
@@ -46,178 +49,82 @@ wsl --set-default-version 2
 
 wsl --install -d Ubuntu 
 ```
-4. Restart your machine
-5. Start WSL and set up your first Ubuntu user.
+4. Restart your machine.
+5. Start a WSL terminal and set up your first Ubuntu user.
+6. Update Ubuntu.
+```s
+sudo apt update
+sudo apt upgrade -y
+```
+7. Install Homebrew in Ubuntu so you can complete the rest of this guide:
+```s
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+All installation steps after this point must be run through the WSL terminal (Ubuntu) and not in Powershell. 
 
-You are now ready to use WSL + Linux with other setup steps.
+You are now ready to continue to Step 1.
+
 {{%/notice%}}
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/linux" %}}
-  No pre-requisites. 
+  You must have [Homebrew](https://brew.sh/) installed. 
+  ```s
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
  {{% /wizardResult %}}
 {{% /wizardResults %}}
 {{< /stack >}}
 
-## 1. Install & Start Minikube 
+## 1. Install Docker 
+
+```s
+brew install docker
+```
+See the [official Docker getting started guide](https://docs.docker.com/get-started/) for the most up-to-date installation steps.
+
+## 2. Install & Start Minikube 
+
 
 ### Install
 
-See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/docs/start/) for the most up-to-date installation steps. Make sure to also install `kubectl` (mentioned in Step 3: Interact with your cluster) if it is not automatically included.
+
+```s
+brew install minikube
+```
+See the [official Minikube getting started guide](https://minikube.sigs.k8s.io/docs/start/) for the most up-to-date installation steps.
 
 ### Start 
 
-{{< stack type="wizard" >}}
- {{% wizardRow id="Driver" %}}
-  {{% wizardButton option="Auto" state="active" %}}
-  {{% wizardButton option="Docker" %}}
-  {{% wizardButton option="VirtualBox" %}}
-  {{% wizardButton option="KMV2" %}}
- {{% /wizardRow %}}
-
- <!-- Results  -->
-{{% wizardResults %}}
-
-{{% wizardResult val1="driver/auto" %}}
-Discovers the available [minikube drivers](https://minikube.sigs.k8s.io/docs/drivers/) (if any) and starts minikube. Requires at least one driver; [Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/) is preferred by Minikube for Mac, Windows, and Linux.
- ```s
- minikube start 
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="driver/docker" %}}
-Requires [Docker Desktop](https://www.docker.com/)
- ```s
- minikube start --driver=docker
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="driver/virtualbox" %}}
-Requires [Virtualbox](https://www.virtualbox.org/wiki/Downloads).
- ```s
- minikube start --driver=virtualbox
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="driver/kmv2" %}}
-Requires [KVM2](https://minikube.sigs.k8s.io/docs/drivers/kvm2/).
- ```s
- minikube start --driver=kvm2
- ```
-{{% /wizardResult %}}
-{{% /wizardResults%}}
-{{< /stack >}}
-
-## 2. Install Pachctl CLI 
-
-{{< stack type="wizard" >}}
- {{% wizardRow id="operating-system" %}}
-  {{% wizardButton option="macOS" state="active" %}}
-  {{% wizardButton option="Windows" %}}
-  {{% wizardButton option="Debian" %}}
-  {{% wizardButton option="Other Linux" %}}
- {{% /wizardRow %}}
- {{% wizardRow id="architecture" %}}
-  {{% wizardButton option="ARM" %}}
-  {{% wizardButton option="AMD" state="active" %}}
- {{% /wizardRow %}}
- 
-
-<!-- Results  -->
-{{% wizardResults %}}
-<!-- MacOS  -->
-{{% wizardResult val1="operating-system/macos" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/macos" val2="architecture/arm" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
-{{% /wizardResult %}}
-
-<!-- Windows  -->
- 
-{{% wizardResult val1="operating-system/windows" val2="architecture/amd"  %}}
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/windows" val2="architecture/arm"  %}}
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
-{{% /wizardResult %}}
-
-<!-- Linux  -->
-{{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/debian" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/debian" val2="architecture/amd"  %}}
- ```s
-  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
-{{% /wizardResult %}}
-
-<!-- Other Linux  -->
-{{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
- ```s
-  curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin 
- ```
-{{% /wizardResult %}}
-
-{{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
 ```s
-curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_arm64/pachctl /usr/local/bin 
+minikube start
 ```
-{{% /wizardResult %}}
- 
-{{% /wizardResults %}}
 
-{{< /stack >}}
+## 3. Install Pachctl CLI 
 
-## 3. Install & Configure Helm
+ ```s
+ brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
+ ```
 
-1. [Install Helm](https://helm.sh/docs/intro/install/).
-2. Run the following to add the Pachyderm repo to Helm and begin installation:
-    ```s
-    helm repo add pach https://helm.pachyderm.com  
-    helm repo update 
-    helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  
-    ```
+## 4. Install & Configure Helm
 
-## 4. Verify Installation 
+1. Install [Helm](https://helm.sh/docs/intro/install/):
+   ```s
+   brew install helm
+   ```
+2. Add the Pachyderm repo to Helm:
+   ```s
+   helm repo add pach https://helm.pachyderm.com  
+   helm repo update  
+   ```
+3. Install PachD: 
+   ```s
+   helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
+   ```
+   This may take several minutes to complete. 
 
-1. Run the following command to check the status of your pods:
+## 5. Verify Installation 
+
+1. Run the following command in a new terminal to check the status of your pods:
     ```s
     kubectl get po -A
     ```
@@ -243,15 +150,20 @@ curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/d
     ```
 2. Re-run this command after a few minutes if `pachd` is not ready.
 
-## 5. Connect to Cluster
+## 6. Connect to Cluster
 
-1. Run the following command:
-    ```s
+Run the following commands:
+
+1. ```s
     pachctl config import-kube local --overwrite
+    ```
+2. ```s
     pachctl config set active-context local
+    ```
+3.  ```s
     pachctl port-forward
     ```
-2. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+4. Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
 You can check your Pachyderm version and connection to `pachd` at any time with the following command:
@@ -264,3 +176,5 @@ You can check your Pachyderm version and connection to `pachd` at any time with 
    pachd               {{% latestPatchNumber %}}  
    ```
 {{% /notice %}}
+
+
