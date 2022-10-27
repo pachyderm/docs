@@ -8,7 +8,6 @@ tags:  ["minikube", "getting-started", "local-deploy", "linux", "mac","windows"]
 series: 
 seriesPart: 
 weight: 1
-label: recommended 
 ---
 
 Minikube is a tool that quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. It's a great solution for trying out Pachyderm locally.

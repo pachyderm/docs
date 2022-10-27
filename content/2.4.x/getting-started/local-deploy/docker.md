@@ -8,6 +8,7 @@ tags:  ["docker","linux", "mac","windows", "getting-started", "local-deploy"]
 series: 
 seriesPart: 
 weight: 2
+label: recommended
 ---
 
 ## Before You Start
