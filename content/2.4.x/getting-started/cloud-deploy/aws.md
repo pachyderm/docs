@@ -12,154 +12,131 @@ weight:
 
 ## Before You Start 
 
-Make sure you have already installed all of the following: **kubectl**, **pachctl**, **Helm**, and **AWS CLI**.
+This guide assumes that you have already tried [Pachyderm locally](../../local-deploy/) and have all of the following installed:
 
-### Install Kubectl 
-
-See the official Kubernetes installation guides for the most up-to-date steps:
-
-- [MacOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
-- [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-- [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
-
-### Install Pachctl CLI
- 
-{{< stack type="wizard" >}}
- {{% wizardRow id="operating-system" %}}
-  {{% wizardButton option="macOS" state="active" %}}
-  {{% wizardButton option="Windows" %}}
-  {{% wizardButton option="Debian" %}}
-  {{% wizardButton option="Other Linux" %}}
- {{% /wizardRow %}}
- {{% wizardRow id="architecture" %}}
-  {{% wizardButton option="ARM" %}}
-  {{% wizardButton option="AMD" state="active" %}}
- {{% /wizardRow %}}
- 
-
- <!-- Results  -->
- {{% wizardResults %}}
- <!-- MacOS  -->
- {{% wizardResult val1="operating-system/macos" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/macos" val2="architecture/arm" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- <!-- Windows  -->
- 
- {{% wizardResult val1="operating-system/windows" val2="architecture/amd"  %}}
-
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/windows" val2="architecture/arm"  %}}
-
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- <!-- Linux  -->
- {{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/debian" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/debian" val2="architecture/amd"  %}}
- ```s
-  curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/debian" val2="architecture/arm"  %}}
- ```s
- curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_arm64.deb && sudo dpkg -i /tmp/pachctl.deb  
- ```
- {{% /wizardResult %}}
-
- <!-- Other Linux  -->
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
- ```s
- brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/amd" %}}
- ```s
-  curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin 
- ```
- {{% /wizardResult %}}
-
- {{% wizardResult val1="operating-system/other-linux" val2="architecture/arm" %}}
- ```s
-   curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_arm64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_arm64/pachctl /usr/local/bin 
- ```
- {{% /wizardResult %}}
- 
- {{% /wizardResults %}}
-
- {{< /stack >}}
-
-### Install & Configure Helm
-
-1. [Install Helm](https://helm.sh/docs/intro/install/).
-2. Run the following to add the Pachyderm repo to Helm:
-    ```s
-    helm repo add pach https://helm.pachyderm.com  
-    helm repo update 
-    ```
-3. Run the following to install Pachyderm:
-    ```s
-    helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  
-
-### Install AWS CLI 
-
-See the [official AWS CLI installation guide](https://aws.amazon.com/cli/) for the most up-to-date steps.
+- Kubectl 
+- Pachctl 
+- Helm
+- AWS CLI
 
 ---
 
 ## 1. Create an EKS Cluster 
 
 1. Use the eksctl tool to deploy an EKS Cluster:
-   ```s
-   eksctl create cluster --name pachyderm-cluster --region <region> -profile <your named profile>
-   ```
+```s
+eksctl create cluster --name pachyderm-cluster --region <region> -profile <your named profile>
+```
 2. Verify deployment: 
-    ```s
-    kubectl get all
-    ```
+```s
+kubectl get all
+```
 
 ## 2. Create an S3 Bucket
 
 1. Run the following command:
-   ```s
-   aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
-   ```
+```s
+aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
+```
 2. Verify. 
-   ```s
-   aws s3 ls
-   ```
+```s
+aws s3 ls
+```
 
 ## 3. Create a Values.yaml
+
+{{< stack type="wizard" >}}
+{{% wizardRow id="version" %}}
+{{% wizardButton option="Community Edition" state="active" %}}
+{{% wizardButton option="Enterprise" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults %}}
+{{% wizardResult val1="version/community-edition" %}}
+```yaml
+ deployTarget: "AMAZON"
+ pachd:
+   storage:
+     amazon:
+       bucket: "bucket_name"      
+       # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+       id: "AKIAIOSFODNN7EXAMPLE"                
+       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+       region: "us-east-2"
+   externalService:
+     enabled: true
+ console:
+   enabled: true
+```
+{{% /wizardResult %}}
+{{% wizardResult val1="version/enterprise" %}}
+```yaml
+ deployTarget: "AMAZON"
+ pachd:
+   storage:
+     amazon:
+       bucket: "bucket_name"                
+       # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials)
+       id: "AKIAIOSFODNN7EXAMPLE"                
+       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
+       secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+       region: "us-east-2"
+   # pachyderm enterprise key 
+   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
+ console:
+   enabled: true
+```
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack>}}
+
+## 4. Configure Helm
+
+Run the following to add the Pachyderm repo to Helm:
+```s
+helm repo add pach https://helm.pachyderm.com
+helm repo update
+helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
+```
+## 5. Verify Installation 
+
+1. In a new terminal, run the following command to check the status of your pods:
+ ```s
+ kubectl get pods
+ ```
+ ```
+ NAME                                           READY   STATUS      RESTARTS   AGE
+pod/console-5b67678df6-s4d8c                   1/1     Running     0          2m8s
+pod/etcd-0                                     1/1     Running     0          2m8s
+pod/pachd-c5848b5c7-zwb8p                      1/1     Running     0          2m8s
+pod/pg-bouncer-7b855cb797-jqqpx                1/1     Running     0          2m8s
+pod/postgres-0                                 1/1     Running     0          2m8s
+ ```
+2. Re-run this command after a few minutes if `pachd` is not ready.
+
+## 6. Connect to Cluster
+
+```s
+pachctl config import-kube local --overwrite
+pachctl config set active-context local
+pachctl port-forward
+```
+{{% notice note %}}
+If the connection commands did not work together, run each separately.
+{{%/notice %}}
+
+Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+
+{{% notice tip %}}
+You can check your Pachyderm version and connection to `pachd` at any time with the following command:
+   ```s
+   pachctl version
+   ```
+   ```
+   COMPONENT           VERSION  
+
+   pachctl             {{% latestPatchNumber %}}  
+   pachd               {{% latestPatchNumber %}}  
+   ```
+{{% /notice %}}

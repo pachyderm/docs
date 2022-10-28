@@ -122,9 +122,29 @@ helm repo add pach https://helm.pachyderm.com
 helm repo update  
 ```
 3. Install PachD: 
+
+{{< stack type="wizard" >}}
+ {{% wizardRow id="version" %}}
+  {{% wizardButton option="Community Edition" state="active" %}}
+  {{% wizardButton option="Enterprise" %}}
+ {{% /wizardRow %}}
+
+{{% wizardResults %}}
+{{% wizardResult val1="version/community-edition" %}}
 ```s
 helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
 ```
+{{% /wizardResult %}}
+{{% wizardResult val1="version/enterprise" %}}
+Are you using an [Enterprise](../../../enterprise) trial key? If so, you can set up Enterprise Pachyderm locally by storing your trial key in a `license.txt` file and passing it into the following Helm command: 
+
+```s  
+helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
+``` 
+This unlocks Enterprise features but also [requires user authentication](../../deploy-manage/deploy/console/#connect-to-console) to access Console. A mock user is created by default to get you started, with the **username**: `admin` and **password**: `password`.
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack >}}
    This may take several minutes to complete. 
 
 ## 5. Verify Installation 
