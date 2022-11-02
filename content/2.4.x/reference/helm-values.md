@@ -37,6 +37,8 @@ deployTarget: ""
 
 global:
   postgresql:
+    # The auth type to use with postgres and pg-bouncer; md5 is the default.
+    postgresqlAuthType: "md5" 
     # postgresqlUsername is the username to access the pachyderm and dex databases
     postgresqlUsername: "pachyderm"
     # postgresqlPassword to access the postgresql database.  We set a default well-known password to
