@@ -26,4 +26,4 @@ You can download the [latest binary files](https://github.com/pachyderm/pachyder
 {{% /notice %}}
 
 
-
+{{< artifactHub >}}
