@@ -13,10 +13,9 @@ weight:
 
 This guide assumes that you have already tried [Pachyderm locally](../../local-deploy/) and have all of the following installed:
 
-- Kubectl 
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/) 
 - Pachctl 
-- Helm
-- AWS CLI
+- [Helm](https://helm.sh/docs/intro/install/)
 - [Google Cloud SDK](https://cloud.google.com/sdk/)
 - [jq](https://stedolan.github.io/jq/download/)
 

@@ -13,9 +13,9 @@ weight:
 
 This guide assumes that you have already tried [Pachyderm locally](../../local-deploy/) and have all of the following installed:
 
-- Kubectl 
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/) 
 - Pachctl 
-- Helm
+- [Helm](https://helm.sh/docs/intro/install/)
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 ---
