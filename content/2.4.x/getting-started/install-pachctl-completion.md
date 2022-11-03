@@ -23,13 +23,14 @@ before installing Pachyderm autocompletion.
 Type `pachctl completion --help` to display help information about the command.
 {{% /notice %}}
 
-## Install `pachctl` Autocompletion for `bash`
+{{< stack type="wizard" >}}
+ {{% wizardRow id="Command Shell" %}}
+  {{% wizardButton option="Zsh" state="active" %}}
+  {{% wizardButton option="Bash" %}}
+ {{% /wizardRow %}}
 
-If you are using bash as your preferred shell, follow the steps in this
-section to install `pachctl` completion for bash.
-
-To install `pachctl` autocompletion for `bash`, perform the following steps:
-
+{{% wizardResults %}}
+{{% wizardResult val1="command-shell/bash"%}}
 1. Verify that `bash-completion` is installed on your machine.
    For example, if you have installed bash completion by using Homebrew,
    type:
@@ -46,9 +47,8 @@ To install `pachctl` autocompletion for `bash`, perform the following steps:
    command might have a suggestion to include the path to
    `bash-completion` into your `~/.bash_profile` file.
 
-1. Install `pachctl` autocompletion:
-
-
+2. Install `pachctl` autocompletion:
+3. 
    ```s
 
    pachctl completion bash --install --path <path/to/bash-completion>
@@ -64,18 +64,12 @@ To install `pachctl` autocompletion for `bash`, perform the following steps:
    Bash completions installed in /usr/local/etc/bash_completion.d/pachctl, you must restart bash to enable completions.
    ```
 
-1. Restart your terminal.
+4. Restart your terminal.
 
    `pachctl` autocomplete should now be enabled in your system.
+{{% /wizardResult %}}
 
-## Install pachctl Autocompletion for `zsh`
-
-Recently, `zsh` became the default shell on macOS, therefore, many users
-might prefer using `zsh`. Before you install `pachctl` completion for `zsh`,
-you must have `zsh-completions` installed.
-
-To install `pachctl` completion for `zsh`, complete the following
-steps:
+{{% wizardResult val1="command-shell/zsh"%}}
 
 1. Verify that `zsh-completions` are installed on your machine.
    For example, if you have installed zsh completion by using Homebrew,
@@ -92,7 +86,7 @@ steps:
    completions, see
    [zsh-completions](https://github.com/zsh-users/zsh-completions).
 
-1. Install `pachctl` autocompletion for `zsh`:
+2. Install `pachctl` autocompletion for `zsh`:
 
    ```zsh
    pachctl completion zsh --install --path <path/to/zsh-completions>
@@ -110,11 +104,10 @@ steps:
    Completions installed in "_pachctl", you must restart your terminal to enable them.
    ```
 
-1. Restart your terminal.
+3. Restart your terminal.
 
    `pachctl` autocomplete should now be enabled in your system.
-
-{{% notice note %}}
- See Also:
- [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/)
-{{% /notice %}}
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+ {{< /stack >}}
+ 
