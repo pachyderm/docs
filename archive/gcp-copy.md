@@ -11,9 +11,14 @@ weight:
 ---
 ## Before You Start 
 
-This guide assumes that:
--  You have already tried [Pachyderm locally](../../local-deploy/) and have some familiarity with [Kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/), [Google Cloud SDK](https://cloud.google.com/sdk/) and [jq](https://stedolan.github.io/jq/download/).
-- You have access to a Google Cloud account linked to an active billing account.
+This guide assumes that you have already tried [Pachyderm locally](../../local-deploy/) and have all of the following tools installed:
+
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/) 
+- Pachctl 
+- [Helm](https://helm.sh/docs/intro/install/)
+- [Google Cloud SDK](https://cloud.google.com/sdk/)
+- [jq](https://stedolan.github.io/jq/download/)
+- [Gcloud CLI](https://cloud.google.com/sdk/docs/install)
 
 ---
 
@@ -21,96 +26,18 @@ This guide assumes that:
 
 1. Log in to [Google Cloud Console](https://console.cloud.google.com/).
 2. Create a new project (e.g.,`pachyderm-project`).
-3. Enable the Compute Engine API.
+3. Enable the Compute Engine API (this requires an active Linked Billing Account).
 
 You are now ready to create a GKE Cluster.
 
 ## 2. Create a GKE Cluster 
 
-{{<stack type="wizard">}}
-{{% wizardRow id="Cluster Type" %}}
-{{% wizardButton option="Autopilot" %}}
-{{% wizardButton option="Standard" state="active" %}}
-{{% /wizardRow %}}
-{{% wizardResults %}}
-{{% wizardResult val1="cluster-type/autopilot" %}}
-
-{{% notice warning %}}
-**Coming Soon**
-
-Autopilot is not yet fully supported.
-{{% /notice %}}
-
 1. Navigate to the [Kubernetes Engine tab](https://console.cloud.google.com/kubernetes/list) in GCP Console.
 2. Select **Create**.
 3. Choose **Autopilot** and select **Configure**.
-4. Name your Cluster (e.g., `pachyderm-autopilot-cluster`).
+4. Name your Cluster (e.g., `pachyderm-cluster`).
 5. Choose a region.
 6. Select **Create**.
-
-{{% /wizardResult %}}
-
-{{% wizardResult val1="cluster-type/standard" %}}
-1. Navigate to the [Kubernetes Engine tab](https://console.cloud.google.com/kubernetes/list) in GCP Console.
-2. Select **Create**.
-3. Choose **Standard** and select **Configure**.
-4. Name your Cluster (e.g., `pachyderm-standard-cluster`).
-5. Choose a region.
-6. Select **Create**.
-7. Set up your GCP Service Account.
-```s
-GSA_NAME=<Your Google Service Account Name>
-
-gcloud iam service-accounts create ${GSA_NAME}
-```
-8. Create the following set of variables:
-```s
-SERVICE_ACCOUNT="${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
-
-# "default" or the namespace in which your cluster was deployed
-K8S_NAMESPACE="default" 
-
-PACH_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm]"
-SIDECAR_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm-worker]"
-CLOUDSQLAUTHPROXY_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/k8s-cloudsql-auth-proxy]"
-```
-
-9. Grant access to cloudSQL and your bucket to the Service Account:
-
-```s
-# Grant access to cloudSQL to the Service Account
-gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-    --member="serviceAccount:${SERVICE_ACCOUNT}" \
-    --role="roles/cloudsql.client"
-
-# Grant access to storage (bucket + volumes) to the Service Account
-gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-    --member="serviceAccount:${SERVICE_ACCOUNT}" \
-    --role="roles/storage.admin"
-```
-
-10. Use [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to run Pachyderm Services as the Service Account.
-
-```s
-gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
-    --role roles/iam.workloadIdentityUser \
-    --member "${PACH_WI}"
-
-gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
-    --role roles/iam.workloadIdentityUser \
-    --member "${SIDECAR_WI}"
-
-gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
-    --role roles/iam.workloadIdentityUser \
-    --member "${CLOUDSQLAUTHPROXY_WI}"
-```
-
-For a set of standard roles, read the [GCP IAM permissions documentation](https://cloud.google.com/storage/docs/access-control/iam-permissions#bucket_permissions).
-
-{{% /wizardResult %}}
-
-{{% /wizardResults %}}
-{{</stack>}}
 
 It may take up to 10 minutes for the GKE Cluster to deploy. You can monitor the status of your new cluster from the Kubernetes Engine tab.
 
@@ -160,7 +87,92 @@ Pachyderm needs a [GCS bucket](https://cloud.google.com/storage/docs/creating-bu
 You  can use the `gsutil ls` command to confirm your bucket has been created.
 {{% /notice %}}
 
- 
+
+### Set Up Your GCP Service Account
+To access your GCP resources, Pachyderm uses a GCP Project Service Account with permissioned access to your desired resources. For more information about the creation and management of a Service account, see the official [GCP documentation](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
+
+
+{{< stack type="wizard">}}
+
+{{% wizardRow id="Setup Method"%}}
+{{% wizardButton option="CLI" state="active" %}}
+{{% wizardButton option="Console Cloud Shell" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults  %}}
+{{% wizardResult val1="setup-method/cli"%}}
+```s
+GSA_NAME=<Your Google Service Account Name>
+
+gcloud iam service-accounts create ${GSA_NAME}
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="setup-method/console-cloud-shell"%}}
+1. Log in to Google Cloud Console.
+2. Navigate to **IAM & Admin** > **Service Accounts**.
+3. Select **Create Service Account**.
+4. Fill in all of the following:
+   - Name
+   - ID
+   - Description
+5. Select **Create**.
+
+Keep the full name of your service account handy, you will need it soon.
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack >}}
+
+### Configure Your Service Account Permissions
+
+For Pachyderm to access your Google Cloud Resources, run the following:
+
+1. Create the following set of variables:
+
+```s
+SERVICE_ACCOUNT="${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
+
+# "default" or the namespace in which your cluster was deployed
+K8S_NAMESPACE="default" 
+
+PACH_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm]"
+SIDECAR_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm-worker]"
+CLOUDSQLAUTHPROXY_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/k8s-cloudsql-auth-proxy]"
+```
+
+2. Grant access to cloudSQL and your bucket to the Service Account:
+
+```s
+# Grant access to cloudSQL to the Service Account
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+    --member="serviceAccount:${SERVICE_ACCOUNT}" \
+    --role="roles/cloudsql.client"
+
+# Grant access to storage (bucket + volumes) to the Service Account
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+    --member="serviceAccount:${SERVICE_ACCOUNT}" \
+    --role="roles/storage.admin"
+```
+
+3. Use [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to run Pachyderm Services as the Service Account.
+
+    Workload Identity is the recommended way to access Google Cloud services from applications running within GKE. 
+
+```s
+gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
+    --role roles/iam.workloadIdentityUser \
+    --member "${PACH_WI}"
+
+gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
+    --role roles/iam.workloadIdentityUser \
+    --member "${SIDECAR_WI}"
+
+gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
+    --role roles/iam.workloadIdentityUser \
+    --member "${CLOUDSQLAUTHPROXY_WI}"
+```
+
+For a set of standard roles, read the [GCP IAM permissions documentation](https://cloud.google.com/storage/docs/access-control/iam-permissions#bucket_permissions).
 
 ## 6. Create a Values.yaml
 
@@ -203,10 +215,6 @@ You  can use the `gsutil ls` command to confirm your bucket has been created.
 {{% /wizardResult %}}
 {{% /wizardResults %}}
 {{< /stack>}}
-
-{{% notice tip %}}
-You can use the [Cloud Shell Editor](https://cloud.google.com/shell/docs/editor-overview) to create a `values.yaml` file within the Console UI.
-{{% /notice %}}
 
 ## 7. Configure Helm
 
