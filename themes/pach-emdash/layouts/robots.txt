@@ -1,3 +1,5 @@
+Sitemap: https://docs.pachyderm.com/sitemap.xml
+
 User-agent: *
 
 {{range after 3 .Site.Sections.ByTitle.Reverse}}{{range .Sections}}
