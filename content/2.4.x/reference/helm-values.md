@@ -25,7 +25,6 @@ Take a look at our deployment instructions [locally](../../getting-started/local
 The following section displays the complete list of fields available in the [values.yaml](https://github.com/pachyderm/pachyderm/blob/2.3.x/etc/helm/pachyderm/values.yaml). 
 Each section is further detailed in its own sub-chapter. 
 
-
 ```yaml
 # SPDX-FileCopyrightText: Pachyderm, Inc. <info@pachyderm.com>
 # SPDX-License-Identifier: Apache-2.0

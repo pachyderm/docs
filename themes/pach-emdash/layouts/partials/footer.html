@@ -16,10 +16,11 @@
   {{ $algoliaHomePage := resources.Get "js/algoliaHomePage.js"  | resources.Minify  }}
   {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
   {{ $wizard := resources.Get "js/wizard.js"  | resources.Minify  }}
+  {{ $input := resources.Get "js/inputs.js"  | resources.Minify }}
 
 
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
-  {{ $js := slice $darkMode $wizard $toc $relatedArticles $clippy $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
+  {{ $js := slice $darkMode $wizard $toc $relatedArticles $clippy $mermaid $notices $tables $pagination $explore $tags $input | resources.Concat "js/bundle.js"}}
 
 <footer class="spread  mt-7 px-4 py-7 c-pinned-top c-mt-4">
     {{/*  Algolia must remain separate due to module type  */}}

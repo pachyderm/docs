@@ -25,6 +25,8 @@ This guide assumes that:
 
 You are now ready to create a GKE Cluster.
 
+
+
 ## 2. Create a GKE Cluster 
 
 {{<stack type="wizard">}}
@@ -57,25 +59,25 @@ Autopilot is not yet fully supported.
 4. Name your Cluster (e.g., `pachyderm-standard-cluster`).
 5. Choose a region.
 6. Select **Create**.
-7. Set up your GCP Service Account.
+7. Create the following set of environment variables by copying, editing, and pasting them into your terminal:
 ```s
-GSA_NAME=<Your Google Service Account Name>
-
-gcloud iam service-accounts create ${GSA_NAME}
-```
-8. Create the following set of variables:
-```s
-SERVICE_ACCOUNT="${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
-
-# "default" or the namespace in which your cluster was deployed
+## Edit these
+PROJECT_ID="<your-project-id>"
 K8S_NAMESPACE="default" 
+GSA_NAME="<Your Google Service Account Name>"
 
+## Don't edit these
+SERVICE_ACCOUNT="${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
 PACH_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm]"
 SIDECAR_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm-worker]"
 CLOUDSQLAUTHPROXY_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/k8s-cloudsql-auth-proxy]"
 ```
+8. Create a Service Account:
+```s
+gcloud iam service-accounts create ${GSA_NAME}
+```
 
-9. Grant access to cloudSQL and your bucket to the Service Account:
+9.  Grant access to cloudSQL and your bucket to the Service Account:
 
 ```s
 # Grant access to cloudSQL to the Service Account
@@ -144,7 +146,7 @@ gcloud container clusters get-credentials <cluster-name> --region <region> --pro
 ## 4. Install Pachctl 
 
 ```s
-curl -o /tmp/pachctl.tar.gz -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_linux_amd64.tar.gz && tar -xvf /tmp/pachctl.tar.gz -C /tmp && sudo cp /tmp/pachctl_{{% latestPatchNumber %}}_linux_amd64/pachctl /usr/local/bin 
+curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
 ```
  
 ## 5. Create a GCS Bucket
