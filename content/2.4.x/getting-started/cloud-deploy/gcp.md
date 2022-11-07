@@ -15,85 +15,139 @@ This guide assumes that:
 -  You have already tried [Pachyderm locally](../../local-deploy/) and have some familiarity with [Kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/), [Google Cloud SDK](https://cloud.google.com/sdk/) and [jq](https://stedolan.github.io/jq/download/).
 - You have access to a Google Cloud account linked to an active billing account.
 
+{{% notice warning %}}
+This is not a production-level setup guide; see the [Google Cloud Platform deploy guide](http://localhost:1313/2.4.x/deploy-manage/deploy/google-cloud-platform/) for in-depth setup. 
+{{% /notice %}}
+
 ---
 
 ## 1. Create a New Project 
 
 1. Log in to [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project (e.g.,`pachyderm-project`).
+2. Create a new project (e.g.,`pachyderm-quickstart-project`).
 3. Enable the Compute Engine API.
 
 You are now ready to create a GKE Cluster.
 
+## 2. Run Setup Script
 
+You can run the setup script either through the **Cloud Shell** or in a local terminal via the `gcloud` cli. Running this script creates all of the following:
 
-## 2. Create a GKE Cluster 
+- One GKE cluster
+- Workload identity service accounts
+- Permissions
+- A static IP address 
+- The cloud SQL instance and databases
+- One cloud storage bucket
+- One file called `${NAME}.values.yaml` in the current directory
 
-{{<stack type="wizard">}}
-{{% wizardRow id="Cluster Type" %}}
-{{% wizardButton option="Autopilot" %}}
-{{% wizardButton option="Standard" state="active" %}}
-{{% /wizardRow %}}
-{{% wizardResults %}}
-{{% wizardResult val1="cluster-type/autopilot" %}}
+It also installs Pachyderm into the cluster.
 
-{{% notice warning %}}
-**Coming Soon**
-
-Autopilot is not yet fully supported.
-{{% /notice %}}
-
-1. Navigate to the [Kubernetes Engine tab](https://console.cloud.google.com/kubernetes/list) in GCP Console.
-2. Select **Create**.
-3. Choose **Autopilot** and select **Configure**.
-4. Name your Cluster (e.g., `pachyderm-autopilot-cluster`).
-5. Choose a region.
-6. Select **Create**.
-
-{{% /wizardResult %}}
-
-{{% wizardResult val1="cluster-type/standard" %}}
-1. Navigate to the [Kubernetes Engine tab](https://console.cloud.google.com/kubernetes/list) in GCP Console.
-2. Select **Create**.
-3. Choose **Standard** and select **Configure**.
-4. Name your Cluster (e.g., `pachyderm-standard-cluster`).
-5. Choose a region.
-6. Select **Create**.
-7. Create the following set of environment variables by copying, editing, and pasting them into your terminal:
 ```s
-## Edit these
-PROJECT_ID="<your-project-id>"
-K8S_NAMESPACE="default" 
-GSA_NAME="<Your Google Service Account Name>"
+#!/bin/bash
 
-## Don't edit these
+set -xeou pipefail
+
+# This script will create a file called ${NAME}.values.yaml in the current directory
+# This script will create a GKE cluster, the workload identity service accounts and permissions,
+# a static ip, the cloudsql instance and databases, and the cloud storage bucket. It will also install pachyderm into the cluster.
+# This script assumes you have created your own GCP project
+
+# PLEASE CHANGE THESE NEXT 3 VARIABLES AT A MINIMUM
+PROJECT_ID="pachyderm-quickstart-project"
+NAME="elephant-one"
+SQL_ADMIN_PASSWORD="pachydermQuickstartPassword"
+
+# This group of variables can be changed, but are sane defaults
+GCP_REGION="us-central1"
+GCP_ZONE="us-central1-a"
+K8S_NAMESPACE="default"
+CLUSTER_MACHINE_TYPE="n1-standard-4"
+SQL_CPU="2"
+SQL_MEM="7680MB"
+
+# The following variables probably shouldn't be changed
+CLUSTER_NAME="${NAME}-gke"
+BUCKET_NAME="${NAME}-gcs"
+LOKI_BUCKET_NAME="${NAME}-logs-gcs"
+CLOUDSQL_INSTANCE_NAME="${NAME}-sql"
+GSA_NAME="${NAME}-gsa"
+LOKI_GSA_NAME="${NAME}-loki-gsa"
+STATIC_IP_NAME="${NAME}-ip"
+
+ROLE1="roles/cloudsql.client"
+ROLE2="roles/storage.admin"
+
 SERVICE_ACCOUNT="${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
+LOKI_SERVICE_ACCOUNT="${LOKI_GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
 PACH_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm]"
 SIDECAR_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/pachyderm-worker]"
 CLOUDSQLAUTHPROXY_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/k8s-cloudsql-auth-proxy]"
-```
-8. Create a Service Account:
-```s
+
+
+kubectl version --client=true
+
+gcloud version
+
+helm version
+
+jq --version
+
+gcloud config set project ${PROJECT_ID}
+
+gcloud config set compute/zone ${GCP_ZONE}
+
+gcloud config set container/cluster ${CLUSTER_NAME}
+
+gcloud services enable container.googleapis.com
+
+gcloud services enable sqladmin.googleapis.com
+
+gcloud container clusters create ${CLUSTER_NAME} \
+ --machine-type=${CLUSTER_MACHINE_TYPE} \
+ --workload-pool=${PROJECT_ID}.svc.id.goog \
+ --enable-ip-alias \
+ --create-subnetwork="" \
+ --enable-stackdriver-kubernetes \
+ --enable-dataplane-v2 \
+ --enable-shielded-nodes \
+ --release-channel="regular" \
+ --workload-metadata="GKE_METADATA" \
+ --enable-autorepair \
+ --enable-autoupgrade \
+ --disk-type="pd-ssd" \
+ --image-type="COS_CONTAINERD"
+
+gcloud container clusters get-credentials ${CLUSTER_NAME}
+
+gsutil mb -l ${GCP_REGION} gs://${BUCKET_NAME}
+gsutil mb -l ${GCP_REGION} gs://${LOKI_BUCKET_NAME}
+
+gcloud sql instances create ${CLOUDSQL_INSTANCE_NAME} \
+  --database-version=POSTGRES_13 \
+  --cpu=${SQL_CPU} \
+  --memory=${SQL_MEM} \
+  --zone=${GCP_ZONE} \
+  --availability-type=ZONAL \
+  --storage-size=50GB \
+  --storage-type=SSD \
+  --storage-auto-increase \
+  --root-password=${SQL_ADMIN_PASSWORD}
+
+gcloud compute addresses create ${STATIC_IP_NAME} --region=${GCP_REGION}
+
+STATIC_IP_ADDR=$(gcloud compute addresses describe ${STATIC_IP_NAME} --region=${GCP_REGION} --format=json --flatten=address | jq .[] )
+
 gcloud iam service-accounts create ${GSA_NAME}
-```
 
-9.  Grant access to cloudSQL and your bucket to the Service Account:
-
-```s
-# Grant access to cloudSQL to the Service Account
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
     --member="serviceAccount:${SERVICE_ACCOUNT}" \
-    --role="roles/cloudsql.client"
+    --role="${ROLE1}"
 
-# Grant access to storage (bucket + volumes) to the Service Account
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
     --member="serviceAccount:${SERVICE_ACCOUNT}" \
-    --role="roles/storage.admin"
-```
+    --role="${ROLE2}"
 
-10. Use [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to run Pachyderm Services as the Service Account.
-
-```s
 gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
     --role roles/iam.workloadIdentityUser \
     --member "${PACH_WI}"
@@ -105,158 +159,130 @@ gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
 gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT} \
     --role roles/iam.workloadIdentityUser \
     --member "${CLOUDSQLAUTHPROXY_WI}"
-```
 
-For a set of standard roles, read the [GCP IAM permissions documentation](https://cloud.google.com/storage/docs/access-control/iam-permissions#bucket_permissions).
+gcloud iam service-accounts create ${LOKI_GSA_NAME}
 
-{{% /wizardResult %}}
+gcloud iam service-accounts keys create "${LOKI_GSA_NAME}-key.json" --iam-account="$LOKI_SERVICE_ACCOUNT"
 
-{{% /wizardResults %}}
-{{</stack>}}
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+    --member="serviceAccount:${LOKI_SERVICE_ACCOUNT}" \
+    --role="${ROLE2}"
 
-It may take up to 10 minutes for the GKE Cluster to deploy. You can monitor the status of your new cluster from the Kubernetes Engine tab.
+kubectl create secret generic loki-service-account --from-file="${LOKI_GSA_NAME}-key.json"
 
-## 3. Connect to the Cluster
+gcloud sql databases create pachyderm -i "${CLOUDSQL_INSTANCE_NAME}"
 
-You can connect to your cluster via the CLI in terminal or in the GCP Console's Cloud Shell.
+gcloud sql databases create dex -i ${CLOUDSQL_INSTANCE_NAME}
 
-{{< stack type="wizard">}}
+CLOUDSQL_CONNECTION_NAME=$(gcloud sql instances describe ${CLOUDSQL_INSTANCE_NAME} --format=json | jq ."connectionName")
 
-{{% wizardRow id="Connection Method"%}}
-{{% wizardButton option="CLI" state="active" %}}
-{{% wizardButton option="Console Cloud Shell" %}}
-{{% /wizardRow %}}
+cat <<EOF > ${NAME}.values.yaml
+deployTarget: "GOOGLE"
 
-{{% wizardResults  %}}
-{{% wizardResult val1="connection-method/cli"%}}
-```s
-gcloud container clusters get-credentials <cluster-name> --region <region> --project <project-name>
-```
-{{% /wizardResult %}}
+pachd:
+  enabled: true
+  externalService:
+    enabled: true
+    aPIGrpcport:    31400
+    loadBalancerIP: ${STATIC_IP_ADDR}
+  image:
+    tag: "{{% latestPatchNumber %}}"
+  lokiDeploy: true
+  lokiLogging: true
+  storage:
+    google:
+      bucket: "${BUCKET_NAME}"
+  serviceAccount:
+    additionalAnnotations:
+      iam.gke.io/gcp-service-account: "${SERVICE_ACCOUNT}"
+    create: true
+    name:   "pachyderm"
+  worker:
+    serviceAccount:
+      additionalAnnotations:
+        iam.gke.io/gcp-service-account: "${SERVICE_ACCOUNT}"
+      create: true
+      name:   "pachyderm-worker"
 
-{{% wizardResult val1="connection-method/console-cloud-shell"%}}
-1. Log in to GCP Console.
-2. Switch to your Pachyderm project.
-3. Navigate to the [Kubernetes Engine](https://console.cloud.google.com/kubernetes/list) tab.
-4. Select the **Actions** icon > **Connect** > **Run in Cloud Shell**.
-{{% /wizardResult %}}
-{{% /wizardResults %}}
-{{< /stack >}}
+cloudsqlAuthProxy:
+  enabled: true
+  connectionName: ${CLOUDSQL_CONNECTION_NAME}
+  serviceAccount: "${SERVICE_ACCOUNT}"
+  resources:
+    requests:
+      memory: "500Mi"
+      cpu:    "250m"
 
-## 4. Install Pachctl 
+postgresql:
+  enabled: false
 
-```s
-curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
-```
- 
-## 5. Create a GCS Bucket
+global:
+  postgresql:
+    postgresqlHost: "cloudsql-auth-proxy.default.svc.cluster.local."
+    postgresqlPort: "5432"
+    postgresqlSSL: "disable"
+    postgresqlUsername: "postgres"
+    postgresqlPassword: "${SQL_ADMIN_PASSWORD}"
 
-Pachyderm needs a [GCS bucket](https://cloud.google.com/storage/docs/creating-buckets) (Object store) to store your data.
+loki-stack:
+  loki:
+    env:
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: /etc/secrets/${LOKI_GSA_NAME}-key.json
+    extraVolumes:
+      - name: loki-service-account
+        secret:
+          secretName: loki-service-account
+    extraVolumeMounts:
+      - name: loki-service-account
+        mountPath: /etc/secrets
+    config:
+      schema_config:
+        configs:
+        - from: 1989-11-09
+          object_store: gcs
+          store: boltdb
+          schema: v11
+          index:
+            prefix: loki_index_
+          chunks:
+            prefix: loki_chunks_
+      storage_config:
+        gcs:
+          bucket_name: "${LOKI_BUCKET_NAME}"
+        # https://github.com/grafana/loki/issues/256
+        bigtable:
+          project: project
+          instance: instance
+        boltdb:
+          directory: /data/loki/indices
+  grafana:
+    enabled: true
+EOF
 
-1. Navigate to [Buckets](https://console.cloud.google.com/storage/) in GCP Console.
-2. Select **Create**.  
-3. Name and configure the bucket.
-4. Select **Create**.
-
-{{% notice tip %}}
-You  can use the `gsutil ls` command to confirm your bucket has been created.
-{{% /notice %}}
-
- 
-
-## 6. Create a Values.yaml
-
-{{< stack type="wizard" >}}
-{{% wizardRow id="version" %}}
-{{% wizardButton option="Community Edition" state="active" %}}
-{{% wizardButton option="Enterprise" %}}
-{{% /wizardRow %}}
-
-{{% wizardResults %}}
-{{% wizardResult val1="version/community-edition" %}}
-```yaml
- deployTarget: "GOOGLE"
- pachd:
-   storage:
-     google:
-       bucket: "bucket_name"
-       cred: |
-         INSERT JSON CONTENT HERE
-   externalService:
-     enabled: true
- console:
-   enabled: true
-```
-{{% /wizardResult %}}
-{{% wizardResult val1="version/enterprise" %}}
-```yaml
- deployTarget: "GOOGLE"
- pachd:
-   storage:
-     google:
-       bucket: "bucket_name"
-       cred: |
-         INSERT JSON CONTENT HERE
-   # pachyderm enterprise key
-   enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
- console:
-   enabled: true
-```
-{{% /wizardResult %}}
-{{% /wizardResults %}}
-{{< /stack>}}
-
-{{% notice tip %}}
-You can use the [Cloud Shell Editor](https://cloud.google.com/shell/docs/editor-overview) to create a `values.yaml` file within the Console UI.
-{{% /notice %}}
-
-## 7. Configure Helm
-
-Run the following to add the Pachyderm repo to Helm:
-```s
 helm repo add pach https://helm.pachyderm.com
 helm repo update
-helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
+helm install pachyderm -f ./${NAME}.values.yaml pach/pachyderm
+
+STATIC_IP_ADDR_NO_QUOTES=$(echo "$STATIC_IP_ADDR" | tr -d '"')
+echo "{\"pachd_address\": \"grpc://${STATIC_IP_ADDR_NO_QUOTES}:30650\"}" | pachctl config set context "${CLUSTER_NAME}" --overwrite
+pachctl config set active-context ${CLUSTER_NAME}
 ```
-## 8. Verify Installation 
 
-1. In a new terminal, run the following command to check the status of your pods:
- ```s
- kubectl get pods
- ```
- ```
- NAME                                           READY   STATUS      RESTARTS   AGE
-pod/console-5b67678df6-s4d8c                   1/1     Running     0          2m8s
-pod/etcd-0                                     1/1     Running     0          2m8s
-pod/pachd-c5848b5c7-zwb8p                      1/1     Running     0          2m8s
-pod/pg-bouncer-7b855cb797-jqqpx                1/1     Running     0          2m8s
-pod/postgres-0                                 1/1     Running     0          2m8s
- ```
-2. Re-run this command after a few minutes if `pachd` is not ready.
+## 3. Connect to Cluster
 
-## 9. Connect to Cluster
-
+1. Run the following:
 ```s
 pachctl config import-kube local --overwrite
 pachctl config set active-context local
 pachctl port-forward
 ```
-{{% notice note %}}
-If the connection commands did not work together, run each separately.
-{{%/notice %}}
-
-Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+2. Open your browser at [localhost:4000](https://localhost:4000).
 
 {{% notice tip %}}
-You can check your Pachyderm version and connection to `pachd` at any time with the following command:
-   ```s
-   pachctl version
-   ```
-   ```
-   COMPONENT           VERSION  
 
-   pachctl             {{% latestPatchNumber %}}  
-   pachd               {{% latestPatchNumber %}}  
-   ```
+You can also connect to Console via Google's Cloud Shell: 
+
+![console-in-browser](/images/gcp/console-in-browser.gif)
+
 {{% /notice %}}
-
