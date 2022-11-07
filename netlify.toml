@@ -4,61 +4,25 @@
       Access-Control-Allow-Origin = "*"
 
 [[redirects]]
+  from = "/2.3.x/*"
+  to = "/latest/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/getting_started/*"
-  to = "/2.3.x/getting-started/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/getting-started/*"
-  to = "/2.3.x/getting-started/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/concepts/*"
-  to = "/2.3.x/concepts/"
+  to = "/2.3.x/getting-started/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/how_tos/*"
-  to = "/2.3.x/how-tos/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/how-tos/*"
-  to = "/2.3.x/how-tos/"
+  to = "/2.3.x/how-tos/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/deploy_manage/*"
-  to = "/2.3.x/deploy_manage/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/deploy-manage/*"
-  to = "/2.3.x/deploy-manage/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/enterprise/*"
-  to = "/2.3.x/enterprise/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/troubleshooting/*"
-  to = "/2.3.x/troubleshooting/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/reference/*"
-  to = "/2.3.x/reference/"
+  to = "/2.3.x/deploy_manage/:splat"
   status = 301
   force = true
