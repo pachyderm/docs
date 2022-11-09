@@ -114,56 +114,57 @@ To have the ingress routes use the https protocol without enabling the cert secr
 {{% /notice %}}
 
     
-=== "Example on AWS EKS"
+#### Example on AWS EKS
 
-    In the example below, we are opening the HTTPS port and enabling TLS.
+In the example below, we are opening the HTTPS port and enabling TLS.
 
-    ```yaml
-    ingress:
+```yaml
+ingress:
+    enabled: true
+    annotations: 
+        alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:region:account-id:certificate/aaaa-bbbb-cccc
+        alb.ingress.kubernetes.io/group.name: pachyderm # lets multiple ingress resources be configured into one load balancer
+        alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+        alb.ingress.kubernetes.io/scheme: internal
+        alb.ingress.kubernetes.io/security-groups: sg-aaaa
+        alb.ingress.kubernetes.io/subnets: subnet-aaaa, subnet-bbbb, subnet-cccc
+        alb.ingress.kubernetes.io/target-type: ip
+        kubernetes.io/ingress.class: alb
+    host: "your_domain_name"
+    tls:
         enabled: true
-        annotations: 
-            alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:region:account-id:certificate/aaaa-bbbb-cccc
-            alb.ingress.kubernetes.io/group.name: pachyderm # lets multiple ingress resources be configured into one load balancer
-            alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-            alb.ingress.kubernetes.io/scheme: internal
-            alb.ingress.kubernetes.io/security-groups: sg-aaaa
-            alb.ingress.kubernetes.io/subnets: subnet-aaaa, subnet-bbbb, subnet-cccc
-            alb.ingress.kubernetes.io/target-type: ip
-            kubernetes.io/ingress.class: alb
-        host: "your_domain_name"
-        tls:
-            enabled: true
-            secretName: "pach-tls"
-    ```
-=== "Example on GCP GKE"
+        secretName: "pach-tls"
+```
+#### Example on GCP GKE
 
-    In the example below using the ingress controller [Traefik](./pach-ui-ingress/), we are opening the HTTPS port and enabling TLS.
+In the example below using the ingress controller [Traefik](./pach-ui-ingress/), we are opening the HTTPS port and enabling TLS.
 
-    ```yaml
-    ingress:
+```yaml
+ingress:
+    enabled: true
+    annotations: 
+      kubernetes.io/ingress.clas: traefik
+    host: "your_domain_name"
+    tls:
         enabled: true
-        annotations: 
-          kubernetes.io/ingress.clas: traefik
-        host: "your_domain_name"
-        tls:
-            enabled: true
-            secretName: "pach-tls"
-    ```
-=== "Example on Azure AKS"
+        secretName: "pach-tls"
+```
 
-    In the example below, we are using the ingress controller Nginx, and opening the HTTP port.
+#### Example on Azure AKS
 
-    ```yaml
-    ingress:
+In the example below, we are using the ingress controller Nginx, and opening the HTTP port.
+
+```yaml
+ingress:
+    enabled: true
+    annotations:
+        kubernetes.io/ingress.class: "nginx"
+    host: "your_domain_name" 
+    tls:
         enabled: true
-        annotations:
-            kubernetes.io/ingress.class: "nginx"
-        host: "your_domain_name" 
-        tls:
-            enabled: true
-            secretName: "pach-tls" 
-    ```
-    **ATTENTION: You must use TLS when deploying on Azure.**
+        secretName: "pach-tls" 
+```
+**ATTENTION: You must use TLS when deploying on Azure.**
 
 
 As of today, few Ingress Controller offer full support of the gRPC protocol. To access `pachd` over gRPC (for example, when using `pachctl` or the s3Gateway, we recommend using a Load Balancer instead.
@@ -197,44 +198,45 @@ When externalService is enabled, Pachyderm creates a corresponding `pachd-lb` se
 
 Add the appropriate annotations to attach any Load Balancer configuration information to the metadata of your service.
 
-=== "Example on AWS EKS"
-    In the following example, we deploy an NLB and enable TLS on AWS EKS:
+#### Example on AWS EKS
+In the following example, we deploy an NLB and enable TLS on AWS EKS:
 
-    ``` yaml
-    pachd:
-      externalService:
-        enabled: true
-        apiGRPCPort: 30650
-        s3GatewayPort: 30600
-        annotations:
-            service.beta.kubernetes.io/aws-load-balancer-type: "external"
-            service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-            service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
-            service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-aaaaa,subnet-bbbbb,subnet-ccccc"
-            service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account-id:certificate/aaa-bbb-cccc"
-            service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "30600,30650,30657,30658"
-    ```
-=== "Example on GCP GKE"
-    In the following example, we pre created a static IP by running `gcloud compute addresses create ADDRESS_NAME --global --ip-version IPV4`, then passed this external IP to the values.yaml as follow:
+``` yaml
+pachd:
+  externalService:
+    enabled: true
+    apiGRPCPort: 30650
+    s3GatewayPort: 30600
+    annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: "external"
+        service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+        service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
+        service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-aaaaa,subnet-bbbbb,subnet-ccccc"
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account-id:certificate/aaa-bbb-cccc"
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "30600,30650,30657,30658"
+```
 
-    ``` yaml
-    pachd:
-      externalService:
-        enabled: true
-        apiGRPCPort: 30650
-        s3GatewayPort: 30600
-        loadBalancerIP: ${ADDRESS_NAME}
-    ```
-=== "Example on Azure AKS"
-    This example is identical to the example on Google GKE.
+#### Example on GCP GKE
+In the following example, we pre created a static IP by running `gcloud compute addresses create ADDRESS_NAME --global --ip-version IPV4`, then passed this external IP to the values.yaml as follow:
 
-    ``` yaml
-    pachd:
-      externalService:
-        enabled: true
-        apiGRPCPort: 30650
-        s3GatewayPort: 30600
-        loadBalancerIP: ${ADDRESS_NAME}
-    ```
+``` yaml
+pachd:
+  externalService:
+    enabled: true
+    apiGRPCPort: 30650
+    s3GatewayPort: 30600
+    loadBalancerIP: ${ADDRESS_NAME}
+```
+#### Example on Azure AKS
+This example is identical to the example on Google GKE.
+
+``` yaml
+pachd:
+  externalService:
+    enabled: true
+    apiGRPCPort: 30650
+    s3GatewayPort: 30600
+    loadBalancerIP: ${ADDRESS_NAME}
+```
 
 Next:   Find the [deployment page that matches your cloud provider](../../)
