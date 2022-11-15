@@ -4,6 +4,11 @@
 <meta name="description" content="{{ .Description }}" />
 <meta name="keywords" content="{{ .Keywords }}" />
 <meta name="author" content="{{ .Params.author }}" />
+
+{{if eq .Section .Site.Params.releaseInfo.latest }}
+<link rel="canonical" href="{{.Permalink}}" />
+{{end}}
+
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 
