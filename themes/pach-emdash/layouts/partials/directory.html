@@ -22,7 +22,7 @@
         <div id="slide-container" class="slide">
             {{/* Displays current page's children. */}}
             <div id="contents-container" class="is-full s bold c-mt-2  h-scroll noscrollbar">
-                <button class="p-2 outlined s bold is-fit rounded-1 mb-2"> Contents </button>
+                <button class="p-2 outlined s bold is-fit rounded-1 mb-2"> {{if eq .Kind "section"}}Pages {{else}} Sections {{end}} </button>
                 {{ if (eq .Params.layout "glossary") }}
                     {{/*  Does not display children if parent has layout:glossary  */}}
                 {{else if .Pages }}

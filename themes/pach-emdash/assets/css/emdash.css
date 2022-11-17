@@ -242,6 +242,8 @@ hr {
 :is(.spread, .spread-left, .spread-right, .spread-around, .spread-center, .spread-stretch, .spread-between, .c-spread > *) {
     display: flex;
     flex-flow: row wrap;
+    min-width: 0;
+    
 
 }
 
@@ -317,6 +319,8 @@ hr {
 :is(.stack, .stack-left, .stack-center, .stack-right, .c-stack > *) {
     display:flex;
     flex-direction: column;
+    min-width: 0;
+
 }
 
 .stack-left { align-items: baseline; }
@@ -355,10 +359,11 @@ ol li::marker {
 }
 
 .content  pre { 
-  max-width: 100%;
   white-space: pre-wrap;
-  padding: 1ch;
   overflow-x: scroll;
+  padding: 0;
+  margin:0;
+  height: fit-content;
  }
 
  code {
@@ -385,9 +390,7 @@ ol li::marker {
   letter-spacing: .2px;
  }
 
- .content  img {
-  max-width: 100%;
- }
+
 
 /* breadcrumb */
 
@@ -438,7 +441,6 @@ button, .button {
 
 .image {
     display: block;
-    max-width: 100%;
     height: auto;
 }
 
@@ -2153,4 +2155,9 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 
 .montserrat {
   font-family: 'Montserrat', sans-serif;
+}
+ 
+img {
+  min-width: 0;
+  max-width: 100%;
 }

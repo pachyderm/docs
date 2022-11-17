@@ -1,0 +1,27 @@
+object: transform
+description: ''
+attributes:
+  image:
+    type: string 
+    description: ""
+    required: false
+  cmd: 
+    type: string 
+    description: ""
+    required: false
+  err_cmd: 
+    type: string 
+    description: ""
+    required: false
+  env: 
+    type: string 
+    description: ""
+    required: false
+  secrets: 
+    type: string 
+    description: ""
+    required: false
+  image_pull_secrets: 
+    type: string 
+    description: ""
+    required: false
