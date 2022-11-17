@@ -33,7 +33,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
         form: ['spread','rounded-4' ],
         submit: ['is-hidden'],
         reset: ['is-hidden'],
-        input: ['is-full','ml-2', 'p-1', 'm','inherit-color']
+        input: ['is-full','ml-2', 'p-1', 'm','inherit-color', 'is-search-input-1']
       },
       templates: {
       },
@@ -46,7 +46,7 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
       escapeHTML: false,
       cssClasses: {
         root: ['algoliaHome', 'mx-4'],
-        list: ['spread-left', 'is-fullsize-mobile'],
+        list: ['spread-left', 'is-fullsize-mobile', 'listless'],
         item: ['is-half', 'is-fullsize-mobile'] },
       templates: {
         empty: `<div class="hit spread mt-5 pinned-top is-full brighten-1 rounded-1 c-sp-2 m-2"> <div class=" text-center rounded-1"><h2 class="uppercase bold">No Results Found</h2>
@@ -56,13 +56,13 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
             <a href="{{relURI}}" class="">
               <div class="hit spread c-pinned-center is-full ">
                 <div class="stack c-mb-2">
-                  <div class="xs uppercase is-fit">{{parent}}</div>
-                  <h3 class="is-fit l extra-bold">{{title}}</h3>
+                  <div class="text-xs uppercase is-fit">{{parent}}</div>
+                  <h3 class="is-fit text-l extra-bold">{{title}}</h3>
                   <div class="s">{{description}}</div>
                 </div>
               </div>
             </a>
-            <div class="xs spread-right c-black c-mr-2 c-px-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
+            <div class="text-xs spread-right c-black c-mr-2 c-px-1 c-fit">{{#tags}} <a href="/tags/{{.}}?&v={{version}}">{{.}}</a>{{/tags}}</div>
           </div>
           `
       },

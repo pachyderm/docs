@@ -1,10 +1,10 @@
 {{$type := .Get 0 | lower}}
 
-<section class="rounded-1 {{$type}} sp-1 my-3"> 
+<section class="rounded-4 {{$type}} sp-1 my-3"> 
 <div class="spread-between my-2 c-pinned-center">
-    <div class="is-fit m ml-3">{{if eq $type "warning"}}⚠️{{else if eq $type "info"}}📖{{else if eq $type "tip"}}💡{{else if eq $type "danger"}}☠️{{else if eq $type "example"}}✍️{{else if eq $type "success"}}🎉{{else}}ℹ️{{end}}
+    <div class="is-fit text-m ml-3">{{if eq $type "warning"}}⚠️{{else if eq $type "info"}}📖{{else if eq $type "tip"}}💡{{else if eq $type "danger"}}☠️{{else if eq $type "example"}}✍️{{else if eq $type "success"}}🎉{{else}}ℹ️{{end}}
     </div>
-    <button class="is-fit p-1 mr-3 rounded-1 xxs bold"><img src="/images/collapse.svg" class="hide"></button>
+    <button class="is-fit p-1 mr-3 rounded-4 text-xxs bold"><img src="/images/collapse.svg" class="hide"></button>
 </div>
 <div class="content px-3">
     {{ .Inner }}
