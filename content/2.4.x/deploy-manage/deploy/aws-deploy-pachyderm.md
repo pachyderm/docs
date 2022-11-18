@@ -9,43 +9,13 @@ series:
 seriesPart:
 --- 
 
-For a quick test installation of Pachyderm on AWS (suitable for development), jump to our [Quickstart page](../quickstart/).
+This article walks you through deploying a Pachyderm cluster on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS).
 
-For deployments in production, refer to the following diagram and follow these step-by-step instructions:
-![AWS Arch](../../images/arch-diagram-high-level-aws.svg)
+ ## Architecture Diagram 
 
-{{% notice tip %}}
-Before your start your installation process.
+![AWS Arch](../../images/arch-diagram-high-level-aws.svg) 
 
-- Refer to our generic ["Helm Install"](../helm-install/) page for more information on  how to install and get started with `Helm`.
-- Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
-- Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
-{{% /notice %}}
-    
-
-{{% notice warning %}}
-We are now shipping Pachyderm with an **embedded proxy** 
-allowing your cluster to expose one single port externally. This deployment setup is optional.
-
-If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
-{{% /notice%}}
-
-The following section walks you through deploying a Pachyderm cluster on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS). 
-
-In particular, you will:
-
-1. Make a few [client installations](#1-prerequisites) before you start.
-2. [Deploy Kubernetes](#2-deploy-kubernetes-by-using-eksctl).
-3. [Create an S3 bucket](#3-create-an-s3-bucket) for your data and grant Pachyderm access.
-4. [Enable Persistent Volumes Creation](#4-enable-your-persistent-volumes-creation)
-5. [Create An AWS Managed PostgreSQL Instance](#5-create-an-aws-managed-postgresql-database)
-6. [Deploy Pachyderm ](#6-deploy-pachyderm)
-7. Finally, you will need to install [pachctl](../../../getting-started/local-deploy) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
-8. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
-9. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
-
-## 1. Prerequisites
-
+## Before You Start
 Before you can deploy Pachyderm on an EKS cluster, verify that
 you have the following prerequisites installed and configured:
 
@@ -55,7 +25,7 @@ you have the following prerequisites installed and configured:
 * [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
 * [pachctl](../../../getting-started/local-deploy)
 
-## 2. Deploy Kubernetes by using `eksctl`
+## 1. Deploy Kubernetes by using `eksctl`
 
 {{% notice warning %}}
 Pachyderm requires running your cluster on Kubernetes 1.19.0 and above.
@@ -102,11 +72,10 @@ you are ready to prepare for the installation of Pachyderm.
 Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure. 
 
 {{% notice note %}}
- Secrets Manager.
 Pachyderm recommends securing and managing your secrets in a Secret Manager. Learn about the [set up and configuration of your EKS cluster to retrieve the relevant secrets from AWS Secrets Manager](../aws-secret-manager) then resume the following installation steps.
 {{% /notice %}}
 
-## 3. Create an S3 bucket
+## 2. Create an S3 bucket
 ### Create an S3 object store bucket for data
 
 Pachyderm needs an S3 bucket (Object store) to store your data. You can create the bucket by running the following commands:
@@ -206,55 +175,26 @@ In short, you will:
 
 ### (Optional) Set Up Bucket Encryption
 
-Amazon S3 supports two types of bucket encryption — server-side encryption
-(SSE-S3) and AWS Key Management Service (AWS KMS), which stores customer
-master keys. When creating a bucket for your Pachyderm cluster, you can set up either
-of them. Because Pachyderm requests that buckets do not include encryption
-information, the method that you select for the bucket is applied.
-
-{{% notice info%}}
-Setting up communication between Pachyderm object storage clients and AWS KMS
-to append encryption information to Pachyderm requests is not supported and
-not recommended. 
-{{%/notice%}}
-
 To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html).
 
-## 4. Enable Your Persistent Volumes Creation
+## 3. Enable Your Persistent Volumes Creation
 
-etcd and PostgreSQL (metadata storage) each claim the creation of a pv. 
+etcd and PostgreSQL (metadata storage) each claim the creation of a persistent volume. **Although Pachyderm uses `gp2` default EBS volumes, we strongly recommend using SSD gp3 in production.**
 
-{{% notice tip %}}
-The metadata services generally require a small persistent volume size (i.e. 10GB) **but high IOPS (1500)**.
-
-Note that Pachyderm out-of-the-box deployment comes with **gp2** default EBS volumes. 
-While it might be easier to set up for test or development environments, **we highly recommend to use SSD gp3 in production**. A **gp3** EBS volume delivers a baseline performance of 3,000 IOPS and 125MB/s at any volume size. Any other disk choice may require to **oversize the volume significantly to ensure enough IOPS**.
-
-See [volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).
-{{% /notice %}}
-
-If you plan on using **gp2** EBS volumes:
-
-- For deployments in **production**, [go to the AWS-managed PostgreSQL deployment and setup section](#5-create-an-aws-managed-postgresql-database)
-- For non production deployments, you will be using the default bundled version of PostgreSQL: [Go to the deployment of Pachyderm](#6-deploy-pachyderm) 
-
-For gp3 volumes, you will need to **deploy an Amazon EBS CSI driver to your cluster as detailed below**.
-
-For your EKS cluster to successfully create two **Elastic Block Storage (EBS) persistent volumes (PV)**, follow the steps detailled in **[deploy Amazon EBS CSI driver to your cluster](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)**.
-
-In short, you will:
+### For Production
 
 1. [Create an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html). You might already have completed this step if you chose to create an IAM Role and Policy to give your containers permission to access your S3 bucket.
-1. Create a CSI Driver service account whose IAM Role will be granted the permission (policy) to make calls to AWS APIs. 
-1. Install Amazon EBS Container Storage Interface (CSI) driver on your cluster configured with your created service account.
+2. Create a CSI Driver service account whose IAM Role will be granted the permission (policy) to make calls to AWS APIs. 
+3. Install Amazon EBS Container Storage Interface (CSI) driver on your cluster configured with your created service account.
 
+See the [official AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for more details.
 
-If you expect your cluster to be very long
-running or scale to thousands of jobs per commits, you might need to add
-more storage.  However, you can easily increase the size of the persistent
-volume later.
+ 
+### For Non-Production
 
-## 5. Create an AWS Managed PostgreSQL Database
+For non production deployments, use the default bundled version of PostgreSQL: [Go to the deployment of Pachyderm](#5-deploy-pachyderm)  
+
+## 4. Create an AWS Managed PostgreSQL Database
 
 By default, Pachyderm runs with a bundled version of PostgreSQL. 
 For production environments, it is **strongly recommended that you disable the bundled version and use an RDS PostgreSQL instance**. 
@@ -263,25 +203,16 @@ For production environments, it is **strongly recommended that you disable the b
 Note that [Aurora Serverless PostgreSQL](https://aws.amazon.com/rds/aurora/serverless/) is not supported and will not work.
 {{% /notice %}}
 
-This section will provide guidance on the configuration settings you will need to: 
-
-- Create an environment to run your AWS PostgreSQL databases. Note that you might need to 
-create **two databases** (`pachyderm` and, depending on whether your cluster is standalone or managed by an enterprise server, a second database, `dex`).
-- Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
-
-{{% notice note %}}
-It is assumed that you are already familiar with RDS, or will be working with an administrator who is.
-{{% /notice %}}
-
 ### Create An RDS Instance
 
 {{% notice info%}}
 Find the details of all the steps highlighted below in [AWS Documentation: "Getting Started" hands-on tutorial](https://aws.amazon.com/getting-started/hands-on/create-connect-postgresql-db/).
 {{% /notice %}}
  
-In the RDS console, create a database **in the region matching your Pachyderm cluster**. Choose the **PostgreSQL** engine and select a PostgreSQL version >= 13.3.
-
-Configure your DB instance as follows.
+1. In the RDS console, create a database **in the region matching your Pachyderm cluster**. 
+2. Choose the **PostgreSQL** engine.
+3. Select a PostgreSQL version >= 13.3.
+4. Configure your DB instance as follows:
 
 | SETTING | Recommended value|
 |:----------------|:--------------------------------------------------------|
@@ -300,14 +231,10 @@ Configure your DB instance as follows.
 | *Database name* | In the *Database options* section, enter Pachyderm's Database name (We are using `pachyderm` in this example.) and click *Create database* to create your PostgreSQL service. Your instance is running. <br>Warning: If you do not specify a database name, Amazon RDS does not create a database.|
 
 
-{{% notice warning %}}
-One Last Step
+5. If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you must create a second database named `dex` in your RDS instance for Pachyderm's authentication service.  Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). 
+   
+6. Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). Pachyderm will use the same username to connect to `pachyderm` as well as to `dex`. 
 
-Once your instance is created: 
-
-- If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you will need to create a second database named "dex" in your RDS instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). This second database is not needed when your cluster is managed by an enterprise server.
-- Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). Pachyderm will use the same username to connect to `pachyderm` as well as to `dex`. 
-{{% /notice %}}
 
 ### Update your values.yaml 
 Once your databases have been created, add the following fields to your Helm values:
@@ -332,7 +259,7 @@ postgresql:
   # database server to connect to in global.postgresql
   enabled: false
 ```
-## 6. Deploy Pachyderm
+## 5. Deploy Pachyderm
 
 You have set up your infrastructure, created your S3 bucket and an AWS Managed PostgreSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy Pachyderm.
 
@@ -342,9 +269,17 @@ You have set up your infrastructure, created your S3 bucket and an AWS Managed P
 If you have not created a Managed PostgreSQL RDS instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
 {{% /notice %}}
 
+{{< stack type="wizard" >}}
+{{% wizardRow id="EBS Type" %}}
+{{% wizardButton option="gp3" state="active" %}}
+{{% wizardButton option="gp2" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults %}}
+{{% wizardResult val1="ebs-type/gp3" %}}
+
 #### For gp3 EBS Volumes
 [Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
-
 
 #####  Gp3 + Service account annotations
 
@@ -354,6 +289,12 @@ deployTarget: AMAZON
 # And a storageclass configured named gp3
 etcd:
   storageClass: gp3
+
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+
 pachd:
   storage:
     amazon:
@@ -394,6 +335,12 @@ deployTarget: AMAZON
 # And a storageclass configured named gp3
 etcd:
   storageClass: gp3
+
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+
 pachd:
   storage:
     amazon:
@@ -422,6 +369,8 @@ postgresql:
   # database server to connect to in global.postgresql
   enabled: false
 ```
+{{% /wizardResult%}}
+{{% wizardResult val1="ebs-type/gp2" %}}
 
 #### For gp2 EBS Volumes
 
@@ -432,6 +381,12 @@ postgresql:
 deployTarget: AMAZON      
 etcd:
   etcd.storageSize: 500Gi
+
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+
 pachd:
   storage:
     amazon:
@@ -464,10 +419,17 @@ postgresql:
   enabled: false
 ```  
 ##### For Gp2 + AWS Credentials
+
 ```yaml
 deployTarget: AMAZON      
 etcd:
   etcd.storageSize: 500Gi
+
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+
 pachd:
   storage:
     amazon:
@@ -497,8 +459,14 @@ postgresql:
   enabled: false
 ```
 
+{{% /wizardResult%}}
+{{% /wizardResults %}}
+{{< /stack >}}
 
-Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml).
+ 
+ 
+
+
 
 {{% notice tip %}}
 Retain (ideally in version control) a copy of the Helm values used to deploy your cluster. It might be useful if you need to [restore a cluster from a backup](../../manage/backup-restore).
@@ -544,18 +512,22 @@ Retain (ideally in version control) a copy of the Helm values used to deploy you
 
 - Finally, make sure that [`pachctl` talks with your cluster](#7-have-pachctl-and-your-cluster-communicate).
 
-## 7. Have 'pachctl' And Your Cluster Communicate
+## 6. Have 'pachctl' And Your Cluster Communicate
 
-Assuming your `pachd` is running as shown above, make sure that `pachctl` can talk to the cluster.
+{{< stack type="wizard" >}}
+{{% wizardRow id="exposed publicly?" %}}
+{{% wizardButton option="yes" state="active" %}}
+{{% wizardButton option="no" %}}
+{{% /wizardRow %}}
 
-If you are exposing your cluster publicly:
-
-  1. Retrieve the external IP address of your TCP load balancer or your domain name:
+{{% wizardResults %}}
+{{% wizardResult val1="exposed-publicly/yes" %}}
+1. Retrieve the external IP address of your TCP load balancer or your domain name:
     ```s
     kubectl get services | grep pachd-lb | awk '{print $4}'
     ```
 
-  1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
+  2. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
       ```s
       echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set context "<your-cluster-context-name>" --overwrite
@@ -564,22 +536,28 @@ If you are exposing your cluster publicly:
       pachctl config set active-context "<your-cluster-context-name>"
       ```
 
-  1. Check that your are using the right context: 
+  3. Check that your are using the right context: 
 
       ```s
       pachctl config get active-context
       ```
 
       Your cluster context name should show up.
-
-If you're not exposing `pachd` publicly, you can run:
+{{% /wizardResult%}}
+{{% wizardResult val1="exposed-publicly/no" %}}
+Run the following:
 
 ```s
 # Background this process because it blocks.
 pachctl port-forward
 ``` 
+{{% /wizardResult%}}
+{{% /wizardResults %}}
 
-## 8. Check That Your Cluster Is Up And Running
+{{< /stack>}}
+
+
+## 7. Check That Your Cluster Is Up And Running
 
 {{% notice warning %}}
 If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
@@ -596,15 +574,4 @@ COMPONENT           VERSION
 pachctl             {{% latestPatchNumber %}}
 pachd               {{% latestPatchNumber %}}
 ```
-
-## 9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
-
-Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
-
-Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension) page for installation instructions. 
-
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
-
-{{% notice info %}}
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-{{% /notice %}}
+ 
