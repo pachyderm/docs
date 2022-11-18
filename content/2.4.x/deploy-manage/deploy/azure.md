@@ -59,7 +59,7 @@ latest available version of the components listed below.
 * [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [jq](https://stedolan.github.io/jq/download/)
 * [kubectl](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli)
-* [pachctl](../../../getting-started/local-installation#install-pachctl)
+* [pachctl](../../../getting-started/local-deploy/)
  
 {{% notice note %}}
 This page assumes that you have an [Azure Subsciption](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).

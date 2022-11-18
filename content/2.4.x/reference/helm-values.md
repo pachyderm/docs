@@ -18,7 +18,7 @@ You rarely need to specify all the fields. Most fields either come with sensible
 
 Values that are unchanged from the defaults can be omitted from the values file you supply at installation.
 
-Take a look at our deployment instructions [locally](../../getting-started/local-installation/) or [in the cloud](../../deploy-manage/deploy/quickstart/) to identify which of those are required for your deployment target.
+Take a look at our deployment instructions [locally](../../getting-started/local-deploy) or [in the cloud](../../deploy-manage/deploy/quickstart/) to identify which of those are required for your deployment target.
 {{% /notice %}}
 
 ## Values.yaml

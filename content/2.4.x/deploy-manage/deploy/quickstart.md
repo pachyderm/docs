@@ -45,7 +45,7 @@ Install the following clients on your machine before you start creating your clu
 Use the latest available version of the components listed below.
 
 * [kubectl](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli): the cli to interact with your cluster.
-* [pachctl](../../../getting-started/local-installation#install-pachctl): the cli to interact with Pachyderm.
+* [pachctl](../../../getting-started/local-deploy): the cli to interact with Pachyderm.
 * Install [`Helm`](https://helm.sh/docs/intro/install/) for your deployment. 
 
 {{% notice warning %}}

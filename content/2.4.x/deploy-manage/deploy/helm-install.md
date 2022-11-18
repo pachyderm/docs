@@ -38,7 +38,7 @@ Before your start your installation process.
 ### Prerequisites
 1. Install [`Helm`](https://helm.sh/docs/intro/install/). 
 
-1. Install [`pachctl`](../../../getting-started/local-installation/#install-pachctl), the command-line utility for interacting with a Pachyderm cluster. 
+1. Install [`pachctl`](../../../getting-started/local-deploy), the command-line utility for interacting with a Pachyderm cluster. 
 
 1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{% majorMinorVersion %}}/deploy-manage/deploy/) that apply to you:
     * **Find the deployment page that applies to your Cloud provider** (or custom deployment, or on-premises deployment).

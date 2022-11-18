@@ -325,7 +325,7 @@ pachd:
 
 ## Deploy Pachyderm Locally With a Proxy
 
-This section is an alternative to the default [local deployment instructions](../../../getting-started/local-installation). It uses a variant of the original one line command to enable a proxy. 
+This section is an alternative to the default [local deployment instructions](../../../getting-started/local-deploy). It uses a variant of the original one line command to enable a proxy. 
 
 Follow the [Prerequisites](#prerequisites) before [deploying Pachyderm](#deploy-pachyderm-community-edition-or-enterprise) (with or without Console) on your local cluster, then [Connect 'pachctl' To Your Cluster](#connect-pachctl-to-your-cluster).
 
@@ -334,9 +334,9 @@ JupyterLab users, [**you can also install Pachyderm JupyterLab Mount Extension**
 Note that you can run both Console and JupyterLab on your local installation.
 ### Prerequisites
 
-- If you are not using Linux, follow all the default [Prerequisites](../../../getting-started/local-installation/#prerequisites) installation instructions. 
+- If you are not using Linux, follow all the default [Prerequisites](../../../getting-started/local-depoy) installation instructions. 
 
-- If you are a Linux user, make sure to set up your local Kubernetes Cluster with [Kind](../../../getting-started/local-installation/#using-kind) while following the default [Prerequisites](../../../getting-started/local-installation/#prerequisites) installation instructions. **Use the command below**.
+- If you are a Linux user, make sure to set up your local Kubernetes Cluster with  Kind while following the default [Prerequisites](../../../getting-started/local-deploy/) installation instructions. **Use the command below**.
 
 Then start your Kubernetes environment.
 

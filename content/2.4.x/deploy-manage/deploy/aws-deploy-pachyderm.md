@@ -40,7 +40,7 @@ In particular, you will:
 4. [Enable Persistent Volumes Creation](#4-enable-your-persistent-volumes-creation)
 5. [Create An AWS Managed PostgreSQL Instance](#5-create-an-aws-managed-postgresql-database)
 6. [Deploy Pachyderm ](#6-deploy-pachyderm)
-7. Finally, you will need to install [pachctl](../../../getting-started/local-installation#install-pachctl) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
+7. Finally, you will need to install [pachctl](../../../getting-started/local-deploy) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
 8. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
 9. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
 
@@ -53,7 +53,7 @@ you have the following prerequisites installed and configured:
 * [AWS CLI](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
 * [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
 * [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
-* [pachctl](../../../getting-started/local-installation#install-pachctl)
+* [pachctl](../../../getting-started/local-deploy)
 
 ## 2. Deploy Kubernetes by using `eksctl`
 
