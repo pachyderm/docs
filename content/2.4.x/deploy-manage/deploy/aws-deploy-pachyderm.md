@@ -270,13 +270,13 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
 {{% /notice %}}
 
 {{< stack type="wizard" >}}
-{{% wizardRow id="EBS Type" %}}
+{{% wizardRow id="Volume Type" %}}
 {{% wizardButton option="gp3" state="active" %}}
 {{% wizardButton option="gp2" %}}
 {{% /wizardRow %}}
 
 {{% wizardResults %}}
-{{% wizardResult val1="ebs-type/gp3" %}}
+{{% wizardResult val1="volume-type/gp3" %}}
 
 #### For gp3 EBS Volumes
 [Check out our example of values.yaml for gp3](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/aws-gp3-values.yaml) or use our minimal example below.
@@ -307,8 +307,6 @@ pachd:
     serviceAccount:
       additionalAnnotations:
         eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/pachyderm-bucket-access
-  externalService:
-    enabled: true
 global:
   postgresql:
     postgresqlUsername: "username"
@@ -349,9 +347,7 @@ pachd:
       # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
       id: AKIAIOSFODNN7EXAMPLE
       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-      secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-  externalService:
-    enabled: true           
+      secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY        
 global:
   postgresql:
     postgresqlUsername: "username"
@@ -370,7 +366,7 @@ postgresql:
   enabled: false
 ```
 {{% /wizardResult%}}
-{{% wizardResult val1="ebs-type/gp2" %}}
+{{% wizardResult val1="volume-type/gp2" %}}
 
 #### For gp2 EBS Volumes
 
@@ -399,8 +395,6 @@ pachd:
     serviceAccount:
       additionalAnnotations:
         eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
-  externalService:
-    enabled: true
 global:
   postgresql:
     postgresqlUsername: "username"
@@ -439,8 +433,6 @@ pachd:
       id: AKIAIOSFODNN7EXAMPLE            
       # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html           
       secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-  externalService:
-    enabled: true
 global:
   postgresql:
     postgresqlUsername: "username"
