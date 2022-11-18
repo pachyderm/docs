@@ -132,14 +132,14 @@ helm repo update
 {{% wizardResults %}}
 {{% wizardResult val1="version/community-edition" %}}
 ```s
-helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL 
+helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
 ```
 {{% /wizardResult %}}
 {{% wizardResult val1="version/enterprise" %}}
 Are you using an [Enterprise](../../../enterprise) trial key? If so, you can set up Enterprise Pachyderm locally by storing your trial key in a `license.txt` file and passing it into the following Helm command: 
 
 ```s  
-helm install --wait --timeout 10m pachd pach/pachyderm --set deployTarget=LOCAL  --set pachd.enterpriseLicenseKey=$(cat license.txt) --set console.enabled=true  
+helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
 ``` 
 This unlocks Enterprise features but also [requires user authentication](../../deploy-manage/deploy/console/#connect-to-console) to access Console. A mock user is created by default to get you started, with the **username**: `admin` and **password**: `password`.
 {{% /wizardResult %}}
@@ -178,15 +178,13 @@ kubernetes-dashboard   kubernetes-dashboard-5fd5574d9f-c7ptx        1/1     Runn
 ## 6. Connect to Cluster
 
 ```s
-pachctl config import-kube local --overwrite
-pachctl config set active-context local
-pachctl port-forward
+echo '{"pachd_address":"grpc://127.0.0.1:80"}' | pachctl config set context local --overwrite && pachctl config set active-context local
 ```
 {{% notice note %}}
 If the connection commands did not work together, run each separately.
 {{%/notice %}}
 
-Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
+Optionally open your browser and navigate to the [Console UI](http://localhost).
 
 {{% notice tip %}}
 You can check your Pachyderm version and connection to `pachd` at any time with the following command:
