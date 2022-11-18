@@ -56,6 +56,10 @@ aws s3 ls
 {{% wizardResult val1="version/community-edition" %}}
 ```yaml
  deployTarget: "AMAZON"
+ proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
  pachd:
    storage:
      amazon:
@@ -74,6 +78,10 @@ aws s3 ls
 {{% wizardResult val1="version/enterprise" %}}
 ```yaml
  deployTarget: "AMAZON"
+ proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
  pachd:
    storage:
      amazon:

@@ -191,6 +191,10 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
 {{% wizardResult val1="version/community-edition" %}}
 ```yaml
  deployTarget: "MICROSOFT"
+ proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
  pachd:
    storage:
      microsoft:
@@ -209,6 +213,14 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
 {{% wizardResult val1="version/enterprise" %}}
 ```yaml    
  deployTarget: "MICROSOFT"
+ proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+    
+ ingress:
+  host: <insert-external-ip-address-or-dns-name>
+
  pachd:
    storage:
      microsoft:
