@@ -74,11 +74,33 @@ For a specific target release, specify the targeted major/minor version of `pach
 
 - Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
 
+{{< stack type="wizard" >}}
+{{% wizardRow id="Deploy Method"%}}
+{{% wizardButton option="Production" state="active" %}}
+{{% wizardButton option="Testing" %}}
+{{% /wizardRow %}}
+
+
+{{% wizardResults  %}}
+{{% wizardResult val1="deploy-method/production"%}}
   ```s
   helm repo add pach https://helm.pachyderm.com
   helm repo update
-  helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
+  helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version> --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
   ```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="deploy-method/testing"%}}
+  ```s
+  helm repo add pach https://helm.pachyderm.com
+  helm repo update
+  helm upgrade pachd --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+  ```
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack >}}
+
+
 
 {{% notice note %}}
 Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
