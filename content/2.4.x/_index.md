@@ -8,9 +8,9 @@ tags:
 series:
 seriesPart:
 cascade:
-    latestPatch: 2.4.0
+    latestPatch: 2.4.1
     majorMinor: 2.4
     clientPython: 7.3
-    extensionJupyterLab: 2.4.0
-    mountServerBinary: 2.4.0
+    extensionJupyterLab: 2.4.1
+    mountServerBinary: 2.4.1
 ---
