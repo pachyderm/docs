@@ -36,8 +36,7 @@ You define how your data is spread among workers by
 in its pipeline specification file. 
 
 Based on this specification file, the data in the `input` 
-of your pipeline is turned in datums 
-each of which can contain 1 to many files.
+of your pipeline is turned into datums, each of which can contain 1-to-many files.
 Pachyderm provides a wide variety of ways to define the granularity of each datum. 
 
 For example, you can configure a whole branch of an
@@ -48,12 +47,13 @@ You can also create a combination of the above by aggregating multiple input.
 ## Pipeline Inputs
 This section details the tools at your disposal to
 "break down" your data and fit your specific use case.
+
 ### PFS Input and Glob Pattern
 The most primitive input of a pipeline is a [**PFS input**](../../../reference/pipeline-spec/#pfs-input), defined, at a minimum, by:
 
 - a repo containing the data you want your pipeline to consider
 - a branch to watch for commits
-- and **a [glob pattern](./glob-pattern.md) to determine how the input data is partitioned**.
+- and **a [glob pattern](./glob-pattern) to determine how the input data is partitioned**.
 
 A pipeline input can have one or multiple PFS inputs.
 In the latter case, Pachyderm provides a variety of options to aggregate several PFS inputs together. 
