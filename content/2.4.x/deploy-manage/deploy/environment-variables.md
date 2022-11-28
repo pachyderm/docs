@@ -9,24 +9,20 @@ series:
 seriesPart:
 --- 
 
-When you use Pachyderm, you can define environment variables that can transmit the required configuration directly to your application.
+You can define environment variables that handle required configuration. In Pachyderm, you can define the following types of environment variables:
 
-In Pachyderm, you can define the following types of environment variables:
-
-* `pachd` environment variables that define parameters for your
+* **pachd variables:** Used for your
 Pachyderm daemon container.
 
-* Pachyderm worker environment variables that define parameters
-on the Kubernetes pods that run your pipeline code.
+* **Pachyderm worker variables:** Used by the Kubernetes pods that run your pipeline code.
 
+{{% notice tip %}}
 You can reference environment variables in your code. For example,
 if your code writes data to an external system and you want
 to know the current job ID, you can use the `PACH_JOB_ID`
 environment variable to refer to the current job ID.
 
-{{% notice note %}}
-[Local Deployment](../../../getting-started/local-deploy/)
-{{% /notice %}}
+{{% /notice%}}
 
 ## `pachd` Environment Variables
 
@@ -40,7 +36,7 @@ kubectl get deploy pachd -o yaml
 The following tables list all the `pachd`
 environment variables.
 
-**Global Configuration**
+### Global Configuration
 
 | Environment Variable   | Default Value     | Description |
 | ---------------------- | ----------------- | ----------- |
@@ -52,7 +48,7 @@ environment variables.
 | `PEER_PORT`             | `653`             | The port for pachd-to-pachd communication. |
 | `NAMESPACE`            | `deafult`         | The namespace in which Pachyderm is deployed. |
 
-**pachd Configuration**
+### pachd Configuration
 
 | Environment Variable       | Default Value | Description |
 | -------------------------- | ------------- | ----------- |
@@ -73,7 +69,7 @@ environment variables.
 | `S3GATEWAY_PORT`           |  `600`   | The S3 gateway port number|
 | `DISABLE_COMMIT_PROGRESS_COUNTER` |`false`| A feature flag that disables commit propagation <br> progress counter. If you have a large DAG, <br> setting this parameter to `true` might help <br> improve etcd performance. You only need to set <br>this parameter on the `pachd` pod. Pachyderm passes <br> this parameter to worker containers automatically. |
 
-**Storage Configuration**
+### Storage Configuration
 
 | Environment Variable       | Default Value     | Description |
 | -------------------------- | ----------------- | ----------- |
@@ -150,14 +146,9 @@ Services that run inside the cluster. These variables enable you to connect to
 those outside services, which can be powerful but might also result
 in processing being retried multiple times. 
 
-For example, if your code writes a row to a database, that row might be written multiple times because of retries. Interaction with outside services must be idempotent to prevent
-unexpected behavior. Furthermore, one of the running services that your code
+For example, if your code writes a row to a database, that row might be written multiple times because of retries. Interaction with outside services must be idempotent to prevent unexpected behavior. Furthermore, one of the running services that your code
 can connect to is Pachyderm itself. This is generally not recommended as very
 little of the Pachyderm API is idempotent, but in some specific cases it can be
 a viable approach.
 
-{{% notice note %}}
-**See Also**: [transform.env](../../../reference/pipeline-spec/#transform-required)
-{{% /notice %}}
-
-
+ 
