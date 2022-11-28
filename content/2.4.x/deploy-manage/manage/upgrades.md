@@ -9,25 +9,52 @@ series:
 seriesPart:
 ---
 
-Upgrading to a minor release (e.g., `2.3.5 > 2.3.6`) is simple and requires little downtime. As a good practice, we recommend that you check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before an upgrade to get an understanding of the changes introduced between your current version and your target. 
-
+Learn how to upgrade Pachyderm to access new features and performance enhancements.
 
 ## Before You Start 
 
+- Check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before ugprading
 - [Back up your cluster](../backup-restore/) 
-- Update your Helm chart values if applicable. 
+- Update your Helm chart values if applicable
+
+
 
 ## How to Upgrade Pachyderm 
 
 
-1. Run the following brew command:
+1. Run the following brew command or [download & install the latest release assets](https://github.com/pachyderm/pachyderm/releases/latest):
    ```s  
-      brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
-      ```  
-2. Verify that the installation was successful by running `pachctl version --client-only`:  
+   brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
+   ```  
+2. Upgrade Helm.
+   {{< stack type="wizard" >}}
+   {{% wizardRow id="Deploy Method"%}}
+   {{% wizardButton option="Production" state="active" %}}
+   {{% wizardButton option="Testing" %}} 
+   {{% /wizardRow %}}
+
+   {{% wizardResults %}} 
+   {{% wizardResult val1="deploy-method/production"%}}
+   ```s
+   helm repo add pach https://helm.pachyderm.com
+   helm repo update
+   helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version> --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+   ```
+   {{% /wizardResult %}}
+
+   {{% wizardResult val1="deploy-method/testing"%}}
+   ```s
+   helm repo add pach https://helm.pachyderm.com
+   helm repo update
+   helm upgrade pachd --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+   ```
+   {{% /wizardResult %}} 
+   {{% /wizardResults %}} 
+   {{< /stack >}}
+3. Verify that the installation was successful by running `pachctl version`:  
   
    ```s  
-   pachctl version --client-only  
+   pachctl version 
    ```  
 
    **System Response:**  
@@ -35,51 +62,5 @@ Upgrading to a minor release (e.g., `2.3.5 > 2.3.6`) is simple and requires litt
    ```
    COMPONENT           VERSION  
    pachctl             {{% latestPatchNumber %}} 
+   pachd               {{% latestPatchNumber %}} 
    ```  
-
-## 4. Helm Upgrade
-
-- Redeploy Pachyderm by running the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command with your updated values.yaml:
-
-  ```s
-  helm repo add pach https://helm.pachyderm.com
-  helm repo update
-  helm upgrade pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
-  ```
-
-{{% notice note %}}
-Each chart version is associated with a given version of Pachyderm. You will find the list of all available chart versions and their associated version of Pachyderm on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
-{{% /notice %}}
-
-- The upgrade can take some time. You can run `kubectl get pods` periodically in a separate tab to check the status of the deployment. When Pachyderm is deployed, the command shows all pods as `READY`:
-
-  ```s
-  kubectl get pods
-  ```
-  Once the pods are up, you should see a pod for `pachd` running 
-  (alongside etcd, pg-bouncer, postgres, console etc... depending on your installation). 
-
-  **System response:**
-
-  ```s
-  NAME                     READY     STATUS    RESTARTS   AGE
-  pachd-3677268306-9sqm0   1/1       Running   0          4m
-  ...
-  ```
-
-- Verify that the new version has been deployed:
-
-  ```s
-  pachctl version
-  ```
-
-  **System response:**
-
-  ```s
-  COMPONENT           VERSION
-  pachctl             {{% latestPatchNumber %}}
-  pachd               {{% latestPatchNumber %}}
-  ```
-
-  The `pachd` and `pachctl` versions must both match the new version.
-
