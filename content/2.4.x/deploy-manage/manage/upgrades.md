@@ -21,7 +21,6 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
 
 ## How to Upgrade Pachyderm 
 
-
 1. Run the following brew command or [download & install the latest release assets](https://github.com/pachyderm/pachyderm/releases/latest):
    ```s  
    brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  

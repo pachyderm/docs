@@ -9,98 +9,30 @@ series:
 seriesPart:
 --- 
 
-For a quick test installation of Pachyderm on GCP (suitable for development), jump to our [Quickstart page](../quickstart/).
 
-{{% notice tip %}} 
-Before your start your installation process.
+This article  walks you through deploying a Pachyderm cluster on [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) (GKE). 
+ 
+## Before You Start
 
-- Refer to our generic ["Helm Install"](../helm-install) page for more information on how to install and get started with `Helm`.
-- Read our [infrastructure recommendations](../ingress/). You will find instructions on how to set up an ingress controller, a load balancer, or connect an Identity Provider for access control. 
-- Pachyderm comes with a [web UI (Console)](../console) for visualizing running pipelines and exploring your data. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires, at a minimum, the set up of an Ingress.
-{{% /notice %}}
-    
-
-{{% notice warning %}}
-We are now shipping Pachyderm with an **embedded proxy** 
-allowing your cluster to expose one single port externally. This deployment setup is optional.
-
-If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter the instructions below.
-{{% /notice %}}
-
-The following section walks you through deploying a Pachyderm cluster on [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) (GKE). 
-
-In particular, you will:
-
-1. Make a few [client installations](#1-prerequisites) before you start.
-2. [Deploy Kubernetes](#2-deploy-kubernetes).
-
- {{% notice warning %}}
- For users who want to use an existing cluster, make sure to enable [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). For users creating a new cluster, the script provided in this documentation takes care of it.
-  {{% /notice %}}
-
-1. [Create an GCS bucket](#3-create-a-gcs-bucket) for your data and grant Pachyderm access.
-1. [Enable The Creation of Persistent Volumes](#4-persistent-volumes-creation)
-1. [Create A GCP Managed PostgreSQL Instance](#5-create-a-gcp-managed-postgresql-database)
-1. [Deploy Pachyderm ](#6-deploy-pachyderm)
-1. Finally, you will need to install [pachctl](../../../getting-started/local-deploy) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
-1. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
-1. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
-
-{{% notice tip %}}  
-**TL;DR**: 
-
-[This script](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/deploy/gcp/gcp-doco-script.sh) will create a GKE cluster, the workload identity service accounts and permissions you need, a static IP, the cloud SQL instance and databases, and a cloud storage bucket. It will also install Pachyderm into the cluster. 
-
-- Before running it, update the global variables at the top of the script and make sure to go through the [prerequisites](#1-prerequisites), as we are assuming that you have created a project and enabled the necessary APIs.  
-Note that it will also create a file called ${NAME}.values.yaml in the current directory.
-
-- Once your script has run, [configure your context](#7-have-pachctl-and-your-cluster-communicate)   and [check that your cluster is up and running](#8-check-that-your-cluster-is-up-and-running).
-{{%/notice %}}
-
-## 1. Prerequisites
-
-Install the following clients:
-
-- [Google Cloud SDK](https://cloud.google.com/sdk/) >= 124.0.0
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [pachctl](../../../getting-started/local-deploy)
-- [jq](https://stedolan.github.io/jq/download/)
-
-If this is the first time you use the SDK, follow
-the [Google SDK QuickStart Guide](https://cloud.google.com/sdk/docs/quickstarts).
-
-{{% notice tip %}}
-You can install `kubectl` by using the Google Cloud SDK and
-running the following command:
-
-```s
-gcloud components install kubectl
-```
-{{% /notice %}}
-
-Additionally, before you begin your installation: 
-
-- make sure to [create a new Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) or retrieve the ID of an existing Project you want to deploy your cluster on. 
-
-    All of the commands in this section are **assuming that you are going to set your gcloud config to automatically select your project**.  Please take the time to do so now with the following command, or be aware you will need to pass additional project parameters to the rest of the commands in this documentation.
-
+1. Install the following clients:
+   - [Google Cloud SDK](https://cloud.google.com/sdk/) >= 124.0.0
+   - [kubectl](https://kubernetes.io/docs/tasks/tools/)
+   - [pachctl](../../../getting-started/local-deploy)
+   - [jq](https://stedolan.github.io/jq/download/)
+2. [Create a new Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) or retrieve the ID of an existing Project you want to deploy your cluster on. 
+3. Set your gcloud config to automatically select your project:
     ```s
     PROJECT_ID=<your project ID>
 
     gcloud config set project ${PROJECT_ID}
     ```
 
-- [Enable the GKE API on your project](https://console.cloud.google.com/apis/library/container.googleapis.com?q=kubernetes%20engine) if you have not done so already.
+4. [Enable the GKE API on your project](https://console.cloud.google.com/apis/library/container.googleapis.com?q=kubernetes%20engine) if you have not done so already.
 
-- Enable the [CloudSQL Admin API](https://cloud.google.com/sql/docs/postgres/admin-api) to administer your instance. 
-
-    - In Google Cloud Console, on your Project's *Dashboard* View, click the *Go to APIs Overview* link in the APIs Section.
-    - On the *APIs & Services* page, click the *+Enable APIs and Services* tab, search for `CloudSQL Admin`, then click *Cloud SQL Admin API*. Click the *Enable* button. Et voilà!
-
-  ![Enable CloudSQL Admin API in Console](../images/cloudSQL_admin_api_enable.png)
+5. Enable the [CloudSQL Admin API](https://cloud.google.com/sql/docs/postgres/admin-api) to administer your instance. 
 
 
-## 2. Deploy Kubernetes
+## 1. Deploy Kubernetes
 
 {{% notice warning %}}
 Pachyderm recommends running your cluster on Kubernetes 1.19.0 and above.
@@ -199,27 +131,22 @@ the following command:
 gcloud container clusters get-credentials ${CLUSTER_NAME}
 ```
 Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of Pachyderm. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
-## 3. Create a GCS Bucket
+## 2. Create a GCS Bucket
 
 ### Create an GCS object store bucket for your data
 
 Pachyderm needs a [GCS bucket](https://cloud.google.com/storage/docs/) (Object store) to store your data. You can create the bucket by running the following commands:
 
-{{% notice warning %}} 
-The GCS bucket name must be globally unique.
-{{% /notice %}}
+1. Set up the following system variables:
+   * `BUCKET_NAME` — A globally unique GCP bucket name where your data will be stored.
+   * `GCP_REGION` — The GCP region of your Kubernetes cluster e.g. "us-west1".
 
-* Set up the following system variables:
-
-      * `BUCKET_NAME` — A globally unique GCP bucket name where your data will be stored.
-      * `GCP_REGION` — The GCP region of your Kubernetes cluster e.g. "us-west1".
-
-* Create the bucket:
-     ```
+2. Create the bucket:
+     ```s
      gsutil mb -l ${GCP_REGION}  gs://${BUCKET_NAME} 
      ```
 
-* Check that everything has been set up correctly:
+3. Check that everything has been set up correctly:
 
      ```s
      gsutil ls
@@ -231,19 +158,13 @@ You now need to **give Pachyderm access to your GCP resources**.
 ### Set Up Your GCP Service Account
 To access your GCP resources, Pachyderm uses a GCP Project Service Account with permissioned access to your desired resources. 
 
-* Create a Service Account with Google Cloud Console
+You can create a Service Account with Google Cloud Console:
+   
+```s
+GSA_NAME=<Your Google Service Account Name>
 
-    In the **IAM & Admin** section of your Google Cloud Console sidebar, select *Service Accounts*. To create a new service, select the *Create Service Account* button at the top. 
-
-    Fill in the Service Account *Name*, *ID* and *Description* then click *Create*. Keep the full name of your service account handy, you will need it soon.
-
-* Alternatively, you can use Google cli 
-
-    ```s
-    GSA_NAME=<Your Google Service Account Name>
-
-    gcloud iam service-accounts create ${GSA_NAME}
-    ```
+gcloud iam service-accounts create ${GSA_NAME}
+```
     
 More information about the creation and management of a Service account on [GCP documentation](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 
@@ -251,7 +172,7 @@ More information about the creation and management of a Service account on [GCP 
 
 For Pachyderm to access your Google Cloud Resources, run the following:
 
-- Create the following set of variables
+1. Create the following set of variables
 
     ```s
     SERVICE_ACCOUNT="${GSA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
@@ -264,7 +185,7 @@ For Pachyderm to access your Google Cloud Resources, run the following:
     CLOUDSQLAUTHPROXY_WI="serviceAccount:${PROJECT_ID}.svc.id.goog[${K8S_NAMESPACE}/k8s-cloudsql-auth-proxy]"
     ```
 
-- Grant access to cloudSQL and your bucket to the Service Account
+2. Grant access to cloudSQL and your bucket to the Service Account
 
     ```s
     # Grant access to cloudSQL to the Service Account
@@ -278,7 +199,7 @@ For Pachyderm to access your Google Cloud Resources, run the following:
         --role="roles/storage.admin"
     ```
 
-- Use [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to run Pachyderm Services as the Service Account 
+3. Use [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to run Pachyderm Services as the Service Account 
 
     Workload Identity is the recommended way to access Google Cloud services from applications running within GKE. 
 
@@ -298,7 +219,7 @@ For Pachyderm to access your Google Cloud Resources, run the following:
 
 For a set of standard roles, read the [GCP IAM permissions documentation](https://cloud.google.com/storage/docs/access-control/iam-permissions#bucket_permissions).
 
-## 4. Persistent Volumes Creation
+## 3. Persistent Volumes Creation
 
 etcd and PostgreSQL (metadata storage) each claim the creation of a [persistent disk](https://cloud.google.com/compute/docs/disks/). 
 
@@ -313,31 +234,24 @@ Each persistent disk generally requires a small persistent volume size but **hig
 {{% /notice %}}
 
 If you plan to deploy a managed PostgreSQL instance (CloudSQL), read the following section. Note that this is the **recommended setup in production**. 
-## 5. Create a GCP Managed PostgreSQL Database
+## 4. Create a GCP Managed PostgreSQL Database
 
 By default, Pachyderm runs with a bundled version of PostgreSQL. 
 For production environments, it is **strongly recommended that you disable the bundled version and use a CloudSQL instance**. 
 
-This section will provide guidance on the configuration settings you will need to: 
-
-- Create a GCP CloudSQL Instance.
-- Create one or **two databases** (`pachyderm` and, depending on whether your cluster is standalone or managed by an enterprise server, a second database, `dex`).
-- Update your values.yaml to turn off the installation of the bundled postgreSQL and provide your new instance information.
-
-{{% notice note %}}
-
-It is assumed that you are already familiar with CloudSQL, or will be working with an administrator who is.
-{{% /notice %}}
+ 
 
 ### Create A CloudSQL Instance
 
+{{% notice tip %}}
 Find the details of the steps and available parameters to create a CloudSQL instance in [GCP  Documentation: "Create instances: CloudSQL for PostgreSQL"](https://cloud.google.com/sql/docs/postgres/create-instance#gcloud).
+{{% /notice %}}
 
-* Set up the following system variable:
+1. Set up the following system variable:
 
-     `INSTANCE_NAME` — Your Cloud SQL instance name.
+   - `INSTANCE_NAME` — Your Cloud SQL instance name.
 
-* See the illustrative example below:
+2. See the illustrative example below:
 ```s
 gcloud sql instances create ${INSTANCE_NAME} \
 --database-version=POSTGRES_13 \
@@ -417,7 +331,7 @@ global:
     postgresqlPassword: "<InstanceRootPassword>"
 ```
 
-## 6. Deploy Pachyderm
+## 5. Deploy Pachyderm
 You have set up your infrastructure, created your GCP bucket and a CloudSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy Pachyderm.
 
 ### Update Your Values.yaml   
@@ -449,12 +363,13 @@ echo $CLOUDSQL_CONNECTION_NAME
 ```yaml
 deployTarget: GOOGLE
 
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+
 pachd:
   enabled: true
-  externalService:
-    enabled: true
-    apiGRPCport:    31400
-    loadBalancerIP: "<STATIC_IP_ADDR>"
   storage:
     google:
       bucket: "<BUCKET_NAME"
@@ -488,34 +403,6 @@ global:
     postgresqlUsername: "postgres"
     postgresqlPassword: "<InstanceRootPassword>"
 ```
-{{% notice warning %}}
-Attention Proxy users 
-Replace the `pachd.externalService` section:
-
-```yaml
-pachd:
-  enabled: true
-  externalService:
-    enabled: true
-    apiGRPCport:    31400
-    loadBalancerIP: "<STATIC_IP_ADDR>"
-```
-with:
-
-```yaml
-proxy:
-  enabled: true
-  service:
-    type: LoadBalancer
-    loadBalancerIP:  "<STATIC_IP_ADDR>"
-pachd:
-  enabled: true
-```
-{{%/notice %}}
-
-{{% notice note  %}}
-Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [github](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml).
-{{% /notice %}}
 
 ### Deploy Pachyderm on the Kubernetes cluster
 
@@ -566,17 +453,23 @@ Check the [list of all available helm values](../../../reference/helm-values/) a
 
 - Finally, make sure that [`pachctl` talks with your cluster](#7-have-pachctl-and-your-cluster-communicate)
 
-## 7. Have 'pachctl' and your Cluster Communicate
+## 6. Have 'pachctl' and your Cluster Communicate
 Assuming your `pachd` is running as shown above, make sure that `pachctl` can talk to the cluster.
 
-If you are exposing your cluster publicly:
+{{< stack type="wizard" >}}
+{{% wizardRow id="exposed publicly?" %}}
+{{% wizardButton option="yes" state="active" %}}
+{{% wizardButton option="no" %}}
+{{% /wizardRow %}}
 
-  1. Retrieve the external IP address of your TCP load balancer or your domain name:
+{{% wizardResults %}}
+{{% wizardResult val1="exposed-publicly/yes" %}}
+1. Retrieve the external IP address of your TCP load balancer or your domain name:
     ```s
     kubectl get services | grep pachd-lb | awk '{print $4}'
     ```
 
-  1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
+  2. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
       ```s
       echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set context "<your-cluster-context-name>" --overwrite
@@ -585,22 +478,29 @@ If you are exposing your cluster publicly:
       pachctl config set active-context "<your-cluster-context-name>"
       ```
 
-  1. Check that your are using the right context: 
+  3. Check that your are using the right context: 
 
       ```s
       pachctl config get active-context
       ```
 
       Your cluster context name should show up.
+{{% /wizardResult%}}
+{{% wizardResult val1="exposed-publicly/no" %}}
+Run the following:
 
-If you're not exposing `pachd` publicly, you can run:
+```s
+# Background this process because it blocks.
+pachctl port-forward
+``` 
+{{% /wizardResult%}}
+{{% /wizardResults %}}
 
-  ```s
-  # Background this process because it blocks.
-  pachctl port-forward
-  ``` 
+{{< /stack>}}
 
-## 8. Check That Your Cluster Is Up And Running
+ 
+
+## 7. Check That Your Cluster Is Up And Running
 You are done! You can make sure that your cluster is working
 by running `pachctl version` or creating a new repo.
 
@@ -620,14 +520,4 @@ pachctl             {{% latestPatchNumber %}}
 pachd               {{% latestPatchNumber %}}
 ```
 
-## 9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
-
-Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
-
-Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension/) page for installation instructions. 
-
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
-
-{{% notice note %}}
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-{{% /notice%}}
+ 
