@@ -15,7 +15,7 @@ and the integration with a company's Identity Providers (IDPs).
 An organization can have **many Pachyderm clusters registered with one single Enterprise Server**. Administrators activate the Enterprise Server with an **Enterprise License Key** from Pachyderm sales, and optionally configure authentication with their IDP via SAML, OIDC, LDAP, etc...
 
 The following diagram gives you a quick overview of an organization with multiple Pachyderm clusters behind a single Enterprise Server.
-![Enterprise Server General Deployment](../images/enterprise-server.png)
+![Enterprise Server General Deployment](../../images/enterprise-server.png)
 
 {{% notice note %}} 
 For POCs and smaller organizations with one single Pachyderm cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single Pachyderm cluster can run the Enterprise Server services embedded within pachd.

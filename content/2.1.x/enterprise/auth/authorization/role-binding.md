@@ -91,7 +91,7 @@ In particular, we will:
 
   ```
   A quick `pachctl list repo` will list your new repo and display your access level on that repo as a **clusterAdmin**.
-  ![Admin Repo Access Level](../images/clusteradmin-repo-access.png)
+  ![Admin Repo Access Level](../../images/clusteradmin-repo-access.png)
 
 - **Third, grant `repoReader` access to our user `one-pachyderm-user@gmail.com`:**
   ```s
@@ -107,17 +107,17 @@ In particular, we will:
   pach:root: [repoOwner]
   ```
 
-    {{% notice note %}} 
-      Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
-      Pachyderm defines 4 prefixes depending on the type of user:
+{{% notice note %}} 
+Note that the user `one-pachyderm-user@gmail.com` has a prefix `user`.
+Pachyderm defines 4 prefixes depending on the type of user:
 
-      - robot
-      - user
-      - group
-      - pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
+- robot
+- user
+- group
+- pipeline (as mentioned above, this prefix will not be used in the context of granting privileges to users. However, it does exist. We are listing it here to give an exhauxtive list of all prefixes.)
 
-      Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
-    {{% /notice %}}
+Aditionnally, the "everyone" user `allClusterUsers` has no specific prefix. See the example below to learn how to assign repoReader access to `allClusterUsers` on a repo.
+{{% /notice %}}
 
 - **Finally, have `one-pachyderm-user@gmail.com` try to add a file to `testinput` without proper writing privileges:**
   ```s
@@ -178,17 +178,17 @@ Let's keep using our Auth0 example as an illustration, and:
  - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
    - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
    - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-   ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
+   ![Authorization Extension Rule Edition](../../../images/auth0-edit-rule.png)
 {{% /notice %}}
 
 1. Group creation
     An Authorization link should now show on your Auth0 webpage.
     In **Authorization/Groups**, create a group. Here `testgroup`:
-    ![Group creation](../images/auth0-create-group.png)
+    ![Group creation](../../images/auth0-create-group.png)
 
 2. Add your user to your group
     In **Authorization/Users**, select your user one-pachyderm-user@gmail.com and add them to your `testgroup` as follow.
-    ![Add User to Group](../images/auth0-add-user-to-group.png)
+    ![Add User to Group](../../images/auth0-add-user-to-group.png)
 
     In **User Mangement/Users**, you user should now show the following addition to their app_metadata:
     ```json

@@ -88,12 +88,12 @@ Then, complete the following steps:
 1. Select **Grant Types**.
 1. Verify that **Authorization Code** and **Refresh Token** are selected.
 
-    ![Auth0 Grant Settings](../../images/auth0-grant-settings.png)
+    ![Auth0 Grant Settings](.././../images/auth0-grant-settings.png)
 
 {{% notice note %}}
 For this Auth0 example, we have created a user in Auth0 in **User Management/Users**.
 We will log in to Pachyderm as this user once our IdP connection is completed.
-![Auth0 Create User](../images/auth0-create-user.png)
+![Auth0 Create User](../../images/auth0-create-user.png)
 {{% /notice %}}
 
 ## 2. Set up and create an Idp-Pachyderm connector

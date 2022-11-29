@@ -11,8 +11,8 @@ seriesPart:
 
 {{% notice info %}} 
 Before you read this section, make sure that you are familiar 
-with Pachyderm's concepts of [Data](../../../concepts/data-concepts/) and
-[Pipeline](../../../concepts/pipeline-concepts).
+with Pachyderm's concepts of [Data](../../concepts/data-concepts/) and
+[Pipeline](../../concepts/pipeline-concepts).
 {{% /notice %}}
 
 

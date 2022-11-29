@@ -27,7 +27,7 @@ This preamble will set the contextual knowledge to better understand how to:
 - Grant Users permissions on Pachyderm Resources.
 - Revoke Users.
 
-in the next [**Role Binding**](../role-binding) page.
+in the next [**Role Binding**](./role-binding) page.
 
 
 ## Users Types
