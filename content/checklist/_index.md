@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  2.4.x
+title:  2.6.x
 description: Pachyderm Version 2.4.x 
 date: 
 # taxonomy #

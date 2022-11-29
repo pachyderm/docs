@@ -83,7 +83,7 @@ The TCP load balancer (load balanced at L4 of the OSI model) will have port `80/
 ## Deploy Pachyderm in Production With a Proxy
 
 Once you have your networking infrastructure setup, 
-check the [deployment page that matches your cloud provider](../../) and 
+check the [deployment page that matches your cloud provider](../../checklist) and 
 follow the installation steps that apply to the cloud provider of your choice from section 1-6.
 Make sure that you have enabled the proxy by adding the following lines to your values.yaml:
 

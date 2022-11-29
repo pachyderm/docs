@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Install Guides  
+title:  Integrations 
 description: description
 date: 
 # taxonomy #

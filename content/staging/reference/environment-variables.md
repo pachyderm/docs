@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Configure Environment Variables
+title: Environment Variables
 description: Learn how to configure environment variables for Pachyderm. 
 date: 
 # taxonomy #

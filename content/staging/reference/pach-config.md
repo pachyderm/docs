@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Configuration Specification
+title:  Pachyderm Config
 description: Learn about the base configuration options available for Pachyderm.
 date: 
 # taxonomy #
