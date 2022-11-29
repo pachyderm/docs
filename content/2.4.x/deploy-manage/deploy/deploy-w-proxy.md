@@ -334,7 +334,7 @@ JupyterLab users, [**you can also install Pachyderm JupyterLab Mount Extension**
 Note that you can run both Console and JupyterLab on your local installation.
 ### Prerequisites
 
-- If you are not using Linux, follow all the default [Prerequisites](../../../getting-started/local-depoy) installation instructions. 
+- If you are not using Linux, follow all the default [Prerequisites](../../../getting-started/local-deploy) installation instructions. 
 
 - If you are a Linux user, make sure to set up your local Kubernetes Cluster with  Kind while following the default [Prerequisites](../../../getting-started/local-deploy/) installation instructions. **Use the command below**.
 

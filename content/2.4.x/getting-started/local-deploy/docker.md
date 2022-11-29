@@ -119,7 +119,7 @@ Are you using an [Enterprise](../../../enterprise) trial key? If so, you can set
 ```s  
 helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
 ``` 
-This unlocks Enterprise features but also [requires user authentication](../../deploy-manage/deploy/console/#connect-to-console) to access Console. A mock user is created by default to get you started, with the **username**: `admin` and **password**: `password`.
+This unlocks Enterprise features but also [requires user authentication](../../../deploy-manage/deploy/console/#connect-to-console)  to access Console. A mock user is created by default to get you started, with the **username**: `admin` and **password**: `password`.
 {{% /wizardResult %}}
 {{% /wizardResults %}}
 {{< /stack >}}
