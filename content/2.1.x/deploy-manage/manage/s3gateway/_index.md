@@ -48,8 +48,8 @@ and the equivalent call to a real s3 Bucket.
 
 Find the exhaustive list of:
 
-- [all of Pachyderm's supported `aws s3` commands](../supported-operations).
-- and the [unsupported ones](../unsupported-operations).
+- [all of Pachyderm's supported `aws s3` commands](./supported-operations).
+- and the [unsupported ones](./unsupported-operations).
 
 ## If Authentication Is Enabled
 If [auth is enabled](../../../enterprise/auth) on the Pachyderm cluster, credentials must be passed with

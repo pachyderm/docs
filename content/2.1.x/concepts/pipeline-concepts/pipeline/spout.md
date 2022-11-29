@@ -24,7 +24,7 @@ is sporadic, and the latency requirement
 to start the processing is short. 
 
 In these workloads,
-a regular pipeline with a [cron input](./cron)
+a regular pipeline with a [cron input](../cron)
 that polls for new data
 at a consistent time interval
 might not be an optimal solution.

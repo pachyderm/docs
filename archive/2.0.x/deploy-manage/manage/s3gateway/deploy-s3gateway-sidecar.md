@@ -1,3 +1,8 @@
+---
+
+---
+
+
 # Sidecar S3 Gateway 
 
 Pachyderm offers the option to use **S3-Protocol-Enabled Pipelines** (i.e., Pipelines enabled to access input and output repos via the S3 Gateway).
@@ -6,7 +11,7 @@ This is useful when your pipeline code wants to interact with input and/or
 output data through the S3 protocol. For example, running Kubeflow or Apache™ Spark with Pachyderm. 
 
 !!! Note
-    Note that this use case of the S3 Gateway differs from the [Global use case](index.md). The latter runs directly on the `pachd` pod and exists independently and outside of any pipeline lifecycle. 
+    Note that this use case of the S3 Gateway differs from the [Global use case](_index.md). The latter runs directly on the `pachd` pod and exists independently and outside of any pipeline lifecycle. 
     The *"Sidecar S3 Gateway"* (also referred to as *"S3 Enabled Pipelines"*), on the other hand, is a separate S3 gateway instance **running in a `sidecar` container in the `pipeline worker` pod**.
 
 !!! Warning "Maintaining data provenance"

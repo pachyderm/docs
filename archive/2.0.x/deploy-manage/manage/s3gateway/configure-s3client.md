@@ -1,3 +1,6 @@
+---
+---
+
 # Configure Your S3 Client
 
 Before you can access a repo via the S3 gateway,
