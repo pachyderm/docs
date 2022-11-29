@@ -103,7 +103,7 @@ a `pachctl put file images@master -i images.txt` in the images repo of [the open
 {{% /notice %}}
 
 The following diagram illustrates the global commit and its various components:
-![global_commit_after_putfile](../images/global_commit_after_putfile.png)
+![global_commit_after_putfile](../../images/global_commit_after_putfile.png)
 
 Let's take a look at the origin of each commit.
 

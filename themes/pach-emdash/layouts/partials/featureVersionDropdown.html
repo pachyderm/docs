@@ -13,7 +13,14 @@
                     {{ if not .Params.hidden }}
                     {{$currentVersionOption := print "/" .Section "/"}}
                     {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
-                        <a class="bold is-fit p-2 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                    {{ $file :=  print (strings.TrimSuffix "/" $alternativeVersionPath) ".md" }}
+                    {{ $folder :=  print $alternativeVersionPath "_index.md" }}
+                    {{ if os.FileExists $file }}
+                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                    {{ end }}
+                    {{ if os.FileExists $folder }}
+                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                    {{ end }}
                     {{end}}
                 {{end}}
                 </div>
