@@ -16,7 +16,7 @@ This guide assumes that:
 - You have access to a Google Cloud account linked to an active billing account.
 
 {{% notice warning %}}
-This is not a production-level setup guide; see the [Google Cloud Platform deploy guide](http://localhost:1313/2.4.x/deploy-manage/deploy/google-cloud-platform/) for in-depth setup. 
+This is not a production-level setup guide; see the [Google Cloud Platform deploy guide](/deploy-manage/deploy/google-cloud-platform/) for in-depth setup. 
 {{% /notice %}}
 
 ---
