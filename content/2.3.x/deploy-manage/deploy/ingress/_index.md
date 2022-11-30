@@ -27,7 +27,7 @@ Refer to our generic ["Helm Install"](../helm-install/) page for more informatio
 {{% notice warning %}}
 We are now shipping Pachyderm with an **embedded proxy** allowing your cluster to expose one single port externally. This deployment setup is optional.
 
-If you choose to deploy Pachyderm with a Proxy, our new recommended architecture and [deployment instructions](../../deploy-w-proxy) overwrite the following instructions.
+If you choose to deploy Pachyderm with a Proxy, our new recommended architecture and [deployment instructions](../deploy-w-proxy) overwrite the following instructions.
 {{%/notice %}}
 For production deployments,
 we recommend that you:

@@ -180,7 +180,7 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
 - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
   - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
   - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-  ![Authorization Extension Rule Edition](../../../images/auth0-edit-rule.png)
+  ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
 {{% /notice %}}
 
 1. Group creation

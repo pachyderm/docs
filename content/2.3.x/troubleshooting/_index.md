@@ -17,7 +17,7 @@ help you in troubleshooting your deployment and pipelines.
 
 Pachyderm has a built-in logging system that collects
 information about events in your Pachyderm environment at
-pipeline, datum, and job level. See [pachctl logs](../../reference/pachctl/pachctl_logs).
+pipeline, datum, and job level.
 
 To troubleshoot the cluster itself, use the `kubectl` tool
 troubleshooting tips. A few basic commands that you can use
