@@ -55,4 +55,4 @@ enables you to avoid manual updates to historical results or swapping
 ML models in production.
 
 For examples of ML workflows in Pachyderm see
-[Machine Learning Examples](../../examples/examples.md#machine-learning).
+[Machine Learning Examples](https://github.com/pachyderm/examples).
