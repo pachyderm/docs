@@ -229,4 +229,4 @@ In particular, those commands let you create, update, delete, list, or get a spe
 {{% /notice %}}
 
 ## 3. Login
-The users registered with your IdP are now ready to [Log in to Pachyderm](./login)
+The users registered with your IdP are now ready to [Log in to Pachyderm](../login)

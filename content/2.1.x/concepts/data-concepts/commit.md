@@ -26,8 +26,8 @@ This command saves your changes and closes that repository's commit,
 indicating the data is ready for processing by downstream pipelines.
 
 {{% notice warning %}} 
-`start commit` can only be used on input repos without [provenance](./provenance). Such repos are the entry points of a DAG.
-You cannot manually start a commit from a pipeline [output or meta repo](./repo).
+`start commit` can only be used on input repos without [provenance](../provenance). Such repos are the entry points of a DAG.
+You cannot manually start a commit from a pipeline [output or meta repo](../repo).
 {{% /notice %}}
 
  When you create a new commit, the previous commit on which the new commit is based becomes the parent of the new commit. Your repo history consists of those parent-child relationships between your data commits.
@@ -56,7 +56,7 @@ That origin can be of 3 types:
 
 {{% notice note %}} 
 To track provenance, Pachyderm requires **all commits to belong to exactly one branch**.
-When moving a commit from one [branch](./branch) to another, Pachyderm creates an `ALIAS` commit on the other branch.
+When moving a commit from one [branch](../branch) to another, Pachyderm creates an `ALIAS` commit on the other branch.
 {{% /notice %}}
 
 Each commit has an alphanumeric identifier (ID) that you can reference in the `<repo>@<commitID>` format (or `<repo>@<branch>=<commitID>` if the commit has multiple branches from the same repo) .

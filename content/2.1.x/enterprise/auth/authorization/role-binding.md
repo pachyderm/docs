@@ -178,7 +178,7 @@ Let's keep using our Auth0 example as an illustration, and:
  - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
    - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
    - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-   ![Authorization Extension Rule Edition](../../../images/auth0-edit-rule.png)
+   ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
 {{% /notice %}}
 
 1. Group creation
@@ -202,48 +202,48 @@ Let's keep using our Auth0 example as an illustration, and:
     ```
 3. Update your connector
 
- === "oidc-dex-connector.json"
+"oidc-dex-connector.json"
 
-     ```json
-     {
-         "type": "oidc",
-         "id": "auth0",
-         "name": "Auth0",
-         "version": 1,
-         "config":{
-         "issuer": "https://dev-k34x5yjn.us.auth0.com/",
-         "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
-         "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
-         "redirectURI": "http://<ip>:30658/callback",
-         "scopes": ["groups", "email", "profile"],
-         "claimMapping":{
-             "groups": "http://pachyderm.com/groups"
-         },
-         "insecureEnableGroups": true
-         }
-     }
-     ```
+```json
+{
+   "type": "oidc",
+   "id": "auth0",
+   "name": "Auth0",
+   "version": 1,
+   "config":{
+   "issuer": "https://dev-k34x5yjn.us.auth0.com/",
+   "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
+   "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
+   "redirectURI": "http://<ip>:30658/callback",
+   "scopes": ["groups", "email", "profile"],
+   "claimMapping":{
+       "groups": "http://pachyderm.com/groups"
+   },
+   "insecureEnableGroups": true
+   }
+}
+```
 
- === "oidc-dex-connector.yaml"
+ "oidc-dex-connector.yaml"
 
-     ``` yaml
-     type: oidc
-     id: auth0
-     name: Auth0
-     version: 1
-     config:
-         issuer: https://dev-k34x5yjn.us.auth0.com/
-         clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
-         clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
-         redirectURI: http://<ip>:30658/callback
-         scopes: 
-         - groups
-         - email
-         - profile
-         claimMapping:
-             groups: http://pachyderm.com/groups
-         insecureEnableGroups: true
-     ```
+``` yaml
+type: oidc
+id: auth0
+name: Auth0
+version: 1
+config:
+   issuer: https://dev-k34x5yjn.us.auth0.com/
+   clientID: hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5
+   clientSecret: 7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL
+   redirectURI: http://<ip>:30658/callback
+   scopes: 
+   - groups
+   - email
+   - profile
+   claimMapping:
+       groups: http://pachyderm.com/groups
+   insecureEnableGroups: true
+```
 
  Note the addition of the `scopes` and `claimMapping` fields to your original connector configuration file.
  Update your connector:
