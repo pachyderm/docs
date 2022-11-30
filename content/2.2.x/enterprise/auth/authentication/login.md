@@ -31,7 +31,7 @@ by login in as the [user created in Auth0](../idp-dex/#1-register-a-pachyderm-ap
       - If you are not logged in your Idp already, you will be asked to enter your credentials. Your identity will be checked against the IdP and the login will go through.
 
       You should see the following message printed out in your browser:
-      ![Login Success](../images/auth0-login-success.png)
+      ![Login Success](../../images/auth0-login-success.png)
 
 1. Check who you logged in as:
 

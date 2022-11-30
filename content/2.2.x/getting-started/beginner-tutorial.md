@@ -503,7 +503,7 @@ and
     ```
 
     See your new DAG in Console:
-    ![Console opencv DAG](./images/console-opencv-dag.png)
+    ![Console opencv DAG](../images/console-opencv-dag.png)
 
 * The pipeline creation triggers a job that generates a montage for all the current HEAD commits of the input repos:
 
