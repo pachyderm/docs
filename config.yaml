@@ -35,7 +35,7 @@ params:
     list: true # displays hero section [...] on list pages. 
     glossary: true # displays hero section [...] on glossary pages (layout:glossary frontmatter). 
   relatedArticles: true # displays related content on page.
-  seriesButton: true #  displays a "Read the <> series" button at the bottom of a page with series frontmatter.
+  seriesButton: false #  displays a "Read the <> series" button at the bottom of a page with series frontmatter.
   toc: true #  displays a table of contents in a page; can be overridden by individual page settings. (WIP)
 
   ## HomePage Features
