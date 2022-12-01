@@ -19,5 +19,5 @@ kubectl delete pvc -l suite=pachyderm
 ## Uninstall Pachctl 
 
 ```s
-brew uninstall @<version>
+brew uninstall @<major>.<minor>
 ```
