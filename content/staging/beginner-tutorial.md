@@ -162,28 +162,14 @@ In your Console, click on the `images` repo to visualize its commit and inspect 
 ### 4. Create a Pipeline
 
 Now that you have some data in your repo, it is time to do something
-with it. Pipelines are the core processing primitive in Pachyderm.
-Pipelines are defined with a simple JSON file called a pipeline
-specification or pipeline spec for short. For this [example](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/examples/opencv), we already
+with it using a [pipeline](../../concepts/pipeline-concepts/pipeline/). 
+
+Pipelines are the processing primitive in Pachyderm and are defined using a JSON file (known as a [pipeline specification](../../reference/pipeline-spec)). For this [example](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/examples/opencv), we already
 [created the pipeline spec for you](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/examples/opencv/edges.json).
 
-When you want to create your own pipeline specification later, you can refer to the
-full [Pipeline Specification](../../reference/pipeline-spec) to use
-more advanced options. Options include building your own code into a
-container.
-In this tutorial, your pipeline will use a pre-built Docker image.
+#### Review Pipeline Spec
 
-{{% notice info %}}
-More about the concept of [`Pipeline`](../../concepts/pipeline-concepts/pipeline/) in Pachyderm.
-{{%/notice %}}
-
-For now, we are going to create a single pipeline that takes in images
-and does some simple edge detection.
-
-![image](../../assets/images/opencv-liberty.png)
-
-Below is the `edges.json` pipeline spec. Let's walk
-through the details.
+Let's walk through the details of the provided pipeline spec so that you'll know how to create one on your own in the future.
 
 ```json
 {
