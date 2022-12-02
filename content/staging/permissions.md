@@ -7,6 +7,7 @@ date:
 tags: ["permissions", "management"]
 series:
 seriesPart:
+hidden: true
 ---
 
 Use this article to reference permissions granted to each role when assigning them to your team/resources.
