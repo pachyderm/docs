@@ -1,13 +1,13 @@
 ---
 # metadata # 
-title:  Update a Project
-description: Learn how to switch to and update a  project in Pachyderm.
+title:  Set a Project as Current
+description: Learn how to switch to a project in Pachyderm.
 date: 
 # taxonomy #
 tags: ["projects"]
 series:
 seriesPart:
-weight: 
+weight: 2
 ---
 In order to begin working on a project, you must assign it to a pachctl context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
 
@@ -17,7 +17,7 @@ In order to begin working on a project, you must assign it to a pachctl context.
 - Optionally set a new context or [import a Kubernetes context](../../deploy-manage/deploy/import-kubernetes-context/) if needed.
 
 
-## How to Update a Project
+## How to Set a Project to Your Current Context
 
 ### Via Pachctl
 

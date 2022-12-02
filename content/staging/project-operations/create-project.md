@@ -7,10 +7,9 @@ date:
 tags: ["projects"]
 series:
 seriesPart:
-weight: 
+weight: 1
 ---
 
-Projects are top-level objects that contain pipelines, repos, and references to other projects. You can set role bindings on a project to manage access across many different projects. Projects enable better organization and collaboration within Pachyderm.
 
 ## How to Create a Project
 
