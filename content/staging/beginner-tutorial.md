@@ -150,7 +150,7 @@ pachctl get file images@master:liberty.png | display
 
 In your Console, click on the `images` repo to visualize its commit and inspect its file:
 
-![Console images liberty](../images/console-images-liberty.png)
+![Console images liberty](/images/getting-started/console-images-liberty.png)
 
 
 ### 4. Create a Pipeline
@@ -229,7 +229,7 @@ Now, let's create the pipeline in Pachyderm:
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/examples/opencv/edges.json
 ```
 Again, check the end result in your Console:
-![Console edges pipeline](../images/console-edges-pipeline.png)
+![Console edges pipeline](/images/getting-started/console-edges-pipeline.png)
 
 #### What Happens When You Create a Pipeline
 
@@ -293,7 +293,7 @@ pachctl get file edges@master:liberty.png | display
 
 {{</stack>}}
 
-![Console edges liberty](../images/console-edges-liberty.png)
+![Console edges liberty](/images/getting-started/console-edges-liberty.png)
 
 
 #### Processing More Data
@@ -350,7 +350,7 @@ pachctl get file edges@master:kitten.png | display
 
 Currently, we've only set up a single-stage pipeline. Let's create a multi-stage pipeline (also known as a DAG) by adding a `montage` pipeline that takes our both original and edge-detected images and arranges them into a single montage of images:
 
-![image](../../assets/images/opencv-liberty-montage.png)
+![image](/images/getting-started/opencv-liberty-montage.png)
 
 Below is the pipeline spec for this new pipeline:
 
