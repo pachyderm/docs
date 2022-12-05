@@ -28,6 +28,10 @@ A pipeline specification file can contain multiple pipeline declarations at once
   ```s 
   {
     "pipeline": {
+      "project": {
+        "option": false,
+        "name:" string
+      },
       "name": string
     },
     "description": string,
