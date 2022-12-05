@@ -100,21 +100,30 @@ The ClusterAdminRole includes all of the previous permissions, plus the followin
 
 | Permission |
 |---|
+|PROJECT_LIST_REPO|
 
 ### ProjectWriterRole 
 
+The `ProjectWriterRole` includes all of the `ProjectViewerRole` permissions, plus the following:
+
 | Permission |
 |---|
+|PROJECT_CREATE_REPO|
 
 ### ProjectOwnerRole
 
+The `ProjectOwnerRole` includes all of the `ProjectWriterRole`, `ProjectViewerRole`, and `RepoOwnerRole` permissions, plus the following:
+
 | Permission |
 |---|
+|PROJECT_DELETE|
+|PROJECT_MODIFY_BINDINGS|
 
 ### ProjectCreatorRole
 
 | Permission |
 |---|
+|PROJECT_CREATE|
 
 ---
 
