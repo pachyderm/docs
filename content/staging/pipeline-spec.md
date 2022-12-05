@@ -365,6 +365,11 @@ The following text is an example of a minimum spec:
 ```
 
 ## Attributes 
+
+### Project (optional)
+
+`pipeline.project` is the namespace that your pipeline belongs to. Pachyderm ships with a default project named `Default`; however, you can create your own using `pachctl create project foo`. See [Project Operations](/tbd) for more details. 
+
 ### Name (required)
 
 `pipeline.name` is the name of the pipeline that you are creating. Each
