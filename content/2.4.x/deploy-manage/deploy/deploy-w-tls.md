@@ -34,7 +34,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 ---
 
-## How to Deploy with TLS
+## How to Deploy With TLS
 
 ### 1. Create a TLS Secret
 
@@ -47,7 +47,7 @@ kubectl create secret tls <name> --key=tls.key --cert=tls.crt
 ```s
 kubectl get certificate
 ```
-### 2.  Enable TLS in your helm values.
+### 2.  Enable TLS in Your Helm Chart Values.
 
 Reference the certificate object in your helm chart by setting your TLS secret name in the proper TLS section. 
 
@@ -89,7 +89,7 @@ When using self signed certificates or custom certificate authority (instead of 
 
 If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
 
-### 3. Connect to Pachyderm Via SSL
+### 3. Connect to Pachyderm via SSL
 
 After you deploy Pachyderm, to connect through `pachctl` by using a
 trusted certificate, you will need to set the `pachd_address` in the
