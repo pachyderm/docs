@@ -44,7 +44,7 @@ that will let you put data into a repo or retrieve data from it via the S3 gatew
 For reference, we have also mentioned the corresponding `pachctl` commands
 and the equivalent call to a real s3 Bucket.
 
-![Global S3 Gateway](../../images/main_s3_gateway.png)
+![Global S3 Gateway](/images/main_s3_gateway.png)
 
 Find the exhaustive list of:
 

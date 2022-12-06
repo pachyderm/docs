@@ -187,7 +187,7 @@ binned_sales
 The following diagram describes how data accumulates in the repository
 over time:
 
-![Data Accumulation](../../../assets/images/d_time_window.svg)
+![Data Accumulation](/images/d_time_window.svg)
 
 Your second pipeline can then process these bins in parallel according to the
 glob pattern of `/*` or as described further. Both pipelines can be easily

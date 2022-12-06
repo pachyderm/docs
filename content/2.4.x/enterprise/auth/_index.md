@@ -41,7 +41,7 @@ Any registered IdP user will then be able to log into their IdP and access Pachy
 
 See the Identity Provider High Level Diagram below:
 
-![IdP - Dex diagram](./images/identity-provider-diagram.svg)
+![IdP - Dex diagram](/images/identity-provider-diagram.svg)
 
 ## Activate User Access Management
 {{% notice note %}}

@@ -18,7 +18,7 @@ Before you read this section, make sure that you understand basic Pachyderm pipe
 
 In general, there are five steps to working with a pipeline. The stages can be summarized in the image below. 
 
-![Developer workflow](../../../assets/images/d_steps_analysis_pipeline.svg)
+![Developer workflow](/images/d_steps_analysis_pipeline.svg)
 
 We will walk through each of the stages in detail.
 
