@@ -18,7 +18,7 @@ Secure internet browser connections and transactions via data encryption by depl
   - [Let's Encrypt](https://letsencrypt.org/)
   - [HashiCorp Vault](https://www.vaultproject.io/)
   - [Venafi](https://www.venafi.com/)
-- The `.crt` file you are using must contain the full certificate chain.
+- The `.crt` file you are using must contain the full certificate chain (root, intermediates, and leaf).
 
 {{% notice tip %}}
 
