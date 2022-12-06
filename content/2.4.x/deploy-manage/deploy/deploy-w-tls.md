@@ -41,7 +41,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 1. Open a terminal and navigate to the location of your generated `.key` and `.crt` files. 
 2. Run the following command:
 ```s
-`kubectl create secret tls <name> --key=tls.key --cert=tls.crt`
+kubectl create secret tls <name> --key=tls.key --cert=tls.crt
 ```
 3. Verify your certificate:
 ```s
