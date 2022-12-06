@@ -51,12 +51,34 @@ kubectl get certificate
 
 Reference the certificate object in your helm chart by setting your TLS secret name in the proper TLS section. 
 
+{{<stack type="wizard">}}
+{{% wizardRow id="Setup Type" %}}
+{{% wizardButton option="With Proxy" state="active" %}}
+{{% wizardButton option="Without Proxy" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults %}}
+{{% wizardResult val1="setup-type/with-proxy" %}}
+```yaml
+  proxy:
+    tls:
+      enabled: true
+      secretName: "<the-secret-name-in-your-certificate-ressource>"
+```
+{{% /wizardResult %}}
+{{% wizardResult val1="setup-type/without-proxy" %}}
 ```yaml
  pachd:
    tls:
       enabled: true
       secretName: "<the-secret-name-in-your-certificate-ressource>"
 ```
+
+{{% /wizardResult %}}
+{{% /wizardResults%}}
+
+{{< /stack >}}
+
 
 For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
 
@@ -67,22 +89,6 @@ When using self signed certificates or custom certificate authority (instead of 
 
 If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
 
-
-{{% notice warning %}}
-We are now shipping Pachyderm with an **embedded proxy**  allowing your cluster to expose one single port externally. This deployment setup is optional.
-
-If you choose to deploy Pachyderm with a proxy (see the [deployment instructions](../deploy-w-proxy/) and new recommended architecture), the setup of **tls is set in the proxy section of your values.yaml** only (i.e., tls terminates inside the proxy).
-
-The setup of TLS at the proxy level is intended for the case where the proxy is exposed directly to the Internet.
-
-```yaml
-  proxy:
-    tls:
-      enabled: true
-      secretName: "<the-secret-name-in-your-certificate-ressource>"
-```
-{{% /notice%}}
-
 ### 3. Connect to Pachyderm Via SSL
 
 After you deploy Pachyderm, to connect through `pachctl` by using a
@@ -90,17 +96,33 @@ trusted certificate, you will need to set the `pachd_address` in the
 Pachyderm context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
-```s   
-echo '{"pachd_address": "grpcs://<cluster-ip:30650"}' | pachctl config set context "grpcs-context" --overwrite && pachctl config set active-context "grpcs-context"   
-```
 
-{{% notice warning %}}
-Attention proxy users, your port number is now 443.
+{{<stack type="wizard">}}
+{{% wizardRow id="Setup Type" %}}
+{{% wizardButton option="With Proxy" state="active" %}}
+{{% wizardButton option="Without Proxy" %}}
+{{% /wizardRow %}}
 
+{{% wizardResults %}}
+{{% wizardResult val1="setup-type/with-proxy" %}}
 ```s
 echo '{"pachd_address": "grpcs://<external-IP-address-or-domain-name>:443"}' | pachctl config set context "grpcs-context" --overwrite
 ```
 ```s
 pachctl config set active-context "grpcs-context"
 ```
-{{% /notice %}}
+{{% /wizardResult %}}
+{{% wizardResult val1="setup-type/without-proxy" %}}
+```yaml
+ pachd:
+   tls:
+      enabled: true
+      secretName: "<the-secret-name-in-your-certificate-ressource>"
+```
+
+{{% /wizardResult %}}
+{{% /wizardResults%}}
+
+{{< /stack >}}
+
+
