@@ -16,8 +16,9 @@ Secure internet browser connections and transactions via data encryption by depl
 - You must have admin control over the domain you wish to use.
 - You must obtain a certificate from a trusted Certificate Authority (CA) such as:
   - [Let's Encrypt](https://letsencrypt.org/)
-  -  [HashiCorp Vault](https://www.vaultproject.io/)
-  -  [Venafi](https://www.venafi.com/)
+  - [HashiCorp Vault](https://www.vaultproject.io/)
+  - [Venafi](https://www.venafi.com/)
+- The `.crt` file you are using must contain the full certificate chain.
 
 {{% notice tip %}}
 
@@ -37,10 +38,10 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 ### 1. Create a TLS Secret
 
-1. Open a terminal and navigate to the location of your generated `.key` and `.cert` files.
+1. Open a terminal and navigate to the location of your generated `.key` and `.crt` files. 
 2. Run the following command:
 ```s
-`kubectl create secret tls <name> --key=tls.key --cert=tls.cert`
+`kubectl create secret tls <name> --key=tls.key --cert=tls.crt`
 ```
 3. Verify your certificate:
 ```s
@@ -62,7 +63,7 @@ For the Cert Manager users, the secret name should match the name set in your [c
 
 #### Self-Signed & Custom Certificates
 
-When using self signed certificates or custom certificate authority, you must set `global.customCaCerts` to `true` to add Pachyderm's certificate and CA to the list of trusted authorities for console and enterprise. 
+When using self signed certificates or custom certificate authority (instead of Lets Encrypt, HashiCorp Vault, or Venafi), you must set `global.customCaCerts` to `true` to add Pachyderm's certificate and CA to the list of trusted authorities for console and enterprise. 
 
 If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
 
