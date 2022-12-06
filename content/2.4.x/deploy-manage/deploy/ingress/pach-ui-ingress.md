@@ -26,7 +26,7 @@ using the **ingress controller** Traefik.
 
 ## Traefik ingress controller on Pachyderm UI's cluster in one diagram
 Here is a quick high-level view of the various components at play.
-![pach-ui-ingress](../../../images/console_ingress_traefik.png)
+![pach-ui-ingress](/images/console_ingress_traefik.png)
 
 {{% notice warning %}}
 The following installation steps are for **Informational Purposes** ONLY. 

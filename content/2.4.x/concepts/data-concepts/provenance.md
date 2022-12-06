@@ -28,7 +28,7 @@ complete audit trail**, allowing all results to be fully reproducible.
 
 The following diagram is an illustration of how provenance works:
 
-![Provenance example](../../images/provenance.png) 
+![Provenance example](/images/provenance.png) 
 
 
 In the diagram above, two input repositories (`model`
