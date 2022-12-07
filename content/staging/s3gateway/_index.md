@@ -25,10 +25,12 @@ The S3 gateway presents each branch from every Pachyderm repository as an S3 buc
 - The `master.foo.bar` bucket corresponds to the `master` branch of the repo `foo` within the `bar` project.
 - The `be97b64f110643389f171eb64697d4e1.master.foo.bar` bucket corresponds to the commit `be97b64f110643389f171eb64697d4e1` on the `master` branch of the `foo` repo within the `bar` project.
 
+If [auth is enabled](../../../enterprise/auth/), credentials must be passed with
+each S3 gateway endpoint as mentioned in the [**S3 Client configuration steps**](./configure-s3client/#set-your-credentials).
 
-## Command Examples 
+### Command Examples 
 
-### Put Data Into Pachyderm Repo
+#### Put Data Into Pachyderm Repo
 
 {{<stack type="wizard">}}
 
@@ -53,7 +55,7 @@ pachctl put file data@master:/ -f myfile.csv --project bar
 
 {{</stack>}}
 
-### Retrieve Data From Pachyderm Repo
+#### Retrieve Data From Pachyderm Repo
 
 {{<stack type="wizard">}}
 
@@ -78,11 +80,6 @@ pachctl get file data@master:/myfile.csv --project bar
 
 {{</stack>}}
 
-
-## Authentication Requirements
-
-If [auth is enabled](../../../enterprise/auth/), credentials must be passed with
-each S3 gateway endpoint as mentioned in the [**S3 Client configuration steps**](./configure-s3client/#set-your-credentials).
 
 ## Port Forwarding
 You can  `pachctl port-forward` to access the s3 gateway through the `localhost:30600` endpoint, however, the Kubernetes port forwarder incurs substantial overhead and does not recover well from broken connections.
