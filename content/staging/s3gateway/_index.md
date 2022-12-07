@@ -9,64 +9,89 @@ series:
 seriesPart:
 ---
 
-Pachyderm comes with an embedded **S3 gateway**, deployed in the `pachd` pod, that allows you to
-**access Pachyderm's repo through the S3 protocol**.  
+Use the embedded S3 Gateway to send or receive data through the S3 protocol using object storage tooling such as Minio, boto3, or AWS s3 CLI. Operations available are similar to those [officially documented for S3](https://docs.aws.amazon.com/cli/latest/reference/s3/).
 
-The S3 Gateway is designed to work with any S3 Client, among which: 
 
-- MinIO
-- AWS S3 cli
-- boto3
+## Before You Start 
 
-The operations on the HTTP API exposed by the S3 Gateway largely mirror those documented in [S3’s official docs](https://docs.aws.amazon.com/cli/latest/reference/s3/). It is typically used when you wish to retrieve data from or expose data to object storage tooling (such as MinIO, boto3, and aws s3 cli). 
+- You must [install and configure](./configure-s3client) the S3 client of your choice.
 
-{{% notice info %}}
-`pachd` service exposes the S3 gateway (`s3gateway-port`) on port **30600**.
-{{%/notice%}}
+---
 
-{{% notice info %}}
-Before using the S3 Gateway
+## S3 Gateway Syntax
 
-Make sure to install and configure the S3 client of your choice as documented [here](./configure-s3client).
-{{%/notice %}}
+The S3 gateway presents each branch from every Pachyderm repository as an S3 bucket. Buckets are represented via `<commit>.<branch>.<repo>.<project>` 
 
-## Quick Start
-The S3 gateway presents **each branch from every Pachyderm repository as an S3 bucket**.
-Buckets are represented via `<commit>.<branch>.<repo>.<project>` 
+- The `master.foo.bar` bucket corresponds to the `master` branch of the repo `foo` within the `bar` project.
+- The `be97b64f110643389f171eb64697d4e1.master.foo.bar` bucket corresponds to the commit `be97b64f110643389f171eb64697d4e1` on the `master` branch of the `foo` repo within the `bar` project.
 
-### Example
-- The `master.data` bucket corresponds
-to the `master` branch of the repo `data`.
-- The `be97b64f110643389f171eb64697d4e1.master.data` bucket corresponds to the commit `be97b64f110643389f171eb64697d4e1` on the `master` branch of the `data` repo.
 
-The following diagram gives a quick overview of the two main aws commands
-that will let you put data into a repo or retrieve data from it via the S3 gateway. 
-For reference, we have also mentioned the corresponding `pachctl` commands
-and the equivalent call to a real s3 Bucket.
+## Command Examples 
 
-![Global S3 Gateway](../../images/main_s3_gateway.png)
+### Put Data Into Pachyderm Repo
 
-Find the exhaustive list of:
+{{<stack type="wizard">}}
 
-- [all of Pachyderm's supported `aws s3` commands](./supported-operations).
-- and the [unsupported ones](./unsupported-operations).
+{{% wizardRow id="Tool"%}}
+{{% wizardButton option="S3 Client" state="active" %}}
+{{% wizardButton option="Pachctl CLI" %}}
+{{% /wizardRow %}}
 
-## If Authentication Is Enabled
-If [auth is enabled](../../../enterprise/auth/) on the Pachyderm cluster, credentials must be passed with
-each S3 gateway endpoint as mentioned in the [**Configure Your S3 Client**](./configure-s3client/#set-your-credentials) page.
+{{% wizardResults %}}
+{{% wizardResult val1="tool/s3-client" %}}
+```s
+aws --endpoint-url <pachyderm-address>:30600/ s3 cp myfile.csv s3://master.foo.bar
+```
+{{% /wizardResult %}}
+{{% wizardResult val1="tool/pachctl-cli" %}}
+```s
+pachctl put file data@master:/ -f myfile.csv --project bar
+```
+{{% /wizardResult %}}
 
-{{% notice warning %}}
-In any case, whether those values are empty (no authentication) or set, the Access Key must equal the Secret Key (both set to the same value). 
+{{% /wizardResults%}}
+
+{{</stack>}}
+
+### Retrieve Data From Pachyderm Repo
+
+{{<stack type="wizard">}}
+
+{{% wizardRow id="Tool"%}}
+{{% wizardButton option="S3 Client" state="active" %}}
+{{% wizardButton option="Pachctl CLI" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults %}}
+{{% wizardResult val1="tool/s3-client" %}}
+```s
+aws --endpoint-url <pachyderm-address>:30600/ s3 cp s3://master.foo.bar/myfile.csv
+```
+{{% /wizardResult %}}
+{{% wizardResult val1="tool/pachctl-cli" %}}
+```s
+pachctl get file data@master:/myfile.csv --project bar
+```
+{{% /wizardResult %}}
+
+{{% /wizardResults%}}
+
+{{</stack>}}
+
+{{% notice note %}}
+
+View all [supported S3 commands](./supported-operations) and [unsupported commands](./unsupported-operations).
+
 {{% /notice %}}
 
-## Port Forwarding
-If you do not have direct access to the Kubernetes cluster, you can use port
-forwarding instead. Run `pachctl port-forward`, which will allow you
-to access the s3 gateway through the `localhost:30600` endpoint.
 
-However, the Kubernetes port forwarder incurs substantial overhead and
-does not recover well from broken connections. Connecting to the
-cluster directly is faster and more reliable.
+## Authentication Requirements
+
+If [auth is enabled](../../../enterprise/auth/), credentials must be passed with
+each S3 gateway endpoint as mentioned in the [**S3 Client configuration steps**](./configure-s3client/#set-your-credentials).
+
+## Port Forwarding
+You can  `pachctl port-forward` to access the s3 gateway through the `localhost:30600` endpoint, however, the Kubernetes port forwarder incurs substantial overhead and does not recover well from broken connections.
 
 ## Versioning
 Most operations act on the `HEAD` of the given branch. However, if your object

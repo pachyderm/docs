@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Unsupported operations
+title:  Unsupported Operations
 description: Learn which S3 operations are not supported by Pachyderm. 
 date: 
 # taxonomy #
