@@ -8,6 +8,9 @@ tags:
 series:
 seriesPart:
 --- 
+## Before You Start
+
+## Configuration Steps
 
 1. Install the MinIO client as described on the [MinIO download page](https://min.io/download).
 1. Verify that MinIO components are successfully installed by running
@@ -44,13 +47,9 @@ the following command:
    Both the access key and secret key 
    should be set as mentioned in the [# Set Your Credentails](#set-your-credentials) section of this page. 
 
-### Example 
+### Verify Setup 
 Check the list of filesystem objects on the `master` branch of the repository `raw_data`.
 
 ```s
-mc ls local/master.raw_data
+mc ls local/master.<repo>.<project>
 ```
-
-{{% notice info %}}
-Find **MinIO** full documentation [here](https://docs.min.io/docs/minio-client-complete-guide).
-{{% /notice %}}

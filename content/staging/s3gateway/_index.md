@@ -12,12 +12,6 @@ seriesPart:
 Use the embedded S3 Gateway to send or receive data through the S3 protocol using object storage tooling such as Minio, boto3, or AWS s3 CLI. Operations available are similar to those [officially documented for S3](https://docs.aws.amazon.com/cli/latest/reference/s3/).
 
 
-## Before You Start 
-
-- You must [install and configure](./configure-s3client) the S3 client of your choice.
-
----
-
 ## S3 Gateway Syntax
 
 The S3 gateway presents each branch from every Pachyderm repository as an S3 bucket. Buckets are represented via `<commit>.<branch>.<repo>.<project>` 
