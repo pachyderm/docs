@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: JupyterHub Installation Guide
-description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm using a Docker image.
+description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm using JupyterHub.
 date: 
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]
@@ -49,7 +49,7 @@ For each option in this section, you can connect to your cluster using the follo
 
 ### With a Custom Chart
 
-1. Add the following to your Jupyterhub helm chart `values.YAML` file:
+1. Add the following to your JupyterHub helm chart `values.YAML` file:
 ```yaml
 singleuser:
      defaultUrl: "/lab"
@@ -134,7 +134,7 @@ singleuser:
     defaultUrl: "/lab"
     image:
         name: pachyderm/notebooks-user
-        tag: {{% extensionJupyterLab %}}
+        tag: v{{% extensionJupyterLab %}}
     extraEnv:
         "SIDECAR_MODE": "True"
     extraContainers:
