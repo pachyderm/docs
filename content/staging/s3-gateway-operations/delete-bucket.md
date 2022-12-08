@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  Delete S3 Bucket
-description: Learn how to delete an S3 bucket through the S3 Gateway.
+title:  Delete Empty S3 Bucket
+description: Learn how to delete an empty S3 bucket through the S3 Gateway.
 date: 
 # taxonomy #
 tags: 
@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-Call the *delete an empty S3 bucket* command on your S3 client to delete a Pachyderm repository.
+You can call the **delete an empty S3 bucket** command on your S3 client to delete a Pachyderm repository.  For example, let's delete the the repo `foo` in project `bar`.
 
 
 {{<stack type="wizard" >}}

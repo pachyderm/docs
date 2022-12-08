@@ -1,15 +1,15 @@
 ---
 # metadata # 
-title:  Remove an S3 Object
-description: Learn how to remove an S3 object through the S3 Gateway.
+title:  Delete an S3 Object
+description: Learn how to delete an S3 object through the S3 Gateway.
 date: 
 # taxonomy #
 tags: 
 series:
 seriesPart:
 --- 
- 
-For example, delete the file `test.csv` in the `HEAD` of the `master` branch of the `foo` repo within the `bar` project.
+
+You can call the **delete an S3 Object** command on your S3 client to delete a file from a Pachyderm repository.  For example, let's delete the file `test.csv` from the `master` branch of the `foo` repo within the `bar` project.
 
 {{<stack type="wizard" >}}
 

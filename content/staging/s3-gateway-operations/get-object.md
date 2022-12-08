@@ -8,8 +8,7 @@ tags:
 series:
 seriesPart:
 --- 
-
-You can download a file by specifying the `branch.repo.project` it lives in:
+You can call the **get an S3 object** command on your S3 client to download a file by specifying the `branch.repo.project` it lives in.  For example, let's get the `test.csv` file from `master.foo.bar`.
 
 {{<stack type="wizard" >}}
 
@@ -33,9 +32,9 @@ aws --endpoint-url http://localhost:30600/ s3 cp s3://master.foo.bar/test.csv .
 {{% wizardResult val1="tool/minio" %}}
 
 ```s
-mc cp local/master.foo.bar/github_issues_medium.csv .
+mc cp local/master.foo.bar/test.csv .
 
-# github_issues_medium.csv:  2.56 MiB / 2.56 MiB  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 100.00% 1.26 MiB/s 2s
+# test.csv:  2.56 MiB / 2.56 MiB  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 100.00% 1.26 MiB/s 2s
 ```
 
 {{% /wizardResult %}}

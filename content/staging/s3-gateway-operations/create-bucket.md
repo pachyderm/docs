@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
  
-Call the *create an S3 bucket* command on your S3 client to create a branch in a Pachyderm repository. For example, let's create the `master` branch of the repo `test`.
+Call the **create an S3 bucket** command on your S3 client to create a branch in a Pachyderm repository. For example, let's create the `master` branch of the repo `foo` in project `bar`.
 
 {{<stack type="wizard" >}}
 
@@ -43,7 +43,7 @@ aws --endpoint-url http://localhost:30600/ s3 ls
 ```s
 mc mb local/master.foo.bar
 
-# Bucket created successfully `local/master.test`.
+# Bucket created successfully `local/master.foo.bar`.
 ```
 
 2. Verify that the S3 bucket has been created:

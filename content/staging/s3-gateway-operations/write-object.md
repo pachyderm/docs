@@ -10,6 +10,7 @@ seriesPart:
 --- 
 
 You can write an S3 object to a Pachyderm repo within a project by performing the following commands: 
+
 {{<stack type="wizard" >}}
 
 {{% wizardRow id="Tool" %}}
