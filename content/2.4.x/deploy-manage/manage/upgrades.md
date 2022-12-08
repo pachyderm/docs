@@ -29,7 +29,7 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
    {{< stack type="wizard" >}}
    {{% wizardRow id="Deploy Method"%}}
    {{% wizardButton option="Production" state="active" %}}
-   {{% wizardButton option="local" %}} 
+   {{% wizardButton option="Local (Personal Machine" %}} 
    {{% /wizardRow %}}
 
    {{% wizardResults %}} 
@@ -41,7 +41,7 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
    ```
    {{% /wizardResult %}}
 
-   {{% wizardResult val1="deploy-method/local"%}}
+   {{% wizardResult val1="deploy-method/local-personal-machine"%}}
    ```s
    helm repo add pach https://helm.pachyderm.com
    helm repo update
