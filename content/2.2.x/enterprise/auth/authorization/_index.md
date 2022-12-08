@@ -19,13 +19,13 @@ Before setting up a Role-Based access control to Pachyderm resources, verify tha
 {{% /notice %}}
 
 Pachyderm authorization feature follows a **Role Based Access Control** model (RBAC).
-The access control is based on **Roles**  assigned to **Users**, granting them a set of permissions on Pachyderm's **Ressources** (**Role Bindings**). 
+The access control is based on **Roles**  assigned to **Users**, granting them a set of permissions on Pachyderm's **resources** (**Role Bindings**). 
 
-In this page we will introduce Pachyderm's various Type of Users, Ressources, and Roles.
+In this page we will introduce Pachyderm's various Type of Users, resources, and Roles.
 
 This preamble will set the contextual knowledge to better understand how to:
 
-- Grant Users permissions on Pachyderm Ressources.
+- Grant Users permissions on Pachyderm resources.
 - Revoke Users.
 
 in the next [**Role Binding**](./role-binding) page.
@@ -40,7 +40,7 @@ Pachyderm defines 5 type of User:
 
 - A **Robot User**: A Service account used for third party applications/systems integrating with Pachyderm APIs/Clients.
 
-- A **Pipeline User**: An internal Service Account used for Pipelines when interacting with Pachyderm ressources.
+- A **Pipeline User**: An internal Service Account used for Pipelines when interacting with Pachyderm resources.
 
 - A **All Cluster Users** (`allClusterUsers`) : A general subject that represents **everyone who has logged in to a cluster**.
 ## Resources

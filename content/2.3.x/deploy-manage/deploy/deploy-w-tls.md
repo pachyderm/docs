@@ -38,7 +38,7 @@ In particular, you can use cert-manager to:
 Once your tls secret is created:
 
 - Enable tls in your helm values.
-- Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
+- Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate resource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
 
 ###  Example
 In this example, you terminate tls at the cluster level by enabling tls directly on pachd:
@@ -47,7 +47,7 @@ In this example, you terminate tls at the cluster level by enabling tls directly
  pachd:
    tls:
       enabled: true
-      secretName: "<the-secret-name-in-your-certificate-ressource>"
+      secretName: "<the-secret-name-in-your-certificate-resource>"
 ```
 
 Et voila!
@@ -69,7 +69,7 @@ The setup of TLS at the proxy level is intended for the case where the proxy is 
   proxy:
     tls:
       enabled: true
-      secretName: "<the-secret-name-in-your-certificate-ressource>"
+      secretName: "<the-secret-name-in-your-certificate-resource>"
 ```
 {{% /notice%}}
 

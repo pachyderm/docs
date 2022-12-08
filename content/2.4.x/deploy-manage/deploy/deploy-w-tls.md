@@ -63,7 +63,7 @@ Reference the certificate object in your helm chart by setting your TLS secret n
   proxy:
     tls:
       enabled: true
-      secretName: "<the-secret-name-in-your-certificate-ressource>"
+      secretName: "<the-secret-name-in-your-certificate-resource>"
 ```
 {{% /wizardResult %}}
 {{% wizardResult val1="setup-type/without-proxy" %}}
@@ -71,7 +71,7 @@ Reference the certificate object in your helm chart by setting your TLS secret n
  pachd:
    tls:
       enabled: true
-      secretName: "<the-secret-name-in-your-certificate-ressource>"
+      secretName: "<the-secret-name-in-your-certificate-resource>"
 ```
 
 {{% /wizardResult %}}
@@ -80,7 +80,7 @@ Reference the certificate object in your helm chart by setting your TLS secret n
 {{< /stack >}}
 
 
-For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
+For the Cert Manager users, the secret name should match the name set in your [certificate resource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources).
 
 
 #### Self-Signed & Custom Certificates
@@ -117,7 +117,7 @@ pachctl config set active-context "grpcs-context"
  pachd:
    tls:
       enabled: true
-      secretName: "<the-secret-name-in-your-certificate-ressource>"
+      secretName: "<the-secret-name-in-your-certificate-resource>"
 ```
 
 {{% /wizardResult %}}

@@ -102,7 +102,7 @@ User Access Management is an Enterprise feature.
 
 - **Authorization**: 
 
-    We have added a [Role Based Access Control model (RBAC)](../../enterprise/auth/authorization) to Pachyderm's resources. You can assign Roles to Users, granting them a set of permissions on Pachyderm's Ressources (Repo and Cluster).
+    We have added a [Role Based Access Control model (RBAC)](../../enterprise/auth/authorization) to Pachyderm's resources. You can assign Roles to Users, granting them a set of permissions on Pachyderm's resources (Repo and Cluster).
 
 - **Enterprise Server**: Single-point management of multiple clusters.
 

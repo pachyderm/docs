@@ -33,9 +33,9 @@ In this case, a `pachyderm-bootstrap-config` k8s secret is automatically created
  
 1. [Activate the feature](#activate-user-access-management).
 2. Create a connector and [connect the IdP of your choice to Pachyderm (Dex)](./authentication/idp-dex). 
-3. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding) on given Pachyderm Ressources. 
+3. Optional: Manage your Authorization. i.e.,[assign specific Roles to IdP users](./authorization/role-binding) on given Pachyderm resources. 
 
-Any registered IdP user will then be able to log into their IdP and access Pachyderm ressources according to the privileges they were granted.
+Any registered IdP user will then be able to log into their IdP and access Pachyderm resources according to the privileges they were granted.
 
 See the Identity Provider High Level Diagram below:
 
@@ -57,7 +57,7 @@ pachctl auth activate
 The enablement of the User Access Management **creates
 an initial `Root user` and returns a `Root token`**.
 This `Root user` (or initial admin) has irrevokable `clusterAdmin` privileges on
-Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [here](authorization#users-types).
+Pachyderm's cluster. More on the various types of Users, Roles, and resources [here](authorization#users-types).
 
 
 {{% notice note %}} 
@@ -93,7 +93,7 @@ The deactivation of the User Access Management on a Pachyderm cluster
 returns the cluster to being a blank slate with regards to
 access control.
 
-This implies that all permissions granted to users on Pachyderm ressources are removed. Everyone that can connect
+This implies that all permissions granted to users on Pachyderm resources are removed. Everyone that can connect
 to Pachyderm is back to being a `clusterAdmin` (can access and modify all data in all repos).
 
 

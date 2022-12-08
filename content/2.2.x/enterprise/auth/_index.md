@@ -61,7 +61,7 @@ pachctl auth activate
 The enablement of the User Access Management **creates
 an initial `Root user` and returns a `Root token`**.
 This `Root user` (or initial admin) has irrevokable `clusterAdmin` privileges on
-Pachyderm's cluster. More on the various types of Users, Roles, and Ressources [here](../auth/authorization/#users-types).
+Pachyderm's cluster. More on the various types of Users, Roles, and resources [here](../auth/authorization/#users-types).
 
 
 {{% notice note %}}
@@ -96,7 +96,7 @@ The deactivation of the User Access Management on a Pachyderm cluster
 returns the cluster to being a blank slate with regards to
 access control.
 
-This implies that all permissions granted to users on Pachyderm ressources are removed. Everyone that can connect
+This implies that all permissions granted to users on Pachyderm resources are removed. Everyone that can connect
 to Pachyderm is back to being a `clusterAdmin` (can access and modify all data in all repos).
 
 

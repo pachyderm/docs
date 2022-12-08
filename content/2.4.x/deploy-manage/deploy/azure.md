@@ -190,7 +190,7 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 
 | SETTING | Recommended value|
 |:----------------|:--------------------------------------------------------|
-| *subscription*  and *resource group*| Pick your existing [resource group](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).<br><br> **Important** Your Cluster and your Database must be deployed in the **same ressource group**.|
+| *subscription*  and *resource group*| Pick your existing [resource group](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).<br><br> **Important** Your Cluster and your Database must be deployed in the **same resource group**.|
 |*server name*|Name your instance.|
 |*location*|Create a database **in the region matching your Pachyderm cluster**.|
 |*compute + storage*|The standard instance size (GP_Gen5_4 = Gen5 VMs with 4 cores) should work. Remember that Pachyderm's metadata services require **high IOPS (1500)**. Oversize the disk accordingly |

@@ -33,7 +33,7 @@ The following installation steps are for **Informational Purposes** ONLY.
 Please refer to your full Traefik documentation for further installation details and any troubleshooting advice.
 {{% /notice %}}
 
-## Traefik installation and Ingress Ressource Definition
+## Traefik installation and Ingress resource Definition
 1. Helm install [Traefik](https://github.com/traefik/traefik-helm-chart):
 
     - Get Repo Info
@@ -55,7 +55,7 @@ Please refer to your full Traefik documentation for further installation details
     ```
     You should see your Traefik pod, service, deployments.apps, and replicaset.app.
 
-    You can now access your Traefik Dashboard at http://127.0.0.1:9000/dashboard/ following the port-forward instructions (You can choose to apply your own Ingress Ressource instead.):
+    You can now access your Traefik Dashboard at http://127.0.0.1:9000/dashboard/ following the port-forward instructions (You can choose to apply your own Ingress resource instead.):
     ```s
     kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
     ```

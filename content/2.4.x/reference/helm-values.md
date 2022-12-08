@@ -1386,7 +1386,7 @@ port exposed directly to the Internet.
     - `proxy.image. tag` the tag of the proxy image.
     - `proxy.image.pullPolicy` the proxy image pull policy. Defaults to "IfNotPresent".
   
-  - `proxy.resources` specifies the proxy ressources. The proxy is configured to shed traffic before using 500MB of RAM, so that's a resonable memory limit.  It doesn't need much CPU.
+  - `proxy.resources` specifies the proxy resources. The proxy is configured to shed traffic before using 500MB of RAM, so that's a resonable memory limit.  It doesn't need much CPU.
 
     - `proxy.resources.requests`
 
