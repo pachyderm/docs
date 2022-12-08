@@ -95,7 +95,7 @@ brew install helm
 ```
 2. Add the Pachyderm repo to Helm:
 ```s
-helm repo add pach https://helm.pachyderm.com  
+helm repo add pachyderm https://helm.pachyderm.com  
 helm repo update  
 ```
 3. Install PachD: 
