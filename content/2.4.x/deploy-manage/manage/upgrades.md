@@ -35,7 +35,6 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
    {{% wizardResults %}} 
    {{% wizardResult val1="deploy-method/production"%}}
    ```s
-   helm repo add pach https://helm.pachyderm.com
    helm repo update
    helm upgrade pachd pachyderm/pachyderm -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version> --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
    ```
