@@ -21,4 +21,9 @@ pachctl create project foo
 
 ### Via Console 
 
-[TBD]
+1. Open the Console UI.
+2. Select **Create Project**.
+3. Provide inputs for the following fields:
+    - Project Name
+    - Project Description
+4. Select **Create Project**.

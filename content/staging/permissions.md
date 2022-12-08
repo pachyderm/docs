@@ -96,7 +96,9 @@ The ClusterAdminRole includes all of the previous permissions, plus the followin
 
 ## Project Roles 
 
-### ProjectViewerRole
+All users have the `PROJECT_LIST_REPO` and `PROJECT_CREATE_REPO` permissions by default. 
+
+<!-- ### ProjectViewerRole
 
 | Permission |
 |---|
@@ -108,11 +110,11 @@ The `ProjectWriterRole` includes all of the `ProjectViewerRole` permissions, plu
 
 | Permission |
 |---|
-|PROJECT_CREATE_REPO|
+|PROJECT_CREATE_REPO| -->
 
 ### ProjectOwnerRole
 
-The `ProjectOwnerRole` includes all of the `ProjectWriterRole`, `ProjectViewerRole`, and `RepoOwnerRole` permissions, plus the following:
+<!-- The `ProjectOwnerRole` includes all of the `ProjectWriterRole`, `ProjectViewerRole`, and `RepoOwnerRole` permissions, plus the following: -->
 
 | Permission |
 |---|
