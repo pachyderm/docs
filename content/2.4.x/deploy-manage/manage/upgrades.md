@@ -29,7 +29,7 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
    {{< stack type="wizard" >}}
    {{% wizardRow id="Deploy Method"%}}
    {{% wizardButton option="Production" state="active" %}}
-   {{% wizardButton option="Local (Personal Machine" %}} 
+   {{% wizardButton option="Local (Personal Machine)" %}} 
    {{% /wizardRow %}}
 
    {{% wizardResults %}} 
