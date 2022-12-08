@@ -42,7 +42,6 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
 
    {{% wizardResult val1="deploy-method/local-personal-machine"%}}
    ```s
-   helm repo add pach https://helm.pachyderm.com
    helm repo update
    helm upgrade pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
    ```
