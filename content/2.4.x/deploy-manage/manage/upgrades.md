@@ -23,7 +23,7 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
 ```s  
 brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
 ```  
-1. Upgrade Helm.
+2. Upgrade Helm.
 
 {{< stack type="wizard" >}}
 {{% wizardRow id="Deploy Method"%}}
@@ -49,7 +49,8 @@ helm upgrade pachyderm pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.
 {{% /wizardResult %}} 
 {{% /wizardResults %}} 
 {{< /stack >}}
-1. Verify that the installation was successful by running `pachctl version`:  
+
+3. Verify that the installation was successful by running `pachctl version`:  
   
 ```s  
 pachctl version 
