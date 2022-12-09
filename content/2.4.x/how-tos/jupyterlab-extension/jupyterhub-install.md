@@ -56,7 +56,7 @@ singleuser:
      cmd:   "start-singleuser.sh"
      image:
          name: pachyderm/notebooks-user
-         tag: {{% extensionJupyterLab %}}
+         tag: v{{% extensionJupyterLab %}}
      uid:   0
      fsGid: 0
      extraEnv:
