@@ -10,9 +10,7 @@ seriesPart:
 weight: 1
 beta: true 
 ---
-{{% notice danger %}}
-The JupyterLab Mount Extension is an [experimental feature](../../../reference/supported-releases/#experimental). We hope you'll try it out (and work with us to improve it! [Get in touch](https://www.pachyderm.com/slack/)), but it's not ready for self-service usage in production, as it may make sudden, breaking changes.
-{{% /notice %}}
+
 
 ## Install to Existing Docker Image 
 
