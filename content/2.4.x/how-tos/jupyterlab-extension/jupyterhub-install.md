@@ -27,9 +27,9 @@ beta: true
 
 For each option in this section, you can connect to your cluster using the following steps:
 
-1. Find the **IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
+1. Find the **Cluster IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
 2. Click on the link provided in the `stdout` of your terminal to run JupyterLab in a browser.
-3. Connect to your cluster using the `grpc://<cluster-ip>:<port>` format.
+3. Connect to your cluster using the `grpc://<cluster-ip-address>:<port>` format.
 {{% /notice %}}
 
 
