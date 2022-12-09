@@ -10,20 +10,48 @@ seriesPart:
 weight: 3
 ---
 
+
+
+{{<stack type="wizard">}}
+{{% wizardRow id="Tool"%}}
+{{% wizardButton option="Pachctl CLI" state="active" %}}
+{{% wizardButton option="Console" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults  %}}
+
+{{% wizardResult val1="tool/pachctl-cli"%}}
+
 There are two main ways to add a resource to a project, depending on whether or not the project has been [set to your current pachyderm context](../set-project). 
 
-## Add Resource to Unset Project 
+**Add Resource to Unset Project:**
 
 ```s 
 pachctl create repo bar --project foo
 ```
 
-## Add Resource to Set Project 
+**Add Resource to Set Project:**
 
 ```s
 pachctl create repo bar 
 ```
 
-## Example 
+
 
 ![add project resources](/images/projects/add-project-resources.gif)
+
+{{% /wizardResult %}}
+
+{{% wizardResult val1="tool/console"%}}
+1. Open the Console UI.
+2. Scroll to the project you wish to work in.
+3. Select **View Project**.
+4. Select **Create Repo**.
+
+{{% /wizardResult %}}
+
+{{% /wizardResults  %}}
+
+{{</stack>}}
+
+

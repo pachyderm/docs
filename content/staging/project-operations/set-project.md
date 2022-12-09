@@ -9,17 +9,21 @@ series:
 seriesPart:
 weight: 2
 ---
-In order to begin working on a project, you must assign it to a pachctl context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
-
-## Before You Start
-
-- Check your available contexts using `pachctl config list context`.
-- Optionally set a new context or [import a Kubernetes context](../../deploy-manage/deploy/import-kubernetes-context/) if needed.
-
 
 ## How to Set a Project to Your Current Context
 
-### Via Pachctl
+{{<stack type="wizard">}}
+{{% wizardRow id="Tool"%}}
+{{% wizardButton option="Pachctl CLI" state="active" %}}
+{{% wizardButton option="Console" %}}
+{{% /wizardRow %}}
+
+{{% wizardResults  %}}
+
+{{% wizardResult val1="tool/pachctl-cli"%}}
+
+In order to begin working on a project, you must assign it to a pachctl context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
+
 
 ```s
 pachctl config update context --project foo
@@ -46,8 +50,9 @@ You can check the details of your active context using the following commands:
 #   "project": "foo"
 # }
 ```
+{{% /wizardResult %}}
 
-### Via Console 
+{{% wizardResult val1="tool/console"%}}
 
 1. Open the Console UI.
 2. Navigate to the top-level Projects view. 
@@ -55,3 +60,9 @@ You can check the details of your active context using the following commands:
 4. Select **View Project**. 
 
 You can now work within the project from Console.
+
+{{% /wizardResult %}}
+
+{{% /wizardResults  %}}
+
+{{</stack>}}

@@ -13,13 +13,21 @@ weight: 4
 
 ## How to Grant Project Access to a User
 
-### Via Pachctl
+{{<stack type="wizard">}}
+{{% wizardRow id="Tool"%}}
+{{% wizardButton option="Pachctl CLI" state="active" %}}
+{{% wizardButton option="Console" %}}
+{{% /wizardRow %}}
 
+{{% wizardResults  %}}
+
+{{% wizardResult val1="tool/pachctl-cli"%}}
 ```s
 pachctl auth set project foo repoReader,repoWriter user:edna
 ```
+{{% /wizardResult %}}
 
-### Via Console
+{{% wizardResult val1="tool/console"%}}
 
 1. Open the Console UI.
 2. Navigate to the project you wish to grant user permissions to.
@@ -27,3 +35,10 @@ pachctl auth set project foo repoReader,repoWriter user:edna
 4. Search for and select the user or user's group.
 5. Choose which permissions to grant from the dropdown.
 6. Select **Add**.
+   
+{{% /wizardResult %}}
+
+{{% /wizardResults %}}
+
+{{</stack>}}
+
