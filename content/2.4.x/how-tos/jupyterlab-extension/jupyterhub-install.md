@@ -101,7 +101,7 @@ singleuser:
     defaultUrl: "/lab"
     image:
         name: pachyderm/notebooks-user
-        tag: {{% extensionJupyterLab %}}
+        tag: v{{% extensionJupyterLab %}}
     extraEnv:
         "SIDECAR_MODE": "True"
     extraContainers:
