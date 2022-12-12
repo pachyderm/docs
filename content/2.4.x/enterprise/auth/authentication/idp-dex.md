@@ -9,60 +9,14 @@ series:
 seriesPart:
 ---
 
-{{% notice note %}}
-- Return to our [Enterprise landing page](https://docs.pachyderm.com/latest/enterprise/) if you do not have an enterprise key.
-- Helm users, **you have the option to set your IdP values directly through Helm (Recommended)**. See below.
-- Alternatively, you can use `pachctl` to connect your IdP to Pachyderm. First, verify that the [Authentication](../../#authentication-and-authorization) is enabled by running `pachctl auth whoami`. The command should return `You are "pach:root" `(i.e., your are the **Root User** with `clusterAdmin` privileges).  Run `pachctl auth use-auth-token` and enter your rootToken to login as a Root User if you are not.
-{{% /notice %}}
-    
-{{% notice attention%}}
-We are now shipping Pachyderm with an **optional embedded proxy** 
-allowing your cluster to expose one single port externally. This deployment setup is optional.
+You can enable your users to authenticate to Pachyderm using their favorite Identity Providers using the steps in this guide. 
 
-If you choose to deploy Pachyderm with a Proxy:
+## Before You Start 
 
-- Check out our new recommended architecture and [deployment instructions](../../../../deploy-manage/deploy/deploy-w-proxy/).
-- **Update your Callback URL**. Details below.
-{{% /notice %}}
-    
+- This guide assumes that you have an Enterprise Server set up.
+  
 
-## Enable your users to authenticate to Pachyderm by logging into their favorite Identity Provider in 3 steps:
-
-1. [Register the Pachyderm Application with your IdP](#1-register-a-pachyderm-application-with-your-idp).
-1. [Set up and create your Idp-Pachyderm connector](#2-set-up-and-create-an-idp-pachyderm-connector).
-1. [Login](#3-login).
-
-Your users should now be able to [login to Pachyderm](../login).
-
-We chose to illustrate those steps
-by using Auth0 as our Identity Provider.
-([Auth0](https://auth0.com/) is an open source, online authentication platform that
-users can use to log in to various applications).
-
-However, Pachyderm's Identity Service is based on [Dex](https://dexidp.io/docs/)
-and can therefore provide connectors to a large [variety of IdPs](https://dexidp.io/docs/connectors/) (LDAP, GitHub, SAML, OIDC...). 
-Use the IdP of your choice.
-
-
-
-For now, let's configure Pachyderm so that our
-Pachyderm users can log in through Auth0.
-
-### 1: Register a Pachyderm Application with your IdP
-
-{{% notice tip %}}
-The one important and invariant element of this step, 
-no matter what your IdP choice might be, is the **callback URL**.
-Callback URLs are the URLs that your IdP invokes after the authentication process. 
-The IdP redirects back to this URL once a user is authenticated.
-
-For security reasons, you need to add your application's URL to your client's Allowed Callback URLs.
-This enables your IdP to recognize these URLs as valid. 
-
-**For Local or “Quick” deployment cases where you do not have a public DNS entry or public IP address, set the following field `config.insecureSkipIssuerCallbackDomainCheck` to `true` in your connector file below.**
-
-The format of the URL is described below. 
-{{% /notice %}}
+## 1. Register With Your IdP
 
 If you do not have an Auth0 account, sign up for one
 at https://auth0.com and create your Pool of Users 
@@ -71,13 +25,13 @@ at https://auth0.com and create your Pool of Users
 Then, complete the following steps:
 
 1. Log in to your Auth0 account.
-1. In **Applications**, click **Create Application**.
-1. Type the name of your application, such as **Pachyderm**.
-1. In the application type, select **Regular Web Application**.
-1. Click **Create**.
-1. Go to the application settings.
-1. Scroll down to **Application URIs**.
-1. In the **Allowed Callback URLs**, add the Pachyderm callback link in the
+2. In **Applications**, click **Create Application**.
+3. Type the name of your application, such as **Pachyderm**.
+4. In the application type, select **Regular Web Application**.
+5. Click **Create**.
+6. Go to the application settings.
+7. Scroll down to **Application URIs**.
+8. In the **Allowed Callback URLs**, add the Pachyderm callback link in the
    following format:
 
     ```s
@@ -94,9 +48,9 @@ Then, complete the following steps:
     Your Callback URL must be set to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`. 
     {{% /notice %}}
 
-1. Scroll down to **Show Advanced Settings**.
-1. Select **Grant Types**.
-1. Verify that **Authorization Code** and **Refresh Token** are selected.
+9. Scroll down to **Show Advanced Settings**.
+10. Select **Grant Types**.
+11. Verify that **Authorization Code** and **Refresh Token** are selected.
 
    ![Auth0 Grant Settings](/images/auth0-grant-settings.png)
 
