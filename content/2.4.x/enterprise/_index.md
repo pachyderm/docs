@@ -10,14 +10,6 @@ seriesPart:
 weight: 6
 ---
 
-This section describes features available in the enterprise
-edition of Pachyderm. 
-
-{{% notice warning %}} 
-Get your free-trial token.
-
-To try our enterprise features, fill in [this form](https://www.pachyderm.com/trial/) or [schedule some time with one of our experts](https://www.pachyderm.com/request-a-demo/). 
+{{% notice tip %}} 
+Get your free-trial Enterprise License token by filling in [this form](https://www.pachyderm.com/trial/) or [scheduling some time with one of our experts](https://www.pachyderm.com/request-a-demo/). 
 {{% /notice %}}
-
-Read about how you can use Pachyderm Enterprise features in the following
-sections.

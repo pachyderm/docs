@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+weight: 1
 ---
 ## Before You Start 
 
