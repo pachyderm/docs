@@ -1,14 +1,14 @@
 ---
-# metadata # 
+# metadata #
 title: JupyterLab Mount Extension
 description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm.
-date: 
+date:
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]
 series:
 seriesPart:
-weight: 
-beta: true 
+weight:
+beta: true
 ---
 
 Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) to:
@@ -21,18 +21,14 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 
 ---
 
-## Install the Extension 
-
-There are three main ways to install the Jupyter Lab extension:
+## Install the Extension
 
 - ⭐ [Via Docker](./docker-install): Fastest implementation!
-- 🚀 [Via JupyterHub + Helm](./jupyterhub-install): Best for production deployments with strict security requirements
-- 🧪 [Locally](./local-install): Great for development and testing
 
 ---
 
-## Examples 
+## Examples
 
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. You will also find integration examples with open-source products, such as labeling or model serving applications. 
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. You will also find integration examples with open-source products, such as labeling or model serving applications.
 
 ---
