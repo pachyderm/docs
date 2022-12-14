@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title: Deploy Enterprise via Helm
+title: Activate Enterprise via Helm
 description: Learn how to deploy the Enterprise edition of Pachyderm using Helm.
 date: 
 # taxonomy #

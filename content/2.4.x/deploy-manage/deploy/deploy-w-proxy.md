@@ -28,30 +28,33 @@ Pachyderm ships with an embedded proxy that exposes one external TCP port for al
 ```yaml
 proxy:
   enabled: true
+  # host can also be the value of proxy.service.type.loadBalancerIP
+  host: "http://<Enterprise-server-external-IP-or-DNS>"
   service:
+    # type can also be NodePort
     type: LoadBalancer
     annotations: {see examples below}
 ```
 2. Remove the `pachd.externalService` section. 
-3. Replace the port numbers `30657` and `30658` with one of the following:
+3. Replace all instances of the port numbers `30657` and `30658` with one of the following:
    - `http://<Enterprise-server-external-IP-or-DNS>:80/`
    - `https://<Enterprise-server-external-IP-or-DNS>:443/`
 4. Set `redirect_uri`'s value to `http(s)://<insert-external-ip-or-dns-name>/dex/callback`.
 
 
-### Set Up Auth & IDP 
+### Set Up Auth & IdP 
 
 1. Register your cluster with the enterprise server:
 ```s
-pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <pach-enterprise-IP>:80 --pachd-address <pachd-IP>:80
+pachctl enterprise register --id <my-pachd-config-name> --enterprise-server-address <Enterprise-server-external-IP-or-DNS>:80 --pachd-address <pachd-IP>:80
 ```
 2. Set your IDP Config: 
 ```s
-echo "issuer: http://<enterprise-external-IP-or-dns>" | pachctl idp set-config --config -
+echo "issuer: http://<Enterprise-server-external-IP-or-DNS>" | pachctl idp set-config --config -
 ```
 3. Enable Auth:
 ```s
-pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<pachd-external-IP-or-DNS>/authorization-code/callback 
+pachctl auth activate --client-id <my-pachd-config-name> --redirect http://<Enterprise-server-external-IP-or-DNS>/authorization-code/callback 
 ```
 
 ### Connect To The Cluster 

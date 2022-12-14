@@ -1,0 +1,39 @@
+enterpriseServer:
+  enabled: true
+
+pachd:
+  enabled: false
+
+externalService:
+ enabled: false
+
+proxy:
+  enabled: true
+  service:
+    type: LoadBalancer
+
+oidc:
+  issuerURI: "http:localhost/dex"
+   ## userAccessibleOauthIssuerHost is necessary in localhost settings or anytime the registered Issuer address isn't accessible outside the cluster
+   # userAccessibleOauthIssuerHost: "localhost:30658"
+   ## if `mockIDP` is set to true, `pachd.upstreamIDPs` will be ignored in favor of a testing placeholder IDP with username/password: admin/password
+  mockIDP: false
+   ## to set up upstream IDPs, set pachd.mockIDP to false,
+   ## and populate the pachd.upstreamIDPs with an array of Dex Connector configurations.
+   ## See the example below or https://dexidp.io/docs/connectors/
+  upstreamIDPs:
+  - id: idpConnector
+    jsonConfig: >-
+        {
+            "issuer": "dev-ps2tkwpgxblc1ozs.us.auth0.com",
+        "clientID": "jgkZcw7Wm1MruITlAMu7BaRD02KaUugx",
+        "clientSecret": "2LB1HB0JToG3G_04nfo4rNwxAIMElhOf6_zSKv5e9SJjpjx6pP-a-sU13owBI-3I",
+        "redirectURI": "http://localhost:3000/dex/callback",
+        "scopes": ["groups", "email", "profile"],
+        "claimMapping":{
+            "groups": "http://pachyderm.com/groups"
+        },
+        "insecureEnableGroups": true
+        }
+    name: idpConnector
+    type: oidc

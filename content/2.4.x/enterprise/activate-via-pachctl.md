@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title: Deploy Enterprise via Pachctl
+title: Activate Enterprise via Pachctl
 description: Learn how to deploy the Enterprise edition of Pachyderm using the pachctl CLI for an existing cluster.
 date: 
 # taxonomy #
