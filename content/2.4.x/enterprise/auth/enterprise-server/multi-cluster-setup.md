@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Set Up Enterprise for Multi-Cluster
-description: Learn how to set up a Pachyderm enterprise server.
+title: Activate Enterprise Server for Multi-Cluster
+description: Learn how to set up a Pachyderm enterprise server as a standalone cluster within a multi-cluster deployment.
 date: 
 # taxonomy #
 tags: ["enterprise", "deployment", "helm"]
@@ -18,60 +18,27 @@ There are a few minor differences to note when deploying an Enterprise Server wh
 - No deployment target is necessary in your Helm chart since there is no object store
 - The Enterprise Server cluster contains the `dex` database
 - Each registered cluster requires its own PostgresSQL `pachyderm` database
+  
+##  How to Activate Enterprise for Multi-Cluster 
 
-### Diagram 
-The following diagram gives you a quick overview of an organization with multiple Pachyderm clusters behind a single Enterprise Server.
-![Enterprise Server General Deployment](/images/enterprise-server.png)
 
-##  How to Set Up Enterprise for Multi-Cluster
-
-1. Create a Kubernetes namespace dedicated to your enterprise server:
+1. Create a separate Kubernetes namespace dedicated to your enterprise server:
 ```s
 kubectl create namespace enterprise-server
+kubectl config set-context --current --namespace=enterprise-server
 ```
-2. Create a Helm `values.yml` file for your Enterprise Server cluster.
+2. Create a Helm chart `enterprise-server-values.yml` file for your enterprise server: 
 ```s
-enterpriseServer:
-  enabled: true
-
-pachd:
-  enabled: false
-
-externalService:
- enabled: false
-
-proxy:
-  enabled: true
-  service:
-    type: LoadBalancer
-
-oidc:
-  issuerURI: "http:localhost/dex"
-   ## userAccessibleOauthIssuerHost is necessary in localhost settings or anytime the registered Issuer address isn't accessible outside the cluster
-   # userAccessibleOauthIssuerHost: "localhost:30658"
-   ## if `mockIDP` is set to true, `pachd.upstreamIDPs` will be ignored in favor of a testing placeholder IDP with username/password: admin/password
-  mockIDP: false
-   ## to set up upstream IDPs, set pachd.mockIDP to false,
-   ## and populate the pachd.upstreamIDPs with an array of Dex Connector configurations.
-   ## See the example below or https://dexidp.io/docs/connectors/
-  upstreamIDPs:
-  - id: idpConnector
-    jsonConfig: >-
-        {
-            "issuer": "<ISSUER>",
-            "clientID": "<CLIENT-ID>",
-            "clientSecret": "<CLIENT-SECRET>",
-            "redirectURI": "http://<PACHD-IP>:30658/callback",
-            "insecureEnableGroups": true,
-            "insecureSkipEmailVerified": true,
-            "insecureSkipIssuerCallbackDomainCheck": true,
-            "forwardedLoginParams": ["login_hint"]
-        }
-    name: idpConnector
-    type: oidc
 ```
 3. Deploy the Enterprise Server cluster:
 ```s
-helm install enterprise-server pachyderm/pachyderm -f enterprise-server-values.yml --namespace enterprise-server
+helm install enterprise-server pachyderm/pachyderm --f enterprise-server-values.yml
+```
+4. Verify deployment:
+```s
+kubectl get all --namespace enterprise-server
 ```
 
+## Reference  Diagram 
+The following diagram gives you a quick overview of an organization with multiple Pachyderm clusters behind a single Enterprise Server.
+![Enterprise Server General Deployment](/images/enterprise-server.png)
