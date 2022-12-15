@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title: Activate Enterprise Server for Single-Cluster
+title: Activate ES for Single-Cluster
 description: Learn how to set up a Pachyderm enterprise server for a single-cluster environment embedded in pachd.
 date: 
 # taxonomy #
@@ -14,14 +14,14 @@ You can register an existing single-cluster Pachyderm instance to the embedded [
 ## Before You Start
 
 - You must have an Enterprise license key
-- You must an active Pachyderm cluster
+- You must have an active Pachyderm cluster
 
 ##  How to Activate Enterprise Server 
 
 1. Open your terminal.
 2. Activate Enterprise Server:
 ```s
-echo <your-activation-token> | pachctl license activate
+echo <enterprise-license-key-value> | pachctl license activate
 ```
 3. Activate Authentication:
 ```s

@@ -11,7 +11,8 @@ seriesPart:
 
 ## Before You Start 
 
-- TBD 
+- You must have an Enterprise license key
+- You must have an active Pachyderm cluster
 
 ## How to Register a Cluster 
 
@@ -45,5 +46,11 @@ pachctl license list-clusters
 # last_heartbeat: 2021-05-21 18:43:42.157027 +0000 UTC
 # ---
 ```
+4. Activate Authentication:
+```s
+pachctl auth activate --enterprise
+```
+5. [Set up your Identity Provider (IdP)](../../authentication/connectors/).
+
 
 

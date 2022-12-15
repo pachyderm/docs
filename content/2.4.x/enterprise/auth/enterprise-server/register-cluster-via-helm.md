@@ -11,7 +11,8 @@ seriesPart:
 
 ## Before You Start 
 
-- TBD 
+- You must have an Enterprise license key
+
 
 ## How to Register a Cluster 
 

@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title: Activate Enterprise Server for Multi-Cluster
+title: Activate ES for Multi-Cluster
 description: Learn how to set up a Pachyderm enterprise server as a standalone cluster within a multi-cluster deployment.
 date: 
 # taxonomy #

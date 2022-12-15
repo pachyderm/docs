@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Set Up IdP Connectors
-description: Learn how to enable users to log in to Pachyderm using their preferred identity provider. 
+description: Learn how to enable users to access a Pachyderm cluster using their preferred identity provider. 
 date: 
 # taxonomy #
 tags: 
@@ -10,8 +10,7 @@ seriesPart:
 weight: 2
 ---
 
-
-You can enable your users to authenticate to Pachyderm using their favorite Identity Providers using the steps in this guide. 
+You can enable users to authenticate to a Pachyderm cluster using their favorite Identity Providers by following the steps in this guide. 
 
 ## Before You Start 
 
