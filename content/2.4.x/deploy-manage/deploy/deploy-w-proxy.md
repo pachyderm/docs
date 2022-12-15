@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Switch to Embedded Proxy
-description: Learn how to update your Enterprise Server to use the embedded proxy, exposing only one external port. 
+title: Upgrade to Embedded Proxy
+description: Learn how to upgrade your pachd clusters and Enterprise Server to use the embedded proxy, exposing only one external port. 
 date: 
 # taxonomy #
 tags: ["deployment"]
@@ -25,7 +25,7 @@ This guide assumes that:
 - You are currently using `ingress` or `pachd.externalService` to route cluster-external HTTP/HTTPS requests.  
 
 
-## How to Switch to Embedded Proxy
+## How to Upgrade to Embedded Proxy
 
 ### 1. Update PachD Clusters
 
