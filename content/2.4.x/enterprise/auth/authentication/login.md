@@ -12,8 +12,8 @@ weight: 3
 
 ## Before You Start 
 
-- Your organization must have an active Enterprise License.
-- You must have an [IdP Connector](../connectors)set up. 
+- Your organization must have an active [Enterprise License Key](../../../).
+- You must have an [IdP Connector](../connectors) set up. 
 - You must have pachctl installed.
 
 ## How to Log in to a Cluster via IdP

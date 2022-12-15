@@ -11,8 +11,9 @@ seriesPart:
 
 ## Before You Start 
 
-- You must have a Pachyderm [Enterprise Activation Code](https://www.pachyderm.com/trial/).
+- You must have a Pachyderm [Enterprise License Key](https://www.pachyderm.com/trial/).
 - You must have pachctl and Pachyderm installed. 
+- You must have the Pachyderm Helm repo downloaded.
 
 ## How to Activate Enterprise Pachyderm via Helm
 

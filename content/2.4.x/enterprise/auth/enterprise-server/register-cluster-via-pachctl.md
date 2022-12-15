@@ -13,6 +13,7 @@ seriesPart:
 
 - You must have an Enterprise license key
 - You must have an active Pachyderm cluster
+- You must have the Pachyderm Helm repo downloaded.
 
 ## How to Register a Cluster 
 

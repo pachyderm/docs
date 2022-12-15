@@ -11,7 +11,7 @@ weight: 1
 ---
 ## Before You Start 
 
-- You must be using [Pachyderm Enterprise](../../enterprise/) to set up authentication and authorization. 
+- You must be using [Pachyderm Enterprise](../../../) to set up authentication and authorization. 
 
 ## Activate User Access Management
 
