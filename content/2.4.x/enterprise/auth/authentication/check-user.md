@@ -12,7 +12,7 @@ weight: 4
 
 ## Before You Start 
 
-- Your organization must have an active Enterprise License.
+- Your organization must have an active [Enterprise license key](../../../).
 - You must have pachctl installed.
 
 ## How to Check Your Current User

@@ -13,7 +13,7 @@ You can register an existing single-cluster Pachyderm instance to the embedded [
 
 ## Before You Start
 
-- You must have an Enterprise license key
+- You must have an [Enterprise license key](../../../)
 - You must have an active Pachyderm cluster
 
 ##  How to Activate Enterprise Server 

@@ -9,13 +9,7 @@ series:
 seriesPart:
 --- 
 
-Pachyderm ships with an embedded proxy that exposes one external TCP port for all access, including: GRPCs, HTTP/S, s3 Gateway, OIDC, and Dex. Once enabled, you will be able to access Pachyderm in the following ways:
-
-- **Console**: `http://<external-IP-address-or-domain-name>`
-- **Notebooks**: `grpc://<external-IP-address-or-domain-name>:80`
-- **s3 Gateway**: `http://<external-IP-address-or-domain-name>:80`
-
-Switching to using the embedded proxy improves your deployment's security posture because the proxy is hardened against malicious traffic and writes out extensive audit logs for all requests to Pachyderm.
+Pachyderm ships with an embedded proxy that exposes one external TCP port (`:80`) for all access, including: GRPCs, HTTP/S, s3 Gateway, OIDC, and Dex. Switching to using the embedded proxy improves your deployment's security posture because the proxy is hardened against malicious traffic and writes out extensive audit logs for all requests to Pachyderm.
 
 ## Before You Start 
 
@@ -24,6 +18,7 @@ This guide assumes that:
 - You have Pachyderm already set up with [Enterprise Server](../../../enterprise/deployment), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/idp-dex/).
 - You are upgrading to from < **2.5.0** to **2.5.0** or newer.
 - You are currently using `pachd.externalService`.
+- You have a DNS set up or Load Balance IP Address for the `proxy.host` attribute.
 
 ## How to Upgrade to Embedded Proxy
 
@@ -54,7 +49,7 @@ proxy:
 helm repo update
 helm upgrade pachyderm pachyderm/pachyderm -f values.yml
 ```
-4. Connect to your cluster::
+4. Connect to your cluster:
 ```s
 echo '{"pachd_address":"grpc://192.168.1.70:80"}' | pachctl config set context pachyderm --overwrite && pachctl config set active-context pachyderm
 ```
