@@ -17,7 +17,7 @@ Pachyderm has 5 user types:
 
 |User Type| Description|
 |-|-|
-[`clusterAdmin`](#role-types)
+|clusterAdmin| |
 |IdP User| Any user or group of users authenticated by your Identity Provider to access Pachyderm.|
 |Robot User|A Service account used for third party applications/systems integrating with Pachyderm APIs/Clients.|
 |Pipeline User| An internal Service Account used for Pipelines when interacting with Pachyderm resources.|

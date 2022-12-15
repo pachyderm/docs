@@ -22,8 +22,7 @@ Switching to using the embedded proxy improves your deployment's security postur
 This guide assumes that:
 
 - You have Pachyderm already set up with [Enterprise Server](../../../enterprise/deployment), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/idp-dex/).
-- You are currently using `ingress` or `pachd.externalService` to route cluster-external HTTP/HTTPS requests.  
-
+- You are currently using `ingress` or `pachd.externalService`.
 
 ## How to Upgrade to Embedded Proxy
 
