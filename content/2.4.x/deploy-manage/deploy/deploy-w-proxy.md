@@ -22,6 +22,7 @@ Switching to using the embedded proxy improves your deployment's security postur
 This guide assumes that:
 
 - You have Pachyderm already set up with [Enterprise Server](../../../enterprise/deployment), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/idp-dex/).
+- You are upgrading to from < **2.5.0** to **2.5.0** or newer.
 - You are currently using `pachd.externalService`.
 
 ## How to Upgrade to Embedded Proxy
@@ -48,8 +49,12 @@ proxy:
 ```
 
 2. Remove the `pachd.externalService` section. 
-3. Upgrade your cluster using `helm upgrade pachyderm pachyderm/pachyderm -f values.yml`.
-4. Connect by running the following:
+3. Upgrade your cluster: 
+```s
+helm repo update
+helm upgrade pachyderm pachyderm/pachyderm -f values.yml
+```
+4. Connect to your cluster::
 ```s
 echo '{"pachd_address":"grpc://192.168.1.70:80"}' | pachctl config set context pachyderm --overwrite && pachctl config set active-context pachyderm
 ```
