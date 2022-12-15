@@ -10,6 +10,7 @@ pachd:
 
 proxy:
   enabled: true
+	host: 192.168.1.70
   service:
     type: LoadBalancer
 
