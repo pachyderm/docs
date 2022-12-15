@@ -39,7 +39,7 @@
             {{ range .Site.Pages }}
                 {{ if .Params.Tags}}
                     <div class="is-one-third is-hidden" data-tags="{{ trim  (print .Params.Tags) "[]" }}"> 
-                        <a class="sp-2 c-sp-2" href="{{.Permalink}}">
+                        <a class="sp-2 c-sp-2" href="{{.RelPermalink}}">
                             <div class="darken-1 rounded-1 move-l">
                                 <h3 class="mt-2 m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-2">></b></h3>
                                 <p class="subtitle-1">{{if .Description}} {{.Description}} {{else}}{{.Summary | truncate 300}} {{end}} </p>

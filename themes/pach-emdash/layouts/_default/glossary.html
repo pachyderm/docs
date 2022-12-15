@@ -56,7 +56,7 @@
                         {{ if  .Params.hidden }}
                             {{/* Does not show the hidden child pages or their descendants */}}
                         {{else}}
-                            <a class="spread-left m-4" href="{{.Permalink}}">
+                            <a class="spread-left m-4" href="{{.RelPermalink}}">
                                 <div class="spread-center is-two-fifths">
                                     {{/* Display title or humanized file's basename (e.g, for pachctl refs) */}}
                                     <h4> 
