@@ -26,7 +26,7 @@ You can choose between Pachyderm's pre-built image (a custom version of [`jupyte
 1. Open your terminal.
 2. Run the following:
  ```s
- docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:{{% extensionJupyterLab %}}  lab --allow-root
+ docker run -it -p 8888:8888 -e GRANT_SUDO=yes --user root --device /dev/fuse --privileged --entrypoint /opt/conda/bin/jupyter pachyderm/notebooks-user:v{{% extensionJupyterLab %}}  lab --allow-root
  ```
 3. Open the UI using the link provided in the terminal following:
  ```s
