@@ -11,7 +11,6 @@ tags:
   - inspect-file
   - inspect-job
   - inspect-pipeline
-  - inspect-project
   - inspect-repo
   - inspect-secret
   - inspect-transaction

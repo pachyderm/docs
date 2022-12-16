@@ -6,7 +6,6 @@ date:  2022-10-14T09:34:42-04:00
 tags:
   - create-branch
   - create-pipeline
-  - create-project
   - create-repo
   - create-secret
 cliGlossary:  c
