@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Input Cron
-description: Trigger pipelines based on time
+description: Trigger pipelines based on time.
 date: 
 # taxonomy #
 tags: ["pipelines"]

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Input Join
-description: Join files that are stored in separate Pachyderm repositories
+description: Join files that are stored in separate Pachyderm repositories.
 date: 
 # taxonomy #
 tags: ["pipelines"]

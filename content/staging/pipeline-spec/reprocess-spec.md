@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Reprocess Spec
-description: Define the reprocessing behavior of a repo upon receiving new or modified data. 
+description: Define the reprocessing behavior of a repo upon receiving new or modified. data. 
 date: 
 # taxonomy #
 tags: ["pipelines"]

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Transform
-description: Set the name of the Docker image that your jobs use
+description: Set the name of the Docker image that your jobs use.
 date: 
 # taxonomy #
 tags: ["pipelines"]
