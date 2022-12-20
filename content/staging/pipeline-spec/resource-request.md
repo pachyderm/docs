@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Resource Requests
-description: 
+description: Set the exact amount of resources that a pipeline worker will consume.
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -10,6 +10,23 @@ seriesPart:
 label: optional
 ---
 
+## Spec
+
+```s
+{
+    "resource_requests": {
+      "cpu": number,
+      "memory": string,
+      "gpu": {
+        "type": string,
+        "number": int
+        }
+      "disk": string,
+    },
+}
+```
+
+## Behavior 
 
 `resource_requests` describes the amount of resources that the pipeline
 workers will consume. Knowing this in advance
@@ -63,16 +80,4 @@ For more information about resource requests and limits see the
 [Kubernetes docs](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 on the subject.
 
-```s
-{
-    "resource_requests": {
-      "cpu": number,
-      "memory": string,
-      "gpu": {
-        "type": string,
-        "number": int
-        }
-      "disk": string,
-    },
-}
-```
+## When to Use 

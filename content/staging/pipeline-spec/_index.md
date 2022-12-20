@@ -69,11 +69,89 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
   ``` -->
  
 ## Minimal Spec 
+
 In practice, you rarely need to specify all the fields.
 Most fields either come with sensible defaults or can be empty.
-The following text is an example of a minimum spec:
 
-```json
+{{< stack type="wizard">}}
+
+{{% wizardRow id="Use Case"%}}
+{{% wizardButton option="Cron" state="active" %}}
+{{% wizardButton option="Egress" %}}
+{{% wizardButton option="Input" %}}
+{{% wizardButton option="Service" %}}
+{{% wizardButton option="Spout" %}}
+{{% wizardButton option="S3" %}}
+
+{{% /wizardRow %}}
+
+{{% wizardResults  %}}
+{{% wizardResult val1="use-case/cron"%}}
+```s
+{
+  "pipeline": {
+    "project": 1,
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["/binary", "/pfs/data", "/pfs/out"]
+  },
+  "input": {
+    "cron": {
+      {
+          "name": string,
+          "spec": string,
+          "repo": string,
+          "start": time,
+          "overwrite": bool
+      }
+    }
+  }
+}
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="use-case/egress"%}}
+```s
+{
+  "pipeline": {
+    "project": 1,
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["/binary", "/pfs/data", "/pfs/out"]
+  },
+  "input": {
+        "pfs": {
+            "repo": "data",
+            "glob": "/*"
+        }
+    },
+  "egress": {
+      // Egress to an object store
+      "URL": "s3://bucket/dir"
+      // Egress to a database
+      "sql_database": {
+          "url": string,
+          "file_format": {
+              "type": string,
+              "columns": [string]
+          },
+          "secret": {
+              "name": string,
+              "key": "PACHYDERM_SQL_PASSWORD"
+          }
+      }
+    },
+
+}
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="use-case/input"%}}
+```s
 {
   "pipeline": {
     "project": 1,
@@ -91,6 +169,77 @@ The following text is an example of a minimum spec:
     }
 }
 ```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="use-case/service"%}}
+```s
+{
+  "pipeline": {
+    "project": 1,
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["/binary", "/pfs/data", "/pfs/out"]
+  },
+  "input": {
+        "pfs": {
+            "repo": "data",
+            "glob": "/*"
+        }
+    },
+  "service": {
+      "internal_port": int,
+      "external_port": int
+    },
+}
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="use-case/spout"%}}
+```s
+{
+  "pipeline": {
+    "project": 1,
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["/binary", "/pfs/data", "/pfs/out"]
+  },
+  "spout": {
+  },
+}
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="use-case/s3"%}}
+```s
+{
+  "pipeline": {
+    "project": 1,
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["/binary", "/pfs/data", "/pfs/out"]
+  },
+  "input": {
+        "pfs": {
+            "repo": "data",
+            "glob": "/*"
+        }
+    },
+  "s3_out": true,
+}
+```
+{{% /wizardResult %}}
+
+{{% /wizardResults %}}
+
+{{</stack>}}
+
+
 <!-- 
 ## Attributes 
 

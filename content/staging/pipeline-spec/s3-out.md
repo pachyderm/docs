@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  s3 Out
-description: 
+description:  Write results out to an S3 gateway endpoint.
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -9,6 +9,16 @@ series:
 seriesPart:
 label: optional
 ---
+
+## Spec
+
+```s
+{
+    "s3_out": bool,
+}
+```
+
+## Behavior 
 
 `s3_out` allows your pipeline code to write results out to an S3 gateway
 endpoint instead of the typical `pfs/out` directory. When this parameter
@@ -19,12 +29,5 @@ output repository will be `s3://<output_repo>`.
 If you want to expose an input repository through an S3 gateway, see
 `input.pfs.s3` in [PFS Input](#pfs-input). 
 
-{{% notice note %}}
-**See Also**: [Environment Variables](../../deploy-manage/deploy/environment-variables/)
-{{% /notice %}}
+## When to Use 
 
-```s
-{
-    "s3_out": bool,
-}
-```

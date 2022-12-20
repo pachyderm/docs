@@ -1,13 +1,16 @@
 ---
 # metadata # 
 title:  Spec Commit
-description: 
+description: TBD
 date: 
 # taxonomy #
 tags: ["pipelines"]
 series:
 seriesPart:
+label: optional
 ---
+
+## Spec 
 
 ```s
 {
@@ -30,3 +33,10 @@ seriesPart:
     }
 }
 ```
+
+## Behavior 
+
+### Attributes
+
+## When to Use 
+

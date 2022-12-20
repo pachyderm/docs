@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Datum Set Spec
-description: Specifies how a pipeline should group its datums.
+description: Define how a pipeline should group its datums.
 date: 
 # taxonomy #
 tags: ["pipelines"]

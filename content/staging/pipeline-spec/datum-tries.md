@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Datum Tries
-description: Determines the number of times a job attempts to run on a datum when a failure occurs.
+description: Define the number of job attempts to run on a datum when a failure occurs.
 date: 
 # taxonomy #
 tags: ["pipelines"]

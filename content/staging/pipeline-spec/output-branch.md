@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Output Branch
-description: 
+description: Define the branch where the pipeline outputs new commits.
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -11,11 +11,20 @@ label: optional
 ---
 
 
-This is the branch where the pipeline outputs new commits.  By default,
-it's "master".
+
+
+## Spec
 
 ```s
 {
     "output_branch": string,
 }
 ```
+
+## Behavior 
+
+-  Set to `master` by default. 
+
+## When to Use
+
+Use this setting to output commits to `dev` or `testing` branches. 

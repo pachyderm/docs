@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Transform
-description: 
+description: Set the name of the Docker image that your jobs use
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -10,7 +10,7 @@ seriesPart:
 ---
 
 
-`transform.image` is the name of the Docker image that your jobs use.
+
 
 `transform.cmd` is the command passed to the Docker run invocation. Similarly
 to Docker, `cmd` is not run inside a shell which means that
@@ -89,6 +89,8 @@ can also specify the `WORKDIR` directive in your `Dockerfile`.
 While `tmpfs` is very fast, be aware that unlike disks, `tmpfs` is cleared on node reboot and any files you write count against your container's memory limit. This may be useful for workloads that are IO heavy or use memory caches.
 {{% /notice %}}
 
+## Spec 
+
 ```s
 {
     "transform": {
@@ -120,3 +122,7 @@ While `tmpfs` is very fast, be aware that unlike disks, `tmpfs` is cleared on no
     },
 }
 ```
+
+## Behavior 
+
+## When to Use 

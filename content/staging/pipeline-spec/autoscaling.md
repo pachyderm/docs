@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Autoscaling
-description: Enables autoscaling of the worker pool based on datums in queue. 
+description: Enable autoscaling of the worker pool based on datums in queue. 
 date: 
 # taxonomy #
 tags: ["pipelines"]

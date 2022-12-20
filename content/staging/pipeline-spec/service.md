@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Service
-description: 
+description: Enable a pipeline to be treated as a long-running service.
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -10,19 +10,7 @@ seriesPart:
 label: optional
 ---
 
-{{% notice warning %}}
-Service Pipelines are an [experimental feature](../../reference/supported-releases/#experimental).
-{{% /notice %}}
-
-`service` specifies that the pipeline should be treated as a long running
-service rather than a data transformation. This means that `transform.cmd` is
-not expected to exit, if it does it will be restarted. Furthermore, the service
-is exposed outside the container using a Kubernetes service.
-`"internal_port"` should be a port that the user code binds to inside the
-container, `"external_port"` is the port on which it is exposed through the
-`NodePorts` functionality of Kubernetes services. After a service has been
-created, you should be able to access it at
-`http://<kubernetes-host>:<external_port>`.
+## Spec 
 
 ```s
 {
@@ -32,3 +20,18 @@ created, you should be able to access it at
     },
 }
 ```
+
+## Behavior 
+
+- When enabled, `transform.cmd` is not expected to exit and will restart if it does.
+- The service becomes exposed outside the container using a Kubernetes service.
+- You can access the service at `http://<kubernetes-host>:<external_port>`.
+
+### Attributes 
+
+|Attribute|Description|
+|-|-|
+|`internal_port`| The port that the user code binds to inside the container. |
+|`external_port`| The port on which it is exposed through the `NodePorts` functionality of Kubernetes services.|
+
+## When to Use 
