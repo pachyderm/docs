@@ -77,7 +77,8 @@ Most fields either come with sensible defaults or can be empty.
 
 {{% wizardRow id="Use Case"%}}
 {{% wizardButton option="Cron" state="active" %}}
-{{% wizardButton option="Egress" %}}
+{{% wizardButton option="Egress (DB)" %}}
+{{% wizardButton option="Egress (Storage)" %}}
 {{% wizardButton option="Input" %}}
 {{% wizardButton option="Service" %}}
 {{% wizardButton option="Spout" %}}
@@ -112,7 +113,7 @@ Most fields either come with sensible defaults or can be empty.
 ```
 {{% /wizardResult %}}
 
-{{% wizardResult val1="use-case/egress"%}}
+{{% wizardResult val1="use-case/egress-db"%}}
 ```s
 {
   "pipeline": {
@@ -130,9 +131,6 @@ Most fields either come with sensible defaults or can be empty.
         }
     },
   "egress": {
-      // Egress to an object store
-      "URL": "s3://bucket/dir"
-      // Egress to a database
       "sql_database": {
           "url": string,
           "file_format": {
@@ -144,6 +142,31 @@ Most fields either come with sensible defaults or can be empty.
               "key": "PACHYDERM_SQL_PASSWORD"
           }
       }
+    },
+
+}
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="use-case/egress-storage"%}}
+```s
+{
+  "pipeline": {
+    "project": 1,
+    "name": "wordcount"
+  },
+  "transform": {
+    "image": "wordcount-image",
+    "cmd": ["/binary", "/pfs/data", "/pfs/out"]
+  },
+  "input": {
+        "pfs": {
+            "repo": "data",
+            "glob": "/*"
+        }
+    },
+  "egress": {
+      "URL": "s3://bucket/dir"
     },
 
 }
