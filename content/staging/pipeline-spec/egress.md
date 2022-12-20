@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Egress
-description: 
+description: Push the results of a Pipeline to an external data store or an SQL Database.
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -10,12 +10,8 @@ seriesPart:
 label: optional
 ---
 
-`egress` allows you to push the results of a Pipeline to an external data
-store or an SQL Database. Data will be pushed
-after the user code has finished running but before the job is marked as
-successful.
 
-For more information, see [Egress Data to an object store](../../how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress) or [Egress Data to a database](../../how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress) .
+## Spec
 
 ```s
 {
@@ -37,3 +33,10 @@ For more information, see [Egress Data to an object store](../../how-tos/basic-d
     },
 }
 ```
+
+## Behavior 
+
+Data is pushed after the user code finishes running but before the job is marked as successful. For more information, see [Egress Data to an object store](../../how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress) or [Egress Data to a database](../../how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress).
+
+
+## When to Use 

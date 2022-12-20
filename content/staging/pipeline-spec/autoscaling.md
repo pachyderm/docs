@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Autoscaling
-description: 
+description: Enables autoscaling of the worker pool based on datums in queue. 
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -10,15 +10,17 @@ seriesPart:
 label: optional
 ---
 
-`autoscaling` indicates that the pipeline should automatically scale the worker
-pool based on the datums it has to process.
-The maximum number of workers is controlled by the `parallelism_spec`.
-A pipeline with no outstanding jobs
-will go into *standby*. A pipeline in a *standby* state will have no pods running and
-thus will consume no resources. 
+## Spec 
 
 ```s
 {
     "autoscaling": bool
 }
 ```
+
+## Behavior
+
+- The maximum number of workers is controlled by the `parallelism_spec`.
+- A pipeline with no outstanding jobs will go into *standby*. A pipeline in a *standby* state consumes no resources. 
+
+## When to Use 

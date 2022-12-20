@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Description
-description: 
+description: Display meaningful information about your pipeline.
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -10,12 +10,18 @@ seriesPart:
 label: optional
 ---
 
-`description` is an optional text field where you can add information
-about the pipeline.
-
+## Spec 
 
 ```s
 {
     "description": string,
 }
 ```
+
+## Behavior 
+
+`description` is displayed in your pipeline details when viewed from pachctl or console.
+
+## When to Use
+
+It's recommended to always provide meaningful descriptions to your Pachyderm resources.
