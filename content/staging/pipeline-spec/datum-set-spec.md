@@ -40,7 +40,7 @@ datums and it commits a full set once it's done processing it.
 
 ## When to Use
 
-You should set this if your pipeline is experiencing "stragglers." I.e. situations
+You should set this if your pipeline is experiencing "stragglers." i.e., situations
 where most of the workers are idle but a few are still processing jobs. It can
 fix this problem by spreading the datums out in to more granular chunks for
 the workers to process.

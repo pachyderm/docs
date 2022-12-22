@@ -24,3 +24,11 @@ label: optional
 - A pipeline with no outstanding jobs will go into *standby*. A pipeline in a *standby* state consumes no resources. 
 
 ## When to Use 
+
+You should consider enabling autoscaling if you have workloads that are:
+
+- Resource-intensive or have variable resource needs, autoscaling can help ensure that your worker pool has the right number of nodes to handle the workload.
+
+- Sensitive to latency, autoscaling can help ensure that there are enough resources available to handle spikes in traffic or demand.
+
+-  Over-provisioned and not optimized for cost.

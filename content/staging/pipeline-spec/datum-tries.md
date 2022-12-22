@@ -30,3 +30,5 @@ number of times a job attempts to run on a datum when a failure occurs.
 
 
 ## When to Use 
+
+You should consider setting a higher `datum_tries` count if the datums you are working have to be imported or fetched (via data ingress) from an external source.

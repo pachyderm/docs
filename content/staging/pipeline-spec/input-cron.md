@@ -50,3 +50,5 @@ with each commit. If you do not add any manual ticks or run
 is added to the input repo.
 
 ## When to Use
+
+You should consider creating a Cron pipeline for scenarios where scheduled intervals (daily, weekly, monthly) of data processing make more sense than either manual or streamed (spout) pipelines.

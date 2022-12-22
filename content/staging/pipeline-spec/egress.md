@@ -40,3 +40,5 @@ Data is pushed after the user code finishes running but before the job is marked
 
 
 ## When to Use 
+
+You should consider enabling data Egress if you'd like to use or reference your transformed data in downstream tools/applications. 
