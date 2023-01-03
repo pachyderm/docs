@@ -1121,7 +1121,7 @@ See the official [Promtail documentation](https://grafana.com/docs/loki/latest/c
 
 ### pachw
 
-Pachw processes storage tasks (like compaction) and url (like uploads and downloads) in a distributed way. Your main pachd instance scales the number of pachw instances used based on the number of tasks counted. By default, pachw can only scale up to a max of 1 replica.
+Pachw processes storage tasks (like compaction) and url tasks (like uploads and downloads) in a distributed way. Your main pachd instance scales the number of pachw instances used based on the number of tasks counted. By default, pachw can only scale up to a max of 1 replica.
 
 You should set the `maxReplicas` value to match the number of pipeline replicas that you have. You can also set the resources used by pachw instances. The type of work that pachw does is most affected by cpu and network bandwidth available.  
 
