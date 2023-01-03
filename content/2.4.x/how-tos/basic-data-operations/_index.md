@@ -24,6 +24,6 @@ The following diagram gives an high level view of them all.
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:lucid="lucid" width="100%" viewBox="0 0 1200 1041"> 
 -->
 <div style="resize:horizontal" >
-<object  data="../images/load-export-data-strategies.svg" ></object>
+<object  data="/images/load-export-data-strategies.svg" ></object>
 </div>
 

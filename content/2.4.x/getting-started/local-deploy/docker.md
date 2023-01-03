@@ -82,10 +82,29 @@ You are now ready to continue to Step 1.
 
 
 ## 2. Install Pachctl CLI
- 
-```s
+
+{{< stack type="wizard" >}}
+ {{% wizardRow id="operating-system" %}}
+  {{% wizardButton option="MacOs, Windows, & Darwin" state="active" %}}
+  {{% wizardButton option="Debian" %}}
+ {{% /wizardRow %}}
+
+ {{% wizardResults %}}
+ {{% wizardResult val1="operating-system/macos-windows-darwin" %}}
+ ```s
 brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@{{% majorMinorNumber %}}  
 ```
+ {{% /wizardResult%}}
+ {{% wizardResult val1="operating-system/debian" %}}
+
+```s
+curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v{{% latestPatchNumber %}}/pachctl_{{% latestPatchNumber %}}_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
+```
+ {{% /wizardResult%}}
+ {{% /wizardResults%}}
+ {{</stack>}}
+ 
+
 
 ## 3. Install & Configure Helm
 
@@ -95,7 +114,7 @@ brew install helm
 ```
 2. Add the Pachyderm repo to Helm:
 ```s
-helm repo add pach https://helm.pachyderm.com  
+helm repo add pachyderm https://helm.pachyderm.com  
 helm repo update  
 ```
 3. Install PachD: 
@@ -110,14 +129,14 @@ helm repo update
 {{% wizardResults %}}
 {{% wizardResult val1="version/community-edition" %}}
 ```s
-helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+helm install pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
 ```
 {{% /wizardResult %}}
 {{% wizardResult val1="version/enterprise" %}}
 Are you using an [Enterprise](../../../enterprise) trial key? If so, you can set up Enterprise Pachyderm locally by storing your trial key in a `license.txt` file and passing it into the following Helm command: 
 
 ```s  
-helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
+helm install pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
 ``` 
 This unlocks Enterprise features but also [requires user authentication](../../../deploy-manage/deploy/console/#connect-to-console)  to access Console. A mock user is created by default to get you started, with the **username**: `admin` and **password**: `password`.
 {{% /wizardResult %}}

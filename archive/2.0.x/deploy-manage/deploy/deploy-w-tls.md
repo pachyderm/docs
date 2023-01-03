@@ -29,7 +29,7 @@ In particular, you can use cert-manager to:
 Once your tls secret is created:
 
 - Enable tls in your helm values.
-- Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate ressource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources){target=_blank}.
+- Reference this certificate object in your helm chart by setting your tls secret name in the proper tls section. (For the Cert Manager users, the secret name should match the name set in your [certificate resource](https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources){target=_blank}.
 
 
 !!! Example
@@ -39,7 +39,7 @@ Once your tls secret is created:
      pachd:
        tls:
           enabled: true
-          secretName: "<the-secret-name-in-your-certificate-ressource>"
+          secretName: "<the-secret-name-in-your-certificate-resource>"
     ```
 
 Et voila!

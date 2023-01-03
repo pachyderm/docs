@@ -20,7 +20,7 @@ pachctl start pipeline <pipeline> [flags]
 
 ```
   -h, --help             help for pipeline
-      --project string   Project containing pipeline.
+
 ```
 
 ### Inherited Options

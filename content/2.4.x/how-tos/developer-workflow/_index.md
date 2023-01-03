@@ -14,7 +14,7 @@ Both the data and pipeline can be iterated on independently with Pachyderm
 handling the code execution according to the pipeline specfication.
 The workflow steps are shown below.
 
-![Developer workflow](../../assets/images/d_steps_analysis_pipeline.svg)
+![Developer workflow](/images/d_steps_analysis_pipeline.svg)
 
 ## Data Workflow
 

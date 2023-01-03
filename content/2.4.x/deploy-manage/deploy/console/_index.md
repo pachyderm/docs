@@ -26,7 +26,7 @@ Request an Enterprise trial token directly from Console CE by hitting the **"Upg
 ## Console States 
 Before diving into Console installation steps, please look at Console's various states, from the Community Edition to Enterprise. It should give you a mental model of the various paths to upgrade your Community Edition and what happens when your Enterprise token expires.
 
-![Console state diagram](../../images/console-state-diagram.png)
+![Console state diagram](/images/console-state-diagram.png)
 
 
 

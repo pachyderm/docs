@@ -39,7 +39,6 @@ pachctl logs [--pipeline=<pipeline>|--job=<pipeline>@<job>] [--datum=<datum>] [f
   -j, --job string        Filter for log lines from this job (accepts job ID)
       --master            Return log messages from the master process (pipeline must be set).
   -p, --pipeline string   Filter the log for lines from this pipeline (accepts pipeline name)
-      --project string    Project containing the job.
       --raw               Return log messages verbatim from server.
       --since string      Return log messages more recent than "since". (default "24h")
   -t, --tail int          Lines of recent logs to display.

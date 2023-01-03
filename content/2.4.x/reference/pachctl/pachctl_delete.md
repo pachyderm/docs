@@ -10,7 +10,6 @@ tags:
   - delete-file
   - delete-job
   - delete-pipeline
-  - delete-project
   - delete-repo
   - delete-secret
   - delete-transaction

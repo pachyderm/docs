@@ -24,7 +24,6 @@ pachctl config update context [<context>] [flags]
   -h, --help                           help for context
       --namespace string               Set a new namespace.
       --pachd-address string           Set a new name pachd address.
-      --project string                 Set a new project.
       --remove-cluster-deployment-id   Remove the cluster deployment ID field, which will be repopulated on the next 'pachctl' call using this context.
       --server-cas string              Set new trusted CA certs.
 ```

@@ -46,7 +46,7 @@
                         {{/* Does not show hidden child pages or their descendants */}}
                     {{else}}
                         {{/* versionNumber class is used by tagsResultsFilteredByVersion.js to focus results */}}
-                        <div class="is-one-third is-half-touch {{ partial "utilityVersionNumber" . }}">
+                        <div class="is-one-third is-half-touch {{ partial "utilityVersionNumber" . }}" data-latest-release="{{ .Params.release }}">
                             <a class="" href="{{ .Permalink }}">
                                     <div class="c-my-2 rounded-1 m-2 p-2 move-l">
                                         <h4 class="m">{{if .Title}}{{ .Title }}{{else}}{{ humanize .File.TranslationBaseName}}{{end}}<b class="s ml-2">></b></h4>

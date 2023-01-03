@@ -155,7 +155,7 @@ A simple [pipeline](../../pipeline-concepts/pipeline) subscribes to the master b
    because commits in Pachyderm are generally additive, so processing
    the HEAD commit also processes data from previous commits.
 
-![deferred processing](../../../assets/images/deferred-processing.gif)
+![deferred processing](/images/deferred-processing.gif)
 
 ## Process Specific Commits
 

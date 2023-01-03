@@ -11,7 +11,7 @@ seriesPart:
 This chapter will detail how to:
 
 - Grant/modify permissions (Roles) on given Resources to a User (Idp or Robot User).
-- Remove all permissions on a Ressource from a User (Idp or Robot User).
+- Remove all permissions on a Resource from a User (Idp or Robot User).
 
 {{% notice note %}}
  Default Privileges.
@@ -39,12 +39,12 @@ Rules to keep in mind
     
 ## Set Roles to Users
 
-- A **clusterAdmin** can grant admin privileges on a cluster or any lower level ressources to other users.     
+- A **clusterAdmin** can grant admin privileges on a cluster or any lower level resources to other users.     
   
 - A **repoOwner** of a given repository (or a **clusterAdmin** as mentioned above) can set any level of access to "their" repo to users by running the command:
 
   ```s
-  pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
+  pachctl auth set <resource> <resource name> [role1,role2 | none ] <prefix:subject>
   ```
 {{% notice note %}}
 Alternatively, [you have the **option to set your cluster roles directly through Helm using the helm value: pachd.pachAuthClusterRoleBindings**](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml#L469). 
@@ -92,7 +92,7 @@ In particular, we will:
 
     ```
     A quick `pachctl list repo` will list your new repo and display your access level on that repo as a **clusterAdmin**.
-    ![Admin Repo Access Level](../../images/clusteradmin-repo-access.png)
+    ![Admin Repo Access Level](/images/clusteradmin-repo-access.png)
 
 - **Third, grant `repoReader` access to our user `one-pachyderm-user@gmail.com`:**
     ```s
@@ -162,7 +162,7 @@ pachctl auth set repo testinput repoReader allClusterUsers
 ## Set Roles to Groups
 
 If your IdP enables group support,
-you can grant access on Pachyderm ressources to a group of users.
+you can grant access on Pachyderm resources to a group of users.
 
 Let's keep using our Auth0 example as an illustration, and:
 
@@ -180,19 +180,19 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
 - Additionally, because Auth0 does not include the groups in the ID token when you use the Authorization Extension above, you will have to manually edit the following rule: 
   - In the **Auth Pipeline** menu on the left, in **Rules**, click on `auth0-authorization-extension`. This will take you to the **Edit Rule** page of the extension. 
   - Copy the following `context.idToken['http://pachyderm.com/groups'] = user.groups;` line 35 and Save your changes.
-  ![Authorization Extension Rule Edition](../../images/auth0-edit-rule.png)
+  ![Authorization Extension Rule Edition](/images/auth0-edit-rule.png)
 {{% /notice %}}
 
 1. Group creation
 
     An Authorization link should now show on your Auth0 webpage.
     In **Authorization/Groups**, create a group. Here `testgroup`:
-    ![Group creation](../../images/auth0-create-group.png)
+    ![Group creation](/images/auth0-create-group.png)
 
 2. Add your user to your group
 
     In **Authorization/Users**, select your user one-pachyderm-user@gmail.com and add them to your `testgroup` as follow.
-    ![Add User to Group](../../images/auth0-add-user-to-group.png)
+    ![Add User to Group](/images/auth0-add-user-to-group.png)
 
     In **User Mangement/Users**, you user should now show the following addition to their app_metadata:
     ```json
@@ -254,7 +254,7 @@ To enable the Group creation in Auth0, you will need to install an [`Authorizati
     ```s
     pachctl idp update-connector auth0 --version 2
     ```
-    Your group is all set to receive permissions to Pachyderm's ressources.
+    Your group is all set to receive permissions to Pachyderm's resources.
 
 4.  Grant the group an admin access to a specific repo in Pachyderm.
 

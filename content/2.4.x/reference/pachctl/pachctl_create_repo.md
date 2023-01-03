@@ -21,7 +21,6 @@ pachctl create repo <repo> [flags]
 ```
   -d, --description string   A description of the repo.
   -h, --help                 help for repo
-      --project string       The project in which to create the repo.
 ```
 
 ### Inherited Options
