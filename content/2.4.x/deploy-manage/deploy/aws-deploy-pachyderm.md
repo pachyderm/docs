@@ -13,7 +13,7 @@ This article walks you through deploying a Pachyderm cluster on [Amazon Elastic 
 
  ## Architecture Diagram 
 
-![AWS Arch](../../images/arch-diagram-high-level-aws.svg) 
+![AWS Arch](/images/arch-diagram-high-level-aws.svg) 
 
 ## Before You Start
 Before you can deploy Pachyderm on an EKS cluster, verify that

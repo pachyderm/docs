@@ -10,7 +10,6 @@ tags:
   - list-file
   - list-job
   - list-pipeline
-  - list-project
   - list-repo
   - list-secret
   - list-transaction

@@ -95,7 +95,7 @@ are executed atomically.
 
   We have used the [inner join pipeline](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/examples/joins) in our joins example to illustrate the difference between no transaction and the use a transaction, all other things being equal. Make sure to follow the example README if you want to run those pachctl commands yourself.
 
-  ![Tx vs no Tx](../../images/flow-control-with-and-without-trx.png)
+  ![Tx vs no Tx](/images/flow-control-with-and-without-trx.png)
         
   {{% notice note %}}
   Note that in the case with the transaction, the `put file` and following `finish commit` are happening **after** the `finish transaction` instruction.
@@ -191,7 +191,7 @@ the data repository and the other updates the parameters repository.
 The following animation shows the standard Pachyderm workflow without
 a transaction:
 
-![Standard workflow](../../../assets/images/transaction_wrong.gif)
+![Standard workflow](/images/transaction_wrong.gif)
 
 In Pachyderm, a pipeline starts as soon as a new commit lands in
 a repository. In the diagram above, as soon as `commit 1` is added
@@ -208,7 +208,7 @@ With transactions, you can ensure that only one job triggers with
 both the new `data` and `parameters`. The following animation
 demonstrates how transactions work:
 
-![Transactions workflow](../../../assets/images/transaction_right.gif)
+![Transactions workflow](/images/transaction_right.gif)
 
 The transaction ensures that a single job runs for the two commits
 that were started within the transaction.

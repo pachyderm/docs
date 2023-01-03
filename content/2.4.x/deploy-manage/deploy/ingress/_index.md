@@ -67,7 +67,7 @@ However, we recommend to set up the following resources in a production environm
 - A **TCP Load Balancer** to manage **gRPC** external access to `pachd`.
 
 The diagram below gives a quick overview of those recommendations on AWS EKS:
-![Infrastruture Recommendation](../../images/infra_recommendations.png)
+![Infrastruture Recommendation](/images/infra_recommendations.png)
 
 ### `NodePort`
 By default, the local deployment of Pachyderm deploys the `pachd` service as  `type:NodePort`. However, `NodePort` is a limited solution that is not recommended in production deployments. Therefore, Pachyderm services are otherwise exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport). 

@@ -198,3 +198,4 @@ The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` p
 | Permission |
 |---|
 | CLUSTER_GET_PACHD_LOGS |
+

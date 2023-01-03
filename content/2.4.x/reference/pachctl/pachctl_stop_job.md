@@ -20,7 +20,7 @@ pachctl stop job <pipeline>@<job> [flags]
 
 ```
   -h, --help             help for job
-      --project string   Project containing the job
+
 ```
 
 ### Inherited Options

@@ -17,7 +17,7 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 - Browse, explore, and analyze data stored in Pachyderm directly from your Notebook
 - Run and test out your pipeline code before creating a Docker image
 
-![Mount extension in action](../images/mount-extension.gif)
+![Mount extension in action](/images/mount-extension.gif)
 
 ---
 

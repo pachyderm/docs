@@ -4,7 +4,7 @@
 This chapter will detail how to:
 
 - Grant/modify permissions (Roles) on given Resources to a User (Idp or Robot User).
-- Remove all permissions on a Ressource from a User (Idp or Robot User).
+- Remove all permissions on a resource from a User (Idp or Robot User).
 
 !!! Note "Default Privileges"
     - Root User: The activation of the Authentication and Authorization feature generates a **Root User** with **unalterable and unrevokable `clusterAdmin` privileges**. 
@@ -27,12 +27,12 @@ This chapter will detail how to:
     
 ## Set Roles to Users
 
-- A **clusterAdmin** can grant admin privileges on a cluster or any lower level ressources to other users.     
+- A **clusterAdmin** can grant admin privileges on a cluster or any lower level resources to other users.     
   
 - A **repoOwner** of a given repository (or a **clusterAdmin** as mentioned above) can set any level of access to "their" repo to users by running the command:
 
     ```shell
-    pachctl auth set <ressource> <ressource name> [role1,role2 | none ] <prefix:subject>
+    pachctl auth set <resource> <resource name> [role1,role2 | none ] <prefix:subject>
     ```
 !!! Note
 
@@ -148,7 +148,7 @@ In particular, we will:
 ## Set Roles to Groups
 
 If your IdP enables group support,
-you can grant access on Pachyderm ressources to a group of users.
+you can grant access on Pachyderm resources to a group of users.
 
 Let's keep using our Auth0 example as an illustration, and:
 
@@ -240,7 +240,7 @@ Let's keep using our Auth0 example as an illustration, and:
     ```shell
     pachctl idp update-connector auth0 --version 2
     ```
-    Your group is all set to receive permissions to Pachyderm's ressources.
+    Your group is all set to receive permissions to Pachyderm's resources.
 
 - 4- Grant the group an admin access to a specific repo in Pachyderm.
 

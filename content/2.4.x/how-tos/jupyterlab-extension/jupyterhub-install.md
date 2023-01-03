@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: JupyterHub Installation Guide
-description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm using a Docker image.
+description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm using JupyterHub.
 date: 
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]
@@ -10,9 +10,7 @@ seriesPart:
 weight: 2
 beta: true 
 ---
-{{% notice danger %}}
-The JupyterLab Mount Extension is an [experimental feature](../../reference/supported-releases/#experimental). We hope you'll try it out (and work with us to improve it! [Get in touch](https://www.pachyderm.com/slack/)), but it's not ready for self-service usage in production, as it may make sudden, breaking changes.
-{{% /notice %}}
+
 
 ## Before You Start
 
@@ -29,9 +27,9 @@ The JupyterLab Mount Extension is an [experimental feature](../../reference/supp
 
 For each option in this section, you can connect to your cluster using the following steps:
 
-1. Find the **IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
+1. Find the **Cluster IP address** you used to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
 2. Click on the link provided in the `stdout` of your terminal to run JupyterLab in a browser.
-3. Connect to your cluster using the `grpc://<cluster-ip>:<port>` format.
+3. Connect to your cluster using the `grpc://<cluster-ip-address>:<port>` format.
 {{% /notice %}}
 
 
@@ -49,14 +47,14 @@ For each option in this section, you can connect to your cluster using the follo
 
 ### With a Custom Chart
 
-1. Add the following to your Jupyterhub helm chart `values.YAML` file:
+1. Add the following to your JupyterHub helm chart `values.YAML` file:
 ```yaml
 singleuser:
      defaultUrl: "/lab"
      cmd:   "start-singleuser.sh"
      image:
          name: pachyderm/notebooks-user
-         tag: {{% extensionJupyterLab %}}
+         tag: v{{% extensionJupyterLab %}}
      uid:   0
      fsGid: 0
      extraEnv:
@@ -101,7 +99,7 @@ singleuser:
     defaultUrl: "/lab"
     image:
         name: pachyderm/notebooks-user
-        tag: {{% extensionJupyterLab %}}
+        tag: v{{% extensionJupyterLab %}}
     extraEnv:
         "SIDECAR_MODE": "True"
     extraContainers:
@@ -134,7 +132,7 @@ singleuser:
     defaultUrl: "/lab"
     image:
         name: pachyderm/notebooks-user
-        tag: {{% extensionJupyterLab %}}
+        tag: v{{% extensionJupyterLab %}}
     extraEnv:
         "SIDECAR_MODE": "True"
     extraContainers:

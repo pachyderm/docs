@@ -103,7 +103,7 @@ If you have an existing Prometheus deployment, please navigate to your Prometheu
 You can now browse your targets (http://localhost:9090/targets).
 Run a pipeline of your choice. The `pachyderm-scraper` should be visible:
 
-![pachyderm scraper target](./img/prometheus_target_pachyderm_scaper.png)
+![pachyderm scraper target](/images/prometheus_target_pachyderm_scaper.png)
 
 In the ClassicUI tab, you should be able to see the new pachyderm metrics.
 

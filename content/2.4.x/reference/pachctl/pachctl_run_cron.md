@@ -28,7 +28,6 @@ pachctl run cron <pipeline> [flags]
 
 ```
   -h, --help             help for cron
-      --project string   Project containing pipeline.
 ```
 
 ### Inherited Options

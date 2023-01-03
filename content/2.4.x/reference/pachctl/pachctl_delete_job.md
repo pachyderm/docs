@@ -20,7 +20,6 @@ pachctl delete job <pipeline>@<job> [flags]
 
 ```
   -h, --help             help for job
-      --project string   Project within which to delete job
 ```
 
 ### Inherited Options

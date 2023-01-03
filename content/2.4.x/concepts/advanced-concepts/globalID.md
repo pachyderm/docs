@@ -103,7 +103,7 @@ a `pachctl put file images@master -i images.txt` in the images repo of [the open
 {{% /notice %}}
 
 The following diagram illustrates the global commit and its various components:
-![global_commit_after_putfile](../../images/global_commit_after_putfile.png)
+![global_commit_after_putfile](/images/global_commit_after_putfile.png)
 
 Let's take a look at the origin of each commit.
 
@@ -125,7 +125,7 @@ Check the list of [all commit origins](../../data-concepts/commit) in the `Commi
         },
     ```
 
-1. Inspect the following commit 1035715e796f45caae7a1d3ffd1f93ca produced in the output repos of the edges pipeline:
+2. Inspect the following commit 1035715e796f45caae7a1d3ffd1f93ca produced in the output repos of the edges pipeline:
     ```s
     pachctl inspect commit edges@1035715e796f45caae7a1d3ffd1f93ca --raw
     ```

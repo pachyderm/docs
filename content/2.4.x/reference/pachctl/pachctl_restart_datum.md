@@ -20,7 +20,6 @@ pachctl restart datum <pipeline>@<job> <datum-path1>,<datum-path2>,... [flags]
 
 ```
   -h, --help             help for datum
-      --project string   Project containing the datum job
 ```
 
 ### Inherited Options
