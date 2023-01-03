@@ -26,7 +26,7 @@
         <section class="stack">
             {{ range .Pages.ByParam "seriesPart" }}
                 <div class="content"> 
-                        <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.Permalink}}">{{.Params.seriesPart}} {{.Title}} </a>
+                        <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.RelPermalink}}">{{.Params.seriesPart}} {{.Title}} </a>
                     {{ partial "featureBetaNotice.html" . }}
                     <div class="content"> 
                     {{.Content}}

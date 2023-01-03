@@ -1,13 +1,13 @@
 {
     "type": "oidc",
-    "id": "auth0",
-    "name": "Auth0Enterprise",
-    "version": 4,
+    "id": "auth0-test",
+    "name": "Pachyderm",
+    "version": 0,
     "config":{
-        "issuer": "https://dev-k34x5yjn.us.auth0.com/",
-        "clientID": "hegmOc5rTotLPu5ByRDXOvBAzgs3wuw5",
-        "clientSecret": "7xk8O71Uhp5T-bJp_aP2Squwlh4zZTJs65URPma-2UT7n1iigDaMUD9ArhUR-2aL",
-        "redirectURI": "http://34.68.40.3:658/callback",
+        "issuer": "dev-ps2tkwpgxblc1ozs.us.auth0.com",
+        "clientID": "jgkZcw7Wm1MruITlAMu7BaRD02KaUugx",
+        "clientSecret": "2LB1HB0JToG3G_04nfo4rNwxAIMElhOf6_zSKv5e9SJjpjx6pP-a-sU13owBI-3I",
+        "redirectURI": "http://localhost:3000/dex/callback",
         "scopes": ["groups", "email", "profile"],
         "claimMapping":{
             "groups": "http://pachyderm.com/groups"

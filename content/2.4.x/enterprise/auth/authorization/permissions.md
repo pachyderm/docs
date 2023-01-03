@@ -7,48 +7,35 @@ date:
 tags: ["permissions", "management"]
 series:
 seriesPart:
+weight: 3
 ---
 
 Use this article to reference permissions granted to each role when assigning them to your team/resources.
 
 You can also use the command `pachctl auth roles-for-permission <permission>` to look up which roles provide a given permission.
 
-## RepoReaderRole 
+## Role Behavior
 
-| Permission |
-|---|
-| REPO_READ |
-| REPO_INSPECT_COMMIT |
-| REPO_LIST_COMMIT |
-| REPO_LIST_BRANCH |
-| REPO_LIST_FILE |
-| REPO_INSPECT_FILE |
-| REPO_ADD_PIPELINE_READER |
-| REPO_REMOVE_PIPELINE_READER |
-| PIPELINE_LIST_JOB |
+- A **clusterAdmin** can grant admin privileges on a cluster or any lower level resources to other users.     
+- A **projectOwner** of a given project can set any level of access to their project
+- A **repoOwner** of a given repository can set any level of access to their repo
+- A user or group can have one or more roles on a specific Resource.
+- Roles are inherited; if a user has a role on a cluster, they have that role for all projects and repos in that cluster.
+- The creator of a repo becomes its `repoOwner`.
+- To update a pipeline, you must have at least `repoReader`-level access to all pipeline inputs
+    and `repoWriter`-level access to the pipeline output. 
+    This is because pipelines read from their input repos and write
+    to their output repos.
+- When a user subscribes a pipeline to a repo, Pachyderm sets
+    that user as an `repoOwner` of that pipeline's output repo.
+    If additional users need access to the output repository,
+    the initial `repoOwner` of a pipeline's output repo, or a `clusterAdmin`,
+    needs to grant that user access to the repo.
 
-## RepoWriterRole 
 
-The `RepoWriterRole` includes all of the `RepoReaderRole` permissions, plus the following:
+## Cluster Roles 
 
-| Permission |
-|---|
-| REPO_WRITE |
-| REPO_DELETE_COMMIT |
-| REPO_CREATE_BRANCH |
-| REPO_DELETE_BRANCH |
-| REPO_ADD_PIPELINE_WRITER |
-
-## RepoOwnerRole
-
-The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` permissions, plus the following:
-
-| Permission |
-|---|
-| REPO_MODIFY_BINDINGS |
-| REPO_DELETE |
-
-## oidcAppAdminRole
+### oidcAppAdminRole
 
 | Permission |
 |---|
@@ -59,7 +46,7 @@ The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` p
 | CLUSTER_IDENTITY_GET_OIDC_CLIENT |
 
 
-## idpAdminRole
+### idpAdminRole
 
 | Permission |
 |---|
@@ -69,27 +56,27 @@ The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` p
 | CLUSTER_IDENTITY_GET_IDP |
 | CLUSTER_IDENTITY_DELETE_IDP |
 
-## identityAdminRole
+### identityAdminRole
 
 | Permission |
 |---|
 | CLUSTER_IDENTITY_SET_CONFIG |
 | CLUSTER_IDENTITY_GET_CONFIG |
 
-## debuggerRole
+### debuggerRole
 
 | Permission |
 |---|
 | CLUSTER_DEBUG_DUMP |
 | CLUSTER_GET_PACHD_LOGS |
 
-## robotUserRole
+### robotUserRole
 
 | Permission |
 |---|
 | CLUSTER_AUTH_GET_ROBOT_TOKEN |
 
-## licenseAdminRole
+### licenseAdminRole
 
 | Permission |
 |---|
@@ -100,7 +87,7 @@ The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` p
 | CLUSTER_LICENSE_DELETE_CLUSTER |
 | CLUSTER_LICENSE_LIST_CLUSTERS |
 
-## secretAdminRole
+### secretAdminRole
 
 | Permission |
 |---|
@@ -109,13 +96,13 @@ The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` p
 | SECRET_INSPECT |
 | SECRET_DELETE |
 
-## pachdLogReaderRole
+### pachdLogReaderRole
 
 | Permission |
 |---|
 | CLUSTER_GET_PACHD_LOGS |
 
-## clusterAdminRole
+### clusterAdminRole
 
 The ClusterAdminRole includes all of the previous permissions, plus the following:
  
@@ -142,3 +129,41 @@ The ClusterAdminRole includes all of the previous permissions, plus the followin
 | CLUSTER_ENTERPRISE_DEACTIVATE |
 | CLUSTER_DELETE_ALL |
 | CLUSTER_ENTERPRISE_PAUSE |
+
+## Repo Roles 
+
+### RepoReaderRole 
+
+| Permission |
+|---|
+| REPO_READ |
+| REPO_INSPECT_COMMIT |
+| REPO_LIST_COMMIT |
+| REPO_LIST_BRANCH |
+| REPO_LIST_FILE |
+| REPO_INSPECT_FILE |
+| REPO_ADD_PIPELINE_READER |
+| REPO_REMOVE_PIPELINE_READER |
+| PIPELINE_LIST_JOB |
+
+### RepoWriterRole 
+
+The `RepoWriterRole` includes all of the `RepoReaderRole` permissions, plus the following:
+
+| Permission |
+|---|
+| REPO_WRITE |
+| REPO_DELETE_COMMIT |
+| REPO_CREATE_BRANCH |
+| REPO_DELETE_BRANCH |
+| REPO_ADD_PIPELINE_WRITER |
+
+### RepoOwnerRole
+
+The `RepoOwnerRole` includes all of the `RepoWriterRole` and  `RepoReaderRole` permissions, plus the following:
+
+| Permission |
+|---|
+| REPO_MODIFY_BINDINGS |
+| REPO_DELETE |
+
