@@ -14,7 +14,7 @@ In this section, you will find a complete list of configuration values you can s
 ## User-Provided Values
 
 - `pachd.enterpriseLicenseKey`: Your enterprise license (When installing Enterprise)
-- `oidc.upstreamIDPs` : The list of dex connectors, each containing Oauth client info connecting to an upstream IDP (When setting up the Authentication).
+- `oidc.upstreamIDPs`: The list of dex connectors, each containing Oauth client info connecting to an upstream IDP (When setting up the Authentication).
 
 If you are not planning to use Enterprise or plug an IdP, then no other value should be needed
 

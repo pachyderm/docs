@@ -7,6 +7,8 @@ date:
 tags: ["helm"]
 series:
 seriesPart:
+weight: 3
+label: Recommended
 --- 
 
 {{< stack type="wizard">}}

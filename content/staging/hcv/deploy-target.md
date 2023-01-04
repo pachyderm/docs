@@ -7,6 +7,8 @@ date:
 tags: ["helm"]
 series:
 seriesPart:
+label: required
+weight: 1
 --- 
 
 `deployTarget` defines where you're deploying pachyderm; this is typically located at the top of your values.yaml file.

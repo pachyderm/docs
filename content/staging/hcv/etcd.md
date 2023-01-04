@@ -1,12 +1,14 @@
 ---
 # metadata # 
 title:  ETCD HCVs
-description: 
+description: Configure your ETCD key-value storage cluster.  
 date: 
 # taxonomy #
 tags: ["helm"]
 series:
 seriesPart:
+weight: 4
+label: required
 --- 
 
 ```s

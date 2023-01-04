@@ -7,6 +7,7 @@ date:
 tags: ["helm"]
 series:
 seriesPart:
+weight: 11
 --- 
 
 
