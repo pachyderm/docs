@@ -7,6 +7,8 @@ date:
 tags: ["pipelines"]
 series:
 seriesPart:
+label: required 
+weight: 1
 ---
 
 

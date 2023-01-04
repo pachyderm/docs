@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: IAM
-description: 
+title: Pachyderm IAM
+description: Learn how to manage access to Pachyderm resources using roles.
 date: 
 # taxonomy #
 tags: ["permissions", "management"]
@@ -11,9 +11,6 @@ seriesPart:
 
 This page describes how Pachyderm's Identity and Access Management (IAM) system works and how you can use it to manage access in Pachyderm. Use IAM to grant granular access to specific Pachyderm resources.
 
-{{% notice tip %}}
-You can use the command `pachctl auth roles-for-permission <permission>` to look up which roles provide a given permission.
-{{% /notice %}}
 
 ## How IAM Works 
 
@@ -22,6 +19,10 @@ IAM works by managing access for **users** (human or robot) through assigned **r
 A user can have many roles, and some roles encompass the permissions of other roles. For example, if you have a `clusterAdminRole`, all other permissions belonging to more restricted roles are included. 
 
 ---
+
+{{% notice tip %}}
+You can use the command `pachctl auth roles-for-permission <permission>` to look up which roles provide a given permission.
+{{% /notice %}}
 
 ## Admin Roles
 

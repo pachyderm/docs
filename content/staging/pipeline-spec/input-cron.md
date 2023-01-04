@@ -7,6 +7,7 @@ date:
 tags: ["pipelines"]
 series:
 seriesPart:
+label: Required for Cron Inputs
 ---
 
 
