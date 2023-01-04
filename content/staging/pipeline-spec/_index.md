@@ -70,7 +70,7 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
  
 ## Minimal Spec 
 
-Generally speaking, the only attributes that are strictly required for all scenarios are `pipeline.name` and `transform`. Beyond those, other attributes are conditionally required based on your pipeline's use case. The following are a few examples of common use cases along with their minimally required attributes.
+Generally speaking, the only attributes that are strictly required for all scenarios are `pipeline.name` and [`transform`](./transform). Beyond those, other attributes are conditionally required based on your pipeline's use case. The following are a few examples of common use cases along with their minimally required attributes.
 
 {{< stack type="wizard">}}
 

@@ -27,8 +27,6 @@ label: optional
 }
 ```
 
-## Behavior 
-
 
 ## When to Use 
 

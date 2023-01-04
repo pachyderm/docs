@@ -31,3 +31,5 @@ If you want to expose an input repository through an S3 gateway, see
 
 ## When to Use 
 
+You should use the s3 Out attribute when you'd like to access and store the results of your Pachyderm transformations externally. 
+

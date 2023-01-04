@@ -34,9 +34,10 @@ label: optional
 }
 ```
 
-## Behavior 
 
-### Attributes
+## Attributes
+
+## Behavior 
 
 ## When to Use 
 
