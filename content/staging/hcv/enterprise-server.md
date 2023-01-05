@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Enterprise Server HCVs
-description: 
+description: Configure the Enterprise Server for production deployments.
 date: 
 # taxonomy #
 tags: ["helm"]

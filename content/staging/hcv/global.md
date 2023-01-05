@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Global HCVs
-description: 
+description:  Configure the postgresql database connection.
 date: 
 # taxonomy #
 tags: ["helm"]
