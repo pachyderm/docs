@@ -21,6 +21,14 @@ label: optional
 }
 ```
 
+## Attributes 
+
+|Attribute|Description|
+|-|-|
+|`number`|Determines how many datums are in a set; default is 2.|
+|`size_bytes`|Defines a target size for each set of datums.|
+|`chunks_per_worker`|Determines the number of datum sets that should be created for each worker.|
+
 ## Behavior
 
 A datum set is the unit of work that workers claim. Each worker claims 1 or more
@@ -34,7 +42,7 @@ datums and it commits a full set once it's done processing it.
 - `size_bytes` , if nonzero, specifies a target size for each set of datums. Sets may be larger or smaller than `size_bytes`, but will usually be
  pretty close to `size_bytes` in size.
 
-- `chunks_per_worker`, if nonzero, specifies how many datum sets should be
+- `per_worker`, if nonzero, specifies how many datum sets should be
  created for each worker. It can't be set with number or size_bytes.
 
 
