@@ -1125,7 +1125,7 @@ Pachw processes storage tasks (like compaction) and url tasks (like uploads and 
 
 You should set the `maxReplicas` value to match the number of pipeline replicas that you have. You can also set the resources used by pachw instances. The type of work that pachw does is most affected by cpu and network bandwidth available.  
 
-If you are using a version of pachyderm that's < 2.4.2, enable `inSidecars`.
+If you want behavior that matches 2.4.2 then enable `inSidecars`.
 
 
 
