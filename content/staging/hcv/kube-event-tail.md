@@ -10,6 +10,11 @@ seriesPart:
 weight: 8
 --- 
 
+## Values 
+
+The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
+
+
 ```s
 kubeEventTail:
   # Deploys a lightweight app that watches kubernetes events and echos them to logs.

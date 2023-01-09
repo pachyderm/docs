@@ -10,6 +10,10 @@ seriesPart:
 weight: 13
 ---
 
+## Values 
+
+The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
+
 
 ```s
 testConnection:
@@ -17,3 +21,5 @@ testConnection:
     repository: alpine
     tag: latest
 ```
+
+## About 

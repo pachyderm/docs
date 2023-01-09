@@ -10,6 +10,11 @@ seriesPart:
 weight: 10
 --- 
 
+## Values 
+
+The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
+
+
 ```s
 
 # Note: Postgres values control the Bitnami Postgresql Subchart

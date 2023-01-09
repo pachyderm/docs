@@ -10,6 +10,11 @@ seriesPart:
 weight: 14
 --- 
 
+## Values 
+
+The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
+
+
 ```s
 
 # The proxy is a service to handle all Pachyderm traffic (S3, Console, OIDC, Dex, GRPC) on a single
