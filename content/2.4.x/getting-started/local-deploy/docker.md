@@ -65,6 +65,7 @@ You are now ready to continue to Step 1.
  {{% /wizardResult %}}
  {{% wizardResult val1="operating-system/linux" %}}
   - You must have [Homebrew](https://brew.sh/) installed. 
+  - Ubuntu users must use the Debian installation method for the pachctl CLI.
 ```s
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
@@ -147,6 +148,10 @@ This unlocks Enterprise features but also [requires user authentication](../../.
    This may take several minutes to complete. 
 
 ## 4. Verify Installation 
+
+{{% notice tip %}}
+Don't have kubectl? Try opening a new terminal to run the command (Docker Desktop should ship with kubectl once Kubernetes is enabled) or use `brew install kubectl`.
+{{% /notice %}}
 
 1. In a new terminal, run the following command to check the status of your pods:
  ```s
