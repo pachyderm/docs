@@ -1,13 +1,14 @@
 ---
 # metadata # 
 title:  Loki HCVs
-description: 
+description: Set up logs with Loki, Grafana, and Promtail.
 date: 
 # taxonomy #
 tags: ["helm"]
 series:
 seriesPart:
 weight: 6
+label: optional
 --- 
 
 ## Values 
@@ -156,7 +157,7 @@ loki-stack:
       timeoutSeconds: 1
 ```
 
-### loki-stack 
+## About 
 
 The `loki-stack` section contains all the values passed to the `loki-stack` subchart.
 

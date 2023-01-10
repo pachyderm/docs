@@ -1,13 +1,14 @@
 ---
 # metadata # 
 title:  Ingress HCVs
-description: 
+description: This section is being deprecated; use proxy instead.
 date: 
 # taxonomy #
 tags: ["helm"]
 series:
 seriesPart:
 weight: 5
+label: Being Deprecated
 --- 
 
 ## Values 
@@ -36,27 +37,8 @@ ingress:
 
 ```
 
-### ingress
+## About
 
 {{% notice warning %}}
 `ingress` will be removed from the helm chart once the deployment of Pachyderm with a proxy becomes mandatory.
 {{% /notice %}}
-
-This section is to configure an ingress resource for an existing ingress controller.
-
-- `ingress.enabled` turns on the creation of the ingress for the UI.
-
-- `ingress.annotations` specifies annotations to add to the ingress resource.
-
-- `host` your domain name, external IP address, or localhost.
-
-- `uriHttpsProtoOverride` when set to true, uriHttpsProtoOverride will add the https protocol to the ingress URI routes without configuring certs
-  
-
-#### ingress.tls
-
-There are three options for configuring TLS on the ingress under `ingress.tls`.
-
-1. `disabled`. TLS is not used.
-1. `enabled`, using an existing secret. You must set enabled to true and provide a secret name where the exiting cert and key are stored.
-1. `enabled`, using a new secret. You must set enabled to true and `newSecret.create` to true and specify a secret name, and a cert and key in string format

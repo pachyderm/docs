@@ -8,11 +8,405 @@ tags: ["helm"]
 series:
 seriesPart:
 weight: 7
+label: required
 --- 
 
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
+
+{{< stack type="wizard">}}
+
+{{% wizardRow id="Options"%}}
+{{% wizardButton option="Compact"%}}
+{{% wizardButton option="With Secrets" state="active" %}}
+{{% wizardButton option="Without Secrets"  %}}
+
+{{% /wizardRow %}}
+
+{{% wizardResults %}}
+
+{{% wizardResult val1="options/compact" %}}
+
+
+```s
+pachd:
+  enabled: true
+  preflightChecks:
+    enabled: true
+  affinity: {}
+  annotations: {}
+  clusterDeploymentID: ""
+  configJob:
+    annotations: {}
+  goMaxProcs: 0
+  image:
+    repository: "pachyderm/pachd"
+    pullPolicy: "IfNotPresent"
+    tag: ""
+  logFormat: "json"
+  logLevel: "info"
+  lokiDeploy: true
+  lokiLogging: true
+  metrics:
+    enabled: true
+    endpoint: ""
+  priorityClassName: ""
+  nodeSelector: {}
+  podLabels: {}
+  replicas: 1
+  resources:
+    {}
+  requireCriticalServersOnly: false
+  externalService:
+    enabled: false
+    loadBalancerIP: ""
+    apiGRPCPort: 30650
+    s3GatewayPort: 30600
+    annotations: {}
+  service:
+    labels: {}
+    type: "ClusterIP"
+    annotations: {}
+    apiGRPCPort: 30650
+    prometheusPort: 30656
+    oidcPort: 30657
+    identityPort: 30658
+    s3GatewayPort: 30600
+  activateEnterprise: false
+  activateEnterpriseMember: false
+  activateAuth: true
+  enterpriseLicenseKey: ""
+  enterpriseLicenseKeySecretName: ""
+  rootToken: ""
+  rootTokenSecretName: ""
+  enterpriseSecret: ""
+  enterpriseSecretSecretName: ""
+  oauthClientID: pachd
+  oauthClientSecret: ""
+  oauthClientSecretSecretName: ""
+  oauthRedirectURI: ""
+  enterpriseServerToken: ""
+  enterpriseServerTokenSecretName: ""
+  enterpriseServerAddress: ""
+  enterpriseCallbackAddress: ""
+  localhostIssuer: "" 
+  pachAuthClusterRoleBindings: {}
+  additionalTrustedPeers: []
+  serviceAccount:
+    create: true
+    additionalAnnotations: {}
+    name: "pachyderm" 
+  storage:
+    backend: ""
+    amazon:
+      bucket: ""
+      cloudFrontDistribution: ""
+      customEndpoint: ""
+      disableSSL: false
+      id: ""
+      logOptions: ""
+      maxUploadParts: 10000
+      verifySSL: true
+      partSize: "5242880"
+      region: ""
+      retries: 10
+      reverse: true
+      secret: ""
+      timeout: "5m"
+      token: ""
+      uploadACL: "bucket-owner-full-control"
+    google:
+      bucket: ""
+      cred: ""
+    local:
+      hostPath: ""
+      requireRoot: true 
+    microsoft:
+      container: ""
+      id: ""
+      secret: ""
+    minio:
+      bucket: ""
+      endpoint: ""
+      id: ""
+      secret: ""
+      secure: ""
+      signature: ""
+    putFileConcurrencyLimit: 100
+    uploadConcurrencyLimit: 100
+    compactionShardSizeThreshold: 0
+    compactionShardCountThreshold: 0
+  ppsWorkerGRPCPort: 1080
+  storageGCPeriod: 0
+  storageChunkGCPeriod: 0
+  tls:
+    enabled: false
+    secretName: ""
+    newSecret:
+      create: false
+      crt: ""
+      key: ""
+  tolerations: []
+  worker:
+    image:
+      repository: "pachyderm/worker"
+      pullPolicy: "IfNotPresent"
+    serviceAccount:
+      create: true
+      additionalAnnotations: {}
+      name: "pachyderm-worker" 
+  rbac:
+    create: true
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="options/with-secrets" %}}
+
+
+```s
+pachd:
+  enabled: true
+  preflightChecks:
+    enabled: true # runs kube validation preflight checks.
+  affinity: {}
+  annotations: {}
+  clusterDeploymentID: "" # sets Pachyderm cluster ID.
+  configJob:
+    annotations: {}
+  goMaxProcs: 0 # passed as GOMAXPROCS to the pachd container.
+  image:
+    repository: "pachyderm/pachd"
+    pullPolicy: "IfNotPresent"
+    tag: "" # sets worker image tag; defaults to appVersion.
+  logFormat: "json"
+  logLevel: "info"
+  lokiDeploy: true 
+  lokiLogging: true
+  metrics:
+    enabled: true
+    endpoint: "" # provide the URL of the metrics endpoint.
+  priorityClassName: ""
+  nodeSelector: {}
+  podLabels: {} # adds labels to the pachd pod.
+  replicas: 1 # sets the number of pachd running pods
+  resources: #  specifies the resource requests & limits
+    {}
+    #limits:
+    #  cpu: "1"
+    #  memory: "2G"
+    #requests:
+    #  cpu: "1"
+    #  memory: "2G"
+  requireCriticalServersOnly: false
+
+  externalService:
+    enabled: false # Creates a service that's safe to expose.
+    loadBalancerIP: ""
+    apiGRPCPort: 30650
+    s3GatewayPort: 30600
+    annotations: {}
+
+  service:
+    labels: {} # adds labels to the pachd service.
+    type: "ClusterIP" # specifies pachd service's Kubernetes type
+    annotations: {}
+    apiGRPCPort: 30650
+    prometheusPort: 30656
+    oidcPort: 30657
+    identityPort: 30658
+    s3GatewayPort: 30600
+
+    #apiGrpcPort:
+    #  expose: true
+    #  port: 30650
+
+  activateEnterpriseMember: false # connects to an existing enterprise server.
+  activateAuth: true # bootstraps auth via the config job.
+  enterpriseLicenseKey: "" # activates enterprise if provided. 
+  enterpriseLicenseKeySecretName: "" # pulls value from k8s secret key "enterprise-license-key"
+  rootToken: "" # autogenerated if not provided; stored in k8s secret "pachyderm-bootstrap-config.rootToken"
+  rootTokenSecretName: "" # passes rooToken value from k8s secret key "root-token"
+  enterpriseSecret: "" # autogenerated if not provided; stored in k8s secret "pachyderm-bootstrap-config.enterpriseSecret"
+  enterpriseSecretSecretName: "" # passes value from k8s secret key "enterprise-secret"
+  oauthClientID: pachd
+  oauthClientSecret: "" # autogenerated if not provided; stored in k8s secret "pachyderm-bootstrap-config.authConfig.clientSecret"
+  oauthClientSecretSecretName: ""  # passes value from k8s secret key "pachd-oauth-client-secret"
+  oauthRedirectURI: ""
+  enterpriseServerToken: "" # authenticates to a enterprise server & registers this cluster as a member if activateEnterpriseMember is true.
+  enterpriseServerTokenSecretName: "" # passes value from k8s secret key "enterprise-server-token" if activateEnterpriseMember is true. 
+  enterpriseServerAddress: ""
+  enterpriseCallbackAddress: ""
+  localhostIssuer: "" # Indicates to pachd whether dex is embedded in its process; "true", "false", or ""
+  pachAuthClusterRoleBindings: {} # map initial users to their list of roles.
+  
+  #   robot:wallie:
+  #   - repoReader
+  #   robot:eve:
+  #   - repoWriter
+ 
+  additionalTrustedPeers: [] # configures identity service to recognize trusted peers.
+
+  #   - example-app
+
+  serviceAccount:
+    create: true
+    additionalAnnotations: {}
+    name: "pachyderm" 
+
+  storage:
+    backend: "" # options: GOOGLE, AMAZON, MINIO, MICROSOFT or LOCAL
+    amazon:
+      bucket: "" # sets the S3 bucket to use.
+      cloudFrontDistribution: "" # sets the CloudFront distribution in the storage secrets. 
+      customEndpoint: ""
+      disableSSL: false
+      # id sets the Amazon access key ID to use.  
+      id: "" #  sets the Amazon access key ID
+      # logOptions sets various log options in Pachyderm’s internal S3
+      # client.  Comma-separated list containing zero or more of:
+      # 'Debug', 'Signing', 'HTTPBody', 'RequestRetries',
+      # 'RequestErrors', 'EventStreamBody', or 'all'
+      # (case-insensitive).  See 'AWS SDK for Go' docs for details.
+      # logOptions is analogous to the --obj-log-options argument to
+      # pachctl deploy.
+      logOptions: ""
+      # maxUploadParts sets the maximum number of upload parts.  It is
+      # analogous to the --max-upload-parts argument to pachctl
+      # deploy.
+      maxUploadParts: 10000
+      # verifySSL performs SSL certificate verification.  It is the
+      # inverse of the --no-verify-ssl argument to pachctl deploy.
+      verifySSL: true
+      # partSize sets the part size for object storage uploads.  It is
+      # analogous to the --part-size argument to pachctl deploy.  It
+      # has to be a string due to Helm and YAML parsing integers as
+      # floats.  Cf. https://github.com/helm/helm/issues/1707
+      partSize: "5242880"
+      # region sets the AWS region to use.
+      region: ""
+      # retries sets the number of retries for object storage
+      # requests.  It is analogous to the --retries argument to
+      # pachctl deploy.
+      retries: 10
+      # reverse reverses object storage paths.  It is analogous to the
+      # --reverse argument to pachctl deploy.
+      reverse: true
+      # secret sets the Amazon secret access key to use.  Together with id
+      # and token, it implements the functionality of the
+      # --credentials argument to pachctl deploy.
+      secret: ""
+      # timeout sets the timeout for object storage requests.  It is
+      # analogous to the --timeout argument to pachctl deploy.
+      timeout: "5m"
+      # token optionally sets the Amazon token to use.  Together with
+      # id and secret, it implements the functionality of the
+      # --credentials argument to pachctl deploy.
+      token: ""
+      # uploadACL sets the upload ACL for object storage uploads.  It
+      # is analogous to the --upload-acl argument to pachctl deploy.
+      uploadACL: "bucket-owner-full-control"
+    google:
+      bucket: ""
+      # cred is a string containing a GCP service account private key,
+      # in object (JSON or YAML) form.  A simple way to pass this on
+      # the command line is with the set-file flag, e.g.:
+      #
+      #  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pachyderm/pachyderm
+      cred: ""
+      # Example:
+      # cred: |
+      #  {
+      #    "type": "service_account",
+      #    "project_id": "…",
+      #    "private_key_id": "…",
+      #    "private_key": "-----BEGIN PRIVATE KEY-----\n…\n-----END PRIVATE KEY-----\n",
+      #    "client_email": "…@….iam.gserviceaccount.com",
+      #    "client_id": "…",
+      #    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      #    "token_uri": "https://oauth2.googleapis.com/token",
+      #    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      #    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/…%40….iam.gserviceaccount.com"
+      #  }
+    local:
+      # hostPath indicates the path on the host where the PFS metadata
+      # will be stored.  It must end in /.  It is analogous to the
+      # --host-path argument to pachctl deploy.
+      hostPath: ""
+      requireRoot: true #Root required for hostpath, but we run rootless in CI
+    microsoft:
+      container: ""
+      id: ""
+      secret: ""
+    minio:
+      # minio bucket name
+      bucket: ""
+      # the minio endpoint. Should only be the hostname:port, no http/https.
+      endpoint: ""
+      # the username/id with readwrite access to the bucket.
+      id: ""
+      # the secret/password of the user with readwrite access to the bucket.
+      secret: ""
+      # enable https for minio with "true" defaults to "false"
+      secure: ""
+      # Enable S3v2 support by setting signature to "1". This feature is being deprecated
+      signature: ""
+    # putFileConcurrencyLimit sets the maximum number of files to
+    # upload or fetch from remote sources (HTTP, blob storage) using
+    # PutFile concurrently.  It is analogous to the
+    # --put-file-concurrency-limit argument to pachctl deploy.
+    putFileConcurrencyLimit: 100
+    # uploadConcurrencyLimit sets the maximum number of concurrent
+    # object storage uploads per Pachd instance.  It is analogous to
+    # the --upload-concurrency-limit argument to pachctl deploy.
+    uploadConcurrencyLimit: 100
+    # The shard size corresponds to the total size of the files in a shard.
+    # The shard count corresponds to the total number of files in a shard.
+    # If either criteria is met, a shard will be created.
+    compactionShardSizeThreshold: 0
+    compactionShardCountThreshold: 0
+  ppsWorkerGRPCPort: 1080
+  # the number of seconds between pfs's garbage collection cycles.
+  # if this value is set to 0, it will default to pachyderm's internal configuration.
+  # if this value is less than 0, it will turn off garbage collection.
+  storageGCPeriod: 0
+  # the number of seconds between chunk garbage colletion cycles.
+  # if this value is set to 0, it will default to pachyderm's internal configuration.
+  # if this value is less than 0, it will turn off chunk garbage collection.
+  storageChunkGCPeriod: 0
+  # There are three options for TLS:
+  # 1. Disabled
+  # 2. Enabled, existingSecret, specify secret name
+  # 3. Enabled, newSecret, must specify cert, key and name
+  tls:
+    enabled: false
+    secretName: ""
+    newSecret:
+      create: false
+      crt: ""
+      key: ""
+  tolerations: []
+  worker:
+    image:
+      repository: "pachyderm/worker"
+      pullPolicy: "IfNotPresent"
+      # Worker tag is set under pachd.image.tag (they should be kept in lock step)
+    serviceAccount:
+      create: true
+      additionalAnnotations: {}
+      # name sets the name of the worker service account.  Analogous to
+      # the --worker-service-account argument to pachctl deploy.
+      name: "pachyderm-worker" #TODO Set default in helpers / Wire up in templates
+  rbac:
+    # create indicates whether RBAC resources should be created.
+    # Setting it to false is analogous to passing --no-rbac to pachctl
+    # deploy.
+    create: true
+```
+{{% /wizardResult %}}
+
+
+{{% wizardResult val1="options/without-secrets" %}}
 
 
 ```s
@@ -98,15 +492,8 @@ pachd:
   activateAuth: true
   ## the license key used to activate enterprise features
   enterpriseLicenseKey: ""
-  # enterpriseLicenseKeySecretName is used to pass the enterprise license key value via an existing k8s secret.
-  # The value is pulled from the key, "enterprise-license-key".
-  enterpriseLicenseKeySecretName: ""
-  # if a token is not provided, a secret will be autogenerated on install and stored in the k8s secret 'pachyderm-bootstrap-config.rootToken'
   rootToken: ""
-  # rootTokenSecretName is used to pass the rootToken value via an existing k8s secret
-  # The value is pulled from the key, "root-token".
-  rootTokenSecretName: ""
-  # if a secret is not provided, a secret will be autogenerated on install and stored in the k8s secret 'pachyderm-bootstrap-config.enterpriseSecret'
+
   enterpriseSecret: ""
   # enterpriseSecretSecretName is used to pass the enterprise secret value via an existing k8s secret.
   # The value is pulled from the key, "enterprise-secret".
@@ -121,10 +508,7 @@ pachd:
   # DEPRECATED: enterpriseRootToken is deprecated, in favor of enterpriseServerToken
   # NOTE only used if pachd.activateEnterpriseMember == true
   enterpriseRootToken: ""
-  # DEPRECATED: enterpriseRootTokenSecretName is deprecated in favor of enterpriseServerTokenSecretName
-  # enterpriseRootTokenSecretName is used to pass the enterpriseRootToken value via an existing k8s secret.
-  # The value is pulled from the key, "enterprise-root-token".
-  enterpriseRootTokenSecretName: ""
+ 
   # enterpriseServerToken represents a token that can authenticate to a separate pachyderm enterprise server,
   # and is used to complete the enterprise member registration process for this pachyderm cluster.
   # The user backing this token should have either the licenseAdmin & identityAdmin roles assigned, or
@@ -315,213 +699,8 @@ pachd:
     # Setting it to false is analogous to passing --no-rbac to pachctl
     # deploy.
     create: true
-
-kubeEventTail:
-  # Deploys a lightweight app that watches kubernetes events and echos them to logs.
-  enabled: true
-  # clusterScope determines whether kube-event-tail should watch all events or just events in its namespace.
-  clusterScope: false
-  image:
-    repository: pachyderm/kube-event-tail
-    pullPolicy: "IfNotPresent"
-    tag: "v0.0.6"
-  resources:
-    limits:
-      cpu: "1"
-      memory: 100Mi
-    requests:
-      cpu: 100m
-      memory: 45Mi
 ```
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack>}}
 
-
-### pachd
-
-This section is to configure the pachd deployment.
-
-- `pachd.enabled` turns on the deployment of pachd.
-
-- `pachd.image` sets the image to use for pachd. This can be left at the defaults unless instructed.
-
-- `pachd.logFormat` sets the logging format (`text` or `json`). `json` is default.
-
-- `pachd.logLevel` sets the logging level. `info` is default.
-
-- `pachd.lokiLogging` enables Loki logging if set.
-
-- `pachd.podLabels` specifies labels to add to the pachd pod.
-
-- `pachd.resources` specifies resources and limits in standard kubernetes format. It is left unset by default.
-
-- `pachd.requireCriticalServersOnly` only requires the critical pachd servers to startup and run without errors.
-
-- `pachd.service.labels` specifies labels to add to the pachd service.
-
-- `pachd.service.type` specifies the Kubernetes type of the pachd service. The default is `ClusterIP`.
-
-{{% notice warning %}}
-`pachd.externalService` will be removed from the helm chart once the deployment of Pachyderm with a proxy becomes mandatory.
-{{%/notice%}}
-
-- `pachd.externalService.enabled` creates a kubernetes service of type `loadBalancer` that is safe to expose externally.
-
-- `pachd.externalService.loadBalancerIP` optionally supply the existing IP address of the load balancer.
-
-- `pachd.externalService.apiGRPCPort` is the desired api GRPC port (30650 is default).
-
-- `pachd.externalService.s3GatewayPort` is the desired s3 gateway port (30600 is default).
-
-- `pachd.externalService.annotations` add your service annotations.
-
-- `pachd.activateEnterpriseMember` specifies whether to activate with an enterprise server.
-  If pachd.activateEnterpriseMember is set, enterprise will be activated and connected to an existing enterprise server.
-
-- `activateAuth` If pachd.activateAuth is set, auth will be bootstrapped by the config-job. Defaults to true.
-
-- `pachd.enterpriseLicenseKey` specifies the enterprise license key if you have one. 
-  If pachd.enterpriseLicenseKey is set, enterprise will be activated. Alternatively, you can pass this value in a secret.
-
-- `pachd.enterpriseLicenseKeySecretName` specifies the secret name containing pachd License Key.
-
-- `pachd.rootToken` is the auth token used to communicate with the cluster as the root user. If a secret name is not provided in `rootTokenSecretName`, a secret containing `rootToken` (or a randomly generated value if empty) will be created on install and stored in the k8s secret `pachyderm-auth` under the key `rootToken`
-
-- `pachd.rootTokenSecretName` specifies the secret name containing pachd root token secret (key: `rootToken`).
-
-- `pachd.enterpriseSecret` specifies the enterprise cluster secret. If a secret name is not provided in `enterpriseSecretSecretName`, a secret containing `enterpriseSecret` (or a randomly generated value if empty) will be created on install and stored in the k8s secret `pachyderm-enterprise` under the key `enterprise-secret`
-
-- `pachd.enterpriseSecretSecretName` specifies the secret name containing pachd enterpriseSecret (key: `enterprise-secret`).
-
-- `pachd.oauthClientID` specifies the Oauth client ID representing pachd. Defaults to "pachd".
-
-- `pachd.oauthClientSecret` specifies the Oauth client secret. If a secret name is not provided in `oauthClientSecretSecretName`, a secret containing `oauthClientSecret` (or a randomly generated value if empty) will be created on install and stored in the k8s secret `pachyderm-auth` under the key `auth-config`
-
-- `pachd.oauthClientSecretSecretName` specifies the secret name containing pachd Oauth client secret (key: `auth-config`).
-
-- `pachd.oauthRedirectURI` specifies the Oauth redirect URI served by pachd. Example  `http://<PACHD-IP>:30657/authorization-code/callback`.
-
-- `pachd.enterpriseRootToken` only used if pachd.activateEnterpriseMember == true
-- `pachd.enterpriseRootTokenSecretName` specifies the secret name containing `enterpriseRootToken`
-
-- `pachd.enterpriseServerAddress` only used if pachd.activateEnterpriseMember == true
-- `pachd.enterpriseCallbackAddress` only used if pachd.activateEnterpriseMember == true
-
-- `pachd.localhostIssuer` specifies to pachd whether dex is embedded in its process. This value can be set to "true", "false", or "".
-
-If any of `rootToken`,`enterpriseSecret`, or `oauthClientSecret` are blank, a value will be generated automatically. 
-
-- `pachd.serviceAccount.create` creates a kubernetes service account for pachd. Default is true.
-
-- `pachd.rbac.create`  indicates whether RBAC resources should be created. Default is true.
-
-#### pachd.storage
-
-This section of `pachd` configures the back end storage for pachyderm.
-
-- `storage.backend` configures the storage backend to use. It must be one of GOOGLE, AMAZON, MINIO, MICROSOFT or LOCAL. This is set automatically if deployTarget is GOOGLE, AMAZON, MICROSOFT, or LOCAL.
-
-- `storage.putFileConcurrencyLimit` sets the maximum number of files to upload or fetch from remote sources (HTTP, blob storage) using PutFile concurrently. 
-
-- `storage.uploadConcurrencyLimit` sets the maximum number of concurrent object storage uploads per Pachd instance.
-##### pachd.storage.amazon
-
-If you're using Amazon S3 as your storage backend, configure it here.
-
-- `storage.amazon.bucket` sets the S3 bucket to use.
-
-- `storage.amazon.cloudFrontDistribution` sets the CloudFront distribution in the storage secrets.
-
-- `storage.amazon.customEndpoint` sets a custom s3 endpoint.
-
-- `storage.amazon.disableSSL` disables SSL.
-
-- `storage.amazon.id` sets the Amazon access key ID to use.
-
-- `storage.amazon.logOptions` sets various log options in Pachyderm’s internal S3 client.  Comma-separated list containing zero or more of: 'Debug', 'Signing', 'HTTPBody', 'RequestRetries','RequestErrors', 'EventStreamBody', or 'all' (case-insensitive).  See 'AWS SDK for Go' docs for details.
-
-- `storage.amazon.maxUploadParts` sets the maximum number of upload parts. Default is `10000`.
-
-- `storage.amazon.verifySSL` performs SSL certificate verification.
-
-- `storage.amazon.partSize` sets the part size for object storage uploads. It has to be a string due to Helm and YAML parsing integers as floats.
-
-- `storage.amazon.region` sets the AWS region to use.
-
-- `storage.amazon.retries` sets the number of retries for object storage requests..
-
-- `storage.amazon.reverse` reverses object storage paths.
-
-- `storage.amazon.secret` sets the Amazon secret access key to use.
-
-- `storage.amazon.timeout` sets the timeout for object storage requests.
-
-- `storage.amazon.token` optionally sets the Amazon token to use.
-
-- `storage.amazon.uploadACL` sets the upload ACL for object storage uploads.
-
-##### pachd.storage.google
-
-If you're using Google Storage Buckets as your storage backend, configure it here.
-
-- `storage.google.bucket` sets the object bucket to use.
-
-- `storage.google.cred` is a string containing a GCP service account private key, in object (JSON or YAML) form.  A simple way to pass this on the command line is with the set-file flag, e.g.:
-
-  ```s
-  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pach/pachyderm
-  ```
-
-  Example:
-
-  ```yaml
-  cred: |
-    {
-      "type": "service_account",
-      "project_id": "…",
-      "private_key_id": "…",
-      "private_key": "-----BEGIN PRIVATE KEY-----\n…\n-----END PRIVATE KEY-----\n",
-      "client_email": "…@….iam.gserviceaccount.com",
-      "client_id": "…",
-      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-      "token_uri": "https://oauth2.googleapis.com/token",
-      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/…%40….iam.gserviceaccount.com"
-    }
-  ```
-
-- `storage.local.hostpath` indicates the path on the host where the PFS metadata will be stored.
-- `storage.local.requireRoot`
-
-
-##### pachd.storage.microsoft
-
-If you're using Microsoft Blob Storage as your storage backend, configure it here.
-
-- `storage.microsoft.container` sets the blob storage container.
-
-- `storage.microsoft.id` sets the access key ID to use.
-
-- `storage.microsoft.secret` sets the secret access key to use.
-
-##### pachd.storage.minio
-
-If you're using [MinIO](https://min.io/) as your storage backend, configure it here.
-
-- `storage.minio.bucket` sets the bucket to use.
-
-- `storage.minio.endpoint` sets the object endpoint.
-
-- `storage.minio.id` sets the access key ID to use.
-
-- `storage.minio.secret` sets the secret access key to use.
-
-- `storage.minio.secure` set to true for a secure connection.
-
-- `storage.minio.signature` sets the signature version to use.
-
-#### pachd.tls
-
-There are three options for configuring TLS on pachd under `pachd.tls`.
-
-1. `disabled`. TLS is not used.
-1. `enabled`, using an existing secret. You must set enabled to true and provide a secret name where the exiting cert and key are stored.
-1. `enabled`, using a new secret. You must set enabled to true and `newSecret.create` to true and specify a secret name, and a cert and key in string format.
