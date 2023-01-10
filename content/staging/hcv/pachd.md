@@ -261,60 +261,22 @@ pachd:
       cloudFrontDistribution: "" # sets the CloudFront distribution in the storage secrets. 
       customEndpoint: ""
       disableSSL: false
-      # id sets the Amazon access key ID to use.  
       id: "" #  sets the Amazon access key ID
-      # logOptions sets various log options in Pachyderm’s internal S3
-      # client.  Comma-separated list containing zero or more of:
-      # 'Debug', 'Signing', 'HTTPBody', 'RequestRetries',
-      # 'RequestErrors', 'EventStreamBody', or 'all'
-      # (case-insensitive).  See 'AWS SDK for Go' docs for details.
-      # logOptions is analogous to the --obj-log-options argument to
-      # pachctl deploy.
-      logOptions: ""
-      # maxUploadParts sets the maximum number of upload parts.  It is
-      # analogous to the --max-upload-parts argument to pachctl
-      # deploy.
+      logOptions: "" # case-sensitive comma-separated list: 'Debug', 'Signing', 'HTTPBody', 'RequestRetries', 'EventStreamBody', or 'all'
       maxUploadParts: 10000
-      # verifySSL performs SSL certificate verification.  It is the
-      # inverse of the --no-verify-ssl argument to pachctl deploy.
       verifySSL: true
-      # partSize sets the part size for object storage uploads.  It is
-      # analogous to the --part-size argument to pachctl deploy.  It
-      # has to be a string due to Helm and YAML parsing integers as
-      # floats.  Cf. https://github.com/helm/helm/issues/1707
-      partSize: "5242880"
-      # region sets the AWS region to use.
-      region: ""
-      # retries sets the number of retries for object storage
-      # requests.  It is analogous to the --retries argument to
-      # pachctl deploy.
+      partSize: "5242880" # sets part size for object storage uploads; must be a string.
+      region: "" # sets AWS region
       retries: 10
-      # reverse reverses object storage paths.  It is analogous to the
-      # --reverse argument to pachctl deploy.
       reverse: true
-      # secret sets the Amazon secret access key to use.  Together with id
-      # and token, it implements the functionality of the
-      # --credentials argument to pachctl deploy.
-      secret: ""
-      # timeout sets the timeout for object storage requests.  It is
-      # analogous to the --timeout argument to pachctl deploy.
-      timeout: "5m"
-      # token optionally sets the Amazon token to use.  Together with
-      # id and secret, it implements the functionality of the
-      # --credentials argument to pachctl deploy.
-      token: ""
-      # uploadACL sets the upload ACL for object storage uploads.  It
-      # is analogous to the --upload-acl argument to pachctl deploy.
-      uploadACL: "bucket-owner-full-control"
+      secret: ""  # sets the Amazon secret access key to use.
+      timeout: "5m" #  sets the timeout for object storage requests.
+      token: "" # sets the Amazon token to use.
+      uploadACL: "bucket-owner-full-control" 
     google:
       bucket: ""
-      # cred is a string containing a GCP service account private key,
-      # in object (JSON or YAML) form.  A simple way to pass this on
-      # the command line is with the set-file flag, e.g.:
-      #
-      #  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pachyderm/pachyderm
-      cred: ""
-      # Example:
+      cred: ""  # sets GCP service account private key as string. 
+
       # cred: |
       #  {
       #    "type": "service_account",
@@ -328,29 +290,21 @@ pachd:
       #    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
       #    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/…%40….iam.gserviceaccount.com"
       #  }
+
     local:
-      # hostPath indicates the path on the host where the PFS metadata
-      # will be stored.  It must end in /.  It is analogous to the
-      # --host-path argument to pachctl deploy.
-      hostPath: ""
+      hostPath: "" # path where PFS metadata is stored; must end with "/".
       requireRoot: true #Root required for hostpath, but we run rootless in CI
     microsoft:
       container: ""
       id: ""
       secret: ""
     minio:
-      # minio bucket name
-      bucket: ""
-      # the minio endpoint. Should only be the hostname:port, no http/https.
-      endpoint: ""
-      # the username/id with readwrite access to the bucket.
-      id: ""
-      # the secret/password of the user with readwrite access to the bucket.
-      secret: ""
-      # enable https for minio with "true" defaults to "false"
-      secure: ""
-      # Enable S3v2 support by setting signature to "1". This feature is being deprecated
-      signature: ""
+      bucket: "" # sets bucket name. 
+      endpoint: "" # format: hostname:port
+      id: "" # username/id with readwrite access to the bucket.
+      secret: "" # the secret/password of the user with readwrite access to the bucket.
+      secure: "false" # enables https for minio if "true"
+      signature: "" # Enables S3v2 support by setting signature to "1"; being deprecated. 
     # putFileConcurrencyLimit sets the maximum number of files to
     # upload or fetch from remote sources (HTTP, blob storage) using
     # PutFile concurrently.  It is analogous to the
