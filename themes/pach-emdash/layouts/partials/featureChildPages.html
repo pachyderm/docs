@@ -12,7 +12,7 @@
                 {{else}}
                     <section class="is-one-third is-fullsize-mobile">
                         <div class="rounded-1  mr-2 my-2 p-2 move-u">
-                            <a href="{{.Permalink}}">
+                            <a href="{{.RelPermalink}}">
                                 <h3 class="m">{{- .Title -}}<b class="s ml-2">></b></h3>
                                     {{if .Description}}
                                         <p class="s light">{{.Description}}</p>
@@ -27,7 +27,7 @@
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left mb-3">
                                     {{ range first 7 .Pages }}
-                                        <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1" href="{{ .Permalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                        <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1" href="{{ .RelPermalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                         </a>
                                     {{ end }}
                                     {{/*  {{if .Pages}}

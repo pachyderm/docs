@@ -11,28 +11,11 @@ hidden: true
 mermaid: true
 ---
 
+{{% notice tip %}}
+All of the articles in this staging section have current or anticipated updates related to:
+- the new **Projects** feature in **2.5**.
+- the **embedded proxy** being default in **2.5**
 
+If you feel like a document is missing from this list, please let us know in the #pach-docs or #project-projects slack channels. 
 
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'lineColor': '#fe9b7c', 'fontSize':'20px', 'tertiaryColor':'#ecf5f7', 'secondaryColor':'#ecf5f7'}}}%%
-graph LR
-    A[(repoA)] -- glob pattern --> C
-    B[(repoB)] -- glob pattern -->  C((pipelineA))
-    C --> 0-1-2-3
-    D[(repoC)] -- glob pattern --> F
-    E[(repoD)] -- glob pattern -->  F((pipelineB))
-    subgraph workers
-        direction LR
-        0-1-2-3
-    end
-    0-1-2-3 --> G((pipelineC))
-    F --> G((pipelineC))
-    style A fill:#582f6b,color:#fff,stroke:#fff
-    style B fill:#582f6b,color:#fff,stroke:#fff
-    style C fill:#5ba3b1,color:#fff,stroke:#fff
-    style D fill:#582f6b,color:#fff,stroke:#fff
-    style E fill:#582f6b,color:#fff,stroke:#fff
-    style F fill:#5ba3b1,color:#fff,stroke:#fff
-    style G fill:#5ba3b1,color:#fff,stroke:#fff
-```
+{{% /notice %}}
