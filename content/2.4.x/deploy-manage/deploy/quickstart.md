@@ -226,7 +226,7 @@ Jump to [Helm install](#3-helm-install)
     ```s
     helm repo add pach https://helm.pachyderm.com
     helm repo update
-    helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
+    helm install pachyderm pach/pachyderm -f my_pachyderm_values.yaml 
     ```
 
 - Check your deployment:

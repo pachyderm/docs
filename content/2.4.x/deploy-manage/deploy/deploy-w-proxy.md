@@ -405,7 +405,7 @@ Attention Kind users
 #### Community Edition With Console
 
 ```s
-helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+helm install pachyderm pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
 ```
 
 #### Enterprise With Console
@@ -416,7 +416,7 @@ This command will unlock your enterprise features and install Console Enterprise
 - Then, run the following helm command to install Pachyderm's latest Enterprise Edition:
 
   ```s 
-  helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
+  helm install pachyderm pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
   ```
 
 

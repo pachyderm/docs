@@ -589,7 +589,7 @@ pachd:
       # in object (JSON or YAML) form.  A simple way to pass this on
       # the command line is with the set-file flag, e.g.:
       #
-      #  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pachyderm/pachyderm
+      #  helm install pachyderm -f my-values.yaml --set-file storage.google.cred=creds.json pachyderm/pachyderm
       cred: ""
       # Example:
       # cred: |
@@ -1236,7 +1236,7 @@ If you're using Google Storage Buckets as your storage backend, configure it her
 - `storage.google.cred` is a string containing a GCP service account private key, in object (JSON or YAML) form.  A simple way to pass this on the command line is with the set-file flag, e.g.:
 
   ```s
-  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pach/pachyderm
+  helm install pachyderm -f my-values.yaml --set-file storage.google.cred=creds.json pach/pachyderm
   ```
 
   Example:

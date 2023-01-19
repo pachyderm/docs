@@ -245,7 +245,7 @@ Run the following to add the Pachyderm repo to Helm:
 ```s
 helm repo add pach https://helm.pachyderm.com
 helm repo update
-helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
+helm install pachyderm pach/pachyderm -f my_pachyderm_values.yaml 
 ```
 ## 5. Verify Installation 
 
