@@ -13,7 +13,7 @@ You can connect to a deployed Pachyderm cluster in the following ways:
 
 - Via pachctl CLI
 - Via the  [Pachyderm Console](../console)
-- Via the [Jupyterhub Mount Extension](../../../how-tos/jupyterlab-extension/)
+- Via the [Jupyterlab Mount Extension](../../../how-tos/jupyterlab-extension/)
 
 
 ## Connect to a Local Cluster

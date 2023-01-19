@@ -22,7 +22,7 @@ seriesPart:
 
 {{% notice info  %}}  
 TL;DR - Quick Start
-We will provide two sets of instructions, depending on whether you know the cluster address (`pachd_address`) you want to connect your JupyterHub to or don't.
+We will provide two sets of instructions, depending on whether you know the cluster address (`pachd_address`)
 
 - **You know the `pachd_address` of your cluster**:
 
@@ -47,7 +47,7 @@ We will provide two sets of instructions, depending on whether you know the clus
   You are all logged in. Start experimenting.
 {{% /notice %}}
 
-Note that we are assuming that you **already have a Pachyderm cluster running** to connect your JupyterHub/JupyterLab. Find Pachyderm installation instructions in the [Deploy/Manage](../../deploy-manage/deploy) section of our documentation.
+Note that we are assuming that you **already have a Pachyderm cluster running** to connect you JupyterLab. Find Pachyderm installation instructions in the [Deploy/Manage](../../deploy-manage/deploy) section of our documentation.
 ## Using The Extension
 
 {{% notice warning %}} 
@@ -96,12 +96,7 @@ Make sure to check our [data science notebook examples](https://github.com/pachy
 
 ## Install The Mount Extension
 
-The deployment instructions for Pachyderm Mount Extension come in two flavors, depending on what your deployment target is (e.g. *JupyterLab or JupyterHub on Kubernetes*).
-
-Pick the option that fits your use case:
-
 - Run with our [JupyterLab container](#running-the-jupyterlab-container).
-- Deploy on [JupyterHub with Helm](#adding-the-extension-to-your-jupyterhub-deployment-with-helm).
 
 {{% notice info %}} 
 - Find the latest available version of our Pachyderm Mount Extension in [PyPi](https://pypi.org/project/jupyterlab-pachyderm/).
@@ -177,77 +172,6 @@ If you are using our pre-built image:
 - Jump to the [`Connect Your JupyterLab Extension To Your Pachyderm Cluster`](#connect-the-extension-to-your-pachyderm-cluster) section.
 
 Replace the image name with your own image otherwise.
-
-### Adding The Extension To Your JupyterHub Deployment With Helm
-
-{{% notice info %}} 
-Find the complete installation instructions of JupyterHub on Kubernetes in [Jupyterhub for Kubernetes documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/#setup-jupyterhub).
-{{% /notice %}}
-
-- As a FUSE requirement, add the following to your **Jupyterhub helm chart values.YAML** file to enable root in the `singleuser` containers or use our default [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml):
-
-  {{% notice notice  %}} 
-  Update the fields `singleuser.image.name` and `singleuser.image.tag` to match your user image or leave Pachyderm's default image `pachyderm/notebooks-user:{{% extensionJupyterLab %}}`.
-  {{% /notice %}}
-
-  ```yaml
-  singleuser:
-      defaultUrl: "/lab"
-      cmd:   "start-singleuser.sh"
-      image:
-          name: pachyderm/notebooks-user
-          tag: {{% extensionJupyterLab %}}
-      uid:   0
-      fsGid: 0
-      extraEnv:
-          "GRANT_SUDO": "yes"
-          "NOTEBOOK_ARGS": "--allow-root"
-          "JUPYTER_ENABLE_LAB": "yes"
-          "CHOWN_HOME": "yes"
-          "CHOWN_HOME_OPTS": "-R"
-  hub:
-      extraConfig:
-          enableRoot: |
-              from kubernetes import client
-              def modify_pod_hook(spawner, pod):
-                  pod.spec.containers[0].security_context = client.V1SecurityContext(
-                      allow_privilege_escalation=True,
-                      run_as_user=0,
-                      privileged=True,
-                      capabilities=client.V1Capabilities(
-                          add=['SYS_ADMIN']
-                      )
-                  )
-                  return pod
-              c.KubeSpawner.modify_pod_hook = modify_pod_hook
-  ```
-
-- Run the following commands to install JupyterHub:
-
-  ```s
-  helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-  helm repo update
-
-  helm upgrade --cleanup-on-fail \
-  --install jupyter jupyterhub/jupyterhub \
-  --values <your-jupyterhub-values.yaml>
-  ```
-
-  {{% notice note %}} 
-  This may take a while if you are pulling from a large Docker image.
-  {{% /notice %}}
-
-
-- Find the IP address you will use to access the JupyterHub as described in these [Helm installation instructions](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub#setup-jupyterhub) (Step 5 and 6) and open Jupyterlab.
-
-- Click on the link provided in the stdout of your terminal to run JupyterLab in a browser, then jump to the [`Connect Your JupyterLab Extension To Your Pachyderm Cluster`](#connect-the-extension-to-your-pachyderm-cluster) section.
-
-- Run the following command to refresh the mount server:
-
-  ``` shell
-  umount /pfs
-  ```
-
 
 {{% notice warning %}}  
 M1 users with Docker Desktop < `4.6`
