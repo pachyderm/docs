@@ -36,8 +36,6 @@ pachctl create repo bar --project foo
 pachctl create repo bar
 ```
 
-
-
 ![add project resources](/images/projects/add-project-resources.gif)
 
 {{% /wizardResult %}}

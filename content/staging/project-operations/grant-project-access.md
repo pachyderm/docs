@@ -37,6 +37,8 @@ pachctl auth set project foo repoReader,repoWriter user:edna
 6. Select **Add**.
 
 {{% /wizardResult %}}
+{{% /wizardResults %}}
+{{</stack>}}
 
 ## How to Check Project Access for a User
 
@@ -48,6 +50,7 @@ pachctl auth set project foo repoReader,repoWriter user:edna
 {{% wizardResults  %}}
 
 {{% wizardResult val1="tool/pachctl-cli"%}}
+
 ```s
 pachctl auth check project foo user:bob
 ```
