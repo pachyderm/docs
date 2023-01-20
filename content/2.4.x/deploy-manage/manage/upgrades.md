@@ -52,7 +52,7 @@ helm upgrade pachyderm pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.
 {{% /wizardResults %}} 
 {{< /stack >}}
 
-1. Update your context after about a minute by running the following:
+3. Update your context after about a minute by running the following:
 
 ```s
 echo '{"pachd_address":"grpc://127.0.0.1:80"}' | pachctl config set context local --overwrite && pachctl config set active-context local
