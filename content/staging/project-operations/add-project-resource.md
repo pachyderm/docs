@@ -1,8 +1,8 @@
 ---
-# metadata # 
+# metadata #
 title:  Add a Project Resource
 description: Learn how to add a resource (like a repo) to a project.
-date: 
+date:
 # taxonomy #
 tags: ["projects"]
 series:
@@ -22,18 +22,18 @@ weight: 3
 
 {{% wizardResult val1="tool/pachctl-cli"%}}
 
-There are two main ways to add a resource to a project, depending on whether or not the project has been [set to your current pachyderm context](../set-project). 
+There are two main ways to add a resource to a project, depending on whether or not the project has been [set to your current pachyderm context](../set-project).
 
 **Add Resource to Unset Project:**
 
-```s 
+```s
 pachctl create repo bar --project foo
 ```
 
 **Add Resource to Set Project:**
 
 ```s
-pachctl create repo bar 
+pachctl create repo bar
 ```
 
 
@@ -56,4 +56,4 @@ pachctl create repo bar
 
 {{</stack>}}
 
-
+For more information about [Repos](../concepts/data-concepts/repo).

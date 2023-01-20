@@ -1,12 +1,13 @@
 ---
-# metadata # 
+# metadata #
 title:  Project Operations
 description: Learn how to create, delete, and update projects
-date: 
+date:
 # taxonomy #
 tags: ["projects"]
 series:
 seriesPart:
+
 weight: 
 mermaid: true
 ---
@@ -15,10 +16,9 @@ Projects are namespaces that contain a collection of related work (such as repos
 
 ## Benefits of Projects
 
-- **Logical Organization of DAGs**: Similar to a file system, you can organize your work  within a Pachyderm instance. 
-  
-- **Standardizable**: Resources like repos can have the same name if they belong to different projects, making it easier to create and adhere to project templates in a collaborative environment. 
+- **Logical Organization of DAGs**: Similar to a file system, you can organize your work  within a Pachyderm instance.
 
+- **Standardizable**: Resources like repos can have the same name if they belong to different projects, making it easier to create and adhere to project templates in a collaborative environment. For example, `ProjectA.Repo1` and `ProjectB.Repo1`.
 - **Multi-team Enablement**: With Enterprise Pachyderm, You can grant access to projects based on roles; projects are hidden from users without access by default. 
 
 ## Example
@@ -47,8 +47,6 @@ graph TD
     Q -- from output repo --> 2(Grouping Pipeline)
     R -- from output repo --> 2(Grouping Pipeline)   
 ```
-
-
 
 
 ---
