@@ -48,6 +48,8 @@ pachctl create repo bar
 3. Select **View Project**.
 4. Select **Create Repo**.
 
+![create a repo in Console](/images/projects/projects-console-create-repo.gif)
+
 {{% /wizardResult %}}
 
 {{% /wizardResults  %}}
