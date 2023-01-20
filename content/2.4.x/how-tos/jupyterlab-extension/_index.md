@@ -26,7 +26,6 @@ Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) t
 There are three main ways to install the Jupyter Lab extension:
 
 - ⭐ [Via Docker](./docker-install): Fastest implementation!
-- 🚀 [Via JupyterHub + Helm](./jupyterhub-install): Best for production deployments with strict security requirements
 - 🧪 [Locally](./local-install): Great for development and testing
 
 ---

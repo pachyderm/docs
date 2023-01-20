@@ -48,7 +48,6 @@ In particular, you will:
   - [Deploy Pachyderm On The Kubernetes Cluster](#deploy-pachyderm-on-the-kubernetes-cluster)
 - [7. Have 'pachctl' And Your Cluster Communicate](#7-have-pachctl-and-your-cluster-communicate)
 - [8. Check That Your Cluster Is Up And Running](#8-check-that-your-cluster-is-up-and-running)
-- [9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension)
 
 ## 1. Install Prerequisites
 
@@ -521,15 +520,3 @@ COMPONENT           VERSION
 pachctl             {{% latestPatchNumber %}}
 pachd               {{% latestPatchNumber %}}
 ```
-
-## 9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
-
-Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
-
-Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension/index) page for installation instructions. 
-
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
-
-{{% notice note %}}
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-{{% /notice %}}

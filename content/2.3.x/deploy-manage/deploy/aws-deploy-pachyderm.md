@@ -42,7 +42,6 @@ In particular, you will:
 6. [Deploy Pachyderm ](#6-deploy-pachyderm)
 7. Finally, you will need to install [pachctl](../../../getting-started/local-installation#install-pachctl) to [interact with your cluster](#7-have-pachctl-and-your-cluster-communicate).
 8. And check that your cluster is [up and running](#8-check-that-your-cluster-is-up-and-running)
-9. (Optional) Install [JupyterHub and Pachyderm Mount Extension](#9-notebooks-users-install-pachyderm-jupyterlab-mount-extension) to experiment with your data in Pachyderm from your Notebook cells. 
 
 ## 1. Prerequisites
 
@@ -596,15 +595,3 @@ COMPONENT           VERSION
 pachctl             {{% latestPatchNumber %}}
 pachd               {{% latestPatchNumber %}}
 ```
-
-## 9. NOTEBOOKS USERS: Install Pachyderm JupyterLab Mount Extension
-
-Once your cluster is up and running, you can helm install JupyterHub on your Pachyderm cluster and experiment with your data in Pachyderm from your Notebook cells. 
-
-Check out our [JupyterHub and Pachyderm Mount Extension](../../../how-tos/jupyterlab-extension) page for installation instructions. 
-
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
-
-{{% notice info %}}
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
-{{% /notice %}}
