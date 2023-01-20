@@ -11,6 +11,8 @@ weight: 3
 label: Recommended
 --- 
 
+Console is the Graphical User Interface (GUI) for Pachyderm. Users that would prefer to navigate and manage through their project resources visually can connect to Console by authenticating against your configured [OIDC](../oidc). For personal-machine installations of Pachyderm, a user may access Console without authentication via [localhost](http://localhost).
+
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
