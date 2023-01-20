@@ -11,6 +11,8 @@ weight: 4
 label: Optional
 --- 
 
+[Enterprise Server](TBD) is a production management layer that centralizes  the licensing registration of multiple Pachyderm clusters for Enterprise use and the setup of user authorization/authentication via [OIDC](../oidc).
+
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
@@ -22,6 +24,7 @@ The following section contains a series of tabs for commonly used configurations
 {{% wizardButton option="TLS Disabled" state="active" %}}
 {{% wizardButton option="TLS New Secret" %}}
 {{% wizardButton option="TLS Existing Secret" %}}
+{{% wizardButton option="ES Disabled" %}}
 
 {{% /wizardRow %}}
 
@@ -142,6 +145,14 @@ enterpriseServer:
     pullPolicy: "IfNotPresent"
     # tag defaults to the chart’s specified appVersion.
     tag: ""
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="options/es-disabled" %}}
+```s
+
+enterpriseServer:
+  enabled: false
 ```
 {{% /wizardResult %}}
 {{% /wizardResults  %}}
