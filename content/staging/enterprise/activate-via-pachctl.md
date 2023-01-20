@@ -32,4 +32,4 @@ pachctl enterprise get-state
 # ACTIVE
 ```
 
-You unlocked Pachyderm's enterprise features.
+You have unlocked Pachyderm's enterprise features.
