@@ -47,7 +47,7 @@ We will provide two sets of instructions, depending on whether you know the clus
   You are all logged in. Start experimenting.
 {{% /notice %}}
 
-Note that we are assuming that you **already have a Pachyderm cluster running** to connect you JupyterLab. Find Pachyderm installation instructions in the [Deploy/Manage](../../deploy-manage/deploy) section of our documentation.
+Note that we are assuming that you **already have a Pachyderm cluster running** to connect your JupyterLab instance. Find Pachyderm installation instructions in the [Deploy/Manage](../../deploy-manage/deploy) section of our documentation.
 ## Using The Extension
 
 {{% notice warning %}} 
