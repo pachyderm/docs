@@ -39,17 +39,13 @@ You can check the details of your active context using the following commands:
 #   "source": "IMPORTED",
 #   "cluster_name": "docker-desktop",
 #   "auth_info": "docker-desktop",
-#   "port_forwarders": {
-#     "console": 4000,
-#     "dex": 30658,
-#     "oidc-acs": 30657,
-#     "pachd": 30650,
-#     "s3g": 30600
-#   },
 #   "cluster_deployment_id": "dev",
 #   "project": "foo"
 # }
 ```
+
+![switch active project](/images/projects/projects-switch-active.gif)
+
 {{% /wizardResult %}}
 
 {{% wizardResult val1="tool/console"%}}
@@ -60,6 +56,8 @@ You can check the details of your active context using the following commands:
 4. Select **View Project**. 
 
 You can now work within the project from Console.
+
+![switch active project](/images/projects/projects-console-switch.gif)
 
 {{% /wizardResult %}}
 

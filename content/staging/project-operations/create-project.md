@@ -16,6 +16,7 @@ weight: 1
 - Avoid starting a project name with special characters, such as a period (`.`), or hyphen (`-`).
 
 ## How to Create a Project
+### 1. Create a Project
 
 {{<stack type="wizard">}}
 {{% wizardRow id="Tool"%}}
@@ -42,10 +43,11 @@ This is not yet available.
 
 {{</stack>}}
 
-{{% notice tip %}}
+### 2. Verify Creation 
+
 You can verify that your project has been created by running `pachctl list projects` or by opening Console ([localhost](http://localhost) for non-production personal-machine installations) and viewing the home page. 
 
 ![create and list projects](/images/projects/create-list-projects.gif)
+![projects list console](/images/projects/project-list-console.png)
 
-{{% /notice %}}
 
