@@ -38,6 +38,8 @@ Note that the repo name input (`pachyderm`) must match the name you provided upo
 helm repo update
 helm upgrade pachyderm pachyderm/pachyderm -f my_pachyderm_values.yaml  --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
 ```
+
+You can also pass in a specific version (e.g., `--version 2.5.0-alpha.4`) if you are testing a pre-released version of Pachyderm.
 {{% /wizardResult %}}
 
 {{% wizardResult val1="deploy-method/local-personal-machine"%}}
@@ -50,7 +52,13 @@ helm upgrade pachyderm pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.
 {{% /wizardResults %}} 
 {{< /stack >}}
 
-3. Verify that the installation was successful by running `pachctl version`:  
+1. Update your context after about a minute by running the following:
+
+```s
+echo '{"pachd_address":"grpc://127.0.0.1:80"}' | pachctl config set context local --overwrite && pachctl config set active-context local
+```
+
+4. Verify that the installation was successful by running `pachctl version`:  
   
 ```s  
 pachctl version 
