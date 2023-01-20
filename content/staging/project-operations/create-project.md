@@ -10,6 +10,10 @@ seriesPart:
 weight: 1
 ---
 
+## Before You Start 
+
+- Project names should be less than 51 characters long
+- Avoid starting a project name with special characters, such as a period (`.`), or hyphen (`-`).
 
 ## How to Create a Project
 
@@ -30,12 +34,7 @@ pachctl create project foo
 {{% /wizardResult %}}
 
 {{% wizardResult val1="tool/console"%}}
-1. Open the Console UI.
-2. Select **Create Project**.
-3. Provide inputs for the following fields:
-    - Project Name
-    - Project Description
-4. Select **Create Project**.
+This is not yet available. 
 
 {{% /wizardResult %}}
 
@@ -43,4 +42,10 @@ pachctl create project foo
 
 {{</stack>}}
 
+{{% notice tip %}}
+You can verify that your project has been created by running `pachctl list projects` or by opening Console ([localhost](http://localhost) for non-production personal-machine installations) and viewing the home page. 
+
+![create and list projects](/images/projects/create-list-projects.gif)
+
+{{% /notice %}}
 
