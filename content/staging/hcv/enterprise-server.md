@@ -51,20 +51,20 @@ enterpriseServer:
     enabled: false
   resources:
     {}
+    
     #limits:
     #  cpu: "1"
     #  memory: "2G"
     #requests:
     #  cpu: "1"
     #  memory: "2G"
-  # podLabels specifies labels to add to the pachd pod.
-  podLabels: {}
+
+  podLabels: {} # specifies labels to add to the pachd pod.
   clusterDeploymentID: ""
   image:
     repository: "pachyderm/pachd"
     pullPolicy: "IfNotPresent"
-    # tag defaults to the chart’s specified appVersion.
-    tag: ""
+    tag: "" #  defaults to the chart’s specified appVersion.
 ```
 
 {{% /wizardResult %}}
@@ -99,14 +99,12 @@ enterpriseServer:
     #requests:
     #  cpu: "1"
     #  memory: "2G"
-  # podLabels specifies labels to add to the pachd pod.
-  podLabels: {}
+  podLabels: {} #  specifies labels to add to the pachd pod.
   clusterDeploymentID: ""
   image:
     repository: "pachyderm/pachd"
     pullPolicy: "IfNotPresent"
-    # tag defaults to the chart’s specified appVersion.
-    tag: ""
+    tag: "" # defaults to the chart’s specified appVersion.
 ```
 {{% /wizardResult %}}
 {{% wizardResult val1="options/tls-existing-secret" %}}
@@ -131,20 +129,20 @@ enterpriseServer:
     secretName: ""
   resources:
     {}
+
     #limits:
     #  cpu: "1"
     #  memory: "2G"
     #requests:
     #  cpu: "1"
     #  memory: "2G"
-  # podLabels specifies labels to add to the pachd pod.
-  podLabels: {}
+
+  podLabels: {} # specifies labels to add to the pachd pod.
   clusterDeploymentID: ""
   image:
     repository: "pachyderm/pachd"
     pullPolicy: "IfNotPresent"
-    # tag defaults to the chart’s specified appVersion.
-    tag: ""
+    tag: "" # defaults to the chart’s specified appVersion.
 ```
 {{% /wizardResult %}}
 
