@@ -10,17 +10,16 @@ seriesPart:
 weight: 8
 --- 
 
-## Values 
+Kube Event Tail deploys a lightweight app that watches Kubernetes events and echoes them into logs. 
+
+## Values
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
 
-
 ```s
 kubeEventTail:
-  # Deploys a lightweight app that watches kubernetes events and echos them to logs.
   enabled: true
-  # clusterScope determines whether kube-event-tail should watch all events or just events in its namespace.
-  clusterScope: false
+  clusterScope: false # if true, watches just events in its namespace 
   image:
     repository: pachyderm/kube-event-tail
     pullPolicy: "IfNotPresent"

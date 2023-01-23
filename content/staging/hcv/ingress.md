@@ -16,26 +16,61 @@ label: Being Deprecated
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
 
 
+{{< stack type="wizard">}}
+
+{{% wizardRow id="Options"%}}
+{{% wizardButton option="TLS Existing Secret" state="active" %}}
+{{% wizardButton option="TLS New Secret" %}}
+{{% wizardButton option="TLS Disabled" %}}
+
+{{% /wizardRow %}}
+
+{{% wizardResults  %}}
+{{% wizardResult val1="options/tls-existing-secret" %}}
+
 ```s
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
   host: ""
-  # when set to true, uriHttpsProtoOverride will add the https protocol to the ingress URI routes without configuring certs
-  uriHttpsProtoOverride: false
-  # There are three options for TLS:
-  # 1. Disabled
-  # 2. Enabled, existingSecret, specify secret name
-  # 3. Enabled, newSecret, must specify cert, key, secretName and set newSecret.create to true
+  uriHttpsProtoOverride: false # if true, adds the https protocol to the ingress URI routes without configuring certs
   tls:
-    enabled: false
+    enabled: true
     secretName: ""
+```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="options/tls-new-secret" %}}
+```s
+ingress:
+  enabled: true
+  annotations: {}
+  host: ""
+  uriHttpsProtoOverride: false # if true, adds the https protocol to the ingress URI routes without configuring certs
+  tls:
+    enabled: true
     newSecret:
-      create: false
+      create: true
       crt: ""
       key: ""
-
 ```
+{{% /wizardResult %}}
+
+{{% wizardResult val1="options/tls-disabled" %}}
+```s
+ingress:
+  enabled: true
+  annotations: {}
+  host: ""
+  uriHttpsProtoOverride: false # if true, adds the https protocol to the ingress URI routes without configuring certs
+  tls:
+    enabled: false
+```
+{{% /wizardResult %}}
+
+{{% /wizardResults %}}
+
+{{< /stack >}}
 
 ## About
 
