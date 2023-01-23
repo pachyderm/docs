@@ -11,6 +11,13 @@ weight: 5
 label: Being Deprecated
 --- 
 
+## About
+
+{{% notice warning %}}
+`ingress` will be removed from the helm chart once the deployment of Pachyderm with a proxy becomes mandatory.
+{{% /notice %}}
+
+
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
@@ -71,9 +78,3 @@ ingress:
 {{% /wizardResults %}}
 
 {{< /stack >}}
-
-## About
-
-{{% notice warning %}}
-`ingress` will be removed from the helm chart once the deployment of Pachyderm with a proxy becomes mandatory.
-{{% /notice %}}

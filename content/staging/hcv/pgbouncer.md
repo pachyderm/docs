@@ -1,25 +1,24 @@
 ---
 # metadata # 
 title:  PGBouncer HCVs
-description: 
+description: Deploy a lightweight connection pooler for PostgreSQL
 date: 
 # taxonomy #
 tags: ["helm"]
 series:
 seriesPart:
 weight: 9 
---- 
+---
 
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
 
-
 ```s
 
 pgbouncer:
   service:
-    type: ClusterIP
+    type: ClusterIP # defines the Kubernetes service type.
   annotations: {}
   priorityClassName: ""
   nodeSelector: {}
@@ -27,26 +26,16 @@ pgbouncer:
   image:
     repository: pachyderm/pgbouncer
     tag: 1.16.1-debian-10-r82
-  resources:
+  resources: # defines resources in standard kubernetes format; unset by default.
     {}
+
     #limits:
     #  cpu: "1"
     #  memory: "2G"
     #requests:
     #  cpu: "1"
     #  memory: "2G"
-  # maxConnections specifies the maximum number of concurrent connections into pgbouncer.
-  maxConnections: 1000
-  # defaultPoolSize specifies the maximum number of concurrent connections from pgbouncer to the postgresql database.
-  defaultPoolSize: 20
+
+  maxConnections: 1000 # defines the maximum number of concurrent connections into pgbouncer.
+  defaultPoolSize: 20 # specifies the maximum number of concurrent connections from pgbouncer to the postgresql database.
 ```
-
-### pgbouncer
-
-This section is to configure the PGBouncer Postgres connection pooler.
-
-- `service.type` specifies the Kubernetes type of the pgbouncer service. The default is `ClusterIP`.
-
-- `resources` specifies resources and limits in standard kubernetes format. It is left unset by default.
-
-- `maxConnections` defaults to 1000

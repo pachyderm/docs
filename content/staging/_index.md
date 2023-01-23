@@ -9,6 +9,13 @@ date:
 weight: 0
 hidden: true
 mermaid: true
+cascade:
+    latestPatch: 2.4.2
+    majorMinor: 2.4
+    clientPython: 7.3
+    extensionJupyterLab: 2.4.2
+    mountServerBinary: 2.4.2
+    release: latest 
 ---
 
 {{% notice tip %}}

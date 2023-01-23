@@ -11,6 +11,10 @@ label: required
 weight: 1
 --- 
 
+## About 
+
+`deployTarget` defines where you're deploying pachyderm; this is typically located at the top of your values.yaml file.
+
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
@@ -74,7 +78,3 @@ deployTarget: "MINIO"
 
 
 {{< /stack >}}
-
-## About 
-
-`deployTarget` defines where you're deploying pachyderm; this is typically located at the top of your values.yaml file.

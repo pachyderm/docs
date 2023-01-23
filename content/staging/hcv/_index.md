@@ -9,5 +9,8 @@ series:
 seriesPart:
 ---
 
-Explore all of the available Helm chart values for Pachyderm in this glossary.  
+Explore all of the available Helm chart values for Pachyderm in this glossary. 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
+{{% /notice %}}
 

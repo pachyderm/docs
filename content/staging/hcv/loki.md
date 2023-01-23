@@ -11,6 +11,8 @@ weight: 6
 label: optional
 --- 
 
+## About
+
 Loki Stack contains values that are passed to the loki-stack subchart. 
 
 For more details on each service, see their official documentation:
