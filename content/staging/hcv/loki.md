@@ -11,14 +11,21 @@ weight: 6
 label: optional
 --- 
 
-## Values 
+Loki Stack contains values that are passed to the loki-stack subchart. 
+
+For more details on each service, see their official documentation:
+
+- [Loki storage documentation](https://grafana.com/docs/loki/latest/operations/storage/)
+- [Grafana documentation](https://grafana.com/docs/) 
+- [Promtail documentation](https://grafana.com/docs/loki/latest/clients/promtail/configuration/) 
+
+
+## Values
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
 
 
 ```s
-
-# loki-stack contains values that will be passed to the loki-stack subchart
 loki-stack:
   loki:
     serviceAccount:
@@ -156,19 +163,3 @@ loki-stack:
       successThreshold: 1
       timeoutSeconds: 1
 ```
-
-## About 
-
-The `loki-stack` section contains all the values passed to the `loki-stack` subchart.
-
-#### loki 
-
-See the official [Loki storage documentation](https://grafana.com/docs/loki/latest/operations/storage/) for the most up-to-date information.
-
-#### grafana
-
-See the official [Grafana documentation](https://grafana.com/docs/) for the most up-to-date information.
-
-#### promtail 
-
-See the official [Promtail documentation](https://grafana.com/docs/loki/latest/clients/promtail/configuration/) for the most up-to-date information.
