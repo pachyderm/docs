@@ -27,8 +27,6 @@ The following section contains a series of tabs for commonly used configurations
 {{% wizardResults %}}
 
 {{% wizardResult val1="options/compact" %}}
-
-
 ```s
 pachd:
   enabled: true
