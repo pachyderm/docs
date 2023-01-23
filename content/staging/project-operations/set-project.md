@@ -10,6 +10,10 @@ seriesPart:
 weight: 2
 ---
 
+## Before You Start 
+
+- Pachyderm ships with an initial project named `default` that is automatically set to your active context.
+
 ## How to Set a Project to Your Current Context
 
 {{<stack type="wizard">}}
@@ -22,7 +26,7 @@ weight: 2
 
 {{% wizardResult val1="tool/pachctl-cli"%}}
 
-In order to begin working on a project, you must assign it to a pachctl context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
+In order to begin working on a project other than the `default` project, you must assign it to a pachctl context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
 
 
 ```s
