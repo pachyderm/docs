@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Sidecar Resource Limits
+title:  Sidecar Resource Limits PPS
 description: Set the upper threshold of resources allocated to sidecar containers.
 date: 
 # taxonomy #

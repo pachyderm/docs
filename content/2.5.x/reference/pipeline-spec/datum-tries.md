@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Datum Tries
+title:  Datum Tries PPS
 description: Define the number of job attempts to run on a datum when a failure occurs.
 date: 
 # taxonomy #

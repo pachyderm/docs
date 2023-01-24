@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Pipeline Specification
+title:  Pipeline Specification (PPS)
 description:  Learn about the different attributes of a pipeline spec. 
 date: 
 # taxonomy #

@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  s3 Out
+title:  s3 Out PPS
 description:  Write results out to an S3 gateway endpoint.
 date: 
 # taxonomy #

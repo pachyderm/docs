@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Spout
+title:  Spout PPS
 description: Ingest streaming data into Pachyderm using a spout pipeline.
 date: 
 # taxonomy #

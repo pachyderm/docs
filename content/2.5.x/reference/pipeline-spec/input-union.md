@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Input Union 
+title:  Input Union PPS
 description: Create a union of pfs, cross, or other union inputs. 
 date: 
 # taxonomy #

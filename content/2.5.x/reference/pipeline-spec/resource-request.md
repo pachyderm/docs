@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Resource Requests
+title:  Resource Requests PPS
 description: Set the exact amount of resources that a pipeline worker will consume.
 date: 
 # taxonomy #

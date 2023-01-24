@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Output Branch
+title:  Output Branch PPS
 description: Define the branch where the pipeline outputs new commits.
 date: 
 # taxonomy #

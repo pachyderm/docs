@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Input Cron
+title:  Input Cron PPS
 description: Trigger pipelines based on time.
 date: 
 # taxonomy #

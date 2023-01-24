@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Input Group
+title:  Input Group PPS
 description: Group files stored in one or multiple repos.
 date: 
 # taxonomy #

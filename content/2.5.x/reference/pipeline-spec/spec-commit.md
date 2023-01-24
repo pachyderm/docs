@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Spec Commit
+title:  Spec Commit PPS
 description: This attribute is auto-generated and is not configurable.
 date: 
 # taxonomy #

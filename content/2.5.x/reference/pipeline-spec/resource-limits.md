@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Resource Limits
+title:  Resource Limits PPS
 description: Set the upper threshold of allowed resources a given worker can consume.
 date: 
 # taxonomy #

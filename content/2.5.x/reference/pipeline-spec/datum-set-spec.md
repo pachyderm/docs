@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Datum Set Spec
+title:  Datum Set Spec PPS
 description: Define how a pipeline should group its datums.
 date: 
 # taxonomy #

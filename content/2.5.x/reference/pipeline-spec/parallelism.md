@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Parallelism Spec
+title:  Parallelism Spec PPS
 description: Define the number of workers used in parallel. 
 date: 
 # taxonomy #

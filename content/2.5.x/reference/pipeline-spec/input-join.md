@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Input Join
+title:  Input Join PPS
 description: Join files that are stored in separate Pachyderm repositories.
 date: 
 # taxonomy #

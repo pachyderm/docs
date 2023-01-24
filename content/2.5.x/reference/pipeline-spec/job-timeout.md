@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Job Timeout
+title:  Job Timeout PPS
 description: Set the maximum execution time allowed for a job.
 date: 
 # taxonomy #

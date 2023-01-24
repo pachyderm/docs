@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Input PFS
+title:  Input PFS PPS
 description: Add data to an input repo. 
 date: 
 # taxonomy #

@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Metadata
+title:  Metadata PPS
 description: Add metadata to your pipeline pods using Kubernetes' labels and annotations.
 date: 
 # taxonomy #

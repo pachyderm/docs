@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Description
+title:  Description PPS
 description: Display meaningful information about your pipeline.
 date: 
 # taxonomy #

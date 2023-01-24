@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Pod Spec
+title:  Pod Spec PPS
 description: Set fields in the Pod Spec that aren't explicitly exposed.
 date: 
 # taxonomy #

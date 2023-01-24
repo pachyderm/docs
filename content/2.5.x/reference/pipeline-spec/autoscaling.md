@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Autoscaling
+title:  Autoscaling PPS
 description: Enable autoscaling of the worker pool based on datums in queue. 
 date: 
 # taxonomy #

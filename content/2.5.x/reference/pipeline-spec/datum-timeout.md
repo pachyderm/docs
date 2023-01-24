@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Datum Timeout
+title:  Datum Timeout PPS
 description:  Set the maximum execution time allowed for each datum.
 date: 
 # taxonomy #

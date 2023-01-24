@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Input Cross 
+title:  Input Cross PPS
 description: Create a cross product of other inputs. 
 date: 
 # taxonomy #

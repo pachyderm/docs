@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Reprocess Spec
+title:  Reprocess Spec PPS
 description: Define the reprocessing behavior of a repo upon receiving new or modified. data. 
 date: 
 # taxonomy #

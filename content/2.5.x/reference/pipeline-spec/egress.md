@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Egress
+title:  Egress PPS
 description: Push the results of a Pipeline to an external data store or an SQL Database.
 date: 
 # taxonomy #

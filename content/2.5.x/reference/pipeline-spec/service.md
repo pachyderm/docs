@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Service
+title:  Service PPS
 description: Enable a pipeline to be treated as a long-running service.
 date: 
 # taxonomy #

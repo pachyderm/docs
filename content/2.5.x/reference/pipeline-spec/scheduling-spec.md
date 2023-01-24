@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Scheduling Spec
+title:  Scheduling Spec PPS
 description:  Define how the pipeline pods should be scheduled.
 date: 
 # taxonomy #
