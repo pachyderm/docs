@@ -11,6 +11,8 @@ weight: 11
 label: Required for GCP
 --- 
 
+## About
+
 The CloudSQL Auth Proxy section configures the [CloudSQL Auth Proxy](https://cloud.google.com/sql/docs/mysql/connect-auth-proxy) for deploying Pachyderm on GCP with CloudSQL.
 
 
@@ -75,4 +77,6 @@ cloudsqlAuthProxy:
 
 {{< /stack >}}
 
-## About
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
+{{% /notice %}}

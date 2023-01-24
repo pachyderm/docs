@@ -39,3 +39,7 @@ pgbouncer:
   maxConnections: 1000 # defines the maximum number of concurrent connections into pgbouncer.
   defaultPoolSize: 20 # specifies the maximum number of concurrent connections from pgbouncer to the postgresql database.
 ```
+
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
+{{% /notice %}}

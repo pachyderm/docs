@@ -139,3 +139,7 @@ oidc:
 {{% /wizardResults  %}}
 
 {{< /stack >}}
+
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
+{{% /notice %}}
