@@ -11,6 +11,8 @@ weight: 2
 label: required
 --- 
 
+The Global section configures the connection to the PostgreSQL database. By default, it uses the included Postgres service.
+
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
