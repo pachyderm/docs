@@ -4,11 +4,15 @@ title: CloudSQL Auth Proxy HCVs
 description: Deploy Pachyderm on GCP with CloudSQL
 date: 
 # taxonomy #
-tags: ["helm"]
+tags: ["helm", "gcp" ]
 series:
 seriesPart:
 weight: 11
+label: Required for GCP
 --- 
+
+The CloudSQL Auth Proxy section configures the [CloudSQL Auth Proxy](https://cloud.google.com/sql/docs/mysql/connect-auth-proxy) for deploying Pachyderm on GCP with CloudSQL.
+
 
 ## Values 
 
@@ -27,31 +31,21 @@ The following section contains a series of tabs for commonly used configurations
 ```s
 
 cloudsqlAuthProxy:
-  # connectionName may be found by running `gcloud sql instances describe INSTANCE_NAME --project PROJECT_ID`
-  connectionName: ""
-  #  the account used to connect to the cloudSql instance
-  serviceAccount: ""
+  connectionName: "" # may be found by running `gcloud sql instances describe INSTANCE_NAME --project PROJECT_ID`
+  serviceAccount: ""   #  defines the account used to connect to the cloudSql instance
   iamLogin: false
-  # the cloudql database port to expose. The default is `5432`
-  port: 5432
-  # controls whether to deploy the cloudsqlAuthProxy. Default is false.
-  enabled: true
+  port: 5432   # the cloudql database port to expose. The default is `5432`
+  enabled: true # controls whether to deploy the cloudsqlAuthProxy. Default is false.
   image:
-    # repository is the image repo to pull from; together with tag it
-    # replicates the --dash-image & --registry arguments to pachctl
-    # deploy.
-    repository: "gcr.io/cloudsql-docker/gce-proxy"
+    repository: "gcr.io/cloudsql-docker/gce-proxy" # the image repo to pull from; replicates --registry to pachctl
     pullPolicy: "IfNotPresent"
-    # tag is the image repo to pull from; together with repository it
-    # replicates the --dash-image argument to pachctl deploy.
-    tag: "1.23.0"
+    tag: "1.23.0" # the image repo to pull from; replicates the --dash-image argument to pachctl deploy.
   priorityClassName: ""
   nodeSelector: {}
   tolerations: []
-  # podLabels specifies labels to add to the dash pod.
-  podLabels: {}
-  # resources specifies the resource request and limits.
-  resources: {}
+  podLabels: {}  # specifies labels to add to the dash pod.
+  resources: {} # specifies the resource request and limits.
+
   #  requests:
   #    # The proxy's memory use scales linearly with the number of active
   #    # connections. Fewer open connections will use less memory. Adjust
@@ -61,11 +55,10 @@ cloudsqlAuthProxy:
   #    # the database and the application. Adjust this value based on your
   #    # application's requirements.
   #    cpu: ""
+
   service:
-    # labels specifies labels to add to the cloudsql auth proxy service.
-    labels: {}
-    # type specifies the Kubernetes type of the cloudsql auth proxy service. The default is `ClusterIP`.
-    type: ClusterIP
+    labels: {} #  specifies labels to add to the cloudsql auth proxy service.
+    type: ClusterIP # specifies the Kubernetes type of the cloudsql auth proxy service. The default is `ClusterIP`.
 ```
 {{% /wizardResult %}}
 
