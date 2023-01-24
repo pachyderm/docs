@@ -4,7 +4,7 @@ title:  Scheduling Spec
 description:  Define how the pipeline pods should be scheduled.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

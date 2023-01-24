@@ -4,7 +4,7 @@ title:  Transform
 description: Set the name of the Docker image that your jobs use.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: required 

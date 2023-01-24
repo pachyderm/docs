@@ -4,7 +4,7 @@ title:  Datum Tries
 description: Define the number of job attempts to run on a datum when a failure occurs.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

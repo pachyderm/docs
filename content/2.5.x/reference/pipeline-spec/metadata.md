@@ -4,7 +4,7 @@ title:  Metadata
 description: Add metadata to your pipeline pods using Kubernetes' labels and annotations.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: Optional

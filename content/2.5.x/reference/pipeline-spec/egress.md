@@ -4,7 +4,7 @@ title:  Egress
 description: Push the results of a Pipeline to an external data store or an SQL Database.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

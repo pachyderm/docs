@@ -4,7 +4,7 @@ title:  Datum Timeout
 description:  Set the maximum execution time allowed for each datum.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

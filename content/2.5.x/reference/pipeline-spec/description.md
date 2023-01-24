@@ -4,7 +4,7 @@ title:  Description
 description: Display meaningful information about your pipeline.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

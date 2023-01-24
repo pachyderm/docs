@@ -4,7 +4,7 @@ title:  Parallelism Spec
 description: Define the number of workers used in parallel. 
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: Optional

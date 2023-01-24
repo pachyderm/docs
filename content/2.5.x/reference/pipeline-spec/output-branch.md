@@ -4,7 +4,7 @@ title:  Output Branch
 description: Define the branch where the pipeline outputs new commits.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

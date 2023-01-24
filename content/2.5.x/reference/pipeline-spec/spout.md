@@ -4,7 +4,7 @@ title:  Spout
 description: Ingest streaming data into Pachyderm using a spout pipeline.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

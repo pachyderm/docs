@@ -4,7 +4,7 @@ title:  Resource Requests
 description: Set the exact amount of resources that a pipeline worker will consume.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

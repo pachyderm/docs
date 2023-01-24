@@ -4,7 +4,7 @@ title:  Autoscaling
 description: Enable autoscaling of the worker pool based on datums in queue. 
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

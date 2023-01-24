@@ -4,7 +4,7 @@ title:  Input PFS
 description: Add data to an input repo. 
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: Required for PFS Inputs

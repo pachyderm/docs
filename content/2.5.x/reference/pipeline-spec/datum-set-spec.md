@@ -4,7 +4,7 @@ title:  Datum Set Spec
 description: Define how a pipeline should group its datums.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

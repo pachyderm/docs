@@ -4,7 +4,7 @@ title:  Input Group
 description: Group files stored in one or multiple repos.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: Required for Group Inputs

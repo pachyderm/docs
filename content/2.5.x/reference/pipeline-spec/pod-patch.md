@@ -4,7 +4,7 @@ title:  Pod Patch
 description: Patch a Pod Spec.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

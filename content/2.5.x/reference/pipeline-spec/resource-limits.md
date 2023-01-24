@@ -4,7 +4,7 @@ title:  Resource Limits
 description: Set the upper threshold of allowed resources a given worker can consume.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

@@ -4,7 +4,7 @@ title:  Spec Commit
 description: This attribute is auto-generated and is not configurable.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: auto-generated

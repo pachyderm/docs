@@ -4,7 +4,7 @@ title:  Job Timeout
 description: Set the maximum execution time allowed for a job.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

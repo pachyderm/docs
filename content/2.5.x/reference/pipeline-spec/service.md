@@ -4,7 +4,7 @@ title:  Service
 description: Enable a pipeline to be treated as a long-running service.
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional

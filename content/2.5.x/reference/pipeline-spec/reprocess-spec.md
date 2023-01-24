@@ -4,7 +4,7 @@ title:  Reprocess Spec
 description: Define the reprocessing behavior of a repo upon receiving new or modified. data. 
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipelines", "pps"]
 series:
 seriesPart:
 label: optional
