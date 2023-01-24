@@ -13,5 +13,4 @@ cascade:
     clientPython: 7.3
     extensionJupyterLab: 2.4.2
     mountServerBinary: 2.4.2
-    release: latest 
 ---
