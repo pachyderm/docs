@@ -13,9 +13,19 @@ label: optional
 
 ## About
 
-PachW processes storage tasks (like compaction) and url tasks (like uploads and downloads) in a distributed way. Your main PachD instance scales the number of PachW instances used based on the number of tasks counted. By default, PachW can only scale up to a max of 1 replica.
+PachW processes storage tasks (like compaction) and url tasks (like uploads and downloads) in a distributed way. Your main PachD instance scales the number of PachW instances used based on the number of tasks counted. By default, PachW can only scale up to a max of 1 replica. You can also set the resources used by PachW instances. 
 
-You should set the `maxReplicas` value to match the number of pipeline replicas that you have. You can also set the resources used by PachW instances. The type of work that PachW does is most affected by cpu and network bandwidth available.
+The type of work that PachW does is most affected by cpu and network bandwidth available.
+
+### How to Calculate maxReplica Value
+You should set the `maxReplicas` value to **at least match the number of pipeline replicas that you have**. For high performance, we suggest taking the following approach:
+
+> `number of pipelines * highest parallelism spec * 1.5 = maxReplicas`
+
+Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](../../pipeline-spec/parallelism) value of 6, and the rest are 5 or fewer. 
+
+> `6 * 6 * 1.5 = 54`
+
 
 ## Values 
 
