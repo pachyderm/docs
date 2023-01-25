@@ -26,4 +26,3 @@ process outlined above of modifying an existing pod spec and then manually
 blanking unchanged fields won't work, you'll need to create a correctly
 formatted patch by diffing the two pod specs.
 
-##  When to Use 

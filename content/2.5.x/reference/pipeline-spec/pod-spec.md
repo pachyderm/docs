@@ -36,5 +36,3 @@ The JSON is applied after the other parameters for the `pod_spec` have already
 been set as a [JSON Merge Patch](https://tools.ietf.org/html/rfc7386). This
 means that you can modify things such as the storage and user containers.
 
-
-## When to Use

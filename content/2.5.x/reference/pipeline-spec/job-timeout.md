@@ -26,5 +26,4 @@ label: optional
 - If not set, a job will run indefinitely until it succeeds or fails.
 
 
-## When to Use 
 

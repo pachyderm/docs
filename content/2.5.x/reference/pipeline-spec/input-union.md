@@ -77,6 +77,4 @@ in that directory. This only works if your code does not need to be
 aware of which of the underlying inputs the data comes from.
 
 
-## When to Use 
-
 

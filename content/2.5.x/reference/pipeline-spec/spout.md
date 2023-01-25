@@ -28,5 +28,3 @@ label: optional
 
 - Does not have a PFS input; instead, it consumes data from an outside source.
 - Can have a service added to it. See [Service](../service).
-
-## When to Use 

@@ -33,5 +33,3 @@ label: optional
 |-|-|
 |`internal_port`| The port that the user code binds to inside the container. |
 |`external_port`| The port on which it is exposed through the `NodePorts` functionality of Kubernetes services.|
-
-## When to Use 

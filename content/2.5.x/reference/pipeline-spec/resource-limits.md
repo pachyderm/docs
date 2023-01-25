@@ -41,5 +41,3 @@ nothing to process. For more information about scheduling GPUs see the
 [Kubernetes docs](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/)
 on the subject.
 
-
-## When to Use 

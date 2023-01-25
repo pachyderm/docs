@@ -53,17 +53,4 @@ specified, it defaults to the name of the repo. Therefore, if you have two
 crossed inputs from the same repo, you must give at least one of them a
 unique name.
 
-### Attributes
 
-|Attribute|Description|
-|-|-|
-|`name`||
-|`repo`||
-|`branch`||
-|`glob`||
-|`lazy`||
-|`empty_files`||
-|`s3`||
-|`trigger`||
-
-## When to Use 

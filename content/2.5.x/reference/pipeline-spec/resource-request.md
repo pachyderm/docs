@@ -79,5 +79,3 @@ similarly, but for CPU time.
 For more information about resource requests and limits see the
 [Kubernetes docs](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 on the subject.
-
-## When to Use 

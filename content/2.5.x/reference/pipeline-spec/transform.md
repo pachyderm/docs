@@ -80,8 +80,6 @@ an environment variable (`env_var`) that the value should be bound to.
 -  `tmpfs` is cleared on node reboot and any files you write count against your container's memory limit. This may be useful for workloads that are IO heavy or use memory caches.
 
 
-
-
 ## When to Use 
 
 You must always use the transform attribute when making a pipeline. 
