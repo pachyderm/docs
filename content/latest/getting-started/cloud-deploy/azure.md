@@ -266,9 +266,7 @@ pod/postgres-0                                 1/1     Running     0          2m
 ## 6. Connect to Cluster
 
 ```s
-pachctl config import-kube local --overwrite
-pachctl config set active-context local
-pachctl port-forward
+pachctl connect grpc://localhost:80 
 ```
 {{% notice note %}}
 If the connection commands did not work together, run each separately.
