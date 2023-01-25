@@ -3,10 +3,12 @@
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
     <button class="montserrat dropdown-alt is-fit outlined-purple {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
-        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-2 rounded-1 s bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
+        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Title}}{{end}}" class="activeOption p-2 rounded-1 s bold"> {{if .IsHome}} {{.Site.Params.releaseInfo.Latest}}{{else}}{{ .Section }}{{end}}</div>
         <div class="montserrat is-full dropdown-options white rounded-1 outlined-purple"> 
              {{if eq .Section "tags" "series" "knowledge-base"}}
+             {{/*  do nothing  */}}
              {{else if eq .Title "search" }}
+             {{/*  do nothing  */}}
              {{else}}
                 <div class="stack"> 
                 {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
@@ -16,10 +18,10 @@
                     {{ $file :=  print (strings.TrimSuffix "/" $alternativeVersionPath) ".md" }}
                     {{ $folder :=  print $alternativeVersionPath "_index.md" }}
                     {{ if os.FileExists $file }}
-                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
                     {{ end }}
                     {{ if os.FileExists $folder }}
-                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}">v. {{.Title}}</a>
+                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
                     {{ end }}
                     {{end}}
                 {{end}}
