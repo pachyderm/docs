@@ -106,11 +106,9 @@ You can do so by running the following command:
 {{% wizardResults %}}
 {{% wizardResult val1="setup-type/with-proxy" %}}
 ```s
-echo '{"pachd_address": "grpcs://<external-IP-address-or-domain-name>:443"}' | pachctl config set context "grpcs-context" --overwrite
+pachctl connect grpc://localhost:80 
 ```
-```s
-pachctl config set active-context "grpcs-context"
-```
+
 {{% /wizardResult %}}
 {{% wizardResult val1="setup-type/without-proxy" %}}
 ```yaml

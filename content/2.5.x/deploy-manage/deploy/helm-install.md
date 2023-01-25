@@ -121,10 +121,7 @@ kubectl get services | grep pachd-lb | awk '{print $4}'
 1. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
     ```s
-    echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set 
-    ```
-    ```s
-    context "<your-cluster-context-name>" --overwrite
+    pachctl connect grpc://localhost:80 
     ```
 
 1. Check that your are using the right context: 

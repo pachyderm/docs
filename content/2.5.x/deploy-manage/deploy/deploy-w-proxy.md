@@ -51,7 +51,7 @@ helm upgrade pachyderm pachyderm/pachyderm -f values.yml
 ```
 4. Connect to your cluster:
 ```s
-echo '{"pachd_address":"grpc://192.168.1.70:80"}' | pachctl config set context pachyderm --overwrite && pachctl config set active-context pachyderm
+pachctl connect grpc://localhost:80 
 ```
 
  

@@ -178,7 +178,7 @@ kubernetes-dashboard   kubernetes-dashboard-5fd5574d9f-c7ptx        1/1     Runn
 ## 6. Connect to Cluster
 
 ```s
-echo '{"pachd_address":"grpc://127.0.0.1:80"}' | pachctl config set context local --overwrite && pachctl config set active-context local
+pachctl connect grpc://localhost:80 
 ```
 {{% notice note %}}
 If the connection commands did not work together, run each separately.

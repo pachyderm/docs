@@ -18,146 +18,13 @@ The following section contains a series of tabs for commonly used configurations
 {{< stack type="wizard">}}
 
 {{% wizardRow id="Options"%}}
-{{% wizardButton option="Compact"%}}
+
 {{% wizardButton option="With Secrets" state="active" %}}
 {{% wizardButton option="Without Secrets"  %}}
 
 {{% /wizardRow %}}
 
 {{% wizardResults %}}
-
-{{% wizardResult val1="options/compact" %}}
-```s
-pachd:
-  enabled: true
-  preflightChecks:
-    enabled: true
-  affinity: {}
-  annotations: {}
-  clusterDeploymentID: ""
-  configJob:
-    annotations: {}
-  goMaxProcs: 0
-  image:
-    repository: "pachyderm/pachd"
-    pullPolicy: "IfNotPresent"
-    tag: ""
-  logFormat: "json"
-  logLevel: "info"
-  lokiDeploy: true
-  lokiLogging: true
-  metrics:
-    enabled: true
-    endpoint: ""
-  priorityClassName: ""
-  nodeSelector: {}
-  podLabels: {}
-  replicas: 1
-  resources:
-    {}
-  requireCriticalServersOnly: false
-  externalService:
-    enabled: false
-    loadBalancerIP: ""
-    apiGRPCPort: 30650
-    s3GatewayPort: 30600
-    annotations: {}
-  service:
-    labels: {}
-    type: "ClusterIP"
-    annotations: {}
-    apiGRPCPort: 30650
-    prometheusPort: 30656
-    oidcPort: 30657
-    identityPort: 30658
-    s3GatewayPort: 30600
-  activateEnterprise: false
-  activateEnterpriseMember: false
-  activateAuth: true
-  enterpriseLicenseKey: ""
-  enterpriseLicenseKeySecretName: ""
-  rootToken: ""
-  rootTokenSecretName: ""
-  enterpriseSecret: ""
-  enterpriseSecretSecretName: ""
-  oauthClientID: pachd
-  oauthClientSecret: ""
-  oauthClientSecretSecretName: ""
-  oauthRedirectURI: ""
-  enterpriseServerToken: ""
-  enterpriseServerTokenSecretName: ""
-  enterpriseServerAddress: ""
-  enterpriseCallbackAddress: ""
-  localhostIssuer: "" 
-  pachAuthClusterRoleBindings: {}
-  additionalTrustedPeers: []
-  serviceAccount:
-    create: true
-    additionalAnnotations: {}
-    name: "pachyderm" 
-  storage:
-    backend: ""
-    amazon:
-      bucket: ""
-      cloudFrontDistribution: ""
-      customEndpoint: ""
-      disableSSL: false
-      id: ""
-      logOptions: ""
-      maxUploadParts: 10000
-      verifySSL: true
-      partSize: "5242880"
-      region: ""
-      retries: 10
-      reverse: true
-      secret: ""
-      timeout: "5m"
-      token: ""
-      uploadACL: "bucket-owner-full-control"
-    google:
-      bucket: ""
-      cred: ""
-    local:
-      hostPath: ""
-      requireRoot: true 
-    microsoft:
-      container: ""
-      id: ""
-      secret: ""
-    minio:
-      bucket: ""
-      endpoint: ""
-      id: ""
-      secret: ""
-      secure: ""
-      signature: ""
-    putFileConcurrencyLimit: 100
-    uploadConcurrencyLimit: 100
-    compactionShardSizeThreshold: 0
-    compactionShardCountThreshold: 0
-  ppsWorkerGRPCPort: 1080
-  storageGCPeriod: 0
-  storageChunkGCPeriod: 0
-  tls:
-    enabled: false
-    secretName: ""
-    newSecret:
-      create: false
-      crt: ""
-      key: ""
-  tolerations: []
-  worker:
-    image:
-      repository: "pachyderm/worker"
-      pullPolicy: "IfNotPresent"
-    serviceAccount:
-      create: true
-      additionalAnnotations: {}
-      name: "pachyderm-worker" 
-  rbac:
-    create: true
-```
-{{% /wizardResult %}}
 
 {{% wizardResult val1="options/with-secrets" %}}
 
@@ -196,6 +63,7 @@ pachd:
     #requests:
     #  cpu: "1"
     #  memory: "2G"
+
   requireCriticalServersOnly: false
 
   externalService:
@@ -291,7 +159,7 @@ pachd:
 
     local:
       hostPath: "" # path where PFS metadata is stored; must end with "/".
-      requireRoot: true #Root required for hostpath, but we run rootless in CI
+      requireRoot: true # root required for hostpath, but we run rootless in CI
     microsoft:
       container: ""
       id: ""
@@ -303,29 +171,14 @@ pachd:
       secret: "" # the secret/password of the user with readwrite access to the bucket.
       secure: "false" # enables https for minio if "true"
       signature: "" # Enables S3v2 support by setting signature to "1"; being deprecated. 
-    # putFileConcurrencyLimit sets the maximum number of files to
-    # upload or fetch from remote sources (HTTP, blob storage) using
-    # PutFile concurrently.  It is analogous to the
-    # --put-file-concurrency-limit argument to pachctl deploy.
-    putFileConcurrencyLimit: 100
-    # uploadConcurrencyLimit sets the maximum number of concurrent
-    # object storage uploads per Pachd instance.  It is analogous to
-    # the --upload-concurrency-limit argument to pachctl deploy.
-    uploadConcurrencyLimit: 100
-    # The shard size corresponds to the total size of the files in a shard.
-    # The shard count corresponds to the total number of files in a shard.
-    # If either criteria is met, a shard will be created.
-    compactionShardSizeThreshold: 0
-    compactionShardCountThreshold: 0
+    putFileConcurrencyLimit: 100 # sets the maximum number of files to upload or fetch from remote sources uploadConcurrencyLimit sets the maximum number of concurrent; analogous to --put-file-concurrency-limit argument to pachctl
+    uploadConcurrencyLimit: 100  # object storage uploads per Pachd instance; analogous to  --upload-concurrency-limit argument to pachctl
+    compactionShardSizeThreshold: 0 # the total size of the files in a shard.
+    compactionShardCountThreshold: 0 # the total number of files in a shard.
+
   ppsWorkerGRPCPort: 1080
-  # the number of seconds between pfs's garbage collection cycles.
-  # if this value is set to 0, it will default to pachyderm's internal configuration.
-  # if this value is less than 0, it will turn off garbage collection.
-  storageGCPeriod: 0
-  # the number of seconds between chunk garbage colletion cycles.
-  # if this value is set to 0, it will default to pachyderm's internal configuration.
-  # if this value is less than 0, it will turn off chunk garbage collection.
-  storageChunkGCPeriod: 0
+  storageGCPeriod: 0 # the number of seconds between pfs's garbage collection cycles; <0 disables garbage collection; 0 defaults to pachyderm's internal config.
+  storageChunkGCPeriod: 0 # the number of seconds between chunk garbage colletion cycles; <0 disables chunk garbage collection; 0 defaults to pachyderm's internal config.
   # There are three options for TLS:
   # 1. Disabled
   # 2. Enabled, existingSecret, specify secret name
@@ -346,14 +199,9 @@ pachd:
     serviceAccount:
       create: true
       additionalAnnotations: {}
-      # name sets the name of the worker service account.  Analogous to
-      # the --worker-service-account argument to pachctl deploy.
-      name: "pachyderm-worker" #TODO Set default in helpers / Wire up in templates
+      name: "pachyderm-worker"  # sets the name of the worker service account; analogous to --worker-service-account argument to pachctl.
   rbac:
-    # create indicates whether RBAC resources should be created.
-    # Setting it to false is analogous to passing --no-rbac to pachctl
-    # deploy.
-    create: true
+    create: true # indicates whether RBAC resources should be created; analogous to --no-rbac to pachctl
 ```
 {{% /wizardResult %}}
 

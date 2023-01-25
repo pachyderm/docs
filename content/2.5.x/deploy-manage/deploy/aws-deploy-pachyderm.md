@@ -522,10 +522,7 @@ Retain (ideally in version control) a copy of the Helm values used to deploy you
   2. Update the context of your cluster with their direct url, using the external IP address/domain name above:
 
       ```s
-      echo '{"pachd_address": "grpc://<external-IP-address-or-domain-name>:30650"}' | pachctl config set context "<your-cluster-context-name>" --overwrite
-      ```
-      ```s
-      pachctl config set active-context "<your-cluster-context-name>"
+      pachctl connect grpc://localhost:80 
       ```
 
   3. Check that your are using the right context: 

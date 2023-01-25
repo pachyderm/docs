@@ -263,11 +263,7 @@ Jump to [Helm install](#3-helm-install)
 - Then **update your context for pachctl to point at your cluster**:
 
     ```s
-    echo '{"pachd_address": "grpc://<external-IP-address>:30650"}' | pachctl config set context "<choose-a-cluster-context-name>" --overwrite
-    ```
-
-    ```s
-    pachctl config set active-context "<your-cluster-context-name>"
+    pachctl connect grpc://localhost:80 
     ```
 - If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your mock User (username:`admin`, password: `password`), before you use `pachctl`. 
 
