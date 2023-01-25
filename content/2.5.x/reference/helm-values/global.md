@@ -11,6 +11,8 @@ weight: 2
 label: required
 --- 
 
+## About 
+
 The Global section configures the connection to the PostgreSQL database. By default, it uses the included Postgres service.
 
 ## Values 

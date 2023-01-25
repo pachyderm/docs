@@ -11,6 +11,8 @@ weight: 14
 label: required 
 --- 
 
+## About
+
 Proxy is a service that handles all Pachyderm traffic (S3, Console, OIDC, Dex, GRPC) on a single port; It's great for exposing directly to the Internet. 
 
 {{% notice warning %}}

@@ -12,6 +12,7 @@ label: required
 ---
 
 ## About 
+The ETCD section configures the ETCD cluster in the deployment.
 
 ## Values 
 

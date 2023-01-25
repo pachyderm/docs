@@ -13,7 +13,7 @@ weight: 1
 
 ## About 
 
-`deployTarget` defines where you're deploying pachyderm; this is typically located at the top of your values.yaml file.
+The Deploy Target section defines where you're deploying pachyderm; this is typically located at the top of your values.yaml file.
 
 ## Values 
 
