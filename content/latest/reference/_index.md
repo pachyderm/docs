@@ -10,4 +10,4 @@ seriesPart:
 weight: 5
 ---
 
-This section includes references to various tools that enable you to interact with Pachyderm by using your favorite programming language.
+This section includes references to several important aspects of Pachyderm, including: the [pachctl CLI](./pachctl), [pipeline specification attributes](./pipeline-spec), and [helm chart configuration settings](./helm-values).
