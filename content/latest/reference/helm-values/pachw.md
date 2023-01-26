@@ -58,10 +58,12 @@ Workloads that utilize GPUs and other expensive resources may want to add a node
 
 ```s
 pachw:
+  inheritFromPachd: true # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
   maxReplicas: 1
   inSidecars: false
-  tolerations:
-  nodeSelectors:
+  #tolerations: []
+  #affinity: {}
+  #nodeSelector: {}
   ```
 
 {{% /wizardResult %}}
@@ -70,10 +72,12 @@ pachw:
 {{% wizardResult val1="options/with-minimum" %}}
 ```s
 pachw:
+  inheritFromPachd: true # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
   maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * paralellism = target maxReplicas
   minReplicas: 1
-  tolerations:
-  nodeSelectors:
+  #tolerations: []
+  #affinity: {}
+  #nodeSelector: {}
   #resources: # sets kubernetes resource configuration for pachw pods. If not defined, config from pachd is reused. We recommend defining resources when running pachw with a high value of maxReplicas (when formula is: target maxReplicas * 1.5).
    #limits:
      #cpu: "1"
@@ -88,10 +92,12 @@ pachw:
 {{% wizardResult val1="options/as-sidecars-legacy" %}}
 ```s
 pachw:
+  inheritFromPachd: true # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
   inSidecars: true # processes storage related tasks in pipeline storage sidecars like version 2.4.2 or less.
   maxReplicas: 1
-  tolerations:
-  nodeSelectors:
+  #tolerations: []
+  #affinity: {}
+  #nodeSelector: {}
 ```
 
 {{% /wizardResult %}}
