@@ -35,15 +35,15 @@ Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](
 {{< stack type="wizard">}}
 
 {{% wizardRow id="Options"%}}
-{{% wizardButton option="Default"  state="active"%}}
+{{% wizardButton option="Enabled"  state="active"%}}
 {{% wizardButton option="With Minimum" %}}
-{{% wizardButton option="As Sidecars"  %}}
+{{% wizardButton option="As Sidecars (Legacy)"  %}}
 
 {{% /wizardRow %}}
 
 {{% wizardResults %}}
 
-{{% wizardResult val1="options/default" %}}
+{{% wizardResult val1="options/enabled" %}}
 
 ```s
 pachw:
@@ -74,7 +74,7 @@ pachw:
 
 {{% /wizardResult %}}
 
-{{% wizardResult val1="options/as-sidecars" %}}
+{{% wizardResult val1="options/as-sidecars-legacy" %}}
 ```s
 pachw:
   inSidecars: true # processes storage related tasks in pipeline storage sidecars like version 2.4.2 or less.
