@@ -13,9 +13,12 @@ label: optional
 
 ## About
 
-PachW processes storage tasks (like compaction) and url tasks (like uploads and downloads) in a distributed way. Your main PachD instance scales the number of PachW instances used based on the number of tasks counted. By default, PachW can only scale up to a max of 1 replica. You can also set the resources used by PachW instances. 
+PachW enables fine-grained control of where compaction and object-storage interaction occur by running storage tasks in a dedicated Kubernetes deployment. Users can configure PachW's min and max replicas as well as define nodeSelectors, tolerations, and resource requests. Using PachW allows power users to save on costs by claiming fewer resources and running storage tasks on less expensive nodes.
 
-The type of work that PachW does is most affected by cpu and network bandwidth available.
+{{% notice warning %}}
+If you are upgrading to **2.5.0+** for the first time, you must calculate how many maxReplicas you need. By defalut, PachW is set to 1 maxreplica --- however, that is not sufficient for production runs.
+{{% /notice %}}
+
 
 ### How to Calculate maxReplica Value
 You should set the `maxReplicas` value to **at least match the number of pipeline replicas that you have**. For high performance, we suggest taking the following approach:
@@ -45,6 +48,9 @@ Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](
 ```s
 pachw:
   maxReplicas: 1
+  inSidecars: false
+  tolerations:
+  nodeSelectors:
   ```
 
 {{% /wizardResult %}}
@@ -55,6 +61,8 @@ pachw:
 pachw:
   maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * paralellism = target maxReplicas
   minReplicas: 1
+  tolerations:
+  nodeSelectors:
   #resources: # sets kubernetes resource configuration for pachw pods. If not defined, config from pachd is reused. We recommend defining resources when running pachw with a high value of maxReplicas (when formula is: target maxReplicas * 1.5).
    #limits:
      #cpu: "1"
@@ -71,6 +79,8 @@ pachw:
 pachw:
   inSidecars: true # processes storage related tasks in pipeline storage sidecars like version 2.4.2 or less.
   maxReplicas: 1
+  tolerations:
+  nodeSelectors:
 ```
 
 {{% /wizardResult %}}
