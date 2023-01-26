@@ -18,10 +18,10 @@
                     {{ $file :=  print (strings.TrimSuffix "/" $alternativeVersionPath) ".md" }}
                     {{ $folder :=  print $alternativeVersionPath "_index.md" }}
                     {{ if os.FileExists $file }}
-                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
+                        <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
                     {{ end }}
                     {{ if os.FileExists $folder }}
-                        <a class="bold is-fit p-2 mb-1 mt-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
+                        <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
                     {{ end }}
                     {{end}}
                 {{end}}
