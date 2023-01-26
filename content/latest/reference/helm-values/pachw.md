@@ -15,12 +15,14 @@ label: optional
 
 PachW enables fine-grained control of where compaction and object-storage interaction occur by running storage tasks in a dedicated Kubernetes deployment. Users can configure PachW's min and max replicas as well as define nodeSelectors, tolerations, and resource requests. Using PachW allows power users to save on costs by claiming fewer resources and running storage tasks on less expensive nodes.
 
+
+
 {{% notice warning %}}
-If you are upgrading to **2.5.0+** for the first time, you must calculate how many maxReplicas you need. By defalut, PachW is set to 1 maxreplica --- however, that is not sufficient for production runs.
+If you are upgrading to **2.5.0+** for the first time and you wish to use PachW, you must calculate how many maxReplicas you need. By defalut, PachW is set to `maxReplicas:1`  --- however, that is not sufficient for production runs.
 {{% /notice %}}
 
 
-### How to Calculate maxReplica Value
+### maxReplica
 You should set the `maxReplicas` value to **at least match the number of pipeline replicas that you have**. For high performance, we suggest taking the following approach:
 
 > `number of pipelines * highest parallelism spec * 1.5 = maxReplicas`
@@ -28,6 +30,15 @@ You should set the `maxReplicas` value to **at least match the number of pipelin
 Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](../../pipeline-spec/parallelism) value of 6, and the rest are 5 or fewer. 
 
 > `6 * 6 * 1.5 = 54`
+
+### minReplica 
+
+Workloads that constantly process storage and compaction tasks because they are committing rapidly may want to increase minReplicas to have instances on standby
+
+### nodeSelectors
+
+Workloads that utilize GPUs and other expensive resources may want to add a node selector to scope PachW instances to less expensive nodes.
+
 
 
 ## Values 
