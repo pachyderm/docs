@@ -30,12 +30,15 @@ You can choose between Pachyderm's pre-built image (a custom version of [`jupyte
  ```
 3. Open the UI using the link provided in the terminal following:
  ```s
- Jupyter Server [...] is running at:
+ [I 2023-01-26 19:07:00.245 ServerApp] Jupyter Server 1.16.0 is running at:
+[I 2023-01-26 19:07:00.245 ServerApp] http://fb66b212ca13:8888/lab?token=013dbb47fc32c0f1ec8277a399e8ccf0e4eb87055942a21d
+[I 2023-01-26 19:07:00.245 ServerApp]  or http://127.0.0.1:8888/lab?token=013dbb47fc32c0f1ec8277a399e8ccf0e4eb87055942a21d
  ```
 4. Navigate to the connection tab. You will need to provide a link formatted like the following:
  ```s
  grpc://<cluster-ip>:<port>
  ```
+ ![mount connection url](/images/jupyterlab-extension/mount-connection-url.gif)
 5. Open another terminal and run the following to get the IP address and port number:
   ```s
   kubectl get services | grep -w "pachd "
