@@ -7,7 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
-weight: 
+weight: 3
 ---
 
 ## How to View a List of Resources in Console

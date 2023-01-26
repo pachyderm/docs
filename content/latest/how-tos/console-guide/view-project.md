@@ -7,7 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
-weight: 
+weight: 1
 ---
 
 ## How to View a Project in Console
