@@ -14,7 +14,7 @@ Use the embedded S3 Gateway to send or receive data through the S3 protocol usin
 
 ## S3 Gateway Syntax
 
-The S3 gateway presents each branch from every Pachyderm repository as an S3 bucket. Buckets are represented via `<commit>.<branch>.<repo>.<project>` 
+The S3 gateway presents each branch from every Pachyderm repository as an S3 bucket. Buckets are represented via `[<commit>.]<branch>.<repo>.<project>`, with the commit being optional. 
 
 - The `master.foo.bar` bucket corresponds to the `master` branch of the repo `foo` within the `bar` project.
 - The `be97b64f110643389f171eb64697d4e1.master.foo.bar` bucket corresponds to the commit `be97b64f110643389f171eb64697d4e1` on the `master` branch of the `foo` repo within the `bar` project.
@@ -23,6 +23,8 @@ If [auth is enabled](../../../enterprise/auth/), credentials must be passed with
 each S3 gateway endpoint as mentioned in the [**S3 Client configuration steps**](./configure-s3client/#set-your-credentials).
 
 ### Command Examples 
+
+The following command examples assume that you have upgraded to use the [embedded proxy](../../deploy/deploy-w-proxy), which will become mandatory in future releases.
 
 #### Put Data Into Pachyderm Repo
 
@@ -36,7 +38,7 @@ each S3 gateway endpoint as mentioned in the [**S3 Client configuration steps**]
 {{% wizardResults %}}
 {{% wizardResult val1="tool/s3-client" %}}
 ```s
-aws --endpoint-url <pachyderm-address>:30600/ s3 cp myfile.csv s3://master.foo.bar
+aws --endpoint-url <pachyderm-address> s3 cp myfile.csv s3://master.foo.bar
 ```
 {{% /wizardResult %}}
 {{% wizardResult val1="tool/pachctl-cli" %}}
@@ -61,7 +63,7 @@ pachctl put file data@master:/ -f myfile.csv --project bar
 {{% wizardResults %}}
 {{% wizardResult val1="tool/s3-client" %}}
 ```s
-aws --endpoint-url <pachyderm-address>:30600/ s3 cp s3://master.foo.bar/myfile.csv
+aws --endpoint-url <pachyderm-address> s3 cp s3://master.foo.bar/myfile.csv
 ```
 {{% /wizardResult %}}
 {{% wizardResult val1="tool/pachctl-cli" %}}
