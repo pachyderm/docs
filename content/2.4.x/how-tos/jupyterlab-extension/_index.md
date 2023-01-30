@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: JupyterLab Mount Extension
-description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm.
+title: Pachyderm's JupyterLab Extension
+description: Learn how to install and use Pachyderm's JupyterLab Extension.
 date: 
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]
@@ -11,22 +11,25 @@ weight:
 beta: true 
 ---
 
-Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) to:
+Use our [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) ("JupyterLab-Pachyderm") to:
 
 - Connect your Notebook to a Pachyderm cluster
-- Browse, explore, and analyze data stored in Pachyderm directly from your Notebook
+- Browse, open, and analyze data stored in Pachyderm directly from your Notebook
 - Run and test out your pipeline code before creating a Docker image
 
 ![Mount extension in action](/images/mount-extension.gif)
 
 ---
 
+## Try it Out
+
+To try JupyterLab-Pachyderm right away, run our [JupyterLab Docker image](./docker-install), which contains JupyterLab and JupyterLab-Pachyderm pre-installed. If you have a running Pachyderm cluster, you can run the image, connect it to your cluster and explore your Pachyderm data in a notebook.
+
+---
+
 ## Install the Extension 
 
-There are three main ways to install the Jupyter Lab extension:
-
-- ⭐ [Via Docker](./docker-install): Fastest implementation!
-- 🧪 [Locally](./local-install): Great for development and testing
+If you have your own Jupyter notebook runner (such as JupyterHub or Kubeflow), or you're simply running JupyterLab on your local machine, check out our [JupyterLab-Pachyderm walkthrough](./extension-walkthrough) to learn about the components of JupyterLab-Pachyderm and how to get the pieces installed, running, and connected.
 
 ---
 
