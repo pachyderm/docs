@@ -11,7 +11,7 @@ weight: 3
 beta: true 
 ---
 
-Every user's Jupyter notebook environment is unique: some users run notebooks natively on their machine, while others use managed notebooks in the cloud. Rather than provide yet another notebook environment or support one specific notebook runner when many users have their own already, this page provides the information you need to run our extension in your own environment.
+Every user's Jupyter notebook environment is unique: some users run notebooks natively on their machine, while others use managed notebooks in the cloud. Rather than provide yet another notebook environment or support one specific notebook runner when many users have their own already, this page will equip you to run our extension in your own environment.
 
 Below, we describe the components of our JupyterLab extension, JupyterLab-Pachyderm, and how each is installed and run. We also offer a practical application of this information in [our examples repo](https://github.com/pachyderm/examples/tree/master/jupyterhub), where we have an example `values.yaml` file for the JupyterHub helm chart that launches notebooks with our extension pre-installed and configured.
 
