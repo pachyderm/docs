@@ -13,7 +13,7 @@ label: Optional
 
 ## About
 
-[Enterprise Server](TBD) is a production management layer that centralizes  the licensing registration of multiple Pachyderm clusters for Enterprise use and the setup of user authorization/authentication via [OIDC](../oidc).
+[Enterprise Server](../../../enterprise/auth/enterprise-server) is a production management layer that centralizes  the licensing registration of multiple Pachyderm clusters for Enterprise use and the setup of user authorization/authentication via [OIDC](../oidc).
 
 ## Values 
 

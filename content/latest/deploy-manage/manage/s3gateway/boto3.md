@@ -21,6 +21,3 @@ Then follow the [Using boto](https://boto3.amazonaws.com/v1/documentation/api/la
 Find **boto3** full documentation [here](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html).
 {{%/notice%}}
 
-## Verify Setup
-
-[TBD]

@@ -12,7 +12,7 @@ weight: 4
 
 ## Before You Start 
 
-- Install Pachyderm either [locally](/tbd) our within the [cloud](/tbd). 
+- Install Pachyderm either [locally](../local-deploy) our within the [cloud](../cloud-deploy). 
 - Install [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
 - Join our [Slack Community](https://www.pachyderm.com/slack/) so you can ask any questions you may have!
 
@@ -84,7 +84,7 @@ You can add, remove, or update `files` in a given commit.
 
 #### Upload an Image File
 
-We're going to use the [`pachctl put file`](/tbd) command, along with the `-f` flag, to upload an image.
+We're going to use the `pachctl put file` command, along with the `-f` flag, to upload an image.
 
 ```s
 pachctl put file images@master:liberty.png -f http://imgur.com/46Q8nDz.png
