@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl diff
-description: "Show the differences between two Pachyderm resources."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - diff-file
-cliGlossary:  d
----
+## pachctl diff
+
+Show the differences between two Pachyderm resources.
 
 ### Synopsis
 
@@ -18,7 +12,7 @@ Show the differences between two Pachyderm resources.
   -h, --help   help for diff
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

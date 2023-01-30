@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl finish transaction
-description: "Execute and clear the currently active transaction."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - finish
-cliGlossary:  f
----
+## pachctl finish transaction
+
+Execute and clear the currently active transaction.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl finish transaction [<transaction>] [flags]
   -h, --help   help for transaction
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

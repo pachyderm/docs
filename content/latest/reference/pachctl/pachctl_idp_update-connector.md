@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp update-connector
-description: "Update an existing identity provider connector. Only fields which are specified are updated."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp update-connector
+
+Update an existing identity provider connector.
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl idp update-connector [flags]
   -h, --help            help for update-connector
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

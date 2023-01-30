@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl resume
-description: "Resume a stopped task."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - resume-transaction
-cliGlossary:  r
----
+## pachctl resume
+
+Resume a stopped task.
 
 ### Synopsis
 
@@ -18,7 +12,7 @@ Resume a stopped task.
   -h, --help   help for resume
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

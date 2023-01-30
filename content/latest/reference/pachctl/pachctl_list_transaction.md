@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl list transaction
-description: "List transactions."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - list
-cliGlossary:  l
----
+## pachctl list transaction
+
+List transactions.
 
 ### Synopsis
 
@@ -25,7 +19,7 @@ pachctl list transaction [flags]
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

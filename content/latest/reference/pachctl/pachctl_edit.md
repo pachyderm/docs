@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl edit
-description: "Edit the value of an existing Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - edit-pipeline
-cliGlossary:  e
----
+## pachctl edit
+
+Edit the value of an existing Pachyderm resource.
 
 ### Synopsis
 
@@ -18,7 +12,7 @@ Edit the value of an existing Pachyderm resource.
   -h, --help   help for edit
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,15 +1,6 @@
----
-# metadata # 
-title:  pachctl auth get
-description: "Get the role bindings for a resource"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-  - auth-get-cluster
-  - auth-get-enterprise
-  - auth-get-repo
-cliGlossary:  a
----
+## pachctl auth get
+
+Get the role bindings for a resource
 
 ### Synopsis
 
@@ -21,7 +12,7 @@ Get the role bindings for a resource
   -h, --help   help for get
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

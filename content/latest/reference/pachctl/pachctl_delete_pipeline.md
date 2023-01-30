@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl delete pipeline
-description: "Delete a pipeline."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - delete
-cliGlossary:  d
----
+## pachctl delete pipeline
+
+Delete a pipeline.
 
 ### Synopsis
 
@@ -20,12 +14,14 @@ pachctl delete pipeline (<pipeline>|--all) [flags]
 
 ```
       --all              delete all pipelines
+      --all-projects     delete pipelines from all projects; only valid with --all
   -f, --force            delete the pipeline regardless of errors; use with care
   -h, --help             help for pipeline
       --keep-repo        delete the pipeline, but keep the output repo data around (the pipeline cannot be recreated later with the same name unless the repo is deleted)
+      --project string   project containing project (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

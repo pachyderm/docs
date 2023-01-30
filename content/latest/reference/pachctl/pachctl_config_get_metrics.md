@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl config get metrics
-description: "Gets whether metrics are enabled."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - config-get
-cliGlossary:  c
----
+## pachctl config get metrics
+
+Gets whether metrics are enabled.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl config get metrics [flags]
   -h, --help   help for metrics
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

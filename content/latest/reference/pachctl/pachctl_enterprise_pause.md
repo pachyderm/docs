@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl enterprise pause
-description: "Pause the cluster."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - enterprise
-cliGlossary:  e
----
+## pachctl enterprise pause
+
+Pause the cluster.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl enterprise pause [flags]
   -h, --help   help for pause
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth rotate-root-token
-description: "Rotate the root user's auth token"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth rotate-root-token
+
+Rotate the root user's auth token
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl auth rotate-root-token [flags]
       --supply-token string   An auth token to rotate to. If left blank, one will be auto-generated.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

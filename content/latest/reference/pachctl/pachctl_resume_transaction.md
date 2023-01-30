@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl resume transaction
-description: "Set an existing transaction as active."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - resume
-cliGlossary:  r
----
+## pachctl resume transaction
+
+Set an existing transaction as active.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl resume transaction <transaction> [flags]
   -h, --help   help for transaction
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

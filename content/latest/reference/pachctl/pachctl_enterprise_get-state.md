@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl enterprise get-state
-description: "Check whether the Pachyderm cluster has enterprise features activated"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - enterprise
-cliGlossary:  e
----
+## pachctl enterprise get-state
+
+Check whether the Pachyderm cluster has enterprise features activated
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl enterprise get-state [flags]
   -h, --help         help for get-state
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

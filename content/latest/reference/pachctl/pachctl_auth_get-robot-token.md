@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth get-robot-token
-description: "Get an auth token for a robot user with the specified name."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth get-robot-token
+
+Get an auth token for a robot user with the specified name.
 
 ### Synopsis
 
@@ -25,7 +19,7 @@ pachctl auth get-robot-token [username] [flags]
       --ttl string   if set, the resulting auth token will have the given lifetime. If not set, the token does not expire. This flag should be a golang duration (e.g. "30s" or "1h2m3s").
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

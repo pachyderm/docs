@@ -1,16 +1,10 @@
----
-# metadata # 
-title:  pachctl auth get cluster
-description: "Get the role bindings for 'repo'"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth-get
-cliGlossary:  a
----
+## pachctl auth get cluster
+
+Get the role bindings for 'cluster'
 
 ### Synopsis
 
-Get the role bindings for 'repo'
+Get the role bindings for 'cluster'
 
 ```
 pachctl auth get cluster [flags]
@@ -22,7 +16,7 @@ pachctl auth get cluster [flags]
   -h, --help   help for cluster
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

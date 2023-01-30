@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl run pfs-load-test
-description: "Run a PFS load test."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - run
-cliGlossary:  r
----
+## pachctl run pfs-load-test
+
+Run a PFS load test.
 
 ### Synopsis
 
@@ -104,12 +98,14 @@ validator: {}
 ### Options
 
 ```
-  -b, --branch string   The branch to use for generating the load.
-  -h, --help            help for pfs-load-test
-  -s, --seed int        The seed to use for generating the load.
+  -b, --branch string     The branch to use for generating the load.
+  -h, --help              help for pfs-load-test
+      --project string    Project in which repo is located. (default "joins")
+  -s, --seed int          The seed to use for generating the load.
+      --state-id string   The ID of the base state to use for the load.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

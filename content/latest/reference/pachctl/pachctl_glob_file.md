@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl glob file
-description: "Return files that match a glob pattern in a commit (that is, match a glob pattern in a repo at the state represented by a commit). Glob patterns are documented [here](https://golang.org/pkg/path/filepath/#Match)."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - glob
-cliGlossary:  g
----
+## pachctl glob file
+
+Return files that match a glob pattern in a commit.
 
 ### Synopsis
 
@@ -37,10 +31,11 @@ $ pachctl glob file "foo@master:data/*"
       --full-timestamps   Return absolute timestamps (as opposed to the default, relative timestamps).
   -h, --help              help for file
   -o, --output string     Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string    Project in which repo is located. (default "joins")
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

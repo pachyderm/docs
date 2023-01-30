@@ -1,20 +1,6 @@
----
-# metadata # 
-title:  pachctl list
-description: "Print a list of Pachyderm resources of a specific type."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - list-branch
-  - list-commit
-  - list-datum
-  - list-file
-  - list-job
-  - list-pipeline
-  - list-repo
-  - list-secret
-  - list-transaction
-cliGlossary:  l
----
+## pachctl list
+
+Print a list of Pachyderm resources of a specific type.
 
 ### Synopsis
 
@@ -26,7 +12,7 @@ Print a list of Pachyderm resources of a specific type.
   -h, --help   help for list
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

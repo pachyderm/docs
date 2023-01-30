@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl delete job
-description: "Delete a job."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - delete
-cliGlossary:  d
----
+## pachctl delete job
+
+Delete a job.
 
 ### Synopsis
 
@@ -20,9 +14,10 @@ pachctl delete job <pipeline>@<job> [flags]
 
 ```
   -h, --help             help for job
+      --project string   Project within which to delete job (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

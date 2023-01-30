@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl enterprise unpause
-description: "Unpause the cluster."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - enterprise
-cliGlossary:  e
----
+## pachctl enterprise unpause
+
+Unpause the cluster.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl enterprise unpause [flags]
   -h, --help   help for unpause
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

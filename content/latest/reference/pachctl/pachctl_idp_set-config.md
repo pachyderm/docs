@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp set-config
-description: "Set the identity server config"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp set-config
+
+Set the identity server config
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl idp set-config [flags]
   -h, --help            help for set-config
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

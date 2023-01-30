@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl debug analyze
-description: "Start a local pachd server to analyze a debug dump."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - debug
-cliGlossary:  d
----
+## pachctl debug analyze
+
+Start a local pachd server to analyze a debug dump.
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl debug analyze <file> [flags]
   -p, --port int   launch a debug server on the given port. If unset, choose a free port automatically
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl license list-clusters
-description: "List clusters registered with the license server."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - license
-cliGlossary:  l
----
+## pachctl license list-clusters
+
+List clusters registered with the license server.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl license list-clusters [flags]
   -h, --help   help for list-clusters
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

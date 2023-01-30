@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp get-config
-description: "Get the identity server config"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp get-config
+
+Get the identity server config
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl idp get-config [flags]
   -h, --help   help for get-config
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

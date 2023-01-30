@@ -1,13 +1,6 @@
----
-# metadata # 
-title:  pachctl auth check
-description: "Check whether a subject has a permission on a resource"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-  - auth-check-repo
-cliGlossary:  a
----
+## pachctl auth check
+
+Check whether a subject has a permission on a resource
 
 ### Synopsis
 
@@ -19,7 +12,7 @@ Check whether a subject has a permission on a resource
   -h, --help   help for check
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

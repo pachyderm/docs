@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl list file
-description: "Return the files in a directory."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - list
-cliGlossary:  l
----
+## pachctl list file
+
+Return the files in a directory.
 
 ### Synopsis
 
@@ -45,10 +39,11 @@ $ pachctl list file 'foo@master:dir\[1\]'
       --full-timestamps   Return absolute timestamps (as opposed to the default, relative timestamps).
   -h, --help              help for file
   -o, --output string     Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string    Project in which repo is located. (default "joins")
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

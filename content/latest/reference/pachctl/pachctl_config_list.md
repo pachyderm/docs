@@ -1,13 +1,6 @@
----
-# metadata # 
-title:  pachctl config list
-description: "Commands for listing pachyderm config values"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - config
-  - config-list-context
-cliGlossary:  c
----
+## pachctl config list
+
+Commands for listing pachyderm config values
 
 ### Synopsis
 
@@ -19,7 +12,7 @@ Commands for listing pachyderm config values
   -h, --help   help for list
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

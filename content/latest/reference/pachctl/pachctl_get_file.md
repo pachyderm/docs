@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl get file
-description: "Return the contents of a file."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - get
-cliGlossary:  g
----
+## pachctl get file
+
+Return the contents of a file.
 
 ### Synopsis
 
@@ -43,15 +37,16 @@ $ pachctl get file foo@master:XXX -r
 ### Options
 
 ```
-  -h, --help            help for file
-      --offset int      The number of bytes in the file to skip ahead when reading.
-  -o, --output string   The path where data will be downloaded.
-      --progress        {true|false} Whether or not to print the progress bars. (default true)
-  -r, --recursive       Download multiple files, or recursively download a directory.
-      --retry           {true|false} Whether to append the missing bytes to an existing file. No-op if the file doesn't exist.
+  -h, --help             help for file
+      --offset int       The number of bytes in the file to skip ahead when reading.
+  -o, --output string    The path where data will be downloaded.
+      --progress         {true|false} Whether or not to print the progress bars. (default true)
+      --project string   Project in which repo is located. (default "joins")
+  -r, --recursive        Download multiple files, or recursively download a directory.
+      --retry            {true|false} Whether to append the missing bytes to an existing file. No-op if the file doesn't exist.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

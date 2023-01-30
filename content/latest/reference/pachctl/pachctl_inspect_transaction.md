@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl inspect transaction
-description: "Print information about an open transaction."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - inspect
-cliGlossary:  i
----
+## pachctl inspect transaction
+
+Print information about an open transaction.
 
 ### Synopsis
 
@@ -25,7 +19,7 @@ pachctl inspect transaction [<transaction>] [flags]
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

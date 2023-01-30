@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl inspect datum
-description: "Display detailed info about a single datum. Requires the pipeline to have stats enabled."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - inspect
-cliGlossary:  i
----
+## pachctl inspect datum
+
+Display detailed info about a single datum.
 
 ### Synopsis
 
@@ -21,10 +15,11 @@ pachctl inspect datum <pipeline>@<job> <datum> [flags]
 ```
   -h, --help             help for datum
   -o, --output string    Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string   Project containing the job (default "joins")
       --raw              Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

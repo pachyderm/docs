@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp create-connector
-description: "Create a new identity provider connector."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp create-connector
+
+Create a new identity provider connector.
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl idp create-connector [flags]
   -h, --help            help for create-connector
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

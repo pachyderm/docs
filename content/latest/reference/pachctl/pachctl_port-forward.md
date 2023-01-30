@@ -1,11 +1,6 @@
----
-# metadata # 
-title:  pachctl port-forward
-description: "Forward a port on the local machine to pachd. This command blocks."
-date:  2022-10-14T09:34:42-04:00
-tags:
-cliGlossary:  p
----
+## pachctl port-forward
+
+Forward a port on the local machine to pachd. This command blocks.
 
 ### Synopsis
 
@@ -32,7 +27,7 @@ pachctl port-forward [flags]
   -s, --s3gateway-port uint16          The local port to bind the s3gateway to. (default 30600)
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

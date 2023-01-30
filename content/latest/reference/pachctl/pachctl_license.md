@@ -1,18 +1,6 @@
----
-# metadata # 
-title:  pachctl license
-description: "License commands manage the Enterprise License service"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - license-activate
-  - license-add-cluster
-  - license-delete-all
-  - license-delete-cluster
-  - license-get-state
-  - license-list-clusters
-  - license-update-cluster
-cliGlossary:  l
----
+## pachctl license
+
+License commmands manage the Enterprise License service
 
 ### Synopsis
 
@@ -24,7 +12,7 @@ License commands manage the Enterprise License service
   -h, --help   help for license
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

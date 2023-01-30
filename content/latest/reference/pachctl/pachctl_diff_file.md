@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl diff file
-description: "Return a diff of two file trees stored in Pachyderm"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - diff
-cliGlossary:  d
----
+## pachctl diff file
+
+Return a diff of two file trees stored in Pachyderm
 
 ### Synopsis
 
@@ -37,10 +31,12 @@ $ pachctl diff file foo@master:path1 bar@master:path2
   -h, --help                  help for file
       --name-only             Show only the names of changed files.
       --no-pager              Don't pipe output into a pager (i.e. less).
+      --old-project string    Project in which second, older repo is located.
+      --project string        Project in which first repo is located. (default "joins")
   -s, --shallow               Don't descend into sub directories.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

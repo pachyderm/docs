@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl list datum
-description: "Return the datums in a job."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - list
-cliGlossary:  l
----
+## pachctl list datum
+
+Return the datums in a job.
 
 ### Synopsis
 
@@ -22,10 +16,11 @@ pachctl list datum <pipeline>@<job> [flags]
   -f, --file string      The JSON file containing the pipeline to list datums from, the pipeline need not exist
   -h, --help             help for datum
   -o, --output string    Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string   Project containing the job (default "joins")
       --raw              Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl create repo
-description: "Create a new repo."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - create
-cliGlossary:  c
----
+## pachctl create repo
+
+Create a new repo.
 
 ### Synopsis
 
@@ -21,9 +15,10 @@ pachctl create repo <repo> [flags]
 ```
   -d, --description string   A description of the repo.
   -h, --help                 help for repo
+      --project string       The project to create the repo in. (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

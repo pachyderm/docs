@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl update repo
-description: "Update a repo."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - update
-cliGlossary:  u
----
+## pachctl update repo
+
+Update a repo.
 
 ### Synopsis
 
@@ -21,9 +15,10 @@ pachctl update repo <repo> [flags]
 ```
   -d, --description string   A description of the repo.
   -h, --help                 help for repo
+      --project string       Project in which repo is located. (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

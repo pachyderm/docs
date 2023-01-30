@@ -1,20 +1,6 @@
----
-# metadata # 
-title:  pachctl delete
-description: "Delete an existing Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - delete-all
-  - delete-branch
-  - delete-commit
-  - delete-file
-  - delete-job
-  - delete-pipeline
-  - delete-repo
-  - delete-secret
-  - delete-transaction
-cliGlossary:  d
----
+## pachctl delete
+
+Delete an existing Pachyderm resource.
 
 ### Synopsis
 
@@ -26,7 +12,7 @@ Delete an existing Pachyderm resource.
   -h, --help   help for delete
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

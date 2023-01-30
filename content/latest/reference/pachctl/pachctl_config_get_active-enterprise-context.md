@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl config get active-enterprise-context
-description: "Gets the currently active enterprise context."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - config-get
-cliGlossary:  c
----
+## pachctl config get active-enterprise-context
+
+Gets the currently active enterprise context.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl config get active-enterprise-context [flags]
   -h, --help   help for active-enterprise-context
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl edit pipeline
-description: "Edit the manifest for a pipeline in your text editor."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - edit
-cliGlossary:  e
----
+## pachctl edit pipeline
+
+Edit the manifest for a pipeline in your text editor.
 
 ### Synopsis
 
@@ -22,11 +16,11 @@ pachctl edit pipeline <pipeline> [flags]
       --editor string    Editor to use for modifying the manifest.
   -h, --help             help for pipeline
   -o, --output string    Output format: "json" or "yaml" (default "json")
-
+      --project string   Project of pipeline to edit. (default "joins")
       --reprocess        If true, reprocess datums that were already processed by previous version of the pipeline.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

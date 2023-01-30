@@ -1,27 +1,6 @@
----
-# metadata # 
-title:  pachctl auth
-description: "Auth commands manage access to data in a Pachyderm cluster"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth-activate
-  - auth-check
-  - auth-deactivate
-  - auth-get
-  - auth-get-config
-  - auth-get-groups
-  - auth-get-robot-token
-  - auth-login
-  - auth-logout
-  - auth-revoke
-  - auth-roles-for-permission
-  - auth-rotate-root-token
-  - auth-set
-  - auth-set-config
-  - auth-use-auth-token
-  - auth-whoami
-cliGlossary:  a
----
+## pachctl auth
+
+Auth commands manage access to data in a Pachyderm cluster
 
 ### Synopsis
 
@@ -33,7 +12,7 @@ Auth commands manage access to data in a Pachyderm cluster
   -h, --help   help for auth
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

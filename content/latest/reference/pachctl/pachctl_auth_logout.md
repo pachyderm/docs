@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth logout
-description: "Log out of Pachyderm by deleting your local credential. Note that it's not necessary to log out before logging in with another account (simply run 'pachctl auth login' twice) but 'logout' can be useful on shared workstations."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth logout
+
+Log out of Pachyderm by deleting your local credential
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl auth logout [flags]
   -h, --help         help for logout
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

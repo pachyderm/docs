@@ -1,15 +1,6 @@
----
-# metadata # 
-title:  pachctl auth set
-description: "Set the role bindings for a resource"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-  - auth-set-cluster
-  - auth-set-enterprise
-  - auth-set-repo
-cliGlossary:  a
----
+## pachctl auth set
+
+Set the role bindings for a resource
 
 ### Synopsis
 
@@ -21,7 +12,7 @@ Set the role bindings for a resource
   -h, --help   help for set
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

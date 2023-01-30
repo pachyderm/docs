@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl license delete-cluster
-description: "Delete a cluster registered with the license server."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - license
-cliGlossary:  l
----
+## pachctl license delete-cluster
+
+Delete a cluster registered with the license server.
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl license delete-cluster [flags]
       --id string   The id for the cluster to delete
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

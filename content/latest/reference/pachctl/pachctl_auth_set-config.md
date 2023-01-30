@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth set-config
-description: "Set Pachyderm's current auth configuration"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth set-config
+
+Set Pachyderm's current auth configuration
 
 ### Synopsis
 
@@ -24,7 +18,7 @@ pachctl auth set-config [flags]
   -h, --help          help for set-config
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

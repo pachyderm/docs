@@ -1,15 +1,6 @@
----
-# metadata # 
-title:  pachctl create
-description: "Create a new instance of a Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - create-branch
-  - create-pipeline
-  - create-repo
-  - create-secret
-cliGlossary:  c
----
+## pachctl create
+
+Create a new instance of a Pachyderm resource.
 
 ### Synopsis
 
@@ -21,7 +12,7 @@ Create a new instance of a Pachyderm resource.
   -h, --help   help for create
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

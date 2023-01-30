@@ -1,11 +1,6 @@
----
-# metadata # 
-title:  pachctl logs
-description: "Return logs from a job."
-date:  2022-10-14T09:34:42-04:00
-tags:
-cliGlossary:  l
----
+## pachctl logs
+
+Return logs from a job.
 
 ### Synopsis
 
@@ -39,13 +34,14 @@ pachctl logs [--pipeline=<pipeline>|--job=<pipeline>@<job>] [--datum=<datum>] [f
   -j, --job string        Filter for log lines from this job (accepts job ID)
       --master            Return log messages from the master process (pipeline must be set).
   -p, --pipeline string   Filter the log for lines from this pipeline (accepts pipeline name)
+      --project string    Project containing the job. (default "joins")
       --raw               Return log messages verbatim from server.
       --since string      Return log messages more recent than "since". (default "24h")
   -t, --tail int          Lines of recent logs to display.
       --worker            Return log messages from the worker process.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

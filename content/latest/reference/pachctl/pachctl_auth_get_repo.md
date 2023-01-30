@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth get repo
-description: "Get the role bindings for 'repo'"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth-get
-cliGlossary:  a
----
+## pachctl auth get repo
+
+Get the role bindings for 'repo'
 
 ### Synopsis
 
@@ -19,10 +13,11 @@ pachctl auth get repo <repo> [flags]
 ### Options
 
 ```
-  -h, --help   help for repo
+  -h, --help             help for repo
+      --project string   The project containing the repo. (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

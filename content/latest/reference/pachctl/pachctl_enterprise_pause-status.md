@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl enterprise pause-status
-description: "Get the pause the cluster: normal, partially-paused or paused."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - enterprise
-cliGlossary:  e
----
+## pachctl enterprise pause-status
+
+Get the pause status of the cluster.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl enterprise pause-status [flags]
   -h, --help   help for pause-status
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

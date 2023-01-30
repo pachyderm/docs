@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl stop job
-description: "Stop a job.  The job will be stopped immediately."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - stop
-cliGlossary:  s
----
+## pachctl stop job
+
+Stop a job.
 
 ### Synopsis
 
@@ -20,10 +14,10 @@ pachctl stop job <pipeline>@<job> [flags]
 
 ```
   -h, --help             help for job
-
+      --project string   Project containing the job (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

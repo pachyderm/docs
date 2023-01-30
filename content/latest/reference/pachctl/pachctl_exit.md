@@ -1,11 +1,6 @@
----
-# metadata # 
-title:  pachctl exit
-description: "Exit the pachctl shell."
-date:  2022-10-14T09:34:42-04:00
-tags:
-cliGlossary:  e
----
+## pachctl exit
+
+Exit the pachctl shell.
 
 ### Synopsis
 
@@ -21,7 +16,7 @@ pachctl exit [flags]
   -h, --help   help for exit
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

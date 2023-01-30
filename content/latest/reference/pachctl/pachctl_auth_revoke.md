@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth revoke
-description: "Revoke a Pachyderm auth token."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth revoke
+
+Revoke a Pachyderm auth token
 
 ### Synopsis
 
@@ -25,7 +19,7 @@ pachctl auth revoke [flags]
       --user string    User whose Pachyderm auth tokens should be revoked (one of --token or --user must be set)
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

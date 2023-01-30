@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl restart
-description: "Cancel and restart an ongoing task."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - restart-datum
-cliGlossary:  r
----
+## pachctl restart
+
+Cancel and restart an ongoing task.
 
 ### Synopsis
 
@@ -18,7 +12,7 @@ Cancel and restart an ongoing task.
   -h, --help   help for restart
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

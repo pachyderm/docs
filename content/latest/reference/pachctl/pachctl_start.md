@@ -1,14 +1,6 @@
----
-# metadata # 
-title:  pachctl start
-description: "Start a Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - start-commit
-  - start-pipeline
-  - start-transaction
-cliGlossary:  s
----
+## pachctl start
+
+Start a Pachyderm resource.
 
 ### Synopsis
 
@@ -20,7 +12,7 @@ Start a Pachyderm resource.
   -h, --help   help for start
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

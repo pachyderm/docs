@@ -1,11 +1,6 @@
----
-# metadata # 
-title:  pachctl version
-description: "Print Pachyderm version information."
-date:  2022-10-14T09:34:42-04:00
-tags:
-cliGlossary:  v
----
+## pachctl version
+
+Print Pachyderm version information.
 
 ### Synopsis
 
@@ -26,7 +21,7 @@ pachctl version [flags]
       --timeout string   If set, 'pachctl version' will timeout after the given duration (formatted as a golang time duration--a number followed by ns, us, ms, s, m, or h). If --client-only is set, this flag is ignored. If unset, pachctl will use a default timeout; if set to 0s, the call will never time out. (default "default")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

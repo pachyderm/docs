@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl subscribe commit
-description: "Print commits as they are created in the specified repo and branch.  By default, all existing commits on the specified branch are returned first.  A commit is only considered 'created' when it's been finished."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - subscribe
-cliGlossary:  s
----
+## pachctl subscribe commit
+
+Print commits as they are created (finished).
 
 ### Synopsis
 
@@ -40,10 +34,11 @@ $ pachctl subscribe commit test@master --new
       --new               subscribe to only new commits created from now on
       --origin string     only return commits of a specific type
   -o, --output string     Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string    Project in which repo is located. (default "joins")
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

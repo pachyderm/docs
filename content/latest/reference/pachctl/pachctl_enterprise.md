@@ -1,19 +1,6 @@
----
-# metadata # 
-title:  pachctl enterprise
-description: "Enterprise commands enable Pachyderm Enterprise features"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - enterprise-deactivate
-  - enterprise-get-state
-  - enterprise-heartbeat
-  - enterprise-pause
-  - enterprise-pause-status
-  - enterprise-register
-  - enterprise-sync-contexts
-  - enterprise-unpause
-cliGlossary:  e
----
+## pachctl enterprise
+
+Enterprise commands enable Pachyderm Enterprise features
 
 ### Synopsis
 
@@ -25,7 +12,7 @@ Enterprise commands enable Pachyderm Enterprise features
   -h, --help   help for enterprise
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

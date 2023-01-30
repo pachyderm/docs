@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl update pipeline
-description: "Update a Pachyderm pipeline with a new pipeline specification. For details on the format, see https://docs.pachyderm.com/latest/reference/pipeline-spec/."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - update
-cliGlossary:  u
----
+## pachctl update pipeline
+
+Update an existing Pachyderm pipeline.
 
 ### Synopsis
 
@@ -23,13 +17,14 @@ pachctl update pipeline [flags]
   -f, --file string       A JSON file (url or filepath) containing one or more pipelines. "-" reads from stdin (the default behavior). Exactly one of --file and --jsonnet must be set.
   -h, --help              help for pipeline
       --jsonnet string    BETA: A Jsonnet template file (url or filepath) for one or more pipelines. "-" reads from stdin. Exactly one of --file and --jsonnet must be set. Jsonnet templates must contain a top-level function; strings can be passed to this function with --arg (below)
+      --project string    The project in which to update the pipeline. (default "joins")
   -p, --push-images       If true, push local docker images into the docker registry.
   -r, --registry string   The registry to push images to. (default "index.docker.io")
       --reprocess         If true, reprocess datums that were already processed by previous version of the pipeline.
   -u, --username string   The username to push images as.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl license delete-all
-description: "Delete all data from the license server"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - license
-cliGlossary:  l
----
+## pachctl license delete-all
+
+Delete all data from the license server
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl license delete-all [flags]
   -h, --help   help for delete-all
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

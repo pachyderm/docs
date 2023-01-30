@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl delete commit
-description: "Delete the sub-commits of a commit.  The data in the sub-commits will be lost.\nThis operation is only supported if none of the sub-commits have children."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - delete
-cliGlossary:  d
----
+## pachctl delete commit
+
+Delete the sub-commits of a commit.
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl delete commit <commit-id> [flags]
   -h, --help   help for commit
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

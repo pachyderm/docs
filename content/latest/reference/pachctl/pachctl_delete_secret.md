@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl delete secret
-description: "Delete a secret from the cluster."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - delete
-cliGlossary:  d
----
+## pachctl delete secret
+
+Delete a secret from the cluster.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl delete secret [flags]
   -h, --help   help for secret
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

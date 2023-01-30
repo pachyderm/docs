@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth login
-description: "Login to Pachyderm. Any resources that have been restricted to the account you have with your ID provider (e.g. GitHub, Okta) account will subsequently be accessible."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth login
+
+Log in to Pachyderm
 
 ### Synopsis
 
@@ -25,7 +19,7 @@ pachctl auth login [flags]
   -b, --no-browser   If set, don't try to open a web browser
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

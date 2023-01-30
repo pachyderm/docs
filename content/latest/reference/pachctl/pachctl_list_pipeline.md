@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl list pipeline
-description: "Return info about all pipelines."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - list
-cliGlossary:  l
----
+## pachctl list pipeline
+
+Return info about all pipelines.
 
 ### Synopsis
 
@@ -19,17 +13,19 @@ pachctl list pipeline [<pipeline>] [flags]
 ### Options
 
 ```
+      --all-projects        Show pipelines form all projects.
   -c, --commit string       List the pipelines as they existed at this commit.
       --full-timestamps     Return absolute timestamps (as opposed to the default, relative timestamps).
   -h, --help                help for pipeline
       --history string      Return revision history for pipelines. (default "none")
   -o, --output string       Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string      Project containing pipelines. (default "joins")
       --raw                 Disable pretty printing; serialize data structures to an encoding such as json or yaml
   -s, --spec                Output 'create pipeline' compatibility specs.
       --state stringArray   Return only pipelines with the specified state. Can be repeated to include multiple states
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

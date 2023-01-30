@@ -1,14 +1,6 @@
----
-# metadata # 
-title:  pachctl run
-description: "Manually run a Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - run-cron
-  - run-pfs-load-test
-  - run-pps-load-test
-cliGlossary:  r
----
+## pachctl run
+
+Manually run a Pachyderm resource.
 
 ### Synopsis
 
@@ -20,7 +12,7 @@ Manually run a Pachyderm resource.
   -h, --help   help for run
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

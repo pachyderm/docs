@@ -1,30 +1,18 @@
----
-# metadata # 
-title:  pachctl draw
-description: "Draw a DAG"
-date:  2022-10-14T09:34:42-04:00
-tags:
-cliGlossary:  d
----
+## pachctl draw
+
+Draw an ASCII representation of an existing Pachyderm resource.
 
 ### Synopsis
 
-Draw a DAG
-
-```
-pachctl draw [flags]
-```
+Draw an ASCII representation of an existing Pachyderm resource.
 
 ### Options
 
 ```
-      --box-width int     Character width of each box in the DAG (default 11)
-  -c, --commit string     Commit at which you would to draw the DAG
-      --edge-height int   Number of vertical lines spanned by each edge (default 5)
-  -h, --help              help for draw
+  -h, --help   help for draw
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

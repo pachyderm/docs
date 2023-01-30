@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp delete-connector
-description: "Delete an identity provider connector"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp delete-connector
+
+Delete an identity provider connector
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl idp delete-connector [flags]
   -h, --help   help for delete-connector
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

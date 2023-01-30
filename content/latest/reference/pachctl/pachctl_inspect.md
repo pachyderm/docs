@@ -1,21 +1,6 @@
----
-# metadata # 
-title:  pachctl inspect
-description: "Show detailed information about a Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - inspect-branch
-  - inspect-cluster
-  - inspect-commit
-  - inspect-datum
-  - inspect-file
-  - inspect-job
-  - inspect-pipeline
-  - inspect-repo
-  - inspect-secret
-  - inspect-transaction
-cliGlossary:  i
----
+## pachctl inspect
+
+Show detailed information about a Pachyderm resource.
 
 ### Synopsis
 
@@ -27,7 +12,7 @@ Show detailed information about a Pachyderm resource.
   -h, --help   help for inspect
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

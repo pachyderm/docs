@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl config delete context
-description: "Deletes a context."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - config-delete
-cliGlossary:  c
----
+## pachctl config delete context
+
+Deletes a context.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl config delete context <context> [flags]
   -h, --help   help for context
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

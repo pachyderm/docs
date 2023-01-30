@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl squash
-description: "Squash an existing Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - squash-commit
-cliGlossary:  s
----
+## pachctl squash
+
+Squash an existing Pachyderm resource.
 
 ### Synopsis
 
@@ -18,7 +12,7 @@ Squash an existing Pachyderm resource.
   -h, --help   help for squash
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

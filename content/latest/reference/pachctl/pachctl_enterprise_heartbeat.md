@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl enterprise heartbeat
-description: "Sync the enterprise state with the license server immediately."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - enterprise
-cliGlossary:  e
----
+## pachctl enterprise heartbeat
+
+Sync the enterprise state with the license server immediately.
 
 ### Synopsis
 
@@ -23,7 +17,7 @@ pachctl enterprise heartbeat [flags]
   -h, --help         help for heartbeat
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl auth roles-for-permission
-description: "List roles that grant the given permission"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - auth
-cliGlossary:  a
----
+## pachctl auth roles-for-permission
+
+List roles that grant the given permission
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl auth roles-for-permission <permission> [flags]
   -h, --help   help for roles-for-permission
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

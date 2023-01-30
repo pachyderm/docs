@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl debug profile
-description: "Collect a set of pprof profiles."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - debug
-cliGlossary:  d
----
+## pachctl debug profile
+
+Collect a set of pprof profiles.
 
 ### Synopsis
 
@@ -26,7 +20,7 @@ pachctl debug profile <profile> <file> [flags]
   -w, --worker string       Only collect the profile from the given worker pod.
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

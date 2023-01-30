@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl list commit
-description: "Return a list of commits, either across the entire pachyderm cluster or restricted to a single repo."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - list
-cliGlossary:  l
----
+## pachctl list commit
+
+Return a list of commits.
 
 ### Synopsis
 
@@ -50,10 +44,11 @@ $ pachctl list commit foo@master --from XXX
   -n, --number int        list only this many commits; if set to zero, list all commits
       --origin string     only return commits of a specific type
   -o, --output string     Output format when --raw is set: "json" or "yaml" (default "json")
+      --project string    Project in which commit is located. (default "joins")
       --raw               Disable pretty printing; serialize data structures to an encoding such as json or yaml
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

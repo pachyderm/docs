@@ -1,13 +1,6 @@
----
-# metadata # 
-title:  pachctl config delete
-description: "Commands for deleting pachyderm config values"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - config
-  - config-delete-context
-cliGlossary:  c
----
+## pachctl config delete
+
+Commands for deleting pachyderm config values
 
 ### Synopsis
 
@@ -19,7 +12,7 @@ Commands for deleting pachyderm config values
   -h, --help   help for delete
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

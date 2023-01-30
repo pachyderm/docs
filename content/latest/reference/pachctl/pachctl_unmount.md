@@ -1,11 +1,6 @@
----
-# metadata # 
-title:  pachctl unmount
-description: "Unmount pfs."
-date:  2022-10-14T09:34:42-04:00
-tags:
-cliGlossary:  u
----
+## pachctl unmount
+
+Unmount pfs.
 
 ### Synopsis
 
@@ -22,7 +17,7 @@ pachctl unmount <path/to/mount/point> [flags]
   -h, --help   help for unmount
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

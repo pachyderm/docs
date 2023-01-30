@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl delete transaction
-description: "Cancel and delete an existing transaction."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - delete
-cliGlossary:  d
----
+## pachctl delete transaction
+
+Cancel and delete an existing transaction.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl delete transaction [<transaction>] [flags]
   -h, --help   help for transaction
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl stop transaction
-description: "Stop modifying the current transaction."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - stop
-cliGlossary:  s
----
+## pachctl stop transaction
+
+Stop modifying the current transaction.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl stop transaction [flags]
   -h, --help   help for transaction
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

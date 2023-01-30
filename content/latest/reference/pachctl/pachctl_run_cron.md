@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl run cron
-description: "Run an existing Pachyderm cron pipeline now"
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - run
-cliGlossary:  r
----
+## pachctl run cron
+
+Run an existing Pachyderm cron pipeline now
 
 ### Synopsis
 
@@ -28,9 +22,10 @@ pachctl run cron <pipeline> [flags]
 
 ```
   -h, --help             help for cron
+      --project string   Project containing pipeline. (default "joins")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

@@ -1,14 +1,6 @@
----
-# metadata # 
-title:  pachctl stop
-description: "Cancel an ongoing task."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - stop-job
-  - stop-pipeline
-  - stop-transaction
-cliGlossary:  s
----
+## pachctl stop
+
+Cancel an ongoing task.
 
 ### Synopsis
 
@@ -20,7 +12,7 @@ Cancel an ongoing task.
   -h, --help   help for stop
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

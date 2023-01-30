@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl copy
-description: "Copy a Pachyderm resource."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - copy-file
-cliGlossary:  c
----
+## pachctl copy
+
+Copy a Pachyderm resource.
 
 ### Synopsis
 
@@ -18,7 +12,7 @@ Copy a Pachyderm resource.
   -h, --help   help for copy
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

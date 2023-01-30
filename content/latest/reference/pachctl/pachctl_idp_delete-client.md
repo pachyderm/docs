@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp delete-client
-description: "Delete an OIDC client."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp delete-client
+
+Delete an OIDC client.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl idp delete-client <client ID> [flags]
   -h, --help   help for delete-client
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

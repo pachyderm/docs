@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl idp list-client
-description: "List OIDC clients."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - idp
-cliGlossary:  i
----
+## pachctl idp list-client
+
+List OIDC clients.
 
 ### Synopsis
 
@@ -22,7 +16,7 @@ pachctl idp list-client [flags]
   -h, --help   help for list-client
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.

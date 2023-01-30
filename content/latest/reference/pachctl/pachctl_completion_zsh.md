@@ -1,12 +1,6 @@
----
-# metadata # 
-title:  pachctl completion zsh
-description: "Print or install the zsh completion code."
-date:  2022-10-14T09:34:42-04:00
-tags:
-  - completion
-cliGlossary:  c
----
+## pachctl completion zsh
+
+Print or install the zsh completion code.
 
 ### Synopsis
 
@@ -24,7 +18,7 @@ pachctl completion zsh [flags]
       --path string   Path to install the completions to. (default "_pachctl")
 ```
 
-### Inherited Options
+### Options inherited from parent commands
 
 ```
       --no-color   Turn off colors.
