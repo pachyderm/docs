@@ -18,11 +18,11 @@ PachW enables fine-grained control of where compaction and object-storage intera
 
 
 {{% notice warning %}}
-If you are upgrading to **2.5.0+** for the first time and you wish to use PachW, you must calculate how many maxReplicas you need. By defalut, PachW is set to `maxReplicas:1`  --- however, that is not sufficient for production runs.
+If you are upgrading to **2.5.0+** for the first time and you wish to use PachW, you must calculate how many maxReplicas you need. By default, PachW is set to `maxReplicas:1`  --- however, that is not sufficient for production runs.
 {{% /notice %}}
 
 
-### maxReplica
+### maxReplicas
 You should set the `maxReplicas` value to **at least match the number of pipeline replicas that you have**. For high performance, we suggest taking the following approach:
 
 > `number of pipelines * highest parallelism spec * 1.5 = maxReplicas`
@@ -31,9 +31,9 @@ Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](
 
 > `6 * 6 * 1.5 = 54`
 
-### minReplica 
+### minReplicas
 
-Workloads that constantly process storage and compaction tasks because they are committing rapidly may want to increase minReplicas to have instances on standby
+Workloads that constantly process storage and compaction tasks because they are committing rapidly may want to increase minReplicas to have instances on standby.
 
 ### nodeSelectors
 
@@ -75,7 +75,7 @@ pachw:
 ```s
 pachw:
   inheritFromPachd: true # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
-  maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * paralellism = target maxReplicas
+  maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * parallelism = target maxReplicas
   minReplicas: 1
   #tolerations: []
   #affinity: {}
@@ -95,7 +95,7 @@ pachw:
 ```s
 pachw:
   inheritFromPachd: false # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
-  maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * paralellism = target maxReplicas
+  maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * parallelism = target maxReplicas
   minReplicas: 1
   #tolerations: []
   #affinity: {}
