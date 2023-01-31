@@ -44,6 +44,7 @@ At minimum, a Cron pipeline must include all of the following parameters:
 - Avoid using intervals faster than 1-5 minutes
 - You can use `never` during development and manually trigger the pipeline
 - If using jsonnet, you can pass arguments like:  `--arg cronSpec="@every 5m"`
+- You **cannot update a cron pipeline** after it has been created; instead, you must delete the pipeline and build a new one.
 
 ---
 
@@ -75,7 +76,7 @@ At minimum, a Cron pipeline must include all of the following parameters:
 ### SQL Ingest with Jsonnet
 
 ```json
-pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/2.3.x/src/templates/sql_ingest_cron.jsonnet \
+pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/src/templates/sql_ingest_cron.jsonnet \
   --arg name=myingest \
   --arg url="mysql://root@mysql:3306/test_db" \
   --arg query="SELECT * FROM test_data" \
