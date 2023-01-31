@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  View User Logs
-description: View a list of user-entered commands using pachctl. 
+title:  View Audit Logs
+description: View a list of user-entered commands using pachctl.
 date: 
 # taxonomy #
 tags: 
@@ -11,8 +11,7 @@ weight:
 ---
 
 
-
-## How to View User Logs 
+## How to View Audit Logs
 
 1. Open a terminal.
 2. Input the following command, replacing `user command` with pachctl terms:
