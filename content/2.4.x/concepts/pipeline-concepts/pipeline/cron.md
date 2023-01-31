@@ -44,6 +44,7 @@ At minimum, a Cron pipeline must include all of the following parameters:
 - Avoid using intervals faster than 1-5 minutes
 - You can use `never` during development and manually trigger the pipeline
 - If using jsonnet, you can pass arguments like:  `--arg cronSpec="@every 5m"`
+- You **cannot update a cron pipeline** after it has been created; instead, you must delete the pipeline and build a new one.
 
 ---
 
