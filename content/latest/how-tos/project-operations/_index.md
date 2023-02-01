@@ -12,7 +12,8 @@ weight:
 mermaid: true
 ---
 
-Projects are namespaces that contain a collection of related work (such as repos and pipelines). Each Pachyderm cluster ships with an initial project named `Default`.
+Projects are logical collections of related work (such as repos and pipelines). Each Pachyderm cluster ships with an initial project named `default`. PachCTL supports all Project operations, such as adding/removing team members, resources, etc. Pachyderm Console can be used to view and access Projects. Pachyderm's integrations with JupyterLab, Seldon, S3 Gateway, and DeterminedAI also support
+projects. 
 
 ## Benefits of Projects
 
