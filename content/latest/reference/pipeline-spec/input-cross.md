@@ -72,5 +72,3 @@ In the example above, you would see files under `/pfs/inputA/...`
 and `/pfs/inputB/...`.
 
 
-
-## When to Use 

@@ -58,5 +58,3 @@ label: Required for Group Inputs
 |`lazy`||
 |`empty_files`||
 
-
-## When to Use 
