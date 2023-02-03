@@ -173,7 +173,13 @@ hr {
 
 /* Nested Lists */
 
-:is(.directory, nav) ul > li { list-style: none;  }
+:is(.directory, nav) li { list-style: none;  }
+
+.closed-folder > div  {
+  display: none;
+}
+
+
 
 
 
