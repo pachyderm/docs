@@ -13,7 +13,9 @@
             {{else}}
               {{ partial "algoliaHits" . }}  
             {{end}}
+            <div class="spread">
             {{ block "main" . }}{{end}}
+            </div>
     </body>
 {{ partial "footer.html" . }}
 {{ partial "featureKeyboard.html" . }}

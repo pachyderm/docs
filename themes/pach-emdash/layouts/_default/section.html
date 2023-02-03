@@ -3,9 +3,10 @@
 */}}
 
 {{ define "main" }}
-<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
+<main class="spread-around"> 
     {{partial "directory.html" . }}
-    <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+    <article class="spread">
+        <section>
         <div class="spread-between my-2">
             {{ partial "featureBreadcrumbs.html" . }} 
             {{ partial "featureEditLink.html" . }}
@@ -43,6 +44,10 @@
                 {{ partial "featureGiscus.html" . }}
             </section>
         {{ partial "featureTags.html" . }}
+    </section>
+    <section class="is-one-fifth is-hidden-mobile"> 
+        <div></div>
+    </section>
 </article>
 </main>
 {{end}}
