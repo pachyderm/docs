@@ -20,13 +20,13 @@
                     {{/*  Does not display children if parent has layout:glossary  */}}
                     {{else if .Pages }}
                         {{ range .Pages }}
-                        <div class="ml-2 mb-2 my-2 s semi-bold {{ if eq $currentPage.RelPermalink .RelPermalink}} {{else if eq $currentPage.Parent.RelPermalink .RelPermalink}} {{else}}closed-folder {{end}} "><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}}{{ .Title }}</a>
+                        <div class="ml-2 mb-2 my-2 s semi-bold  "><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}}{{ .Title }}</a>
                         
                             {{ if (eq .Params.layout "glossary") }}
                             {{/*  Does not display children if parent has layout:glossary  */}}
                             {{else if .Pages }}
                                 {{ range .Pages }}
-                                <div class="ml-4 mb-2 my-2 xs normal"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}} {{ .Title }}</a></div>
+                                <div class="ml-4 mb-2 my-2 xs normal {{ if eq $currentPage.RelPermalink .Parent.RelPermalink}} {{else if eq $currentPage.Parent.RelPermalink .Parent.RelPermalink}} {{else}} closed-folder {{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}} {{ .Title }}</a></div>
                                 {{end}}
                             {{ end }}
                         

@@ -175,7 +175,7 @@ hr {
 
 :is(.directory, nav) li { list-style: none;  }
 
-.closed-folder > div  {
+.closed-folder {
   display: none;
 }
 
