@@ -88,8 +88,8 @@ LAST SEEN      TYPE    REASON         OBJECT                                   M
 |Event|Description|
 |-|-|
 |CrashLoopBackOff| When a pod starts, crashes, starts again, and then crashes again|
-|ImagePullBackOff|happens when a pod starts, crashes, starts again, and then crashes again|
-|Evicted| when a node determines that a pod needs to be evicted or terminated to free up some resources (CPU, memory...etc).|
-|FailedMount / FailedAttachVolume| when pods require a persistent volume or storage, this event prevents them from starting if the storage is not accessible.|
-|FailedSchedulingEvents|when the scheduler is not able to find a node to run your pods.|
-|NodeNotReady| when a node cannot be used to run a pod because of an underlying issue.|
+|ImagePullBackOff|When a pod starts, crashes, starts again, and then crashes again|
+|Evicted| When a node determines that a pod needs to be evicted or terminated to free up some resources (CPU, memory...etc).|
+|FailedMount / FailedAttachVolume| When pods require a persistent volume or storage, this event prevents them from starting if the storage is not accessible.|
+|FailedSchedulingEvents|When the scheduler is not able to find a node to run your pods.|
+|NodeNotReady| When a node cannot be used to run a pod because of an underlying issue.|

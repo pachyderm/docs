@@ -12,7 +12,7 @@ weight: 1
 
 ## Before You Start 
 
-- Project names should be less than 24 characters long
+- Project names should be less than 51 characters long
 - Avoid starting a project name with special characters, such as a period (`.`), or hyphen (`-`).
 
 ## How to Create a Project
