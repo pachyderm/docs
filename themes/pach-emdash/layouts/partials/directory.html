@@ -6,7 +6,7 @@
     {{$currentPage := . }}
     {{$currentSection := .CurrentSection.Title}}
 
-<nav class="is-one-fifth is-hidden-mobile  xs">
+<nav class="is-one-fifth is-hidden-mobile xs px-3">
     {{ with .Site.GetPage "section" $index }}
         <div class="sticky pt-5 h-scroll noscrollbar">
             {{ range .Pages }}
