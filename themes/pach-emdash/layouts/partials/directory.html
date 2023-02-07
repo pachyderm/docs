@@ -18,14 +18,14 @@
                     {{else if .Pages }}
                         {{ range .Pages }}
                        
-                        <div class="ml-2 mb-2 my-2 s semi-bold  "><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}}{{ .Title }}</a>
+                        <div class="ml-2 mb-2 my-2 s semi-bold "><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}}{{ .Title }}</a>
                         
                             {{ if (eq .Params.layout "glossary") }}
                             {{/*  Does not display children if parent has layout:glossary  */}}
                             {{else if .Pages }}
         
                                 {{ range .Pages }}
-                                <div class="ml-4 mb-2 my-2 xs normal {{ if (and (eq $currentSection .Parent.Title) (eq $currentPage.RelPermalink .RelPermalink)) }} {{else}} closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}} {{ .Title }}</a></div>
+                                <div class="ml-4 mb-2 my-2 xs normal {{ if eq $currentSection .Parent.Title }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}} > {{end}} {{ .Title }}</a></div>
                                 {{end}}
                             {{ end }}
                         
@@ -44,3 +44,6 @@
 {{end}}
 
 
+
+ 
+ 
