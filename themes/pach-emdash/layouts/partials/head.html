@@ -15,7 +15,7 @@
 {{if .Site.Params.defaultCss}} 
     {{$defaultEmdash := resources.Get "css/defaultEmdash.css" | resources.Minify}}
     {{ $defaultCss := slice $defaultEmdash | resources.Concat "css/defaultBundle.css"}}
-    <link rel="stylesheet" href="{{ $defaultCss.Permalink }}" media="screen" />
+    <link rel="stylesheet" href="{{ $defaultCss.RelPermalink }}" media="screen" />
 {{else}}
     {{/*  themes/pach-emdash/assets/css/..  */}}
     {{ $algolia := resources.Get "css/algolia.css" | resources.Minify }}

@@ -24,15 +24,15 @@
 <footer class="spread  mt-7 px-4 py-7 c-pinned-top c-mt-5">
     {{/*  Algolia must remain separate due to module type  */}}
     {{if .IsHome}}
-      <script src="{{ $algoliaHomePage.Permalink }}" type="module" defer></script>
+      <script src="{{ $algoliaHomePage.RelPermalink }}" type="module" defer></script>
     {{else}}
-      <script src="{{ $algolia.Permalink }}" type="module" defer></script>
+      <script src="{{ $algolia.RelPermalink }}" type="module" defer></script>
     {{end}}
-    <script src="{{ $js.Permalink }}" defer></script>
+    <script src="{{ $js.RelPermalink }}" defer></script>
     {{ partial "marketingScripts.html" . }}
     {{if .Params.mermaid}}
       {{ partial "mermaid.html" . }}
-      <script src="{{ $mermaid.Permalink }}" defer></script>
+      <script src="{{ $mermaid.RelPermalink }}" defer></script>
     {{else}}
     {{end}}
     <div class="stack-left c-mb-3 s is-fullsize-mobile">
