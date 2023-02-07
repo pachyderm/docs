@@ -107,6 +107,8 @@ a {
 }
 
 
+
+
 button.purple:hover, .button.purple:hover {
   background-color: #a114cc;
 }
@@ -2144,6 +2146,13 @@ pre::-webkit-scrollbar {
 
 .anchor {
   visibility: hidden;
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin: -100px 0 0;
 }
 
 h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
