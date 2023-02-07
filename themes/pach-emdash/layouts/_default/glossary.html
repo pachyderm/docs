@@ -5,94 +5,55 @@
 {{ define "main" }}
 {{partial "directory.html" . }}
     <main class="content px-3"> 
-        <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
-            <div class="spread-between my-2">
-                {{ partial "featureBreadcrumbs.html" . }} 
-                {{ partial "featureEditLink.html" . }}
-            </div> 
-                {{ if .Site.Params.heroBanner.glossary}}
-                    <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
-                            {{/* Displays a series button if page is part of a series collection  */}}
-                            {{ partial "featureSeriesButton.html" . }}
-                            <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h1>
-                            {{ if .Description}}
-                                <p class="s bold">
-                                    {{ .Description}}
-                                </p>
-                            {{end}}
-                            <p class="s">
-                                {{/* Displays published date or last build date */}}
-                                {{ if .Date }}
-                                    {{ .Date | time.Format ":date_long" }} 
-                                {{else}} 
-                                    {{ now | time.Format ":date_long" }} 
-                                {{end}}
-                            </p> 
-                    </section>
-                {{else}}
-                    {{/* Does not show the hero section if disabled from config.yaml */}}
+         <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div> 
+        {{ if .Site.Params.heroBanner.glossary}}
+            <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
+                {{/* Displays a series button if page is part of a series collection  */}}
+                {{ partial "featureSeriesButton.html" . }}
+                <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}} Glossary</h1>
+                {{ if .Description}}
+                    <p class="s bold">
+                        {{ .Description}}
+                    </p>
                 {{end}}
-                {{if .Content}}
-                <section class="content"> 
-                    {{.Content}}
-                </section>
-            {{end}}
-            {{/* Paginator Navigation Starts Here */}}
-            <nav class="spread-center" role="navigation" aria-label="pagination">
-                <div class="spread-left pagination-list c-m-1 c-pinned-center">
-                    <div data-type="nav" class="button black rounded-1 m-2 p-2 gradient-rl-cold xs uppercase bold is-fit"> Glossary Pages</div>
-                    {{ range .Paginator.Pagers}}
-                        {{/* Paginator Buttons */}}
-                        <button data-pager="{{.}}" data-active="false" class="button black darken-7  p-2  mr-2 rounded-1 xxs outlined is-fit" aria-label='Goto page {{trim . "Pager "}}' onclick="revealPage({{.}})">{{trim . "Pager"}}</button>
+                <p class="s">
+                    {{/* Displays published date or last build date */}}
+                    {{ if .Date }}
+                        {{ .Date | time.Format ":date_long" }} 
+                    {{else}} 
+                        {{ now | time.Format ":date_long" }} 
                     {{end}}
-                </div>
-            </nav>
-            {{/* Paginator Pages Starts Here */}}
-            <section id="paginator">
-                {{  range .Paginator.Pagers }}
-                    {{/* Pages are hidden by default and revealed with pagination.js  */}}
-                    <section id="{{.}}" class="mt-4 is-hidden">
-                        {{ range after 0 .Pages}}
-                            {{ if  .Params.hidden }}
-                                {{/* Does not show the hidden child pages or their descendants */}}
-                            {{else}}
-                                <a class="spread-left m-4" href="{{.Permalink}}">
-                                    <div class="spread-center is-two-fifths">
-                                        {{/* Display title or humanized file's basename (e.g, for pachctl refs) */}}
-                                        <h4> 
-                                            {{if .Title}}
-                                                {{ strings.TrimPrefix "Pachctl" .Title}}
-                                            {{else}}
-                                                {{ strings.TrimPrefix  "Pachctl" (path.BaseName . | humanize) }}
-                                            {{end}}
-                                        </h4>
-                                    </div>
-                                    <div class="black darken-7 rounded-1 c-sp-2">
-                                        <p class="xs"> 
-                                            {{/* Display description or a truncated summary  */}}
-                                            {{ if .Params.glossaryDefinition}}
-                                                {{.Params.glossaryDefinition}}
-                                            {{ else if .Description}}
-                                                {{.Description}}
-                                            {{else }}
-                                                {{.Summary | truncate 100}}
-                                            {{end}}
-                                        </p>
-                                    </div>
-                                </a>
-                            {{end}}
-                        {{end}}
-                    </section>
-                {{end}}
+                </p> 
             </section>
-        </article>
+        {{else}}
+            {{/* Does not show the hero section if disabled from config.yaml */}}
+        {{end}}
+        {{ range .Pages}}
+        <a href="{{.RelPermalink}}">
+            <div class="my-4">
+                <h2>{{.Title}}</h2> 
+                <p> 
+                    {{.Description}}
+                </p>
+            </div>
+        </a>
+            
+        {{end}}
+      
     </main>
     <aside class="is-one-fifth is-hidden-mobile">
         <div class="sticky pt-6 xs px-3">
             {{.TableOfContents}}
         </div>
     </aside>
+
 {{end}}
+
+
+
 
 
 
