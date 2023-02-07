@@ -25,7 +25,7 @@
     {{ $syntax := resources.Get "css/syntax.css" | resources.Minify }}
     {{/*  Aggregates minified css into one resource  */}}
     {{ $css := slice $emdash $font $widescreen $syntax | resources.Concat "css/bundle.css"}}
-    <link rel="stylesheet" href="{{ $css.Permalink }}" media="screen" />
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen" />
     <link rel="shortcut icon" href="/images/favicon.ico">
 {{end}}
     
