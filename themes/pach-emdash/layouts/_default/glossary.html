@@ -34,7 +34,7 @@
         {{ range .Pages}}
         <a href="{{.RelPermalink}}">
             <div class="my-4">
-                <h2>{{.Title}}</h2> 
+                <h2>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h2> 
                 <p> 
                     {{.Description}}
                 </p>
