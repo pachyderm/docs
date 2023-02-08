@@ -11,7 +11,7 @@
         <div class="sticky pt-5 h-scroll noscrollbar">
             {{ range .Pages }}
             <div class="border-image-l-2 listless pl-6 mb-4">
-                <div class="mb-1 m bold"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}}{{ .Title }}</a>
+                <div class="mb-1 m bold"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}}{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
                 
                     {{ if eq .Params.layout "glossary" }}
                     {{/*  Does not display children if parent has layout:glossary  */}}
@@ -21,13 +21,13 @@
                             {{ if .Params.hidden}}
                             {{else}}
                        
-                            <div class="ml-2 mb-2 my-2 s semi-bold "><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}}{{ .Title }}</a>
+                            <div class="ml-2 mb-2 my-2 s semi-bold "><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}}{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
                             
                                 {{ if eq .Params.layout "glossary" }}
                                     {{ range .Pages }}
                                         {{ if .Params.hidden}}
                                         {{else}}
-                                        <div class="ml-3 mb-2 my-2 xs normal {{ if eq $currentSection .Parent.Title }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}} {{ .Title }}</a>                                        
+                                        <div class="ml-3 mb-2 my-2 xs normal {{ if eq $currentSection .Parent.Title }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>                                        
                                         </div>
                                         {{end}}
                                     {{end}}
@@ -36,11 +36,11 @@
                                     {{ range .Pages }}
                                         {{ if .Params.hidden}}
                                         {{else}}
-                                        <div class="ml-3 mb-2 my-2 xs normal {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{ .Title }}</a>
+                                        <div class="ml-3 mb-2 my-2 xs normal {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
 
                                             {{ if .Pages}}
                                                 {{range .Pages}}
-                                                <div class="ml-3 mb-2 my-2 xs thin {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{ .Title }}</a>
+                                                <div class="ml-3 mb-2 my-2 xs thin {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
                                                 </div>
                                                 {{end}}
                                             {{end}}
