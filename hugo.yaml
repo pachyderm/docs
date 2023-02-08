@@ -66,9 +66,9 @@ sitemap:
   priority: 0.8 
 
 taxonomies:
-  tag: tags 
-  category: categories 
-  series: series 
+  # tag: tags 
+  # category: categories 
+  # series: series 
 
 markup:
   goldmark:

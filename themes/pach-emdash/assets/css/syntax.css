@@ -1,9 +1,9 @@
 /* Background */ .bg { color var(--is-warning-color);  background-color: var(--is-black); }
-/* PreWrapper */ .chroma { color: var(--is-warning-color);  background-color:var(--is-black);  border: 0px solid var(--is-gray);}
+/* PreWrapper */ .chroma { color: var(--is-warning-color);  background-color:;  border: 0px solid var(--is-gray);}
 /* Other */ .chroma .x {  }
 /* Error */ .chroma .err { color: var(--is-danger-color)}
 /* CodeLine */ .chroma .cl {  }
-/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 10; margin: 10; border: 10; }
 /* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
 /* LineHighlight */ .chroma .hl { background-color: #ffffcc }
 /* LineNumbersTable */ .chroma .lnt { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: var(is-gray)}
