@@ -7,6 +7,7 @@ date:
 tags: ["configuration"]
 series:
 seriesPart:
+directory: true 
 ---
 
 This document outlines the fields in pachyderm configs. This should act as a

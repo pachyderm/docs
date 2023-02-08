@@ -7,6 +7,7 @@ date:
 tags: ["configuration", "helm"]
 series:
 seriesPart:
+directory: true 
 ---
 
 

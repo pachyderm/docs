@@ -7,6 +7,7 @@ date:
 tags: ["pipelines"]
 series:
 seriesPart:
+directory: true 
 ---
 
 This document discusses each of the fields present in a pipeline specification.

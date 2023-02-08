@@ -7,6 +7,7 @@ date:
 tags: ["sdks", "golang", "python","javascript","developers"]
 series:
 seriesPart:
+directory: true 
 ---
 
 `pachctl` is the command-line tool you use 

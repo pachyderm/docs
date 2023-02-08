@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+directory: true 
 ---
 
 ## Cannot connect via `pachctl` - context deadline exceeded
