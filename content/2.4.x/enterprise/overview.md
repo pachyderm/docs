@@ -7,6 +7,7 @@ date:
 tags: ["enterprise"]
 series:
 seriesPart:
+directory: true
 ---
 
 {{% notice note %}}
