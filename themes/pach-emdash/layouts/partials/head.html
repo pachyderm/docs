@@ -15,7 +15,7 @@
 {{if .Site.Params.defaultCss}} 
     {{$defaultEmdash := resources.Get "css/defaultEmdash.css" | resources.Minify}}
     {{ $defaultCss := slice $defaultEmdash | resources.Concat "css/defaultBundle.css"}}
-    <link rel="stylesheet" href="{{ $defaultCss.Permalink }}" media="screen" />
+    <link rel="stylesheet" href="{{ $defaultCss.RelPermalink }}" media="screen" />
 {{else}}
     {{/*  themes/pach-emdash/assets/css/..  */}}
     {{ $algolia := resources.Get "css/algolia.css" | resources.Minify }}
@@ -25,7 +25,7 @@
     {{ $syntax := resources.Get "css/syntax.css" | resources.Minify }}
     {{/*  Aggregates minified css into one resource  */}}
     {{ $css := slice $emdash $font $widescreen $syntax | resources.Concat "css/bundle.css"}}
-    <link rel="stylesheet" href="{{ $css.Permalink }}" media="screen" />
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen" />
     <link rel="shortcut icon" href="/images/favicon.ico">
 {{end}}
     

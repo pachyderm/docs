@@ -1,22 +1,23 @@
   <nav class="spread sticky white level-top py-1 px-4">
-    <div class="spread-left is-two-fifths is-hidden-mobile">
-      <a class="mt-2" style="max-width:150px;" href="/">
-        <img src="/images/pachLogo.svg" alt="logo">
+    
+    <div class="spread-left is-one-fifth is-hidden-mobile">
+      <a class="mt-2 hefty l" href="/">
+        <img src="/images/pachyderm-elephant.svg" style="max-width: 36px;"alt="logo">
+         Pachyderm Docs
       </a>
-      <div class="button is-fit bold xs rounded-1"> docs</div>
     </div>
     <div class="spread-right is-one-third is-half-tablet is-fullsize-mobile c-rounded-1 c-ml-1 c-my-2">
     {{if .IsHome}}
     
     {{else}}
-      <div class="spread rounded-6 outlined c-pinned-center">
+      <div class="spread rounded-6 outlined c-pinned-center ">
         <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
         <div id="searchbox"></div>
       </div>
     {{end}}
       {{ partial "featureVersionDropdown.html" . }}
-      <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/" class="purple is-fit is-hidden-touch bold p-2"> Demo</a>
-      <button id="darkModeButton" class="black is-fit grayscale p-2" onclick="darkMode()">🌙</button>
+      <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/" class="black gradient-rl-cold is-fit is-hidden-touch s semi-bold px-3 py-2 rounded-4"> Demo</a>
+      <button id="darkModeButton" class="is-fit black grayscale px-3 py-2 rounded-6" onclick="darkMode()">🌙</button>
     </div>
  
   
