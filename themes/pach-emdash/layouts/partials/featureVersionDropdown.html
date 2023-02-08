@@ -3,7 +3,7 @@
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
     <button class="montserrat dropdown-alt is-fit outlined-purple rounded-4 {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
-        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-2 s bold"> {{if .IsHome}} v. {{.Site.Params.releaseInfo.Latest}}{{else}} v. {{ .Section }}{{end}}</div>
+        <div id="activeVersion" data-algolia="{{if .IsHome}}{{.Site.Params.releaseInfo.latest}}{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}{{.Site.Params.releaseInfo.latest}}{{else if eq .Page.Title "404 Page not found"}}{{.Site.Params.releaseInfo.latest}}{{else}}{{.Section}}{{end}}" class="activeOption p-2 s bold"> {{if .IsHome}} {{.Site.Params.releaseInfo.Latest}}{{else}} {{ .Section }}{{end}}</div>
         <div class="montserrat is-full dropdown-options white rounded-3 outlined-purple"> 
              {{if eq .Section "tags" "series" "knowledge-base"}}
              {{/*  do nothing  */}}
