@@ -107,7 +107,7 @@ Please refer to your full Traefik documentation for further installation details
          enabled: true
       ```
       ```s
-      helm install pachd -f my_pachyderm_values.yaml pach/pachyderm
+      helm install pachyderm -f my_pachyderm_values.yaml pach/pachyderm
       ```
       The deployment of Pachyderm automatically creates the required set of rules.
 

@@ -380,6 +380,21 @@ loki-stack:
       successThreshold: 1
       timeoutSeconds: 1
 
+# The pachw controller creates a pool of pachd instances running in 'pachw' mode which can dynamically scale to handle storage related tasks
+pachw:
+  # inSidecars can be enabled to process storage related tasks in pipeline storage sidecars like version 2.4 or less.
+  inSidecars: false
+  maxReplicas: 1
+  # minReplicas: 0
+  # resources defines the kubernetes resource configuration for pachw pods. If not defined, the resource configuration from pachd will be reused. We recommend defining resources when running pachw with a high value of maxReplicas.
+  #resources:
+  #  limits:
+  #    cpu: "1"
+  #    memory: "2G"
+  #  requests:
+  #    cpu: "1"
+  #  memory: "2G"
+
 pachd:
   enabled: true
   preflightChecks:
@@ -589,7 +604,7 @@ pachd:
       # in object (JSON or YAML) form.  A simple way to pass this on
       # the command line is with the set-file flag, e.g.:
       #
-      #  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pachyderm/pachyderm
+      #  helm install pachyderm -f my-values.yaml --set-file storage.google.cred=creds.json pachyderm/pachyderm
       cred: ""
       # Example:
       # cred: |
@@ -1104,6 +1119,17 @@ See the official [Promtail documentation](https://grafana.com/docs/loki/latest/c
 
 
 
+### pachw
+
+Pachw processes storage tasks (like compaction) and url tasks (like uploads and downloads) in a distributed way. Your main pachd instance scales the number of pachw instances used based on the number of tasks counted. By default, pachw can only scale up to a max of 1 replica.
+
+You should set the `maxReplicas` value to match the number of pipeline replicas that you have. You can also set the resources used by pachw instances. The type of work that pachw does is most affected by cpu and network bandwidth available.  
+
+If you want behavior that matches 2.4.2 then enable `inSidecars`.
+
+
+
+
 ### pachd
 
 This section is to configure the pachd deployment.
@@ -1236,7 +1262,7 @@ If you're using Google Storage Buckets as your storage backend, configure it her
 - `storage.google.cred` is a string containing a GCP service account private key, in object (JSON or YAML) form.  A simple way to pass this on the command line is with the set-file flag, e.g.:
 
   ```s
-  helm install pachd -f my-values.yaml --set-file storage.google.cred=creds.json pach/pachyderm
+  helm install pachyderm -f my-values.yaml --set-file storage.google.cred=creds.json pach/pachyderm
   ```
 
   Example:

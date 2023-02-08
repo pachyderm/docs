@@ -165,7 +165,7 @@ In short, you will:
 
       Replace `<your-bucket>` with the name of your S3 bucket.
 
-1. Create an **IAM role as a Web Identity** using the cluster OIDC procider as the identity provider.
+1. Create an **IAM role as a Web Identity** using the cluster OIDC provider as the identity provider.
       1. Create a new **Role** from your IAM Console.
       1. Select the **Web identity** Tab.
       1. In the **Identity Provider** drop down, select the *OpenID Connect provider URL* of your EKS and `sts.amazonaws.com` as the Audience.

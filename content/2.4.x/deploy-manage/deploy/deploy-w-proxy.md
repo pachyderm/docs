@@ -164,12 +164,6 @@ Run the following commands:
 ### If you have deployed **Console**
 Point your browser to `http://<external-IP-address-or-domain-name>`. No port number is needed. You will be prompted to log in to your Console.
 
-### If you have installed **JupyterHub and the Mount Extension**
-The connection string to your Pachyderm cluster (check the login form accessible by clicking on the mount extension icon in the far left tab bar of your JupyterLab) now depends on whether you have deployed JupyterHub on:
-
-- The same cluster: `grpc://pachd.<namespace>.svc.cluster.local:30650`
-- An external cluster: `grpc://<external-IP-address-or-domain-name>:80`
-
 ## Quick Cloud Deployment With a Proxy
 
 Follow your regular [QUICK Cloud Deploy documentation](../quickstart/), but for those few steps:
@@ -177,7 +171,6 @@ Follow your regular [QUICK Cloud Deploy documentation](../quickstart/), but for 
 - In section 2 (Create Your Values.yaml), replace your values yaml with the YAML files provided below. Make sure to replace the dummy values with their relevant information. Then proceed with the helm installation as detailed in section 3. 
 - To [connect your `pachctl` client to your cluster](#to-connect-your-pachctl-client-to-your-cluster),replace section 4 with the instructions detailed in the link.
 - To [connect to Console](#if-you-have-deployed-console), replace section 5 with the instructions provided in the link.
-- If you deployed JupyterHub (section 7), use the instructions in the link to [login to the Mount Extension](#if-you-have-installed-jupyterhub-and-the-mount-extension). 
 
 
 ### AWS
@@ -405,7 +398,7 @@ Attention Kind users
 #### Community Edition With Console
 
 ```s
-helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
+helm install pachyderm pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer 
 ```
 
 #### Enterprise With Console
@@ -416,7 +409,7 @@ This command will unlock your enterprise features and install Console Enterprise
 - Then, run the following helm command to install Pachyderm's latest Enterprise Edition:
 
   ```s 
-  helm install pachd pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
+  helm install pachyderm pach/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost
   ```
 
 
@@ -478,8 +471,6 @@ and authenticate using the mock User (username: `admin`, password: `password`).
 
 - To use `pachctl`, run `pachctl auth login` then
 authenticate again (to Pachyderm this time) with the mock User (username: `admin`, password: `password`).
-
-- Notebook users, if you have installed [JupyterHub and the Mount Extension](../../../how-tos/jupyterlab-extension/) on the same cluster, the connection url to your Pachyderm cluster in the login form (click on the mount extension icon in the far left tab ) is now: `grpc://pachd.<namespace>.svc.cluster.local:30650`
 
 ## Changes to the S3 Gateway
 

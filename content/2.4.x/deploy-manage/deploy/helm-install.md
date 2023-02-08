@@ -73,7 +73,7 @@ For Production deployments, Pachyderm strongly recommends that you **[create you
 
  You are ready to deploy Pachyderm on the environment of your choice.
  ```s
- helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
+ helm install pachyderm -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
  ```
  {{% notice info %}}
  To choose a specific helm chart version
