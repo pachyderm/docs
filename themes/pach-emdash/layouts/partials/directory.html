@@ -27,7 +27,7 @@
                                     {{ range .Pages }}
                                         {{ if .Params.hidden}}
                                         {{else}}
-                                        <div class="ml-4 mb-2 my-2 xs normal {{ if eq $currentSection .Parent.Title }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}} {{ .Title }}</a>                                        
+                                        <div class="ml-3 mb-2 my-2 xs normal {{ if eq $currentSection .Parent.Title }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if eq $currentPage.RelPermalink .RelPermalink}}👉 {{end}} {{ .Title }}</a>                                        
                                         </div>
                                         {{end}}
                                     {{end}}
@@ -36,11 +36,11 @@
                                     {{ range .Pages }}
                                         {{ if .Params.hidden}}
                                         {{else}}
-                                        <div class="ml-4 mb-2 my-2 xs normal {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{ .Title }}</a>
+                                        <div class="ml-3 mb-2 my-2 xs normal {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{ .Title }}</a>
 
                                             {{ if .Pages}}
                                                 {{range .Pages}}
-                                                <div class="ml-4 mb-2 my-2 xs thin {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{ .Title }}</a>
+                                                <div class="ml-3 mb-2 my-2 xs thin {{ if (or (eq $currentSection .Parent.Title) (eq $currentSection .Title) (eq $currentPage.Parent.Title  .Parent.Title)) }}{{else}}closed-folder{{end}}"><a href="{{.RelPermalink}}">{{ if (eq $currentPage.RelPermalink .RelPermalink)}}👉 {{end}} {{ .Title }}</a>
                                                 </div>
                                                 {{end}}
                                             {{end}}
