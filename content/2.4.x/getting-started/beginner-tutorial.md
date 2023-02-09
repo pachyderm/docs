@@ -8,6 +8,7 @@ tags: ["tutorials"]
 series: ["onboarding"]
 seriesPart: 
 weight: 4
+directory: true
 ---
 
 Welcome to the beginner tutorial for Pachyderm! 

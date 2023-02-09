@@ -7,6 +7,7 @@ date:
 tags: ["s3"]
 series:
 seriesPart:
+directory: true 
 ---
 
 This section outlines the operations exposed by Pachyderm's HTTP API [S3 Gateway](../../deploy-manage/manage/s3gateway/). 

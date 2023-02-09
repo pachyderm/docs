@@ -7,6 +7,7 @@ date:
 tags: ["deployment"]
 series:
 seriesPart:
+directory: true 
 ---
 
 A common issue related to a deployment: getting a `CrashLoopBackoff` error. 

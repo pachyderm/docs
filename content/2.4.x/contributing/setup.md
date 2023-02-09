@@ -7,6 +7,7 @@ date:
 tags:  ["developers"]
 series:
 seriesPart:
+directory: true 
 --- 
 
 

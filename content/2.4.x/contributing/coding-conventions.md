@@ -7,6 +7,7 @@ date:
 tags:  ["developers"]
 series:
 seriesPart:
+directory: true 
 --- 
 
 Interested in contributing to Pachyderm's code? Learn the conventions here! For setup instructions, see [Setup for Contributors](../setup).
