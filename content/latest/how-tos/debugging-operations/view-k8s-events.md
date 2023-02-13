@@ -85,11 +85,20 @@ LAST SEEN      TYPE    REASON         OBJECT                                   M
 
 ## Key Events
 
-|Event|Description|
-|-|-|
-|CrashLoopBackOff| When a pod starts, crashes, starts again, and then crashes again|
-|ImagePullBackOff|When a pod starts, crashes, starts again, and then crashes again|
-|Evicted| When a node determines that a pod needs to be evicted or terminated to free up some resources (CPU, memory...etc).|
-|FailedMount / FailedAttachVolume| When pods require a persistent volume or storage, this event prevents them from starting if the storage is not accessible.|
-|FailedSchedulingEvents|When the scheduler is not able to find a node to run your pods.|
-|NodeNotReady| When a node cannot be used to run a pod because of an underlying issue.|
+
+| Event | Description |
+|---|---|
+| CrashLoopBackOff | A container in a pod keeps crashing and restarting. This typically indicates that there is an issue with the container that needs to be resolved. |
+| FailedScheduling | The Kubernetes scheduler is unable to schedule a pod on any node. This typically indicates that there are insufficient resources available in the cluster or that there are constraints set that prevent the pod from being scheduled. | 
+| OutOfMemory | A container in a pod ran out of memory. This typically indicates that the container needs to be reconfigured with more memory or that there is an issue with the application running in the container that is causing it to consume too much memory. |  
+| FailedCreatePodSandBox | The Kubernetes API server failed to create a sandbox for a pod. This typically indicates that there is an issue with the node or the network that is preventing the creation of the sandbox. |  
+| Evicted | A pod is evicted from a node due to resource constraints or other reasons. This typically indicates that the node is running low on resources or that there is an issue with the pod that needs to be resolved. |  
+|NodeNotReady| A node is not ready to accept pods. This can occur due to various reasons such as network connectivity issues or insufficient resources.|
+|ImagePullBackOff| An image pull operation fails. The container runtime is unable to pull the image from the specified registry or repository.|
+|FailedMount| A mount operation failed, such as when a volume or configMap failed to mount. This can occur due to incorrect configurations, insufficient permissions, or a missing dependency.|
+
+{{% notice note %}}
+
+These events are just a few of the many events that can occur in Kubernetes. It's important to monitor your cluster for these and other events to ensure the health and stability of your applications.
+
+{{% /notice %}}

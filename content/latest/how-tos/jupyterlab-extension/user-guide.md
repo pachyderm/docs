@@ -11,28 +11,66 @@ weight: 4
 beta: true 
 ---
 
-## Mount a Branch
+## Select a Project 
+
+You can filter mountable repositories by selecting a project.
+
+1. Open the JypterLab UI. 
+2. Navigate to the **Project** dropdown.
+3. Select an existing project or the `default` project.
+
+![project select](/images/jupyterlab-extension/mount-project-select.gif)
+
+## Create a Repo & Repo Branch 
 
 1. Open the JupyterLab UI.
 2. Open a **Terminal** from the launcher.
-3. Navigate to the **Mounted Repositories** tab.
-4. Input the following to see a demo repo appear:
+3. Input the following:
+   
+   ```s
+   pachctl create repo demo
+   pachctl create branch demo@master
+   ```
+4. Check the Unmounted Repositories section.
+
+![create repo and branch](/images/jupyterlab-extension/mount-create-repo-branch.gif)
+
+{{% notice tip %}}
+
+Your repo is created within the project [set to your current context](../../project-operations/set-project).
+
+{{% /notice %}}
+
+
+
+## Mount a Repo Branch
+
+1. Open the JupyterLab UI.
+2. Navigate to the **Unmounted Repositories** section.
+3. Scroll to a repository's row.
+4. Select **Mount**.
+
+![mount repo](/images/jupyterlab-extension/mount-mount-repo.gif)
+
+<!-- 2. Open a **Terminal** from the launcher.
+1. Navigate to the **Mounted Repositories** tab.
+2. Input the following to see a demo repo appear:
  ```s
  pachctl create repo demo
  pachctl create branch demo@master
  ```
-5. Scroll to the **Unmounted Repositories** section.
-6. Select **Mount** next to the **Demo** repository. 
-7. Input the following to create a simple text file:
+1. Scroll to the **Unmounted Repositories** section.
+2. Select **Mount** next to the **Demo** repository. 
+3. Input the following to create a simple text file:
  ```s
  echo "Version 1 of file" | pachctl put file demo@master:/myfile.txt
  ```
-8. Unmount and re-mount your repo to attach to the latest commit containing the new file.
+1. Unmount and re-mount your repo to attach to the latest commit containing the new file.
    ![re-mount repo](/images/jupyterlab-extension/mount-repo.gif)
-9.  Read the file using the following:
+2.  Read the file using the following:
  ```s
  cat /pfs/demo/myfile.txt
- ```
+ ``` -->
 
 ## Mount a Datum
 
