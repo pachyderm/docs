@@ -72,7 +72,7 @@ Your repo is created within the project [set to your current context](../../proj
  cat /pfs/demo/myfile.txt
  ``` -->
 
-## Mount a Datum
+## Mount (and Test) a Datum
 
 You can mount to a specific datum in your repository from the JupyterLab UI using an **input spec**. This is useful when:
 
@@ -81,13 +81,17 @@ You can mount to a specific datum in your repository from the JupyterLab UI usin
 
 1. Open the JupyterLab UI.
 2. Mount to a repo from the **Unmounted Repositories** section. (e.g., mounting to `demo` would look like  `/pfs/demo/` in the file browser).
-3. Navigate to the **Mounted Repositories** section and select **Datum**. You should see the following:
-   ```yaml
-   pfs:
-      repo: demo
-      branch: master
-      glob: / 
-   ```
+3. Navigate to the **Mounted Repositories** section and select **Datum**. 
+
+   ![mount and test datums](/images/jupyterlab-extension/mount-test-datum.gif)
+
+   You should see the following:
+      ```yaml
+      pfs:
+         repo: demo
+         branch: master
+         glob: / 
+      ```
 4. Update the glob pattern to match the datums you wish to focus on.
       ##### Directory Example 
 
