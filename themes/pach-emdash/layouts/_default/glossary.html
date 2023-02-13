@@ -31,7 +31,9 @@
         {{else}}
             {{/* Does not show the hero section if disabled from config.yaml */}}
         {{end}}
-        {{ range .Pages}}
+
+        {{ partial "glossary.html" . }}
+        {{/*  {{ range .Pages}}
         <a href="{{.RelPermalink}}">
             <div class="my-4">
                 <h2>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h2> 
@@ -41,12 +43,15 @@
             </div>
         </a>
             
-        {{end}}
+        {{end}}  */}}
       
     </main>
     <aside class="is-one-fifth is-hidden-mobile">
-        <div class="sticky pt-6 xs px-3">
-            {{.TableOfContents}}
+        <div class="stack-center sticky pt-6 xs px-3">
+            {{ $letters := "abcdefghijklmnopqrstuvwxyz" }}
+            {{ range $i, $letter := split $letters "" }}
+                <div class="py-1"><a class="m bold" href="#{{$letter}}">{{$letter}}</a></div>
+            {{ end }}
         </div>
     </aside>
 
