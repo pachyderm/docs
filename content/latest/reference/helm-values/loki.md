@@ -5,7 +5,7 @@ description: Set up logs with Loki, Grafana, and Promtail.
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 6
 label: optional

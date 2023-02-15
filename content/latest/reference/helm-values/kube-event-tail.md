@@ -5,7 +5,7 @@ description: Deploy lightweight logging for Kubernetes events.
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 8
 label: optional

@@ -5,7 +5,7 @@ description: This section is being deprecated; use proxy instead.
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 5
 label: Being Deprecated

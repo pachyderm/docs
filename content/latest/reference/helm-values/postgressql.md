@@ -5,7 +5,7 @@ description: Use the bundled version of PostgreSQL (metadata storage) for testin
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 10
 label: Not For Production

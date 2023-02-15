@@ -5,7 +5,7 @@ description: Centralize all Pachyderm traffic on a single port that's safe to ex
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 14
 label: required 

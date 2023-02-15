@@ -68,7 +68,7 @@ sitemap:
 taxonomies:
   # tag: tags 
   # category: categories 
-  # series: series 
+  series: series 
 
 markup:
   goldmark:

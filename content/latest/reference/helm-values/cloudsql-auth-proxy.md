@@ -5,8 +5,8 @@ description: Deploy Pachyderm on GCP with CloudSQL
 date: 
 # taxonomy #
 tags: ["helm", "gcp" ]
-series:
-seriesPart:
+series: ["helm"]
+seriesPart: 
 weight: 11
 label: Required for GCP
 --- 

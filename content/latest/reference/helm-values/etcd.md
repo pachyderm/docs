@@ -5,7 +5,7 @@ description: Configure your ETCD key-value storage cluster.
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 4
 label: required

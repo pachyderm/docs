@@ -5,7 +5,7 @@ description:
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 7
 label: required

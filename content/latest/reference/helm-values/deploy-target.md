@@ -5,7 +5,7 @@ description: Define where you're deploying Pachyderm (Local, Cloud)
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 label: required
 weight: 1

@@ -9,24 +9,23 @@
 
 
 {{ define "main" }}
-<main class="spread-around c-pinned-stretch wideless c-mx-4"> 
-    {{partial "directory.html" . }}
-    <article class="content two-thirds-widescreen is-fullsize-mobile pinned-top">
+{{ partial "glossary-directory.html" . }}
+    <main class="content px-3"> 
         <div class="spread-between my-2">
             {{ partial "featureBreadcrumbs.html" . }} 
             {{ partial "featureEditLink.html" . }}
-         </div>    
-            {{ $order := "asc"}}
+        </div>    
+        {{ $order := "asc"}}
         <section class="black py-3  gradient-rl-cold rounded-1 c-sp-2">
             <div class="spread-between c-pinned-center">
-                <h1>{{.Title}} </h1>
+                <h1>{{strings.FirstUpper .Title }}</h1>
                 <p class="label uppercase outlined xs sp-2"> series</p>
             </div>
         </section>
         <section class="stack">
             {{ range .Pages.ByParam "seriesPart" }}
                 <div class="content"> 
-                        <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.Permalink}}">{{.Params.seriesPart}} {{.Title}} </a>
+                        <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.Permalink}}" id="{{.Title | anchorize}}">{{.Params.seriesPart}} {{.Title}} </a>
                     {{ partial "featureBetaNotice.html" . }}
                     <div class="content"> 
                     {{.Content}}
@@ -34,6 +33,14 @@
                 </div>
             {{ end }}
         </section>
-</article>
-</main>
+    </main>
+    <div class="pt-5 noscrollbar sticky is-one-fifth directory h-scroll px-3 is-hidden-mobile">
+        <div> 
+            <p class="m bold">{{strings.FirstUpper .Title }} Series</p>
+            {{ range .Pages.ByParam "seriesPart" }}
+                <div><a href="#{{.Title | anchorize}}" class="s">{{.Title}}</a></div>
+            {{end}}
+        </div>
+        
+    </div>
 {{end}}

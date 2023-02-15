@@ -5,7 +5,7 @@ description: Set up your OIDC authentication and connect to IDPs.
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 12
 label: Required for Production

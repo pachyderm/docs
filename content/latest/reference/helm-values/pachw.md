@@ -5,7 +5,7 @@ description:  Create a pool of pachd instances that dynamically scale storage ta
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 7
 label: optional

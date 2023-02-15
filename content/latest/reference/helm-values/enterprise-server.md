@@ -5,7 +5,7 @@ description: Configure the Enterprise Server for production deployments.
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 4
 label: Optional

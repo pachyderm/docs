@@ -5,7 +5,7 @@ description: Used by certain orgs to test connection during installation of Pach
 date: 
 # taxonomy #
 tags: ["configuration", "helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 13
 label: situational

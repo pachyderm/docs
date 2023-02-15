@@ -5,7 +5,7 @@ description:  Configure the Pachyderm UI
 date: 
 # taxonomy #
 tags: ["helm"]
-series:
+series: ["helm"]
 seriesPart:
 weight: 3
 label: Recommended
