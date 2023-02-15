@@ -5,7 +5,7 @@ description: Learn how to quickly ingest photos, trace their outlines, and outpu
 date: 
 # taxonomy #
 tags: ["tutorials"]
-series: ["onboarding"]
+series:
 seriesPart: 
 weight: 4
 directory: true

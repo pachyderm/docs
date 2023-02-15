@@ -5,7 +5,7 @@ description: Learn how to install Pachyderm locally using your favorite containe
 date: 
 # taxonomy #
 tags:  ["deployment"]
-series: ["onboarding"]
+series:
 seriesPart: 1
 ---
 
