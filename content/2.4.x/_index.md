@@ -11,7 +11,7 @@ cascade:
     latestPatch: 2.4.5
     majorMinor: 2.4
     clientPython: 7.3
-    extensionJupyterLab: 2.4.5
-    mountServerBinary: 2.4.5
+    extensionJupyterLab: 2.4.6
+    mountServerBinary: 2.4.6
     release: latest 
 ---
