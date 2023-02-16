@@ -75,7 +75,7 @@ pachw:
 ```s
 pachw:
   inheritFromPachd: true # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
-  maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * parallelism = target maxReplicas
+  maxReplicas: 6 # set to match the number of pipeline replicas you have; sample formula: pipeline count * parallelism = target maxReplicas
   minReplicas: 1
   #tolerations: []
   #affinity: {}
@@ -95,7 +95,7 @@ pachw:
 ```s
 pachw:
   inheritFromPachd: false # defaults below configuration options like 'resources' and 'tolerations' to  values from pachd
-  maxReplicas: 6 # set to match the number of pipline replicas you have; sample formula: pipeline count * parallelism = target maxReplicas
+  maxReplicas: 6 # set to match the number of pipeline replicas you have; sample formula: pipeline count * parallelism = target maxReplicas
   minReplicas: 1
   #tolerations: []
   #affinity: {}

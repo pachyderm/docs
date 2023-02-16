@@ -15,7 +15,7 @@ beta: true
 
 You can filter mountable repositories by selecting a project.
 
-1. Open the JypterLab UI. 
+1. Open the JupyterLab UI. 
 2. Navigate to the **Project** dropdown.
 3. Select an existing project or the `default` project.
 

@@ -177,8 +177,8 @@ pachd:
     compactionShardCountThreshold: 0 # the total number of files in a shard.
 
   ppsWorkerGRPCPort: 1080
-  storageGCPeriod: 0 # the number of seconds between pfs's garbage collection cycles; <0 disables garbage collection; 0 defaults to pachyderm's internal config.
-  storageChunkGCPeriod: 0 # the number of seconds between chunk garbage colletion cycles; <0 disables chunk garbage collection; 0 defaults to pachyderm's internal config.
+  storageGCPeriod: 0 # the number of seconds between PFS's garbage collection cycles; <0 disables garbage collection; 0 defaults to pachyderm's internal config.
+  storageChunkGCPeriod: 0 # the number of seconds between chunk garbage collection cycles; <0 disables chunk garbage collection; 0 defaults to pachyderm's internal config.
   # There are three options for TLS:
   # 1. Disabled
   # 2. Enabled, existingSecret, specify secret name
@@ -463,11 +463,11 @@ pachd:
     compactionShardSizeThreshold: 0
     compactionShardCountThreshold: 0
   ppsWorkerGRPCPort: 1080
-  # the number of seconds between pfs's garbage collection cycles.
+  # the number of seconds between PFS's garbage collection cycles.
   # if this value is set to 0, it will default to pachyderm's internal configuration.
   # if this value is less than 0, it will turn off garbage collection.
   storageGCPeriod: 0
-  # the number of seconds between chunk garbage colletion cycles.
+  # the number of seconds between chunk garbage collection cycles.
   # if this value is set to 0, it will default to pachyderm's internal configuration.
   # if this value is less than 0, it will turn off chunk garbage collection.
   storageChunkGCPeriod: 0

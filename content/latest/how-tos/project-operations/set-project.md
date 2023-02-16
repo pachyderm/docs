@@ -26,7 +26,7 @@ weight: 2
 
 {{% wizardResult val1="tool/pachctl-cli"%}}
 
-In order to begin working on a project other than the `default` project, you must assign it to a pachctl context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
+In order to begin working on a project other than the `default` project, you must assign it to a pachCTL context. This enables you to safely add or update resources such as pipelines and repos without affecting other projects.
 
 
 ```s

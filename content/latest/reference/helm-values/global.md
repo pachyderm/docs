@@ -51,7 +51,7 @@ global:
 
   customCaCerts: false # loads the cert file in pachd-tls-cert as the root cert for pachd, console, and enterprise-server 
   proxy: "" # sets server address for outbound cluster traffic
-  noProxy: "" # if proxy is set, allows a comma-separated list of desintations that bypass the proxy
+  noProxy: "" # if proxy is set, allows a comma-separated list of destinations that bypass the proxy
   securityContexts: # set security context runAs users. If running on openshift, set enabled to false as openshift creates its own contexts.
     enabled: true
 
@@ -75,7 +75,7 @@ global:
   imagePullSecrets: [] # allows you to pull images from private repositories; also added to pipeline workers
   customCaCerts: false # loads the cert file in pachd-tls-cert as the root cert for pachd, console, and enterprise-server 
   proxy: "" # sets server address for outbound cluster traffic
-  noProxy: "" # if proxy is set, allows a comma-separated list of desintations that bypass the proxy
+  noProxy: "" # if proxy is set, allows a comma-separated list of destinations that bypass the proxy
   # Set security context runAs users. If running on openshift, set enabled to false as openshift creates its own contexts
   securityContexts:
     enabled: true

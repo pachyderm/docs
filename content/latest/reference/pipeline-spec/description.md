@@ -20,7 +20,7 @@ label: optional
 
 ## Behavior 
 
-`description` is displayed in your pipeline details when viewed from pachctl or console.
+`description` is displayed in your pipeline details when viewed from pachCTL or console.
 
 ## When to Use
 

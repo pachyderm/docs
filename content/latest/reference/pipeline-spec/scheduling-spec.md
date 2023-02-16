@@ -27,4 +27,4 @@ label: optional
 |Attribute| Description|
 |-|-|
 |`node_selector`|Allows you to select which nodes your pipeline will run on. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) on node selectors for more information about how this works.|
-|`priority_class_name`|Allows you to select the priority class for the pipeline, which is how Kubernetes chooses to schedule and deschedule the pipeline. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) on priority and preemption for more information about how this works.|
+|`priority_class_name`|Allows you to select the priority class for the pipeline, which is how Kubernetes chooses to schedule and de-schedule the pipeline. Refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) on priority and preemption for more information about how this works.|

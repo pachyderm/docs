@@ -29,7 +29,7 @@ with the proper settings, then do:
 kubectl get po/<pod-name> -o json | jq .spec
 ```
 
-this will give you a correctly formated piece of JSON, you should then remove
+this will give you a correctly formatted piece of JSON, you should then remove
 the extraneous fields that Kubernetes injects or that can be set else where.
 
 The JSON is applied after the other parameters for the `pod_spec` have already

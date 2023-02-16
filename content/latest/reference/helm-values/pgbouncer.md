@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  PGBouncer HCVs
-description: Deploy a lightweight connection pooler for PostgreSQL
+description: Deploy a lightweight connection pooler for PostgreSQL.
 date: 
 # taxonomy #
 tags: ["helm"]

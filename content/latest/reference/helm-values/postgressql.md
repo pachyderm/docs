@@ -13,7 +13,7 @@ label: Not For Production
 
 ## About
 
-The PostgresQL section controls the Bitnami PostgreSQL Subchart.Pachyderm runs on Kubernetes, is backed by an object store of your choice, and comes with a bundled version of PostgreSQL (metadata storage) by default.
+The PostgresQL section controls the Bitnami PostgreSQL subchart. Pachyderm runs on Kubernetes, is backed by an object store of your choice, and comes with a bundled version of PostgreSQL (metadata storage) by default.
 
 **We recommended disabling this bundled PostgreSQL** and using a managed database instance (such as RDS, CloudSQL, or PostgreSQL Server) for production environments. 
 
