@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  PachD HCVs
-description: 
+description: Configure the core settings of Pachyderm.
 date: 
 # taxonomy #
 tags: ["helm"]
