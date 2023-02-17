@@ -15,9 +15,12 @@ mermaid: true
 ---
 
 ## Introduction to Pipelines
-The **Pachyderm Pipeline System (PPS)** is how code gets applied to your data. Pipelines work seamlessly with data inside your data repositories, meaning that we can deploy a pipeline to transform the data from a data repo or repos, and anytime we modify our data, the pipeline will automatically re-run.
 
-In Pachyderm, a pipeline is defined by a pipeline specification and runs in Kubernetes. Note: Unlike other frameworks, a pipeline refers to a single step in your computational DAG (directed acyclic graph), as many operations can be performed in a single pipeline execution. 
+The  **Pachyderm Pipeline System (PPS)** is a powerful tool for automating data transformations. With PPS, pipelines can be automatically triggered whenever input data changes, meaning that data transformations happen automatically in response to changes in your data, without the need for manual intervention.
+
+Pipelines in Pachyderm are defined by a pipeline specification and run on Kubernetes. The output of a pipeline is stored in a versioned data repository, which allows you to reproduce any transformation that occurs in Pachyderm.
+
+Pipelines can be combined into a computational DAG (directed acyclic graph), with each pipeline being triggered when an upstream commit is finished. This allows you to build complex workflows that can process large amounts of data efficiently and with minimal manual intervention.
 
 ## Pipeline Specification 
 This is a Pachyderm pipeline definition in YAML. It describes a pipeline called transform that takes data from the data repository and transforms it using a Python script `my_transform_code.py`.
@@ -51,9 +54,9 @@ So, in summary, this pipeline definition defines a pipeline called transform tha
 
 ## Datums and Jobs
 
-Pipelines can distributed work across a cluster to parallelize computation. Each time data is committed to a Pachyderm repository, a job is created for each pipeline with that repo as an input to process the data.
+Pipelines can distribute work across a cluster to parallelize computation. Each time data is committed to a Pachyderm repository, a job is created for each pipeline with that repo as an input to process the data.
 
-To determine how to distribute data and computational work, datums are used. A **datum** is an indivisible unit of data required by the pipeline, defined according to the pipeline spec. The datums will be distributed across the cluster to be processed by workers. 
+To determine how to distribute data and computational work, datums are used. A **datum** is an indivisible unit of data required by the pipeline, defined according to the pipeline spec. The datums will be distributed across the cluster to be processed by workers.
 
 
 {{% notice note %}}
@@ -69,7 +72,9 @@ Next, let’s say you want to create a collage from those images. Now, we need t
 Pachyderm input specifications can handle both of these situations with the glob section of the Pipeline Specification. 
 
 ### Basic Glob Patterns
-In the pipeline specification below, the input glob pattern is `/*`. It will treat each image of the images@master data repository (at the top level) as an individual unit of work. 
+In this section we'll introduce glob patterns and datums in a couple of examples. 
+
+In the basic glob pattern example below, the input glob pattern is `/*`. This pattern matches each image at the top level of the `images@master` branch as an individual unit of work.
 
 ```yaml
 pipeline:
@@ -90,11 +95,11 @@ transform:
   image: pachyderm/opencv
 ```
 
-When the pipeline runs, first the datums are computed from the input spec. The files from this datum will be downloaded into the Docker container when it starts. Then the transform will be executed. 
+When the pipeline is executed, it retrieves the datums defined in the input specification. For each datum, the worker downloads the necessary files into the Docker container at the start of its execution, and then performs the transform. Once the execution is complete, the output for each execution is combined into a commit and written to the output data repository.
 
 ![Datum diagram glob /*](/images/datum-glob-3.png)
 
-In this example, the input glob pattern is `/`. It will treat everything at the top level of the images@master data repository (at the top level) as an individual unit of work. 
+In this example, the input glob pattern is `/`. This pattern matches everything at the top level of the `images@master` branch as an individual unit of work.
 
 ```yaml
 pipeline:
@@ -114,6 +119,8 @@ transform:
     - /pfs/out/
   image: pachyderm/opencv
 ```
+
+When this pipeline runs, it retrieves a single datum from the input specification. The job runs the single datum, downloading all the files from the `images@master` into the Docker container, and performs the transform. The result is then committed to the output data repository. 
 
 ![Datum diagram glob](/images/datum-glob-all.png)
 
