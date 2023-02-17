@@ -15,14 +15,12 @@ mermaid: true
 ---
 
 ## Introduction to Pipelines
-In the previous section, we explored how branches can be used to track changes to a set of files or collection of data over time. But once you have data, you'll typically want to do something with it, whether it's transforming it, running tests on it, or even training a machine learning model. This is where the **Pachyderm Pipeline System (PPS)** comes in.
+The **Pachyderm Pipeline System (PPS)** is how code gets applied to your data. Pipelines work seamlessly with data inside your data repositories, meaning that we can deploy a pipeline to transform the data from a data repo or repos, and anytime we modify our data, the pipeline will automatically re-run.
 
-PPS is the component of Pachyderm that applies code to your data. Pipelines work directly with data stored in your repositories, which means that you can deploy a pipeline to transform the data from your data repository, and anytime you modify the data, the pipeline will automatically re-run.
-
-In Pachyderm, a pipeline refers to a single step in your computational graph. It's defined by a pipeline specification and runs in Kubernetes. While this may initially seem like a challenging concept, let's look at a sample pipeline then work through an example to better understand how pipelines work in Pachyderm.
+In Pachyderm, a pipeline is defined by a pipeline specification and runs in Kubernetes. Note: Unlike other frameworks, a pipeline refers to a single step in your computational DAG (directed acyclic graph), as many operations can be performed in a single pipeline execution. 
 
 ## Pipeline Specification 
-This is a Pachyderm pipeline definition in YAML format that describes a pipeline called transform that takes data from the data repository and transforms it using a Python script `my_transform_code.py`.
+This is a Pachyderm pipeline definition in YAML. It describes a pipeline called transform that takes data from the data repository and transforms it using a Python script `my_transform_code.py`.
 
 ```yaml
 pipeline: 
@@ -32,28 +30,37 @@ input:
     repo: data
     glob: "/*"
 transform:
-  image: python:3.9
-cmd:
-  - python
-  - "/my_transform_code.py"
-  - "--input"
-  - "/pfs/data/"
-  - "--output"
-  - "/pfs/out/"
-  ```
+  image: my-transform-image:v1.0
+  cmd:
+    - python
+    - "/my_transform_code.py"
+    - "--input"
+    - "/pfs/data/"
+    - "--output"
+    - "/pfs/out/"
+```
 
 Here's a breakdown of the different sections of the pipeline definition:
 
-- **pipeline** section specifies the name of the pipeline (in this case, it's transform).
-- **input** section specifies the input for the pipeline. In this case, the input is taken from the data repository in Pachyderm. glob is used to specify which files to select from the repository. In this case, `/*` is used to select all files in the repository.
-- **transform** section specifies the Docker image that will be used to execute the transformation. In this case, it's a `Python 3.9` image.
-- **cmd** section specifies the command that will be run inside the container. In this case, the command is to run the `my_transform_code.py` Python script with the `--input` and `--output` flags, specifying the input and output directories respectively. `/pfs/data/` and `/pfs/out/` are directories created by Pachyderm that represent the input and output repositories respectively.
+- **pipeline** specifies the name of the pipeline (in this case, it's transform). This name will also be used as the name for the output data repository. 
+- **input** specifies the input for the pipeline. In this case, the input is taken from the `data` repository in Pachyderm. `glob` is used to specify how the files from the repository map to datums for processing. In this case, `/*` is used to specify all files in the repository can be processed individually.
+- **transform** specifies the code and image to use for processing the input data. The `image` field specifies the Docker image to use for the pipeline. In this example, the image is named `my-transform-image` with a tag of `v1.0`. The `cmd` field specifies the command to run inside the container. In this example, the command is `python /my_transform_code.py`, which runs a Python script named `my_transform_code.py`. The script is passed the `--input` flag pointing to the input data directory, and the `--output` flag pointing to the output data directory. `/pfs/data/` and `/pfs/out/` are directories created by Pachyderm. The input directory will contain an individual datum when the job is running, and anything put into the output directory will be committed to the output repositories when the job is complete.
 
 So, in summary, this pipeline definition defines a pipeline called transform that takes all files in the data repository, runs a Python script to transform them, and outputs the results to the out repository.
 
 
 ## Datums and Jobs
-Pachyderm pipelines allow you to parallelize computation across a cluster. To distribute data, we can use datums. In Pachyderm, datums are used as a way to distribute processing workloads by splitting data into indivisible pieces.
+
+Pipelines can distributed work across a cluster to parallelize computation. Each time data is committed to a Pachyderm repository, a job is created for each pipeline with that repo as an input to process the data.
+
+To determine how to distribute data and computational work, datums are used. A **datum** is an indivisible unit of data required by the pipeline, defined according to the pipeline spec. The datums will be distributed across the cluster to be processed by workers. 
+
+
+{{% notice note %}}
+Only one job per pipeline will be created per commit, but there may be many datums per job.
+{{% /notice  %}}
+
+![Datum processing diagram](/images/distributed-computing101.gif)
 
 For example, say you have a bunch of images that you want to normalize to a single size. You could iterate through each image and use opencv to change the size of it. No image depends on any other image, so this task can be parallelized by treating each image as an individual unit of work, a datum. 
 
@@ -117,6 +124,14 @@ Datums can also be created from advanced operations, such as Join, Cross, Group,
 ## Pipeline Communication (Advanced)
 A much more detailed look at how Pachyderm actually triggers pipelines is shown in the sequence diagram below. This is a much more advanced level of detail, but knowing how the different pieces of the platform interact can be useful.
 
+Before we look at the diagram, it may be helpful to provide a brief recap of the main participants involved:
+
+- **User:** The user is the person interacting with Pachyderm, typically through the command line interface (CLI) or one of the client libraries.
+- **PFS (Pachyderm File System):** PFS is the underlying file system that stores all of the data in Pachyderm. It provides version control and lineage tracking for all data inside it.
+- **PPS (Pachyderm Pipeline System):** PPS is how code gets applied to the data in Pachyderm. It manages the computational graph, which describes the dependencies between different steps of the data processing pipeline.
+- **Worker:** Workers are Kubernetes pods that executes the jobs defined by PPS. Each worker runs a container image that contains the code for a specific pipeline. The worker will iterate through the datums it is given and apply user code to it.
+
+
 ```mermaid
 sequenceDiagram
    participant User
@@ -163,3 +178,11 @@ sequenceDiagram
    Worker->>PPS: Finish job
    deactivate Worker
 ```
+
+This diagram illustrates the data flow and interaction between the user, the Pachyderm Pipeline System (PPS), the Pachyderm File System (PFS), and a worker node when creating and running a Pachyderm pipeline. Note, this is simplified for the single worker case. The multi-worker and autoscaling mechanisms are more complex. 
+
+The sequence of events begins with the user creating a PFS repo called `foo` and a PPS pipeline called `bar` with the foo repo as its input. When the pipeline is created, PPS creates a branch called `bar@master`, which is provenant on the `foo@master` branch in PFS. A worker pod is then created in the Kubernetes cluster by PPS, which subscribes to the `bar@master` branch.
+
+When the user puts a file named `data.txt` into the `foo@master` branch, PFS starts a new commit and propagates the commit, opening downstream commits for anything impacted. The worker receives the subscribed commit and when it finishes, triggers the pipeline.
+
+The triggered pipeline creates a job for the pipeline, requesting datums for the output commit. For each datum, the worker downloads the data, processes it with the user's code, and writes the output to an open output commit in PFS. Once all datums have been processed, the worker finishes the output commit and the job is marked as complete.
