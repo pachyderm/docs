@@ -8,6 +8,7 @@ tags: ["deployment"]
 series:
 seriesPart: 
 weight: 3
+directory: true 
 ---
 
 Pachyderm autocompletion allows you to automatically finish

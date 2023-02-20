@@ -7,6 +7,7 @@ date:
 tags: ["aws", "deployment"]
 series:
 seriesPart:
+
 --- 
 
 This article walks you through deploying a Pachyderm cluster on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS).
@@ -179,7 +180,7 @@ To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](h
 
 ## 3. Enable Your Persistent Volumes Creation
 
-etcd and PostgreSQL (metadata storage) each claim the creation of a persistent volume. **Although Pachyderm uses `gp2` default EBS volumes, we strongly recommend using SSD gp3 in production.**
+etcd and PostgreSQL (metadata storage) each claim the creation of a persistent volume. **We strongly recommend using SSD gp3 in production.**
 
 ### For Production
 
@@ -220,7 +221,7 @@ Find the details of all the steps highlighted below in [AWS Documentation: "Gett
 | *Master username* | Choose your Admin username.|
 | *Master password* | Choose your Admin password.|
 | *DB instance class* | The standard default should work. You can change the instance type later on to optimize your performances and costs. |
-| *Storage type* and *Allocated storage*| If you choose **gp2**, remember that Pachyderm's metadata services require **high IOPS (1500)**. Oversize the disk accordingly (>= 1TB). <br> If you select **io1**, keep the 100 GiB default size. <br> Read more [information on Storage for RDS on Amazon's website](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html). |
+| *Storage type* and *Allocated storage*| If you select **io1**, keep the 100 GiB default size. <br> Read more [information on Storage for RDS on Amazon's website](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html). |
 | *Storage autoscaling* | If your workload is cyclical or unpredictable, enable storage autoscaling to allow RDS to scale up your storage when needed. |
 | *Standby instance* | We highly recommend creating a standby instance for production environments.|
 | *VPC* | **Select the VPC of your Kubernetes cluster**. Attention: After a database is created, you can't change its VPC. <br> Read more on [VPCs and RDS on Amazon documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html).| 
@@ -231,9 +232,9 @@ Find the details of all the steps highlighted below in [AWS Documentation: "Gett
 | *Database name* | In the *Database options* section, enter Pachyderm's Database name (We are using `pachyderm` in this example.) and click *Create database* to create your PostgreSQL service. Your instance is running. <br>Warning: If you do not specify a database name, Amazon RDS does not create a database.|
 
 
-5. If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you must create a second database named `dex` in your RDS instance for Pachyderm's authentication service.  Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). 
+1. If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you must create a second database named `dex` in your RDS instance for Pachyderm's authentication service.  Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). 
    
-6. Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). Pachyderm will use the same username to connect to `pachyderm` as well as to `dex`. 
+2. Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). Pachyderm will use the same username to connect to `pachyderm` as well as to `dex`. 
 
 
 ### Update your values.yaml 
@@ -272,7 +273,6 @@ If you have not created a Managed PostgreSQL RDS instance, **replace the Postgre
 {{< stack type="wizard" >}}
 {{% wizardRow id="Volume Type" %}}
 {{% wizardButton option="gp3" state="active" %}}
-{{% wizardButton option="gp2" %}}
 {{% /wizardRow %}}
 
 {{% wizardResults %}}
@@ -298,7 +298,7 @@ proxy:
 pachd:
   storage:
     amazon:
-      bucket: blah
+      bucket: your-bucket-name
       region: us-east-2
   serviceAccount:
     additionalAnnotations:
@@ -365,92 +365,6 @@ postgresql:
   # database server to connect to in global.postgresql
   enabled: false
 ```
-{{% /wizardResult%}}
-{{% wizardResult val1="volume-type/gp2" %}}
-
-#### For gp2 EBS Volumes
-
-[Check out our example of values.yaml for gp2](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/aws-gp2-values.yaml) or use our minimal example below.   
-    
-##### For Gp2 + Service account annotations
-```yaml
-deployTarget: AMAZON      
-etcd:
-  etcd.storageSize: 500Gi
-
-proxy:
-  enabled: true
-  service:
-    type: LoadBalancer
-
-pachd:
-  storage:
-    amazon:
-      bucket: blah
-      region: us-east-2
-  serviceAccount:
-    additionalAnnotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
-  worker:
-    serviceAccount:
-      additionalAnnotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::190146978412:role/pachyderm-bucket-access
-global:
-  postgresql:
-    postgresqlUsername: "username"
-    postgresqlPassword: "password" 
-    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-    postgresqlDatabase: "databasename"
-    # The postgresql database host to connect to. Defaults to postgres service in subchart
-    postgresqlHost: "RDS CNAME"
-    # The postgresql database port to connect to. Defaults to postgres server in subchart
-    postgresqlPort: "5432"
-
-postgresql:
-  # turns off the install of the bundled postgres.
-  # If not using the built in Postgres, you must specify a Postgresql
-  # database server to connect to in global.postgresql
-  enabled: false
-```  
-##### For Gp2 + AWS Credentials
-
-```yaml
-deployTarget: AMAZON      
-etcd:
-  etcd.storageSize: 500Gi
-
-proxy:
-  enabled: true
-  service:
-    type: LoadBalancer
-
-pachd:
-  storage:
-    amazon:
-      bucket: blah
-      region: us-east-2
-      # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-      id: AKIAIOSFODNN7EXAMPLE            
-      # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html           
-      secret: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-global:
-  postgresql:
-    postgresqlUsername: "username"
-    postgresqlPassword: "password" 
-    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
-    postgresqlDatabase: "databasename"
-    # The postgresql database host to connect to. Defaults to postgres service in subchart
-    postgresqlHost: "RDS CNAME"
-    # The postgresql database port to connect to. Defaults to postgres server in subchart
-    postgresqlPort: "5432"
-
-postgresql:
-  # turns off the install of the bundled postgres.
-  # If not using the built in Postgres, you must specify a Postgresql
-  # database server to connect to in global.postgresql
-  enabled: false
-```
-
 {{% /wizardResult%}}
 {{% /wizardResults %}}
 {{< /stack >}}

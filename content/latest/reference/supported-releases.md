@@ -7,6 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
+directory: true 
 ---
 
 Pachyderm lists the status for each release and feature, so that you can understand expectations for support and stability.

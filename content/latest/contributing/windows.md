@@ -7,6 +7,7 @@ date:
 tags:  ["developers", "windows"]
 series:
 seriesPart:
+directory: true 
 --- 
 
 ## Before You Start 

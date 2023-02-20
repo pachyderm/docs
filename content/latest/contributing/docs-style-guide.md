@@ -8,6 +8,7 @@ tags:  ["developers"]
 series:
 seriesPart:
 mermaid: true 
+directory: true 
 --- 
 
 Thank you for taking an interest in contributing to Pachyderm's docs! 🐘 📖

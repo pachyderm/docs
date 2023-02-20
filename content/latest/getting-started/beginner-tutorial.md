@@ -8,6 +8,7 @@ tags: ["tutorials"]
 series:
 seriesPart: 
 weight: 4
+directory: true 
 ---
 
 ## Before You Start 

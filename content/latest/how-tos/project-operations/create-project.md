@@ -13,7 +13,7 @@ weight: 1
 ## Before You Start 
 
 - Project names should be less than 51 characters long
-- Avoid starting a project name with special characters, such as a period (`.`), or hyphen (`-`).
+- Project names cannot start with special characters and cannot contain periods (.) at all. Regex example:  `/^[a-zA-Z0-9-_]+$/`.
 
 ## How to Create a Project
 ### 1. Create a Project
