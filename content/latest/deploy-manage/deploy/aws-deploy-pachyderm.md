@@ -180,17 +180,43 @@ To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](h
 
 ## 3. Enable Your Persistent Volumes Creation
 
-etcd and PostgreSQL (metadata storage) each claim the creation of a persistent volume. **We strongly recommend using SSD gp3 in production.**
+etcd and PostgreSQL (metadata storage) each claim the creation of a persistent volume.
 
 ### For Production
 
-1. [Create an IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html). You might already have completed this step if you chose to create an IAM Role and Policy to give your containers permission to access your S3 bucket.
-2. Create a CSI Driver service account whose IAM Role will be granted the permission (policy) to make calls to AWS APIs. 
-3. Install Amazon EBS Container Storage Interface (CSI) driver on your cluster configured with your created service account.
+1. Create an [IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html). 
+2. Install the Amazon EBS Container Storage Interface (CSI) driver on your cluster.
+3. [Create a gp3 storage class](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html) manifest file (e.g., `gp3-storageclass.yaml`)
+   ```s
+   kind: StorageClass
+   apiVersion: storage.k8s.io/v1
+   metadata:
+     name: gp3
+     annotations:
+       storageclass.kubernetes.io/is-default-class: "true"
+   provisioner: kubernetes.io/aws-ebs
+   parameters:
+     type: gp3
+     fsType: ext4
 
-See the [official AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for more details.
-
+   ```
+4. [Set gp3 to your default storage class](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/). 
+   ```s
+   kubectl apply -f gp3-storageclass.yaml
+   ```
+5. Verify that it has been set as your default.
+   ```s
+   kubectl get storageclass
+   ```
  
+{{% notice tip %}}
+If you need to mark a StorageClass as non-default, use the following:
+
+```s
+kubectl patch storageclass <storageclass-name> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+```
+{{% /notice %}}
+
 ### For Non-Production
 
 For non production deployments, use the default bundled version of PostgreSQL: [Go to the deployment of Pachyderm](#5-deploy-pachyderm)  
