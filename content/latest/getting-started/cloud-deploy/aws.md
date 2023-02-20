@@ -44,7 +44,34 @@ aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION}
 aws s3 ls
 ```
 
-## 3. Create a Values.yaml
+## 3. Enable Persistent Volumes Creation 
+
+1. Create an [IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html). 
+2. Install the Amazon EBS Container Storage Interface (CSI) driver on your cluster.
+3. [Create a gp3 storage class](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html) manifest file (e.g., `gp3-storageclass.yaml`)
+   ```s
+   kind: StorageClass
+   apiVersion: storage.k8s.io/v1
+   metadata:
+     name: gp3
+     annotations:
+       storageclass.kubernetes.io/is-default-class: "true"
+   provisioner: kubernetes.io/aws-ebs
+   parameters:
+     type: gp3
+     fsType: ext4
+
+   ```
+4. [Set gp3 to your default storage class](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/). 
+   ```s
+   kubectl apply -f gp3-storageclass.yaml
+   ```
+5. Verify that it has been set as your default.
+   ```s
+   kubectl get storageclass
+   ```
+
+## 4. Create a Values.yaml
 
 {{< stack type="wizard" >}}
 {{% wizardRow id="version" %}}
@@ -100,7 +127,7 @@ aws s3 ls
 {{% /wizardResults %}}
 {{< /stack>}}
 
-## 4. Configure Helm
+## 5. Configure Helm
 
 Run the following to add the Pachyderm repo to Helm:
 ```s
@@ -108,7 +135,7 @@ helm repo add pach https://helm.pachyderm.com
 helm repo update
 helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
 ```
-## 5. Verify Installation 
+## 6. Verify Installation 
 
 1. In a new terminal, run the following command to check the status of your pods:
  ```s
@@ -124,7 +151,7 @@ pod/postgres-0                                 1/1     Running     0          2m
  ```
 2. Re-run this command after a few minutes if `pachd` is not ready.
 
-## 6. Connect to Cluster
+## 7. Connect to Cluster
 
 ```s
 pachctl connect grpc://localhost:80 
