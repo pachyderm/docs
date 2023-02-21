@@ -47,7 +47,7 @@ aws s3 ls
 ## 3. Enable Persistent Volumes Creation 
 
 1. Create an [IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html). 
-2. Install the Amazon EBS Container Storage Interface (CSI) driver on your cluster.
+2. [Install the Amazon EBS Container Storage Interface (CSI)](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html) driver on your cluster.
 3. [Create a gp3 storage class](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html) manifest file (e.g., `gp3-storageclass.yaml`)
    ```s
    kind: StorageClass

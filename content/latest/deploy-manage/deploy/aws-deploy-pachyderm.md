@@ -182,10 +182,8 @@ To set up bucket encryption, see [Amazon S3 Default Encryption for S3 Buckets](h
 
 etcd and PostgreSQL (metadata storage) each claim the creation of a persistent volume.
 
-### For Production
-
 1. Create an [IAM OIDC provider for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html). 
-2. Install the Amazon EBS Container Storage Interface (CSI) driver on your cluster.
+2. [Install the Amazon EBS Container Storage Interface (CSI)](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html) driver on your cluster.
 3. [Create a gp3 storage class](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html) manifest file (e.g., `gp3-storageclass.yaml`)
    ```s
    kind: StorageClass
@@ -217,9 +215,6 @@ kubectl patch storageclass <storageclass-name> -p '{"metadata": {"annotations":{
 ```
 {{% /notice %}}
 
-### For Non-Production
-
-For non production deployments, use the default bundled version of PostgreSQL: [Go to the deployment of Pachyderm](#5-deploy-pachyderm)  
 
 ## 4. Create an AWS Managed PostgreSQL Database
 
