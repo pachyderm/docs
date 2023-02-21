@@ -1,16 +1,12 @@
 ---
 title: "Intro to Pipelines"
 description: ""
-lead: ""
 date: 2023-01-30T16:17:44-06:00
-lastmod: 2023-01-30T16:17:44-06:00
-draft: false
-images: []
-menu:
-  docs:
-    parent: ""
 weight: 050
-toc: true
+tags:
+layout:
+series: #[""]
+seriesPart:
 mermaid: true 
 ---
 

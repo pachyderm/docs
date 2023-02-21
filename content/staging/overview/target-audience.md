@@ -1,16 +1,12 @@
 ---
 title: "Target Audience"
 description: ""
-lead: ""
 date: 2023-01-30T16:17:44-06:00
-lastmod: 2023-01-30T16:17:44-06:00
-draft: false
-images: []
-menu:
-  docs:
-    parent: ""
+tags: 
 weight: 020
-toc: true
+series: #[""]
+seriesPart:
+layout:
 ---
 
 ## Target Audience

@@ -1,16 +1,12 @@
 ---
 title: "Key Features"
 description: ""
-lead: ""
 date: 2023-01-30T16:17:44-06:00
-lastmod: 2023-01-30T16:17:44-06:00
-draft: false
-images: []
-menu:
-  docs:
-    parent: ""
 weight: 010
-toc: true
+tags:
+series: #[""]
+seriesPart:
+layout:
 ---
 
 ## Key Features and Benefits
@@ -21,14 +17,20 @@ The following are the key features of Pachyderm that make it a powerful data pro
 - Orchestrate batch or real-time data pipelines.
 - Only process dependent changes in the data.
 - Reproducibility and data lineage across all pipelines. 
+
+
 ### Version Control
 - Track every change to your data automatically.
 - Works with any file type.
 - Supports collaboration through a git-like structure of commits.
+
+
 ### Autoscaling and Deduplication
 - Autoscale jobs based on resource demand.
 - Automatically parallelize large data sets.
 - Automatically deduplicate data across repositories.
+
+
 ### Flexibility and Infrastructure Agnosticism
 - Use existing cloud or on-premises infrastructure.
 - Process any data type, size, or scale in batch or real-time pipelines.
