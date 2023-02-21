@@ -7,6 +7,7 @@ weight: 020
 series: #[""]
 seriesPart:
 layout:
+directory: true 
 ---
 
 ## Target Audience

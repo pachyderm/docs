@@ -8,6 +8,7 @@ layout:
 series: #[""]
 seriesPart:
 mermaid: true 
+directory: true 
 ---
 
 ## Introduction to Pipelines

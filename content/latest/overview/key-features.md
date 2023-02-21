@@ -7,6 +7,7 @@ tags:
 series: #[""]
 seriesPart:
 layout:
+directory: true 
 ---
 
 ## Key Features and Benefits

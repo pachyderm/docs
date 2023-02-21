@@ -7,6 +7,7 @@ mermaid: true
 series: #[""]
 seriesPart:
 layout:
+directory: true 
 ---
 
 ## Introduction to Data Versioning
