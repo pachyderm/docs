@@ -1,6 +1,6 @@
 ---
 title: "Target Audience"
-description: ""
+description: Discover if Pachyderm is the right solution for your large-scale data processing and analysis needs.
 date: 2023-01-30T16:17:44-06:00
 tags: 
 weight: 020

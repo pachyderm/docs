@@ -1,6 +1,6 @@
 ---
 title: "Intro to Pipelines"
-description: ""
+description: Learn about Pachyderm Pipeline System and how to define pipelines in YAML for data transformation and processing, including datums, jobs, and advanced glob patterns.
 date: 2023-01-30T16:17:44-06:00
 weight: 050
 tags:

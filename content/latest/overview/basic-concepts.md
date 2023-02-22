@@ -1,6 +1,6 @@
 ---
 title: "Basic Concepts"
-description: ""
+description: Discover how Pachyderm provides a secure, scalable, and version-controlled solution for storing and processing large amounts of data through its most basic concepts.
 date: 2023-01-30T16:17:44-06:00
 series: #[""]
 seriesPart:

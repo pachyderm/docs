@@ -1,6 +1,6 @@
 ---
 title: "Intro to Data Versioning"
-description: ""
+description: Learn how to interact with versioned data in Pachyderm, including creating and managing data repositories, creating and navigating commits, and branching to manage the evolution of data.
 date: 2023-01-30T16:17:44-06:00
 weight: 040
 mermaid: true 
