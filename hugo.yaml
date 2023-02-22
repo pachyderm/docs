@@ -51,7 +51,6 @@ params:
     latest: "2.5.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
     patch: "2.5.0" # Used for announcements and to generate download links
 
-
   ## Nav features 
   navLevel: true  #  displays level-2 directory items in the file tree.
   breadcrumbs: true # displays a trail of breadcrumbs
