@@ -51,7 +51,7 @@ label: Required for Group Inputs
 |`repo`|Specifies the name of the Pachyderm repository that contains the input data.|
 |`branch`| The branch to watch for commits. If left blank, Pachyderm sets this value to master. |
 | `glob`| A wildcard pattern that defines how a dataset is broken up into datums for further processing. When you use a glob pattern in a group input, it creates a naming convention that Pachyderm uses to group the files.|
-|`group_by`|A parameter that is used to group input files by a specific field or pattern. (e.g., `group_by: /path/to/grouping_field`) |
+|`group_by`|A parameter that is used to group input files by a specific pattern. |
 |`lazy`| Controls how the data is exposed to jobs. The default is `false` which means the job eagerly downloads the data it needs to process and exposes it as normal files on disk. If lazy is set to `true`, data is exposed as named pipes instead, and no data is downloaded until the job opens the pipe and reads it. If the pipe is never opened, then no data is downloaded.|
 |`empty_files`| Controls how files are exposed to jobs. If set to `true`, it causes files from this PFS to be presented as empty files. This is useful in shuffle pipelines where you want to read the names of files and reorganize them by using symlinks.|
 |`s3`| Indicates whether the input data is stored in an S3 object store.|
@@ -59,7 +59,7 @@ label: Required for Group Inputs
 
 ## Behavior 
 
-The `group` input in a Pachyderm Pipeline Spec allows you to group input files by a specific field or pattern. 
+The `group` input in a Pachyderm Pipeline Spec allows you to group input files by a specific  pattern. 
 
 To use the `group` input, you specify one or more PFS inputs with a `group_by` parameter. This parameter specifies a pattern or field to use for grouping the input files. The resulting groups are then passed to your pipeline as a series of grouped datums, where each datum is a single group of files.
 
