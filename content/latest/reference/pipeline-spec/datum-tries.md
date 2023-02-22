@@ -14,9 +14,9 @@ label: optional
 ## Spec 
 
 ```s
-{
-    "datum_tries": int,
-}
+
+"datum_tries": int,
+
 ```
 
 ## Behavior 

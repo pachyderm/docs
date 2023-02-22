@@ -14,19 +14,19 @@ label: Required for Cron Inputs
 ## Spec 
 
 ```s
-{
-  "input": {
-    "cron": {
-      {
-          "name": string,
-          "spec": string,
-          "repo": string,
-          "start": time,
-          "overwrite": bool
-      }
+
+"input": {
+  "cron": {
+    {
+        "name": string,
+        "spec": string,
+        "repo": string,
+        "start": time,
+        "overwrite": bool
     }
   }
 }
+
 ```
 
 ## Behavior 

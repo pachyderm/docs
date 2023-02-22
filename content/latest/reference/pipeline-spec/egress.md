@@ -14,24 +14,24 @@ label: optional
 ## Spec
 
 ```s
-{
-    "egress": {
-      // Egress to an object store
-      "URL": "s3://bucket/dir"
-      // Egress to a database
-      "sql_database": {
-          "url": string,
-          "file_format": {
-              "type": string,
-              "columns": [string]
-          },
-          "secret": {
-              "name": string,
-              "key": "PACHYDERM_SQL_PASSWORD"
-          }
-      }
-    },
-}
+
+"egress": {
+    // Egress to an object store
+    "URL": "s3://bucket/dir"
+    // Egress to a database
+    "sql_database": {
+        "url": string,
+        "file_format": {
+            "type": string,
+            "columns": [string]
+        },
+        "secret": {
+            "name": string,
+            "key": "PACHYDERM_SQL_PASSWORD"
+        }
+    }
+},
+
 ```
 
 ## Behavior 

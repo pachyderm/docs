@@ -13,9 +13,9 @@ label: optional
 ## Spec
 
 ```s
-{
-    "s3_out": bool,
-}
+
+"s3_out": bool,
+
 ```
 
 ## Behavior 

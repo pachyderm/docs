@@ -16,9 +16,9 @@ label: optional
 ## Spec
 
 ```s
-{
-    "output_branch": string,
-}
+
+"output_branch": string,
+
 ```
 
 ## Behavior 

@@ -13,35 +13,35 @@ label: Required for Cross Inputs
 ## Spec 
 
 ```s
-{
-  "input": {
-    "cross": [
-    {
-      "pfs": {
-        "name": string,
-        "repo": string,
-        "branch": string,
-        "glob": string,
-        "lazy" bool,
-        "empty_files": bool,
-        "s3": bool
-      }
-    },
-    {
-      "pfs": {
-        "name": string,
-        "repo": string,
-        "branch": string,
-        "glob": string,
-        "lazy" bool,
-        "empty_files": bool,
-        "s3": bool
-      }
+
+"input": {
+  "cross": [
+  {
+    "pfs": {
+      "name": string,
+      "repo": string,
+      "branch": string,
+      "glob": string,
+      "lazy" bool,
+      "empty_files": bool,
+      "s3": bool
     }
-    ...
-  ]
+  },
+  {
+    "pfs": {
+      "name": string,
+      "repo": string,
+      "branch": string,
+      "glob": string,
+      "lazy" bool,
+      "empty_files": bool,
+      "s3": bool
+    }
+  }
+  ...
+]
 }
-}
+
 ```
 
 ## Behavior 

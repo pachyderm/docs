@@ -13,17 +13,17 @@ label: optional
 ## Spec
 
 ```s
-{
-    "resource_requests": {
-      "cpu": number,
-      "memory": string,
-      "gpu": {
-        "type": string,
-        "number": int
-        }
-      "disk": string,
-    },
-}
+
+"resource_requests": {
+  "cpu": number,
+  "memory": string,
+  "gpu": {
+    "type": string,
+    "number": int
+    }
+  "disk": string,
+},
+
 ```
 
 ## Behavior 

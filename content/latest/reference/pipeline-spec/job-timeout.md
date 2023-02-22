@@ -13,9 +13,9 @@ label: optional
 ## Spec 
 
 ```s
-{
-    "job_timeout": string,
-}
+
+"job_timeout": string,
+
 ```
 
 ## Behavior 

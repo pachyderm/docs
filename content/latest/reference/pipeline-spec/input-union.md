@@ -13,35 +13,34 @@ label: Required for Union Inputs
 ## Spec 
 
 ```s
-{
-  "input": {
-    "union": [
-    {
-      "pfs": {
-        "name": string,
-        "repo": string,
-        "branch": string,
-        "glob": string,
-        "lazy" bool,
-        "empty_files": bool,
-        "s3": bool
-      }
-    },
-    {
-      "pfs": {
-        "name": string,
-        "repo": string,
-        "branch": string,
-        "glob": string,
-        "lazy" bool,
-        "empty_files": bool,
-        "s3": bool
-      }
+"input": {
+  "union": [
+  {
+    "pfs": {
+      "name": string,
+      "repo": string,
+      "branch": string,
+      "glob": string,
+      "lazy" bool,
+      "empty_files": bool,
+      "s3": bool
     }
-    ...
-  ]
+  },
+  {
+    "pfs": {
+      "name": string,
+      "repo": string,
+      "branch": string,
+      "glob": string,
+      "lazy" bool,
+      "empty_files": bool,
+      "s3": bool
+    }
+  }
+  ...
+]
 }
-}
+
 ```
 
 ## Behavior 

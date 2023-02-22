@@ -13,9 +13,9 @@ label: optional
 ## Spec 
 
 ```s
-{
-    "description": string,
-}
+
+"description": string,
+
 ```
 
 ## Behavior 

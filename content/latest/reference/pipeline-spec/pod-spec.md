@@ -13,9 +13,9 @@ label: optional
 ##  Spec
 
 ```s
-{
-    "pod_spec": string,
-}
+
+"pod_spec": string,
+
 ```
 
 ## Behavior 

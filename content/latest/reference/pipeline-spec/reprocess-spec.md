@@ -13,9 +13,9 @@ label: optional
 ## Spec
 
 ```s
-{
-    "reprocess_spec": string,
-}
+
+"reprocess_spec": string,
+
 ```
 
 ## Behavior 

@@ -12,12 +12,10 @@ label: optional
 ## Spec 
 
 ```s
-{
-    "datum_set_spec": {
-        "number": int,
-        "size_bytes": int,
-        "per_worker": int,
-    }
+"datum_set_spec": {
+    "number": int,
+    "size_bytes": int,
+    "per_worker": int,
 }
 ```
 

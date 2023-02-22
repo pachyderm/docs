@@ -14,11 +14,11 @@ label: Optional
 ## Spec
 
 ```s
-{
-    "parallelism_spec": {
-      "constant": int
-    },
-}
+
+"parallelism_spec": {
+  "constant": int
+},
+
 ```
 
 ## Behavior 

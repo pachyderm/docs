@@ -13,16 +13,16 @@ label: Optional
 ## Spec 
 
 ```s
-{
-    "metadata": {
-      "annotations": {
-          "annotation": string
-      },
-      "labels": {
-          "label": string
-      }
+
+"metadata": {
+    "annotations": {
+        "annotation": string
     },
-}
+    "labels": {
+        "label": string
+    }
+},
+
 ```
 
 ## Behavior 

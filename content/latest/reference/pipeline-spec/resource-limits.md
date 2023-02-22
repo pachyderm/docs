@@ -13,17 +13,17 @@ label: optional
 ## Spec
 
 ```s
-{
-  "resource_limits": {
-  "cpu": number,
-  "memory": string,
-  "gpu": {
-    "type": string,
-    "number": int
-    }
-  "disk": string,
-  },
-}
+
+"resource_limits": {
+"cpu": number,
+"memory": string,
+"gpu": {
+  "type": string,
+  "number": int
+  }
+"disk": string,
+},
+
 ```
 
 ## Behavior 

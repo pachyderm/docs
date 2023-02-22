@@ -13,9 +13,9 @@ label: optional
 ## Spec 
 
 ```s
-{
-    "autoscaling": bool
-}
+
+"autoscaling": bool
+
 ```
 
 ## Behavior

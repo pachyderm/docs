@@ -14,38 +14,38 @@ label: Required for Join Inputs
 
 
 ```s
-{
-  "input": {
-  "join": [
-    {
-      "pfs": {
-        "name": string,
-        "repo": string,
-        "branch": string,
-        "glob": string,
-        "join_on": string,
-        "outer_join": bool,
-        "lazy": bool,
-        "empty_files": bool,
-        "s3": bool
-      }
-    },
-    {
-      "pfs": {
-        "name": string,
-        "repo": string,
-        "branch": string,
-        "glob": string,
-        "join_on": string,
-        "outer_join": bool,
-        "lazy": bool,
-        "empty_files": bool,
-        "s3": bool
-      }
+
+"input": {
+"join": [
+  {
+    "pfs": {
+      "name": string,
+      "repo": string,
+      "branch": string,
+      "glob": string,
+      "join_on": string,
+      "outer_join": bool,
+      "lazy": bool,
+      "empty_files": bool,
+      "s3": bool
     }
-  ]
+  },
+  {
+    "pfs": {
+      "name": string,
+      "repo": string,
+      "branch": string,
+      "glob": string,
+      "join_on": string,
+      "outer_join": bool,
+      "lazy": bool,
+      "empty_files": bool,
+      "s3": bool
+    }
+  }
+ ]
 }
-}
+
 ```
 
 ## Behavior 

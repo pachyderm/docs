@@ -14,9 +14,9 @@ label: optional
 ## Spec 
 
 ```s
-{
-    "datum_timeout": string,
-}
+
+"datum_timeout": string,
+
 ```
 
 ## Behavior 

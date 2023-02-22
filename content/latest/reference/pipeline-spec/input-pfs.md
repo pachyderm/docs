@@ -14,30 +14,30 @@ label: Required for PFS Inputs
 
 
 ```s
-{
-    "input": {
-    "pfs": {
-        "project": string,
-        "name": string,
-        "repo": string,
-        "repo_type":string,
+
+"input": {
+"pfs": {
+    "project": string,
+    "name": string,
+    "repo": string,
+    "repo_type":string,
+    "branch": string,
+    "commit":string,
+    "glob": string,
+    "join_on":string,
+    "outer_join": bool,
+    "group_by": string,
+    "lazy" bool,
+    "empty_files": bool,
+    "s3": bool,
+    "trigger": {
         "branch": string,
-        "commit":string,
-        "glob": string,
-        "join_on":string,
-        "outer_join": bool,
-        "group_by": string,
-        "lazy" bool,
-        "empty_files": bool,
-        "s3": bool,
-        "trigger": {
-            "branch": string,
-            "all": bool,
-            "cron_spec": string,
-            },
-        }
+        "all": bool,
+        "cron_spec": string,
+        },
     }
 }
+
 ```
 
 ## Behavior 

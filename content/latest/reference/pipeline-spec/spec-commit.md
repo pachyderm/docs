@@ -13,25 +13,25 @@ label: auto-generated
 ## Spec 
 
 ```s
-{
-    "spec_commit": {
+
+"spec_commit": {
+  "option": false,
+  "branch": {
+    "option": false,
+    "repo": {
       "option": false,
-      "branch": {
+      "name": string,
+      "type": string,
+      "project":{
         "option": false,
-        "repo": {
-          "option": false,
-          "name": string,
-          "type": string,
-          "project":{
-            "option": false,
-            "name": string,
-          },
-        },
-        "name": string
+        "name": string,
       },
-      "id": string,
-    }
+    },
+    "name": string
+  },
+  "id": string,
 }
+
 ```
 
 ## When to Use 
