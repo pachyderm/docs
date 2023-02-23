@@ -7,7 +7,7 @@ date:
 tags: 
 series:
 seriesPart:
-layout: glossary
+layout: 
 --- 
 
 

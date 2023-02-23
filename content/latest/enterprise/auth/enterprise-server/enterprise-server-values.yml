@@ -1,0 +1,23 @@
+enterpriseServer:
+  enabled: true
+
+pachd:
+ enabled: false
+ enterpriseLicenseKey: "<key-here>"
+ oauthClientID: "pachd"
+ oauthRedirectURI: "http://localhost:80/authorization-code/callback"
+ activateAuth: true
+
+proxy:
+  enabled: true
+	host: 192.168.1.70
+  service:
+    type: LoadBalancer
+
+oidc:
+  issuerURI: ""
+  mockIDP: true
+  requireVerifiedEmail: false
+  IDTokenExpiry: 24h
+  RotationTokenExpiry: 48h
+  upstreamIDPs: []

@@ -13,7 +13,7 @@
             <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
                 {{/* Displays a series button if page is part of a series collection  */}}
                 {{ partial "featureSeriesButton.html" . }}
-                <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}} Glossary</h1>
+                <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}} Index</h1>
                 {{ if .Description}}
                     <p class="s bold">
                         {{ .Description}}
@@ -31,31 +31,28 @@
         {{else}}
             {{/* Does not show the hero section if disabled from config.yaml */}}
         {{end}}
-        {{ range .Pages}}
+
+        {{ partial "glossary.html" . }}
+        {{/*  {{ range .Pages}}
         <a href="{{.RelPermalink}}">
             <div class="my-4">
-                <h2>{{.Title}}</h2> 
+                <h2>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h2> 
                 <p> 
                     {{.Description}}
                 </p>
             </div>
         </a>
             
-        {{end}}
+        {{end}}  */}}
       
     </main>
     <aside class="is-one-fifth is-hidden-mobile">
-        <div class="sticky pt-6 xs px-3">
-            {{.TableOfContents}}
+        <div class="stack-center sticky pt-6 xs px-3">
+            {{ $letters := "abcdefghijklmnopqrstuvwxyz" }}
+            {{ range $i, $letter := split $letters "" }}
+                <div class="py-1"><a class="m bold" href="#{{$letter}}">{{$letter}}</a></div>
+            {{ end }}
         </div>
     </aside>
 
 {{end}}
-
-
-
-
-
-
-
-

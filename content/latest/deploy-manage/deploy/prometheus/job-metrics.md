@@ -1,0 +1,32 @@
+---
+# metadata # 
+title: Job Metrics
+description: Learn about the job metrics available. 
+date: 
+# taxonomy #
+tags: 
+series:
+seriesPart:
+--- 
+
+pachyderm_worker_datum_count
+pachyderm_worker_datum_download_bytes_count
+pachyderm_worker_datum_download_seconds_count
+pachyderm_worker_datum_download_size_bucket
+pachyderm_worker_datum_download_size_count
+pachyderm_worker_datum_download_size_sum
+pachyderm_worker_datum_download_time_bucket
+pachyderm_worker_datum_download_time_count
+pachyderm_worker_datum_download_time_sum
+pachyderm_worker_datum_proc_seconds_count
+pachyderm_worker_datum_proc_time_bucket
+pachyderm_worker_datum_proc_time_count
+pachyderm_worker_datum_proc_time_sum
+pachyderm_worker_datum_upload_bytes_count
+pachyderm_worker_datum_upload_seconds_count
+pachyderm_worker_datum_upload_size_bucket
+pachyderm_worker_datum_upload_size_count
+pachyderm_worker_datum_upload_size_sum
+pachyderm_worker_datum_upload_time_bucket
+pachyderm_worker_datum_upload_time_count
+pachyderm_worker_datum_upload_time_sum

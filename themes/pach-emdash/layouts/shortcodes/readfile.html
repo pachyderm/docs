@@ -1,0 +1,7 @@
+{{$file := .Get "file"}}
+
+{{ $file  | readFile  }}
+
+{{/*  usage:
+    {{% readfile file="/installation/common/01-editions.md" %}}
+  */}}
