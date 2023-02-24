@@ -4,7 +4,7 @@ title: Deferred Processing
 description: Learn about the concept of deferred processing in Pachyderm.
 date:
 # taxonomy #
-tags: ["data-operations", "datums"]
+tags: ["data-operations", "datums", "branch triggers", "trigger"]
 series:
 seriesPart:
 ---
