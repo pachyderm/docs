@@ -21,6 +21,8 @@ Pachyderm supports the latest Generally Available (GA) release and the previous 
 
 | Version  | Release Status | Support |
 | -------- | -------------- | ------- |
+| 2.5.x    | GA             | Yes     |           
+| 2.4.x    | GA             | Yes     |
 | 2.3.x    | GA             | Yes     |
 | 2.2.x    | GA             | Yes     |
 | 2.1.x    | GA             | Yes     |
