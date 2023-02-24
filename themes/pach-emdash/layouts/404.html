@@ -32,7 +32,16 @@
             {{end}}
             <section class="content mt-6">
                 {{ partial "featureBetaNotice.html" . }}
-                Looks like this page doesn't exist. Try searching for this topic in the search bar.
+                Looks like this page doesn't exist or has been archived. 
+                <ul>
+                    <li>
+                        If you are looking for content related to an archived version of Pachyderm, review our <a href="https://github.com/pachyderm/docs/tree/main/archive"> GitHub Archives folder</a>.
+                    </li>
+                    <li>
+                        If you are looking for the latest content, try out our search bar or browse the <a href="/latest">latest version of our documentation</a>.
+                    </li>
+                </ul>
+
                 {{ partial "pachctlRelatedCommands.html" . }}
             </section>
             {{ partial "featureNextPrev.html" . }}

@@ -4,3 +4,14 @@
       Access-Control-Allow-Origin = "*"
 
 
+[[redirects]]
+  from = "/2.2.x/*"
+  to = "https://docs.pachyderm.com/archive"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2.1.x/*"
+  to = "https://docs.pachyderm.com/archive"
+  status = 301
+  force = true
