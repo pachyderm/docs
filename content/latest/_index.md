@@ -8,10 +8,10 @@ tags:
 series:
 seriesPart:
 cascade:
-    latestPatch: 2.5.0
+    latestPatch: 2.5.1
     majorMinor: 2.5
     clientPython: 7.3
-    extensionJupyterLab: 2.5.0
-    mountServerBinary: 2.5.0
+    extensionJupyterLab: 2.5.1
+    mountServerBinary: 2.5.1
     release: latest  # used by sitemap.xml in themes folder
 ---
