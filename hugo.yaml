@@ -5,6 +5,13 @@ enableGitInfo: true
 enableEmoji: true 
 enableRobotsTXT: true 
 
+module:
+  mounts:
+  - source: examples
+    target: content/examples
+  
+
+
 theme: pach-emdash
 
 outputs: 
