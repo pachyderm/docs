@@ -212,3 +212,8 @@ Pachyderm often releases new pachctl commands in major/minor releases. You can a
 2. Update the `latestPatch` attribute value.
 3. Open the `config.yaml` file.
 4. Update the `releaseInfo.patch` attribute value.
+
+
+## Submodules 
+
+git submodule update --remote
