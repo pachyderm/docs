@@ -16,12 +16,12 @@ The Pachyderm File System (PFS) is the backbone of the Pachyderm data platform, 
 ### Repositories (Repo)
 Pachyderm repositories are version controlled, meaning that they keep track of changes to the data stored within them. Each repository can contain any type of data, including individual files or directories of files, and can handle data of any scale.
 
-[Learn more about Repositories](../../concepts/data-concepts/repository)
+[Learn more about Repositories](../../concepts/data-concepts/repo)
 
 ### Branches
 Branches in Pachyderm are similar to branches in Git. They are pointers to commits that move along a growing chain of commits. This allows you to work with different versions of your data within the same repository.
 
-[Learn more about Branches](../../concepts/data-concepts/branches)
+[Learn more about Branches](../../concepts/data-concepts/branch)
 
 ### Commits
 A commit in Pachyderm is created automatically whenever data is added to or deleted from a repository. Each commit preserves the state of all files in the repository at the time of the commit, similar to a snapshot. Each commit is uniquely identifiable by a UUID and is immutable, meaning that the source data can never change.
