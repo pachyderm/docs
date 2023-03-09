@@ -14,6 +14,7 @@ outputs:
   list: [ "HTML", "JSON", "RSS"]
   taxonomies: [ "HTML", "JSON", "RSS"]
 
+
 params:
   # Feature Switches #
 
