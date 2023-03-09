@@ -19,7 +19,11 @@ import numpy as np
 from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
  
 # Set up OpenAI API credentials
-openai.api_key = "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"
+openai.api_key = "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"
+
+################################################################################
+### Step 1
+################################################################################
 
 # Load the docs.json file
 with open("docs.json", "r") as f:
@@ -39,50 +43,25 @@ for doc in docs:
 # Create a dataframe from the list of texts
 df = pd.DataFrame(texts, columns=["fname", "text"])
 
+print("dataframe: ", df)
+
 # Set the text column to be the raw text 
 df["text"] = df.text
-
-# Save the processed dataframe to a CSV file
 df.to_csv("processed/docs.csv")
+df.head()
+
+################################################################################
+### Step 2
+################################################################################
 
 # Load the cl100k_base tokenizer which is designed to work with the ada-002 model
 tokenizer = tiktoken.get_encoding("cl100k_base")
 
-# Load the processed dataframe
-df = pd.read_csv("processed/docs.csv", index_col=0)
+df = pd.read_csv('processed/docs.csv', index_col=0)
+df.columns = ['title', 'text']
 
-# Rename the "body" column to "text"
-df = df.rename(columns={"body": "text"})
-
-# Check if the embeddings file exists
-if os.path.isfile("processed/embeddings.csv"):
-    # Load the embeddings from the file
-    df_embeddings = pd.read_csv("processed/embeddings.csv", index_col=0)
-    df_embeddings["embeddings"] = df_embeddings["embeddings"].apply(eval).apply(np.array)
-    df = pd.merge(df, df_embeddings, on="text")
-else:
-    # Tokenize the text and save the number of tokens to a new column
-    df["n_tokens"] = df.text.apply(lambda x: len(tokenizer.encode(x)))
-
-    # Split the text into chunks and save the number of tokens to a new column
-    max_tokens = 500
-    df["chunks"] = df.text.apply(lambda x: split_into_many(x, max_tokens))
-    df["n_tokens_chunks"] = df.chunks.apply(lambda x: [len(tokenizer.encode(" " + chunk)) for chunk in x])
-
-    # Flatten the list of chunks and their token counts into separate rows
-    df = df.explode(["chunks", "n_tokens_chunks"]).reset_index(drop=True)
-
-    # Convert the token counts to integers
-    df["n_tokens_chunks"] = df["n_tokens_chunks"].astype(int)
-
-    # Compute the embeddings for each chunk
-    df_embeddings = df.groupby(["chunks"]).apply(lambda x: compute_embeddings(x["text"], x["n_tokens_chunks"])).reset_index().rename(columns={0: "embeddings"})
-
-    # Merge the embeddings back into the original dataframe
-    df = pd.merge(df, df_embeddings, on="chunks")
-
-    # Save the embeddings to a CSV file
-    df_embeddings.to_csv("processed/embeddings.csv", index=False)
+# Tokenize the text and save the number of tokens to a new column
+df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 
 # Visualize the distribution of the number of tokens per row using a histogram
 df.n_tokens.hist()
@@ -218,7 +197,7 @@ def answer_question(
     max_len=1800,
     size="ada",
     debug=False,
-    max_tokens=300,
+    max_tokens=150,
     stop_sequence=None
 ):
     """
