@@ -64,7 +64,7 @@ def answer_question(
     max_len=1800,
     size="ada",
     debug=False,
-    max_tokens=150,
+    max_tokens=500,
     stop_sequence=None
 ):
     """
@@ -108,7 +108,9 @@ def start():
         if question.lower() == 'exit':
             break
         # Call the answer_question function with the user's question
+        print("\n\n")
         print(answer_question(df, question=question, debug=False))
+        print("\n\n")
 
 
 # Check if embeddings exist, if yes, load the dataframe from embeddings.csv
