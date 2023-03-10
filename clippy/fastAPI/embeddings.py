@@ -13,9 +13,15 @@ import openai
 from openai.embeddings_utils import distances_from_embeddings
 import numpy as np
 from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Set up OpenAI API credentials
-openai.api_key = "<key removed>"
+
+key = os.getenv("OPENAI_API_KEY")
+
+openai.api_key = key
 
 def create_context(
     question, df, max_len=1800, size="ada"
@@ -92,16 +98,22 @@ def answer_question(
         print(e)
         return ""
 
-
-# Check if embeddings exist, if yes, load the dataframe from embeddings.csv
-if os.path.exists('processed/embeddings.csv'):
+def start():
     df=pd.read_csv('processed/embeddings.csv', index_col=0)
     df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
     print('Embeddings found!')
-    # Prompt the user to input their question
-    question = input("What is your question? ")
-    # Call the answer_question function with the user's question
-    print(answer_question(df, question=question, debug=False))
+    while True:
+        # Prompt the user to input their question
+        question = input("What is your question? (Type 'exit' to quit) ")
+        if question.lower() == 'exit':
+            break
+        # Call the answer_question function with the user's question
+        print(answer_question(df, question=question, debug=False))
+
+
+# Check if embeddings exist, if yes, load the dataframe from embeddings.csv
+if os.path.exists('processed/embeddings.csv'):
+    start()
 
 else:
     # Load the docs.json file

@@ -5,6 +5,7 @@ from typing import List
 from fastapi import FastAPI
 from pydantic import BaseModel
 from embeddings import create_context, answer_question
+import numpy as np
 
 # Define the app and its endpoints
 app = FastAPI()
