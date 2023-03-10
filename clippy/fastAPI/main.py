@@ -5,7 +5,9 @@ from typing import List
 from fastapi import FastAPI
 from pydantic import BaseModel
 from embeddings import create_context, answer_question
+from milo import milo
 import numpy as np
+
 
 # Define the app and its endpoints
 app = FastAPI()
@@ -29,4 +31,5 @@ async def get_answer(question: Question):
     """
     context = create_context(question.question, df, max_len=1800, size="ada")
     answer = answer_question(df, question=question.question, debug=False)
+
     return Answer(answer=answer)

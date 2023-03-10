@@ -1,48 +1,71 @@
-import json
-import requests
-import re
-import urllib.request
 from bs4 import BeautifulSoup
 from collections import deque
+from dotenv import load_dotenv
+from fastapi import FastAPI
 from html.parser import HTMLParser
-from urllib.parse import urlparse
+import json
+import numpy as np
+import openai
+from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
 import os
 import pandas as pd
+from pydantic import BaseModel
+import re
+import requests
+from typing import List
+from urllib.parse import urlparse
+import urllib.request
 import tiktoken
-import openai
-from openai.embeddings_utils import distances_from_embeddings
-import numpy as np
-from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
-from dotenv import load_dotenv
+from urllib.parse import urlparse
+
 
 load_dotenv()
 
-# Set up OpenAI API credentials
+# OpenAI API Creds
 
 key = os.getenv("OPENAI_API_KEY")
 
 openai.api_key = key
 
-def create_context(
-    question, df, max_len=1800, size="ada"
-):
+
+app = FastAPI()
+
+# Request body
+class Question(BaseModel):
+    question: str
+
+# Response body
+class Answer(BaseModel):
+    answer: str
+
+## POST /answer
+
+@app.post("/answer", response_model=Answer)
+async def get_answer(question: Question):
+
+    answer = answer_question(df, question=question.question, debug=False)
+
+    return Answer(answer=answer)
+
+
+def create_context(question, df, max_len=1800, size="ada"):
     """
     Create a context for a question by finding the most similar context from the dataframe
     """
-
     # Get the embeddings for the question
     q_embeddings = openai.Embedding.create(input=question, engine='text-embedding-ada-002')['data'][0]['embedding']
 
-    # Get the distances from the embeddings
-    df['distances'] = distances_from_embeddings(q_embeddings, df['embeddings'].values, distance_metric='cosine')
+    # Compute distances from embeddings
+    distances = distances_from_embeddings(q_embeddings, df['embeddings'].values, distance_metric='cosine')
 
+    # Sort by distance
+    df_sorted = df.loc[np.array(distances).argsort()]
 
     returns = []
     cur_len = 0
 
-    # Sort by distance and add the text to the context until the context is too long
-    for i, row in df.sort_values('distances', ascending=True).iterrows():
-        
+    # Add the text to the context until the context is too long
+    for _, row in df_sorted.iterrows():
         # Add the length of the text to the current length
         cur_len += row['n_tokens'] + 4
         
@@ -56,17 +79,7 @@ def create_context(
     # Return the context
     return "\n\n###\n\n".join(returns)
 
-
-def answer_question(
-    df,
-    model="text-davinci-003",
-    question="Am I allowed to publish model outputs to Twitter, without a human review?",
-    max_len=1800,
-    size="ada",
-    debug=False,
-    max_tokens=500,
-    stop_sequence=None
-):
+def answer_question(df, model="text-davinci-003", question="Am I allowed to publish model outputs to Twitter, without a human review?", max_len=1800, size="ada", debug=False, max_tokens=500, stop_sequence=None):
     """
     Answer a question based on the most similar context from the dataframe texts
     """
@@ -98,10 +111,12 @@ def answer_question(
         print(e)
         return ""
 
-def start():
-    df=pd.read_csv('processed/embeddings.csv', index_col=0)
+def load_embeddings(file_path):
+    df = pd.read_csv(file_path, index_col=0)
     df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
-    print('Embeddings found!')
+    return df
+
+def start(df):
     while True:
         # Prompt the user to input their question
         question = input("What is your question? (Type 'exit' to quit) ")
@@ -115,7 +130,8 @@ def start():
 
 # Check if embeddings exist, if yes, load the dataframe from embeddings.csv
 if os.path.exists('processed/embeddings.csv'):
-    start()
+    df = load_embeddings('processed/embeddings.csv')
+    start(df)
 
 else:
     # Load the docs.json file
@@ -237,3 +253,4 @@ else:
     df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
 
     df.head()
+
