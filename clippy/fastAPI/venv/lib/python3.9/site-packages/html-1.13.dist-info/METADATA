@@ -1,0 +1,197 @@
+Metadata-Version: 2.1
+Name: html
+Version: 1.13
+Summary: simple, elegant HTML/XHTML generation
+Home-page: http://pypi.python.org/pypi/html
+Author: Richard Jones
+Author-email: rjones@ekit-inc.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 2.5
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Classifier: License :: OSI Approved :: BSD License
+
+Simple, elegant HTML generation.
+
+Constructing your HTML
+----------------------
+
+To construct HTML start with an instance of ``html.HTML()``. Add
+tags by accessing the tag's attribute on that object. For example:
+
+>>> from html import HTML
+>>> h = HTML()
+>>> h.br
+>>> print h                          # or print(h) in python 3+
+<br>
+
+If the tag should have text content you may pass it at tag creation time or
+later using the tag's ``.text()`` method (note it is assumed that a fresh
+``HTML`` instance is created for each of the following examples):
+
+>>> p = h.p('hello world!\n')
+>>> p.text('more &rarr; text', escape=False)
+>>> h.p
+>>> print h
+<p>hello, world!
+more &rarr; text</p>
+<p>
+
+Any HTML-specific characters (``<>&"``) in the text will be escaped for HTML
+safety as appropriate unless ``escape=False`` is passed. Note also that the
+top-level ``HTML`` object adds newlines between tags by default. Finally in
+the above you'll see an empty paragraph tag - tags with no contents get no
+closing tag.
+
+If the tag should have sub-tags you have two options. You may either add
+the sub-tags directly on the tag:
+
+>>> l = h.ol
+>>> l.li('item 1')
+>>> l.li.b('item 2 > 1')
+>>> print h
+<ol>
+<li>item 1</li>
+<li><b>item 2 &gt; 1</b></li>
+</ol>
+
+Note that the default behavior with lists (and tables) is to add newlines
+between sub-tags to generate a nicer output. You can also see in that
+example the chaining of tags in ``l.li.b``. If you wished you could add
+attributes to those chained tags, eg: ``l.li(id="special").b``.
+
+The alternative to the above method is to use the containter tag as a
+context for adding the sub-tags. The top-level ``HTML`` object keeps track
+of which tag is the current context:
+
+>>> with h.table(border='1'):
+...   for i in range(2):
+...     with h.tr:
+...       h.td('column 1')
+...       h.td('column 2')
+...  print h
+<table border="1">
+<tr><td>column 1</td><td>column 2</td></tr>
+<tr><td>column 1</td><td>column 2</td></tr>
+</table>
+
+Note the addition of an attribute to the ``<table>`` tag.
+
+A variation on the above is to explicitly reference the context variable,
+but then there's really no benefit to using a ``with`` statement. The
+following is functionally identical to the first list construction:
+
+>>> with h.ol as l:
+...   l.li('item 1')
+...   l.li.b('item 2 > 1')
+
+You may turn off/on adding newlines by passing ``newlines=False`` or
+``True`` to the tag (or ``HTML`` instance) at creation time:
+
+>>> l = h.ol(newlines=False)
+>>> l.li('item 1')
+>>> l.li('item 2')
+>>> print h
+<ol><li>item 1</li><li>item 2</li></ol>
+
+That control is also available as the ``newlines`` attribute on the
+``HTML`` or tag instance if you need to alter it after instantiation.
+
+Since we can't use ``class`` as a keyword, the library recognises ``klass``
+as a substitute:
+
+>>> print h.p(content, klass="styled")
+<p class="styled">content</p>
+
+
+Unicode
+-------
+
+``HTML`` will work with either regular strings **or** unicode strings, but
+not **both at the same time**.
+
+Obtain the final unicode string by calling ``unicode()`` on the ``HTML``
+instance:
+
+>>> h = HTML()
+>>> h.p(u'Some Euro: €1.14')
+>>> unicode(h)
+u'<p>Some Euro: €1.14</p>'
+
+If (under Python 2.x) you add non-unicode strings or attempt to get the
+resultant HTML source through any means other than ``unicode()`` then you
+will most likely get one of the following errors raised:
+
+UnicodeDecodeError
+   Probably means you've added non-unicode strings to your HTML.
+UnicodeEncodeError
+   Probably means you're trying to get the resultant HTML using ``print``
+   or ``str()`` (or ``%s``).
+
+
+How generation works
+--------------------
+
+The HTML document is generated when the ``HTML`` instance is "stringified".
+This could be done either by invoking ``str()`` on it, or just printing it.
+It may also be returned directly as the "iterable content" from a WSGI app
+function.
+
+You may also render any tag or sub-tag at any time by stringifying it.
+
+Tags with no contents (either text or sub-tags) will have no closing tag.
+There is no "special list" of tags that must always have closing tags, so
+if you need to force a closing tag you'll need to provide some content,
+even if it's just a single space character.
+
+Rendering doesn't affect the HTML document's state, so you can add to or
+otherwise manipulate the HTML after you've stringified it.
+
+
+Creating XHTML
+--------------
+
+To construct XHTML start with an instance of ``html.XHTML()`` and use it
+as you would an ``HTML`` instance. Empty elements will now be rendered
+with the appropriate XHTML minimized tag syntax. For example:
+
+>>> from html import XHTML
+>>> h = XHTML()
+>>> h.p
+>>> h.br
+>>> print h
+<p></p>
+<br />
+
+Version History (in Brief)
+--------------------------
+
+- 1.13 allow adding (X)HTML instances (tags) as new document content
+- 1.12 fix handling of XHTML empty tags when generating unicode
+  output (thanks Carsten Eggers)
+- 1.11 remove setuptools dependency
+- 1.10 support plain ol' distutils again
+- 1.9 added unicode support for Python 2.x
+- 1.8 added Python 3 compatibility
+- 1.7 added Python 2.5 compatibility and escape argument to tag
+  construction
+- 1.6 added .raw_text() and and WSGI compatibility
+- 1.5 added XHTML support
+- 1.3 added more documentation, more tests
+- 1.2 added special-case klass / class attribute
+- 1.1 added escaping control
+- 1.0 was the initial release
+
+----
+
+This code is copyright 2009-2010 eKit.com Inc (http://www.ekit.com/)
+See the end of the source file for the license of use.
+XHTML support was contributed by Michael Haubenwallner.
+
+
