@@ -29,25 +29,6 @@ shortened = []
 
 openai.api_key = key
 
-app = FastAPI()
-
-# Request body
-class Question(BaseModel):
-    question: str
-
-# Response body
-class Answer(BaseModel):
-    answer: str
-
-## POST /answer
-
-@app.post("/answer", response_model=Answer)
-async def get_answer(question: Question):
-
-    answer = answer_question(df, question=question.question, debug=False)
-
-    return Answer(answer=answer)
-
 def create_context(question, df, max_len=1800, size="ada"):
     """
     Create a context for a question by finding the most similar context from the dataframe
@@ -117,6 +98,7 @@ def load_embeddings(file_path):
     return df
 
 def start(df):
+
     while True:
         # Prompt the user to input their question
         question = input("What is your question? (Type 'exit' to quit) ")
