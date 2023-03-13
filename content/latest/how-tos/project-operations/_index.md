@@ -50,5 +50,8 @@ graph TD
     R -- from output repo --> 2(Grouping Pipeline)   
 ```
 
+## Limitations 
+
+- You currently cannot move existing repos or pipelines between different projects. 
 
 ---
