@@ -11,6 +11,9 @@ weight: 4
 label: required
 ---
 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## About 
 The ETCD section configures the ETCD cluster in the deployment.
 
@@ -51,7 +54,3 @@ etcd:
     type: ClusterIP # specifies the Kubernetes type of the etcd service.
   tolerations: []
 ```
-
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

@@ -11,6 +11,9 @@ weight: 7
 label: required
 --- 
 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## Values 
 
 The following section contains a series of tabs for commonly used configurations for this section of your values.yml Helm chart. 
@@ -504,6 +507,3 @@ pachd:
 {{% /wizardResults %}}
 {{< /stack>}}
 
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

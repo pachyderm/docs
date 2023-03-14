@@ -10,6 +10,10 @@ seriesPart:
 weight: 12
 label: Required for Production
 --- 
+
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## About 
 
 The OIDC section of the helm chart enables you to set up authentication through upstream IDPs. To use authentication, you must have an Enterprise license. 
@@ -140,6 +144,3 @@ oidc:
 
 {{< /stack >}}
 
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

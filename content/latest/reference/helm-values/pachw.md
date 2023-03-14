@@ -11,6 +11,9 @@ weight: 7
 label: optional
 --- 
 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## About
 
 PachW enables fine-grained control of where compaction and object-storage interaction occur by running storage tasks in a dedicated Kubernetes deployment. Users can configure PachW's min and max replicas as well as define nodeSelectors, tolerations, and resource requests. Using PachW allows power users to save on costs by claiming fewer resources and running storage tasks on less expensive nodes.
@@ -127,7 +130,3 @@ pachw:
 {{% /wizardResults %}}
 
 {{</stack >}}
-
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

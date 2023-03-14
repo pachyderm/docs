@@ -10,6 +10,9 @@ seriesPart:
 weight: 9 
 ---
 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## About
 
 The PGBouncer section configures a PGBouncer Postgres connection pooler.
@@ -44,6 +47,3 @@ pgbouncer:
   defaultPoolSize: 20 # specifies the maximum number of concurrent connections from pgbouncer to the postgresql database.
 ```
 
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

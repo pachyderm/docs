@@ -11,6 +11,9 @@ weight: 8
 label: optional
 --- 
 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## About
 
 Kube Event Tail deploys a lightweight app that watches Kubernetes events and echoes them into logs. 
@@ -82,6 +85,3 @@ kubeEventTail:
 
 {{</stack>}}
 
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

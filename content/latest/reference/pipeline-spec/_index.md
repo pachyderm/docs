@@ -210,3 +210,7 @@ Generally speaking, the only attributes that are strictly required for all scena
 {{% /wizardResults %}}
 
 {{</stack>}}
+
+{{% notice note %}}
+For a single-page view of all PPS options, go to the [PPS series page](/series/pps).
+{{% /notice %}}

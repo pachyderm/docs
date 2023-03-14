@@ -10,6 +10,9 @@ seriesPart:
 label: optional
 ---
 
+{{% notice note %}}
+For a single-page view of all PPS options, go to the [PPS series page](/series/pps).
+{{% /notice %}}
 ## Spec 
 
 ```s

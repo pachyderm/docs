@@ -11,6 +11,10 @@ weight: 14
 label: required 
 --- 
 
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
+
 ## About
 
 Proxy is a service that handles all Pachyderm traffic (S3, Console, OIDC, Dex, GRPC) on a single port; It's great for exposing directly to the Internet. 
@@ -150,8 +154,3 @@ proxy:
 {{% /wizardResults %}}
 
 {{< /stack>}}
-  
-
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

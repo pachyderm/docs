@@ -10,7 +10,9 @@ seriesPart:
 label: required
 weight: 1
 --- 
-
+{{% notice note %}}
+Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml) or the [Helm Series page](/series/helm).
+{{% /notice %}}
 ## About 
 
 The Deploy Target section defines where you're deploying Pachyderm; this is typically located at the top of your values.yaml file.
@@ -79,6 +81,3 @@ deployTarget: "MINIO"
 
 {{< /stack >}}
 
-{{% notice note %}}
-Looking for a comprehensive list of all attributes and comments? [View a complete values.yml file.](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)
-{{% /notice %}}

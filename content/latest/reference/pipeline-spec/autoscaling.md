@@ -10,6 +10,10 @@ seriesPart:
 label: optional
 ---
 
+{{% notice note %}}
+For a single-page view of all PPS options, go to the [PPS series page](/series/pps).
+{{% /notice %}}
+
 ## Spec 
 
 ```s
@@ -38,3 +42,4 @@ Example scenarios:
 - **Processing large datasets**: If you have a pipeline that is processing a large dataset, it can be difficult to predict the processing requirements for the pipeline. In this case, you could use the `autoscaling` attribute to automatically scale the number of worker nodes based on the processing load, in order to keep up with the demand.
 
 - **Handling bursty workloads**: If you have a workload that has periods of high demand followed by periods of low demand, it can be difficult to predict the processing requirements for the pipeline. In this case, you could use the `autoscaling` attribute to automatically scale the number of worker nodes up or down based on the processing load, in order to handle the bursty demand.
+
