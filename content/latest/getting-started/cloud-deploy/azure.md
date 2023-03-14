@@ -230,7 +230,7 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
        id: "AKIAIOSFODNN7EXAMPLE"
        # storage account key
        secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-   # pachyderm enterprise key
+   # Enterprise key
    enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
  console:
    enabled: true

@@ -118,7 +118,7 @@ aws s3 ls
        # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
        secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
        region: "us-east-2"
-   # pachyderm enterprise key 
+   # Enterprise key 
    enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
  console:
    enabled: true

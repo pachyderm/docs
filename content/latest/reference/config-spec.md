@@ -77,7 +77,7 @@ context, as specified in `v2.contexts`.
 
 ### Active Enterprise Context
 
-`v2.active_enterprise_context` specifies the name of the currently active pachyderm enterprise context, as specified in `v2.contexts`. If left blank the `v2.active_context` value will be interpreted as the Active Enterprise Context.
+`v2.active_enterprise_context` specifies the name of the currently active Enterprise context, as specified in `v2.contexts`. If left blank the `v2.active_context` value will be interpreted as the Active Enterprise Context.
 
 ### Contexts
 

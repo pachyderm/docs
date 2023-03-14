@@ -10,7 +10,7 @@ seriesPart:
 directory: true 
 ---
 
-Our free Pachyderm Community Edition contains **built-in scaling limitations and parallelism thresholds**. To scale beyond these limits, request a [Pachyderm Enterprise trial token](https://www.pachyderm.com/trial/) and enjoy unlimited scaling, and more.
+Our free Pachyderm Community Edition contains **built-in scaling limitations and parallelism thresholds**. To scale beyond these limits, request a [Enterprise trial token](https://www.pachyderm.com/trial/) and enjoy unlimited scaling, and more.
 
 {{% notice info %}} 
 You might qualify for a free Enterprise license.

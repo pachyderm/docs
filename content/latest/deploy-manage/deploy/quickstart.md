@@ -49,7 +49,7 @@ Use the latest available version of the components listed below.
 * Install [`Helm`](https://helm.sh/docs/intro/install/) for your deployment. 
 
 {{% notice warning %}}
-Get a Pachyderm Enterprise key
+Get a Enterprise key
 
 To get a free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
 {{% /notice %}}
@@ -96,8 +96,8 @@ Install [AWS CLI](https://aws.amazon.com/cli/)
  console:
    enabled: true
 ```
-#### Deploy Pachyderm Enterprise with Console
- Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization#cluster-roles) per default.
+#### Deploy Enterprise with Console
+ Note that when deploying Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization#cluster-roles) per default.
 
 ```yaml
  deployTarget: "AMAZON"
@@ -110,7 +110,7 @@ Install [AWS CLI](https://aws.amazon.com/cli/)
        # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html  (AWS Credentials)          
        secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
        region: "us-east-2"
-   # pachyderm enterprise key 
+   # Enterprise key 
    enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
  console:
    enabled: true
@@ -146,8 +146,8 @@ Add `--scopes storage-rw` to your `gcloud container clusters create` command.
  console:
    enabled: true
 ```
-#### Deploy Pachyderm Enterprise with Console
- Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization#cluster-roles) per default.
+#### Deploy Enterprise with Console
+ Note that when deploying Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization#cluster-roles) per default.
 
 ```yaml
  deployTarget: "GOOGLE"
@@ -157,7 +157,7 @@ Add `--scopes storage-rw` to your `gcloud container clusters create` command.
        bucket: "bucket_name"
        cred: |
          INSERT JSON CONTENT HERE
-   # pachyderm enterprise key
+   # Enterprise key
    enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
  console:
    enabled: true
@@ -198,8 +198,8 @@ Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/in
  console:
    enabled: true
 ```
-#### Deploy Pachyderm Enterprise with Console
- Note that when deploying Pachyderm Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization/permissions#clusteradminrole) per default.
+#### Deploy Enterprise with Console
+ Note that when deploying Enterprise with Console, **we create a default mock user (username:`admin`, password: `password`)** to authenticate yourself to Console so you don't have to connect an Identity Provider to make things work. The mock user is a [Cluster Admin](../../../enterprise/auth/authorization/permissions#clusteradminrole) per default.
 
 ```yaml    
  deployTarget: "MICROSOFT"
@@ -212,7 +212,7 @@ Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/in
        id: "AKIAIOSFODNN7EXAMPLE"
        # storage account key
        secret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-   # pachyderm enterprise key
+   # Enterprise key
    enterpriseLicenseKey: "YOUR_ENTERPRISE_TOKEN"
  console:
    enabled: true

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Server Setup
-description: Learn how to set up a Pachyderm enterprise server.
+description: Learn how to set up a Enterprise server.
 date: 
 # taxonomy #
 tags: ["enterprise", "deployment", "helm"]

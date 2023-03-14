@@ -14,7 +14,7 @@ Pachyderm **Console is a complete web UI for visualizing running pipelines and e
 ![Console in action](/images/console/console-input-repo.png)
 
 ## Enterprise Edition
-Pachyderm Community Edition comes with Console per default. Upon upgrading to Pachyderm Enterprise, you will be able to:
+Pachyderm Community Edition comes with Console per default. Upon upgrading to Enterprise, you will be able to:
 
 - Benefit from our Authentication/Authorization features and control which users, groups, or roles have access to specific Pachyderm resources.
 - Lift all [CE scaling limits](../../../reference/scaling-limits/).

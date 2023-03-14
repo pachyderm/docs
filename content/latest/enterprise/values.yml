@@ -462,7 +462,7 @@ pachd:
   # enterpriseRootTokenSecretName is used to pass the enterpriseRootToken value via an existing k8s secret.
   # The value is pulled from the key, "enterprise-root-token".
   enterpriseRootTokenSecretName: ""
-  # enterpriseServerToken represents a token that can authenticate to a separate pachyderm enterprise server,
+  # enterpriseServerToken represents a token that can authenticate to a separate Enterprise server,
   # and is used to complete the enterprise member registration process for this pachyderm cluster.
   # The user backing this token should have either the licenseAdmin & identityAdmin roles assigned, or
   # the clusterAdmin role.

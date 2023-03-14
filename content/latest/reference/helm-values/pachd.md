@@ -312,7 +312,7 @@ pachd:
   # NOTE only used if pachd.activateEnterpriseMember == true
   enterpriseRootToken: ""
  
-  # enterpriseServerToken represents a token that can authenticate to a separate pachyderm enterprise server,
+  # enterpriseServerToken represents a token that can authenticate to a separate Enterprise server,
   # and is used to complete the enterprise member registration process for this pachyderm cluster.
   # The user backing this token should have either the licenseAdmin & identityAdmin roles assigned, or
   # the clusterAdmin role.

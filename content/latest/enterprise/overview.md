@@ -10,10 +10,10 @@ seriesPart:
 directory: true 
 ---
 
-Pachyderm Enterprise helps you scale and manage Pachyderm data pipelines by removing all [scaling limits](../../reference/scaling-limits/) and providing you with additional features not available in the Community Edition.
+Enterprise helps you scale and manage Pachyderm data pipelines by removing all [scaling limits](../../reference/scaling-limits/) and providing you with additional features not available in the Community Edition.
 
 {{% notice note %}}
-Want to try Pachyderm Enterprise, or simply have a few questions? Get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io) or on our [Slack](https://www.pachyderm.com/slack/). 
+Want to try Enterprise, or simply have a few questions? Get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io) or on our [Slack](https://www.pachyderm.com/slack/). 
 {{% /notice %}}
 
 

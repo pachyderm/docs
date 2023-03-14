@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Server Management
-description: Learn how to manage your Pachyderm Enterprise server. 
+description: Learn how to manage your Enterprise server. 
 date: 
 # taxonomy #
 tags: ["enterprise", "management"]
