@@ -5,7 +5,7 @@ description: Set the exact amount of resources that a pipeline worker will consu
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: optional
 ---

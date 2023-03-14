@@ -5,7 +5,7 @@ description: Ingest streaming data into Pachyderm using a spout pipeline.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: optional
 ---
@@ -35,7 +35,7 @@ label: optional
 ## Behavior 
 
 - Does not have a PFS input; instead, it consumes data from an outside source.
-- Can have a service added to it. See [Service](../service).
+- Can have a service added to it. See [Service](/{{% release %}}/reference/pipeline-spec/service).
 
 ## When to Use 
 

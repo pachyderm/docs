@@ -5,7 +5,7 @@ description: Set the upper threshold of allowed resources a given worker can con
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: optional
 ---

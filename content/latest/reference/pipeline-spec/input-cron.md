@@ -5,7 +5,7 @@ description: Trigger pipelines based on time.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Required for Cron Inputs
 ---

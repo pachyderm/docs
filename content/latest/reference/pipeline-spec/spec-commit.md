@@ -5,7 +5,7 @@ description: This attribute is auto-generated and is not configurable.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: auto-generated
 ---

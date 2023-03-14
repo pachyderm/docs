@@ -5,7 +5,7 @@ description:  Write results out to an S3 gateway endpoint.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: optional
 ---

@@ -5,8 +5,8 @@ description: Set the upper threshold of resources allocated to sidecar container
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
-seriesPart:
+series: ["pps"]
+seriesPart: 
 label: optional 
 
 ---

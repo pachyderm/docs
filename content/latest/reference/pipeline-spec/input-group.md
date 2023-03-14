@@ -5,7 +5,7 @@ description: Group files stored in one or multiple repos.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Required for Group Inputs
 ---

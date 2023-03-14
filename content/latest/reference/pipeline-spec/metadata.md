@@ -5,7 +5,7 @@ description: Add metadata to your pipeline pods using Kubernetes' labels and ann
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Optional
 ---

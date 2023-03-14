@@ -5,7 +5,7 @@ description: Define the number of workers used in parallel.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Optional
 ---

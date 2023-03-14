@@ -5,7 +5,7 @@ description: Join files that are stored in separate Pachyderm repositories.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Required for Join Inputs
 ---

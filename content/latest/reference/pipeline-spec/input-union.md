@@ -5,7 +5,7 @@ description: Create a union of pfs, cross, or other union inputs.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Required for Union Inputs
 ---

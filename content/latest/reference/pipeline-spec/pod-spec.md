@@ -5,7 +5,7 @@ description: Set fields in the Pod Spec that aren't explicitly exposed.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: optional
 ---

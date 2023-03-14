@@ -5,7 +5,7 @@ description: Create a cross product of other inputs.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: Required for Cross Inputs
 ---

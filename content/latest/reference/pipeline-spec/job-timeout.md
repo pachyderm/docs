@@ -5,7 +5,7 @@ description: Set the maximum execution time allowed for a job.
 date: 
 # taxonomy #
 tags: ["pipelines", "pps"]
-series:
+series: ["pps"]
 seriesPart:
 label: optional
 ---

@@ -27,7 +27,7 @@ You should set the `maxReplicas` value to **at least match the number of pipelin
 
 > `number of pipelines * highest parallelism spec * 1.5 = maxReplicas`
 
-Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](../../pipeline-spec/parallelism) value of 6, and the rest are 5 or fewer. 
+Let's say you have 6 pipelines. One of these pipelines has a [parallelism spec](/{{% release %}}/reference/pipeline-spec/parallelism) value of 6, and the rest are 5 or fewer. 
 
 > `6 * 6 * 1.5 = 54`
 
