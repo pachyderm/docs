@@ -29,6 +29,7 @@ Each retry of a datum is treated as a new attempt, and the datum is added back t
 
 Other considerations:
 
+- `datum_tries` is set to `0`  by default. 
 - Setting to `1` attempts a job once with no retries.
 - If the operation succeeds in retry attempts, then the job is marked as successful. Otherwise, the job is marked as failed.
 
