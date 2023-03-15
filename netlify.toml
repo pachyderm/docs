@@ -1,10 +1,9 @@
+[build]
+  command = "hugo && pip install -r requirements.txt"
+
 [functions]
   directory = "netlify/functions"
 
-  [functions."*"]
-    external_node_modules = [
-      "chatgpt"
-    ]
 
 
 [[headers]]
