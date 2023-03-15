@@ -3,6 +3,7 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+const flatted = require('flatted');
 
 
 async function handler(event) {
@@ -21,7 +22,7 @@ async function handler(event) {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: response }),
+            body: flatted.stringify({ message: response }),
         }
     } catch (error) {
         return { statusCode: 500, body: error.toString() }
