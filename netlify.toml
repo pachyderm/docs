@@ -1,6 +1,10 @@
 [functions]
   directory = "netlify/functions"
-  external_node_modules = "chatgpt"
+
+  [functions."*"]
+    external_node_modules = [
+      "chatgpt"
+    ]
 
 
 [[headers]]
