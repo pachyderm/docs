@@ -1,6 +1,4 @@
-
-
-import { ChatGPTAPI } from 'chatgpt'
+const { ChatGPTAPI } = await import('chatgpt')
 
 const handler = async (event) => {
   try {
@@ -14,7 +12,7 @@ const handler = async (event) => {
     })
     return {
       statusCode: 200,
-      body: JSON.stringify({ answer: res.text }),
+      body: JSON.stringify({ message: res.text }),
     }
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
