@@ -2,6 +2,7 @@
 - themes/pach-emdash/assets/js 
 - each one is minified
 */}}
+  {{$chatgpt := resources.Get "js/clippy.js"  | resources.Minify }}
   {{ $toc := resources.Get "js/toc.js"  | resources.Minify  }}
   {{ $clippy := resources.Get "js/clipboard.js"  | resources.Minify }}
   {{ $relatedArticles := resources.Get "js/relatedArticles.js"  | resources.Minify }}
@@ -19,7 +20,7 @@
 
 
   {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
-  {{ $js := slice $darkMode $wizard $toc $relatedArticles $clippy $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
+  {{ $js := slice $darkMode $wizard $toc $relatedArticles $clippy $chatgpt $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
 
 <footer class="spread  mt-7 px-4 py-7 c-pinned-top c-mt-5">
     {{/*  Algolia must remain separate due to module type  */}}

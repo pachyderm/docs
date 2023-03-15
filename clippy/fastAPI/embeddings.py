@@ -1,22 +1,13 @@
-from bs4 import BeautifulSoup
-from collections import deque
+
 from dotenv import load_dotenv
-from fastapi import FastAPI
-from html.parser import HTMLParser
 import json
 import numpy as np
 import openai
-from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
+from openai.embeddings_utils import distances_from_embeddings
 import os
 import pandas as pd
-from pydantic import BaseModel
-import re
-import requests
-from typing import List
-from urllib.parse import urlparse
-import urllib.request
 import tiktoken
-from urllib.parse import urlparse
+
 
 load_dotenv()
 
@@ -26,6 +17,7 @@ key = os.getenv("OPENAI_API_KEY")
 max_tokens = 500
 texts = []
 shortened = []
+tokenizer = tiktoken.get_encoding("cl100k_base")
 
 openai.api_key = key
 
@@ -145,86 +137,84 @@ def split_into_many(text, max_tokens=max_tokens):
 
     return chunks
 
-# Check if embeddings exist, if yes, load the dataframe from embeddings.csv
-if os.path.exists('processed/embeddings.csv'):
-    df = load_embeddings('processed/embeddings.csv')
-    start(df)
+def loadDataframe():
+    # Check if embeddings exist, if yes, load the dataframe from embeddings.csv
+    if os.path.exists('processed/embeddings.csv'):
+        df = load_embeddings('processed/embeddings.csv')
+        return df 
 
-else:
-    # Load the docs.json file
-    with open("docs.json", "r") as f:
-        docs = json.load(f)
+    else:
+        # Load the docs.json file
+        with open("docs.json", "r") as f:
+            docs = json.load(f)
 
-    # Extract article body attribute if not empty string and push to texts array.
-    for doc in docs:
-        text = doc.get("body", "")
-        if text:
-            fname = doc["title"]
-            texts.append((fname, text))
+        # Extract article body attribute if not empty string and push to texts array.
+        for doc in docs:
+            text = doc.get("body", "")
+            if text:
+                fname = doc["title"]
+                texts.append((fname, text))
 
-    # Create a dataframe from the list of texts
-    df = pd.DataFrame(texts, columns=["fname", "text"])
+        # Create a dataframe from the list of texts
+        df = pd.DataFrame(texts, columns=["fname", "text"])
 
-    print("dataframe: ", df)
+        print("dataframe: ", df)
 
-    # Set the text column to be the raw text 
-    df["text"] = df.text
-    df.to_csv("processed/docs.csv")
-    df.head()
+        # Set the text column to be the raw text 
+        df["text"] = df.text
+        df.to_csv("processed/docs.csv")
+        df.head()
 
-    # Load the cl100k_base tokenizer which is designed to work with the ada-002 model
-    tokenizer = tiktoken.get_encoding("cl100k_base")
+        df = pd.read_csv('processed/docs.csv', index_col=0)
+        df.columns = ['title', 'text']
 
-    df = pd.read_csv('processed/docs.csv', index_col=0)
-    df.columns = ['title', 'text']
+        # Tokenize the text and save the number of tokens to a new column
+        df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 
-    # Tokenize the text and save the number of tokens to a new column
-    df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
-
-    # Visualize the distribution of the number of tokens per row using a histogram
-    df.n_tokens.hist()
+        # Visualize the distribution of the number of tokens per row using a histogram
+        df.n_tokens.hist()
 
 
-    # Loop through the dataframe
-    for row in df.iterrows():
+        # Loop through the dataframe
+        for row in df.iterrows():
 
-        # If the text is None, go to the next row
-        if row[1]['text'] is None:
-            continue
+            # If the text is None, go to the next row
+            if row[1]['text'] is None:
+                continue
 
-        # If the number of tokens is greater than the max number of tokens, split the text into chunks
-        if row[1]['n_tokens'] > max_tokens:
-            shortened += split_into_many(row[1]['text'])
-        
-        # Otherwise, add the text to the list of shortened texts
-        else:
-            shortened.append( row[1]['text'] )
+            # If the number of tokens is greater than the max number of tokens, split the text into chunks
+            if row[1]['n_tokens'] > max_tokens:
+                shortened += split_into_many(row[1]['text'])
+            
+            # Otherwise, add the text to the list of shortened texts
+            else:
+                shortened.append( row[1]['text'] )
 
-    ################################################################################
-    ### Step 4
-    ################################################################################
+        ################################################################################
+        ### Step 4
+        ################################################################################
 
-    df = pd.DataFrame(shortened, columns = ['text'])
-    df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
-    df.n_tokens.hist()
+        df = pd.DataFrame(shortened, columns = ['text'])
+        df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
+        df.n_tokens.hist()
 
-    ################################################################################
-    ### Step 5
-    ################################################################################
+        ################################################################################
+        ### Step 5
+        ################################################################################
 
-    # Note that you may run into rate limit issues depending on how many files you try to embed
-    # Please check out our rate limit guide to learn more on how to handle this: https://platform.openai.com/docs/guides/rate-limits
+        # Note that you may run into rate limit issues depending on how many files you try to embed
+        # Please check out our rate limit guide to learn more on how to handle this: https://platform.openai.com/docs/guides/rate-limits
 
-    df['embeddings'] = df.text.apply(lambda x: openai.Embedding.create(input=x, engine='text-embedding-ada-002')['data'][0]['embedding'])
-    df.to_csv('processed/embeddings.csv')
-    df.head()
+        df['embeddings'] = df.text.apply(lambda x: openai.Embedding.create(input=x, engine='text-embedding-ada-002')['data'][0]['embedding'])
+        df.to_csv('processed/embeddings.csv')
+        df.head()
 
-    ################################################################################
-    ### Step 6
-    ################################################################################
+        ################################################################################
+        ### Step 6
+        ################################################################################
 
-    df=pd.read_csv('processed/embeddings.csv', index_col=0)
-    df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
+        df=pd.read_csv('processed/embeddings.csv', index_col=0)
+        df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
 
-    df.head()
+        df.head()
 
