@@ -239,3 +239,7 @@ def handler(event):
     }
 
     return response
+
+
+df = loadDataframe()
+start(df)
