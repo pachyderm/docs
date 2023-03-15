@@ -1,6 +1,3 @@
-[build]
-  command = "hugo && pip install -r requirements.txt"
-
 [functions]
   directory = "netlify/functions"
 
