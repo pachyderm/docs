@@ -22,7 +22,6 @@ async function submitQuestion(event) {
     }
 
     if (data.answer) {
-    
         document.getElementById('answer').innerText = data.answer;
         return;
     }
@@ -35,6 +34,9 @@ function loading() {
         3: 'Thinking...',
     }
 
-    document.getElementById('answer').classList.toggle('is-hidden');
+    if (document.getElementById('answer').classList.contains('is-hidden')) {
+        document.getElementById('answer').classList.remove('is-hidden');
+    }
+
     document.getElementById('answer').innerText = content[Math.floor(Math.random() * 3) + 1];
 }
