@@ -1,32 +1,25 @@
-import { ChatGPTAPI } from 'chatgpt'
-import LRU from 'lru-cache'
+// This function takes a question from the /ask endpoint and returns an answer from the ChatGPT API.
 
-// Create a cache instance with a max size of 100 items
-const cache = new LRU({ max: 100 })
+import { ChatGPTAPI } from 'chatgpt'
 
 const handler = async (event) => {
-  try {
-    const question = event.queryStringParameters.question || 'Hello World!'
-
-    // Check if the question is already in the cache
-    if (cache.has(question)) {
-      const answer = cache.get(question)
-      return { statusCode: 200, body: JSON.stringify({ message: answer }) }
+    try {
+        console.log("event: ", event)
+        const question = event.queryStringParameters.question || 'Hello World!'
+        const api = new ChatGPTAPI({
+            apiKey: process.env.OPENAI_API_KEY
+        })
+        const res = await api.sendMessage(question, {
+            // print the partial response as the AI is "typing"
+            onProgress: (partialResponse) => console.log(partialResponse.text)
+          })
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: res.text }),
+        }
+    } catch (error) {
+        return { statusCode: 500, body: error.toString() }
     }
-
-    const api = new ChatGPTAPI({
-      apiKey: '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'
-    })
-
-    const res = await api.sendMessage(question)
-
-    // Cache the response for future requests
-    cache.set(question, res.text)
-
-    return { statusCode: 200, body: JSON.stringify({ message: res.text }) }
-  } catch (error) {
-    return { statusCode: 500, body: error.toString() }
   }
-}
-
-export { handler }
+  
+  module.exports = { handler }
