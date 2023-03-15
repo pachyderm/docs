@@ -1,5 +1,6 @@
 [functions]
   directory = "netlify/functions"
+  external_node_modules = "chatgpt"
 
 
 [[headers]]
