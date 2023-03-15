@@ -21,7 +21,7 @@ async function handler(event) {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: response.choices[0].text  }),
+            body: JSON.stringify({ message: response.data.choices[0].text  }),
         }
     } catch (error) {
         return { statusCode: 500, body: error.toString() }
