@@ -1,3 +1,6 @@
 
 /clippy/fastAPI/.env
 
+
+# Local Netlify folder
+.netlify
