@@ -1,6 +1,8 @@
 [functions]
-  directory = "netlify/functions"
-  runtime = "python3.8"
+
+  [functions.runtime]
+    directory = "netlify/functions"
+    runtime = "python3.8"
 
 [[headers]]
    for = "/*"
