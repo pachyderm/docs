@@ -15,7 +15,7 @@ Pachyderm ships with an embedded proxy that exposes one external TCP port (`:80`
 
 This guide assumes that:
 
-- You have Pachyderm already set up with [Enterprise Server](../../../enterprise/deployment), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/idp-dex/).
+- You have Pachyderm already set up with [Enterprise Server](../../../enterprise/auth/enterprise-server), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/connectors).
 - You are upgrading to from < **2.5.0** to **2.5.0** or newer.
 - You are currently using `pachd.externalService`.
 - You have a DNS set up or Load Balance IP Address for the `proxy.host` attribute.
