@@ -12,6 +12,5 @@
     "chatgpt": "^5.0.10",
     "lru-cache": "^8.0.3",
     "quick-lru": "^6.1.1"
-  },
-  "type": "module"
+  }
 }
