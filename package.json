@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "openai": "^3.2.1"
+    "openai": "^3.2.1",
+    "papaparse": "^5.4.0"
   }
 }
