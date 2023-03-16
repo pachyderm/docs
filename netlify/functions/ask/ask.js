@@ -1,106 +1,159 @@
-const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+const { load_dotenv } = require('dotenv');
+const tiktoken = require('tiktok-text-tokenizer');
+const { Embedding } = require('openai');
+const openai = require('openai');
+const os = require('os');
+const pandas = require('pandas-js');
+const { join } = require('path');
+const np = require('numpy');
 
-const Papa = require("papaparse");
-const axios = require("axios");
+load_dotenv();
 
-async function getEmbeddings() {
-  const response = await axios.get(
-    "https://deploy-preview-39--pach-docs.netlify.app/embeddings/embeddings.csv"
+// OpenAI API Creds
+const key = process.env.OPENAI_API_KEY;
+const max_tokens = 500;
+const texts = [];
+const shortened = [];
+const tokenizer = tiktoken.get_encoding('cl100k_base');
+
+openai.api_key = key;
+
+async function create_context(question, df, max_len = 1800, size = 'ada') {
+  /**
+   * Create a context for a question by finding the most similar context from the dataframe
+   */
+  // Get the embeddings for the question
+  const q_embeddings = (await Embedding.create({
+    input: question,
+    engine: 'text-embedding-ada-002',
+  })).data[0].embedding;
+
+  // Compute distances from embeddings
+  const distances = Embedding.distancesFromEmbeddings(
+    q_embeddings,
+    df.get('embeddings').values,
+    'cosine'
   );
-  const embeddings = Papa.parse(response.data, {
-    header: true,
-    dynamicTyping: true,
-    skipEmptyLines: true,
-  }).data;
 
-  embeddings.forEach(embedding => {
-    embedding.embeddings = embedding.embeddings.split(",").map(parseFloat);
+  // Sort by distance
+  const df_sorted = df.iloc[np.array(distances).argsort()];
+
+  const returns = [];
+  let cur_len = 0;
+
+  // Add the text to the context until the context is too long
+  df_sorted.iterrows().forEach(([index, row]) => {
+    // Add the length of the text to the current length
+    cur_len += row.n_tokens + 4;
+
+    // If the context is too long, break
+    if (cur_len > max_len) {
+      return;
+    }
+
+    // Else add it to the text that is being returned
+    returns.push(row.text);
   });
 
-  return embeddings;
+  // Return the context
+  return returns.join('\n\n###\n\n');
 }
 
+async function answer_question(
+  df,
+  model = 'text-davinci-003',
+  question = 'Am I allowed to publish model outputs to Twitter, without a human review?',
+  max_len = 1800,
+  size = 'ada',
+  debug = false,
+  max_tokens = 500,
+  stop_sequence = null
+) {
+  /**
+   * Answer a question based on the most similar context from the dataframe texts
+   */
+  const context = await create_context(df, question, max_len, size);
 
-function euclideanDistance(a, b) {
-  const squares = a.map((val, i) => Math.pow(val - b[i], 2));
-  const sum = squares.reduce((acc, val) => acc + val, 0);
-  return Math.sqrt(sum);
-}
-
- 
-// create a context for a question using the most similar article
-function createContext(question, embeddings) {
-  const similarities = [];
-  for (let i = 0; i < embeddings.length; i++) {
-    const embedding = embeddings[i];
-    const articleVector = embedding.embeddings;
-    const articleWords = embedding.text.split(' ');
-    const questionWords = question.split(' ');
-    const questionVector = questionWords.map((word) => {
-      const index = articleWords.indexOf(word);
-      if (index === -1) {
-        return 0;
-      } else {
-        const value = articleVector[index];
-        return isNaN(value) ? 0 : value;
-      }
-    });      
-    const similarity = euclideanDistance(articleVector, questionVector);
-    similarities.push({ article: embedding.text, similarity, articleVector, questionVector});
+  // If debug, print the raw model response
+  if (debug) {
+    console.log('Context:\n' + context);
+    console.log('\n\n');
   }
 
-  // Sort the similarities in ascending order by the similarity score
-  similarities.sort((a, b) => a.similarity - b.similarity);
-
-  // Return the top 1 article
-  return {
-    article: similarities[0].article.substring(0, 1500),
-    similarity: similarities[0].similarity,
-  };
-}
-
-async function handler(event) {
   try {
-    const embeddings = await getEmbeddings();
-
-    const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
-
-    if (embeddings === undefined || embeddings.length === 0 ) {
-      return { statusCode: 500, body: "Embeddings not found" }
-    }
-
-    const similarities = [];
-    for (let i = 0; i < embeddings.length; i++) {
-      const embeddingsChunk = [embeddings[i]];
-      const context = createContext(userQuestion, embeddingsChunk);
-      similarities.push(context);
-    }
-    const context = similarities.reduce((max, curr) => max.similarity > curr.similarity ? max : curr);
-
-    const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} `;
-
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
+    // Create a completions using the questin and context
+    const response = await openai.Completion.create({
+      prompt: `Answer the question based on the context below, and if the question can't be answered based on the context, say "I don't know"\n\nContext: ${context}\n\n---\n\nQuestion: ${question}\nAnswer:`,
       temperature: 0,
-      max_tokens: 200,
+      max_tokens: max_tokens,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      stop: stop_sequence,
+      model: model,
     });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: response.data.choices[0].text,
-        prompt: prompt,
-      }),
-    }
+    return response.choices[0].text.trim();
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
-  } 
+    console.log(error);
+    return '';
+  }
 }
 
-module.exports = { handler }
+async function load_embeddings(file_path) {
+  const fs = require('fs');
+  const csv = require('csv-parse/lib/sync');
+
+  // Load the embeddings from the CSV file
+  const content = fs.readFileSync(file_path);
+  const records = csv(content, { columns: true });
+
+  // Convert the embeddings from JSON strings to arrays
+  records.forEach((record) => {
+    record.embeddings = JSON.parse(record.embeddings);
+  });
+
+  // Convert the records to a Pandas DataFrame
+  const df = pandas.DataFrame.fromRecords(records);
+
+  // Rename the columns
+  df.columns = ['title', 'text', 'embeddings'];
+
+  // Convert the embeddings to NumPy arrays
+  df.set('embeddings', df.get('embeddings').apply((embeddings) => {
+    return np.array(embeddings);
+  }));
+
+  return df;
+}
+
+
+exports.handler = async (event, context) => {
+  // Load the embeddings
+  const df = load_embeddings('processed/embeddings.csv');
+
+  // Extract the question from the request body
+  const { question } = JSON.parse(event.body);
+
+  try {
+    // Answer the question
+    const answer = await answer_question(df, question);
+
+    // Return the answer
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ answer }),
+    };
+  } catch (error) {
+    console.error(error);
+
+    // Return an error response
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'An error occurred while answering the question.' }),
+    };
+  }
+};
+
+
 
