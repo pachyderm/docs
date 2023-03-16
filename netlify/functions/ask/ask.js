@@ -32,7 +32,15 @@ function cosineSimilarity(a, b) {
     const similarities = embeddings.map((embedding) => {
       const article = embedding.text;
       const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
-      const questionVector = question.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
+      const words = article.split(' ');
+      const questionVector = question.split(' ').map((word) => {
+        const index = words.indexOf(word);
+        if (index === -1) {
+          return 0;
+        } else {
+          return embeddingVector[index];
+        }
+      });
       const similarity = cosineSimilarity(embeddingVector, questionVector);
       return { article, similarity };
     });
@@ -42,8 +50,8 @@ function cosineSimilarity(a, b) {
   
     // Return the top 1 article
     return similarities[0].article.substring(0, 1500);
-
   }
+  
 
 async function handler(event) {
     try {
@@ -73,7 +81,7 @@ async function handler(event) {
             statusCode: 200,
             body: JSON.stringify({ message: response.data.choices[0].text,
             prompt: prompt,
-            embeddings: embeddings,  }),
+          }),
         }
     } catch (error) {
         return { statusCode: 500, body: error.toString() }
