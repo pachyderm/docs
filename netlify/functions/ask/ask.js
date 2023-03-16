@@ -1,4 +1,4 @@
-const { Configuration, OpenAIApi, CreateAnswerRequest } = require("openai");
+const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -43,29 +43,21 @@ async function handler(event) {
     // Sort the similarities in descending order by the similarity score
     similarities.sort((a, b) => b.similarity - a.similarity);
 
-    const prompt = similarities[0].article.substring(0, 1500);
+    const prompt = `${userQuestion}\n${similarities[0].article.substring(0, 1500)}`;
 
-    const request = new CreateAnswerRequest({
+    const response = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: prompt,
-      question: userQuestion,
+      temperature: 0,
       maxTokens: 200,
-      nExamples: 1,
-      examplesContext: prompt,
-      examples: [
-        ["What is Pachyderm?","Pachyderm is a data science platform."],
-        ["What is data versioning?","Data versioning is the practice of keeping track of changes to data over time."],
-      ],
       stop: ["\n"],
     });
-
-    const response = await openai.createAnswerResponse(request);
 
     console.log("response", response)
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: response.data.answers[0] }),
+      body: JSON.stringify({ message: response.data.choices[0].text }),
     }
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
