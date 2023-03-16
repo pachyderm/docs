@@ -29,6 +29,12 @@ function cosineSimilarity(a, b) {
   // create a context for a queestion using the most similar article
 
   function createContext(question, embeddings) {
+    // embeddings have the following structure { text: '...', n_tokens: 100, embeddings: [0.1, 0.2, ...]}
+    // we want to find the most similar article to the question
+    // and return the first 1500 characters of the article
+
+    // Calculate the similarity between the question and each article
+
     const similarities = embeddings.map((embedding) => {
       const article = embedding.text;
       const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
@@ -51,6 +57,7 @@ function cosineSimilarity(a, b) {
     // Return the top 1 article
     return similarities[0].article.substring(0, 1500);
   }
+
   
 
 async function handler(event) {
