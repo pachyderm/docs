@@ -55,7 +55,10 @@ function cosineSimilarity(a, b) {
     similarities.sort((a, b) => b.similarity - a.similarity);
   
     // Return the top 1 article
-    return similarities[0].article.substring(0, 1500);
+    return {
+      article: similarities[0].article.substring(0, 1500),
+      similarity: similarities[0].similarity,
+    };
   }
 
   
@@ -72,7 +75,7 @@ async function handler(event) {
         
         let context = createContext(userQuestion, embeddings)
         
-        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context}`;
+        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity}`;
         console.log("prompt", prompt)
 
         const response = await openai.createCompletion({
