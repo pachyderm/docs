@@ -35,7 +35,7 @@ function cosineSimilarity(a, b) {
   function createContext(question, embeddings) {
     // Calculate the similarity between the question and each article
     const similarities = embeddings.map((embedding) => {
-      const articleVector = embedding.embeddings;
+      const articleVector = embedding.embeddings.split(',').map((x) => parseFloat(x));
       const words = embedding.text.split(' ');
       const questionVector = question.split(' ').map((word) => {
         const index = words.indexOf(word);
