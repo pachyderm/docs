@@ -60,8 +60,6 @@ function euclideanDistance(a, b) {
     return {
       article: similarities[0].article.substring(0, 1500),
       similarity: similarities[0].similarity,
-      articleVector: similarities[0].articleVector,
-      questionVector: similarities[0].questionVector
     };
   }
   
@@ -79,7 +77,7 @@ async function handler(event) {
         
         let context = createContext(userQuestion, embeddings)
         
-        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} articleVector: ${context.articleVector} questionVector: ${context.questionVector}`;
+        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} `;
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
