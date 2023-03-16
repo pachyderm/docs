@@ -5,15 +5,18 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const Papa = require("papaparse");
-const fs = require("fs");
-const path = require("path");
-const filePath = path.join(__dirname, "data", "embeddings.csv");
+const axios = require("axios");
 
-const embeddings = Papa.parse(fs.readFileSync(filePath, "utf8"), {
-    header: true,
-    dynamicTyping: true,
-    skipEmptyLines: true,
-}).data;
+async function getEmbeddings() {
+    const response = await axios.get("https://deploy-preview-39--pach-docs.netlify.app/embeddings/embeddings.csv");
+    const embeddings = Papa.parse(response.data, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true,
+    }).data;
+    return embeddings;
+  }
+  
 
 // function to calculate cosine similarity between two vectors
 function cosineSimilarity(a, b) {
@@ -26,7 +29,9 @@ function cosineSimilarity(a, b) {
 
 async function handler(event) {
     try {
-        const userQuestion = event.queryStringParameters.question || 'What is Pachyderm?'
+        const embeddings = await getEmbeddings();
+
+        const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
         console.log("subject", userQuestion)
 
         const similarities = embeddings.map((embedding) => {
