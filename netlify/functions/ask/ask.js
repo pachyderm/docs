@@ -64,7 +64,9 @@ async function handler(event) {
         return {
             statusCode: 200,
             body: JSON.stringify({ message: response.data.choices[0].text,
-            similarity: similarities[0].similarity  }),
+            similarity: similarities[0].similarity,
+            article: similarities[0].article,
+            prompt: prompt,  }),
         }
     } catch (error) {
         return { statusCode: 500, body: error.toString() }
