@@ -33,6 +33,9 @@ async function handler(event) {
         const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
         console.log("subject", userQuestion)
 
+        if (embeddings === undefined || embeddings.length === 0 ) {
+            return { statusCode: 500, body: "Embeddings not found" }
+        }
         const similarities = embeddings.map((embedding) => {
             const article = embedding.text;
             const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
