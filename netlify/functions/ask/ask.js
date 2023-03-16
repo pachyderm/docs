@@ -7,7 +7,7 @@ const openai = new OpenAIApi(configuration);
 const Papa = require("papaparse");
 const axios = require("axios");
 
-async function getEmbeddings(chunkSize) {
+async function getEmbeddings() {
   const response = await axios.get(
     "https://deploy-preview-39--pach-docs.netlify.app/embeddings/embeddings.csv"
   );
@@ -17,13 +17,11 @@ async function getEmbeddings(chunkSize) {
     skipEmptyLines: true,
   }).data;
 
-  // Split the embeddings into chunks of size `chunkSize`
-  const chunks = [];
-  for (let i = 0; i < embeddings.length; i += chunkSize) {
-    chunks.push(embeddings.slice(i, i + chunkSize));
-  }
+  embeddings.forEach(embedding => {
+    embedding.embeddings = embedding.embeddings.split(",").map(parseFloat);
+  });
 
-  return chunks;
+  return embeddings;
 }
 
 
@@ -39,7 +37,7 @@ function createContext(question, embeddings) {
   const similarities = [];
   for (let i = 0; i < embeddings.length; i++) {
     const embedding = embeddings[i];
-    const articleVector = embedding.embeddings.split(',').map(parseFloat);
+    const articleVector = embedding.embeddings;
     const articleWords = embedding.text.split(' ');
     const questionWords = question.split(' ');
     const questionVector = questionWords.map((word) => {
@@ -67,19 +65,19 @@ function createContext(question, embeddings) {
 
 async function handler(event) {
   try {
-    const chunkSize = 1000; // adjust as needed
-    const embeddingsChunks = await getEmbeddings(chunkSize);
+
+    const embeddings = await getEmbeddings();
 
     const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
 
-    if (embeddingsChunks === undefined || embeddingsChunks.length === 0 ) {
+    if (embeddings === undefined || embeddings.length === 0 ) {
       return { statusCode: 500, body: "Embeddings not found" }
     }
 
     const similarities = [];
-    for (let i = 0; i < embeddingsChunks.length; i++) {
-      const embeddings = embeddingsChunks[i];
-      const context = createContext(userQuestion, embeddings);
+    for (let i = 0; i < embeddings.length; i++) {
+      const embeddingsChunk = [embeddings[i]];
+      const context = createContext(userQuestion, embeddingsChunk);
       similarities.push(context);
     }
     const context = similarities.reduce((max, curr) => max.similarity > curr.similarity ? max : curr);
@@ -92,6 +90,7 @@ async function handler(event) {
       temperature: 0,
       max_tokens: 200,
     });
+
 
     return {
       statusCode: 200,
