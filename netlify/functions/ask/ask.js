@@ -41,7 +41,8 @@ function cosineSimilarity(a, b) {
     similarities.sort((a, b) => b.similarity - a.similarity);
   
     // Return the top 1 article
-    return similarities.slice(0, 1).map((similarity) => similarity.article.substring(0, 1500));
+    return similarities[0].article.substring(0, 1500);
+
   }
 
 async function handler(event) {
@@ -56,7 +57,6 @@ async function handler(event) {
         
         let context = createContext(userQuestion, embeddings)
         
-        const maxLength = 1500;
         const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context}`;
         console.log("prompt", prompt)
 
