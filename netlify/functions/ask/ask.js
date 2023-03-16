@@ -38,7 +38,7 @@ function euclideanDistance(a, b) {
 
   function createContext(question, embeddings) {
     const similarities = embeddings.map((embedding) => {
-      const articleVector = embedding.embeddings
+      const articleVector = embedding.embeddings.split(',').map(parseFloat);
       const articleWords = embedding.text.split(' ');
       const questionWords = question.split(' ');
       const questionVector = questionWords.map((word) => {
@@ -46,9 +46,10 @@ function euclideanDistance(a, b) {
         if (index === -1) {
           return 0;
         } else {
-          return articleVector[index];
+          const value = articleVector[index];
+          return isNaN(value) ? 0 : value;
         }
-      });
+      });      
       const similarity = euclideanDistance(articleVector, questionVector);
       return { article: embedding.text, similarity, articleVector, questionVector};
     });
