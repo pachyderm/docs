@@ -79,7 +79,7 @@ async function handler(event) {
         
         let context = createContext(userQuestion, embeddings)
         
-        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} articleVector: ${context.articleVector} questionVector: ${context.questionVector}  questionVector: ${context.questionVection}`;
+        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} articleVector: ${context.articleVector} questionVector: ${context.questionVector}`;
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
