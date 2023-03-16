@@ -50,7 +50,7 @@ params:
 
   releaseInfo: # Note: See the new directory's /content/x.x.x./_index.md page to set release-related frontmatter variables. 
     latest: "2.5.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
-    patch: "2.5.1" # Used for announcements and to generate download links
+    patch: "2.5.2" # Used for announcements and to generate download links
 
   ## Nav features 
   navLevel: true  #  displays level-2 directory items in the file tree.
