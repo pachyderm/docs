@@ -14,6 +14,10 @@ function euclideanDistance(a, b) {
 
 // create a context for a question using the most similar article
 function createContext(question, embeddings) {
+    if (!embeddings || embeddings.length === 0) {
+        return [];
+      }
+    
   const similarities = embeddings.map((embedding) => {
     const articleVector = embedding.embeddings.split(",").map(parseFloat);
     const articleWords = embedding.text.split(" ");
@@ -37,15 +41,13 @@ function createContext(question, embeddings) {
   return {
     article: similarities[0].article.substring(0, 1500),
     similarity: similarities[0].similarity,
-    articleVector: similarities[0].articleVector,
-    questionVector: similarities[0].questionVector,
   };
 }
 
 async function handler(event) {
     try {
       // Fetch latest Pachyderm documentation from docs.pachyderm.com/latest/index.json
-      const docs = await axios.get("https://docs.pachyderm.com/latest/index.json");
+      const docs = await axios.get("https://deploy-preview-39--pach-docs.netlify.app/embeddings/index.json");
       const pages = docs.data.pages;
   
       // Create embeddings for each page
