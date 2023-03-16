@@ -65,7 +65,6 @@ function createContext(question, embeddings) {
 
 async function handler(event) {
   try {
-
     const embeddings = await getEmbeddings();
 
     const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
@@ -91,7 +90,6 @@ async function handler(event) {
       max_tokens: 200,
     });
 
-
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -105,3 +103,4 @@ async function handler(event) {
 }
 
 module.exports = { handler }
+
