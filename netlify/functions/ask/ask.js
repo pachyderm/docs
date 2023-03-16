@@ -49,7 +49,7 @@ async function handler(event) {
         similarities.sort((a, b) => b.similarity - a.similarity);
         
         const maxLength = 1500;
-        const prompt = `${userQuestion}\n${similarities[0].article.substring(0, maxLength)}`;
+        const prompt = `answer the following question using the context provided. Question:${userQuestion}\n Context:${similarities[0].article.substring(0, maxLength)}`;
         console.log("prompt", prompt)
 
         const response = await openai.createCompletion({
@@ -64,8 +64,6 @@ async function handler(event) {
         return {
             statusCode: 200,
             body: JSON.stringify({ message: response.data.choices[0].text,
-            similarity: similarities[0].similarity,
-            article: similarities[0].article,
             prompt: prompt,  }),
         }
     } catch (error) {
