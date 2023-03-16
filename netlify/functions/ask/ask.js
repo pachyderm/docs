@@ -31,8 +31,8 @@ function cosineSimilarity(a, b) {
   function createContext(question, embeddings) {
     const similarities = embeddings.map((embedding) => {
       const article = embedding.text;
-    const questionVector = question.split(',').map(parseFloat);
       const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
+      const questionVector = question.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
       const similarity = cosineSimilarity(embeddingVector, questionVector);
       return { article, similarity };
     });
@@ -45,25 +45,17 @@ function cosineSimilarity(a, b) {
 
   }
 
-  async function embedQuestion(question) {
-    const questionEmbedding = await openai.createEmbedding({
-        model: "text-davinci-003",
-        query: question,
-        max_tokens: 200,
-        });
-
-    return questionEmbedding
-  }
-
-  async function handler(event) {
+async function handler(event) {
     try {
         const embeddings = await getEmbeddings();
 
         const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
 
-        const questionEmbedding = await embedQuestion(userQuestion);
+        if (embeddings === undefined || embeddings.length === 0 ) {
+            return { statusCode: 500, body: "Embeddings not found" }
+        }
         
-        let context = createContext(questionEmbedding.data[0].embedding, embeddings)
+        let context = createContext(userQuestion, embeddings)
         
         const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context}`;
         console.log("prompt", prompt)
@@ -86,6 +78,5 @@ function cosineSimilarity(a, b) {
         return { statusCode: 500, body: error.toString() }
     } 
 }
-
 
 module.exports = { handler }
