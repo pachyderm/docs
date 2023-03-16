@@ -30,7 +30,7 @@ function cosineSimilarity(a, b) {
 
   async function createContext(question, embeddings, maxLength = 1800, model = "text-embedding-ada-002") {
     // Get the embeddings for the question
-    const response = await openai.embeddings.create({
+    const response = await openai.createEmbedding({
       engine: model,
       input: [question],
     });
