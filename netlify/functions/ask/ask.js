@@ -6,8 +6,10 @@ const openai = new OpenAIApi(configuration);
 
 const Papa = require("papaparse");
 const fs = require("fs");
+const path = require("path");
+const filePath = path.join(__dirname, "data", "embeddings.csv");
 
-const embeddings = Papa.parse(fs.readFileSync("../../embeddings/embeddings.csv", "utf8"), {
+const embeddings = Papa.parse(fs.readFileSync(filePath, "utf8"), {
     header: true,
     dynamicTyping: true,
     skipEmptyLines: true,
