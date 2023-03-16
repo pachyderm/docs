@@ -60,8 +60,8 @@ function euclideanDistance(a, b) {
     return {
       article: similarities[0].article.substring(0, 1500),
       similarity: similarities[0].similarity,
-      acticleVector: similarities[0].articleVector,
-      questionVection: similarities[0].questionVector
+      articleVector: similarities[0].articleVector,
+      questionVector: similarities[0].questionVector
     };
   }
   
