@@ -6,6 +6,7 @@ const os = require('os');
 const pandas = require('pandas-js');
 const { join } = require('path');
 const np = require('numpy');
+const papa = require('papaparse');
 
 load_dotenv();
 
@@ -23,11 +24,13 @@ async function create_context(question, df, max_len = 1800, size = 'ada') {
     input: question,
     engine: 'text-embedding-ada-002',
   })).data[0].embedding;
+  
   const distances = Embedding.distancesFromEmbeddings(
     q_embeddings,
     df.get('embeddings').values,
     'cosine'
   );
+
   const df_sorted = df.iloc[np.array(distances).argsort()];
   const returns = [];
   let cur_len = 0;
@@ -36,12 +39,11 @@ async function create_context(question, df, max_len = 1800, size = 'ada') {
     if (cur_len > max_len) {
       return;
     }
-    returns.push(row.text);
+    returns.push(tokenizer.tokenize(row.text));
   });
 
   return returns.join('\n\n###\n\n');
 }
-
 async function answer_question(
   df,
   model = 'text-davinci-003',
@@ -77,9 +79,9 @@ async function answer_question(
 
 async function load_embeddings(file_path) {
   const fs = require('fs');
-  const csv = require('csv-parse/lib/sync');
-  const content = fs.readFileSync(file_path);
-  const records = csv(content, { columns: true });
+  const content = fs.readFileSync(file_path, { encoding: 'utf-8' });
+  const { data: records } = papa.parse(content, { header: true });
+
   records.forEach((record) => {
     record.embeddings = JSON.parse(record.embeddings);
   });
