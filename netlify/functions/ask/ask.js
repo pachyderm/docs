@@ -38,7 +38,7 @@ function euclideanDistance(a, b) {
 
   function createContext(question, embeddings) {
     const similarities = embeddings.map((embedding) => {
-      const articleVector = embedding.embeddings.split(',').map(parseFloat);
+      const articleVector = embedding.embeddings
       const articleWords = embedding.text.split(' ');
       const questionWords = question.split(' ');
       const questionVector = questionWords.map((word) => {
