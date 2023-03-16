@@ -28,11 +28,17 @@ function cosineSimilarity(a, b) {
   return dotProduct / (normA * normB);
 }
 
+function euclideanDistance(a, b) {
+  const squares = a.map((val, i) => Math.pow(val - b[i], 2));
+  const sum = squares.reduce((acc, val) => acc + val, 0);
+  return Math.sqrt(sum);
+}
+
   // create a context for a question using the most similar article
 
   function createContext(question, embeddings) {
     const similarities = embeddings.map((embedding) => {
-      const articleVector = embedding.embeddings.split(',').map((x) => parseFloat(x));
+      const articleVector = embedding.embeddings.split(',').map(parseFloat);
       const articleWords = embedding.text.split(' ');
       const questionWords = question.split(' ');
       const questionVector = questionWords.map((word) => {
@@ -43,19 +49,20 @@ function cosineSimilarity(a, b) {
           return articleVector[index];
         }
       });
-      const similarity = cosineSimilarity(articleVector, questionVector);
+      const similarity = euclideanDistance(articleVector, questionVector);
       return { article: embedding.text, similarity };
     });
     
-    // Sort the similarities in descending order by the similarity score
-    similarities.sort((a, b) => b.similarity - a.similarity);
+    // Sort the similarities in ascending order by the similarity score
+    similarities.sort((a, b) => a.similarity - b.similarity);
     
     // Return the top 1 article
     return {
-      article: similarities[2].article.substring(0, 1500),
+      article: similarities[0].article.substring(0, 1500),
       similarity: similarities[0].similarity,
     };
   }
+  
   
 
 async function handler(event) {
