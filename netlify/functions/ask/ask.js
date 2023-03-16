@@ -46,7 +46,7 @@ function cosineSimilarity(a, b) {
         }
       });
       const similarity = cosineSimilarity(articleVector, questionVector);
-      return { text: embedding.text, similarity };
+      return { article: embedding.text, similarity };
     });
   
     // Sort the similarities in descending order by the similarity score
@@ -54,7 +54,7 @@ function cosineSimilarity(a, b) {
   
     // Return the top 1 article
     return {
-      text: similarities[0].text.substring(0, 1500),
+      article: similarities[0].article.substring(0, 1500),
       similarity: similarities[0].similarity,
     };
   }
