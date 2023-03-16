@@ -37,7 +37,7 @@ async function handler(event) {
         const similarities = embeddings.map((embedding) => {
             const article = embedding.text;
             const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
-            const userQuestionVector = userQuestion.split(' ').map((word) => embeddingVector[embedding.words.indexOf(word)] || 0);
+            const userQuestionVector = userQuestion.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
             const similarity = cosineSimilarity(embeddingVector, userQuestionVector);
             return { article, similarity };
           });
