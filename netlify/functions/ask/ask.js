@@ -59,7 +59,7 @@ async function handler(event) {
       stop: ["\n"],
     });
 
-    const response = await openai.createAnswer(request);
+    const response = await openai.createAnswerResponse(request);
 
     console.log("response", response)
 
