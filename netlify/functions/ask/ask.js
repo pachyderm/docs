@@ -33,16 +33,10 @@ function cosineSimilarity(a, b) {
   // create a context for a queestion using the most similar article
 
   function createContext(question, embeddings) {
-    // embeddings have the following structure { text: '...', n_tokens: 100, embeddings: [0.1, 0.2, ...]}
-    // we want to find the most similar article to the question
-    // and return the first 1500 characters of the article
-
     // Calculate the similarity between the question and each article
-
     const similarities = embeddings.map((embedding) => {
-      const article = embedding.text;
-      const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
-      const words = article.split(' ');
+      const articleVector = embedding.embeddings;
+      const words = embedding.text.split(' ');
       const questionVector = question.split(' ').map((word) => {
         const index = words.indexOf(word);
         if (index === -1) {
@@ -51,8 +45,8 @@ function cosineSimilarity(a, b) {
           return embeddingVector[index];
         }
       });
-      const similarity = cosineSimilarity(embeddingVector, questionVector);
-      return { article, similarity };
+      const similarity = cosineSimilarity(articleVector, questionVector);
+      return { text: embedding.text, similarity };
     });
   
     // Sort the similarities in descending order by the similarity score
@@ -60,11 +54,11 @@ function cosineSimilarity(a, b) {
   
     // Return the top 1 article
     return {
-      article: similarities[0].article.substring(0, 1500),
+      text: similarities[0].text.substring(0, 1500),
       similarity: similarities[0].similarity,
     };
   }
-
+  
   
 
 async function handler(event) {
