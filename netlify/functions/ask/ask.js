@@ -26,30 +26,38 @@ function cosineSimilarity(a, b) {
     return dotProduct / (normA * normB);
   }
 
+  // create a context for a queestion using the most similar article
+
+  function createContext(question, embeddings) {
+    const similarities = embeddings.map((embedding) => {
+      const article = embedding.text;
+      const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
+      const questionVector = question.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
+      const similarity = cosineSimilarity(embeddingVector, questionVector);
+      return { article, similarity };
+    });
+  
+    // Sort the similarities in descending order by the similarity score
+    similarities.sort((a, b) => b.similarity - a.similarity);
+  
+    // Return the top 1 article
+    return similarities.slice(0, 1).map((similarity) => similarity.article.substring(0, 1500));
+  }
+
 async function handler(event) {
     try {
         const embeddings = await getEmbeddings();
 
         const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
-        console.log("subject", userQuestion)
 
         if (embeddings === undefined || embeddings.length === 0 ) {
             return { statusCode: 500, body: "Embeddings not found" }
         }
-        const similarities = embeddings.map((embedding) => {
-            const article = embedding.text;
-            const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
-            const userQuestionVector = userQuestion.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
-            const similarity = cosineSimilarity(embeddingVector, userQuestionVector);
-            return { article, similarity };
-          });
         
-        // Sort the similarities in descending order by the similarity score
-
-        similarities.sort((a, b) => b.similarity - a.similarity);
+        let context = createContext(userQuestion, embeddings)
         
         const maxLength = 1500;
-        const prompt = `answer the following question using the context provided. Question:${userQuestion}\n Context:${similarities[0].article.substring(0, maxLength)}`;
+        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context}`;
         console.log("prompt", prompt)
 
         const response = await openai.createCompletion({
