@@ -26,7 +26,6 @@ function cosineSimilarity(a, b) {
     return dotProduct / (normA * normB);
   }
 
-
 async function handler(event) {
     try {
         const embeddings = await getEmbeddings();
@@ -47,7 +46,7 @@ async function handler(event) {
         similarities.sort((a, b) => b.similarity - a.similarity);
         
         const maxLength = 1500;
-        const prompt = `${userQuestion}\n${similarities[0].text.substring(0, maxLength)}`;
+        const prompt = `${userQuestion}\n${similarities[0].article.substring(0, maxLength)}`;
         console.log("prompt", prompt)
 
         const response = await openai.createCompletion({
