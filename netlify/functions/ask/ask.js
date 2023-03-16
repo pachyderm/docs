@@ -20,11 +20,15 @@ async function getEmbeddings() {
 
 // function to calculate cosine similarity between two vectors
 function cosineSimilarity(a, b) {
-    const dotProduct = a.reduce((acc, val, i) => acc + val * b[i], 0);
-    const normA = Math.sqrt(a.reduce((acc, val) => acc + val * val, 0));
-    const normB = Math.sqrt(b.reduce((acc, val) => acc + val * val, 0));
-    return dotProduct / (normA * normB);
+  const dotProduct = a.reduce((acc, val, i) => acc + val * b[i], 0);
+  const normA = Math.sqrt(a.reduce((acc, val) => acc + val * val, 0));
+  const normB = Math.sqrt(b.reduce((acc, val) => acc + val * val, 0));
+  if (normA === 0 || normB === 0) {
+    return 0;
   }
+  return dotProduct / (normA * normB);
+}
+
 
   // create a context for a queestion using the most similar article
 
