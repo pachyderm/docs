@@ -16,7 +16,6 @@ async function getEmbeddings() {
     }).data;
     return embeddings;
   }
-  
 
 // function to calculate cosine similarity between two vectors
 function cosineSimilarity(a, b) {
@@ -29,16 +28,15 @@ function cosineSimilarity(a, b) {
   return dotProduct / (normA * normB);
 }
 
-
-  // create a context for a queestion using the most similar article
+  // create a context for a question using the most similar article
 
   function createContext(question, embeddings) {
-    // Calculate the similarity between the question and each article
     const similarities = embeddings.map((embedding) => {
       const articleVector = embedding.embeddings.split(',').map((x) => parseFloat(x));
-      const words = embedding.text.split(' ');
-      const questionVector = question.split(' ').map((word) => {
-        const index = words.indexOf(word);
+      const articleWords = embedding.text.split(' ');
+      const questionWords = question.split(' ');
+      const questionVector = questionWords.map((word) => {
+        const index = articleWords.indexOf(word);
         if (index === -1) {
           return 0;
         } else {
@@ -48,18 +46,16 @@ function cosineSimilarity(a, b) {
       const similarity = cosineSimilarity(articleVector, questionVector);
       return { article: embedding.text, similarity };
     });
-  
+    
     // Sort the similarities in descending order by the similarity score
     similarities.sort((a, b) => b.similarity - a.similarity);
-  
+    
     // Return the top 1 article
     return {
-      article: similarities[0].article.substring(0, 1500),
+      text: similarities[0].article.substring(0, 1500),
       similarity: similarities[0].similarity,
     };
   }
-  
-  
   
 
 async function handler(event) {
@@ -75,7 +71,6 @@ async function handler(event) {
         let context = createContext(userQuestion, embeddings)
         
         const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity}`;
-        console.log("prompt", prompt)
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
@@ -83,8 +78,6 @@ async function handler(event) {
             temperature: 0,
             max_tokens: 200,
         });
-
-        console.log("response", response)
 
         return {
             statusCode: 200,
