@@ -26,12 +26,12 @@ function cosineSimilarity(a, b) {
     return dotProduct / (normA * normB);
   }
 
-async function handler(event) {
+  async function handler(event) {
     try {
         const embeddings = await getEmbeddings();
 
-        const userQuestion = event.queryStringParameters.question || 'What is Pachw?'
-        console.log("subject", userQuestion)
+        const userQuestion = event.queryStringParameters.question || 'What is Pachw?';
+        console.log("subject", userQuestion);
 
         const similarities = embeddings.map((embedding) => {
             const article = embedding.text;
@@ -39,32 +39,30 @@ async function handler(event) {
             const userQuestionVector = userQuestion.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
             const similarity = cosineSimilarity(embeddingVector, userQuestionVector);
             return { article, similarity };
-          });
+        });
         
         // Sort the similarities in descending order by the similarity score
-
         similarities.sort((a, b) => b.similarity - a.similarity);
-        
-        const maxLength = 1500;
-        const prompt = `${userQuestion}\n${similarities[0].article.substring(0, maxLength)}`;
-        console.log("prompt", prompt)
 
-        const response = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: prompt,
-            temperature: 0,
-            max_tokens: 200,
+        const searchResponse = await openai.search({
+            documents: similarities.map((similarity) => similarity.article),
+            query: userQuestion,
+            max_rerank: 200,
         });
 
-        console.log("response", response)
+        console.log("searchResponse", searchResponse);
+
+        const answer = searchResponse.data.length > 0 ? searchResponse.data[0].text : "Sorry, I don't know the answer.";
+        console.log("answer", answer);
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: response.data.choices[0].text  }),
+            body: JSON.stringify({ message: answer }),
         }
     } catch (error) {
         return { statusCode: 500, body: error.toString() }
     } 
 }
+
 
 module.exports = { handler }
