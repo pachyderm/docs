@@ -42,7 +42,7 @@ function cosineSimilarity(a, b) {
         if (index === -1) {
           return 0;
         } else {
-          return embeddingVector[index];
+          return articleVector[index];
         }
       });
       const similarity = cosineSimilarity(articleVector, questionVector);
@@ -58,6 +58,7 @@ function cosineSimilarity(a, b) {
       similarity: similarities[0].similarity,
     };
   }
+  
   
   
 
