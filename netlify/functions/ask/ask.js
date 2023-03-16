@@ -50,7 +50,7 @@ function euclideanDistance(a, b) {
         }
       });
       const similarity = euclideanDistance(articleVector, questionVector);
-      return { article: embedding.text, similarity };
+      return { article: embedding.text, similarity, articleVector, questionVector};
     });
     
     // Sort the similarities in ascending order by the similarity score
@@ -79,7 +79,7 @@ async function handler(event) {
         
         let context = createContext(userQuestion, embeddings)
         
-        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} articleVector: ${context.acticleVector} questionVector: ${context.questionVection}  questionVector: ${context.questionVection}`;
+        const prompt = `Answer the question using the context. Question:${userQuestion}\n Context:${context.article} Similiarity: ${context.similarity} articleVector: ${context.articleVector} questionVector: ${context.questionVector}  questionVector: ${context.questionVection}`;
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
