@@ -52,7 +52,7 @@ function cosineSimilarity(a, b) {
     
     // Return the top 1 article
     return {
-      article: similarities[0].article.substring(0, 1500),
+      article: similarities[2].article.substring(0, 1500),
       similarity: similarities[0].similarity,
     };
   }
