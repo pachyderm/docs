@@ -30,12 +30,17 @@ function cosineSimilarity(a, b) {
 
   async function createContext(question, embeddings, maxLength = 1800, model = "text-embedding-ada-002") {
     // Get the embeddings for the question
-    const response = await openai.createEmbedding({
-      engine: model,
-      input: [question],
-    });
-  
-    const q_embeddings = response.data[0].embedding;
+    const response = await axios.post("https://api.openai.com/v1/embeddings", {
+        input: question,
+        model: "text-embedding-ada-002"
+        }, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+        }
+        });
+
+        const q_embeddings = response.data.data[0].embedding;
   
     // Compute distances from embeddings
     const distances = embeddings.map((embedding) => {
