@@ -28,22 +28,47 @@ function cosineSimilarity(a, b) {
 
   // create a context for a queestion using the most similar article
 
-  function createContext(question, embeddings) {
-    const similarities = embeddings.map((embedding) => {
-      const article = embedding.text;
-      const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
-      const questionVector = question.split(' ').map((word) => embeddingVector[embedding.text.indexOf(word)] || 0);
-      const similarity = cosineSimilarity(embeddingVector, questionVector);
-      return { article, similarity };
+  async function createContext(question, embeddings, maxLength = 1800, model = "text-embedding-ada-002") {
+    // Get the embeddings for the question
+    const response = await openai.embeddings({
+      engine: model,
+      input: [question],
     });
   
-    // Sort the similarities in descending order by the similarity score
-    similarities.sort((a, b) => b.similarity - a.similarity);
+    const q_embeddings = response.data[0].embedding;
   
-    // Return the top 1 article
-    return similarities[0].article.substring(0, 1500);
-
+    // Compute distances from embeddings
+    const distances = embeddings.map((embedding) => {
+      const embeddingVector = embedding.embeddings.split(",").map(parseFloat);
+      const distance = cosineSimilarity(q_embeddings, embeddingVector);
+      return { ...embedding, distance };
+    });
+  
+    // Sort by distance
+    distances.sort((a, b) => a.distance - b.distance);
+  
+    let context = [];
+    let curLength = 0;
+  
+    // Add the text to the context until the context is too long
+    for (let i = 0; i < distances.length; i++) {
+      const row = distances[i];
+      // Add the length of the text to the current length
+      curLength += row.n_tokens + 4;
+  
+      // If the context is too long, break
+      if (curLength > maxLength) {
+        break;
+      }
+  
+      // Else add it to the text that is being returned
+      context.push(row.text);
+    }
+  
+    // Return the context
+    return context.join("\n\n###\n\n");
   }
+  
 
 async function handler(event) {
     try {
