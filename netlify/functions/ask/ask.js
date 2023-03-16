@@ -72,7 +72,8 @@ async function handler(event) {
         return {
             statusCode: 200,
             body: JSON.stringify({ message: response.data.choices[0].text,
-            prompt: prompt,  }),
+            prompt: prompt,
+            embeddings: embeddings,  }),
         }
     } catch (error) {
         return { statusCode: 500, body: error.toString() }
