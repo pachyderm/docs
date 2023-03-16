@@ -4,36 +4,48 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-async function getEmbeddings(texts) {
-    const embeddings = [];
+const Papa = require("papaparse");
+const fs = require("fs");
 
-    for (let i = 0; i < texts.length; i++) {
-        const response = await openai.embed(texts[i], "text-embedding-2020-09-01");
-        embeddings.push(response.data.embeddings[0]);
-    }
+const embeddings = Papa.parse(fs.readFileSync("./processed/embeddings.csv", "utf8"), {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+}).data;
 
-    return embeddings;
-}
-
-async function answerQuestion(question, embeddings) {
-    const response = await openai.search(
-        question,
-        embeddings,
-        "text-embedding-2020-09-01"
-    );
-
-    return response.data.results[0].text;
-}
+// function to calculate cosine similarity between two vectors
+function cosineSimilarity(a, b) {
+    const dotProduct = a.reduce((acc, val, i) => acc + val * b[i], 0);
+    const normA = Math.sqrt(a.reduce((acc, val) => acc + val * val, 0));
+    const normB = Math.sqrt(b.reduce((acc, val) => acc + val * val, 0));
+    return dotProduct / (normA * normB);
+  }
 
 
 async function handler(event) {
     try {
-        const subject = event.queryStringParameters.question || 'What is Pachyderm?'
-        console.log("subject", subject)
+        const userQuestion = event.queryStringParameters.question || 'What is Pachyderm?'
+        console.log("subject", userQuestion)
+
+        const similarities = embeddings.map((embedding) => {
+            const article = embedding.text;
+            const embeddingVector = embedding.embeddings.split(',').map(parseFloat);
+            const userQuestionVector = userQuestion.split(' ').map((word) => embeddingVector[embedding.words.indexOf(word)] || 0);
+            const similarity = cosineSimilarity(embeddingVector, userQuestionVector);
+            return { article, similarity };
+          });
+        
+        // Sort the similarities in descending order by the similarity score
+
+        similarities.sort((a, b) => b.similarity - a.similarity);
+        
+        const maxLength = 1500;
+        const prompt = `${userQuestion}\n${promptContext.substring(0, maxLength)}`;
+        console.log("prompt", prompt)
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: subject,
+            prompt: prompt,
             temperature: 0,
             max_tokens: 200,
         });
