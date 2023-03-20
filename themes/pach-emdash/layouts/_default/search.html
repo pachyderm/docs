@@ -1,7 +1,25 @@
 {{ define "main" }}
 
-<div id="search-box"></div>
-<div id="hits"></div>
+{{$core := resources.Get "js/search/core.js"  | js.Build  }}
 
+<main class="mx-3 my-6">
+  <div class="spread">
+    <div id="categories" class="is-one-third"></div>
 
+    <div class="stack">
+
+      <div id="main-searchbox" class="p-2 rounded-6 outlined c-pinned-center s-algolia"></div>
+        <div class="spread-center">
+          ⚡️
+          <div id="stats" class="p-2 xs"></div>
+        </div>
+        <div id="searchPageHits" class="directory is-two-thirds"></div>
+          <div id="pagination" class="a-block"></div>
+    </div>
+    </div>
+  
+  </div>
+</main>
+
+<script src="{{ $core.RelPermalink }}" type="module" defer></script>
 {{end}}
