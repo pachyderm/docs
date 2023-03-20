@@ -1,6 +1,6 @@
 /* global instantsearch */
 
-import { hitTemplate } from "./hitTemplate";
+import { groupedHitsWidget } from "./groupedHitsWidget";
 import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
 
@@ -12,16 +12,11 @@ const search = instantsearch({
 // Uncomment the following widget to add hits list.
 
 search.addWidget(
-  instantsearch.widgets.hits({
+  groupedHitsWidget({
     container: "#searchPageHits",
-    templates: {
-      empty: "No results found.",
-      item(hit) {
-        return hitTemplate(hit);
-      }
-    }
+    attribute: "parent", // Replace "parentAttribute" with the actual attribute name.
   })
-); 
+);
 
 // Uncomment the following widget to add a search bar.
 

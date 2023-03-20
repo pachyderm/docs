@@ -5,7 +5,7 @@ export const client = algoliasearch(
   'fce88031ca90abb0eddd7e3a11bb5855'
 );
 
-const index = client.initIndex('demo_media');
+export const index = client.initIndex('demo_media');
 
 index.setSettings({
   // Select the attributes you want to search in
@@ -21,6 +21,7 @@ index.setSettings({
     'tags'
   ],
   // Define the attribute we want to distinct on
-  attributeForDistinct: 'id',
-  hitsPerPage: 3,
-});
+  attributeForDistinct: 'parent',
+  distinct: 3,
+  hitsPerPage: 5,
+})
