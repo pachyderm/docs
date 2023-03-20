@@ -23,5 +23,5 @@ index.setSettings({
   // Define the attribute we want to distinct on
   attributeForDistinct: 'parent',
   distinct: 3,
-  hitsPerPage: 5,
+  hitsPerPage: 3,
 })

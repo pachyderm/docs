@@ -25,8 +25,10 @@ export function groupedHitsWidget({ container, attribute }) {
           groupedHits[group].forEach((hit) => {
             const hitElement = document.createElement("li");
             hitElement.innerHTML = `
-              <h4>${hit.title}</h4>
-              <p>${hit.description}</p>
+              <div onclick="location.href='${hit.uri}';" style="cursor: pointer;">
+                <h4>${hit.title}</h4>
+                <p>${hit.description}</p>
+              </div>
             `;
             hitsList.appendChild(hitElement);
           });
