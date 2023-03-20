@@ -4,7 +4,7 @@ title:  Helm Chart Values (HCVs)
 description: Learn about the configurable helm chart attributes for Pachyderm.
 date: 
 # taxonomy #
-tags: ["configuration", "helm"]
+tags: ["configuration", "helm", "helm chart"]
 series:
 seriesPart:
 ---

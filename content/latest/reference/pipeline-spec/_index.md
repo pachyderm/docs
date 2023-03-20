@@ -4,7 +4,7 @@ title:  Pipeline Specification (PPS)
 description:  Learn about the different attributes of a pipeline spec. 
 date: 
 # taxonomy #
-tags: ["pipelines"]
+tags: ["pipeline", "pipelines", "pipeline specification", "pps" ]
 series:
 seriesPart:
 ---
