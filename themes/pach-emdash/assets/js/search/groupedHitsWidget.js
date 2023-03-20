@@ -16,6 +16,7 @@ export function groupedHitsWidget({ container, attribute }) {
   
         for (const group in groupedHits) {
           const groupTitle = document.createElement("h3");
+          groupTitle.classList.add("darken-1", "p-2", "my-2", "rounded");
           groupTitle.textContent = group;
           hitsContainer.appendChild(groupTitle);
   
