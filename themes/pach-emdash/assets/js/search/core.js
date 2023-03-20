@@ -1,6 +1,7 @@
 /* global instantsearch */
 
 import { hitTemplate } from "./hitTemplate";
+import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
 
 const search = instantsearch({
@@ -60,8 +61,11 @@ search.addWidget(
     attribute: "tags",
     autoHideContainer: false,
     templates: {
-      header: "Tags"
-    }
+      header: "Tags",
+      item(refinement) {
+        return refinementTemplate(refinement);
+      }
+    },
   })
 ); 
 
