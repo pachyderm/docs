@@ -16,35 +16,9 @@
         </div>
     {{ partial "featureCommunityDetails.html" . }}
 
-    {{/*  {{ partial "clippy.html" . }}  */}}
-
-    <div class="spread-center">
-        <div class="stack mx-4 mt-6 mb-6 is-two-thirds">
-            <h2 class="text-center mt-3 mb-4">Explore Pachyderm</h2>
-            <div class="spread p-2 brighten-1 rounded-6 outlined  c-pinned-center">
-                <div class="is-fit l is-hidden-mobile ml-2">🔍</div>
-                <div id="searchbox" class=""></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="hits">
-    </div>
+    {{ partial "algoliaHits.html" . }}
 
 
-
-    
-    {{/*  <div class="stack-center mt-5 text-center">
-        <h2>Design, Build, & Deploy <br>  Data Transformation Pipelines</h2>
-    </div>
-    {{with  .Site.GetPage "section" .Site.Params.releaseInfo.latest  }}
-        <section class="mx-4 mt-4">
-            {{ partial "featureChildPages.html" . }}
-        </section>
-    {{end}}
-
-    {{ partial "featureVideos.html" . }}  */}}
-</section>
 
 {{end}}
 

@@ -8,14 +8,18 @@
     </div>
     <div class="spread-right is-one-third is-half-tablet is-fullsize-mobile c-rounded-1 c-ml-1 c-my-2">
     {{if .IsHome}}
-    
-    {{else}}
-      <div class="spread rounded-6 outlined c-pinned-center ">
+    <div class="spread rounded-6 outlined c-pinned-center">
+      <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
+      <div id="main-searchbox"></div>
+    </div>
+    {{else if ne .Layout "search"}}
+      <div class="spread rounded-6 outlined c-pinned-center">
         <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
-        <div id="searchbox"></div>
+        <div id="main-searchbox"></div>
       </div>
-    {{end}}
       {{ partial "featureVersionDropdown.html" . }}
+    {{end}}
+  
       <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/" class="black gradient-rl-cold is-fit is-hidden-touch s semi-bold px-3 py-2 rounded-4"> Demo</a>
       <button id="darkModeButton" class="is-fit black grayscale px-3 py-2 rounded-6" onclick="darkMode()">🌙</button>
     </div>

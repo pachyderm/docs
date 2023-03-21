@@ -182,10 +182,6 @@ hr {
   display: none;
 }
 
-
-
-
-
 .content :is(ol,ul) > li { margin-left: 1rem; margin-bottom: .5rem; } /* Flexbox Layout System */
 
 /* Layer things horizontally */
@@ -2176,4 +2172,63 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
 img {
   min-width: 0;
   max-width: 100%;
+}
+
+.a-block div > ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.a-block div > ul > li {
+  display: flex;
+  padding: 0 10px;
+}
+
+.a-block div > ul > li:first-child {
+  padding-left: 0;
+}
+
+.a-block div > ul > li:last-child {
+  padding-right: 0;
+}
+
+.a-block div > ul > li  {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--is-primary-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.s-algolia div > form > input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--is-primary-text);
+  background-color: transparent;
+}
+
+.card {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Inputs */
+
+input[type="checkbox"]:checked {
+  accent-color: var(--is-black);
+  outline: 1px solid var(--is-white);
+}
+
+#categories div > ul {
+  list-style: none;
 }
