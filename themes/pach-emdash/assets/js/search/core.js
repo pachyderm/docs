@@ -39,10 +39,11 @@ search.addWidget(
   instantsearch.widgets.stats({
     container: "#stats",
     templates: {
-      body(hit) {
-        return `<span role="img" aria-label="emoji">⚡️</span> <strong>${hit.nbHits}</strong> results found ${
-          hit.query != "" ? `for <strong>"${hit.query}"</strong>` : ``
-        } in <strong>${hit.processingTimeMS}ms</strong>`;
+      text(data) {
+        const stats = data 
+        return `
+        ⚡️ ${stats.nbPages} results found in ${stats.processingTimeMS}ms
+       `;
       }
     }
   })

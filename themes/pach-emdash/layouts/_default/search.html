@@ -1,16 +1,19 @@
 {{ define "main" }}
 
+<style>
+  .nline-p > div > ul {
+    padding-inline-start: 0px;
+  }
+</style>
+
 {{$core := resources.Get "js/search/core.js"  | js.Build  }}
 
 <main class="mx-3 my-6">
   <div class="spread">
-    <div id="categories" class="is-one-third directory"></div>
+    <div id="categories" class="is-one-third directory nline-p"></div>
     <div class="stack">
       <div id="main-searchbox" class="p-2 rounded-6 outlined c-pinned-center s-algolia"></div>
-        <div class="spread-center">
-          ⚡️
-          <div id="stats" class="p-2 xs"></div>
-        </div>
+      <div id="stats" class="p-2 my-2 xs"></div>
         <div id="searchPageHits" class="directory is-two-thirds"></div>
         <div id="pagination" class="a-block"></div>
       </div>

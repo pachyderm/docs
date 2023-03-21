@@ -16,7 +16,7 @@ export function groupedHitsWidget({ container, attribute }) {
   
         for (const group in groupedHits) {
           const groupTitle = document.createElement("h3");
-          groupTitle.classList.add("darken-1", "p-2", "my-2", "rounded");
+          groupTitle.classList.add("black", "gradient-rl-cold", "my-3", "p-3", "rounded-1");
           groupTitle.textContent = group;
           hitsContainer.appendChild(groupTitle);
   
@@ -25,10 +25,12 @@ export function groupedHitsWidget({ container, attribute }) {
           groupedHits[group].forEach((hit) => {
             const hitElement = document.createElement("li");
             hitElement.innerHTML = `
-              <div onclick="location.href='${hit.uri}';" style="cursor: pointer;">
-                <h4>${hit.title}</h4>
-                <p>${hit.description}</p>
-              </div>
+            <a href="${hit.uri}" class="card">
+            <div>
+              <h4>${hit.title}</h4>
+              <p>${hit.description}</p>
+            </div>
+          </a>
             `;
             hitsList.appendChild(hitElement);
           });

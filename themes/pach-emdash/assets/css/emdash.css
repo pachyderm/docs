@@ -182,10 +182,6 @@ hr {
   display: none;
 }
 
-
-
-
-
 .content :is(ol,ul) > li { margin-left: 1rem; margin-bottom: .5rem; } /* Flexbox Layout System */
 
 /* Layer things horizontally */
@@ -2203,7 +2199,6 @@ img {
   display: block;
   padding: 10px;
   border-radius: 5px;
-  background-color: var(--is-primary-color);
   color: var(--is-primary-text);
   text-decoration: none;
   font-weight: 700;
@@ -2217,5 +2212,19 @@ img {
   font-size: 1rem;
   font-weight: 700;
   color: var(--is-primary-text);
-  background-color: var(--is-primary-color);
+  background-color: transparent;
+}
+
+.card {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Inputs */
+
+input[type="checkbox"]:checked {
+  accent-color: var(--is-black);
+  outline: 1px solid var(--is-white);
 }
