@@ -5,7 +5,7 @@ export const client = algoliasearch(
   '1f21e218181a4f87c5496cd574a88c70'
 );
 
-export const index = client.initIndex('test-latest');
+export const index = client.initIndex('latest');
 
 index.setSettings({
   // Select the attributes you want to search in

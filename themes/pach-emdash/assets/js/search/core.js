@@ -3,7 +3,7 @@
 import { groupedHitsWidget } from "./groupedHitsWidget";
 import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
-const indexName = document.getElementById('activeVersion')?.getAttribute('data-algolia') || 'test-latest';
+const indexName = document.getElementById('activeVersion')?.getAttribute('data-algolia') || 'latest';
 const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
 
 
@@ -76,8 +76,9 @@ search.addWidget(
     templates: {
       text(data) {
         const stats = data 
+        console.log("stats ", stats)
         return `
-        ⚡️ ${stats.nbPages} results found in ${stats.processingTimeMS}ms
+        ⚡️ ${stats.nbHits} results found across ${stats.nbPages} pages in ${stats.processingTimeMS}ms. Docs version: ${indexName}.
        `;
       }
     }
@@ -97,6 +98,9 @@ search.addWidget(
         return refinementTemplate(refinement);
       }
     },
+    cssClasses: {
+      root: ['sticky', 'pt-5']
+    }
   })
 ); 
 
