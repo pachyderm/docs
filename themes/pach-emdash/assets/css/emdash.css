@@ -2228,3 +2228,7 @@ input[type="checkbox"]:checked {
   accent-color: var(--is-black);
   outline: 1px solid var(--is-white);
 }
+
+#categories div > ul {
+  list-style: none;
+}

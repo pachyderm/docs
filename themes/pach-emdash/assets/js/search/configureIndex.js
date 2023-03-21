@@ -2,7 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 export const client = algoliasearch(
   'RUV2F528SR',
-  'fce88031ca90abb0eddd7e3a11bb5855'
+  '1f21e218181a4f87c5496cd574a88c70'
 );
 
 export const index = client.initIndex('demo_media');

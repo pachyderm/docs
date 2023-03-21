@@ -1,3 +1,4 @@
+
 export function refinementTemplate(refinement) {
     return `
         <div class="py-1" style="cursor: pointer;">
