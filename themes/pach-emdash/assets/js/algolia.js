@@ -7,48 +7,29 @@ const searchClient = algoliasearch('RUV2F528SR', '1f21e218181a4f87c5496cd574a88c
 const search = instantsearch({
   indexName,
   searchClient,
-});
-
-const autocomplete = instantsearch.widgets.autocomplete({
-  container: "#searchbox",
-  placeholder: "Search...",
-  showReset: false,
-  showSubmit: false,
-  autofocus: false,
-  showLoadingIndicator: false,
-  cssClasses: {
-    form: ['spread', ],
-    submit: ['is-hidden'],
-    reset: ['is-hidden'],
-    input: ['sp-1', 'inherit-color', 'meow']
+  searchFunction(helper) {
+    if (helper.state.query) {
+      helper.search();
+    }
+    if (!helper.state.query) {
+      document.querySelector('#hits').innerHTML = '';
+    }
   },
-  templates: {
-    dropdownMenu:
-      '<div class="aa-dataset-{{name}}"></div>'
-  },
-  appendTo: '#searchbox'
 });
 
 search.addWidgets([
-  autocomplete({
-    container: '#searchbox',
-    placeholder: 'Search...',
-    openOnFocus: true,
-    minLength: 2,
-    templates: {
-      suggestion: function(suggestion) {
-        return suggestion._highlightResult.title.value;
-      },
-      footer: function(query) {
-        return `See all results for ${query} <a href="/search?q=${query}">here</a>`;
-      },
-    },
+  instantsearch.widgets.searchBox({
+    container: "#searchbox",
+    placeholder: "Search...",
+    showReset: false,
+    showSubmit: false,
+    autofocus: false,
+    showLoadingIndicator: false,
     cssClasses: {
-      root: ['aa-input-container'],
-      input: ['aa-input', 'sp-1', 'inherit-color', 'meow'],
-      dropdownMenu: ['aa-dropdown-menu'],
-      suggestion: ['aa-suggestion', 'is-accordion is-fit'],
-      footer: ['aa-footer'],
+      form: ['spread', ],
+      submit: ['is-hidden'],
+      reset: ['is-hidden'],
+      input: ['sp-1', 'inherit-color', 'meow']
     },
   }),
   instantsearch.widgets.configure({
@@ -84,3 +65,4 @@ search.addWidgets([
 ]);
 
 search.start();
+

@@ -7,6 +7,15 @@ import { client } from "./configureIndex.js";
 const search = instantsearch({
   indexName: "demo_media",
   searchClient: client,
+  searchFunction(helper) {
+    if (helper.state.query) {
+      helper.search();
+    }
+    if (!helper.state.query) {
+      // search for "pipeline"
+      helper.setQuery("pipeline").search();
+    }
+  },
 });
 
 // Uncomment the following widget to add hits list.
