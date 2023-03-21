@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{{ $defaultCss.RelPermalink }}" media="screen" />
 {{else}}
     {{/*  themes/pach-emdash/assets/css/..  */}}
-    {{ $algolia := resources.Get "css/algolia.css" | resources.Minify }}
     {{ $emdash := resources.Get "css/emdash.css" | resources.Minify }}
     {{ $widescreen := resources.Get "css/widescreen.css" | resources.Minify }}
     {{ $font := resources.Get "css/font.css" | resources.Minify }}

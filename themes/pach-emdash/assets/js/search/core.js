@@ -3,8 +3,6 @@
 import { groupedHitsWidget } from "./groupedHitsWidget";
 import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
-
-const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
 const indexName = document.getElementById('activeVersion').getAttribute('data-algolia');
 
 console.log("client is", client)
@@ -14,14 +12,14 @@ const search = instantsearch({
   searchClient: client,
   searchFunction(helper) {
     if (helper.state.query) {
-      // display id searchResultsContainer 
+      // display searchResultsContainer 
       document.getElementById('searchResultsContainer').style.display = 'block';
       helper.search();
     }
     if (!helper.state.query) {
-      // hide id searchResultsContainer
+      // hide searchResultsContainer 
       document.getElementById('searchResultsContainer').style.display = 'none';
-      document.querySelector('#searchPageHits').innerHTML = '';
+      
     }
   },
 });

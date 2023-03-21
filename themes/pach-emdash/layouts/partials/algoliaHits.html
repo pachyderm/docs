@@ -2,15 +2,34 @@
     -Targeted by algolia to inject results; should remain empty and without additional classes. 
 */}}
 
-<section id="searchResultsContainer" class="mx-3 modal white">
-  <div class="spread">
-    <div id="categories" class="is-one-third directory nline-p mr-5 is-hidden-mobile"></div>
-    <div class="stack">
-      {{/*  <div id="main-searchbox" class="p-2 rounded-6 outlined c-pinned-center s-algolia"></div>  */}}
-      <div id="stats" class="p-2 my-2 xs"></div>
-        <div id="searchPageHits" class="directory is-two-thirds"></div>
-        <div id="pagination" class="a-block"></div>
-      </div>
+<style>
+    #searchResultsContainer {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 200;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: white;
+    }
+
+    #searchResultsContainer::-webkit-scrollbar {
+        display: none;
+      }
+</style>
+<section id="searchResultsContainer">
+    <div class="spread">
+        <div id="categories" class="is-one-fifth is-hidden-mobile px-3">
+        </div>
+        <div class="px-3">
+           <div id="stats" class="p-2 my-2 xs"></div>
+           <div id="searchPageHits" class="directory"> </div>
+           <div id="pagination" class="a-block"></div>
+        </div>
+       <div class="is-one-fifth is-hidden-mobile px-3"> </div>
     </div>
-  </div>
 </section>
+
+

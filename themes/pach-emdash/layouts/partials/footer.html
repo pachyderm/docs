@@ -2,7 +2,7 @@
 - themes/pach-emdash/assets/js 
 - each one is minified
 */}}
-  {{$algoliaNew := resources.Get "js/search/core.js"  | js.Build  }}
+  {{$algolia := resources.Get "js/search/core.js"  | js.Build  }}
   {{$chatgpt := resources.Get "js/clippy.js"  | resources.Minify }}
   {{ $toc := resources.Get "js/toc.js"  | resources.Minify  }}
   {{ $clippy := resources.Get "js/clipboard.js"  | resources.Minify }}
@@ -28,7 +28,7 @@
       <script src="{{ $algoliaHomePage.RelPermalink }}" type="module" defer></script>
     {{else}}
   
-      <script src="{{ $algoliaNew.RelPermalink }}" type="module" defer></script>
+      <script src="{{ $algolia.RelPermalink }}" type="module" defer></script>
     {{end}}
     <script src="{{ $js.RelPermalink }}" defer></script>
     {{ partial "marketingScripts.html" . }}
