@@ -10,7 +10,7 @@ const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "blac
 console.log("client is", client)
 
 const search = instantsearch({
-  indexName: indexName,
+  indexName: "test-latest",
   searchClient: client,
   searchFunction(helper) {
     // if user presses "/" key, focus on search input
