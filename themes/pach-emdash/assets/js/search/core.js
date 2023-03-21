@@ -3,14 +3,15 @@
 import { groupedHitsWidget } from "./groupedHitsWidget";
 import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
-const indexName = document.getElementById('activeVersion').getAttribute('data-algolia');
+const indexName = document.getElementById('activeVersion')?.getAttribute('data-algolia') || 'test-latest';
 const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
 
 
 console.log("client is", client)
 
+
 const search = instantsearch({
-  indexName: "test-latest",
+  indexName: indexName,
   searchClient: client,
   searchFunction(helper) {
     // if user presses "/" key, focus on search input

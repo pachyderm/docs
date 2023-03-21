@@ -14,7 +14,6 @@
   {{ $mermaid := resources.Get "js/mermaid.js"  | resources.Minify  }}
   {{ $tables := resources.Get "js/tables.js"  | resources.Minify  }}
   {{ $keyboard := resources.Get "js/keyboard.js"  | resources.Minify  }}
-  {{ $algoliaHomePage := resources.Get "js/algoliaHomePage.js"  | resources.Minify  }}
   {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
   {{ $wizard := resources.Get "js/wizard.js"  | resources.Minify  }}
 
@@ -23,13 +22,9 @@
   {{ $js := slice $darkMode $wizard $toc $relatedArticles $clippy $chatgpt $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
 
 <footer class="spread  mt-7 px-4 py-7 c-pinned-top c-mt-5">
-    {{/*  Algolia must remain separate due to module type  */}}
-    {{if .IsHome}}
-      <script src="{{ $algoliaHomePage.RelPermalink }}" type="module" defer></script>
-    {{else}}
   
       <script src="{{ $algolia.RelPermalink }}" type="module" defer></script>
-    {{end}}
+  
     <script src="{{ $js.RelPermalink }}" defer></script>
     {{ partial "marketingScripts.html" . }}
     {{if .Params.mermaid}}
