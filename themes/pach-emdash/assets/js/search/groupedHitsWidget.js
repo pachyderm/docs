@@ -25,7 +25,7 @@ export function groupedHitsWidget({ container, attribute }) {
           groupedHits[group].forEach((hit) => {
             const hitElement = document.createElement("li");
             hitElement.innerHTML = `
-            <a href="${hit.uri}" class="card">
+            <a href="${hit.uri}" class="card c-move-l">
             <div>
               <h4>${hit.title}</h4>
               <p>${hit.description}</p>
