@@ -4,16 +4,24 @@ import { groupedHitsWidget } from "./groupedHitsWidget";
 import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
 
+const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
+const indexName = document.getElementById('activeVersion').getAttribute('data-algolia');
+
+console.log("client is", client)
+
 const search = instantsearch({
-  indexName: "demo_media",
+  indexName: indexName,
   searchClient: client,
   searchFunction(helper) {
     if (helper.state.query) {
+      // display id searchResultsContainer 
+      document.getElementById('searchResultsContainer').style.display = 'block';
       helper.search();
     }
     if (!helper.state.query) {
-      // search for "pipeline"
-      helper.setQuery("pipeline").search();
+      // hide id searchResultsContainer
+      document.getElementById('searchResultsContainer').style.display = 'none';
+      document.querySelector('#searchPageHits').innerHTML = '';
     }
   },
 });
@@ -38,7 +46,13 @@ search.addWidget(
       submit: '',
       reset: '', 
       loadingIndicator: ''
-    }
+    },
+    cssClasses: {
+      form: ['spread', ],
+      submit: ['is-hidden'],
+      reset: ['is-hidden'],
+      input: ['sp-1', 'inherit-color', 'meow']
+    },
   })
 ); 
 

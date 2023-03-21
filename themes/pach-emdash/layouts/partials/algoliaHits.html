@@ -2,6 +2,15 @@
     -Targeted by algolia to inject results; should remain empty and without additional classes. 
 */}}
 
-<div id="hits">
-
-</div>
+<section id="searchResultsContainer" class="mx-3 modal white">
+  <div class="spread">
+    <div id="categories" class="is-one-third directory nline-p mr-5 is-hidden-mobile"></div>
+    <div class="stack">
+      {{/*  <div id="main-searchbox" class="p-2 rounded-6 outlined c-pinned-center s-algolia"></div>  */}}
+      <div id="stats" class="p-2 my-2 xs"></div>
+        <div id="searchPageHits" class="directory is-two-thirds"></div>
+        <div id="pagination" class="a-block"></div>
+      </div>
+    </div>
+  </div>
+</section>

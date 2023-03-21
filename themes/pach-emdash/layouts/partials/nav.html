@@ -10,9 +10,9 @@
     {{if .IsHome}}
     
     {{else if ne .Layout "search"}}
-      <div class="spread rounded-6 outlined c-pinned-center ">
+      <div class="spread rounded-6 outlined c-pinned-center">
         <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
-        <div id="searchbox"></div>
+        <div id="main-searchbox"></div>
       </div>
       {{ partial "featureVersionDropdown.html" . }}
     {{end}}
