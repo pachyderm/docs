@@ -7,7 +7,7 @@ date:
 tags: ["deployment"]
 series:
 seriesPart:
-weight: 6
+weight: 
 directory: true 
 --- 
 

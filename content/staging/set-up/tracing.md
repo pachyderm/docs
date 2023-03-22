@@ -7,7 +7,7 @@ date:
 tags: ["logs", "jaeger"]
 series:
 seriesPart:
-weight: 8
+weight: 
 directory: true 
 --- 
 

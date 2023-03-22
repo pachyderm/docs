@@ -7,5 +7,5 @@ date:
 tags: ["aws","azure","gcp", "cloud-deploy"]
 series:
 seriesPart:
-weight: 2
+weight: 
 ---

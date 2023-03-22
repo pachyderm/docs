@@ -7,7 +7,7 @@ date:
 tags: ["configuration"]
 series:
 seriesPart:
-weight: 5
+weight: 
 directory: true 
 --- 
 

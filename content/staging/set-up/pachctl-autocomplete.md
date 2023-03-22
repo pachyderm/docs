@@ -1,13 +1,13 @@
 ---
 # metadata # 
-title:  Install Pachctl Auto-completion
+title: Pachctl Auto-completion
 description: Learn how to install Pachyderm's auto-completion helper tool (it's great for learning pachctl commands).
 date: 
 # taxonomy #
 tags: ["deployment"]
 series:
 seriesPart: 
-weight: 4
+weight:
 directory: true 
 ---
 
