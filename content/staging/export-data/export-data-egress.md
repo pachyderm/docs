@@ -7,6 +7,7 @@ date:
 tags: ["egress", "data-operations", "export"]
 series:
 seriesPart:
+directory: true
 ---
 
 The `egress` field in the Pachyderm [pipeline specification](../../../../reference/pipeline-spec)

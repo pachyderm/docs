@@ -8,6 +8,7 @@ tags:
 series:
 seriesPart:
 weight: 
+directory: true
 ---
 
 

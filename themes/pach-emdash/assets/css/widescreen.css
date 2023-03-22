@@ -14,7 +14,7 @@
     }
 
     .h-scroll {
-        height: max-content !important;
+        height: max-content - 100px !important;
     }
 
     .one-sixth-widescreen {

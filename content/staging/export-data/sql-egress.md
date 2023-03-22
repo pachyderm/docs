@@ -7,6 +7,7 @@ date:
 tags: ["sql", "data-operations", "export"]
 series:
 seriesPart:
+directory: true
 ---
 
 {{% notice warning %}}

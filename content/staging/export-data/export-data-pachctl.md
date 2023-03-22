@@ -7,6 +7,7 @@ date:
 tags: ["pachctl", "data-operations", "export"]
 series:
 seriesPart:
+directory: true
 ---
  
 To export your data with pachctl:
