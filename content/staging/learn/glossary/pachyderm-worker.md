@@ -5,7 +5,7 @@ description: Learn about the concept of a Pachyderm worker.
 date: 
 # taxonomy #
 tags:  
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

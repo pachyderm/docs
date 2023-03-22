@@ -6,7 +6,7 @@ glossaryDefinition: A top-level data object inside Pachyderm that behaves as a l
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

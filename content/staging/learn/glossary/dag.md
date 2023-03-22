@@ -5,7 +5,7 @@ description: Learn about the concept of a DAG in Pachyderm.
 date:
 # taxonomy #
 tags: 
-series:
+series: ["glossary"]
 seriesPart:
 mermaid: true
 ---

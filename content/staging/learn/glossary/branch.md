@@ -6,7 +6,7 @@ glossaryDefinition: A pointer to a commit that moves along with new commits as t
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

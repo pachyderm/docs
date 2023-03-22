@@ -5,7 +5,7 @@ description: Learn about the concept of Ancestry Syntax in Pachyderm.
 date:
 # taxonomy #
 tags: 
-series:
+series: ["glossary"]
 seriesPart:
 ---
 

@@ -6,7 +6,7 @@ glossaryDefinition: A Unix filesystem object (directory or file) that stores dat
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

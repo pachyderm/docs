@@ -5,7 +5,7 @@ description: Learn about the concept of distributed computing in Pachyderm.
 date: 
 # taxonomy #
 tags:  ["data-operations", "pipelines"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

@@ -6,7 +6,7 @@ glossaryDefinition:
 date: 
 # taxonomy #
 tags:  
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

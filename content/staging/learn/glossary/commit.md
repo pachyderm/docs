@@ -6,7 +6,7 @@ glossaryDefinition: An atomic operation that snapshots and preserves the state o
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 {{% notice note %}}

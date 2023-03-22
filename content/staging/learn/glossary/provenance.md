@@ -6,7 +6,7 @@ glossaryDefinition: The recorded data lineage that tracks the dependencies and r
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

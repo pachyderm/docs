@@ -5,7 +5,7 @@ description: Learn about the concept of a glob pattern in Pachyderm.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

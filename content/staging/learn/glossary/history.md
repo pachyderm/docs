@@ -6,7 +6,7 @@ glossaryDefinition: The collective record of version-controlled commits for pipe
 date: 
 # taxonomy #
 tags:  
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

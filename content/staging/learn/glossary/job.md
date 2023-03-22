@@ -5,7 +5,7 @@ description: Learn about the concept of a Job in Pachyderm.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations", "pipelines"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

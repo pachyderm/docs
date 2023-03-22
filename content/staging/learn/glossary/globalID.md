@@ -5,7 +5,7 @@ description: Learn about the concept of a global identifier in Pachyderm.
 date: 
 # taxonomy #
 tags:  ["data-operations", "pipelines"]
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

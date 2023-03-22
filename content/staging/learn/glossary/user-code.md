@@ -5,7 +5,7 @@ description: Learn about the concept of User Code in Pachyderm.
 date: 
 # taxonomy #
 tags: 
-series:
+series: ["glossary"]
 seriesPart:
 --- 
 

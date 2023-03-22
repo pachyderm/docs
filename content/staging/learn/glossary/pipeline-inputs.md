@@ -5,6 +5,6 @@ description:
 date:
 # taxonomy #
 tags: 
-series:
+series: ["glossary"]
 seriesPart:
 ---
