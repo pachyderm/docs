@@ -1,118 +1,88 @@
-/* global instantsearch */
-
 import { groupedHitsWidget } from "./groupedHitsWidget";
 import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
+
+// Pachyderm Docs specific Settings and Functions
 const indexName = document.getElementById('activeVersion')?.getAttribute('data-algolia') || 'latest';
 const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
 
+function handleSearch(helper) {
+  // Shows/hides search results based on query and listens for '/' keypress to focus search box.
+  const searchResultsContainer = document.getElementById('searchResultsContainer');
+  const searchBox = document.querySelector('.ais-SearchBox-input');
 
-console.log("client is", client)
+  searchResultsContainer.classList.add(darkModeColor);
+  searchResultsContainer.style.display = helper.state.query ? 'block' : 'none';
 
+  document.addEventListener('keydown', event => {
+    if (event.key === '/') {
+      searchBox.focus();
+      event.preventDefault();
+    }
+  });
+}
+
+// Algolia InstantSearch Settings
 
 const search = instantsearch({
   indexName: indexName,
   searchClient: client,
   searchFunction(helper) {
-    // if user presses "/" key, focus on search input
-    document.addEventListener('keydown', function (event) {
-      if (event.key === '/') {
-        // focus the input with the class ais-SearchBox-input
-        document.querySelector('.ais-SearchBox-input').focus();
-        // do not type the "/" character in the input
-        event.preventDefault();
-      }
-    });
-    // add the darkmodeColor class to the searchResultsContainer
-    document.getElementById('searchResultsContainer').classList.add(darkModeColor);
+    handleSearch(helper);
     if (helper.state.query) {
-      // display searchResultsContainer 
-      document.getElementById('searchResultsContainer').style.display = 'block';
       helper.search();
-    }
-    if (!helper.state.query) {
-      // hide searchResultsContainer 
-      document.getElementById('searchResultsContainer').style.display = 'none';
-      
     }
   },
 });
 
-// Uncomment the following widget to add hits list.
-
-search.addWidget(
+const widgets = [
   groupedHitsWidget({
     container: "#searchPageHits",
-    attribute: "parent", // Replace "parentAttribute" with the actual attribute name.
-  })
-);
-
-// Uncomment the following widget to add a search bar.
-
-search.addWidget(
+    attribute: "parent",
+  }),
   instantsearch.widgets.searchBox({
     container: "#main-searchbox",
     placeholder: "Search articles",
     autofocus: false,
     templates: {
       submit: '',
-      reset: '', 
+      reset: '',
       loadingIndicator: ''
     },
     cssClasses: {
-      form: ['spread', ],
+      form: ['spread'],
       submit: ['is-hidden'],
       reset: ['is-hidden'],
       input: ['sp-1', 'inherit-color', 'meow']
     },
-  })
-); 
-
-// Uncomment the following widget to add search stats.
-
-search.addWidget(
+  }),
   instantsearch.widgets.stats({
     container: "#stats",
     templates: {
-      text(data) {
-        const stats = data 
-        console.log("stats ", stats)
+      text({ nbHits, nbPages, processingTimeMS }) {
         return `
-        ⚡️ ${stats.nbHits} results found across ${stats.nbPages} pages in ${stats.processingTimeMS}ms. Docs version: ${indexName}.
-       `;
+          ⚡️ ${nbHits} results found across ${nbPages} pages in ${processingTimeMS}ms. Docs version: ${indexName}.
+        `;
       }
     }
-  })
-);
-
-// Uncomment the following widget to add categories list.
-
-search.addWidget(
+  }),
   instantsearch.widgets.refinementList({
     container: "#categories",
     attribute: "tags",
     autoHideContainer: false,
     templates: {
       header: "Tags",
-      item(refinement) {
-        return refinementTemplate(refinement);
-      }
+      item: refinementTemplate
     },
     cssClasses: {
       root: ['sticky', 'pt-5']
     }
-  })
-); 
-
-// Uncomment the following widget to add pagination.
-
-search.addWidget(
+  }),
   instantsearch.widgets.pagination({
     container: "#pagination",
-
   })
-);
+];
 
+widgets.forEach(widget => search.addWidget(widget));
 
 search.start();
-
