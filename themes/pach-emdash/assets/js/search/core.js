@@ -7,7 +7,7 @@ const indexName = document.getElementById('activeVersion')?.getAttribute('data-a
 const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
 
 function handleSearch(helper) {
-  // Shows/hides search results container based on whether there is a query and listens for '/' keypress to focus search box.
+  // Shows/hides search results based on query and listens for '/' keypress to focus search box.
   const searchResultsContainer = document.getElementById('searchResultsContainer');
   const searchBox = document.querySelector('.ais-SearchBox-input');
 
@@ -20,10 +20,6 @@ function handleSearch(helper) {
       event.preventDefault();
     }
   });
-
-  if (helper.state.query) {
-    helper.search();
-  }
 }
 
 // Algolia InstantSearch Settings
@@ -33,6 +29,9 @@ const search = instantsearch({
   searchClient: client,
   searchFunction(helper) {
     handleSearch(helper);
+    if (helper.state.query) {
+      helper.search();
+    }
   },
 });
 
