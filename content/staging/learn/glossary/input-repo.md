@@ -12,14 +12,11 @@ seriesPart:
 
 In Pachyderm, an input repository is a location where data resides that is used as input for a Pachyderm [pipeline](TBD). To define an input repository, you need to fill out the `input` attribute in [pipeline's specification](TBD) file.
 
-There are several types of inputs available, such as:
+There are several ways to structure the content of your input repos, such as:
 
+- [Cross](TBD)
+- [Group](TBD)
 - [PFS](TBD)
-- [Cron](TBD)
-- [Egress (DB)](TBD)
-- [Egress (Storage)](TBD)
-- [Service](TBD)
-- [Spout](TBD)
-- [S3](TBD)
+- [Join](TBD)
 
 Once you have defined an input repository, you can use it as the input source for a Pachyderm pipeline. The pipeline will automatically subscribe to the branch of the input repository and process any new data that is added to the branch according to the pipeline configuration.
