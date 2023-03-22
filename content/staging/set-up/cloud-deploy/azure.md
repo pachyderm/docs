@@ -7,7 +7,7 @@ date:
 tags: ["azure", "cloud-deploy"]
 series:
 seriesPart:
-weight: 
+weight: 2
 ---
 ## Before You Start 
 

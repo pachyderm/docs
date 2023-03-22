@@ -7,7 +7,7 @@ date:
 tags: ["aws", "cloud-deploy"]
 series:
 seriesPart:
-weight: 
+weight: 1
 ---
 
 ## Before You Start 

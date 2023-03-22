@@ -1,11 +1,11 @@
 ---
 # metadata # 
 title: Build DAGs
-description: Learn how to build pipelines.
+description: Build pipelines & DAGs for every use case.
 date: 
 # taxonomy #
 tags: 
 series:
 seriesPart:
-weight: 3
+weight: 4
 --- 

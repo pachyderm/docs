@@ -1,11 +1,11 @@
 ---
 # metadata # 
 title: Integrate
-description: Learn how to set up integrations.
+description: Integrate Pachyderm with popular tools such as JupyterLab. 
 date: 
 # taxonomy #
 tags: 
 series:
 seriesPart:
-weight: 4
+weight: 5
 --- 

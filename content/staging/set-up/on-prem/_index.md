@@ -73,5 +73,5 @@ helm upgrade pachyderm pachyderm/pachyderm -f values.yml
 
 ### 4. Install PachCTL
 
-Install [PachCTL](TBD) and [PachCTL Auto-completion](TBD).
+Install [PachCTL](TBD) and [PachCTL Auto-completion](../install-pachctl-completion).
    

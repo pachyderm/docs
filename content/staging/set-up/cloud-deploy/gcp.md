@@ -7,7 +7,7 @@ date:
 tags: ["gcp", "cloud-deploy"]
 series:
 seriesPart:
-weight: 
+weight: 3
 ---
 ## Before You Start 
 
