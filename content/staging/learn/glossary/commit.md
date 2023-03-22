@@ -16,10 +16,9 @@ Pachyderm uses the term `commit` at two different levels: a global level and com
 In Pachyderm, commits snapshot and preserve the state of files and directories in a repository at a point in time.
 Unlike Git, Pachyderm commits are centralized and transactional. You can create a commit with `pachctl start commit` and save it with `pachctl finish commit`.
 
-All commits have an alphanumeric ID, and you can reference a commit with `<repo>@<commitID>`.
-Each commit has an origin that indicates why it was produced (USER, AUTO, or ALIAS).
+All commits have an alphanumeric ID, and you can reference a commit with `<repo>@<commitID>`. Each commit has an origin that indicates why it was produced (USER, AUTO, or ALIAS).
 
-To track provenance, each commit must belong to exactly one branch. You can view commit information with `pachctl list commit` and `pachctl inspect commit`.
+To track provenance, each commit must belong to exactly one [branch](TBD). You can view commit information with `pachctl list commit` and `pachctl inspect commit`.
 
 You can squash or delete commits with `pachctl squash commit` and `pachctl delete commit`.
 

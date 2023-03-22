@@ -10,18 +10,13 @@ series:
 seriesPart:
 --- 
 
-A Pachyderm branch is a pointer to a commit that moves along with new commits.
-By default, Pachyderm does not create any branches when you create a repository.
-Most users create a `master` branch to initiate the first commit.
+A Pachyderm branch is a pointer to a [commit](TBD) that moves along with new commits. By default, Pachyderm does not create any branches when you create a repository. Most users create a `master` branch to initiate the first commit.
 
-Branches allow collaboration between teams of data scientists.
-However, the `master` branch is sufficient for most users.
+Branches allow collaboration between teams of data scientists. However, the `master` branch is sufficient for most users.
 
-Each branch stores information about provenance, including input and output branches.
-Pachyderm pipelines trigger a job when changes are detected in the `HEAD` of a branch.
+Each branch stores information about [provenance](TBD), including input and output branches. Pachyderm pipelines trigger a job when changes are detected in the `HEAD` of a branch.
 
-You can create additional branches with `pachctl create branch` and view branches with `pachctl list branch`.
-Deleting a branch doesn't delete its commits, and all branches require a head commit.
+You can create additional branches with `pachctl create branch` and view branches with `pachctl list branch`. Deleting a branch doesn't delete its commits, and all branches require a head commit.
 
 ## Example
 
