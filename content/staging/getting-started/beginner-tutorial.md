@@ -7,7 +7,7 @@ date:
 tags: ["tutorials"]
 series:
 seriesPart: 
-weight: 4
+weight: 3
 directory: true 
 ---
 
