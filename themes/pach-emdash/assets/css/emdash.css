@@ -20,6 +20,8 @@
     --spacing-6: calc(4rem);
     --spacing-7: calc(6rem);
 
+    --outlined-width: 1px;
+
     --is-text-color:  var(--is-black);
     --is-text-color-inverted: var(--is-white);
     --is-link-color: var(--is-purple);
@@ -140,6 +142,8 @@ h3 { font-size: var(--xlarge-text); }
 h4 { font-size: var(--large-text); }
 h5 { font-size: var(--medium-text); }
 h6 { font-size: var(--small-text); }
+
+p, li, ul, input, form, button, a { font-size: var(--small-text); }
 
 hr {
     margin-top: var(--large-text);
@@ -414,6 +418,7 @@ ol li::marker {
     content: "/";
     margin: 0 0.5em;
     color: var(--is-grey);
+    font-size: var(--small-text);
 }
 
 .breadcrumb:last-child::after { content: ""; }
@@ -633,17 +638,17 @@ button, .button {
 
 /* Outline the Object */
 .outlined, .c-outlined > * {
-    border: 1px solid currentColor;
+    border: var(--outlined-width) solid currentColor;
 }
 .outlined-black, .c-outlined-black > * {
-    border: 1px solid #000;
+    border: var(--outlined-width) solid #000;
 }
 .outlined-white, .c-outlined-white > * {
-    border: 1px solid #fff;
+    border: var(--outlined-width) solid #fff;
 }
 
 .outlined-purple, .c-outlined-purple > * {
-    border: 1px solid var(--is-purple);
+    border: var(--outlined-width) solid var(--is-purple);
     color: var(--is-purple);
 }
 

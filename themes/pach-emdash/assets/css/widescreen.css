@@ -1,7 +1,7 @@
 
-/* Widescreen TALL */
+/* 4k */
 
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 3840px) {
     .is-hidden-widescreen, .c-hidden-widescreen > * {
         display: none;
     }
@@ -17,18 +17,37 @@
         height: max-content !important;
     }
 
-    .one-sixth-widescreen {
-        flex-basis: 16.666666666666664%;
-        flex-grow: 0;
-    }
-    .one-half-widescreen {
-        flex-basis: 50%;
-        flex-grow: 0;
-    }
+    /* font sizes */
 
-    .two-thirds-widescreen {
-        flex-basis: 66.66666666666666%;
-        flex-grow: 0;
-    }
+    :root {
+        --is-line-height: 3.5rem;
+        --xxsmall-text: calc(1rem + 0.2vw);
+        --xsmall-text: calc(1.5rem + 0.3vw);
+        --small-text: calc(1.5rem + 0.4vw);
+        --medium-text: calc(2.5rem + 0.5vw);
+        --large-text: calc(3rem + 0.6vw);
+        --xlarge-text: calc(3.5rem + 0.7vw);
+        --xxlarge-text: calc(4rem + 0.8vw);
+        --xxxlarge-text: calc(4.5rem + 0.9vw);
+
+        --spacing-1: calc(1rem);
+        --spacing-2: calc(2rem);
+        --spacing-3: calc(3rem);
+        --spacing-4: calc(6rem);
+        --spacing-5: calc(8rem);
+        --spacing-6: calc(12rem);
+        --spacing-7: calc(14rem);
+
+        --rounded-1: 10px;
+        --rounded-2: 20px; 
+        --rounded-3: 30px;
+        --rounded-4: 40px;
+        --rounded-5: 50px;
+        --rounded-6: 60px;
+        --rounded-7: 70px;
+
+        --outlined-width: 3px;
+      }
+
 }
  
