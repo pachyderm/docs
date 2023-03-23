@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Activate Authorization
-description: Learn how to activate Authorization (User Access Management) in Pachyderm.
+title: Authentication
+description: Learn how to activate Authentication in Pachyderm.
 date: 
 # taxonomy #
 tags: 

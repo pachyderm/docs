@@ -8,5 +8,6 @@ tags: ["workflows", "permissions", "management"]
 series:
 seriesPart:
 weight: 3
+directory: true
 ---
 {{% readfile file="data/shared/auth/log-in.md" %}}

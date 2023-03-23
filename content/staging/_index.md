@@ -1,13 +1,17 @@
 ---
+# metadata # 
 title: Staging
-description:
-author:
+description: Pachyderm Version 2.5.x 
+date: 
+# taxonomy #
 tags:
-categories:
-products:
-date:
-weight: 0
-hidden: true
-mermaid: true
+series:
+seriesPart:
+cascade:
+    latestPatch: 2.6.0
+    majorMinor: 2.6
+    clientPython: 7.3
+    extensionJupyterLab: 2.6.0
+    mountServerBinary: 2.6.0
+    release: staging  # used by sitemap.xml in themes folder
 ---
-

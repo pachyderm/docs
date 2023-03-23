@@ -11,4 +11,4 @@ weight: 2
 directory: true
 ---
 
-{{% readfile file="data/shared/auth/log-in.md" %}}
+{{% readfile file="/shared/auth/log-in.md" %}}

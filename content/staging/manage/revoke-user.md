@@ -8,6 +8,7 @@ tags: ["workflows", "permissions", "management"]
 series:
 seriesPart:
 weight: 5
+directory: true
 ---
 
 ## Before You Start 

@@ -1,7 +1,10 @@
+
+
+
 ## Before You Start 
 
 - Your organization must have an active [Enterprise License Key](../../../).
-- You must have an [IdP Connector](/set-up/auth/authentication/connectors) set up. 
+- You must have an [IdP Connector](/{{% release %}}/set-up/auth/authentication/connectors) set up. 
 - You must have pachctl installed.
 
 ## How to Log in to a Cluster via IdP
@@ -14,3 +17,5 @@ pachctl auth login
 3. Select the connector you wish to use.
 4. Provide your credentials
 
+
+{{% dataLinks %}}
