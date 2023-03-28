@@ -2,9 +2,9 @@
 {{ if .Site.Params.versionDropdown }}
     {{ $removeVersion := print "/" .Section "/"}}
     {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
-    <button class="montserrat dropdown-alt is-fit outlined-green rounded-4 {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
-        <div id="activeVersion" data-algolia="{{if .IsHome}}latest{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}latest{{else if eq .Page.Title "404 Page not found"}}latest{{else}}{{.Section}}{{end}}" class="activeOption p-2 s bold"> {{if .IsHome}} latest{{else}} {{ .Section }}{{end}}</div>
-        <div class="montserrat is-full dropdown-options white rounded-3 outlined-green"> 
+    <button class="merichpe-regular dropdown-alt is-fit outlined-green rounded-4 {{if eq .Section "tags" "series" "knowledge-base"}}is-invisible{{end}}">
+        <div id="activeVersion" data-algolia="{{if .IsHome}}latest{{else if eq .Section  "knowledge-base" "support" "tags" "series" }}latest{{else if eq .Page.Title "404 Page not found"}}latest{{else}}{{.Section}}{{end}}" class="activeOption p-2 s metrichpe-regular"> {{if .IsHome}} latest{{else}} {{ .Section }}{{end}}</div>
+        <div class="metrichpe-regular s is-full dropdown-options white rounded-3 outlined-green"> 
              {{if eq .Section "tags" "series" "knowledge-base"}}
              {{/*  do nothing  */}}
              {{else if eq .Title "search" }}
@@ -18,10 +18,10 @@
                     {{ $file :=  print (strings.TrimSuffix "/" $alternativeVersionPath) ".md" }}
                     {{ $folder :=  print $alternativeVersionPath "_index.md" }}
                     {{ if os.FileExists $file }}
-                        <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
+                        <a class="is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
                     {{ end }}
                     {{ if os.FileExists $folder }}
-                        <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
+                        <a class="is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
                     {{ end }}
                     {{end}}
                 {{end}}

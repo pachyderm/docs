@@ -1,11 +1,15 @@
 /* EmdashCSS by @lbliii - https://emdash.dev; https://github.com/lbliii/emdashCSS */
 :root {
-    --is-font-family: 'Montserrat', sans-serif;
+    --is-font-family: 'MetricHPE-Regular';
+    --is-h1-font-family: 'MetricHPE-Black';
+    --is-h2-font-family: 'MetricHPE-Bold';
+    --is-h3-font-family: 'MetricHPE-Medium';
     --is-header-line-height: 100%;
+    --is-header-font-weight: 700;
     --is-line-height: 1.56rem;
     --xxsmall-text: calc(.5rem);   
     --xsmall-text: calc(.75rem);  
-    --small-text: calc(.85rem);  
+    --small-text: calc(.90rem);  
     --medium-text: calc(1rem);  
     --large-text: calc(1.125rem);  
     --xlarge-text: calc(1.625rem);
@@ -142,9 +146,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--is-header-line-height);
 }
 
-h1 { font-size: var(--xxxlarge-text); }
-h2 { font-size: var(--xxlarge-text); }
-h3 { font-size: var(--xlarge-text); }
+h1 { font-size: var(--xxxlarge-text); font-family: var(--is-h1-font-family); }
+h2 { font-size: var(--xxlarge-text); font-family: var(--is-h2-font-family);}
+h3 { font-size: var(--xlarge-text); font-family: var(--is-h3-font-family); }
 h4 { font-size: var(--large-text); }
 h5 { font-size: var(--medium-text); }
 h6 { font-size: var(--small-text); }
@@ -397,7 +401,7 @@ ol li::marker {
  }
 
  :is(.content) :is(p,ul,ol,li) {
-  font-family: 'Public Sans';
+  font-family: 'Arial';
   line-height: var(--is-line-height);
   font-weight: 300;
   letter-spacing: .2px;
@@ -2178,8 +2182,20 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
   font-family: 'Public Sans', sans-serif;
 }
 
-.montserrat {
-  font-family: 'Montserrat', sans-serif;
+.metrichpe-bold {
+  font-family: 'MetricHPE-Bold' !important;
+}
+
+.metrichpe-black {
+  font-family: 'MetricHPE-Black' !important;
+}
+
+.metrichpe-medium {
+  font-family: 'MetricHPE-Medium' !important;
+}
+
+.metrichpe-regular {
+  font-family: 'MetricHPE-Regular' !important;
 }
  
 img {
