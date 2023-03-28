@@ -20,11 +20,11 @@
 {{else}}
     {{/*  themes/pach-emdash/assets/css/..  */}}
     {{ $emdash := resources.Get "css/emdash.css" | resources.Minify }}
-    {{ $widescreen := resources.Get "css/widescreen.css" | resources.Minify }}
-    {{ $font := resources.Get "css/font.css" | resources.Minify }}
-    {{ $syntax := resources.Get "css/syntax.css" | resources.Minify }}
+    {{ $widescreen := resources.Get "css/widescreen.css"}}
+    {{ $font := resources.Get "css/font.css"  }}
+    {{ $syntax := resources.Get "css/syntax.css"}}
     {{/*  Aggregates minified css into one resource  */}}
-    {{ $css := slice $emdash $font $widescreen $syntax | resources.Concat "css/bundle.css"}}
+    {{ $css := slice $font $emdash $widescreen $syntax | resources.Concat "css/bundle.css"}}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen" />
     <link rel="shortcut icon" href="/images/favicon.ico">
 {{end}}
@@ -66,9 +66,6 @@
 </script>
 <script src="https://cdn.rudderlabs.com/sm/rudder-analytics.min.js"></script>
 
-{{/*  Algolia scripts  */}}
-<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous" defer></script>
 
 <title>HPE MLDM Docs: {{.Title}}</title>
 <link rel="alternate" href="https://docs.pachyderm.com{{.Permalink}}" hreflang="en"/>
