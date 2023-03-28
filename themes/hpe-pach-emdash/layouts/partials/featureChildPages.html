@@ -15,9 +15,9 @@
                             <a href="{{.RelPermalink}}">
                                 <h2 class="">{{- .Title -}}<b class="xl metrichpe-black ml-2">></b></h2>
                                     {{if .Description}}
-                                        <p class="m metrichpe-medium">{{.Description}}</p>
+                                        <p class="l metrichpe-regular">{{.Description}}</p>
                                     {{else}}
-                                        <p class="s light" bold>{{.Summary | truncate 100}}</p>
+                                        <p class="s light">{{.Summary | truncate 100}}</p>
                                     {{end}}
                             </a>
                             {{/*  Displays the value of the "required" frontmatter attribute if present  */}}
@@ -27,7 +27,7 @@
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left mb-3">
                                     {{ range first 7 .Pages }}
-                                        <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1" href="{{ .RelPermalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                        <a class="button outlined p-2  mt-2 mr-2 m is-fit rounded-1" href="{{ .RelPermalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                         </a>
                                     {{ end }}
                                     {{/*  {{if .Pages}}
