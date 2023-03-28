@@ -13,7 +13,7 @@ Learn how to upgrade Pachyderm to access new features and performance enhancemen
 
 ## Before You Start 
 
-- Check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before ugprading
+- Check the [release notes](https://github.com/pachyderm/pachyderm/blob/master/CHANGELOG.md) before upgrading
 - [Back up your cluster](../backup-restore/) 
 - Update your Helm chart values if applicable
 
