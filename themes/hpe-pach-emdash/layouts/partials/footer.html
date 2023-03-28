@@ -32,7 +32,13 @@
       <script src="{{ $mermaid.RelPermalink }}" defer></script>
     {{else}}
     {{end}}
-    <div class="stack-left c-mb-3 s is-fullsize-mobile">
+
+    <div class="spread-center">
+      <a href="https://pachyderm.com" class="is-fit">
+        <img src="/images/hpe.svg" alt="{{ .Site.Params.title }}" width="100px" height="100px" loading="lazy" />
+      </a>
+    </div>
+    {{/*  <div class="stack-left c-mb-3 s is-fullsize-mobile">
       <h4 class="xs bold uppercase mb-4">Products</h4>
       <a href="https://www.pachyderm.com/products/">Product Overview</a>
       <a href="https://www.pachyderm.com/pricing/">Product Pricing</a>
@@ -91,7 +97,7 @@
             <img src="{{ .Site.Params.logos.footer }}" alt="{{ .Site.Params.title }}" width="100px" height="100px" loading="lazy" />
           </a>
         </div>
-    </div>
+    </div>  */}}
     </section>
 
 
