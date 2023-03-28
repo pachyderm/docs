@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'MetricHPE-Black';
-	src: url('/fonts/hpe/MetricHPE-Web-Black.woff') format('woff2'),
-        url('/fonts/hpe/MetricHPE-Web-BlackItalic.woff') format('woff2');
+	src: url('/fonts/hpe/MetricHPE-Web-Black.woff') format('woff'),
+        url('/fonts/hpe/MetricHPE-Web-BlackItalic.woff') format('woff');
 	font-weight: 100 1000;
 	font-stretch: 25% 151%;
 	font-display: swap
@@ -9,8 +9,8 @@
 
 @font-face {
 	font-family: 'MetricHPE-Bold';
-	src: url('/fonts/hpe/MetricHPE-Web-Bold.woff') format('woff2'),
-        url('/fonts/hpe/MetricHPE-Web-BoldItalic.woff') format('woff2');
+	src: url('/fonts/hpe/MetricHPE-Web-Bold.woff') format('woff'),
+        url('/fonts/hpe/MetricHPE-Web-BoldItalic.woff') format('woff');
 	font-weight: 100 1000;
 	font-stretch: 25% 151%;
 	font-display: swap
@@ -18,8 +18,8 @@
 
 @font-face {
 	font-family: 'MetricHPE-Medium';
-	src: url('/fonts/hpe/MetricHPE-Web-Medium.woff') format('woff2'),
-        url('/fonts/hpe/MetricHPE-Web-MediumItalic.woff') format('woff2');
+	src: url('/fonts/hpe/MetricHPE-Web-Medium.woff') format('woff'),
+        url('/fonts/hpe/MetricHPE-Web-MediumItalic.woff') format('woff');
 	font-weight: 100 1000;
 	font-stretch: 25% 151%;
 	font-display: swap
@@ -27,8 +27,8 @@
 
 @font-face {
 	font-family: 'MetricHPE-Regular';
-	src: url('/fonts/hpe/MetricHPE-Web-Regular.woff') format('woff2'),
-        url('/fonts/hpe/MetricHPE-Web-RegularItalic.woff') format('woff2');
+	src: url('/fonts/hpe/MetricHPE-Web-Regular.woff') format('woff'),
+        url('/fonts/hpe/MetricHPE-Web-RegularItalic.woff') format('woff');
 	font-weight: 100 1000;
 	font-stretch: 25% 151%;
 	font-display: swap
