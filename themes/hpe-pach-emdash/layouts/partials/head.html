@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="title" content="{{with .Parent}}{{.Title}}{{end}}: {{ .Title }}" />
+<meta name="description" content="{{ .Description }}" />
+<meta name="keywords" content="{{ .Keywords }}" />
+<meta name="author" content="{{ .Params.author }}" />
+<meta name="generator" content="Hugo v0.110.0">
+
+{{if eq .Section .Site.Params.releaseInfo.latest }}
+<link rel="canonical" href="{{.Permalink}}" />
+{{end}}
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+
+{{if .Site.Params.defaultCss}} 
+    {{$defaultEmdash := resources.Get "css/defaultEmdash.css" | resources.Minify}}
+    {{ $defaultCss := slice $defaultEmdash | resources.Concat "css/defaultBundle.css"}}
+    <link rel="stylesheet" href="{{ $defaultCss.RelPermalink }}" media="screen" />
+{{else}}
+    {{/*  themes/pach-emdash/assets/css/..  */}}
+    {{ $emdash := resources.Get "css/emdash.css" | resources.Minify }}
+    {{ $widescreen := resources.Get "css/widescreen.css" | resources.Minify }}
+    {{ $font := resources.Get "css/font.css" | resources.Minify }}
+    {{ $syntax := resources.Get "css/syntax.css" | resources.Minify }}
+    {{/*  Aggregates minified css into one resource  */}}
+    {{ $css := slice $emdash $font $widescreen $syntax | resources.Concat "css/bundle.css"}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen" />
+    <link rel="shortcut icon" href="/images/favicon.ico">
+{{end}}
+    
+
+<script> 
+  rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load("1iJtD7UiXR23JlGPtE8YnzQH3KG","https://pachyderm-dataplane.rudderstack.com"),rudderanalytics.page();
+  
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  var anonymous_id = rudderanalytics.getAnonymousId();
+  var latest_utm_source =  getUrlParameter('utm_source');
+  var latest_utm_campaign =  getUrlParameter('utm_campaign');
+  var latest_utm_medium =  getUrlParameter('utm_medium');
+  var latest_utm_content =  getUrlParameter('utm_content');
+  var latest_utm_term =  getUrlParameter('utm_term');
+  
+  if (latest_utm_content) {
+    rudderanalytics.track(
+      "UTM",
+      {
+        context: {
+          traits: {
+            latest_utm_source,
+            latest_utm_campaign,
+            latest_utm_medium,
+            latest_utm_content,
+            latest_utm_term
+          }
+        }
+      }
+    );
+  }
+</script>
+<script src="https://cdn.rudderlabs.com/sm/rudder-analytics.min.js"></script>
+
+{{/*  Algolia scripts  */}}
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous" defer></script>
+
+<title>Pachyderm Docs: {{.Title}}</title>
+<link rel="alternate" href="https://docs.pachyderm.com{{.Permalink}}" hreflang="en"/>

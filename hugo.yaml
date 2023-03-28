@@ -1,11 +1,11 @@
-baseURL: "https://docs.pachyderm.com"
-title: Pachyderm's Docs
+baseURL: "https://hpe-mldm.pachyderm.com"
+title: HPE MLDM
 
 enableGitInfo: true 
 enableEmoji: true 
 enableRobotsTXT: true 
 
-theme: pach-emdash
+theme: hpe-pach-emdash
 
 outputs: 
   home: [ "HTML", "JSON", "RSS"]
@@ -20,7 +20,7 @@ params:
 
   ## Branding features
   logos:
-    footer: "/../images/footerLogo.svg"
+    footer: "/../images/hpe_pri_grn_rev_rgb.svg"
 
   ## Content features
   childPages: 

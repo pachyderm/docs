@@ -1,0 +1,58 @@
+{{/* 
+    - Markdown pages with the frontmatter value "layout:glossary" use this template.
+*/}}
+
+{{ define "main" }}
+{{partial "directory.html" . }}
+    <main class="content px-3"> 
+         <div class="spread-between my-2">
+            {{ partial "featureBreadcrumbs.html" . }} 
+            {{ partial "featureEditLink.html" . }}
+         </div> 
+        {{ if .Site.Params.heroBanner.glossary}}
+            <section class="black gradient-rl-cold py-3 rounded-1 c-sp-2">
+                {{/* Displays a series button if page is part of a series collection  */}}
+                {{ partial "featureSeriesButton.html" . }}
+                <h1>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}} Index</h1>
+                {{ if .Description}}
+                    <p class="s bold">
+                        {{ .Description}}
+                    </p>
+                {{end}}
+                <p class="s">
+                    {{/* Displays published date or last build date */}}
+                    {{ if .Date }}
+                        {{ .Date | time.Format ":date_long" }} 
+                    {{else}} 
+                        {{ now | time.Format ":date_long" }} 
+                    {{end}}
+                </p> 
+            </section>
+        {{else}}
+            {{/* Does not show the hero section if disabled from config.yaml */}}
+        {{end}}
+
+        {{ partial "glossary.html" . }}
+        {{/*  {{ range .Pages}}
+        <a href="{{.RelPermalink}}">
+            <div class="my-4">
+                <h2>{{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</h2> 
+                <p> 
+                    {{.Description}}
+                </p>
+            </div>
+        </a>
+            
+        {{end}}  */}}
+      
+    </main>
+    <aside class="is-one-fifth is-hidden-mobile">
+        <div class="stack-center sticky pt-6 xs px-3">
+            {{ $letters := "abcdefghijklmnopqrstuvwxyz" }}
+            {{ range $i, $letter := split $letters "" }}
+                <div class="py-1"><a class="m bold" href="#{{$letter}}">{{$letter}}</a></div>
+            {{ end }}
+        </div>
+    </aside>
+
+{{end}}

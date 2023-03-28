@@ -1,0 +1,8 @@
+Sitemap: https://docs.pachyderm.com/sitemap.xml
+
+User-agent: *
+
+{{range after 3 .Site.Sections.ByTitle.Reverse}}
+{{range .Sections}}
+Disallow: {{ .Permalink }}{{ if .Pages}}{{range .Pages}}
+Disallow: {{ .Permalink }}{{end}}{{end}}{{end}}{{end}}

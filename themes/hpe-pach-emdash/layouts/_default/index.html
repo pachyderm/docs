@@ -1,0 +1,22 @@
+{{/* 
+    - All auto-generated list files use this template (e.g., taxonomy pages). See: https://gohugo.io/content-management/page-bundles/ 
+    - layout-list is an empty class for easier location; do not style against it.
+*/}}
+
+{{ define "main" }}
+<section>
+        <div class="spread-center c-pinned-center m-4 two-thirds-widescreen">
+            <div>
+                <h1 class="text-center">HPE MLDM Docs</h1>
+                <h2 class="subtitle-1 l mt-2 text-center"> Automate data transformations <br> with data versioning and lineage.
+            </div>
+        </div>
+    {{ partial "featureCommunityDetails.html" . }}
+
+    {{ partial "algoliaHits.html" . }}
+
+
+
+{{end}}
+
+
