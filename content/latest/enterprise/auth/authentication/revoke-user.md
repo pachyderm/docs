@@ -30,5 +30,5 @@ pachctl auth revoke --token=<pach token>
 ### Revoke All Tokens
 
 ```s
-pachctl auth revoke --user=idp:usernamen@pachyderm.io
+pachctl auth revoke --user=idp:usernamen@MLDM.io
 ```

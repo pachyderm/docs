@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Global Identifier
-description: Learn about the concept of a global identifier in Pachyderm. 
+description: Learn about the concept of a global identifier in MLDM. 
 date: 
 # taxonomy #
 tags:  ["data-operations", "pipelines"]

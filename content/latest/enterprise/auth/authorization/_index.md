@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Authorization
-description: Learn how to set up and manage Role-Based Access Control (RBAC) for Pachyderm.
+description: Learn how to set up and manage Role-Based Access Control (RBAC) for MLDM.
 date: 
 # taxonomy #
 tags: 
@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-You can use Pachyderm's Role-Based Access Control (RBAC) model to configure authorization for your users. Users can be assigned roles that grant certain permissions for interacting with Pachyderm's resources. 
+You can use MLDM's Role-Based Access Control (RBAC) model to configure authorization for your users. Users can be assigned roles that grant certain permissions for interacting with MLDM's resources. 
 
 
 ## Users Types
@@ -18,7 +18,7 @@ MLDM has 5 user types:
 |User Type| Description|
 |-|-|
 |clusterAdmin| |
-|IdP User| Any user or group of users authenticated by your Identity Provider to access Pachyderm.|
+|IdP User| Any user or group of users authenticated by your Identity Provider to access MLDM.|
 |Robot User|A Service account used for third party applications/systems integrating with MLDM APIs/Clients.|
 |Pipeline User| An internal Service Account used for Pipelines when interacting with MLDM resources.|
 |All Cluster Users|A general subject that represents **everyone who has logged in to a cluster**.|

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Local Installation Guide
-description: Learn how to locally install and use the JupyterLab Mount Extension with Pachyderm.
+description: Learn how to locally install and use the JupyterLab Mount Extension with MLDM.
 date: 
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]

@@ -19,7 +19,7 @@ longer stable on macOS Catalina (10.15) or later.
 MLDM enables you to mount a repository
 as a local filesystem on your computer by using the
 `pachctl mount` command. This command
-uses the Filesystem in Userspace (FUSE) user interface to export a Pachyderm
+uses the Filesystem in Userspace (FUSE) user interface to export a MLDM
 File System (PFS) to a Unix computer system.
 This functionality is useful when you want to pull data locally to experiment,
 review the results of a pipeline, or modify the files
@@ -68,7 +68,7 @@ Notebook for exploration.
 
 {{% notice note %}}
 The `pachctl mount` command allows you to mount not only the default
-branch, typically a `master` branch, but also other Pachyderm
+branch, typically a `master` branch, but also other MLDM
 branches. By default, MLDM mounts the `master` branch. However,
 if you add a branch to the name of the repo, the `HEAD` of that branch
 will be mounted.
@@ -90,7 +90,7 @@ the `HEAD` of a branch, you can create a new branch with that commit as `HEAD`.
 
 Running the `pachctl mount` command with the `--write` flag grants you
 write access to the mounted repositories, which means that you can
-open the files for editing and put them back to the Pachyderm
+open the files for editing and put them back to the MLDM
 repository. 
 
 {{% notice warning %}}
@@ -122,7 +122,7 @@ same files while someone else is working on them.
 over the mounted data. Otherwise, merge conflicts or
 unexpected data overwrites can occur.
 
-- Because output repositories are created by the Pachyderm
+- Because output repositories are created by the MLDM
   pipelines, they are immutable. Only a pipeline
   can change and update files in these repositories. If you try to change
   a file in an output repo, you will get an error message.

@@ -15,12 +15,12 @@ large data sets, data scientists can use any tooling for
 creating machine learning workflows. Even if that tooling
 is not familiar to the rest of an engineering organization,
 data scientists can autonomously develop and deploy scalable
-solutions by using containers. Moreover, Pachyderm’s
+solutions by using containers. Moreover, MLDM’s
 pipeline logic paired with data versioning make any results
 reproducible for debugging purposes or during the development of
 improvements to a model.
 
-For maximum leverage of Pachyderm's built functionality, Pachyderm
+For maximum leverage of MLDM's built functionality, MLDM
 recommends that you combine model training processes, persisted models,
 and model utilization processes, such as making inferences or
 generating results, into a single MLDM pipeline Directed Acyclic Graph

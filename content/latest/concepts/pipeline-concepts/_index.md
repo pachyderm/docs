@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Pipeline Concepts
-description: Learn all of the pipeline-specific concepts used in Pachyderm.
+description: Learn all of the pipeline-specific concepts used in MLDM.
 date: 
 # taxonomy #
 tags: 

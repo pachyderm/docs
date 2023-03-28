@@ -14,7 +14,7 @@ beta: true
 
 ## Install to Existing Docker Image 
 
-You can choose between Pachyderm's pre-built image (a custom version of [`jupyter/scipy-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook)) or add the extension to your own image. Pachyderm's image includes:
+You can choose between MLDM's pre-built image (a custom version of [`jupyter/scipy-notebook`](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook)) or add the extension to your own image. MLDM's image includes:
 
 - The extension jupyterlab-pachyderm
 - [FUSE](https://osxfuse.github.io/)

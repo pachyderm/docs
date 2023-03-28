@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  AWS + Pachyderm
+title:  AWS + MLDM
 description: Learn how to deploy to MLDM to the cloud with AWS.
 date: 
 # taxonomy #
@@ -131,7 +131,7 @@ aws s3 ls
 
 Run the following to add the MLDM repo to Helm:
 ```s
-helm repo add pach https://helm.pachyderm.com
+helm repo add pach https://helm.MLDM.com
 helm repo update
 helm install pachd pach/MLDM -f my_pachyderm_values.yaml 
 ```

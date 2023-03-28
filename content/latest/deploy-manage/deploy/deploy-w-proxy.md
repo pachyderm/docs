@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-MLDM ships with an embedded proxy that exposes one external TCP port (`:80` or `:443` if TLS is enabled) for all access, including: GRPCs, HTTP/S, s3 Gateway, OIDC, and Dex. Switching to using the embedded proxy improves your deployment's security posture because the proxy is hardened against malicious traffic and writes out extensive audit logs for all requests to Pachyderm.
+MLDM ships with an embedded proxy that exposes one external TCP port (`:80` or `:443` if TLS is enabled) for all access, including: GRPCs, HTTP/S, s3 Gateway, OIDC, and Dex. Switching to using the embedded proxy improves your deployment's security posture because the proxy is hardened against malicious traffic and writes out extensive audit logs for all requests to MLDM.
 
 ## Before You Start 
 

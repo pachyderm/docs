@@ -27,7 +27,7 @@ If you choose to deploy MLDM with a Proxy, check out our new recommended archite
 
 Deploying MLDM successfully on-premises requires a few prerequisites.
 MLDM is built on [Kubernetes](https://kubernetes.io/).
-Before you can deploy Pachyderm, you will need to perform the following actions:
+Before you can deploy MLDM, you will need to perform the following actions:
 
 1. [Deploy Kubernetes](#deploying-kubernetes) on-premises.
 1. [Deploy two Kubernetes persistent volumes](#storage-classes ) that MLDM will use to store its metadata.
@@ -71,7 +71,7 @@ postgresql:
 ```
    
 ### Deploying An Object Store
-An object store is used by Pachyderm's `pachd` for storing all your data. 
+An object store is used by MLDM's `pachd` for storing all your data. 
 The object store you use must be accessible via a low-latency, high-bandwidth connection.
 
 {{% notice note %}}
@@ -96,7 +96,7 @@ We are prefixing each item with how we will refer to it in the helm values file.
     Do not begin it with the protocol; it is an endpoint, not an url. Also, check if your object store (e.g. MinIO) is using SSL/TLS.
     If not, disable it using `secure: false`.
 
-2. `bucket`: The bucket name you are dedicating to Pachyderm. MLDM will need exclusive access to this bucket.
+2. `bucket`: The bucket name you are dedicating to MLDM. MLDM will need exclusive access to this bucket.
 3. `id`: The access key id for the object store.  
 4. `secret`: The secret key for the object store.  
 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Commit
-description: Learn about the concept of a commit in Pachyderm. 
+description: Learn about the concept of a commit in MLDM. 
 glossaryDefinition: An atomic operation that snapshots and preserves the state of files/directories within a repository.
 date: 
 # taxonomy #
@@ -16,7 +16,7 @@ Note that MLDM uses the term `commit` at two different levels. A global level (c
 
 ## Definition
 
-In Pachyderm, commits are atomic operations that **snapshot and preserve the state of
+In MLDM, commits are atomic operations that **snapshot and preserve the state of
 the files and directories in a repository** at a point in time. 
 Unlike Git commits, MLDM commits are centralized and transactional.
 You can start a commit by running the `pachctl start commit` command with reference
@@ -45,7 +45,7 @@ That origin can be of 3 types:
   Every `USER` change is an initial commit.
   {{%/notice%}}
 
-- `AUTO`: Pachyderm's pipelines are data-driven. A data commit to a data repository may
+- `AUTO`: MLDM's pipelines are data-driven. A data commit to a data repository may
     trigger downstream processing jobs in your pipeline(s). The output commits from
     triggered jobs will be of type `AUTO`.
 - `ALIAS`: Neither `USER` nor `AUTO` - `ALIAS` commits are essentially placeholder commits.

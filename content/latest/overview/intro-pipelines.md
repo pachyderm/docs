@@ -15,7 +15,7 @@ directory: true
 
 The  **MLDM Pipeline System (PPS)** is a powerful tool for automating data transformations. With PPS, pipelines can be automatically triggered whenever input data changes, meaning that data transformations happen automatically in response to changes in your data, without the need for manual intervention.
 
-Pipelines in MLDM are defined by a pipeline specification and run on Kubernetes. The output of a pipeline is stored in a versioned data repository, which allows you to reproduce any transformation that occurs in Pachyderm.
+Pipelines in MLDM are defined by a pipeline specification and run on Kubernetes. The output of a pipeline is stored in a versioned data repository, which allows you to reproduce any transformation that occurs in MLDM.
 
 Pipelines can be combined into a computational DAG (directed acyclic graph), with each pipeline being triggered when an upstream commit is finished. This allows you to build complex workflows that can process large amounts of data efficiently and with minimal manual intervention.
 
@@ -43,8 +43,8 @@ transform:
 Here's a breakdown of the different sections of the pipeline definition:
 
 - **pipeline** specifies the name of the pipeline (in this case, it's transform). This name will also be used as the name for the output data repository. 
-- **input** specifies the input for the pipeline. In this case, the input is taken from the `data` repository in Pachyderm. `glob` is used to specify how the files from the repository map to datums for processing. In this case, `/*` is used to specify all files in the repository can be processed individually.
-- **transform** specifies the code and image to use for processing the input data. The `image` field specifies the Docker image to use for the pipeline. In this example, the image is named `my-transform-image` with a tag of `v1.0`. The `cmd` field specifies the command to run inside the container. In this example, the command is `python /my_transform_code.py`, which runs a Python script named `my_transform_code.py`. The script is passed the `--input` flag pointing to the input data directory, and the `--output` flag pointing to the output data directory. `/pfs/data/` and `/pfs/out/` are directories created by Pachyderm. The input directory will contain an individual datum when the job is running, and anything put into the output directory will be committed to the output repositories when the job is complete.
+- **input** specifies the input for the pipeline. In this case, the input is taken from the `data` repository in MLDM. `glob` is used to specify how the files from the repository map to datums for processing. In this case, `/*` is used to specify all files in the repository can be processed individually.
+- **transform** specifies the code and image to use for processing the input data. The `image` field specifies the Docker image to use for the pipeline. In this example, the image is named `my-transform-image` with a tag of `v1.0`. The `cmd` field specifies the command to run inside the container. In this example, the command is `python /my_transform_code.py`, which runs a Python script named `my_transform_code.py`. The script is passed the `--input` flag pointing to the input data directory, and the `--output` flag pointing to the output data directory. `/pfs/data/` and `/pfs/out/` are directories created by MLDM. The input directory will contain an individual datum when the job is running, and anything put into the output directory will be committed to the output repositories when the job is complete.
 
 So, in summary, this pipeline definition defines a pipeline called transform that takes all files in the data repository, runs a Python script to transform them, and outputs the results to the out repository.
 
@@ -130,9 +130,9 @@ A much more detailed look at how MLDM actually triggers pipelines is shown in th
 
 Before we look at the diagram, it may be helpful to provide a brief recap of the main participants involved:
 
-- **User:** The user is the person interacting with Pachyderm, typically through the command line interface (CLI) or one of the client libraries.
-- **PFS (MLDM File System):** PFS is the underlying file system that stores all of the data in Pachyderm. It provides version control and lineage tracking for all data inside it.
-- **PPS (MLDM Pipeline System):** PPS is how code gets applied to the data in Pachyderm. It manages the computational graph, which describes the dependencies between different steps of the data processing pipeline.
+- **User:** The user is the person interacting with MLDM, typically through the command line interface (CLI) or one of the client libraries.
+- **PFS (MLDM File System):** PFS is the underlying file system that stores all of the data in MLDM. It provides version control and lineage tracking for all data inside it.
+- **PPS (MLDM Pipeline System):** PPS is how code gets applied to the data in MLDM. It manages the computational graph, which describes the dependencies between different steps of the data processing pipeline.
 - **Worker:** Workers are Kubernetes pods that executes the jobs defined by PPS. Each worker runs a container image that contains the code for a specific pipeline. The worker will iterate through the datums it is given and apply user code to it.
 
 

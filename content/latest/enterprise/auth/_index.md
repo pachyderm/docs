@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Authentication & Authorization
-description: Learn how to Pachyderm's user access management works.
+description: Learn how to MLDM's user access management works.
 date: 
 # taxonomy #
 tags: 

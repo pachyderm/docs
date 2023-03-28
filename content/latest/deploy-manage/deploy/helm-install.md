@@ -10,7 +10,7 @@ seriesPart:
 --- 
 
 
-The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
+The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for MLDM.
 
 {{% notice note %}}
 **MLDM services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
@@ -40,11 +40,11 @@ Before your start your installation process.
 
 1. Install [`pachctl`](../../../getting-started/local-deploy), the command-line utility for interacting with a MLDM cluster. 
 
-1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{% majorMinorVersion %}}/deploy-manage/deploy/) that apply to you:
+1. Choose the deployment [guidelines](https://docs.MLDM.com/{{% majorMinorVersion %}}/deploy-manage/deploy/) that apply to you:
     * **Find the deployment page that applies to your Cloud provider** (or custom deployment, or on-premises deployment).
     It will help list the various installation prerequisites, and deployment instructions (Kubernetes, PostgreSQL, Object Store, IdP etc...) that fit your own use case.
     
-         For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.pachyderm.com/{{% majorMinorVersion %}}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform) page.
+         For example, if your Cloud provider is Google Cloud Platform, follow the **Prerequisites** and **Deploy Kubernetes** sections of the [deployment on Google Cloud Platform](https://docs.MLDM.com/{{% majorMinorVersion %}}/deploy-manage/deploy/google-cloud-platform/#google-cloud-platform) page.
 
     * Additionally, those instructions will help identify the configuration parameters needed. Those parameter values will **be set in your YAML configuration file** as follows.
 
@@ -52,7 +52,7 @@ Before your start your installation process.
 
 Create a personalized `my_pachyderm_values.yaml` out of this [example repository](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/etc/helm/examples). Pick the example that fits your target deployment and update the relevant values according to the parameters gathered in the previous step.
 
-- Refer to this section to [understand Pachyderm's main configuration values (License Key, IdP configuration, etc...)](#read-before-any-install-or-upgrade-pachyderm-configuration-values-and-platform-secrets) and how you can set them. 
+- Refer to this section to [understand MLDM's main configuration values (License Key, IdP configuration, etc...)](#read-before-any-install-or-upgrade-pachyderm-configuration-values-and-platform-secrets) and how you can set them. 
 
 - See the reference [values.yaml](../../../reference/helm-values/) for the list of all available helm values at your disposal.
 
@@ -62,14 +62,14 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
 For Production deployments, MLDM strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
 {{% /notice %}}
      
-###  Install Pachyderm's Helm Chart
+###  Install MLDM's Helm Chart
 1. Get your Helm Repo Info
     ```s
-    helm repo add pach https://helm.pachyderm.com
+    helm repo add pach https://helm.MLDM.com
     helm repo update
     ```
 
-1. Install Pachyderm
+1. Install MLDM
 
  You are ready to deploy MLDM on the environment of your choice.
  ```s
@@ -78,7 +78,7 @@ For Production deployments, MLDM strongly recommends that you **[create your val
  {{% notice info %}}
  To choose a specific helm chart version
 
-  **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of MLDM on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
+  **Each chart version is associated with a given version of MLDM**. You will find the list of all available chart versions and their associated version of MLDM on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
   
 
   - You can choose a specific helm chart version by adding a `--version` flag (for example, `--version 0.3.0`) to your `helm install.`
@@ -153,7 +153,7 @@ pachctl             {{% latestPatchNumber  %}}
 pachd               {{% latestPatchNumber %}}
 ```
 
-## Uninstall Pachyderm's Helm Chart
+## Uninstall MLDM's Helm Chart
 
 [Helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) a release by running:
 ```s
@@ -172,8 +172,8 @@ Deleting pvs will result in the loss of your data.
 
 - If your uninstall failed, there might be config jobs still running. Run `kubectl get jobs.batch | grep pachyderm` and delete any remaining job.
 
-## Upgrade Pachyderm's Helm Chart
-When a new version of Pachyderm's chart is released, or when you want to update some configuration parameters on your cluster, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
+## Upgrade MLDM's Helm Chart
+When a new version of MLDM's chart is released, or when you want to update some configuration parameters on your cluster, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
 
 ```s
 helm upgrade pachd -f my_new_pachyderm_values.yaml pach/MLDM --version <your_chart_version>        
@@ -258,7 +258,7 @@ Find the complete list of secrets in the table below:
 |**`pachyderm-enterprise`** | enterprise-secret | For internal use. Used as a shared secret between an Enterprise Server and a Cluster to communicate. Always present when enterprise is on but used only when an Enterprise Server is set.|
 |`pachyderm-identity` | upstream-idps | The list of dex connectors, each containing Oauth client info connecting to an upstream IDP. |
 |`pachyderm-license` | enterprise-license-key | Your enterprise license. |
-|`pachyderm-storage-secret` | *This content depends on what object store backs your installation of Pachyderm.*|Credentials for MLDM to access your object store.|
+|`pachyderm-storage-secret` | *This content depends on what object store backs your installation of MLDM.*|Credentials for MLDM to access your object store.|
 |`postgres` | postgresql-password | Password for MLDM to Access Postgres. |
 
 *Secrets in bold do not need to be set by users.*
@@ -268,7 +268,7 @@ In the following table, you will find the complete list of:
 
 - the secret keys and the secret name fields needed to reference a secret in a values.yaml.
 - the secret values fields if you chose to hard code your values rather than pass them in a secret.
-- Pachyderm's platform secrets and keys those values will be injected into in the latter case.
+- MLDM's platform secrets and keys those values will be injected into in the latter case.
 
 {{% notice tip %}} 
 Order of operations.

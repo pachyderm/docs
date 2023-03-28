@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Metadata
-description: Learn about the concept of a metadata in Pachyderm. 
+description: Learn about the concept of a metadata in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations", "pipelines"]

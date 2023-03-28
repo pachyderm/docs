@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Deactivate Authorization
-description: Learn how to deactivate Authorization (User Access Management) in Pachyderm.
+description: Learn how to deactivate Authorization (User Access Management) in MLDM.
 date: 
 # taxonomy #
 tags: 

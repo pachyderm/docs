@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Beginner Tutorial
-description: Learn how to quickly ingest photos, trace their outlines, and output a collage using the transformed data in Pachyderm.
+description: Learn how to quickly ingest photos, trace their outlines, and output a collage using the transformed data in MLDM.
 date: 
 # taxonomy #
 tags: ["tutorials"]
@@ -15,7 +15,7 @@ directory: true
 
 - Install MLDM either [locally](../local-deploy) our within the [cloud](../cloud-deploy). 
 - Install [MLDM Shell](../../deploy-manage/manage/pachctl-shell/).
-- Join our [Slack Community](https://www.pachyderm.com/slack/) so you can ask any questions you may have!
+- Join our [Slack Community](https://www.MLDM.com/slack/) so you can ask any questions you may have!
 
 ### Context
 
@@ -79,7 +79,7 @@ pachctl list repo
 
 
 ### 3. Add Data
-In Pachyderm, you write data to an explicit `commit`. Commits are immutable
+In MLDM, you write data to an explicit `commit`. Commits are immutable
 snapshots of your data which give MLDM its version control properties.
 You can add, remove, or update `files` in a given commit.
 
@@ -224,7 +224,7 @@ MLDM creates within the container automatically.
 Your code must write out to `/pfs/out` (see the function `make_edges(image)` above). MLDM gathers data written to `/pfs/out`, versions it, and maps it to the pipeline's output repo of the same name.
 {{% /notice %}}
 
-Now, let's create the pipeline in Pachyderm:
+Now, let's create the pipeline in MLDM:
 
 ```s
 pachctl create pipeline -f https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/examples/opencv/edges.json

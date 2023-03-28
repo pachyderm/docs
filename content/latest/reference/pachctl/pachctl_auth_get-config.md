@@ -1,10 +1,10 @@
 ## pachctl auth get-config
 
-Retrieve Pachyderm's current auth configuration
+Retrieve MLDM's current auth configuration
 
 ### Synopsis
 
-Retrieve Pachyderm's current auth configuration
+Retrieve MLDM's current auth configuration
 
 ```
 pachctl auth get-config [flags]

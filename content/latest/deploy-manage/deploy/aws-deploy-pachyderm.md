@@ -69,7 +69,7 @@ To deploy an EKS cluster, complete the following steps:
    ```
 
 Once your Kubernetes cluster is up, and your infrastructure is configured, 
-you are ready to prepare for the installation of Pachyderm.
+you are ready to prepare for the installation of MLDM.
 Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure. 
 
 {{% notice note %}}
@@ -172,7 +172,7 @@ In short, you will:
       1. In the **Identity Provider** drop down, select the *OpenID Connect provider URL* of your EKS and `sts.amazonaws.com` as the Audience.
       1. Attach the newly created permission to the Role.
       1. Name it.
-      1. Retrieve the **Role arn**. You will need it in your values.yaml annotations when deploying Pachyderm.
+      1. Retrieve the **Role arn**. You will need it in your values.yaml annotations when deploying MLDM.
 
 ### (Optional) Set Up Bucket Encryption
 
@@ -250,10 +250,10 @@ Find the details of all the steps highlighted below in [AWS Documentation: "Gett
 | *Public access* | Set the Public access to `No` for production environments. |
 | *VPC security group* | Create a new VPC security group and open the postgreSQL port or use an existing one. |
 | *Password authentication* or *Password and IAM database authentication* | Choose one or the other. |
-| *Database name* | In the *Database options* section, enter Pachyderm's Database name (We are using `pachyderm` in this example.) and click *Create database* to create your PostgreSQL service. Your instance is running. <br>Warning: If you do not specify a database name, Amazon RDS does not create a database.|
+| *Database name* | In the *Database options* section, enter MLDM's Database name (We are using `pachyderm` in this example.) and click *Create database* to create your PostgreSQL service. Your instance is running. <br>Warning: If you do not specify a database name, Amazon RDS does not create a database.|
 
 
-1. If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you must create a second database named `dex` in your RDS instance for Pachyderm's authentication service.  Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). 
+1. If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you must create a second database named `dex` in your RDS instance for MLDM's authentication service.  Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres). 
    
 2. Additionally, create a new user account and **grant it full CRUD permissions to both `pachyderm` and (when applicable) `dex` databases**. Read about managing PostgreSQL users and roles in this [blog](https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/). MLDM will use the same username to connect to `pachyderm` as well as to `dex`. 
 
@@ -266,7 +266,7 @@ global:
   postgresql:
     postgresqlUsername: "username"
     postgresqlPassword: "password" 
-    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    # The name of the database should be MLDM's ("pachyderm" in the example above), not "dex" 
     # See also 
     # postgresqlExistingSecretName: "<yoursecretname>"
     postgresqlDatabase: "databasename"
@@ -281,9 +281,9 @@ postgresql:
   # database server to connect to in global.postgresql
   enabled: false
 ```
-## 5. Deploy Pachyderm
+## 5. Deploy MLDM
 
-You have set up your infrastructure, created your S3 bucket and an AWS Managed PostgreSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy Pachyderm.
+You have set up your infrastructure, created your S3 bucket and an AWS Managed PostgreSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy MLDM.
 
 ### Update Your Values.yaml  
 
@@ -332,7 +332,7 @@ global:
   postgresql:
     postgresqlUsername: "username"
     postgresqlPassword: "password" 
-    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    # The name of the database should be MLDM's ("pachyderm" in the example above), not "dex" 
     postgresqlDatabase: "databasename"
     # The postgresql database host to connect to. Defaults to postgres service in subchart
     postgresqlHost: "RDS CNAME"
@@ -373,7 +373,7 @@ global:
   postgresql:
     postgresqlUsername: "username"
     postgresqlPassword: "password" 
-    # The name of the database should be Pachyderm's ("pachyderm" in the example above), not "dex" 
+    # The name of the database should be MLDM's ("pachyderm" in the example above), not "dex" 
     postgresqlDatabase: "databasename"
     # The postgresql database host to connect to. Defaults to postgres service in subchart
     postgresqlHost: "RDS CNAME"
@@ -404,7 +404,7 @@ Retain (ideally in version control) a copy of the Helm values used to deploy you
 - You can now deploy a MLDM cluster by running this command:
 
   ```s
-  helm repo add pach https://helm.pachyderm.com
+  helm repo add pach https://helm.MLDM.com
   helm repo update
   helm install MLDM -f values.yaml pach/MLDM --version <version-of-the-chart>
   ```

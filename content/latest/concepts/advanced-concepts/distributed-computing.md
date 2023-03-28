@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Distributed Computing
-description: Learn about the concept of distributed computing in Pachyderm. 
+description: Learn about the concept of distributed computing in MLDM. 
 date: 
 # taxonomy #
 tags:  ["data-operations", "pipelines"]
@@ -44,12 +44,12 @@ it automatically takes another datum from the queue to process it.
 Datums might be different in size and, therefore, some of them might be
 processed faster than others.
 
-Each datum goes through the following processing phases inside a Pachyderm
+Each datum goes through the following processing phases inside a MLDM
 worker pod:
 
 | Phase       | Description |
 | ----------- | ----------- |
-| Downloading | The MLDM worker pod downloads the datum contents <br>into Pachyderm. |
+| Downloading | The MLDM worker pod downloads the datum contents <br>into MLDM. |
 | Processing  | The MLDM worker pod runs the contents of the datum <br>against your code. |
 | Uploading   | The MLDM worker pod uploads the results of processing <br>into an output repository. |
 

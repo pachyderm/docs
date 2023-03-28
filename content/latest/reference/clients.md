@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Language Clients
-description: Learn about Pachyderm's language clients. 
+description: Learn about MLDM's language clients. 
 date: 
 # taxonomy #
 tags: ["sdks", "golang", "python","javascript","developers"]
@@ -33,7 +33,7 @@ To generate the docs:
 	export PATH=$(go env GOPATH)/bin:$PATH
 	```
 
-- In Pachyderm's root directory, start the godocs server: 
+- In MLDM's root directory, start the godocs server: 
 
 	```s
 	go run golang.org/x/tools/cmd/godoc -http=:6060 -goroot="<your go root directory - for example: /Users/yourusername/pachyderm>"
@@ -76,12 +76,12 @@ It implements most of the functionalities provided with the `pachctl` CLI tool a
 Use **python-MLDM {{% pythonClientVersion %}}** with MLDM {{% majorMinorVersion %}}. 
 {{% /notice %}}
 
-You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/stable/), namely:
+You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-MLDM.readthedocs.io/en/stable/), namely:
 
-- The [installation instructions](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#installation) and links to PyPI.
-- A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
+- The [installation instructions](https://python-MLDM.readthedocs.io/en/stable/getting_started.html#installation) and links to PyPI.
+- A quick ["Hello World" example](https://python-MLDM.readthedocs.io/en/stable/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
 - Links to python-MLDM main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/master/examples). 
-- As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/stable/python_pachyderm.html).
+- As well as the entire [**reference API**](https://python-MLDM.readthedocs.io/en/stable/python_MLDM.html).
 
 ## Node Client
 
@@ -96,4 +96,4 @@ Check also our [opencv example](https://github.com/pachyderm/node-pachyderm/tree
 
 ## Other languages
 
-MLDM uses a simple [protocol buffer API](https://github.com/pachyderm/pachyderm/blob/master/src/pfs/pfs.proto). Protobufs support [other languages](https://developers.google.com/protocol-buffers/), any of which can be used to programmatically use Pachyderm. We have not built clients for them yet. It is an easy way to contribute to MLDM if you are looking to get involved.
+MLDM uses a simple [protocol buffer API](https://github.com/pachyderm/pachyderm/blob/master/src/pfs/pfs.proto). Protobufs support [other languages](https://developers.google.com/protocol-buffers/), any of which can be used to programmatically use MLDM. We have not built clients for them yet. It is an easy way to contribute to MLDM if you are looking to get involved.

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Datum Processing
-description: Learn about the concept of datum processing in Pachyderm. 
+description: Learn about the concept of datum processing in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
@@ -86,7 +86,7 @@ these data to create the final result.
 ![Map Reduce](/images/parallel_data_processing_following_commit.png)
 
 ## Incrementality 
-In Pachyderm, unchanged datums are never re-processed. 
+In MLDM, unchanged datums are never re-processed. 
 For example, if you have multiple datums, 
 and only one datum was modified; MLDM processes that datum only
 and `skips` processing other datums. 
@@ -94,7 +94,7 @@ This incremental behavior ensures efficient resource utilization.
 
 ## Overwriting files
 
-By default, Pachyderm
+By default, MLDM
 overwrites new data. For example, if you
 have a file `foo` in the repository `A`
 and add the same file `foo` to that repository again by

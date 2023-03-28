@@ -14,7 +14,7 @@ This document discusses each of the fields present in a pipeline specification.
 To see how to use a pipeline spec to create a pipeline, refer to the [create pipeline](../../how-tos/pipeline-operations/create-pipeline/#create-a-pipeline) section.
 
 ## Before You Start 
-- Pachyderm's pipeline specifications can be written in JSON or YAML.
+- MLDM's pipeline specifications can be written in JSON or YAML.
 - MLDM uses its json parser if the first character is `{`.
 - A pipeline specification file can contain multiple pipeline declarations at once.
 

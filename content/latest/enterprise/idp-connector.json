@@ -1,7 +1,7 @@
 {
     "type": "oidc",
     "id": "auth0-test",
-    "name": "Pachyderm",
+    "name": "MLDM",
     "version": 0,
     "config":{
         "issuer": "dev-ps2tkwpgxblc1ozs.us.auth0.com",
@@ -10,7 +10,7 @@
         "redirectURI": "http://localhost:3000/dex/callback",
         "scopes": ["groups", "email", "profile"],
         "claimMapping":{
-            "groups": "http://pachyderm.com/groups"
+            "groups": "http://MLDM.com/groups"
         },
         "insecureEnableGroups": true
         }

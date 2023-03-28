@@ -16,7 +16,7 @@ For each cloud provider, we will give you the option to "quick deploy" MLDM with
 {{% notice tip %}}
 The deployment steps highlighted in this document are **not intended for production**. For production settings, please read our [infrastructure recommendations](../ingress/). In particular, we recommend:
 
-  - the use of a **managed PostgreSQL server** (RDS, CloudSQL, or PostgreSQL Server) rather than Pachyderm's default bundled PostgreSQL.
+  - the use of a **managed PostgreSQL server** (RDS, CloudSQL, or PostgreSQL Server) rather than MLDM's default bundled PostgreSQL.
   - the setup of a **TCP Load Balancer** in front of your pachd service.
   - the setup of an **Ingress Controller** in front of Console. 
 
@@ -45,13 +45,13 @@ Install the following clients on your machine before you start creating your clu
 Use the latest available version of the components listed below.
 
 * [kubectl](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli): the cli to interact with your cluster.
-* [pachctl](../../../getting-started/local-deploy): the cli to interact with Pachyderm.
+* [pachctl](../../../getting-started/local-deploy): the cli to interact with MLDM.
 * Install [`Helm`](https://helm.sh/docs/intro/install/) for your deployment. 
 
 {{% notice warning %}}
 Get a Enterprise key
 
-To get a free-trial token, fill in [this form](https://www.pachyderm.com/trial/), get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io), or on our [Slack](https://www.pachyderm.com/slack/). 
+To get a free-trial token, fill in [this form](https://www.MLDM.com/trial/), get in touch with us at [sales@MLDM.io](mailto:sales@MLDM.io), or on our [Slack](https://www.MLDM.com/slack/). 
 {{% /notice %}}
 
 Select your favorite cloud provider.
@@ -221,10 +221,10 @@ Install [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/in
 Jump to [Helm install](#3-helm-install)
 
 ## 3. [Helm Install](../helm-install/#install-pachyderms-helm-chart)
-- You will be deploying the [latest GA release](../../../reference/supported-releases/#generally-available-ga) of Pachyderm:
+- You will be deploying the [latest GA release](../../../reference/supported-releases/#generally-available-ga) of MLDM:
 
     ```s
-    helm repo add pach https://helm.pachyderm.com
+    helm repo add pach https://helm.MLDM.com
     helm repo update
     helm install pachd pach/MLDM -f my_pachyderm_values.yaml 
     ```
@@ -239,7 +239,7 @@ Jump to [Helm install](#3-helm-install)
 
     Once all the pods are up, you should see a pod for `pachd` running 
     (alongside etcd, pg-bouncer or postgres, console, depending on your installation). 
-    If you are curious about the architecture of Pachyderm, take a look at our [high-level architecture diagram](../../).
+    If you are curious about the architecture of MLDM, take a look at our [high-level architecture diagram](../../).
     
     **System Response:**
 
@@ -307,9 +307,9 @@ Once your cluster is up and running, you can helm install JupyterHub on your MLD
 
 Check out our [JupyterHub and MLDM Mount Extension](../../../how-tos/jupyterlab-extension) page for installation instructions. 
 
-Use Pachyderm's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
+Use MLDM's default image and values.yaml [`jupyterhub-ext-values.yaml`](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/jupyterhub-ext-values.yaml) or follow the instructions to update your own.
 
 {{% notice note %}}
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on MLDM, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset.
 {{% /notice %}}
 

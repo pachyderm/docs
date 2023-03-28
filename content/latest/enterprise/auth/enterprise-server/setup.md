@@ -168,7 +168,7 @@ This results in a single pachd pod, with authentication enabled, and an IDP inte
 {{% notice note %}}
 Update the following values as follows:
 
-`PACHD-IP`: The address of Pachyderm's IP. Retrieve MLDM external IP address if necessary.
+`PACHD-IP`: The address of MLDM's IP. Retrieve MLDM external IP address if necessary.
  `ISSUER`, `CLIENT-ID`, `CLIENT-SECRET`: Refer to our [Identity Provider Configuration page](../../authentication/idp-dex#create-a-connector-configuration-file).
 {{% /notice %}}
 

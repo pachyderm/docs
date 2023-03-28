@@ -10,7 +10,7 @@ seriesPart:
 weight: 2
 --- 
 
-This section details the foundational concepts of Pachyderm's data versioning and pipeline semantics broken down into two main components:
+This section details the foundational concepts of MLDM's data versioning and pipeline semantics broken down into two main components:
 
-- **MLDM File System** (PFS) manages Pachyderm's data and versioning system.
+- **MLDM File System** (PFS) manages MLDM's data and versioning system.
 - **MLDM Pipeline System** (PPS) enables you to perform various transformations on your data. 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Helm Chart Values (HCVs)
-description: Learn about the configurable helm chart attributes for Pachyderm.
+description: Learn about the configurable helm chart attributes for MLDM.
 date: 
 # taxonomy #
 tags: ["configuration", "helm", "helm chart"]

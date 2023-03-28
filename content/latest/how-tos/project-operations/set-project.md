@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Set a Project as Current
-description: Learn how to switch to a project in Pachyderm.
+description: Learn how to switch to a project in MLDM.
 date: 
 # taxonomy #
 tags: ["projects"]

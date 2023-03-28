@@ -12,7 +12,7 @@ directory: true
 
 ## Before You Start 
 
-- You must have a MLDM [Enterprise License Key](https://www.pachyderm.com/trial/).
+- You must have a MLDM [Enterprise License Key](https://www.MLDM.com/trial/).
 - You must have pachctl and MLDM installed. 
 - You must have the MLDM Helm repo downloaded.
 
@@ -33,4 +33,4 @@ pachctl enterprise get-state
 # ACTIVE
 ```
 
-You have unlocked Pachyderm's enterprise features.
+You have unlocked MLDM's enterprise features.

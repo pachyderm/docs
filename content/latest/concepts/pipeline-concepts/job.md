@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Job
-description: Learn about the concept of a Job in Pachyderm. 
+description: Learn about the concept of a Job in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations", "pipelines"]
@@ -56,7 +56,7 @@ Below, the state transition diagram of a job:
 ![Job State Diagram](/images/job-state-diagram.png)
 
 ## List Jobs
-They are various ways to list jobs in Pachyderm, depending on the expected outcome:
+They are various ways to list jobs in MLDM, depending on the expected outcome:
 
 - The `pachctl list jobs` command returns [the list of all global jobs](../../advanced-concepts/globalID/#list-all-global-commits-and-global-jobs). 
 

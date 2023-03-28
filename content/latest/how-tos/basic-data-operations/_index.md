@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Basic Data Operations
-description:  Learn how to mount, ingest, push, pull, and expose data with Pachyderm.
+description:  Learn how to mount, ingest, push, pull, and expose data with MLDM.
 date: 
 # taxonomy #
 tags: ["data-operations"]
@@ -10,10 +10,10 @@ seriesPart:
 ---
 
 {{% notice info %}}
-Before you read this section, make sure that you are familiar  with Pachyderm's concepts of [Data](../../concepts/data-concepts) and [Pipeline](../../concepts/pipeline-concepts).
+Before you read this section, make sure that you are familiar  with MLDM's concepts of [Data](../../concepts/data-concepts) and [Pipeline](../../concepts/pipeline-concepts).
 {{%/notice %}}
 
-There are many strategies available to get data in and out of Pachyderm, 
+There are many strategies available to get data in and out of MLDM, 
 whether you want to use its data-driven versioned pipelines as a standalone product 
 or plan a third-party integration.
 The following diagram gives an high level view of them all.

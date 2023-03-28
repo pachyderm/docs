@@ -54,7 +54,7 @@ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-
 ```
 {{% /notice %}}
 
-## 3. Store Pachyderm's Secrets in Secrets Manager
+## 3. Store MLDM's Secrets in Secrets Manager
 In your Secret Manager Console, click on **Store a new secret**, select the **Other type of Secret** (for generic secrets), provide the following Key/Value pairs, then choose a secret name. 
 
 
@@ -226,7 +226,7 @@ Run a quick `kubectl get all` to check on your new pod.
 
 ## 8. Update Your Secrets In MLDM Values.YAML 
 
-Finally, using the `secretName`(s) of your SecretProviderClass above, update Pachyderm's values.YAML with the list of secrets you will be needing.
+Finally, using the `secretName`(s) of your SecretProviderClass above, update MLDM's values.YAML with the list of secrets you will be needing.
 
 Choose the ones that apply to your use case. 
 
@@ -250,6 +250,6 @@ pachd:
   activateEnterprise: true
 ```
 
-Your Secrets Manager is now configured to provide credential values to your cluster, you can go back to your [installation of Pachyderm](../aws-deploy-pachyderm/#3-create-an-s3-bucket)  instructions.
+Your Secrets Manager is now configured to provide credential values to your cluster, you can go back to your [installation of MLDM](../aws-deploy-pachyderm/#3-create-an-s3-bucket)  instructions.
 
 

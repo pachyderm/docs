@@ -92,7 +92,7 @@ Now that the DGX is added to your API server, you can then proceed to:
     kubectl get pods gpu-test
     ```
 
-1. If the container above is scheduled successfully: install Pachyderm. You are ready to [start leveraging NVIDIA's GPUs in your MLDM pipelines](#configure-gpus-in-pipelines).
+1. If the container above is scheduled successfully: install MLDM. You are ready to [start leveraging NVIDIA's GPUs in your MLDM pipelines](#configure-gpus-in-pipelines).
 
 {{% notice tip %}}
 Note that you have the option to use GPUs for compute-intensive workloads on:

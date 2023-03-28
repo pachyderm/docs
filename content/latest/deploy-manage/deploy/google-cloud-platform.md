@@ -81,7 +81,7 @@ gcloud container clusters create ${CLUSTER_NAME} \
 # needed to create those clusterrolebindings.
 #
 # Note that this command is simple and concise, but gives your user account more privileges than necessary. See
-# https://docs.pachyderm.io/en/latest/deploy-manage/deploy/rbac/ for the complete list of privileges that the
+# https://docs.MLDM.io/en/latest/deploy-manage/deploy/rbac/ for the complete list of privileges that the
 # MLDM serviceaccount needs.
 kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value account)
 ```
@@ -130,7 +130,7 @@ the following command:
 # Update your kubeconfig to point at your newly created cluster.
 gcloud container clusters get-credentials ${CLUSTER_NAME}
 ```
-Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of Pachyderm. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
+Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of MLDM. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
 ## 2. Create a GCS Bucket
 
 ### Create an GCS object store bucket for your data
@@ -271,9 +271,9 @@ Check out Google documentation for more information on how to [Create and Manage
 
 ### Create Your Databases
 
-After your instance is created, you will need to create Pachyderm's database(s).
+After your instance is created, you will need to create MLDM's database(s).
       
-If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup)), you will need to create a second database named "dex" in your Cloud SQL instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
+If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup)), you will need to create a second database named "dex" in your Cloud SQL instance for MLDM's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
 
 {{% notice note %}}
 
@@ -331,8 +331,8 @@ global:
     postgresqlPassword: "<InstanceRootPassword>"
 ```
 
-## 5. Deploy Pachyderm
-You have set up your infrastructure, created your GCP bucket and a CloudSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy Pachyderm.
+## 5. Deploy MLDM
+You have set up your infrastructure, created your GCP bucket and a CloudSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy MLDM.
 
 ### Update Your Values.yaml   
 
@@ -409,7 +409,7 @@ global:
 - You can now deploy a MLDM cluster by running this command:
 
   ```s
-  helm repo add pach https://helm.pachyderm.com
+  helm repo add pach https://helm.MLDM.com
   helm repo update
   helm install MLDM -f my_values.yaml pach/pachyderm
   ```
@@ -428,7 +428,7 @@ global:
   If RBAC authorization is a requirement or you run into any RBAC errors see [Configure RBAC](../rbac).
   {{% /notice %}}
 
-  It may take a few minutes for the pachd nodes to be running because Pachyderm
+  It may take a few minutes for the pachd nodes to be running because MLDM
   pulls containers from DockerHub. You can see the cluster status with
   `kubectl`, which should output the following when MLDM is up and running:
 

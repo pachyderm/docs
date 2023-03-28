@@ -42,7 +42,7 @@ This path may vary depending on where your `git bash` actually exists.
 
 ## Getting started
 
-1. Open a terminal and navigate to a directory you'd like to store Pachyderm.
+1. Open a terminal and navigate to a directory you'd like to store MLDM.
 2. Clone the MLDM repo using `git clone https://github.com/pachyderm/pachyderm`.
 3. Launch Docker Desktop (with Kubernetes enabled) or start minikube.  
 4. Provision  ~10 GB of memory and ~4CPUs.
@@ -62,7 +62,7 @@ This path may vary depending on where your `git bash` actually exists.
 
 ### Common Commands
 
-The following commands are used frequently when working with Pachyderm: 
+The following commands are used frequently when working with MLDM: 
 
 - `kubectl get all`: lists resources in the 'default' namespace, where we deploy locally. 
 - `kubectl logs -p <pod>`: gets the logs from the previous attempt at running a pod; a good place to find errors.

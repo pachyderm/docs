@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Configuration Specification
-description: Learn about the base configuration options available for Pachyderm.
+description: Learn about the base configuration options available for MLDM.
 date: 
 # taxonomy #
 tags: ["configuration"]

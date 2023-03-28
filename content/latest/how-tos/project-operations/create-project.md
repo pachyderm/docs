@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Create a Project
-description: Learn how to create a new project in Pachyderm.
+description: Learn how to create a new project in MLDM.
 date: 
 # taxonomy #
 tags: ["projects"]

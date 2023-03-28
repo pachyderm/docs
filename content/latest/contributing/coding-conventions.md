@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Coding Conventions
-description: Learn the coding conventions contributors to Pachyderm's code base follow.
+description: Learn the coding conventions contributors to MLDM's code base follow.
 date: 
 # taxonomy #
 tags:  ["developers"]
@@ -10,7 +10,7 @@ seriesPart:
 directory: true 
 --- 
 
-Interested in contributing to Pachyderm's code? Learn the conventions here! For setup instructions, see [Setup for Contributors](../setup).
+Interested in contributing to MLDM's code? Learn the conventions here! For setup instructions, see [Setup for Contributors](../setup).
 
 ## Languages 
 

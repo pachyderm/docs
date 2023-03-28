@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Contributor Setup
-description: Learn how to set up your machine to contribute code to Pachyderm.
+description: Learn how to set up your machine to contribute code to MLDM.
 date: 
 # taxonomy #
 tags:  ["developers"]
@@ -13,7 +13,7 @@ directory: true
 
 ## General requirements
 
-First, go through the general [Local Installation Instructions](https://docs.pachyderm.com/latest/getting-started/local-deploy/). Additionally, make sure you have the following installed:
+First, go through the general [Local Installation Instructions](https://docs.MLDM.com/latest/getting-started/local-deploy/). Additionally, make sure you have the following installed:
 
 - golang 1.12+
 - docker

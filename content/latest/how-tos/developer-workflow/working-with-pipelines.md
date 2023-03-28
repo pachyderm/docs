@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Working with Pipelines
-description: Learn about the steps involved in building, testing, and deploying data-transformation pipelines in Pachyderm. 
+description: Learn about the steps involved in building, testing, and deploying data-transformation pipelines in MLDM. 
 date: 
 # taxonomy #
 tags: ["pipelines"]
@@ -30,9 +30,9 @@ be written in any language and can use any libraries of choice. Whether
 your code is as simple as a bash command or as complicated as a
 TensorFlow neural network, it needs to be built with all the required
 dependencies into a container that can run anywhere, including inside
-of Pachyderm. See [Examples](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/examples).
+of MLDM. See [Examples](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/examples).
 
-Your code does not have to import any special Pachyderm
+Your code does not have to import any special MLDM
 functionality or libraries. However, it must meet the
 following requirements:
 
@@ -52,7 +52,7 @@ following requirements:
   in the pipeline specification.
 
 * **Write files into a local file system**, such as saving results.
-  Your code must write to the `/pfs/out` directory that Pachyderm
+  Your code must write to the `/pfs/out` directory that MLDM
   mounts in all of your running containers. Similar to reading data,
   your code does not have to manage parallelization or sharding.
 
@@ -102,7 +102,7 @@ Once your image is built and tagged, you need to upload the image into
 a public or private image registry, such as
 [DockerHub](https://hub.docker.com).
 
-Alternatively, you can use the Pachyderm's built-in functionality to
+Alternatively, you can use the MLDM's built-in functionality to
 tag, and push images by running the `pachctl update pipeline` command
 with the `--push-images` flag. For more information, see
 [Update a pipeline](../../pipeline-operations/updating-pipelines).
@@ -129,7 +129,7 @@ Pipelines require a unique tag to ensure the appropriate image is pulled. If a f
 
 ## Step 4: Create/Edit the Pipeline Config
 
-Pachyderm's pipeline specification files store the configuration information
+MLDM's pipeline specification files store the configuration information
 about the Docker image and code that MLDM should run, the input repo(s) of the pipeline, parallelism settings, GPU usage etc...
 Pipeline specifications are stored in JSON or YAML format.
 

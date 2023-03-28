@@ -16,7 +16,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 {{% /notice %}}
 ## About 
 
-Console is the Graphical User Interface (GUI) for Pachyderm. Users that would prefer to navigate and manage through their project resources visually can connect to Console by authenticating against your configured [OIDC](/{{% release %}}/reference/helm-values/oidc). For personal-machine installations of Pachyderm, a user may access Console without authentication via [localhost](http://localhost).
+Console is the Graphical User Interface (GUI) for MLDM. Users that would prefer to navigate and manage through their project resources visually can connect to Console by authenticating against your configured [OIDC](/{{% release %}}/reference/helm-values/oidc). For personal-machine installations of MLDM, a user may access Console without authentication via [localhost](http://localhost).
 
 ## Values 
 

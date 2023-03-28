@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Activate Authorization
-description: Learn how to activate Authorization (User Access Management) in Pachyderm.
+description: Learn how to activate Authorization (User Access Management) in MLDM.
 date: 
 # taxonomy #
 tags: 
@@ -41,5 +41,5 @@ the identity management provider (IdP) of your choice.
 When an Enterprise License expires, a
 MLDM cluster with enabled User Access Management goes into an
 `admin-only` state. In this state, only `ClusterAdmins` have
-access to the data stored in Pachyderm. This safety measure keeps sensitive data protected, even when an enterprise subscription becomes stale. To return the cluster to its previous state, run `pachctl license activate` and submit your new code.
+access to the data stored in MLDM. This safety measure keeps sensitive data protected, even when an enterprise subscription becomes stale. To return the cluster to its previous state, run `pachctl license activate` and submit your new code.
 

@@ -1,10 +1,10 @@
 ## pachctl auth login
 
-Log in to Pachyderm
+Log in to MLDM
 
 ### Synopsis
 
-Login to Pachyderm. Any resources that have been restricted to the account you have with your ID provider (e.g. GitHub, Okta) account will subsequently be accessible.
+Login to MLDM. Any resources that have been restricted to the account you have with your ID provider (e.g. GitHub, Okta) account will subsequently be accessible.
 
 ```
 pachctl auth login [flags]

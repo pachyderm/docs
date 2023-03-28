@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Unsupported Operations
-description: Learn which S3 operations are not supported by Pachyderm. 
+description: Learn which S3 operations are not supported by MLDM. 
 date: 
 # taxonomy #
 tags: 
@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-Some of the S3 operations are not yet supported by Pachyderm.
+Some of the S3 operations are not yet supported by MLDM.
 If you run any of these operations, MLDM returns a standard
 S3 `NotImplemented` error.
 

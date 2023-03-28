@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  PachD HCVs
-description: Configure the core settings of Pachyderm.
+description: Configure the core settings of MLDM.
 date: 
 # taxonomy #
 tags: ["helm"]
@@ -234,7 +234,7 @@ pachd:
     tag: ""
   logFormat: "json"
   logLevel: "info"
-  # If lokiDeploy is true, a Pachyderm-specific instance of Loki will
+  # If lokiDeploy is true, a MLDM-specific instance of Loki will
   # be deployed.
   lokiDeploy: true
   # lokiLogging enables Loki logging if set.
@@ -363,7 +363,7 @@ pachd:
       # and token, it implements the functionality of the
       # --credentials argument to pachctl deploy.
       id: ""
-      # logOptions sets various log options in Pachyderm’s internal S3
+      # logOptions sets various log options in MLDM’s internal S3
       # client.  Comma-separated list containing zero or more of:
       # 'Debug', 'Signing', 'HTTPBody', 'RequestRetries',
       # 'RequestErrors', 'EventStreamBody', or 'all'

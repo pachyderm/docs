@@ -32,7 +32,7 @@ For more detailed step by step instructions, follow this [documentation](https:/
 1. Click **Create New App** (or search for your existing app).
 1. Select **Platform: Web** and sign-on method **OpenID Connect**.
 1. Click **Create**.
-1. Type the name of your application, such as **Pachyderm**.
+1. Type the name of your application, such as **MLDM**.
 1. Add the following Login redirect URI. 
       ```s
       http://<ip>:30658/callback
@@ -148,7 +148,7 @@ or sign in with Google:
     You should see the following message printed out in your browser:
 
     ```
-    You are now logged in. Go back to the terminal to use Pachyderm!
+    You are now logged in. Go back to the terminal to use MLDM!
     ```
 
 1. In the terminal, check that you are logged in as the Okta user:
@@ -160,6 +160,6 @@ or sign in with Google:
       **Example of System Response:**
 
       ```s
-      You are "okta:test@pachyderm.com"
+      You are "okta:test@MLDM.com"
       session expires: 07 Aug 20 14:04 PDT
       ```

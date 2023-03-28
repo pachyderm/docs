@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Features Overview
-description: Learn about the main features unique to Pachyderm's Enterprise edition.
+description: Learn about the main features unique to MLDM's Enterprise edition.
 date: 
 # taxonomy #
 tags: ["enterprise"]
@@ -13,7 +13,7 @@ directory: true
 Enterprise helps you scale and manage MLDM data pipelines by removing all [scaling limits](../../reference/scaling-limits/) and providing you with additional features not available in the Community Edition.
 
 {{% notice note %}}
-Want to try Enterprise, or simply have a few questions? Get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io) or on our [Slack](https://www.pachyderm.com/slack/). 
+Want to try Enterprise, or simply have a few questions? Get in touch with us at [sales@MLDM.io](mailto:sales@MLDM.io) or on our [Slack](https://www.MLDM.com/slack/). 
 {{% /notice %}}
 
 

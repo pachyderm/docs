@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: SQL Ingest
-description: Learn how to set up the SQL Ingest Tool to import data into Pachyderm.
+description: Learn how to set up the SQL Ingest Tool to import data into MLDM.
 date: 
 # taxonomy #
 tags: ["sql","ingest", "data-operations"]
@@ -18,7 +18,7 @@ You can inject database content, collected by your data warehouse, by pulling th
 ## Before You Start 
 
 - You should be familiar with [Jsonnet](https://jsonnet.org/learning/tutorial.html).
-- You should be familiar with creating [Jsonnet pipeline specs](https://docs.pachyderm.com/latest/how-tos/pipeline-operations/jsonnet-pipeline-specs/#jsonnet-pipeline-specifications) in Pachyderm.
+- You should be familiar with creating [Jsonnet pipeline specs](https://docs.MLDM.com/latest/how-tos/pipeline-operations/jsonnet-pipeline-specs/#jsonnet-pipeline-specifications) in MLDM.
 - You should be familiar with [managing Kubernetes secrets](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/). 
 
 ---
@@ -44,12 +44,12 @@ You must generate a secret that contains the password granting user access to th
 7. Confirm secret by running `pachctl list secret`. 
    
 {{% notice note %}}
-Not all secret formats are the same. For a full walkthrough on how to create, edit, and view different types of secrets, see [Create and Manage Secrets in Pachyderm](../../advanced-data-operations/secrets/#create-a-secret).
+Not all secret formats are the same. For a full walkthrough on how to create, edit, and view different types of secrets, see [Create and Manage Secrets in MLDM](../../advanced-data-operations/secrets/#create-a-secret).
 {{% /notice %}}
 
 ### 2. Create a Database Connection String
 
-Pachyderm's SQL Ingest requires a connection string defined as a [Jsonnet URL parameter](#url-parameter-details) to connect to your database; the URL is structured as follows:
+MLDM's SQL Ingest requires a connection string defined as a [Jsonnet URL parameter](#url-parameter-details) to connect to your database; the URL is structured as follows:
 
 ```s
 <protocol>://<username>@<host>:<port>/<database>?<param1>=<value1>&<param2>=<value2>

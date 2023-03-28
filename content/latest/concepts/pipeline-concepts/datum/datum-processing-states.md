@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Datum Processing States
-description: Learn about the concept of datum processing states in Pachyderm. 
+description: Learn about the concept of datum processing states in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
@@ -11,7 +11,7 @@ seriesPart:
 
 When a pipeline runs, it processes your datums. Some of them get processed successfully and some might be skipped or even fail. Generally, processed datums fall into either successful or failure state category.
 
-The following table describes the processing states of datums that can occur in Pachyderm:
+The following table describes the processing states of datums that can occur in MLDM:
 
 **Successful States**
 

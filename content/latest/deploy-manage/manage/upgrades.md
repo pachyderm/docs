@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Upgrade Pachyderm
-description: Learn how to upgrade Pachyderm's pachctl and pachd. 
+title: Upgrade MLDM
+description: Learn how to upgrade MLDM's pachctl and pachd. 
 date: 
 # taxonomy #
 tags: ["management", "upgrades", "pachctl","pachd"]

@@ -1,7 +1,7 @@
 ---
 # metadata #
 title:  Grant Project Access
-description: Learn how to grant a user access to a project in Pachyderm.
+description: Learn how to grant a user access to a project in MLDM.
 date:
 # taxonomy #
 tags: ["projects"]

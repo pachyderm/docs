@@ -156,7 +156,7 @@ until all the nested transactions and the main transaction are finished.
 
 MLDM does not support such behavior. Instead, when you open a
 transaction, the transaction ID is written to the MLDM configuration
-file. If you begin another transaction while the first one is open, Pachyderm
+file. If you begin another transaction while the first one is open, MLDM
 returns an error.
 
 Every time you add a command to a transaction,
@@ -193,7 +193,7 @@ a transaction:
 
 ![Standard workflow](/images/transaction_wrong.gif)
 
-In Pachyderm, a pipeline starts as soon as a new commit lands in
+In MLDM, a pipeline starts as soon as a new commit lands in
 a repository. In the diagram above, as soon as `commit 1` is added
 to the `data` repository, MLDM runs a job for `commit 1` and
 `commit 0` in the `parameters` repository. You can also see

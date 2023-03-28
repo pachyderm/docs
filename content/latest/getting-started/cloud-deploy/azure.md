@@ -1,6 +1,6 @@
 ---
 # metadata # 
-title:  Azure + Pachyderm
+title:  Azure + MLDM
 description: Learn how to deploy to MLDM to the cloud with Azure.
 date: 
 # taxonomy #
@@ -97,7 +97,7 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
     - [Azure Virtual Machine sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general)
 {{% /notice %}}
 
-Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of Pachyderm. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
+Once your Kubernetes cluster is up, and your infrastructure configured, you are ready to prepare for the installation of MLDM. Some of the steps below will require you to keep updating the values.yaml started during the setup of the recommended infrastructure:
 
 
 
@@ -106,7 +106,7 @@ Once your Kubernetes cluster is up, and your infrastructure configured, you are 
 
 MLDM needs an [Azure Storage Container](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-storage) (Object store) to store your data. 
 
-To access your data, MLDM uses a [Storage Account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview) with permissioned access to your desired container. You can either use an existing account or create a new one in your default subscription, then use the JSON key associated with the account and pass it on to Pachyderm.
+To access your data, MLDM uses a [Storage Account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview) with permissioned access to your desired container. You can either use an existing account or create a new one in your default subscription, then use the JSON key associated with the account and pass it on to MLDM.
 
 
 
@@ -146,7 +146,7 @@ To access your data, MLDM uses a [Storage Account](https://docs.microsoft.com/en
     and the `kind` parameter is set to `BlockBlobStorage`. This
     configuration results in a storage that uses SSDs rather than
     standard Hard Disk Drives (HDD).
-    If you set this parameter to an HDD-based storage option, your Pachyderm
+    If you set this parameter to an HDD-based storage option, your MLDM
     cluster will be too slow and might malfunction.
 
 3. Verify that your storage account has been successfully created:
@@ -155,7 +155,7 @@ To access your data, MLDM uses a [Storage Account](https://docs.microsoft.com/en
     az storage account list
     ```
 
-4. Obtain the key for the storage account (`STORAGE_ACCOUNT`) and the resource group to be used to deploy Pachyderm:
+4. Obtain the key for the storage account (`STORAGE_ACCOUNT`) and the resource group to be used to deploy MLDM:
 
     ```s
     STORAGE_KEY="$(az storage account keys list \
@@ -243,7 +243,7 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
 
 Run the following to add the MLDM repo to Helm:
 ```s
-helm repo add pach https://helm.pachyderm.com
+helm repo add pach https://helm.MLDM.com
 helm repo update
 helm install pachd pach/MLDM -f my_pachyderm_values.yaml 
 ```

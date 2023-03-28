@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Pipeline
-description: "Learn about the types of pipelines used in Pachyderm, including: spout, cron, and service pipelines."
+description: "Learn about the types of pipelines used in MLDM, including: spout, cron, and service pipelines."
 date: 
 # taxonomy #
 tags: 
@@ -24,18 +24,18 @@ an output repository by the same name as the pipeline. For example,
 a pipeline named `model` writes all results to the
 `model` output repo.
 
-In Pachyderm, a Pipeline is an individual execution step. You can
+In MLDM, a Pipeline is an individual execution step. You can
 chain multiple pipelines together to create a directed acyclic
 graph (DAG).
 
 You define a pipeline declaratively, using a JSON or YAML file. 
-Pipeline specification files follow Pachyderm's [pipeline reference specification file](../../../reference/pipeline-spec).
+Pipeline specification files follow MLDM's [pipeline reference specification file](../../../reference/pipeline-spec).
 
 A minimum pipeline specification must include the following parameters:
 
 - `name` — The name of your data pipeline. Set a meaningful name for
   your pipeline, such as the name of the transformation that the
-  pipeline performs. For example, `split` or `edges`. Pachyderm
+  pipeline performs. For example, `split` or `edges`. MLDM
   automatically creates an output repository with the same name.
   A pipeline name must be an alphanumeric string that is less than
   63 characters long and can include dashes and underscores.

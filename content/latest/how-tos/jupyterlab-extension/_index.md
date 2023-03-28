@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: JupyterLab Mount Extension
-description: Learn how to install and use the JupyterLab Mount Extension with Pachyderm.
+description: Learn how to install and use the JupyterLab Mount Extension with MLDM.
 date: 
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]
@@ -32,6 +32,6 @@ There are two main ways to install the Jupyter Lab extension:
 
 ## Examples 
 
-Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on Pachyderm, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. You will also find integration examples with open-source products, such as labeling or model serving applications. 
+Make sure to check our [data science notebook examples](https://github.com/pachyderm/examples) running on MLDM, from a market sentiment NLP implementation using a FinBERT model to pipelines training a regression model on the Boston Housing Dataset. You will also find integration examples with open-source products, such as labeling or model serving applications. 
 
 ---

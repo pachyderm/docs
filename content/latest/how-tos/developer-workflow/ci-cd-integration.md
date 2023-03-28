@@ -14,11 +14,11 @@ provenance and scalable processing to data
 scientists and engineers. You can make it even
 more powerful by integrating it with your existing
 continuous integration and continuous deployment (CI/CD)
-workflows and systems. If you are just starting to use Pachyderm
+workflows and systems. If you are just starting to use MLDM
 and not setting up automation for your MLDM build
 processes, see [Working with Pipelines](../working-with-pipelines).
 
-The following diagram demonstrates automated Pachyderm
+The following diagram demonstrates automated MLDM
 development workflow with CI:
 
 ![Developer Workflow](/images/d_developer_workflow102.svg)
@@ -74,7 +74,7 @@ The CI workflow includes the following steps:
       specification and fills in the Git commit
       SHA for the version of the image that must be used in this pipeline.
       Then, it runs the `pachctl update pipeline` command to push the
-      updated pipeline specification to Pachyderm. After that,
+      updated pipeline specification to MLDM. After that,
       MLDM pulls a new image from the registry automatically.
       When the production pipeline is updated with the `pipeline.json`
       file that has the correct image tag in it, MLDM restarts all pods

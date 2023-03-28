@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Cross & Union Inputs
-description: Learn about the concept of cross and union inputs in Pachyderm. 
+description: Learn about the concept of cross and union inputs in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]

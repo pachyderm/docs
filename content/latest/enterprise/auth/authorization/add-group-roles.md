@@ -43,7 +43,7 @@ weight: 2
     "redirectURI": "http(s)://<insert-external-ip-or-dns-name>/dex/callback",
     "scopes": ["groups", "email", "profile"],
     "claimMapping":{
-        "groups": "http://pachyderm.com/groups"
+        "groups": "http://MLDM.com/groups"
     },
     "insecureEnableGroups": true
     }
@@ -67,7 +67,7 @@ config:
     - email
     - profile
     claimMapping:
-        groups: http://pachyderm.com/groups
+        groups: http://MLDM.com/groups
     insecureEnableGroups: true
 ```
 {{% /wizardResult %}}

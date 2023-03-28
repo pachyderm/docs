@@ -19,7 +19,7 @@ Job failures can occur for a variety of reasons, but they generally categorize i
 1. [Data-related](#data-failures): A problem with the input data such as incorrect file type or file name.
 1. [System- or infrastructure-related](#system-level-failures): An error in MLDM or Kubernetes such as missing credentials, transient network errors, or resource constraints (for example, out-of-memory--OOM--killed).
 
-In this document, we'll show you the tools for determining what kind of failure it is. For each of the failure modes, we’ll describe Pachyderm’s and Kubernetes’s specific retry and error-reporting behaviors as well as typical user triaging methodologies.
+In this document, we'll show you the tools for determining what kind of failure it is. For each of the failure modes, we’ll describe MLDM’s and Kubernetes’s specific retry and error-reporting behaviors as well as typical user triaging methodologies.
 
 Failed jobs in a pipeline will propagate information to downstream pipelines with empty commits to preserve provenance and make tracing the failed job easier. A failed job is no longer running.
 
@@ -32,7 +32,7 @@ At the bottom of the document, we'll provide specific troubleshooting steps for 
 
 ### Determining the kind of failure
 
-First off, you can see the status of Pachyderm's jobs with `pachctl list job --expand`, which will show you the status of all jobs. For a failed job, use `pachctl inspect job <job-id>` to find out more about the failure. The different categories of failures are addressed below.
+First off, you can see the status of MLDM's jobs with `pachctl list job --expand`, which will show you the status of all jobs. For a failed job, use `pachctl inspect job <job-id>` to find out more about the failure. The different categories of failures are addressed below.
 
 ### Community Edition Scaling Limits
 
@@ -51,8 +51,8 @@ That scenario is quite easy to troubleshoot:
 
      MLDM offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
 
-To lift those limitations, Request an [**Enterprise Edition trial token**](https://www.pachyderm.com/trial/).
-Check out our [Enterprise features](https://docs.pachyderm.com/latest/enterprise/) for more details on our Enterprise Offer.
+To lift those limitations, Request an [**Enterprise Edition trial token**](https://www.MLDM.com/trial/).
+Check out our [Enterprise features](https://docs.MLDM.com/latest/enterprise/) for more details on our Enterprise Offer.
 
 ### User Code Failures
 
@@ -96,7 +96,7 @@ Data failures can be triaged in a few different way depending on the nature of t
 
 In some cases, where malformed datums are expected to happen occasionally, they can be “swallowed” (e.g. marked as successful using `transform.accept_return_codes` or written out to a “failed_datums” directory and handled within user code). This would simply require the necessary updates to the user code and pipeline config as described above. For cases where your code detects bad input data, a "dead letter queue" design pattern may be needed. Many MLDM developers use a special directory in each output repo for "bad data" and pipelines with globs for detecting bad data direct that data for automated and manual intervention.
 
-If a few files as part of the input commit are causing the failure, they can simply be removed from the HEAD commit with `start commit`, `delete file`, `finish commit`. The files can also be corrected in this manner as well. This method is similar to a revert in Git -- the “bad” data will still live in the older commits in Pachyderm, but will not be part of the HEAD commit and therefore not processed by the pipeline.
+If a few files as part of the input commit are causing the failure, they can simply be removed from the HEAD commit with `start commit`, `delete file`, `finish commit`. The files can also be corrected in this manner as well. This method is similar to a revert in Git -- the “bad” data will still live in the older commits in MLDM, but will not be part of the HEAD commit and therefore not processed by the pipeline.
 
 ### System-level Failures
 
@@ -214,7 +214,7 @@ etcdserver: too many operations in txn request (XXXXXX comparisons, YYYYYYY writ
 
 When a MLDM cluster reaches a certain scale, you need to adjust
 the default parameters provided for certain `etcd` flags.
-Depending on how you deployed Pachyderm,
+Depending on how you deployed MLDM,
 you need to either edit the `etcd` `Deployment` or `StatefulSet`.
 
 ```s

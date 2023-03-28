@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Group Input
-description: Learn about the concept of a group input in Pachyderm. 
+description: Learn about the concept of a group input in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]

@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Uninstall Pachyderm
-description: Learn how to uninstall Pachyderm.
+title: Uninstall MLDM
+description: Learn how to uninstall MLDM.
 date: 
 # taxonomy #
 tags: 
@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-## Uninstall Pachyderm
+## Uninstall MLDM
 
 ```s
 helm uninstall pachd 

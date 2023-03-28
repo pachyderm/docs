@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Repository
-description: Learn about the concept of a repository in Pachyderm. 
+description: Learn about the concept of a repository in MLDM. 
 glossaryDefinition: A top-level data object inside MLDM that behaves as a location where data is stored.
 date: 
 # taxonomy #
@@ -12,7 +12,7 @@ seriesPart:
 
 ## Definition
 
-A MLDM repository is a location where you store your data inside Pachyderm. It is a top-level data object that contains files and folders. 
+A MLDM repository is a location where you store your data inside MLDM. It is a top-level data object that contains files and folders. 
 
 Similar to Git, a **MLDM repository tracks all changes to the data and creates a history of data modifications that you can access and review**. 
 
@@ -28,8 +28,8 @@ your `.git` history with the master copy of the repo. With large datatsets
 resolving a merge conflict might not be possible.
 
 A MLDM repository is **the first entity that you configure when you want
-to add data to Pachyderm**. You can create a repository with the `pachctl create repo`
-command, or by using one of [Pachyderm's client API](../../../reference/clients/). 
+to add data to MLDM**. You can create a repository with the `pachctl create repo`
+command, or by using one of [MLDM's client API](../../../reference/clients/). 
 After creating the repository, add your data by using the `pachctl put file` command.
 
 {{% notice warning %}}
@@ -37,7 +37,7 @@ A MLDM repo name can include alphanumeric characters, dashes, and underscores, a
 {{% /notice %}}
 
 
-Pachyderm's repositories are divided into two categories:
+MLDM's repositories are divided into two categories:
 
 1. **User repositories**
 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Join Input
-description: Learn about the concept of a join input in Pachyderm. 
+description: Learn about the concept of a join input in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
@@ -13,7 +13,7 @@ A join is a special type of pipeline input that enables you to combine
 files that reside in separate MLDM repositories and match a
 particular naming pattern. The join operator must be used in combination
 with a [glob pattern](../../datum/glob-pattern) that reflects a specific naming convention.
-Note that in Pachyderm, matches are made on file paths
+Note that in MLDM, matches are made on file paths
 only, not the files' content. 
 
 MLDM supports two types of joins: 

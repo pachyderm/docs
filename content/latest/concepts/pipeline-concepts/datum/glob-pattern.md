@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Glob Pattern
-description: Learn about the concept of a glob pattern in Pachyderm. 
+description: Learn about the concept of a glob pattern in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "datums","pipelines", "data-operations"]
@@ -14,7 +14,7 @@ Defining how your data is spread among workers is one of the most important aspe
 MLDM uses **glob patterns** to provide flexibility to define data distribution. 
 
 {{% notice note %}}
-Pachyderm's concept of glob patterns is similar to Unix glob patterns. For example, the `ls *.md` command matches all files with the `.md` file extension.
+MLDM's concept of glob patterns is similar to Unix glob patterns. For example, the `ls *.md` command matches all files with the `.md` file extension.
 {{% /notice %}}
 
 
@@ -109,8 +109,8 @@ In this case, the resulting datums will be:
 ```
 
 {{% notice info %}}
-- To understand how MLDM scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
-- To learn about Datums' incremental processing, read our [Datum Processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
+- To understand how MLDM scales, read [Distributed Computing](https://docs.MLDM.com/latest/concepts/advanced-concepts/distributed-computing/).
+- To learn about Datums' incremental processing, read our [Datum Processing](https://docs.MLDM.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
 {{%/notice %}}
 
 ## Test a Glob pattern
@@ -207,7 +207,7 @@ In this example, you can see that the job `b8687e9720f04b7ab53ae8c64541003b` onl
 Stats and Datum Metadata
 
 - Running `list datum` on a given job execution of a pipeline allows you to additionally display the STATUS (running, failed, success) and TIME of each datum.
-- You might want to follow up with [inspect datum pipeline@job_number datum ID](https://docs.pachyderm.com/latest/reference/pachctl/pachctl_inspect_datum/) to detail the files that a specific datum includes.
+- You might want to follow up with [inspect datum pipeline@job_number datum ID](https://docs.MLDM.com/latest/reference/pachctl/pachctl_inspect_datum/) to detail the files that a specific datum includes.
 
   ```s
   pachctl inspect datum edges@b8687e9720f04b7ab53ae8c64541003b a4149cd1907145f982e0eb49c50af3f1d4d8fecaa8647d62f2d9d93e30578df8

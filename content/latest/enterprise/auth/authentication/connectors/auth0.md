@@ -20,7 +20,7 @@ seriesPart:
 
 1. Log in to your Auth0 account.
 2. In **Applications**, click **Create Application**.
-3. Type the name of your application, such as **Pachyderm**.
+3. Type the name of your application, such as **MLDM**.
 4. In the application type, select **Regular Web Application**.
 5. Click **Create**.
 6. Go to the application settings.
@@ -91,7 +91,7 @@ seriesPart:
       - login_hint
 ```
 {{% notice note %}}
-Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
+Note that MLDM's YAML format is **a simplified version** of Dex's [sample config](https://dexidp.io/docs/connectors/oidc/).
 {{% /notice %}}
 {{% /wizardResult %}}
 
@@ -138,7 +138,7 @@ Alternatively, you can [create a secret](../../../../how-tos/advanced-data-opera
 
  
 ### 3. Login
-The users registered with your IdP are now ready to [Log in to Pachyderm](../login)
+The users registered with your IdP are now ready to [Log in to MLDM](../login)
 
 ## Considerations 
 

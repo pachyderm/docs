@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: User Guide
-description: Learn how to use the JupyterLab Mount Extension with Pachyderm.
+description: Learn how to use the JupyterLab Mount Extension with MLDM.
 date: 
 # taxonomy #
 tags: ["integrations", "jupyterlab", "notebooks"]
@@ -120,7 +120,7 @@ When you return to the mounted view by selecting **Back**, the file browser will
 
 At the bottom of the **Mounted Repositories** tab, you'll find the file browser. 
 
-- Mounted repositories are nested within the root `/pfs` (Pachyderm's File System)
+- Mounted repositories are nested within the root `/pfs` (MLDM's File System)
 - These repositories are **read-only**
 - Mounted repositories have a `/` glob pattern applied to their directories and files
 - Files only downloaded locally when you access them (saving you time)

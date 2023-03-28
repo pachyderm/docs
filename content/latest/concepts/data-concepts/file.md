@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: File
-description: Learn about the concept of a file in Pachyderm. 
+description: Learn about the concept of a file in MLDM. 
 glossaryDefinition: A Unix filesystem object (directory or file) that stores data.
 date: 
 # taxonomy #
@@ -13,7 +13,7 @@ seriesPart:
 A file is a Unix filesystem object, which is a directory or
 file, that stores data. Unlike source code
 version-control systems that are most suitable for storing plain text
-files, you can store any type of file in Pachyderm, including
+files, you can store any type of file in MLDM, including
 binary files. Often, data scientists operate with
 comma-separated values (CSV), JavaScript Object Notation (JSON),
 images, and other plain text and binary file

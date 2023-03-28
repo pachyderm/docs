@@ -85,13 +85,13 @@ For the Cert Manager users, the secret name should match the name set in your [c
 
 #### Self-Signed & Custom Certificates
 
-When using self signed certificates or custom certificate authority (instead of Lets Encrypt, HashiCorp Vault, or Venafi), you must set `global.customCaCerts` to `true` to add Pachyderm's certificate and CA to the list of trusted authorities for console and enterprise. 
+When using self signed certificates or custom certificate authority (instead of Lets Encrypt, HashiCorp Vault, or Venafi), you must set `global.customCaCerts` to `true` to add MLDM's certificate and CA to the list of trusted authorities for console and enterprise. 
 
 If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
 
 ### 3. Connect to MLDM via SSL
 
-After you deploy Pachyderm, to connect through `pachctl` by using a
+After you deploy MLDM, to connect through `pachctl` by using a
 trusted certificate, you will need to set the `pachd_address` in the
 MLDM context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:

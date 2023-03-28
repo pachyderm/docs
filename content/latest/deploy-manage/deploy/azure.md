@@ -134,7 +134,7 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
     and the `kind` parameter is set to `BlockBlobStorage`. This
     configuration results in a storage that uses SSDs rather than
     standard Hard Disk Drives (HDD).
-    If you set this parameter to an HDD-based storage option, your Pachyderm
+    If you set this parameter to an HDD-based storage option, your MLDM
     cluster will be too slow and might malfunction.
 
 3. Verify that your storage account has been successfully created:
@@ -143,7 +143,7 @@ You can choose to follow the guided steps in [Azure Service Portal's Kubernetes 
     az storage account list
     ```
 
-4. Obtain the key for the storage account (`STORAGE_ACCOUNT`) and the resource group to be used to deploy Pachyderm:
+4. Obtain the key for the storage account (`STORAGE_ACCOUNT`) and the resource group to be used to deploy MLDM:
 
     ```s
     STORAGE_KEY="$(az storage account keys list \
@@ -193,7 +193,7 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 | *subscription*  and *resource group*| Pick your existing [resource group](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).<br><br> **Important** Your Cluster and your Database must be deployed in the **same resource group**.|
 |*server name*|Name your instance.|
 |*location*|Create a database **in the region matching your MLDM cluster**.|
-|*compute + storage*|The standard instance size (GP_Gen5_4 = Gen5 VMs with 4 cores) should work. Remember that Pachyderm's metadata services require **high IOPS (1500)**. Oversize the disk accordingly |
+|*compute + storage*|The standard instance size (GP_Gen5_4 = Gen5 VMs with 4 cores) should work. Remember that MLDM's metadata services require **high IOPS (1500)**. Oversize the disk accordingly |
 | *Master username* | Choose your Admin username. ("postgres")|
 | *Master password* | Choose your Admin password.|
 
@@ -245,9 +245,9 @@ Alternativelly, in the **Connection Security** of your newly created server, *Al
 ![Instance overview page](/images/azure_postgresql_overview.png)
 
 ### Create Your Databases
-After your instance is created, you will need to create Pachyderm's database(s).
+After your instance is created, you will need to create MLDM's database(s).
       
-If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you will need to create a second database named "dex" in your PostgreSQL Server instance for Pachyderm's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
+If you plan to deploy a standalone cluster (i.e., if you do not plan to register your cluster with a separate [enterprise server](../../../enterprise/auth/enterprise-server/setup), you will need to create a second database named "dex" in your PostgreSQL Server instance for MLDM's authentication service. Note that the database **must be named `dex`**. This second database is not needed when your cluster is managed by an enterprise server.
 
 {{% notice note %}}
 Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
@@ -278,8 +278,8 @@ postgresql:
   enabled: false
 ```
 
-## 5. Deploy Pachyderm
-You have set up your infrastructure, created your data container and a Managed PostgreSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy Pachyderm.
+## 5. Deploy MLDM
+You have set up your infrastructure, created your data container and a Managed PostgreSQL instance, and granted your cluster access to both: you can now finalize your values.yaml and deploy MLDM.
 
 ### Update Your Values.yaml  
 
@@ -354,7 +354,7 @@ make sure that you are using the right Kubernetes context first.
 
 
     ```s
-    helm repo add pach https://helm.pachyderm.com
+    helm repo add pach https://helm.MLDM.com
     helm repo update
     helm install pachd -f values.yaml pach/MLDM --version <version-of-the-chart>
     ```

@@ -9,11 +9,11 @@ series:
 seriesPart:
 --- 
 
-You can interact with input/output data through the S3 protocol using Pachyderm's S3-protocol-enabled pipelines.
+You can interact with input/output data through the S3 protocol using MLDM's S3-protocol-enabled pipelines.
 
 ## About 
 
-Pachyderm's S3-protocol-enabled pipelines run a separate S3 gateway instance in a sidecar container within the pipeline-worker pod. Using this approach enables maintaining data provenance since the external code (e.g., within a Kubeflow pod) is executed in (and associated with) a MLDM job.
+MLDM's S3-protocol-enabled pipelines run a separate S3 gateway instance in a sidecar container within the pipeline-worker pod. Using this approach enables maintaining data provenance since the external code (e.g., within a Kubeflow pod) is executed in (and associated with) a MLDM job.
 
 When enabled, input and output repositories are exposed as S3 Buckets via the S3 gateway sidecar instance. 
 

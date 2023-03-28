@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Boto3 
-description: Learn how to configure Boto for Pachyderm's S3 Gateway
+description: Learn how to configure Boto for MLDM's S3 Gateway
 date: 
 # taxonomy #
 tags: 

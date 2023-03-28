@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Documentation Style Guide
-description: Learn how to contribute content to Pachyderm's documentation. 
+description: Learn how to contribute content to MLDM's documentation. 
 date: 
 # taxonomy #
 tags:  ["developers"]
@@ -11,7 +11,7 @@ mermaid: true
 directory: true 
 --- 
 
-Thank you for taking an interest in contributing to Pachyderm's docs! 🐘 📖
+Thank you for taking an interest in contributing to MLDM's docs! 🐘 📖
 
 This style guide provides editorial guidelines for writing clear and consistent MLDM product documentation. See our [contribution guide](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/doc#pachyderm-documentation) for instructions on how to draft and  submit changes.
 
@@ -20,7 +20,7 @@ This style guide provides editorial guidelines for writing clear and consistent 
 MLDM has two main audiences:
 
 - **MLOPs Engineers**: They install and configure MLDM to transform data using pipelines.
-- **Data Scientists & Data/ML Engineers**: They plan the development of pipelines and consume the outputs of Pachyderm's data processing to feed AI/ML models.
+- **Data Scientists & Data/ML Engineers**: They plan the development of pipelines and consume the outputs of MLDM's data processing to feed AI/ML models.
 
  Be sure to provide links to pre-requisite or contextual materials whenever possible, as everyone's experience level and career journey is different.
 
@@ -28,7 +28,7 @@ MLDM has two main audiences:
 
 ## Voice & Tone
 
-Pachyderm's voice in documentation should consistently convey a personality that is friendly, knowledgeable, and empathetic.
+MLDM's voice in documentation should consistently convey a personality that is friendly, knowledgeable, and empathetic.
 
 The tone of voice may vary depending on the type of content being written. For example, a danger notice may use an urgent and serious tone while a tutorial may use an energetic and instructive tone. Make sure the tone of your documentation aligns with the content. If you aren't sure what tone to convey, ask yourself: "What is the reader likely feeling when presented this content? Why are they here?" and adjust your language to the most appropriate tone.
 
@@ -148,7 +148,7 @@ Avoid mixing objectives or use cases in one article; instead, organize and separ
 
 The below outlines are 4 articles, with the parent article linking to each modular sub-topic.
 
-- How to Locally Deploy Pachyderm
+- How to Locally Deploy MLDM
     - MacOS Local Deployment Guide
     - Linux Local Deployment Guide
     - Windows Local Deployment Guide

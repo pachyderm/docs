@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Manage Secrets
-description: Learn how to create and manage Kubernetes secrets in Pachyderm.
+description: Learn how to create and manage Kubernetes secrets in MLDM.
 date: 
 # taxonomy #
 tags: ["secrets", "management", "kubernetes"]
@@ -16,7 +16,7 @@ Namely, `generic` (or Opaque), `tls`, or `docker-registry`.
 As of today, MLDM *only supports the JSON format for Kubernetes' Secrets files*.
 {{%/notice %}}
 
-To use a Secret in Pachyderm, you need to:
+To use a Secret in MLDM, you need to:
 
 1. Create it.
 1. Reference it in your pipeline's specification file.
@@ -67,7 +67,7 @@ Let's first generate your secret configuration file using the `kubectl` command.
 ```
 Find more detailed information on the [creation of Secrets](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/) in Kubernetes documentation.
 
-### Create your Secret in Pachyderm
+### Create your Secret in MLDM
 Next, run the following to actually create the secret in the MLDM Kubernetes cluster:
 ```s
 pachctl create secret -f myfirstsecret.json 
@@ -86,13 +86,13 @@ Use `pachctl delete secret` to delete a secret given its name,  `pachctl inspect
 {{% /notice %}}
 
 You can now edit your pipeline specification file as follow.
-## Reference a Secret in Pachyderm's specification file
-Now that your secret is created on MLDM cluster, you will need to notify your pipeline by updating your pipeline [specification file](https://docs.pachyderm.com/latest/reference/pipeline-spec/#manifest-format).
-In Pachyderm, a Secret can be used in three different ways:
+## Reference a Secret in MLDM's specification file
+Now that your secret is created on MLDM cluster, you will need to notify your pipeline by updating your pipeline [specification file](https://docs.MLDM.com/latest/reference/pipeline-spec/#manifest-format).
+In MLDM, a Secret can be used in three different ways:
 
 1. **As a container environment variable**:
 
-      In this case, in Pachyderm's pipeline specification file, you need to reference Kubernetes' Secret by its:
+      In this case, in MLDM's pipeline specification file, you need to reference Kubernetes' Secret by its:
 
       - **`name`**
       - and specify an environment variable named **`env_var`** that the value of your  **`key`** should be bound to. 
@@ -157,7 +157,7 @@ In Pachyderm, a Secret can be used in three different ways:
 
 2. **As a file in a volume mounted on a container**:
 
-      In this case, in Pachyderm's pipeline specification file, you need to reference Kubernetes' Secret by its:
+      In this case, in MLDM's pipeline specification file, you need to reference Kubernetes' Secret by its:
 
       -  **`name`**
       - and specify the mount point (**`mount_path`**) to the secret (ex: `"/var/my-app-secret"`).

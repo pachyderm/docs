@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Troubleshooting Guides
-description: Learn how to resolve issues with deploying, configuring, or running Pachyderm.
+description: Learn how to resolve issues with deploying, configuring, or running MLDM.
 date: 
 # taxonomy #
 tags: 

@@ -114,7 +114,7 @@ brew install helm
 ```
 2. Add the MLDM repo to Helm:
 ```s
-helm repo add MLDM https://helm.pachyderm.com  
+helm repo add MLDM https://helm.MLDM.com  
 helm repo update  
 ```
 3. Install PachD: 

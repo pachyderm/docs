@@ -15,7 +15,7 @@ with Prometheus, a ***Enterprise License*** is required.
 {{% /notice %}}
 
 
-Pachyderm's deployment manifest exposes Prometheus metrics, 
+MLDM's deployment manifest exposes Prometheus metrics, 
 allowing an easy set up of the monitoring of your cluster.
 Only available for self-managed deployments today. 
 
@@ -72,7 +72,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
 
     {{% notice note %}}
     Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
-    to a corresponding `prom-metrics` port described in Pachyderm's deployment manifest.
+    to a corresponding `prom-metrics` port described in MLDM's deployment manifest.
     Let's take a quick look at this file:
 
     ```s

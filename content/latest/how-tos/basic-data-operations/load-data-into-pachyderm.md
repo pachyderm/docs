@@ -52,7 +52,7 @@ At any time, run `pachctl put file --help` for the complete list of flags availa
 MLDM uses `*?[]{}!()@+^` as reserved characters for [glob patterns](../../../concepts/pipeline-concepts/datum/glob-pattern/#glob-pattern). Because of this, you cannot use these characters in your filepath.
 {{%/notice %}}
 
-In Pachyderm, you specify the path to file by using the `-f` option. A path
+In MLDM, you specify the path to file by using the `-f` option. A path
 to file can be a **local path or a URL to an external resource**. You can add
 multiple files or directories by using the `-i` option. To add contents
 of a directory, use the `-r` flag.
@@ -97,7 +97,7 @@ recursive flag, `-r`:
 
 Depending on your use case and the volume of your data, 
 you might decide to keep your dataset in its original source
-and process only a subset in Pachyderm.
+and process only a subset in MLDM.
 
 Add a metadata file containing a list of URL/path
 to your external data to your repo.

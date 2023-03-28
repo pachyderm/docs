@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Configure Environment Variables
-description: Learn how to configure environment variables for Pachyderm. 
+description: Learn how to configure environment variables for MLDM. 
 date: 
 # taxonomy #
 tags: ["configuration"]
@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-You can define environment variables that handle required configuration. In Pachyderm, you can define the following types of environment variables:
+You can define environment variables that handle required configuration. In MLDM, you can define the following types of environment variables:
 
 * **pachd variables:** Used for your
 MLDM daemon container.
@@ -78,7 +78,7 @@ environment variables.
 
 ## Pipeline Worker Environment Variables
 
-MLDM defines many environment variables for each Pachyderm
+MLDM defines many environment variables for each MLDM
 worker that runs your pipeline code. You can print the list
 of environment variables into your MLDM logs by including
 the `env` command into your pipeline specification. For example,

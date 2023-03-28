@@ -36,7 +36,7 @@ two-week windows.
 ## Fixed Time Windows
 
 [Datum](../../../concepts/pipeline-concepts/datum) is the basic
-unit of data partitioning in Pachyderm. The glob pattern property
+unit of data partitioning in MLDM. The glob pattern property
 in the pipeline specification defines a datum. When you analyze data
 within fixed time windows, such as the data that corresponds to
 fixed calendar dates, MLDM recommends that you organize your

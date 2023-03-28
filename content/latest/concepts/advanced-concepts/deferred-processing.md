@@ -1,7 +1,7 @@
 ---
 # metadata #
 title: Deferred Processing
-description: Learn about the concept of deferred processing in Pachyderm.
+description: Learn about the concept of deferred processing in MLDM.
 date:
 # taxonomy #
 tags: ["data-operations", "datums", "branch triggers", "trigger"]

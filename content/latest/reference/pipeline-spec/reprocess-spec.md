@@ -40,7 +40,7 @@ Both use the same input repo and have a glob pattern set to `/*`.
 
 
 {{% notice warning %}}
-`"reprocess_spec": "every_job` will not take advantage of Pachyderm's default de-duplication. In effect, this can lead to slower pipeline performance. Before using this setting, consider other options such as including metadata in your file, naming your files with a timestamp, UUID, or other unique identifiers in order to take advantage of de-duplication. Review how [datum processing](/{{% release %}}/concepts/pipeline-concepts/datum/relationship-between-datums/) works to understand more.
+`"reprocess_spec": "every_job` will not take advantage of MLDM's default de-duplication. In effect, this can lead to slower pipeline performance. Before using this setting, consider other options such as including metadata in your file, naming your files with a timestamp, UUID, or other unique identifiers in order to take advantage of de-duplication. Review how [datum processing](/{{% release %}}/concepts/pipeline-concepts/datum/relationship-between-datums/) works to understand more.
 {{% /notice %}}
 
 ## When to Use 

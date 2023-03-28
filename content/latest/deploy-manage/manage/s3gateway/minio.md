@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: MinIO 
-description: Learn how to configure MinIO for Pachyderm's S3 Gateway
+description: Learn how to configure MinIO for MLDM's S3 Gateway
 date: 
 # taxonomy #
 tags: 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: History
-description: Learn about the concept of history (version control) in Pachyderm. 
+description: Learn about the concept of history (version control) in MLDM. 
 glossaryDefinition: The collective record of version-controlled commits for pipelines and jobs.
 date: 
 # taxonomy #
@@ -11,14 +11,14 @@ seriesPart:
 --- 
 
 MLDM implements rich version-control and history semantics. This section
-describes the core concepts and architecture of Pachyderm's version control
+describes the core concepts and architecture of MLDM's version control
 and the various ways to use the system to access historical data.
 
 The following abstractions store the history of your data:
 
 - **Commits**
 
-    In Pachyderm, commits are the core version-control primitive that is
+    In MLDM, commits are the core version-control primitive that is
     similar to Git commits. [Commits](../commit/) represent an immutable snapshot of a
     filesystem and can be accessed with an ID. They have a parentage
     structure, where **new commits inherit content from their parents**. 
@@ -33,12 +33,12 @@ The following abstractions store the history of your data:
     repo by using the `pachctl create branch` command. The commit that a
     branch points to is referred to as the branches *head*, and the head's
     ancestors are referred to as *on the branch*. Branches can be substituted
-    for commits in Pachyderm's API and behave as if the head of the branch
+    for commits in MLDM's API and behave as if the head of the branch
     were passed. 
 
 ## Ancestry Syntax
 
-  - Pachyderm's commits and branches support a familiar Git syntax for
+  - MLDM's commits and branches support a familiar Git syntax for
     referencing their history. A commit or branch parent can be referenced
     by adding a `^` to the end of the commit or branch. Similar to how
     `master` resolves to the head of `master`, `master^` resolves
@@ -65,7 +65,7 @@ If you plan to repeatedly access an ancestor, you might want to resolve that anc
 
 ## View the Pipeline History
 
-Pipelines are the main processing primitive in Pachyderm. However, they
+Pipelines are the main processing primitive in MLDM. However, they
 expose version-control and history semantics similar to filesystem
 objects. This is largely because, under the hood, they are implemented in
 terms of filesystem objects. You can access previous versions of

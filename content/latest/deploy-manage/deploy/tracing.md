@@ -16,7 +16,7 @@ can be useful when diagnosing slow clusters.
 
 # Collecting Traces
 
-To use tracing in Pachyderm, complete the following steps:
+To use tracing in MLDM, complete the following steps:
 
 1. Run Jaeger in Kubernetes
 
@@ -63,8 +63,8 @@ To use tracing in Pachyderm, complete the following steps:
    to find in Jaeger. Therefore, you might want to set this variable for
    the specific calls you want to trace.
 
-   However, Pachyderm's client library reads this variable and implements the
-   relevant tracing, so any binary that uses Pachyderm's go client library can
+   However, MLDM's client library reads this variable and implements the
+   relevant tracing, so any binary that uses MLDM's go client library can
    trace calls if these variables are set.
 
 ## View Traces

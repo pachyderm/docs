@@ -58,7 +58,7 @@ A release under development may undergo several pre-release stages before becomi
 `Generally Available` or `GA` releases are considered stable and intended for production usage.
 
 - Contain new features, fixed defects, and patched security vulnerabilities.
-- Support is available from Pachyderm.
+- Support is available from MLDM.
 
 ### End of Life (EOL)
 
@@ -77,22 +77,22 @@ A release under development may undergo several pre-release stages before becomi
 - The feature's API is stable and unlikely to change.
 - There are no major defects for the feature.
 - The MLDM team believes there is a sufficient amount of testing, including automated tests, community testing, and user production environments.
-- Support is available from Pachyderm.
+- Support is available from MLDM.
 
 ### Experimental
 
 `experimental` indicates that a feature has not met the MLDM team's criteria for production use. Therefore, these features should be used with caution in production environments. `experimental` features are likely to change, have outstanding defects, and/or missing documentation. Users considering using `experimental` features should contact MLDM for guidance.
 
-- Production use is not recommended without guidance from Pachyderm.
+- Production use is not recommended without guidance from MLDM.
 - These features may have missing documentation, lack of examples, and lack of content.
-- Support is available from Pachyderm, which may be limited in scope based on our guidance.
+- Support is available from MLDM, which may be limited in scope based on our guidance.
 
 ### Deprecated
 
 `deprecated` indicates that a feature is no longer developed. Users of deprecated features are encouraged to upgrade or migrate to newer versions or compatible features. `deprecated` features become `End of Life` (EOL) features after 6 months.
 
 - Users continuing to use deprecated features should contact support to migrate to features.
-- Support is available from Pachyderm. 
+- Support is available from MLDM. 
 
 ### End of Life (EOL) Features
 

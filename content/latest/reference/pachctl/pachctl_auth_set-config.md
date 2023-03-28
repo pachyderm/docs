@@ -1,10 +1,10 @@
 ## pachctl auth set-config
 
-Set Pachyderm's current auth configuration
+Set MLDM's current auth configuration
 
 ### Synopsis
 
-Set Pachyderm's current auth configuration
+Set MLDM's current auth configuration
 
 ```
 pachctl auth set-config [flags]

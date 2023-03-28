@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Spout
-description: Learn about the concept of a spout pipeline in Pachyderm. 
+description: Learn about the concept of a spout pipeline in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations", "pipelines"]
@@ -41,7 +41,7 @@ To write into the output repo,
 you will need to use the `put file` API call
 via any of the following:
     - the CLI (`pachctl put file`)
-    - one of the Pachyderm's SDKs (for [golang](../../../../reference/clients/#go-client) or [Python](../../../../reference/clients/#python-client) )
+    - one of the MLDM's SDKs (for [golang](../../../../reference/clients/#go-client) or [Python](../../../../reference/clients/#python-client) )
     - or [your own API client](../../../../reference/clients/#other-languages).
 - MLDM CLI (`pachctl`) is packaged
 in the base image of your spout

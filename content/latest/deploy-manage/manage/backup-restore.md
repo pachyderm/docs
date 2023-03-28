@@ -22,8 +22,8 @@ Refer to your provider's documentation.
 MLDM state is stored in two main places
 (See our high-level [architecture diagram](../../../deploy-manage#overview)):
 
-- an **object-store** holding Pachyderm's data.
-- a PostgreSQL instance made up of **one or two databases**: `pachyderm` holding Pachyderm's metadata and `dex` holding authentication data. 
+- an **object-store** holding MLDM's data.
+- a PostgreSQL instance made up of **one or two databases**: `pachyderm` holding MLDM's metadata and `dex` holding authentication data. 
 
 Backing up a MLDM cluster involves snapshotting both
 the object store and the PostgreSQL database(s) (see above),
@@ -61,7 +61,7 @@ networks involved; Testing before going into production and monitoring backup ti
   Before starting, make sure that your context points to the server you want to pause by running `pachctl config get active-context`. Find more information on how to [set your context](../../deploy/quickstart/#4-have-pachctl-and-your-cluster-communicate) in our deployment section.
   {{% /notice%}}
 
-  To pause Pachyderm:
+  To pause MLDM:
 
   - If you are an [***Enterprise***](../../../enterprise/) user: **Run the `pachctl enterprise pause` command**. 
 
@@ -87,7 +87,7 @@ networks involved; Testing before going into production and monitoring backup ti
 
 This step is specific to your database and object store hosting. 
 
-- If your PostgreSQL instance is solely dedicated to Pachyderm, 
+- If your PostgreSQL instance is solely dedicated to MLDM, 
 you can use PostgreSQL's tools, like `pg_dumpall`, to dump your entire PostgreSQL state.  
 
     Alternatively, you can use targeted `pg_dump` commands to dump the
@@ -137,12 +137,12 @@ Once your backup is completed, resume your normal operations by scaling `pachd` 
     kubectl scale deployment pachd --replicas 1
     ```
 
-## Restore Pachyderm
+## Restore MLDM
 
 There are two primary use cases for restoring a cluster:
 
 1. Your data have been corrupted, preventing your cluster from functioning correctly. You want the same version of MLDM re-installed on the latest uncorrupted data set. 
-1. You have upgraded a cluster and are encountering problems. You decide to uninstall the current version and restore the latest backup of a previous version of Pachyderm.
+1. You have upgraded a cluster and are encountering problems. You decide to uninstall the current version and restore the latest backup of a previous version of MLDM.
 
 Depending on your scenario, pick all or a subset of the following steps:
 
@@ -167,7 +167,7 @@ Finally, update the copy of your original Helm values to point MLDM to the new d
 MLDM into the new cluster.
 
 {{% notice info %}}
-The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy Pachyderm` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
+The values needing an update and deployment instructions are detailed in the Chapter 6 of all our cloud  installation pages. For example, in the case of GCP, [check the `deploy MLDM` chapter](../../../deploy-manage/deploy/aws-deploy-pachyderm/#6-deploy-pachyderm)
 {{% /notice %}}
 
 ### [Connect 'pachctl' To Your Restored Cluster](../../../deploy-manage/deploy/aws-deploy-pachyderm/#7-have-pachctl-and-your-cluster-communicate)
@@ -216,4 +216,4 @@ Make sure that `pachctl` and `kubectl` are pointing to the right cluster. Check 
 
 ## Additional Info
    
-For additional questions about backup / restore, you can post them in the community #help channel on [Slack](https://www.pachyderm.com/slack/), or reach out to your TAM if you are an Enterprise customer.
+For additional questions about backup / restore, you can post them in the community #help channel on [Slack](https://www.MLDM.com/slack/), or reach out to your TAM if you are an Enterprise customer.

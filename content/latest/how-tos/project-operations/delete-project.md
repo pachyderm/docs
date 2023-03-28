@@ -1,7 +1,7 @@
 ---
 # metadata #
 title:  Delete a Project
-description: Learn how to delete a project from Pachyderm.
+description: Learn how to delete a project from MLDM.
 date:
 # taxonomy #
 tags: ["projects"]

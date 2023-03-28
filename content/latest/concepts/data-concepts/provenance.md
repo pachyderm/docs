@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Provenance
-description: Learn about the concept of provenance in Pachyderm. 
+description: Learn about the concept of provenance in MLDM. 
 glossaryDefinition: The recorded data lineage that tracks the dependencies and relationships between datasets. 
 date: 
 # taxonomy #
@@ -45,7 +45,7 @@ Here, the ID1 is shared by all commits and jobs involved in creating the final s
 A simple `pachctl list commit ID1` (`pachctl list job ID1`) will return that list at once.
 
 
-## Tracking Direct Provenance in Pachyderm
+## Tracking Direct Provenance in MLDM
 
 MLDM provides the `pachctl inspect` command that enables you to track
 the direct provenance of your commits and learn where the data in the repository
@@ -114,7 +114,7 @@ pachctl inspect commit edges@71c791f3252c492a8f8ad9a51e5a5cd5 --raw
 
 ## Traversing Provenance and Subvenance
 
-In Pachyderm, **all the related steps in a DAG share the same identifier**,
+In MLDM, **all the related steps in a DAG share the same identifier**,
 making it easy to traverse the provenance and subvenance in any commit.
 
 All it takes is to run `pachctl list commit <commitID>`

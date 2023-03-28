@@ -163,12 +163,12 @@ example, it is `/data`.
 
       You might want to adjust your pipeline code to read from or write to
       the mounted directory. For example, in the aforementioned
-      [OpenCV example](https://docs.pachyderm.com/latest/getting-started/beginner-tutorial/#create-a-pipeline),
+      [OpenCV example](https://docs.MLDM.com/latest/getting-started/beginner-tutorial/#create-a-pipeline),
       the code reads from the `/pfs/images` directory and writes to the
       `/pfs/out` directory. If you want to read or write to the `/data`
       directory, you need to change those to `/data`.
 
 {{% notice info %}}
-MLDM has no notion of the files stored in the mounted directory before it is mounted to Pachyderm. Moreover, if you have mounted a network share to which you write files from other than MLDM sources, MLDM does not guarantee the provenance of those changes.
+MLDM has no notion of the files stored in the mounted directory before it is mounted to MLDM. Moreover, if you have mounted a network share to which you write files from other than MLDM sources, MLDM does not guarantee the provenance of those changes.
 {{% /notice %}}
 

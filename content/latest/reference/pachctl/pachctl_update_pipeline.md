@@ -4,7 +4,7 @@ Update an existing MLDM pipeline.
 
 ### Synopsis
 
-Update a MLDM pipeline with a new pipeline specification. For details on the format, see https://docs.pachyderm.com/latest/reference/pipeline-spec/.
+Update a MLDM pipeline with a new pipeline specification. For details on the format, see https://docs.MLDM.com/latest/reference/pipeline-spec/.
 
 ```
 pachctl update pipeline [flags]

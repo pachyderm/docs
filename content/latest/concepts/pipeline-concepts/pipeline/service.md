@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Service
-description: Learn about the concept of a service  pipeline in Pachyderm. 
+description: Learn about the concept of a service  pipeline in MLDM. 
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations", "pipelines"]

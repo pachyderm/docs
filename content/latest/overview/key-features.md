@@ -1,6 +1,6 @@
 ---
 title: "Key Features"
-description: Learn about the key features and benefits of Pachyderm, a powerful data processing platform. 
+description: Learn about the key features and benefits of MLDM, a powerful data processing platform. 
 date: 2023-01-30T16:17:44-06:00
 weight: 010
 tags:

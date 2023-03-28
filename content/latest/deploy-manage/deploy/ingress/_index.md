@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Infrastructure Recommendations
-description: Learn about some of our infrastructure recommendations for running Pachyderm.
+description: Learn about some of our infrastructure recommendations for running MLDM.
 date: 
 # taxonomy #
 tags: 
@@ -10,12 +10,12 @@ seriesPart:
 --- 
 
 In the simplest case, such as running a MLDM cluster locally, implicit and
-explicit port-forwarding enables you to communicate with `pachd`, the Pachyderm
+explicit port-forwarding enables you to communicate with `pachd`, the MLDM
 API pod, and `console`, the MLDM UI. Port-forwarding can be used in
 cloud environments as well, but a production environment might require you to
 define **additional inbound connection rules**.
 
-Before we dive into the delivery of external traffic to Pachyderm, 
+Before we dive into the delivery of external traffic to MLDM, 
 read the following recommendations to set up your infrastructure in production.
 
 {{% notice note %}}
@@ -58,7 +58,7 @@ Provision a TCP load balancer with port `30650` (gRPC port) and `30600` (s3gatew
 
 Once you have your networking infrastructure setup, check the [deployment page of your cloud provider](../../). The following section comes back to the setup of an Ingress and a TCP Load Balancer in details.
 
-## Deliver External Traffic To Pachyderm
+## Deliver External Traffic To MLDM
 MLDM provides multiple ways to deliver external traffic to services. 
 
 However, we recommend to set up the following resources in a production environment:

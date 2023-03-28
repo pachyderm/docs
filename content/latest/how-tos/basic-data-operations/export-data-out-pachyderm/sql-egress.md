@@ -14,7 +14,7 @@ SQL Egress is an [experimental feature](../../../../reference/supported-releases
 {{% /notice %}}
 
 MLDM already implements [egress to object storage](../export-data-egress) as an optional egress field in the pipeline specification. 
-Similarly, our **SQL egress** lets you seamlessly export data from a Pachyderm-powered pipeline output repo to an SQL database.
+Similarly, our **SQL egress** lets you seamlessly export data from a MLDM-powered pipeline output repo to an SQL database.
 
 Specifically, we help you connect to a remote database and push the content of CSV files to **interface tables**, matching their column names and casting their content into their respective SQL datatype. 
 

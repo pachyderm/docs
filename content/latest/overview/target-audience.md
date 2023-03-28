@@ -16,4 +16,4 @@ MLDM is designed for data engineers and data scientists who are managing and pro
 It is particularly useful for large unstructured data processing jobs, such as dataset curation for computer vision, speech recognition, video analytics, NLP, and many others.
 
 ## Non-Target Audience
-MLDM is not intended for users who do not require large-scale data processing and analysis. For instance, data scientists who are just starting with a small project may not need Pachyderm's distributed system. Additionally, users with limited experience with containerization, cloud computing, and distributed systems may find it challenging to use MLDM effectively.
+MLDM is not intended for users who do not require large-scale data processing and analysis. For instance, data scientists who are just starting with a small project may not need MLDM's distributed system. Additionally, users with limited experience with containerization, cloud computing, and distributed systems may find it challenging to use MLDM effectively.

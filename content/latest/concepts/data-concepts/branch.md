@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Branch
-description: Learn about the concept of a branch in Pachyderm. 
+description: Learn about the concept of a branch in MLDM. 
 glossaryDefinition: A pointer to a commit that moves along with new commits as they are submitted.
 date: 
 # taxonomy #

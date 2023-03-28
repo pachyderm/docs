@@ -1,10 +1,10 @@
 ## pachctl put
 
-Insert data into Pachyderm.
+Insert data into MLDM.
 
 ### Synopsis
 
-Insert data into Pachyderm.
+Insert data into MLDM.
 
 ### Options
 

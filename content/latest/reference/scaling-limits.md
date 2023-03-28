@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Pipeline Scaling Limits (CE)
-description: Learn about the built-in scaling limitations of Pachyderm's Community Edition.
+description: Learn about the built-in scaling limitations of MLDM's Community Edition.
 date: 
 # taxonomy #
 tags: ["community-edition"]
@@ -10,12 +10,12 @@ seriesPart:
 directory: true 
 ---
 
-Our free MLDM Community Edition contains **built-in scaling limitations and parallelism thresholds**. To scale beyond these limits, request a [Enterprise trial token](https://www.pachyderm.com/trial/) and enjoy unlimited scaling, and more.
+Our free MLDM Community Edition contains **built-in scaling limitations and parallelism thresholds**. To scale beyond these limits, request a [Enterprise trial token](https://www.MLDM.com/trial/) and enjoy unlimited scaling, and more.
 
 {{% notice info %}} 
 You might qualify for a free Enterprise license.
 
-MLDM offers activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. [Tell us about your project!](https://www.pachyderm.com/trial/).
+MLDM offers activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. [Tell us about your project!](https://www.MLDM.com/trial/).
 {{% /notice %}}
 
 ## Scaling Limits

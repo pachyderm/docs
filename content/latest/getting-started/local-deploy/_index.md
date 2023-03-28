@@ -12,7 +12,7 @@ weight: 1
 
 ## What is a Local Installation? 
 
-A local installation means that you will allocate resources from your local machine (e.g., your laptop) to spin up a Kubernetes cluster to run Pachyderm. This installation method is not for a production setup, but is great for personal use, testing, and product exploration.
+A local installation means that you will allocate resources from your local machine (e.g., your laptop) to spin up a Kubernetes cluster to run MLDM. This installation method is not for a production setup, but is great for personal use, testing, and product exploration.
 
 ## Which Guide Should I Use?
 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Console 
-description: Learn how to use Pachyderm's user interface, Console. 
+description: Learn how to use MLDM's user interface, Console. 
 date: 
 # taxonomy #
 tags: 
@@ -20,7 +20,7 @@ MLDM Community Edition comes with Console per default. Upon upgrading to Enterpr
 - Lift all [CE scaling limits](../../../reference/scaling-limits/).
 
 {{% notice note %}}
-Request an Enterprise trial token directly from Console CE by hitting the **"Upgrade to Enterprise"** button at the bottom right of your Console, fill in [this form](https://www.pachyderm.com/trial/), or get in touch with us at [sales@pachyderm.io](mailto:sales@pachyderm.io).
+Request an Enterprise trial token directly from Console CE by hitting the **"Upgrade to Enterprise"** button at the bottom right of your Console, fill in [this form](https://www.MLDM.com/trial/), or get in touch with us at [sales@MLDM.io](mailto:sales@MLDM.io).
 {{% /notice %}}
 
 ## Console States 
