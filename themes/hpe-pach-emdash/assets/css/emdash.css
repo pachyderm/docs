@@ -1,9 +1,9 @@
 /* EmdashCSS by @lbliii - https://emdash.dev; https://github.com/lbliii/emdashCSS */
 :root {
-    --is-font-family: 'MetricHPE-Regular';
-    --is-h1-font-family: 'MetricHPE-Black';
-    --is-h2-font-family: 'MetricHPE-Bold';
-    --is-h3-font-family: 'MetricHPE-Medium';
+    --is-font-family: 'MetricHPE-Regular', sans-serif;
+    --is-h1-font-family: 'MetricHPE-Black', sans-serif;
+    --is-h2-font-family: 'MetricHPE-Bold', sans-serif;
+    --is-h3-font-family: 'MetricHPE-Medium', sans-serif;
     --is-header-line-height: 100%;
     --is-header-font-weight: 700;
     --is-line-height: 1.56rem;
