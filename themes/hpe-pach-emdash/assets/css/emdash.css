@@ -30,9 +30,9 @@
     --is-shadow-color: var(--is-dark-gray);
     --is-highlight-color: var(--is-purple);
 
-    --is-note-color: var(--is-gray);
+    --is-note-color: var(--is-light-blue);
     --is-note-text: var(--is-black);
-    --is-info-color: var(--is-dark-blue);
+    --is-info-color: var(--is-purple);
     --is-info-text: var(--is-white);
     --is-success-color: var(--is-green);
     --is-success-text: var(--is-white);
@@ -132,10 +132,16 @@ button.purple:hover, .button.purple:hover {
 }
 
 b {
-    background: linear-gradient(0.25turn, var(--is-gradient-cold-pt-1), var(--is-gradient-cold-pt-2),var(--is-gradient-cold-pt-3),var(--is-gradient-cold-pt-4),var(--is-gradient-cold-pt-5)); 
+  background: -webkit-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+  background: -o-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+  background: -ms-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+  background: -moz-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+  background: linear-gradient(51deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
 
 
 
