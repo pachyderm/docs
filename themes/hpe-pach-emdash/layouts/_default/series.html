@@ -34,7 +34,7 @@
         <div> 
             <p class="m bold">{{strings.FirstUpper .Title }} Series</p>
             {{ range .Pages.ByParam "seriesPart" }}
-                <div><a href="#{{.Title | anchorize}}" class="s">{{.Title}}</a></div>
+                <div><a href="#{{.Title | anchorize}}" class="m">{{.Title}}</a></div>
             {{end}}
         </div>
         
