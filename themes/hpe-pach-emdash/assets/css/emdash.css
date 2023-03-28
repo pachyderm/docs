@@ -2261,3 +2261,12 @@ input[type="checkbox"]:checked {
 #categories div > ul {
   list-style: none;
 }
+
+.hpe-bg-gradient {
+background: -webkit-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+background: -o-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+background: -ms-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+background: -moz-linear-gradient(39deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+background: linear-gradient(51deg, rgb(200, 44, 252) 0%, rgb(125, 111, 232) 40%, rgb(50, 178, 213) 80%, rgb(11, 212, 202) 100%);
+color: var(--is-text-color-inverted)
+}
