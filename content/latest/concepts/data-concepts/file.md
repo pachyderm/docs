@@ -17,13 +17,13 @@ files, you can store any type of file in Pachyderm, including
 binary files. Often, data scientists operate with
 comma-separated values (CSV), JavaScript Object Notation (JSON),
 images, and other plain text and binary file
-formats. Pachyderm supports all file sizes and formats and applies
+formats. MLDM supports all file sizes and formats and applies
 storage optimization techniques, such as deduplication, in the
 background.
 
-To upload your files to a Pachyderm repository, run the
+To upload your files to a MLDM repository, run the
 `pachctl put file` command. By using the `pachctl put file`
-command, you can put both files and directories into a Pachyderm repository.
+command, you can put both files and directories into a MLDM repository.
 
 {{% notice warning %}}
 - It is important to note that **directories are implied from the paths of the files**. Directories are not stored and will not exist **unless they contain files**. 
@@ -32,14 +32,14 @@ command, you can put both files and directories into a Pachyderm repository.
 
 ## File Processing Strategies
 
-Pachyderm provides the following file processing strategies:
+MLDM provides the following file processing strategies:
 
 ### **Overwriting Files**
-By default, when you put a file into a Pachyderm repository and a
-file by the same name already exists in the repo, Pachyderm overwrites
+By default, when you put a file into a MLDM repository and a
+file by the same name already exists in the repo, MLDM overwrites
 the existing file with the new data.
 For example, you have an `A.csv` file in a repository. If you upload the
-same file to that repository, Pachyderm *overwrites* the existing
+same file to that repository, MLDM *overwrites* the existing
 file with the data, which results in the `A.csv` file having only data
 from the most recent upload.
 
@@ -82,7 +82,7 @@ When you enable the append mode by using the `--append`
 flag or `-a`, the new files are appended to existing ones instead of overwriting them.
 For example, you have an `A.csv` file in the `images` repository.
 If you upload the same file to that repository with the
-`--append` flag, Pachyderm *appends* to the file.
+`--append` flag, MLDM *appends* to the file.
 
 #### Example
 

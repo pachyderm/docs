@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Developer Workflow
-description: Learn how to manage and process data using Pachyderm in your CI workflow.
+description: Learn how to manage and process data using MLDM in your CI workflow.
 date: 
 # taxonomy #
 tags: 
@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-In general, the developer workflow for Pachyderm involves adding  data to versioned data repositories, creating pipelines to read from those repositories, executing the pipeline's code, and writing the pipeline's output to other data repositories.
+In general, the developer workflow for MLDM involves adding  data to versioned data repositories, creating pipelines to read from those repositories, executing the pipeline's code, and writing the pipeline's output to other data repositories.
 Both the data and pipeline can be iterated on independently with Pachyderm
 handling the code execution according to the pipeline specfication.
 The workflow steps are shown below.
@@ -18,7 +18,7 @@ The workflow steps are shown below.
 
 ## Data Workflow
 
-Adding data to Pachyderm is the first step towards building data-driven pipelines. There are multiple ways to add data to a Pachyderm repository:
+Adding data to MLDM is the first step towards building data-driven pipelines. There are multiple ways to add data to a MLDM repository:
 
 * By using the `pachctl put file` command
 * By using a special type of pipeline, such as a [spout](../../concepts/pipeline-concepts/pipeline/spout/) or [cron](../../concepts/pipeline-concepts/pipeline/cron/) 
@@ -29,8 +29,8 @@ For more information, see [Load Your Data Into Pachyderm](../basic-data-operatio
 
 ## Pipeline Workflow
 
-The fundamental concepts of Pachyderm are very powerful, but the manual build steps mentioned in the [pipeline workflow](./working-with-pipelines) can become cumbersome during rapid-iteration development cycles. We've created a few helpful developer workflows and tools to automate steps that are error-prone or repetitive:
+The fundamental concepts of MLDM are very powerful, but the manual build steps mentioned in the [pipeline workflow](./working-with-pipelines) can become cumbersome during rapid-iteration development cycles. We've created a few helpful developer workflows and tools to automate steps that are error-prone or repetitive:
 
 * The [push images flag](./push-images-flag) or `--push-images` is a optional flag that can be passed to the `create` or `update` pipeline command. This option is most useful when you need to customize your Docker image or are iterating on the Docker image and code together, since it tags and pushes the image before updating the pipeline. 
-* [CI/CD Integration](./ci-cd-integration) provides a way to incorporate Pachyderm functions into the CI process. This is most useful when working with a complex project or for code collaboration. 
+* [CI/CD Integration](./ci-cd-integration) provides a way to incorporate MLDM functions into the CI process. This is most useful when working with a complex project or for code collaboration. 
 

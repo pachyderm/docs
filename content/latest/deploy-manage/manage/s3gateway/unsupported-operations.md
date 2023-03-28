@@ -10,7 +10,7 @@ seriesPart:
 --- 
 
 Some of the S3 operations are not yet supported by Pachyderm.
-If you run any of these operations, Pachyderm returns a standard
+If you run any of these operations, MLDM returns a standard
 S3 `NotImplemented` error.
 
 The S3 Gateway does not support the following S3 operations:

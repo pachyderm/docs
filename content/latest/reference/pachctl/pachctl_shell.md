@@ -1,10 +1,10 @@
 ## pachctl shell
 
-Run the pachyderm shell.
+Run the MLDM shell.
 
 ### Synopsis
 
-Run the pachyderm shell.
+Run the MLDM shell.
 
 ```
 pachctl shell [flags]

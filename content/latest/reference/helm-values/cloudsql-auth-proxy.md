@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: CloudSQL Auth Proxy HCVs
-description: Deploy Pachyderm on GCP with CloudSQL.
+description: Deploy MLDM on GCP with CloudSQL.
 date: 
 # taxonomy #
 tags: ["helm", "gcp" ]
@@ -16,7 +16,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 {{% /notice %}}
 ## About
 
-The CloudSQL Auth Proxy section configures the [CloudSQL Auth Proxy](https://cloud.google.com/sql/docs/mysql/connect-auth-proxy) for deploying Pachyderm on GCP with CloudSQL.
+The CloudSQL Auth Proxy section configures the [CloudSQL Auth Proxy](https://cloud.google.com/sql/docs/mysql/connect-auth-proxy) for deploying MLDM on GCP with CloudSQL.
 
 
 ## Values 

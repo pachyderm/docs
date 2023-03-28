@@ -40,7 +40,7 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 ## When to Use
 
-You should use the `scheduling_spec` field in a Pachyderm Pipeline Spec when you have specific requirements for where and when your pipeline runs. This can include requirements related to hardware, node labels, scheduling priority, and other factors.
+You should use the `scheduling_spec` field in a MLDM Pipeline Spec when you have specific requirements for where and when your pipeline runs. This can include requirements related to hardware, node labels, scheduling priority, and other factors.
 
 Example requirements:
 

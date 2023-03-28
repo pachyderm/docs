@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-You can call the **delete an S3 Object** command on your S3 client to delete a file from a Pachyderm repository.  For example, let's delete the file `test.csv` from the `master` branch of the `foo` repo within the `bar` project.
+You can call the **delete an S3 Object** command on your S3 client to delete a file from a MLDM repository.  For example, let's delete the file `test.csv` from the `master` branch of the `foo` repo within the `bar` project.
 
 {{<stack type="wizard" >}}
 

@@ -11,18 +11,18 @@ seriesPart:
 
 If [Okta® access management software](https://www.okta.com)
 is your preferred choice of IdP,
-you can configure Pachyderm to use Okta as an OpenID Connect (OIDC) 
+you can configure MLDM to use Okta as an OpenID Connect (OIDC) 
 identity provider using the following steps. 
 
 {{% notice note %}}
-Before you can configure Pachyderm to work with Okta:
+Before you can configure MLDM to work with Okta:
 
-- Check the [Pachyderm Integration with Identity Providers](../../idp-dex) general page.
+- Check the [MLDM Integration with Identity Providers](../../idp-dex) general page.
 - Log in/Create an account at https://www.okta.com/login/. 
 {{% /notice %}}
 
 
-## Register Pachyderm with Okta
+## Register MLDM with Okta
 
 For more detailed step by step instructions, follow this [documentation](https://developer.okta.com/docs/guides/add-an-external-idp/apple/register-app-in-okta/).
 
@@ -39,8 +39,8 @@ For more detailed step by step instructions, follow this [documentation](https:/
       ```
       Note: Your port number should be whatever is routing to the Identity Service:658.
 
-      The IP address is the address of your Pachyderm host. For example,
-      if you are running Pachyderm in Minikube, you can find the IP
+      The IP address is the address of your MLDM host. For example,
+      if you are running MLDM in Minikube, you can find the IP
       address by running `minikube ip`.
 
 1. Click **Save**
@@ -49,14 +49,14 @@ For more detailed step by step instructions, follow this [documentation](https:/
 1. On the Assignments tab, click **Assign** to assign the app integration to any user or group in your org. Click **Done** when the assignments are complete.
 
 
-## Set up an create an Idp-Pachyderm connector
+## Set up an create an Idp-MLDM connector
 
-After you have configured a Pachyderm application in Okta, you
+After you have configured a MLDM application in Okta, you
 need to create an OIDC connector config file with the Okta parameters.
 All the required parameters, such as `client_id`, `client_secret`, 
 and others, are located on the App General tab.
 
-To configure Pachyderm Auth, complete the following steps:
+To configure MLDM Auth, complete the following steps:
 
 
 1. Go to the terminal and forward the `pachd` pod to the OIDC port:
@@ -82,13 +82,13 @@ To configure Pachyderm Auth, complete the following steps:
       kubectl port-forward pachd-79f7f68c65-9qs8g 30657
       ```
 
-2. Enable Pachyderm authentication:
+2. Enable MLDM authentication:
 
       ```s
       pachctl auth activate --initial-admin=robot:admin
       ```
 
-      Pachyderm returns a token.
+      MLDM returns a token.
 
       **WARNING!** You must save the token to a secure location
       to avoid being locked out of your cluster.
@@ -126,14 +126,14 @@ step:
     - `issuer` — The domain of your application in Okta. For example,
     `{yourOktaDomain}/`. Note the trailing slash.
 
-    - `client_id` — The Pachyderm **Client ID** in Okta. 
+    - `client_id` — The MLDM **Client ID** in Okta. 
 
-    - `client_secret` - The Pachyderm client secret in Okta. 
+    - `client_secret` - The MLDM client secret in Okta. 
 
     - `redirect_uri` - This parameter should match what you have added
     to **redirect URI** in the previous step.
 
-1. Log in as the user you have created in the Pachyderm application
+1. Log in as the user you have created in the MLDM application
 or sign in with Google:
 
    1. Run:

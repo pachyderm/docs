@@ -1,10 +1,10 @@
 ## pachctl update
 
-Change the properties of an existing Pachyderm resource.
+Change the properties of an existing MLDM resource.
 
 ### Synopsis
 
-Change the properties of an existing Pachyderm resource.
+Change the properties of an existing MLDM resource.
 
 ### Options
 

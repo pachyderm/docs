@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Manage Cluster Access
-description: Learn how to manage Kubernetes cluster access using Pachyderm Contexts.
+description: Learn how to manage Kubernetes cluster access using MLDM Contexts.
 date: 
 # taxonomy #
 tags: ["management", "permissions"]
@@ -9,12 +9,12 @@ series:
 seriesPart:
 ---
 
-Pachyderm contexts enable you to store configuration parameters for multiple Pachyderm clusters in a single configuration file saved at `~/.pachyderm/config.json`. This file stores the information about all Pachyderm clusters that you have deployed from your machine locally or on a remote server.
+MLDM contexts enable you to store configuration parameters for multiple MLDM clusters in a single configuration file saved at `~/.pachyderm/config.json`. This file stores the information about all MLDM clusters that you have deployed from your machine locally or on a remote server.
 
 For example, if you have a cluster that is deployed locally in `minikube` and another one deployed on Amazon EKS, configurations for these clusters are stored in
-that `config.json` file. By default, all local cluster configurations have the `local` prefix. If you have multiple local clusters, Pachyderm adds a consecutive number to the `local` prefix of each cluster.
+that `config.json` file. By default, all local cluster configurations have the `local` prefix. If you have multiple local clusters, MLDM adds a consecutive number to the `local` prefix of each cluster.
 
-The following text is an example of a Pachyderm `config.json` file:
+The following text is an example of a MLDM `config.json` file:
 
 ```s
 {
@@ -33,7 +33,7 @@ The following text is an example of a Pachyderm `config.json` file:
 
 ## View the Active Context
 
-When you have multiple Pachyderm clusters, you can switch
+When you have multiple MLDM clusters, you can switch
 between them by setting the current context.
 The active context is the cluster that you interact with when
 you run `pachctl` commands.
@@ -85,7 +85,7 @@ export PACH_CONTEXT=local1
 
 ## Create a New Context
 
-When you deploy a new Pachyderm cluster, a new context
+When you deploy a new MLDM cluster, a new context
 that points to the new cluster is created automatically.
 
 In addition, you can create a new context by providing your parameters
@@ -100,7 +100,7 @@ By default, the `pachd` port is `30650`.
 To create a new context with specific parameters, complete
 the following steps:
 
-1. Create a new Pachyderm context with a specific `pachd` IP address
+1. Create a new MLDM context with a specific `pachd` IP address
 and a client certificate:
 
     ```s
@@ -126,8 +126,8 @@ and a client certificate:
 ## Update an Existing Context
 
 You can update an existing context with new parameters, such
-as a Pachyderm IP address, certificate authority (CA), and others.
-For the list of parameters, see [Pachyderm Config Specification](../../../reference/config-spec).
+as a MLDM IP address, certificate authority (CA), and others.
+For the list of parameters, see [MLDM Config Specification](../../../reference/config-spec).
 
 To update the Active Context, run the following commands:
 

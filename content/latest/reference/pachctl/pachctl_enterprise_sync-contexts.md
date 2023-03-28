@@ -1,10 +1,10 @@
 ## pachctl enterprise sync-contexts
 
-Pull all available Pachyderm Cluster contexts into your pachctl config
+Pull all available MLDM Cluster contexts into your pachctl config
 
 ### Synopsis
 
-Pull all available Pachyderm Cluster contexts into your pachctl config
+Pull all available MLDM Cluster contexts into your pachctl config
 
 ```
 pachctl enterprise sync-contexts [flags]

@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title: Pachyderm IAM
-description: Learn how to manage access to Pachyderm resources using roles.
+title: MLDM IAM
+description: Learn how to manage access to MLDM resources using roles.
 date: 
 # taxonomy #
 tags: ["permissions", "management"]
@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-This page describes how Pachyderm's Identity and Access Management (IAM) system works and how you can use it to manage access in Pachyderm. Use IAM to grant granular access to specific Pachyderm resources.
+This page describes how Pachyderm's Identity and Access Management (IAM) system works and how you can use it to manage access in Pachyderm. Use IAM to grant granular access to specific MLDM resources.
 
 
 ## How IAM Works 

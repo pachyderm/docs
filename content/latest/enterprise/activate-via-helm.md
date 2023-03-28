@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Activate Enterprise via Helm
-description: Learn how to deploy the Enterprise edition of Pachyderm using Helm.
+description: Learn how to deploy the Enterprise edition of MLDM using Helm.
 date: 
 # taxonomy #
 tags: ["enterprise"]
@@ -12,11 +12,11 @@ directory: true
 
 ## Before You Start 
 
-- You must have a Pachyderm [Enterprise License Key](https://www.pachyderm.com/trial/).
-- You must have pachctl and Pachyderm installed. 
-- You must have the Pachyderm Helm repo downloaded.
+- You must have a MLDM [Enterprise License Key](https://www.pachyderm.com/trial/).
+- You must have pachctl and MLDM installed. 
+- You must have the MLDM Helm repo downloaded.
 
-## How to Activate Enterprise Pachyderm via Helm
+## How to Activate Enterprise MLDM via Helm
 
 {{<stack type="wizard">}}
 {{% wizardRow id="Activation Method" %}}
@@ -31,9 +31,9 @@ directory: true
 3. Input your enterprise key.
 4. Upgrade your cluster by running the following command:
 ```s
-helm upgrade pachyderm pachyderm/pachyderm -f values.yml
+helm upgrade MLDM pachyderm/MLDM -f values.yml
 ```
-Once deployed, Pachyderm stores your provided Enterprise license as the platform secret `pachyderm-license` in the key `enterprise-license-key`.
+Once deployed, MLDM stores your provided Enterprise license as the platform secret `pachyderm-license` in the key `enterprise-license-key`.
 
 {{% /wizardResult%}}
 {{% wizardResult val1="activation-method/license-secret" %}}
@@ -43,7 +43,7 @@ Once deployed, Pachyderm stores your provided Enterprise license as the platform
 4. Input your license's secret name.
 5. Upgrade your cluster by running the following command:
 ```s
-helm upgrade pachyderm pachyderm/pachyderm -f values.yml
+helm upgrade MLDM pachyderm/MLDM -f values.yml
 ```
 {{% /wizardResult%}}
 {{% /wizardResults %}}

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  RBAC
-description: Learn how Pachyderm supports Kubernetes' Role-Base Access Controls (RBAC).
+description: Learn how MLDM supports Kubernetes' Role-Base Access Controls (RBAC).
 date: 
 # taxonomy #
 tags: ["configuration", "permissions"]
@@ -9,11 +9,11 @@ series:
 seriesPart:
 --- 
 
-Pachyderm has support for Kubernetes Role-Based Access
+MLDM has support for Kubernetes Role-Based Access
 Controls (RBAC), which is a default part of all
-Pachyderm deployments. In most use cases, Pachyderm
+MLDM deployments. In most use cases, Pachyderm
 sets all the RBAC permissions automatically. However,
-if you are deploying Pachyderm on a cluster that your
+if you are deploying MLDM on a cluster that your
 company owns, security policies might not allow certain
 RBAC permissions by default. Therefore, you need to
 contact your Kubernetes administrator and provide the
@@ -36,12 +36,12 @@ Rules: []rbacv1.PolicyRule{{
 		}},
 ```
 
-The following table explains how Pachyderm uses those permissions:
+The following table explains how MLDM uses those permissions:
 
 | Permission       | Description   |
 | ---------------- | ------------- |
 | Access to nodes    | Used for metrics reporting, disabling should not affect Pachyderm's operation. |
-| Access to pods, replica controllers, and services | Pachyderm uses this permission to monitor the created pipelines. The permissions related to `replicationcontrollers` and `services` are used in the setup and deletion of pipelines. Each pipeline has its own RC and service in addition to the pods.
+| Access to pods, replica controllers, and services | MLDM uses this permission to monitor the created pipelines. The permissions related to `replicationcontrollers` and `services` are used in the setup and deletion of pipelines. Each pipeline has its own RC and service in addition to the pods.
 | Access to secrets | Required to give various kinds of credentials to pipelines, including storage credentials to access S3 or other object storage backends, Docker credentials to pull from a private registry, and others. |
 
 ## RBAC and DNS
@@ -91,7 +91,7 @@ does not use it until you run the above commands.
 
 ## Resolving RBAC Permissions on GKE
 
-When you deploy Pachyderm on GKE, you might see the following error:
+When you deploy MLDM on GKE, you might see the following error:
 
 ```s
 Error from server (Forbidden): error when creating "STDIN": clusterroles.rbac.authorization.k8s.io "pachyderm" is forbidden: attempt to grant extra privileges:

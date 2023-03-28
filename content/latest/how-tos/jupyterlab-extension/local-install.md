@@ -13,7 +13,7 @@ beta: true
 
 ## Before You Start
 
-- You must have a Pachyderm cluster running.
+- You must have a MLDM cluster running.
 - Install [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html) (`pip install jupyterlab`)
 - Install [FUSE](https://osxfuse.github.io/)
   {{% notice warning %}}
@@ -41,4 +41,4 @@ beta: true
    ```
 7. Run `jupyter lab`. 
 
-If you have an existing pachyderm config file at `~/.pachyderm/config.json`, the extension automatically connects to the active context. Otherwise, you must enter the cluster address manually in the extension UI.
+If you have an existing MLDM config file at `~/.pachyderm/config.json`, the extension automatically connects to the active context. Otherwise, you must enter the cluster address manually in the extension UI.

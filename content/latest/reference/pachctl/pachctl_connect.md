@@ -1,10 +1,10 @@
 ## pachctl connect
 
-Connect to a Pachyderm Cluster
+Connect to a MLDM Cluster
 
 ### Synopsis
 
-Creates a Pachyderm context at the given address and sets it as active
+Creates a MLDM context at the given address and sets it as active
 
 ```
 pachctl connect <address> [flags]

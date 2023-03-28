@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Activate Enterprise via Pachctl
-description: Learn how to deploy the Enterprise edition of Pachyderm using the pachctl CLI for an existing cluster.
+description: Learn how to deploy the Enterprise edition of MLDM using the pachctl CLI for an existing cluster.
 date: 
 # taxonomy #
 tags: ["enterprise"]
@@ -12,11 +12,11 @@ directory: true
 
 ## Before You Start 
 
-- You must have a Pachyderm [Enterprise License Key](https://www.pachyderm.com/trial/).
-- You must have pachctl and Pachyderm installed. 
-- You must have the Pachyderm Helm repo downloaded.
+- You must have a MLDM [Enterprise License Key](https://www.pachyderm.com/trial/).
+- You must have pachctl and MLDM installed. 
+- You must have the MLDM Helm repo downloaded.
 
-## How to Activate Enterprise Pachyderm via Pachctl 
+## How to Activate Enterprise MLDM via Pachctl 
 
 1. Open your terminal.
 2. Input the following command:

@@ -11,14 +11,14 @@ weight: 3
 directory: true 
 ---
 
-Pachyderm autocompletion allows you to automatically finish
+MLDM autocompletion allows you to automatically finish
 partially typed commands by pressing `TAB`. Autocompletion needs
 to be installed separately when `pachctl` is already
 available on your client machine.
 
-Pachyderm autocompletion is supported for `bash` and `zsh` shells.
+MLDM autocompletion is supported for `bash` and `zsh` shells.
 You must have either of them preinstalled
-before installing Pachyderm autocompletion.
+before installing MLDM autocompletion.
 
 {{% notice tip %}}
 Type `pachctl completion --help` to display help information about the command.

@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Helm Deployment
-description: Learn how to install Pachyderm using a Helm chart.
+description: Learn how to install MLDM using a Helm chart.
 date: 
 # taxonomy #
 tags: ["helm"]
@@ -13,16 +13,16 @@ seriesPart:
 The package manager [Helm](https://helm.sh/docs/intro/install/#helm) is the authoritative deployment method for Pachyderm.
 
 {{% notice note %}}
-**Pachyderm services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
+**MLDM services are exposed on the cluster internal IP (ClusterIP) instead of each node’s IP (Nodeport)** except for LOCAL Helm installations (i.e. Services are still accessible through Nodeports on Local installations).
 {{% /notice %}}
 
-This page gives a high level view of the steps to follow to install Pachyderm using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/etc/helm/pachyderm).
+This page gives a high level view of the steps to follow to install MLDM using Helm. Find our chart on [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm) or in our [GitHub repository](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/etc/helm/pachyderm).
 
 {{% notice warning %}}
-We are now shipping Pachyderm with an **optional embedded proxy** 
+We are now shipping MLDM with an **optional embedded proxy** 
 allowing your cluster to expose one single port externally. This deployment setup is optional.
 
-If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter some of the following instructions.
+If you choose to deploy MLDM with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/) as they alter some of the following instructions.
 {{% /notice%}}
 
 {{% notice warning %}}
@@ -31,14 +31,14 @@ Before your start your installation process.
 - Refer to this generic page for more information on  how to install and get started with `Helm`.
 - Read our [infrastructure recommendations](../ingress/). You will find instructions on setting up an ingress controller, a TCP load balancer, or connecting an Identity Provider for access control. 
 
-- If you are planning to use Pachyderm UI with authentication, read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of a DNS, an Ingress, and the activation of authentication.
+- If you are planning to use MLDM UI with authentication, read our [Console deployment](../console/) instructions. Note that, unless your deployment is `LOCAL` (i.e., on a local machine for development only, for example, on Minikube or Docker Desktop), the deployment of Console requires the set up of a DNS, an Ingress, and the activation of authentication.
 {{% /notice%}}
 
 ## Install
 ### Prerequisites
 1. Install [`Helm`](https://helm.sh/docs/intro/install/). 
 
-1. Install [`pachctl`](../../../getting-started/local-deploy), the command-line utility for interacting with a Pachyderm cluster. 
+1. Install [`pachctl`](../../../getting-started/local-deploy), the command-line utility for interacting with a MLDM cluster. 
 
 1. Choose the deployment [guidelines](https://docs.pachyderm.com/{{% majorMinorVersion %}}/deploy-manage/deploy/) that apply to you:
     * **Find the deployment page that applies to your Cloud provider** (or custom deployment, or on-premises deployment).
@@ -59,7 +59,7 @@ Create a personalized `my_pachyderm_values.yaml` out of this [example repository
 {{% notice warning %}}
 **No default k8s CPU and memory requests and limits** are created for pachd.  If you don't provide values in the values.yaml file, then those requests and limits are simply not set. 
 
-For Production deployments, Pachyderm strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
+For Production deployments, MLDM strongly recommends that you **[create your values.yaml file with CPU and memory requests and limits for both pachd and etcd](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml)** set to values appropriate to your specific environment. For reference, 1 CPU and 2 GB memory for each is a sensible default. 
 {{% /notice %}}
      
 ###  Install Pachyderm's Helm Chart
@@ -71,22 +71,22 @@ For Production deployments, Pachyderm strongly recommends that you **[create you
 
 1. Install Pachyderm
 
- You are ready to deploy Pachyderm on the environment of your choice.
+ You are ready to deploy MLDM on the environment of your choice.
  ```s
- helm install pachd -f my_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>
+ helm install pachd -f my_pachyderm_values.yaml pach/MLDM --version <your_chart_version>
  ```
  {{% notice info %}}
  To choose a specific helm chart version
 
-  **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of Pachyderm on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
+  **Each chart version is associated with a given version of Pachyderm**. You will find the list of all available chart versions and their associated version of MLDM on  [Artifacthub](https://artifacthub.io/packages/helm/pachyderm/pachyderm).
   
 
   - You can choose a specific helm chart version by adding a `--version` flag (for example, `--version 0.3.0`) to your `helm install.`
-  - No additional flag will install the latest GA release of Pachyderm by default. 
-  - You can choose the latest pre-release version of the chart by using the flag `--devel` (pre-releases are versions of the chart that correspond to releases of Pachyderm that don't have the GA status yet).
+  - No additional flag will install the latest GA release of MLDM by default. 
+  - You can choose the latest pre-release version of the chart by using the flag `--devel` (pre-releases are versions of the chart that correspond to releases of MLDM that don't have the GA status yet).
 
 
-  For example: When the 2.0 version of Pachyderm was a release candidate, using the flag `--devel` would let you install the latest RC of 2.0 while no flag would retrieve the newest GA (1.13.4). 
+  For example: When the 2.0 version of MLDM was a release candidate, using the flag `--devel` would let you install the latest RC of 2.0 while no flag would retrieve the newest GA (1.13.4). 
  {{%/notice %}}
      
 
@@ -176,13 +176,13 @@ Deleting pvs will result in the loss of your data.
 When a new version of Pachyderm's chart is released, or when you want to update some configuration parameters on your cluster, use the [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) command:
 
 ```s
-helm upgrade pachd -f my_new_pachyderm_values.yaml pach/pachyderm --version <your_chart_version>        
+helm upgrade pachd -f my_new_pachyderm_values.yaml pach/MLDM --version <your_chart_version>        
 ```
 
-## READ BEFORE ANY INSTALL OR UPGRADE: Pachyderm Configuration Values and Platform Secrets
+## READ BEFORE ANY INSTALL OR UPGRADE: MLDM Configuration Values and Platform Secrets
 
 In this section, you will find a complete list of configuration values you can set when installing/upgrading a cluster as well as options to provide them. Refer to your deployment instructions to identify which are needed.
-### Values Used By Pachyderm At Installation/Upgrade Time
+### Values Used By MLDM At Installation/Upgrade Time
 
 We have grouped those fields in two categories:
 
@@ -202,7 +202,7 @@ If you are not planning to use Enterprise or plug an IdP, then no other value sh
     - `global.postgresqlPassword`: Password to your postgreSQL.   
     - `pachd.enterpriseServerToken`: Provide this token when installing a cluster that is under an Enterprise Server's umbrella.
 
-Those configuration values can be provided to Pachyderm in various ways:
+Those configuration values can be provided to MLDM in various ways:
 
 - A - [**Hard-coded in your values.yaml**](#a-provide-credentials-directly-in-your-valuesyaml)
 - B - In a secret, by [**referencing a secret name in your values.yaml**](#b-use-secrets)
@@ -210,7 +210,7 @@ Those configuration values can be provided to Pachyderm in various ways:
 
 You can provide credentials and configuration values directly in your values.yaml or set them with a `--set` argument during the installation/upgrade. The [second table below (Column B)](#mapping-external-secrets-fields-values-fields-and-pachyderm-platform-secrets) lists the names of the fields in which you can set your values.
 
--  *A-1 - Provide the few required values and let Pachyderm generate the rest*
+-  *A-1 - Provide the few required values and let MLDM generate the rest*
 
     - Provide your [Enterprise License](../../../enterprise/deployment#activate-the-enterprise-edition) (For Enterprise users only). 
     - Optionally, your [IDPs configuration](../../../enterprise/auth/authentication/idp-dex#create-your-idp-pachyderm-connection) (For Enterprise users using the Authentication feature)
@@ -244,9 +244,9 @@ Note that those values will be injected into platform secrets at the time of the
 If your organization uses tools like ArgoCD for Gitops, you might want to [create secrets](../../../how-tos/advanced-data-operations/secrets#create-a-secret) ahead of time then provide their names in the `secretName` field of your values.yaml. 
 
 Find the secret name field that references your secret in your values.yaml [(Column A)](#mapping-external-secrets-fields-values-fields-and-pachyderm-platform-secrets) and its corresponding Secret Key (First column) in the second table below.
-### Pachyderm Platform Secrets
+### MLDM Platform Secrets
 
-Pachyderm inject the values hard coded in your values.yaml into **"platform secrets"** at the time of the deployment or upgrade (those values can be Postgresql admin login username and password, OAuth information to set up your IdP, or your enterprise license key).
+MLDM inject the values hard coded in your values.yaml into **"platform secrets"** at the time of the deployment or upgrade (those values can be Postgresql admin login username and password, OAuth information to set up your IdP, or your enterprise license key).
 
 Find the complete list of secrets in the table below:
 
@@ -258,11 +258,11 @@ Find the complete list of secrets in the table below:
 |**`pachyderm-enterprise`** | enterprise-secret | For internal use. Used as a shared secret between an Enterprise Server and a Cluster to communicate. Always present when enterprise is on but used only when an Enterprise Server is set.|
 |`pachyderm-identity` | upstream-idps | The list of dex connectors, each containing Oauth client info connecting to an upstream IDP. |
 |`pachyderm-license` | enterprise-license-key | Your enterprise license. |
-|`pachyderm-storage-secret` | *This content depends on what object store backs your installation of Pachyderm.*|Credentials for Pachyderm to access your object store.|
-|`postgres` | postgresql-password | Password for Pachyderm to Access Postgres. |
+|`pachyderm-storage-secret` | *This content depends on what object store backs your installation of Pachyderm.*|Credentials for MLDM to access your object store.|
+|`postgres` | postgresql-password | Password for MLDM to Access Postgres. |
 
 *Secrets in bold do not need to be set by users.*
-### Mapping External Secrets Fields, Values Fields, and Pachyderm Platform Secrets
+### Mapping External Secrets Fields, Values Fields, and MLDM Platform Secrets
 
 In the following table, you will find the complete list of:
 
@@ -273,7 +273,7 @@ In the following table, you will find the complete list of:
 {{% notice tip %}} 
 Order of operations.
 
-Note that if no secret name is provided for the fields mentioned in **A** (see table above), Pachyderm will retrieve the dedicated plain-text secret values in the helm values (Column **B**) and populate (or autogenerate when left blank) its own platform secrets at the time of the installation/upgrade (Column **C**). 
+Note that if no secret name is provided for the fields mentioned in **A** (see table above), MLDM will retrieve the dedicated plain-text secret values in the helm values (Column **B**) and populate (or autogenerate when left blank) its own platform secrets at the time of the installation/upgrade (Column **C**). 
 {{% /notice %}}
 
 |Secret KEY name| <div style="width:290px"> Description </div>| A - Create your secrets ahead <br> of your cluster creation| B - Pass credentials in values.yaml| <div style="width:250px"> C - Corresponding (Platform Secret, Key) in which the values provided in A or B will be injected.</div>| 
@@ -285,7 +285,7 @@ Note that if no secret name is provided for the fields mentioned in **A** (see t
 |postgresql-password|Password to your database| global.postgresql.postgresqlExistingSecretName |global.postgresql.postgresqlPassword|(postgres, postgresql-password)|
 |OAUTH_CLIENT_SECRET|Oauth client secret for Console <br> Required if you set Console|console.config.oauthClientSecretSecretName |console.config.oauthClientSecret|(pachyderm-console-secret, OAUTH_CLIENT_SECRET)|
 |upstream-idps|The list of dex connectors, each containing Oauth client info connecting to an upstream IDP|oidc.upstreamIDPsSecretName|oidc.upstreamIDPs|(pachyderm-identity, upstream-idps)|
-|enterprise-server-token|Users set this value when they install a cluster that is under an [Enterprise Server's](../../../enterprise/auth/enterprise-server/setup) umbrella. <br> Pachyderm (pachd) uses this token to instruct the enterprise server to add it to its registry. This token must be tied to a user on the enterprise server that has the clusterAdmin role.|pachd.enterpriseServerTokenSecretName|pachd.enterpriseServerToken| Not injected into any platform secret. It is passed into the deployment manifest if set as plaintext.|
+|enterprise-server-token|Users set this value when they install a cluster that is under an [Enterprise Server's](../../../enterprise/auth/enterprise-server/setup) umbrella. <br> MLDM (pachd) uses this token to instruct the enterprise server to add it to its registry. This token must be tied to a user on the enterprise server that has the clusterAdmin role.|pachd.enterpriseServerTokenSecretName|pachd.enterpriseServerToken| Not injected into any platform secret. It is passed into the deployment manifest if set as plaintext.|
 |enterprise-secret|Needed if you connect to an enterprise server|pachd.enterpriseSecretSecretName  |pachd.enterpriseSecret| (pachyderm-enterprise, enterprise-secret) |
 
 

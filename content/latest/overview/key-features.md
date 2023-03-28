@@ -11,7 +11,7 @@ directory: true
 ---
 
 ## Key Features and Benefits
-The following are the key features of Pachyderm that make it a powerful data processing platform. 
+The following are the key features of MLDM that make it a powerful data processing platform. 
 
 ### Data-driven Pipelines
 - Automatically trigger pipelines based on changes in the data.

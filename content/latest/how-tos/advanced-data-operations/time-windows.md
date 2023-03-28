@@ -23,7 +23,7 @@ need to analyze historical data. For example, you might need to
 examine *the last two weeks of data*, *January's data*, or some
 other moving or static time window of data.
 
-Pachyderm provides the following approaches to this task:
+MLDM provides the following approaches to this task:
 
 1. [Fixed time windows](#fixed-time-windows) - for rigid, fixed
 time windows, such as months (Jan, Feb, and so on) or days—01-01-17,
@@ -39,10 +39,10 @@ two-week windows.
 unit of data partitioning in Pachyderm. The glob pattern property
 in the pipeline specification defines a datum. When you analyze data
 within fixed time windows, such as the data that corresponds to
-fixed calendar dates, Pachyderm recommends that you organize your
+fixed calendar dates, MLDM recommends that you organize your
 data repositories so that each of the time windows that you plan
 to analyze corresponds to a separate file or directory in your
-repository, and therefore, Pachyderm processes it as a separate
+repository, and therefore, MLDM processes it as a separate
 datum.
 
 Organizing your repository as described above, enables you to do the
@@ -73,10 +73,10 @@ sales
 ```
 
 When you run a pipeline with `sales` as an input repository and a glob
-pattern of `/*`, Pachyderm processes each month's worth of sales data
+pattern of `/*`, MLDM processes each month's worth of sales data
 in parallel if workers are available. When you add new data into a
 subset of the months or add data into a new month, for example, May,
-Pachyderm processes only these updated datums.
+MLDM processes only these updated datums.
 
 More generally, this structure enables you to create the following
 types of pipelines:
@@ -194,13 +194,13 @@ glob pattern of `/*` or as described further. Both pipelines can be easily
 parallelized.
 
 In the above directory structure, it might seem that data is
-duplicated. However, under the hood, Pachyderm deduplicates all of these
+duplicated. However, under the hood, MLDM deduplicates all of these
 files and maintains a space-efficient representation of your data.
 The binning of the data is merely a structural re-arrangement to enable
 you to process these types of moving time windows.
 
-It might also seem as if Pachyderm performs unnecessary data transfers
-over the network to bin files. However, Pachyderm ensures that these data
+It might also seem as if MLDM performs unnecessary data transfers
+over the network to bin files. However, MLDM ensures that these data
 operations do not require transferring data over the network.
 
 ### Maintaining a Single Time-Windowed Data Set

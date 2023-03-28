@@ -34,11 +34,11 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 `resource_requests` describes the amount of resources that the pipeline
 workers will consume. Knowing this in advance
-enables Pachyderm to schedule big jobs on separate machines, so that they
+enables MLDM to schedule big jobs on separate machines, so that they
 do not conflict, slow down, or terminate.
 
 This parameter is optional, and if you do not explicitly add it in
-the pipeline spec, Pachyderm creates Kubernetes containers with the
+the pipeline spec, MLDM creates Kubernetes containers with the
 following default resources: 
 
 - The user and storage containers request 0 CPU, 0 disk space, and 64MB of memory.

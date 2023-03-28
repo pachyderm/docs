@@ -9,16 +9,16 @@ series:
 seriesPart:
 ---
 
-While a Pachyderm pipeline is running, it processes any new data that you
+While a MLDM pipeline is running, it processes any new data that you
 commit to its input branch. However, in some cases, you want to commit data more frequently than you want to process it.
 
-Because Pachyderm pipelines do not reprocess the data that has already been processed, in most cases, this is not an issue. But, some pipelines might need to process everything from scratch. For example,
+Because MLDM pipelines do not reprocess the data that has already been processed, in most cases, this is not an issue. But, some pipelines might need to process everything from scratch. For example,
 you might want to commit data every hour, but only want to retrain a machine learning model on that data daily because it needs to train
 on all the data from scratch.
 
 In these cases, you can leverage a massive performance benefit from deferred processing. This section covers how to achieve that and control what gets processed.
 
-Pachyderm controls what is being processed by using the _filesystem_,
+MLDM controls what is being processed by using the _filesystem_,
 rather than at the pipeline level. Although pipelines are inflexible,
 they are simple and always try to process the data at the heads of
 their input branches. In contrast, the filesystem is very flexible and
@@ -27,7 +27,7 @@ move and rename the data so that it gets processed when you want.
 
 ## Configure a Staging Branch in an Input repository
 
-When you want to load data into Pachyderm without triggering a pipeline,
+When you want to load data into MLDM without triggering a pipeline,
 you can upload it to a staging branch and then submit accumulated
 changes in one batch by re-pointing the `HEAD` of your `master` branch
 to a commit in the staging branch.
@@ -79,7 +79,7 @@ A simple [pipeline](../../pipeline-concepts/pipeline) subscribes to the master b
    data master 8090bfb4d4fe44158eac12199c37a591 About a minute ago   0B  AUTO
    ```
 
-   Pachyderm automatically created an empty `HEAD` commit on the new branch,
+   MLDM automatically created an empty `HEAD` commit on the new branch,
    as you can see from the zero-byte size and `AUTO` commit origin.
    When you commit data to the `master` branch, the pipeline
    immediately starts a job to process it.
@@ -92,7 +92,7 @@ A simple [pipeline](../../pipeline-concepts/pipeline) subscribes to the master b
    pachctl put file data@staging -f <file>
    ```
 
-   Pachyderm automatically creates the `staging` branch.
+   MLDM automatically creates the `staging` branch.
    Your repo now has 2 branches, `staging` and `master`. In this
    example, the `staging` name is used, but you can
    name the branch as you want.
@@ -147,12 +147,12 @@ A simple [pipeline](../../pipeline-concepts/pipeline) subscribes to the master b
    f3506f0fab6e483e8338754081109e69 test     32 seconds ago Less than a second 0       6 + 0 / 6 108B 24B success
    ```
 
-   You should see one job that Pachyderm created for all the changes you
+   You should see one job that MLDM created for all the changes you
    have submitted to the `staging` branch, with the same ID. While the commits to the
    `staging` branch are ancestors of the current `HEAD` in `master`,
    they were never the actual `HEAD` of `master` themselves, so they
    do not get processed. This behavior works for most of the use cases
-   because commits in Pachyderm are generally additive, so processing
+   because commits in MLDM are generally additive, so processing
    the HEAD commit also processes data from previous commits.
 
 ![deferred processing](/images/deferred-processing.gif)
@@ -172,10 +172,10 @@ pachctl create branch data@master --head staging^3
 pachctl create branch data@master --head staging
 ```
 
-When you run the commands above, Pachyderm creates a job for each
+When you run the commands above, MLDM creates a job for each
 of the commands one after another. Therefore, when one job is completed,
-Pachyderm starts the next one. To verify
-that Pachyderm created jobs for these commands, run `pachctl list job -p <pipeline_name> --history all`.
+MLDM starts the next one. To verify
+that MLDM created jobs for these commands, run `pachctl list job -p <pipeline_name> --history all`.
 
 ### Change the HEAD of your Branch
 
@@ -200,7 +200,7 @@ However, sometimes you want to be able to commit data in an ad-hoc,
 disorganized manner and then organize it later. Instead of pointing
 your `master` branch to a commit in a staging branch, you can copy
 individual files from `staging` to `master`.
-When you run `copy file`, Pachyderm only copies references to the files and
+When you run `copy file`, MLDM only copies references to the files and
 does not move the actual data for the files around.
 
 To copy files from one branch to another, complete the following steps:
@@ -352,7 +352,7 @@ our OpenCV demo modified to only trigger when there is a 1 Megabyte of new image
 }
 ```
 
-When you create this pipeline, Pachyderm will also create a branch in the input
+When you create this pipeline, MLDM will also create a branch in the input
 repo that specifies the trigger and the pipeline will use that branch as its
 input. The name of the branch is auto-generated with the form
 `<pipeline-name>-trigger-n`. You can manually update the heads of these branches
@@ -368,6 +368,6 @@ A trigger branch can, however, be deleted manually (`pachctl delete branch <repo
 ## More advanced automation
 
 More advanced use cases might not be covered by the trigger methods above. For
-those, you need to create a Kubernetes application that uses Pachyderm APIs and
+those, you need to create a Kubernetes application that uses MLDM APIs and
 watches the repositories for the specified condition. When the condition is
-met, the application switches the Pachyderm branch from `staging` to `master`.
+met, the application switches the MLDM branch from `staging` to `master`.

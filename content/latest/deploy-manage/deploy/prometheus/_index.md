@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Monitor with Prometheus
-description: Learn how to monitor a Pachyderm cluster using Prometheus. 
+description: Learn how to monitor a MLDM cluster using Prometheus. 
 date: 
 # taxonomy #
 tags: 
@@ -10,7 +10,7 @@ seriesPart:
 --- 
 
 {{% notice note %}}
-To monitor a Pachyderm cluster
+To monitor a MLDM cluster
 with Prometheus, a ***Enterprise License*** is required. 
 {{% /notice %}}
 
@@ -40,7 +40,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
     helm install <a-release-name> prometheus-community/kube-prometheus-stack
     ```
 
-1. Create a ServiceMonitor for Pachyderm in Kubernetes:
+1. Create a ServiceMonitor for MLDM in Kubernetes:
     - Create a myprometheusservice.yaml
         ```s
         apiVersion: monitoring.coreos.com/v1
@@ -68,7 +68,7 @@ Prometheus' **Kubernetes cluster monitoring** using the Prometheus Operator:
         and creates a prometheus target so prometheus will scrape the metrics endpoint `prom-metrics`.
 
         In this case, it looks for anything with the label `suite: pachyderm` -
-        which is by default associated with all Pachyderm resources.
+        which is by default associated with all MLDM resources.
 
     {{% notice note %}}
     Our Service Monitor `pachyderm-scraper` above maps the endpoint port `prom-metrics`
@@ -103,12 +103,12 @@ If you have an existing Prometheus deployment, please navigate to your Prometheu
 You can now browse your targets (http://localhost:9090/targets).
 Run a pipeline of your choice. The `pachyderm-scraper` should be visible:
 
-![pachyderm scraper target](/images/prometheus_target_pachyderm_scaper.png)
+![MLDM scraper target](/images/prometheus_target_pachyderm_scaper.png)
 
-In the ClassicUI tab, you should be able to see the new pachyderm metrics.
+In the ClassicUI tab, you should be able to see the new MLDM metrics.
 
 ## References
-<! --* Find the full list of Pachyderm metrics here:
+<! --* Find the full list of MLDM metrics here:
     - [Pachd metrics](./pachd-metrics)
     - [Pipeline metrics](./job-metrics) ->
 * [Kube Prometheus Stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) documentation.

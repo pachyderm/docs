@@ -1,10 +1,10 @@
 ## pachctl auth whoami
 
-Print your Pachyderm identity
+Print your MLDM identity
 
 ### Synopsis
 
-Print your Pachyderm identity.
+Print your MLDM identity.
 
 ```
 pachctl auth whoami [flags]

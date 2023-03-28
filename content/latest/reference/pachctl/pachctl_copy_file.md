@@ -14,7 +14,7 @@ pachctl copy file <src-repo>@<src-branch-or-commit>:<src-path> <dst-repo>@<dst-b
 
 ```
 
-# copy between repos within the current project defined by the pachyderm context
+# copy between repos within the current project defined by the MLDM context
 # defaults to the "default" project
 $ pachctl copy file srcRepo@master:/file destRepo@master:/file
 

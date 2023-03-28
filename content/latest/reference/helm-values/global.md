@@ -36,10 +36,10 @@ The following section contains a series of tabs for commonly used configurations
 global:
   postgresql:
     postgresqlAuthType: "md5" # sets the auth type used with postgres & pg-bounder; options include "md5" and "scram-sha-256"
-    postgresqlUsername: "pachyderm" # defines the username to access the pachyderm and dex databases
+    postgresqlUsername: "pachyderm" # defines the username to access the MLDM and dex databases
     postgresqlExistingSecretName: "" # leave blank if using password
     postgresqlExistingSecretKey: "" # leave blank if using password
-    postgresqlDatabase: "pachyderm" # defines the database name where pachyderm data will be stored
+    postgresqlDatabase: "pachyderm" # defines the database name where MLDM data will be stored
     postgresqlHost: "postgres" # defines the postgresql database host to connect to
     postgresqlPort: "5432"  # defines he postgresql database port to connect to
     postgresqlSSL: "disable" # defines the SSL mode used to connect pg-bouncer to postgrs
@@ -66,9 +66,9 @@ global:
 global:
   postgresql:
     postgresqlAuthType: "md5" # sets the auth type used with postgres & pg-bounder; options include "md5" and "scram-sha-256"
-    postgresqlUsername: "pachyderm" # defines the username to access the pachyderm and dex databases
+    postgresqlUsername: "pachyderm" # defines the username to access the MLDM and dex databases
     postgresqlPostgresPassword: "insecure-root-password" # leave blank if using a secret
-    postgresqlDatabase: "pachyderm" # defines the database name where pachyderm data will be stored
+    postgresqlDatabase: "pachyderm" # defines the database name where MLDM data will be stored
     postgresqlHost: "postgres" # defines the postgresql database host to connect to
     postgresqlPort: "5432"  # defines he postgresql database port to connect to
     postgresqlSSL: "disable" # defines the SSL mode used to connect pg-bouncer to postgrs

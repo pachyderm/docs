@@ -50,7 +50,7 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 ## Behavior 
 
-The `egress` field in a Pachyderm Pipeline Spec is used to specify how the pipeline should write the output data. The `egress` field supports two types of outputs: writing to an object store and writing to a SQL database.
+The `egress` field in a MLDM Pipeline Spec is used to specify how the pipeline should write the output data. The `egress` field supports two types of outputs: writing to an object store and writing to a SQL database.
 
 Data is pushed after the user code finishes running but before the job is marked as successful. For more information, see [Egress Data to an object store](/{{% release %}}/how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress) or [Egress Data to a database](/{{% release %}}/how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress/).
 
@@ -59,7 +59,7 @@ This is required if the pipeline needs to write output data to an external stora
 
 ## When to Use 
 
-You should use the `egress` field in a Pachyderm Pipeline Spec when you need to write the output data from your pipeline to an external storage system, such as an object store or a SQL database.
+You should use the `egress` field in a MLDM Pipeline Spec when you need to write the output data from your pipeline to an external storage system, such as an object store or a SQL database.
 
 Example scenarios:
 

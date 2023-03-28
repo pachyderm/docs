@@ -10,9 +10,9 @@ seriesPart:
 --- 
 
 ## Definition
-Pachyderm provides users with a simple way to follow a change throughout their DAG (i.e., traverse `Provenance` and `Subvenance`).
+MLDM provides users with a simple way to follow a change throughout their DAG (i.e., traverse `Provenance` and `Subvenance`).
 
-Pachyderm associates a commit ID to each new commit. You can quickly check this new commit by running `pachctl list commit repo@branch`. **All resulting downstream commits and jobs in your DAG will then share that same ID (Global Identifier).**
+MLDM associates a commit ID to each new commit. You can quickly check this new commit by running `pachctl list commit repo@branch`. **All resulting downstream commits and jobs in your DAG will then share that same ID (Global Identifier).**
 
 {{% notice info %}}
 The commits and jobs sharing the same ID **represent a logically-related set of objects**. 
@@ -92,7 +92,7 @@ ID                               PIPELINE STARTED       DURATION  RESTART PROGRE
 1035715e796f45caae7a1d3ffd1f93ca montage  5 minutes ago 4 seconds 0       1 + 0 / 1 79.49KiB 381.1KiB success
 1035715e796f45caae7a1d3ffd1f93ca edges    5 minutes ago 2 seconds 0       1 + 0 / 1 57.27KiB 22.22KiB success
 ```
-For each pipeline execution (sub job) within this global job, Pachyderm shows the time since each sub job started and its duration, the number of datums in the PROGRESS section,  and other information.
+For each pipeline execution (sub job) within this global job, MLDM shows the time since each sub job started and its duration, the number of datums in the PROGRESS section,  and other information.
 The format of the progress column is `DATUMS PROCESSED + DATUMS SKIPPED / TOTAL DATUMS`.
 
 For more information, see [Datum Processing States](../../../concepts/pipeline-concepts/datum/datum-processing-states/).
@@ -204,7 +204,7 @@ For a full view of GlobalID in action, take a look at our [GlobalID illustration
 
 ## Track Provenance Downstream
 
-Pachyderm provides the `wait commit <commitID>` command that enables you
+MLDM provides the `wait commit <commitID>` command that enables you
 to **track your commits downstream as they are produced**. 
 
 Unlike the `list commit <commitID>`, each line is printed as soon as a new (sub) commit of your global commit finishes.

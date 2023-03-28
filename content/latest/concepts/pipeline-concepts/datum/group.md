@@ -10,11 +10,11 @@ seriesPart:
 --- 
 
 A group is a special type of pipeline input that enables you to aggregate
-files that reside in one or separate Pachyderm repositories and match a
+files that reside in one or separate MLDM repositories and match a
 particular naming pattern. The group operator must be used in combination
 with a glob pattern that reflects a specific naming convention.
 
-By analogy, a Pachyderm group is similar to a database *group-by*,
+By analogy, a MLDM group is similar to a database *group-by*,
 but it matches on file paths only, not the content of the files.
 
 Unlike the [join](../join) datum that will always contain a single match (even partial) from each input repo, **a group creates one datum for each set of matching files accross its input repos**.
@@ -52,11 +52,11 @@ Also, groups require you to specify a [replacement group](https://www.regular-ex
 in the `group_by` parameter to define which capture groups you want to try
 to match.
 
-For example, `$1` indicates that you want Pachyderm to match based on
+For example, `$1` indicates that you want MLDM to match based on
 capture group `1`. Similarly, `$2` matches the capture group `2`.
 `$1$2` means that it must match both capture groups `1` and `2`.
 
-If Pachyderm does not find any matching files, you get a zero-datum job.
+If MLDM does not find any matching files, you get a zero-datum job.
 
 You can test your glob pattern and capture groups by using the
 `pachctl list datum -f <your_pipeline_spec.json>` command as described in
@@ -82,7 +82,7 @@ The files at the root of your repository have the following naming convention. Y
    ├── LIPID-patientID2-labID3.txt (6)
    ```
 
-Pachyderm runs your code on the set of files that match
+MLDM runs your code on the set of files that match
 the glob pattern and capture groups.
 
 The following example shows how you can use group to aggregate all the lab results of each patient.

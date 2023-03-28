@@ -25,7 +25,7 @@ The following table describes the processing states of datums that can occur in 
 | State      | Description |
 | ---------- | ----------- |
 | Failed     | The datum failed to be processed. Any failed datum in a job fails the whole job. |
-| Recovered  | The datum failed, but was recovered by the user's error handling code. Although the datum is marked as *recovered*, Pachyderm does not process it in the downstream pipelines. A recovered datum does not fail the whole job. Just like failed datums, recovered datums are retried on the next run of the pipeline. |
+| Recovered  | The datum failed, but was recovered by the user's error handling code. Although the datum is marked as *recovered*, MLDM does not process it in the downstream pipelines. A recovered datum does not fail the whole job. Just like failed datums, recovered datums are retried on the next run of the pipeline. |
 
 You can view the information about datum processing states in the output of
 the `pachctl list job <jobID>` command:

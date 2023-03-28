@@ -1,10 +1,10 @@
 ## pachctl run
 
-Manually run a Pachyderm resource.
+Manually run a MLDM resource.
 
 ### Synopsis
 
-Manually run a Pachyderm resource.
+Manually run a MLDM resource.
 
 ### Options
 

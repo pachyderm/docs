@@ -1,10 +1,10 @@
 ## pachctl squash
 
-Squash an existing Pachyderm resource.
+Squash an existing MLDM resource.
 
 ### Synopsis
 
-Squash an existing Pachyderm resource.
+Squash an existing MLDM resource.
 
 ### Options
 

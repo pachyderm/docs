@@ -10,13 +10,13 @@ seriesPart:
 ---
 
 {{% notice warning %}}
-Pachyderm uses FUSE to mount repositories as local filesystems.
+MLDM uses FUSE to mount repositories as local filesystems.
 Because Apple has announced phasing out support for macOS
 kernel extensions, including FUSE, this functionality is no
 longer stable on macOS Catalina (10.15) or later.
 {{% /notice %}}
 
-Pachyderm enables you to mount a repository
+MLDM enables you to mount a repository
 as a local filesystem on your computer by using the
 `pachctl mount` command. This command
 uses the Filesystem in Userspace (FUSE) user interface to export a Pachyderm
@@ -25,12 +25,12 @@ This functionality is useful when you want to pull data locally to experiment,
 review the results of a pipeline, or modify the files
 in the input repository directly.
 
-You can mount a Pachyderm repo in one of the following modes:
+You can mount a MLDM repo in one of the following modes:
 
 * `Read-only` — you can read the mounted files to further experiment with them
 locally, but cannot modify them.
 * `Read-write` — you can read mounted files, modify their contents, and
-push them back into your centralized Pachyderm input repositories.
+push them back into your centralized MLDM input repositories.
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ Yosemite or later.
 
 ## Mounting Repositories in Read-Only Mode
 
-By default, Pachyderm mounts
+By default, MLDM mounts
 all repositories in read-only mode. You can access the
 files through your file browser or enable third-party applications
 access. Read-only access enables you to explore and experiment with
@@ -69,7 +69,7 @@ Notebook for exploration.
 {{% notice note %}}
 The `pachctl mount` command allows you to mount not only the default
 branch, typically a `master` branch, but also other Pachyderm
-branches. By default, Pachyderm mounts the `master` branch. However,
+branches. By default, MLDM mounts the `master` branch. However,
 if you add a branch to the name of the repo, the `HEAD` of that branch
 will be mounted.
 
@@ -94,7 +94,7 @@ open the files for editing and put them back to the Pachyderm
 repository. 
 
 {{% notice warning %}}
-Your changes are saved to the Pachyderm repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
+Your changes are saved to the MLDM repository only **after you interrupt the `pachctl mount` with  `CTRL+C`** or with `pachctl unmount`, `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`.
 {{% /notice %}}
 
 For example, you have the [OpenCV example pipeline](../../../../getting-started/beginner-tutorial/#image-processing-with-opencv)
@@ -106,10 +106,10 @@ If you do not mount the `images` repo, you would have to
 first download the files to your computer, edit them,
 and then put them back to the repository. The `pachctl mount`
 command automates all these steps for you. You can mount just the
-`images` repo or all Pachyderm repositories as directories
+`images` repo or all MLDM repositories as directories
 on you machine, edit as needed, and, when done,
 exit the `pachctl mount` command. Upon exiting the `pachctl mount`
-command, Pachyderm uploads all the changes to the corresponding
+command, MLDM uploads all the changes to the corresponding
 repository.
 
 If someone else modifies the files while you are working on them
@@ -128,13 +128,13 @@ unexpected data overwrites can occur.
   a file in an output repo, you will get an error message.
 {{% /notice %}}
 
-### How to Mount/Unmount a Pachyderm Repo
+### How to Mount/Unmount a MLDM Repo
 
-To mount a Pachyderm repo on a local computer, complete the following
+To mount a MLDM repo on a local computer, complete the following
 steps:
 
 1. In a terminal, go to a directory in which you want to mount a
-Pachyderm repo. It can be any new empty directory on your local computer.
+MLDM repo. It can be any new empty directory on your local computer.
 For example, `mydirectory`.
 
 1. Run `pachctl mount` for a repository and branch that you want to mount:
@@ -145,7 +145,7 @@ For example, `mydirectory`.
 
       **Example:**
 
-      * If you want to mount all the repositories in your Pachyderm cluster 
+      * If you want to mount all the repositories in your MLDM cluster 
       to a `mydirectory` directory on your computer and give `WRITE` access to them, run:
 
       ```s
@@ -204,13 +204,13 @@ in your terminal:
       ![finder-repo-mount](/images/s_finder_repo_mount.png)
 
 1. Edit the files as needed.
-1. When ready, **add your changes to the Pachyderm repo by stopping
+1. When ready, **add your changes to the MLDM repo by stopping
 the `pachctl mount` command with `CTRL+C` or by running `pachctl unmount
 <mountpoint>`** (or `unmount /<path-to-mount>`, or `fusermount -u /<path-to-mount>`).
 
-      If you have mounted a writable Pachyderm share, **interrupting the
+      If you have mounted a writable MLDM share, **interrupting the
       `pachctl mount` command results in the upload of
       your changes to the corresponding repo and branch**, which is equivalent
       to running the `pachctl put file` command. You can check that
-      Pachyderm runs a new job for this work by listing current jobs with
+      MLDM runs a new job for this work by listing current jobs with
       `pachctl list job`.

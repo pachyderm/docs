@@ -12,19 +12,19 @@ seriesPart:
 Before completing the following steps, read the [Infrastructure Recommendation page](../).
 
 {{% notice warning %}}
-We are now shipping Pachyderm with an **embedded proxy** 
+We are now shipping MLDM with an **embedded proxy** 
 allowing your cluster to expose one single port externally. This deployment setup is optional.
 
-If you choose to deploy Pachyderm with a Proxy, our new recommended architecture and [deployment instructions](../../deploy-w-proxy) overwrite the following instructions.
+If you choose to deploy MLDM with a Proxy, our new recommended architecture and [deployment instructions](../../deploy-w-proxy) overwrite the following instructions.
 {{% /notice %}}
 
 This section provides an example of how to route
 cluster-external HTTP/HTTPS requests to cluster-internal services
-(here Pachyderm UI `console` service and `authentication` services
+(here MLDM UI `console` service and `authentication` services
 using the **ingress controller** Traefik.
  
 
-## Traefik ingress controller on Pachyderm UI's cluster in one diagram
+## Traefik ingress controller on MLDM UI's cluster in one diagram
 Here is a quick high-level view of the various components at play.
 ![pach-ui-ingress](/images/console_ingress_traefik.png)
 
@@ -80,7 +80,7 @@ Please refer to your full Traefik documentation for further installation details
 
        Check the [list of all available helm values](https://github.com/pachyderm/pachyderm/blob/42462ba37f23452a5ea764543221bf8946cebf4f/etc/helm/pachyderm/values.yaml#L143) at your disposal in our reference documentation.
 
-1. Install Pachyderm and Console using the Helm Chart
+1. Install MLDM and Console using the Helm Chart
 
       Once you have your [networking infrastructure](./) set up, apply a helm values file such as the one specified in the example file below to wire up routing through an Ingress, and set up TLS.
 
@@ -109,7 +109,7 @@ Please refer to your full Traefik documentation for further installation details
       ```s
       helm install pachd -f my_pachyderm_values.yaml pach/pachyderm
       ```
-      The deployment of Pachyderm automatically creates the required set of rules.
+      The deployment of MLDM automatically creates the required set of rules.
 
 1. Check your new rules by running `kubectl describe ingress console`:
          ```s
@@ -136,7 +136,7 @@ Please refer to your full Traefik documentation for further installation details
 
 
 ## Browse
-Connect to your Console (Pachyderm UI): `https://<external-IP-address-or-domain-name>:443/` (if TLS is enabled) or `http://<external-IP-address-or-domain-name>:80/`. You are all set!
+Connect to your Console (MLDM UI): `https://<external-IP-address-or-domain-name>:443/` (if TLS is enabled) or `http://<external-IP-address-or-domain-name>:80/`. You are all set!
 
 ## References
 * [Traefik](https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/) documentation.

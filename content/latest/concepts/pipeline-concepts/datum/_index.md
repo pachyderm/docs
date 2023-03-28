@@ -37,7 +37,7 @@ in its pipeline specification file.
 
 Based on this specification file, the data in the `input` 
 of your pipeline is turned into datums, each of which can contain 1-to-many files.
-Pachyderm provides a wide variety of ways to define the granularity of each datum. 
+MLDM provides a wide variety of ways to define the granularity of each datum. 
 
 For example, you can configure a whole branch of an
 input repository to be one datum, each top-level filesystem object of a given branch
@@ -56,4 +56,4 @@ The most primitive input of a pipeline is a [**PFS input**](../../../reference/p
 - and **a [glob pattern](./glob-pattern) to determine how the input data is partitioned**.
 
 A pipeline input can have one or multiple PFS inputs.
-In the latter case, Pachyderm provides a variety of options to aggregate several PFS inputs together. 
+In the latter case, MLDM provides a variety of options to aggregate several PFS inputs together. 

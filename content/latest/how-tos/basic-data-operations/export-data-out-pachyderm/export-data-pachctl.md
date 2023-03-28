@@ -77,5 +77,5 @@ You can view the parent, grandparent, and any previous commit by using the caret
    pachctl get file datas@master^4:user_data.csv
    ```
 
-   If the file does not exist in that revision, Pachyderm displays an error message.
+   If the file does not exist in that revision, MLDM displays an error message.
    {{% /notice %}}

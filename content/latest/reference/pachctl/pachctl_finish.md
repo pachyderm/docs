@@ -1,10 +1,10 @@
 ## pachctl finish
 
-Finish a Pachyderm resource.
+Finish a MLDM resource.
 
 ### Synopsis
 
-Finish a Pachyderm resource.
+Finish a MLDM resource.
 
 ### Options
 

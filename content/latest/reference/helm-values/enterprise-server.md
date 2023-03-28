@@ -16,7 +16,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 {{% /notice %}}
 ## About
 
-[Enterprise Server](/{{% release %}}/enterprise/auth/enterprise-server) is a production management layer that centralizes  the licensing registration of multiple Pachyderm clusters for Enterprise use and the setup of user authorization/authentication via [OIDC](/{{% release %}}/reference/helm-values/oidc).
+[Enterprise Server](/{{% release %}}/enterprise/auth/enterprise-server) is a production management layer that centralizes  the licensing registration of multiple MLDM clusters for Enterprise use and the setup of user authorization/authentication via [OIDC](/{{% release %}}/reference/helm-values/oidc).
 
 ## Values 
 

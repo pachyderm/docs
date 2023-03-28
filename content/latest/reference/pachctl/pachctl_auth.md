@@ -1,10 +1,10 @@
 ## pachctl auth
 
-Auth commands manage access to data in a Pachyderm cluster
+Auth commands manage access to data in a MLDM cluster
 
 ### Synopsis
 
-Auth commands manage access to data in a Pachyderm cluster
+Auth commands manage access to data in a MLDM cluster
 
 ### Options
 

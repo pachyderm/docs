@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Import a Kubernetes Context
-description: Learn how to import and embed a Kubernetes Context into a Pachyderm context. 
+description: Learn how to import and embed a Kubernetes Context into a MLDM context. 
 date: 
 # taxonomy #
 tags: ["kubernetes"]
@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-After you have deployed Pachyderm with [Helm](../helm-install/), the Pachyderm context is not created. Therefore, **you need to manually create a new Pachyderm context with
+After you have deployed MLDM with [Helm](../helm-install/), the MLDM context is not created. Therefore, **you need to manually create a new MLDM context with
 the embedded current Kubernetes context and activate that context**.
 
 To import a Kubernetes context, complete the following steps:
@@ -34,7 +34,7 @@ To import a Kubernetes context, complete the following steps:
    ```
 
 
-1. Create a new Pachyderm context with the embedded Kubernetes context:
+1. Create a new MLDM context with the embedded Kubernetes context:
 
    ```s
    pachctl config import-kube <new-pachyderm-context-name> -k `kubectl config current-context`
@@ -59,7 +59,7 @@ To import a Kubernetes context, complete the following steps:
    }
    ```
 
-1. Activate the new Pachyderm context:
+1. Activate the new MLDM context:
 
    ```s
    pachctl config set active-context <new-pachyderm-context-name>

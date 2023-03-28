@@ -17,7 +17,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 
 ## About 
 
-The Test Connection section is used by Pachyderm to test the connection during installation. This config is used by organizations that do not have permission to pull Docker images directly from the Internet, and instead need to mirror locally. 
+The Test Connection section is used by MLDM to test the connection during installation. This config is used by organizations that do not have permission to pull Docker images directly from the Internet, and instead need to mirror locally. 
 
 ## Values
 

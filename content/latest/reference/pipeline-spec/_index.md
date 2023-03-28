@@ -15,7 +15,7 @@ To see how to use a pipeline spec to create a pipeline, refer to the [create pip
 
 ## Before You Start 
 - Pachyderm's pipeline specifications can be written in JSON or YAML.
-- Pachyderm uses its json parser if the first character is `{`.
+- MLDM uses its json parser if the first character is `{`.
 - A pipeline specification file can contain multiple pipeline declarations at once.
 
 ## Minimal Spec 

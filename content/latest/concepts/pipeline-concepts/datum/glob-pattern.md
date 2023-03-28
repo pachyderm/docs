@@ -11,7 +11,7 @@ seriesPart:
 
 Defining how your data is spread among workers is one of the most important aspects of distributed computation.
 
-Pachyderm uses **glob patterns** to provide flexibility to define data distribution. 
+MLDM uses **glob patterns** to provide flexibility to define data distribution. 
 
 {{% notice note %}}
 Pachyderm's concept of glob patterns is similar to Unix glob patterns. For example, the `ls *.md` command matches all files with the `.md` file extension.
@@ -29,10 +29,10 @@ We have listed some commonly used glob patterns. We will later illustrate their 
 
 | Glob Pattern     | Datum created|
 |-----------------|---------------------------------|
-| `/` | Pachyderm denotes the **whole repository as a single datum** and sends all input data to a single worker node to be processed together.|
-| `/*`| Pachyderm defines **each top-level files / directories** in the input repo, **as a separate datum**. For example, if you have a repository with ten files and no directory structure, Pachyderm identifies each file as a single datum and processes them independently.|
-| `/*/*`| Pachyderm processes **each file / directory in each subdirectories as a separate datum**.|
-| `/**` | Pachyderm processes **each file in all directories and subdirectories as a separate datum**.|
+| `/` | MLDM denotes the **whole repository as a single datum** and sends all input data to a single worker node to be processed together.|
+| `/*`| MLDM defines **each top-level files / directories** in the input repo, **as a separate datum**. For example, if you have a repository with ten files and no directory structure, MLDM identifies each file as a single datum and processes them independently.|
+| `/*/*`| MLDM processes **each file / directory in each subdirectories as a separate datum**.|
+| `/**` | MLDM processes **each file in all directories and subdirectories as a separate datum**.|
 
 Glob patterns also let you take only a particular
 subset of the files / directories, a specific branch...
@@ -69,9 +69,9 @@ Now let's consider what the following glob patterns would match respectively:
 
 |Glob Pattern| Corresponding match| Example|
 |-----------------|---------------------------------|----|
-| `/`| This pattern matches `/`, the root directory itself, meaning **all the data would be one large datum**. All changes in any of the files and directories trigger Pachyderm to process the whole repository contents as a single datum.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes all changed files and directories in the repo as a single datum.*|
-| `/*`| This pattern matches **everything under the root directory**. It defines **one datum per state**, which means that all the cities for a given state are processed together by a single worker, but each state is processed independently.|*If you add a new file `Sacramento.json` to the `California/` directory, Pachyderm processes the `California/` datum only*.|
-| `/Colorado/*`| This pattern matches **files only under the `/Colorado` directory**. It defines **one datum per city**.|*If you add a new file `Alamosa.json` to the `Colorado/` directory and `Sacramento.json` to the `California/` directory, Pachyderm processes the `Alamosa.json` datum only.*|
+| `/`| This pattern matches `/`, the root directory itself, meaning **all the data would be one large datum**. All changes in any of the files and directories trigger MLDM to process the whole repository contents as a single datum.|*If you add a new file `Sacramento.json` to the `California/` directory, MLDM processes all changed files and directories in the repo as a single datum.*|
+| `/*`| This pattern matches **everything under the root directory**. It defines **one datum per state**, which means that all the cities for a given state are processed together by a single worker, but each state is processed independently.|*If you add a new file `Sacramento.json` to the `California/` directory, MLDM processes the `California/` datum only*.|
+| `/Colorado/*`| This pattern matches **files only under the `/Colorado` directory**. It defines **one datum per city**.|*If you add a new file `Alamosa.json` to the `Colorado/` directory and `Sacramento.json` to the `California/` directory, MLDM processes the `Alamosa.json` datum only.*|
 | `/C*`|  This pattern matches all **files under the root directory that start with the character `C`.**| *In the example, the `California` and  `Colorado` directories will each define a datum.*|
 | `/*/*`|  This pattern matches **everything that's two levels deep relative to the root**.|*If we add County sub-directories to our states, `/California/LosAngeles/LosAngeles.json`, `/California/LosAngeles/Malibu.json` and `/California/SanDiego/LaMosa.json` for example, then this pattern would match each of those 3 .json files individually.*|
 | `/**`| The match is applied at **all levels of your directory structure**. This is a recursive glob pattern. Let's look at the additional example below for more detail.||
@@ -109,7 +109,7 @@ In this case, the resulting datums will be:
 ```
 
 {{% notice info %}}
-- To understand how Pachyderm scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
+- To understand how MLDM scales, read [Distributed Computing](https://docs.pachyderm.com/latest/concepts/advanced-concepts/distributed-computing/).
 - To learn about Datums' incremental processing, read our [Datum Processing](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/datum/relationship-between-datums/#datum-processing) section.
 {{%/notice %}}
 
@@ -119,7 +119,7 @@ You can use the `pachctl glob file` command to preview which filesystem
 objects a pipeline defines as datums. This command helps
 you to test various glob patterns before you use them in a pipeline.
 
-* If you set the `glob` property to `/`, Pachyderm detects all
+* If you set the `glob` property to `/`, MLDM detects all
 top-level filesystem objects in the `train` repository as one
 datum:
 
@@ -135,7 +135,7 @@ datum:
   /    dir  15.11KiB
   ```
 
-* If you set the `glob` property to `/*`, Pachyderm detects each top-level filesystem object in the `train` repository as a separate datum:
+* If you set the `glob` property to `/*`, MLDM detects each top-level filesystem object in the `train` repository as a separate datum:
 
   #### Example
     ```s
@@ -154,7 +154,7 @@ datum:
 ## Test your Datums
 
 The granularity of your datums defines how your data will be distributed across the available workers allocated to a job.
-Pachyderm allows you to check those datums:
+MLDM allows you to check those datums:
 
 - for a pipeline currently being developed  
 - for a past job 

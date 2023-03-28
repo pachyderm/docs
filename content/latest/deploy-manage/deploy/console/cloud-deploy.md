@@ -12,10 +12,10 @@ seriesPart:
 ## Before You Start 
 
 {{% notice tip %}}
-Taking Pachyderm for a test drive? Try our [Quick Cloud Installation](../../quickstart/) for non-production deployment testing.
+Taking MLDM for a test drive? Try our [Quick Cloud Installation](../../quickstart/) for non-production deployment testing.
 {{% /notice %}}
 
-- You must have Pachyderm installed following one of these guides:
+- You must have MLDM installed following one of these guides:
   - [AWS](../../aws-deploy-pachyderm/)
   - [GCP](../../google-cloud-platform/)
   - [Azure](../../azure/)

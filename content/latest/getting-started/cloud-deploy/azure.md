@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Azure + Pachyderm
-description: Learn how to deploy to Pachyderm to the cloud with Azure.
+description: Learn how to deploy to MLDM to the cloud with Azure.
 date: 
 # taxonomy #
 tags: ["azure", "cloud-deploy"]
@@ -11,7 +11,7 @@ weight:
 ---
 ## Before You Start 
 
-This guide assumes that you have already tried [Pachyderm locally](../../local-deploy/) and have all of the following installed:
+This guide assumes that you have already tried [MLDM locally](../../local-deploy/) and have all of the following installed:
 
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) 
 - Pachctl 
@@ -30,10 +30,10 @@ At a minimum, you will need to specify the parameters below:
 
 |Variable|Description|
 |--------|-----------|
-|RESOURCE_GROUP|A unique name for the resource group where Pachyderm is deployed. For example, `pach-resource-group`.|
+|RESOURCE_GROUP|A unique name for the resource group where MLDM is deployed. For example, `pach-resource-group`.|
 |LOCATION|An Azure availability zone where AKS is available. For example, `centralus`.|
-|NODE_SIZE|The size of the Kubernetes virtual machine (VM) instances. To avoid performance issues, Pachyderm recommends that you set this value to at least `Standard_DS4_v2` which gives you 8 CPUs, 28 Gib of Memory, 56 Gib SSD.<br> <br>In any case, use VMs that support **premium storage**. See [Azure VM sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes)  for details around which sizes support Premium storage.|
-|CLUSTER_NAME|A unique name for the Pachyderm cluster. For example, `pach-aks-cluster`.|
+|NODE_SIZE|The size of the Kubernetes virtual machine (VM) instances. To avoid performance issues, MLDM recommends that you set this value to at least `Standard_DS4_v2` which gives you 8 CPUs, 28 Gib of Memory, 56 Gib SSD.<br> <br>In any case, use VMs that support **premium storage**. See [Azure VM sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes)  for details around which sizes support Premium storage.|
+|CLUSTER_NAME|A unique name for the MLDM cluster. For example, `pach-aks-cluster`.|
 
 You can choose to follow the guided steps in [Azure Service Portal's Kubernetes Services](https://portal.azure.com/) or use Azure CLI.
 
@@ -104,9 +104,9 @@ Once your Kubernetes cluster is up, and your infrastructure configured, you are 
 ## 2. Create a Storage Container 
 
 
-Pachyderm needs an [Azure Storage Container](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-storage) (Object store) to store your data. 
+MLDM needs an [Azure Storage Container](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-storage) (Object store) to store your data. 
 
-To access your data, Pachyderm uses a [Storage Account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview) with permissioned access to your desired container. You can either use an existing account or create a new one in your default subscription, then use the JSON key associated with the account and pass it on to Pachyderm.
+To access your data, MLDM uses a [Storage Account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview) with permissioned access to your desired container. You can either use an existing account or create a new one in your default subscription, then use the JSON key associated with the account and pass it on to Pachyderm.
 
 
 
@@ -241,11 +241,11 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
 
 ## 4. Configure Helm
 
-Run the following to add the Pachyderm repo to Helm:
+Run the following to add the MLDM repo to Helm:
 ```s
 helm repo add pach https://helm.pachyderm.com
 helm repo update
-helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
+helm install pachd pach/MLDM -f my_pachyderm_values.yaml 
 ```
 ## 5. Verify Installation 
 
@@ -275,7 +275,7 @@ If the connection commands did not work together, run each separately.
 Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
-You can check your Pachyderm version and connection to `pachd` at any time with the following command:
+You can check your MLDM version and connection to `pachd` at any time with the following command:
    ```s
    pachctl version
    ```

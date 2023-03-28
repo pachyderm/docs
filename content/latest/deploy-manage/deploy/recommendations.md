@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Production Recommendations 
-description: Learn which pieces of networking infrastructure Pachyderm recommends setting up for production use. 
+description: Learn which pieces of networking infrastructure MLDM recommends setting up for production use. 
 date: 
 # taxonomy #
 tags: ["deployment"]
@@ -15,10 +15,10 @@ To deploy in production, we recommend setting up the following pieces of network
 
 Interested in deploying with an embedded proxy and expose one single external port?
 
-We are now shipping Pachyderm with an **optional embedded proxy** 
+We are now shipping MLDM with an **optional embedded proxy** 
 allowing your cluster to expose one single port externally. This deployment setup is optional.
 
-If you choose to deploy Pachyderm with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/). 
+If you choose to deploy MLDM with a Proxy, check out our new recommended architecture and [deployment instructions](../deploy-w-proxy/). 
 
 Deploying with a proxy presents a couple of advantages:
 

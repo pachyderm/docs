@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  AWS + Pachyderm
-description: Learn how to deploy to Pachyderm to the cloud with AWS.
+description: Learn how to deploy to MLDM to the cloud with AWS.
 date: 
 # taxonomy #
 tags: ["aws", "cloud-deploy"]
@@ -12,7 +12,7 @@ weight:
 
 ## Before You Start 
 
-This guide assumes that you have already tried [Pachyderm locally](../../local-deploy/) and have all of the following installed:
+This guide assumes that you have already tried [MLDM locally](../../local-deploy/) and have all of the following installed:
 
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) 
 - Pachctl 
@@ -129,11 +129,11 @@ aws s3 ls
 
 ## 5. Configure Helm
 
-Run the following to add the Pachyderm repo to Helm:
+Run the following to add the MLDM repo to Helm:
 ```s
 helm repo add pach https://helm.pachyderm.com
 helm repo update
-helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 
+helm install pachd pach/MLDM -f my_pachyderm_values.yaml 
 ```
 ## 6. Verify Installation 
 
@@ -163,7 +163,7 @@ If the connection commands did not work together, run each separately.
 Optionally open your browser and navigate to the [Console UI](http://localhost:4000).
 
 {{% notice tip %}}
-You can check your Pachyderm version and connection to `pachd` at any time with the following command:
+You can check your MLDM version and connection to `pachd` at any time with the following command:
    ```s
    pachctl version
    ```

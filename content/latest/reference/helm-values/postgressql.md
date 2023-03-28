@@ -16,7 +16,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 {{% /notice %}}
 ## About
 
-The PostgresQL section controls the Bitnami PostgreSQL subchart. Pachyderm runs on Kubernetes, is backed by an object store of your choice, and comes with a bundled version of PostgreSQL (metadata storage) by default.
+The PostgresQL section controls the Bitnami PostgreSQL subchart. MLDM runs on Kubernetes, is backed by an object store of your choice, and comes with a bundled version of PostgreSQL (metadata storage) by default.
 
 **We recommended disabling this bundled PostgreSQL** and using a managed database instance (such as RDS, CloudSQL, or PostgreSQL Server) for production environments. 
 
@@ -55,7 +55,7 @@ postgresql:
   enabled: true # if false, you must specify a PostgreSQL database server connection @ global.postgresql
   image:
     tag: "13.3.0"
-  # DEPRECATED from pachyderm 2.1.5
+  # DEPRECATED from MLDM 2.1.5
   initdbScripts:
     dex.sh: |
       #!/bin/bash

@@ -25,7 +25,7 @@ seriesPart:
 5. Click **Create**.
 6. Go to the application settings.
 7. Scroll down to **Application URIs**.
-8. In the **Allowed Callback URLs**, add the Pachyderm callback link in the
+8. In the **Allowed Callback URLs**, add the MLDM callback link in the
    following format:
  ```s
  # Dex's issuer URL + "/callback"
@@ -109,14 +109,14 @@ Note that Pachyderm's YAML format is **a simplified version** of Dex's [sample c
 |type|The type of connector. (oidc, saml).|
 |version| The version of your connector (integer - default to 0 when creating a new connector)|
 |issuer| The domain of your application (here in Auth0). For example, `https://dev-k34x5yjn.us.auth0.com/`. **Note the trailing slash**.|
-|client_id| The Pachyderm **Client ID** (here in Auth0). The client ID consists of alphanumeric characters and can be found on the application
+|client_id| The MLDM **Client ID** (here in Auth0). The client ID consists of alphanumeric characters and can be found on the application
 settings page.|
-|client_secret| The Pachyderm client secret (here in Auth0) located on the application settings page.
-|redirect_uri|This parameter should match what you have added to **Allowed Callback URLs** when registering Pachyderm on your IdP website.|
+|client_secret| The MLDM client secret (here in Auth0) located on the application settings page.
+|redirect_uri|This parameter should match what you have added to **Allowed Callback URLs** when registering MLDM on your IdP website.|
 
 3. Open your Helm `values.yml` file.
 4. Find the [oidc.upstreamIDPs](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml#L774) section.
-5. Input your connector info; Pachyderm stores this value in the platform secret `pachyderm-identity` in the key `upstream-idps`.
+5. Input your connector info; MLDM stores this value in the platform secret `pachyderm-identity` in the key `upstream-idps`.
 ```yaml
 stringData:
 upstream-idps: |

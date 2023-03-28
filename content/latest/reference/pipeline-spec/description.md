@@ -28,4 +28,4 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 ## When to Use
 
-It's recommended to always provide meaningful descriptions to your Pachyderm resources.
+It's recommended to always provide meaningful descriptions to your MLDM resources.

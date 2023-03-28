@@ -100,7 +100,7 @@ input:
 
 ## Considerations
 
-- When you create a pipeline, Pachyderm automatically creates an eponymous output
+- When you create a pipeline, MLDM automatically creates an eponymous output
 repository. However, if such a repo already exists, your pipeline will take
 over the master branch. The files that were stored in the repo before
 will still be in the `HEAD` of the branch.

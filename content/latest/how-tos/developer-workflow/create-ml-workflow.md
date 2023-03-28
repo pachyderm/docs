@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Create a Machine Learning Workflow
-description: Learn how to incorporate Pachyderm into your Machine Learning workflows.
+description: Learn how to incorporate MLDM into your Machine Learning workflows.
 date: 
 # taxonomy #
 tags: ["workflows"]
@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-Because Pachyderm is a language and framework agnostic and
+Because MLDM is a language and framework agnostic and
 platform, and because it easily distributes analysis over
 large data sets, data scientists can use any tooling for
 creating machine learning workflows. Even if that tooling
@@ -23,7 +23,7 @@ improvements to a model.
 For maximum leverage of Pachyderm's built functionality, Pachyderm
 recommends that you combine model training processes, persisted models,
 and model utilization processes, such as making inferences or
-generating results, into a single Pachyderm pipeline Directed Acyclic Graph
+generating results, into a single MLDM pipeline Directed Acyclic Graph
 (DAG).
 
 Such a pipeline enables you to achieve the following goals:
@@ -45,14 +45,14 @@ to automatically train a new persisted model. Also, you can use
 any language or framework, including Apache Spark™, Tensorflow™,
 scikit-learn™, or other, and output any format of persisted model,
 such as pickle, XML, POJO, or other. Regardless of the framework,
-Pachyderm versions the model so that you can track the data that
+MLDM versions the model so that you can track the data that
 was used to train each model.
 
-Pachyderm processes new data coming into the input repository with the
+MLDM processes new data coming into the input repository with the
 updated model. Also, you can recompute old predictions with the updated model,
 or test new models on previously input and versioned data. This feature
 enables you to avoid manual updates to historical results or swapping
 ML models in production.
 
-For examples of ML workflows in Pachyderm see
+For examples of ML workflows in MLDM see
 [Machine Learning Examples](https://github.com/pachyderm/examples).

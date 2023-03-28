@@ -1,10 +1,10 @@
 ## pachctl config delete
 
-Commands for deleting pachyderm config values
+Commands for deleting MLDM config values
 
 ### Synopsis
 
-Commands for deleting pachyderm config values
+Commands for deleting MLDM config values
 
 ### Options
 

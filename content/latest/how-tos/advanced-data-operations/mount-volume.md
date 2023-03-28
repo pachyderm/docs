@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Mount a Volume in a Pipeline
-description: Learn how to mount local or network-attached storage and use its data in Pachyderm pipelines
+description: Learn how to mount local or network-attached storage and use its data in MLDM pipelines
 date: 
 # taxonomy #
 tags: ["data-operations"]
@@ -169,6 +169,6 @@ example, it is `/data`.
       directory, you need to change those to `/data`.
 
 {{% notice info %}}
-Pachyderm has no notion of the files stored in the mounted directory before it is mounted to Pachyderm. Moreover, if you have mounted a network share to which you write files from other than Pachyderm sources, Pachyderm does not guarantee the provenance of those changes.
+MLDM has no notion of the files stored in the mounted directory before it is mounted to Pachyderm. Moreover, if you have mounted a network share to which you write files from other than MLDM sources, MLDM does not guarantee the provenance of those changes.
 {{% /notice %}}
 

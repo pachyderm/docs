@@ -10,14 +10,14 @@ series:
 seriesPart:
 --- 
 
-**Data versioning** ([History](../history/)) enables Pachyderm users to go back in time and see the state of a dataset or repository at a particular moment. 
+**Data versioning** ([History](../history/)) enables MLDM users to go back in time and see the state of a dataset or repository at a particular moment. 
 
 **Data provenance** (from the French noun *provenance* which means *the place of origin*),
 also known as **data lineage**, tracks the dependencies and relationships
 between datasets. It answers the question
 *"Where does the data come from?"*, but also *"How was the data transformed along the way?"*. 
 
-Pachyderm enables its users
+MLDM enables its users
 to have both: track all revisions of their data **and**
 understand the connection between the data stored in one repository
 and the results in the other repository.
@@ -47,7 +47,7 @@ A simple `pachctl list commit ID1` (`pachctl list job ID1`) will return that lis
 
 ## Tracking Direct Provenance in Pachyderm
 
-Pachyderm provides the `pachctl inspect` command that enables you to track
+MLDM provides the `pachctl inspect` command that enables you to track
 the direct provenance of your commits and learn where the data in the repository
 originates in.
 

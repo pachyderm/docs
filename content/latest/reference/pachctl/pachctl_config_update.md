@@ -1,10 +1,10 @@
 ## pachctl config update
 
-Commands for updating pachyderm config values
+Commands for updating MLDM config values
 
 ### Synopsis
 
-Commands for updating pachyderm config values
+Commands for updating MLDM config values
 
 ### Options
 

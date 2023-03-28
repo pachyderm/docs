@@ -12,7 +12,7 @@ weight: 2
 
 ## Before You Start 
 
-- Pachyderm ships with an initial project named `default` that is automatically set to your active context.
+- MLDM ships with an initial project named `default` that is automatically set to your active context.
 
 ## How to Set a Project to Your Current Context
 

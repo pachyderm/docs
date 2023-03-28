@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Log In via IdP
-description: Learn how to log in to a Pachyderm cluster as an IdP user. 
+description: Learn how to log in to a MLDM cluster as an IdP user. 
 date: 
 # taxonomy #
 tags: ["workflows", "permissions", "management"]

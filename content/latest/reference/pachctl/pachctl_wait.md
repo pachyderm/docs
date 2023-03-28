@@ -1,10 +1,10 @@
 ## pachctl wait
 
-Wait for the side-effects of a Pachyderm resource to propagate.
+Wait for the side-effects of a MLDM resource to propagate.
 
 ### Synopsis
 
-Wait for the side-effects of a Pachyderm resource to propagate.
+Wait for the side-effects of a MLDM resource to propagate.
 
 ### Options
 

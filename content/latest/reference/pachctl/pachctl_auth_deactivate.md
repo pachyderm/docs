@@ -1,6 +1,6 @@
 ## pachctl auth deactivate
 
-Delete all ACLs, tokens, admins, IDP integrations and OIDC clients, and deactivate Pachyderm auth
+Delete all ACLs, tokens, admins, IDP integrations and OIDC clients, and deactivate MLDM auth
 
 ### Synopsis
 

@@ -10,7 +10,7 @@ series:
 seriesPart:
 --- 
 
-Pachyderm implements rich version-control and history semantics. This section
+MLDM implements rich version-control and history semantics. This section
 describes the core concepts and architecture of Pachyderm's version control
 and the various ways to use the system to access historical data.
 
@@ -48,10 +48,10 @@ The following abstractions store the history of your data:
     `master^^^`.
 
     Git supports two characters for ancestor references —`^` and `~`— with
-    slightly different meanings. Pachyderm supports both characters as well,
+    slightly different meanings. MLDM supports both characters as well,
     but their meaning is identical.
 
-  - Also, Pachyderm supports a type of ancestor reference that Git does not:
+  - Also, MLDM supports a type of ancestor reference that Git does not:
     the **forward reference**, using the special character `.`. It
     resolves to commits on the beginning of commit chains. For example,
     `master.1` is the first (oldest) commit on the `master` branch, `master.2`

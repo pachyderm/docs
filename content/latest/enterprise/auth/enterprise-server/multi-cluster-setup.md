@@ -13,7 +13,7 @@ This guide deploys Enterprise Server as a standalone cluster within a multi-clus
 
 ## Before You Start 
 
-There are a few minor differences to note when deploying an Enterprise Server when compared to a standard Pachyderm cluster:
+There are a few minor differences to note when deploying an Enterprise Server when compared to a standard MLDM cluster:
 
 - No deployment target is necessary in your Helm chart since there is no object store
 - The Enterprise Server cluster contains the `dex` database
@@ -30,7 +30,7 @@ kubectl config set-context --current --namespace=enterprise-server
 2. Create a Helm chart `enterprise-server-values.yml` file for your enterprise server (see [Helm Chart Reference Guide](../../../../reference/helm-values)). 
 3. Deploy the Enterprise Server cluster:
 ```s
-helm install enterprise-server pachyderm/pachyderm --f enterprise-server-values.yml
+helm install enterprise-server pachyderm/MLDM --f enterprise-server-values.yml
 ```
 4. Verify deployment:
 ```s
@@ -38,5 +38,5 @@ kubectl get all --namespace enterprise-server
 ```
 
 ## Reference  Diagram 
-The following diagram gives you a quick overview of an organization with multiple Pachyderm clusters behind a single Enterprise Server.
+The following diagram gives you a quick overview of an organization with multiple MLDM clusters behind a single Enterprise Server.
 ![Enterprise Server General Deployment](/images/enterprise-server.png)

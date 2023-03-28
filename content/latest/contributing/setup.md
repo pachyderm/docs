@@ -26,7 +26,7 @@ First, go through the general [Local Installation Instructions](https://docs.pac
 To stay up to date, we recommend doing the following.
 
 First clone the code:
-(Note, as of 07/11/19 pachyderm is using go modules and recommends cloning the code outside of the $GOPATH, we use the location ~/workspace as an example, but the code can live anywhere)
+(Note, as of 07/11/19 MLDM is using go modules and recommends cloning the code outside of the $GOPATH, we use the location ~/workspace as an example, but the code can live anywhere)
 ```s
     cd ~/workspace
     git clone git@github.com:pachyderm/pachyderm
@@ -145,4 +145,4 @@ don't yet have a complete intuition on the various ways a cluster may get in
 an unexpected state. It's been tested on docker for mac and minikube, but
 likely works in other kubernetes environments as well.
 
-To run it, simply call `./etc/reset.py` from the pachyderm repo root.
+To run it, simply call `./etc/reset.py` from the MLDM repo root.

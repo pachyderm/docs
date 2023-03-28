@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  2.5.x
-description: Pachyderm Version 2.5.x 
+description: MLDM Version 2.5.x 
 date: 
 # taxonomy #
 tags:

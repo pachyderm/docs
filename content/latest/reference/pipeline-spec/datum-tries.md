@@ -23,9 +23,9 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 ## Behavior 
 
-The `datum_tries` attribute in a Pachyderm pipeline specifies the maximum number of times a datum can be retried if it fails to process. When a datum fails to process, either because of an error in the processing logic or because it exceeds the [`datum_timeout`](/{{% release %}}/reference/pipeline-spec/datum-timeout) value, Pachyderm will automatically retry the datum, up to the number of times specified in `datum_tries`.
+The `datum_tries` attribute in a MLDM pipeline specifies the maximum number of times a datum can be retried if it fails to process. When a datum fails to process, either because of an error in the processing logic or because it exceeds the [`datum_timeout`](/{{% release %}}/reference/pipeline-spec/datum-timeout) value, MLDM will automatically retry the datum, up to the number of times specified in `datum_tries`.
 
-Each retry of a datum is treated as a new attempt, and the datum is added back to the job queue for processing. The retry process is transparent to the user and happens automatically within the Pachyderm system.
+Each retry of a datum is treated as a new attempt, and the datum is added back to the job queue for processing. The retry process is transparent to the user and happens automatically within the MLDM system.
 
 Other considerations:
 

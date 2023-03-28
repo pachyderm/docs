@@ -1,10 +1,10 @@
 ## pachctl copy
 
-Copy a Pachyderm resource.
+Copy a MLDM resource.
 
 ### Synopsis
 
-Copy a Pachyderm resource.
+Copy a MLDM resource.
 
 ### Options
 

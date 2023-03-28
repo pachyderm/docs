@@ -62,7 +62,7 @@ kubectl logs po/pachd-1333950811-0sm1p
 If you're using a log aggregator service (e.g. the default in GKE), you won't see any logs when using `kubectl logs ...` in this way.  You will need to look at your logs UI (e.g. in GKE's case the stackdriver console).
 {{% /notice %}}
 
-These logs will most likely reveal the issue directly, or at the very least, a good indicator as to what's causing the problem. For example, you might see, `BucketRegionError: incorrect region, the bucket is not in 'us-west-2' region`. In that case, your object store bucket in a different region than your pachyderm cluster and the fix would be to recreate the bucket in the same region as your pachydermm cluster.
+These logs will most likely reveal the issue directly, or at the very least, a good indicator as to what's causing the problem. For example, you might see, `BucketRegionError: incorrect region, the bucket is not in 'us-west-2' region`. In that case, your object store bucket in a different region than your MLDM cluster and the fix would be to recreate the bucket in the same region as your pachydermm cluster.
 
 If the error / recourse isn't obvious from the error message, post the error as well as the `pachd` logs in our [Slack channel](https://www.pachyderm.com/slack/), or open a [GitHub Issue](https://github.com/pachyderm/pachyderm/issues/new) and provide the necessary details prompted by the issue template. Please do be sure provide these logs either way as it is extremely helpful in resolving the issue.
 
@@ -82,7 +82,7 @@ This would indicate that the [persistent volume claim](https://kubernetes.io/doc
 
 Your best bet is to manually detach the volume and restart the pod.  
 
-For example, to resolve this issue when Pachyderm is deployed to AWS, pull up your AWS web console and look up the node mentioned in the error message (ip-172-20-44-17.us-west-2.compute.internal in our case). Then on the bottom pane for the attached volume. Follow the link to the attached volume, and detach the volume. You may need to "Force Detach" it.
+For example, to resolve this issue when MLDM is deployed to AWS, pull up your AWS web console and look up the node mentioned in the error message (ip-172-20-44-17.us-west-2.compute.internal in our case). Then on the bottom pane for the attached volume. Follow the link to the attached volume, and detach the volume. You may need to "Force Detach" it.
 
 Once it's detached (and marked as available). Restart the pod by killing it, e.g:
 

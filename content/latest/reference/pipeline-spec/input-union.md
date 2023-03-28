@@ -74,7 +74,7 @@ sub-inputs. In the example above, you would see files under
 `/pfs/inputA/...` or `/pfs/inputB/...`, but never both at the same time.
 When you write code to address this behavior, make sure that
 your code first determines which input directory is present. Starting
-with Pachyderm 1.5.3, we recommend that you give your inputs the
+with MLDM 1.5.3, we recommend that you give your inputs the
 same `Name`. That way your code only needs to handle data being present
 in that directory. This only works if your code does not need to be
 aware of which of the underlying inputs the data comes from.

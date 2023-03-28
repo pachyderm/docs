@@ -14,7 +14,7 @@ directory: true
 
 ### Symptom
 
-You may be using the pachd address config value or environment variable to specify how `pachctl` talks to your Pachyderm cluster, or you may be forwarding the pachyderm port.  In any event, you might see something similar to:
+You may be using the pachd address config value or environment variable to specify how `pachctl` talks to your MLDM cluster, or you may be forwarding the MLDM port.  In any event, you might see something similar to:
 
 ```s
 pachctl version
@@ -78,12 +78,12 @@ If you do not explicitly set the pachd address config value, `pachctl` will defa
 
 ### Symptom
 
-A Pachyderm repo was accidentally named starting with a dash (`-`) and the repository
+A MLDM repo was accidentally named starting with a dash (`-`) and the repository
 is treated as a command flag instead of a repository.
 
 ### Recourse
 
-Pachyderm supports standard `bash` utilities that you can
+MLDM supports standard `bash` utilities that you can
 use to resolve this and similar problems. For example, in this case,
 you can specify double dashes (`--`) to delete the repository. Double dashes
 signify the end of options and tell the shell to process the

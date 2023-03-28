@@ -1,10 +1,10 @@
 ## pachctl inspect
 
-Show detailed information about a Pachyderm resource.
+Show detailed information about a MLDM resource.
 
 ### Synopsis
 
-Show detailed information about a Pachyderm resource.
+Show detailed information about a MLDM resource.
 
 ### Options
 

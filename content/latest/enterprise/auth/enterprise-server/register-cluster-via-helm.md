@@ -12,7 +12,7 @@ seriesPart:
 ## Before You Start 
 
 - You must have an [Enterprise license key](../../../)
-- You must have the Pachyderm Helm repo downloaded.
+- You must have the MLDM Helm repo downloaded.
 
 
 ## How to Register a Cluster 
@@ -31,5 +31,5 @@ enterpriseServerTokenSecretName: "<Name of you secret containing enterpriseServe
 ```
 3. Upgrade the cluster:
 ```s
-helm upgrade pachyderm pachyderm/pachyderm -f values.yml
+helm upgrade MLDM pachyderm/MLDM -f values.yml
 ```

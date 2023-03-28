@@ -1,10 +1,10 @@
 ## pachctl draw
 
-Draw an ASCII representation of an existing Pachyderm resource.
+Draw an ASCII representation of an existing MLDM resource.
 
 ### Synopsis
 
-Draw an ASCII representation of an existing Pachyderm resource.
+Draw an ASCII representation of an existing MLDM resource.
 
 ### Options
 

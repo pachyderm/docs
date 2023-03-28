@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Use GPUs
-description: Learn how to access GPUs on a Kubernetes cluster for Pachyderm data transformations. 
+description: Learn how to access GPUs on a Kubernetes cluster for MLDM data transformations. 
 date: 
 # taxonomy #
 tags: ["management", "deployment"]
@@ -10,19 +10,19 @@ seriesPart:
 --- 
 
 
-- To install Pachyderm on an **NVIDIA DGX A100** box, skip to [Pachyderm on NVIDIA DGX A100](#pachyderm-on-nvidia-dgx-a100).
+- To install MLDM on an **NVIDIA DGX A100** box, skip to [MLDM on NVIDIA DGX A100](#pachyderm-on-nvidia-dgx-a100).
 - If you already have a GPU enabled Kubernetes cluster,
 skip to [Configure GPUs in Pipelines](#configure-gpus-in-pipelines).
 - Otherwise, read the following section.
 ## Set up a GPU enabled Kubernetes Cluster
 
-Pachyderm leverages [Kubernetes Device Plugins](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) to let Kubernetes Pods access specialized hardware such as GPUs.
+MLDM leverages [Kubernetes Device Plugins](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) to let Kubernetes Pods access specialized hardware such as GPUs.
 For instructions on how to set up a GPU-enabled Kubernetes cluster
 through device plugins, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/).
 
-## Pachyderm on NVIDIA DGX A100
+## MLDM on NVIDIA DGX A100
 
-Let’s walk through the main steps allowing Pachyderm to leverage the AI performance of your [DGX A100](https://www.nvidia.com/en-in/data-center/dgx-a100/) GPUs.
+Let’s walk through the main steps allowing MLDM to leverage the AI performance of your [DGX A100](https://www.nvidia.com/en-in/data-center/dgx-a100/) GPUs.
 
 {{% notice info %}}
 Read about NVIDIA DGX A100's full [userguide](https://docs.nvidia.com/dgx/pdf/dgxa100-user-guide.pdf).
@@ -92,7 +92,7 @@ Now that the DGX is added to your API server, you can then proceed to:
     kubectl get pods gpu-test
     ```
 
-1. If the container above is scheduled successfully: install Pachyderm. You are ready to [start leveraging NVIDIA's GPUs in your Pachyderm pipelines](#configure-gpus-in-pipelines).
+1. If the container above is scheduled successfully: install Pachyderm. You are ready to [start leveraging NVIDIA's GPUs in your MLDM pipelines](#configure-gpus-in-pipelines).
 
 {{% notice tip %}}
 Note that you have the option to use GPUs for compute-intensive workloads on:
@@ -109,7 +109,7 @@ you can request a GPU tier in your pipeline specifications
 by [setting up GPU resource limits](../../../reference/pipeline-spec/#resource-requests-optional), along with its type and number of GPUs. 
 
 {{% notice tip %}}
-By default, Pachyderm workers are spun up and wait for new input. That works great for pipelines that are processing a lot of new incoming commits. However, for lower volume of input commits, you could have your pipeline workers 'taking' the GPU resource as far as k8s is concerned, but 'idling' as far as you are concerned. 
+By default, MLDM workers are spun up and wait for new input. That works great for pipelines that are processing a lot of new incoming commits. However, for lower volume of input commits, you could have your pipeline workers 'taking' the GPU resource as far as k8s is concerned, but 'idling' as far as you are concerned. 
 
  - Make sure to set the `autoscaling` field to `true` so that if your pipeline is not getting used, the worker pods get spun down and the GPU resource freed.
  - Additionally, specify how much of GPU your pipeline worker will need via the `resource_requests` fields in your [pipeline specification](../../../reference/pipeline-spec/#resource-requests-optional) with `resource_requests` <= `resource_limits`.

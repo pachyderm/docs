@@ -10,7 +10,7 @@ seriesPart:
 directory: true 
 ---
 
-This document outlines the fields in pachyderm configs. This should act as a
+This document outlines the fields in MLDM configs. This should act as a
 reference. If you wish to change a config value, you should do so via
 `pachctl config`.
 
@@ -81,7 +81,7 @@ context, as specified in `v2.contexts`.
 
 ### Contexts
 
-A map of context names to their configurations. Pachyderm contexts are akin to
+A map of context names to their configurations. MLDM contexts are akin to
 kubernetes contexts (and in fact reference the kubernetes context that they're
 associated with.)
 
@@ -131,7 +131,7 @@ context.
 
 #### Cluster Deployment ID
 
-The pachyderm cluster deployment ID that is used to ensure the operations run on the
+The MLDM cluster deployment ID that is used to ensure the operations run on the
 expected cluster.
 
 #### Enterprise Server

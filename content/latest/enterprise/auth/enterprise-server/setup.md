@@ -12,18 +12,18 @@ seriesPart:
 
 
 {{% notice note %}}
-For POCs and smaller organizations with one single Pachyderm cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single Pachyderm cluster can run the Enterprise Server services embedded within pachd.
+For POCs and smaller organizations with one single MLDM cluster, the **Enterprise Server services can be run embedded in pachd**. A separate deployment is not necessary. An organization with a single MLDM cluster can run the Enterprise Server services embedded within pachd.
 {{% /notice %}}
 
 The setup of an Enterprise Server requires to:
 
 1. Deploy it.
 2. Activate your Enterprise Key and enable Auth.
-3. Register your newly created or existing Pachyderm clusters with your enterprise server.
+3. Register your newly created or existing MLDM clusters with your enterprise server.
 4. Optional: Enable Auth on each cluster.
 
 {{% notice warning %}}
-We are now shipping Pachyderm with an **embedded proxy** 
+We are now shipping MLDM with an **embedded proxy** 
 allowing your nterprise server to expose one single port externally. This deployment setup is optional.
 
 If you choose to deploy your enterprise server with a Proxy, check out our new recommended architecture and [deployment instructions](../../../../deploy-manage/deploy/deploy-w-proxy/) as they alter the instructions below.
@@ -33,13 +33,13 @@ If you choose to deploy your enterprise server with a Proxy, check out our new r
 Deploying and configuring an enterprise server can be done in one of two flavors:
 
 1. Provide all licensing and authentication configurations as a part of the Helm deployment.
-1. Or, [install a bare-bones version of Pachyderm with Helm](../../../../deploy-manage/deploy/helm-install/), then use `pachctl` commands to set up licensing and authentication.
+1. Or, [install a bare-bones version of MLDM with Helm](../../../../deploy-manage/deploy/helm-install/), then use `pachctl` commands to set up licensing and authentication.
 
-### As Part Of A Regular Pachyderm Helm Deployment
+### As Part Of A Regular MLDM Helm Deployment
 Update your values.yaml with your enterprise license key and auth configurations ([for an example on localhost, see the example values.yaml here](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/examples/local-dev-values.yaml)) or check our minimal example below to your values.yaml.
 
 {{% notice warning %}} 
-   - If a pachyderm cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
+   - If a MLDM cluster will also be installed in the same kubernetes cluster, they should be installed in **different namespaces**:
 
    ```s
    kubectl create namespace enterprise
@@ -168,7 +168,7 @@ This results in a single pachd pod, with authentication enabled, and an IDP inte
 {{% notice note %}}
 Update the following values as follows:
 
-`PACHD-IP`: The address of Pachyderm's IP. Retrieve Pachyderm external IP address if necessary.
+`PACHD-IP`: The address of Pachyderm's IP. Retrieve MLDM external IP address if necessary.
  `ISSUER`, `CLIENT-ID`, `CLIENT-SECRET`: Refer to our [Identity Provider Configuration page](../../authentication/idp-dex#create-a-connector-configuration-file).
 {{% /notice %}}
 
@@ -185,7 +185,7 @@ However, **this secret is only used when configuring through helm**:
 - **Set the helm value `pachd.activateAuth` to false to prevent the automatic bootstrap of auth on the cluster**.
 {{% /notice %}}
 
-### On An Existing Pachyderm Cluster
+### On An Existing MLDM Cluster
 
 To enable the Enterprise Server on an existing cluster:
 
@@ -213,7 +213,7 @@ deploy your cluster(s) [`helm install...`](../../../../deploy-manage/deploy/helm
 You might want to expose your cluster(s) to the internet. Check the setup of a Load Balancer in our [deployment section](../../../../deploy-manage/deploy/ingress#loadbalancer).
 
 ## 3. Register Your Cluster With The Enterprise Server
-Similarly to the enterprise server, we can configure our pachyderm clusters to leverage Helm for licensing and authentication in one of two flavors:
+Similarly to the enterprise server, we can configure our MLDM clusters to leverage Helm for licensing and authentication in one of two flavors:
 
 1. Provide enterprise registration information as a part of the Helm deployment of a cluster.
 1. Register a cluster with the Enterprise Server using pachctl commands.

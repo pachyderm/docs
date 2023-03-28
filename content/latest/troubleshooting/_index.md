@@ -15,8 +15,8 @@ weight: 7
 This section describe troubleshooting guidelines that should
 help you in troubleshooting your deployment and pipelines.
 
-Pachyderm has a built-in logging system that collects
-information about events in your Pachyderm environment at
+MLDM has a built-in logging system that collects
+information about events in your MLDM environment at
 pipeline, datum, and job level. See [pachctl logs](../reference/pachctl/pachctl_logs).
 
 To troubleshoot the cluster itself, use the `kubectl` tool

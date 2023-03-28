@@ -1,10 +1,10 @@
 ## pachctl inspect cluster
 
-Returns info about the pachyderm cluster
+Returns info about the MLDM cluster
 
 ### Synopsis
 
-Returns info about the pachyderm cluster
+Returns info about the MLDM cluster
 
 ```
 pachctl inspect cluster [flags]

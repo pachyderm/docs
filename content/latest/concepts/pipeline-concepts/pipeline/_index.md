@@ -11,8 +11,8 @@ layout:
 --- 
 
 
-A pipeline is a Pachyderm primitive that is responsible for reading data
-from a specified source, such as a Pachyderm repo, transforming it
+A pipeline is a MLDM primitive that is responsible for reading data
+from a specified source, such as a MLDM repo, transforming it
 according to the pipeline configuration, and writing the result
 to an output repo.
 
@@ -42,12 +42,12 @@ A minimum pipeline specification must include the following parameters:
   No other special characters allowed.
 
 - `input` — A location of the data that you want to process, such as a
-  Pachyderm repository. You can specify multiple input
+  MLDM repository. You can specify multiple input
   repositories and set up the data to be combined in various ways.
   For more information, see [Cross and Union](../datum/cross-union), 
   [Join](../datum/join), [Group](../datum/group).
   One very important property that is defined in the `input` field
-  is the `glob` pattern that specifies how Pachyderm breaks the data into
+  is the `glob` pattern that specifies how MLDM breaks the data into
   individual processing units, called Datums. For more information, see
   [Datum](../datum/).
 

@@ -24,7 +24,7 @@ Cron pipelines are great for tasks like:
 
 ### Behavior 
 
-When you create a Cron pipeline, Pachyderm creates a new input data repository that corresponds to the `cron` input Then, Pachyderm automatically commits a timestamp file to the `cron` input repository at your determined interval, which triggers the pipeline.  
+When you create a Cron pipeline, MLDM creates a new input data repository that corresponds to the `cron` input Then, MLDM automatically commits a timestamp file to the `cron` input repository at your determined interval, which triggers the pipeline.  
 
 By default, each cron trigger adds a new tick file to the cron input repository, accumulating more datums over time. 
 Optionally, you can set the overwrite flag to `true` to overwrite the timestamp file on each tick. To learn more about overwriting commits in Pachyderm, see [Datum processing](../../datum).

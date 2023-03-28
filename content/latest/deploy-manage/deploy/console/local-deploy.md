@@ -12,10 +12,10 @@ seriesPart:
 ## Before You Start 
 
 {{% notice info %}}
-A local installation helps you learn some of the Pachyderm basics and experiment with the product. It is not designed to be a production environment.
+A local installation helps you learn some of the MLDM basics and experiment with the product. It is not designed to be a production environment.
 {{%/notice %}}
 
-- You must have Pachyderm installed locally (`pachd` and `pachctl`)
+- You must have MLDM installed locally (`pachd` and `pachctl`)
 - You must have a local Kubernetes cluster running.
 
 ## Deploy

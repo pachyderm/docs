@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-You can list the contents of a given Pachyderm repository using the following commands.
+You can list the contents of a given MLDM repository using the following commands.
 
 {{<stack type="wizard" >}}
 

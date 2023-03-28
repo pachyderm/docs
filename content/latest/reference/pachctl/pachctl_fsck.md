@@ -4,7 +4,7 @@ Run a file system consistency check on pfs.
 
 ### Synopsis
 
-Run a file system consistency check on the pachyderm file system, ensuring the correct provenance relationships are satisfied.
+Run a file system consistency check on the MLDM file system, ensuring the correct provenance relationships are satisfied.
 
 ```
 pachctl fsck [flags]

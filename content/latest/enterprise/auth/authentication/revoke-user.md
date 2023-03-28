@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: Revoke User Access
-description: Learn how to revoke user access to a Pachyderm cluster.
+description: Learn how to revoke user access to a MLDM cluster.
 date: 
 # taxonomy #
 tags: ["workflows", "permissions", "management"]

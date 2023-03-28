@@ -39,7 +39,7 @@ pachd:
     enabled: true # runs kube validation preflight checks.
   affinity: {}
   annotations: {}
-  clusterDeploymentID: "" # sets Pachyderm cluster ID.
+  clusterDeploymentID: "" # sets MLDM cluster ID.
   configJob:
     annotations: {}
   goMaxProcs: 0 # passed as GOMAXPROCS to the pachd container.
@@ -220,7 +220,7 @@ pachd:
     enabled: true
   affinity: {}
   annotations: {}
-  # clusterDeploymentID sets the Pachyderm cluster ID.
+  # clusterDeploymentID sets the MLDM cluster ID.
   clusterDeploymentID: ""
   configJob:
     annotations: {}
@@ -313,7 +313,7 @@ pachd:
   enterpriseRootToken: ""
  
   # enterpriseServerToken represents a token that can authenticate to a separate Enterprise server,
-  # and is used to complete the enterprise member registration process for this pachyderm cluster.
+  # and is used to complete the enterprise member registration process for this MLDM cluster.
   # The user backing this token should have either the licenseAdmin & identityAdmin roles assigned, or
   # the clusterAdmin role.
   # NOTE: only used if pachd.activateEnterpriseMember == true
@@ -326,7 +326,7 @@ pachd:
   enterpriseCallbackAddress: ""
   # Indicates to pachd whether dex is embedded in its process.
   localhostIssuer: "" # "true", "false", or "" (used string as bool doesn't support empty value)
-  # set the initial pachyderm cluster role bindings, mapping a user to their list of roles
+  # set the initial MLDM cluster role bindings, mapping a user to their list of roles
   # ex.
   # pachAuthClusterRoleBindings:
   #   robot:wallie:

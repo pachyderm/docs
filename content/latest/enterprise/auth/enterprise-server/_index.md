@@ -9,4 +9,4 @@ series:
 seriesPart:
 ---
 
-You can manage your enterprise licensing and identity provider (IdP) integrations through the Enterprise Server. A Enterprise Server can have multiple Pachyderm clustered registered to it.
+You can manage your enterprise licensing and identity provider (IdP) integrations through the Enterprise Server. A Enterprise Server can have multiple MLDM clustered registered to it.

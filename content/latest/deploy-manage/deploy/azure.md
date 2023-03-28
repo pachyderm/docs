@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Azure
-description: Learn how to deploy a Pachyderm cluster on Microsoft Azure. 
+description: Learn how to deploy a MLDM cluster on Microsoft Azure. 
 date: 
 # taxonomy #
 tags: ["azure",]
@@ -9,11 +9,11 @@ series:
 seriesPart:
 --- 
 
-The following article walks you through deploying a Pachyderm cluster on Microsoft® Azure® Kubernetes Service environment (AKS). 
+The following article walks you through deploying a MLDM cluster on Microsoft® Azure® Kubernetes Service environment (AKS). 
 
 ## Before You Start
 
-Before you can deploy Pachyderm on an AKS cluster, verify that you have the following prerequisites installed and configured:
+Before you can deploy MLDM on an AKS cluster, verify that you have the following prerequisites installed and configured:
 
 * [Azure CLI 2.0.1 or later](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [jq](https://stedolan.github.io/jq/download/)
@@ -30,10 +30,10 @@ At a minimum, you will need to specify the parameters below:
 
 |Variable|Description|
 |--------|-----------|
-|RESOURCE_GROUP|A unique name for the resource group where Pachyderm is deployed. For example, `pach-resource-group`.|
+|RESOURCE_GROUP|A unique name for the resource group where MLDM is deployed. For example, `pach-resource-group`.|
 |LOCATION|An Azure availability zone where AKS is available. For example, `centralus`.|
-|NODE_SIZE|The size of the Kubernetes virtual machine (VM) instances. To avoid performance issues, Pachyderm recommends that you set this value to at least `Standard_DS4_v2` which gives you 8 CPUs, 28 Gib of Memory, 56 Gib SSD.<br> <br>In any case, use VMs that support **premium storage**. See [Azure VM sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes)  for details around which sizes support Premium storage.|
-|CLUSTER_NAME|A unique name for the Pachyderm cluster. For example, `pach-aks-cluster`.|
+|NODE_SIZE|The size of the Kubernetes virtual machine (VM) instances. To avoid performance issues, MLDM recommends that you set this value to at least `Standard_DS4_v2` which gives you 8 CPUs, 28 Gib of Memory, 56 Gib SSD.<br> <br>In any case, use VMs that support **premium storage**. See [Azure VM sizes](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes)  for details around which sizes support Premium storage.|
+|CLUSTER_NAME|A unique name for the MLDM cluster. For example, `pach-aks-cluster`.|
 
 You can choose to follow the guided steps in [Azure Service Portal's Kubernetes Services](https://portal.azure.com/) or use Azure CLI.
 
@@ -171,7 +171,7 @@ section in the [Azure Portal](https://portal.azure.com/) or by running the follo
 
 etcd and PostgreSQL (metadata storage) each claim the creation of a pv. 
 
-If you plan to deploy Pachyderm with its default bundled PostgreSQL instance, read the warning below and jump to the [deployment section](#5-deploy-pachyderm):
+If you plan to deploy MLDM with its default bundled PostgreSQL instance, read the warning below and jump to the [deployment section](#5-deploy-pachyderm):
 
 {{% notice warning %}}
 The metadata service (Persistent disk) generally requires a small persistent volume size (i.e. 10GB) but **high IOPS (1500)**, therefore, depending on your disk choice, you may need to oversize the volume significantly to ensure enough IOPS.
@@ -181,7 +181,7 @@ If you plan to deploy a managed PostgreSQL instance (Recommended in production),
 
 ## 4. Create an Azure Managed PostgreSQL Server Database
 
-By default, Pachyderm runs with a bundled version of PostgreSQL. 
+By default, MLDM runs with a bundled version of PostgreSQL. 
 For production environments, we strongly recommend that you disable the bundled version and use a PostgreSQL Server instance.
 
 ### Create A PostgreSQL Server Instance
@@ -192,7 +192,7 @@ In the Azure console, choose the **Azure Database for PostgreSQL servers** servi
 |:----------------|:--------------------------------------------------------|
 | *subscription*  and *resource group*| Pick your existing [resource group](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).<br><br> **Important** Your Cluster and your Database must be deployed in the **same resource group**.|
 |*server name*|Name your instance.|
-|*location*|Create a database **in the region matching your Pachyderm cluster**.|
+|*location*|Create a database **in the region matching your MLDM cluster**.|
 |*compute + storage*|The standard instance size (GP_Gen5_4 = Gen5 VMs with 4 cores) should work. Remember that Pachyderm's metadata services require **high IOPS (1500)**. Oversize the disk accordingly |
 | *Master username* | Choose your Admin username. ("postgres")|
 | *Master password* | Choose your Admin password.|
@@ -253,7 +253,7 @@ If you plan to deploy a standalone cluster (i.e., if you do not plan to register
 Read more about [dex on PostgreSQL in Dex's documentation](https://dexidp.io/docs/storage/#postgres).
 {{% /notice %}}
 
-Pachyderm will use the same user to connect to `pachyderm` as well as to `dex`. 
+MLDM will use the same user to connect to `pachyderm` as well as to `dex`. 
 
 ### Update your yaml values
 Once your databases have been created, add the following fields to your Helm values:
@@ -287,7 +287,7 @@ You have set up your infrastructure, created your data container and a Managed P
 If you have not created a Managed PostgreSQL Server instance, **replace the Postgresql section below** with `postgresql:enabled: true` in your values.yaml. This setup is **not recommended in production environments**.
 {{% /notice %}}
 
-If you have previously tried to run Pachyderm locally,
+If you have previously tried to run MLDM locally,
 make sure that you are using the right Kubernetes context first. 
 
 1. Verify cluster context:
@@ -348,15 +348,15 @@ make sure that you are using the right Kubernetes context first.
 
     Check the [list of all available helm values](../../../reference/helm-values/) at your disposal in our reference documentation or on [Github](https://github.com/pachyderm/pachyderm/blob/{{% majorMinorVersion %}}/etc/helm/pachyderm/values.yaml).
 
-### Deploy Pachyderm On The Kubernetes Cluster
+### Deploy MLDM On The Kubernetes Cluster
 
-- Now you can deploy a Pachyderm cluster by running this command:
+- Now you can deploy a MLDM cluster by running this command:
 
 
     ```s
     helm repo add pach https://helm.pachyderm.com
     helm repo update
-    helm install pachd -f values.yaml pach/pachyderm --version <version-of-the-chart>
+    helm install pachd -f values.yaml pach/MLDM --version <version-of-the-chart>
     ```
 
     **System Response:**
@@ -370,11 +370,11 @@ make sure that you are using the right Kubernetes context first.
     ```
     Refer to our generic [Helm documentation](../helm-install/#install-pachyderms-helm-chart) for more information on how to select your chart version. 
 
-    Pachyderm pulls containers from DockerHub. It might take some time
+    MLDM pulls containers from DockerHub. It might take some time
     before the `pachd` pods start. You can check the status of the
     deployment by periodically running `kubectl get all`.
 
-    When pachyderm is up and running, get the information about the pods:
+    When MLDM is up and running, get the information about the pods:
 
     ```s
     kubectl get pods
@@ -431,7 +431,7 @@ pachctl port-forward
 ## 7. Check That Your Cluster Is Up And Running
 
 {{% notice warning %}}
-If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to Pachyderm with your User, before you use `pachctl`. 
+If Authentication is activated (When you deploy with an enterprise key already set, for example), you need to run `pachct auth login`, then authenticate to MLDM with your User, before you use `pachctl`. 
 {{% /notice %}}
 
 ```s

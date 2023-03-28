@@ -4,7 +4,7 @@ Return a list of commits.
 
 ### Synopsis
 
-Return a list of commits, either across the entire pachyderm cluster or restricted to a single repo.
+Return a list of commits, either across the entire MLDM cluster or restricted to a single repo.
 
 ```
 pachctl list commit [<commit-id>|<repo>[@<branch-or-commit>]] [flags]

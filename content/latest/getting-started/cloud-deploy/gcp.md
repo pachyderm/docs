@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  GCP + Pachyderm 
-description: Learn how to deploy to Pachyderm to the cloud with GCP.
+title:  GCP + MLDM 
+description: Learn how to deploy to MLDM to the cloud with GCP.
 date: 
 # taxonomy #
 tags: ["gcp", "cloud-deploy"]
@@ -12,7 +12,7 @@ weight:
 ## Before You Start 
 
 This guide assumes that:
--  You have already tried [Pachyderm locally](../../local-deploy/) and have some familiarity with [Kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/), [Google Cloud SDK](https://cloud.google.com/sdk/) and [jq](https://stedolan.github.io/jq/download/).
+-  You have already tried [MLDM locally](../../local-deploy/) and have some familiarity with [Kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/), [Google Cloud SDK](https://cloud.google.com/sdk/) and [jq](https://stedolan.github.io/jq/download/).
 - You have access to a Google Cloud account linked to an active billing account.
 
 {{% notice warning %}}
@@ -41,7 +41,7 @@ You can run [this setup script](https://github.com/pachyderm/pachyderm/blob/mast
 - One cloud storage bucket
 - One file called `${NAME}.values.yaml` in the current directory
 
-It also installs Pachyderm into the cluster.
+It also installs MLDM into the cluster.
 
 ## 3. Connect to Cluster
 

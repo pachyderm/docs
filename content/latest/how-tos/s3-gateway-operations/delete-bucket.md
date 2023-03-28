@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-You can call the **delete an empty S3 bucket** command on your S3 client to delete a Pachyderm repository.  For example, let's delete the the repo `foo` in project `bar`.
+You can call the **delete an empty S3 bucket** command on your S3 client to delete a MLDM repository.  For example, let's delete the the repo `foo` in project `bar`.
 
 
 {{<stack type="wizard" >}}

@@ -1,10 +1,10 @@
 ## pachctl version
 
-Print Pachyderm version information.
+Print MLDM version information.
 
 ### Synopsis
 
-Print Pachyderm version information.
+Print MLDM version information.
 
 ```
 pachctl version [flags]

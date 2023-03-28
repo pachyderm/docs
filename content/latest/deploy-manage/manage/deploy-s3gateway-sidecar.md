@@ -13,7 +13,7 @@ You can interact with input/output data through the S3 protocol using Pachyderm'
 
 ## About 
 
-Pachyderm's S3-protocol-enabled pipelines run a separate S3 gateway instance in a sidecar container within the pipeline-worker pod. Using this approach enables maintaining data provenance since the external code (e.g., within a Kubeflow pod) is executed in (and associated with) a Pachyderm job.
+Pachyderm's S3-protocol-enabled pipelines run a separate S3 gateway instance in a sidecar container within the pipeline-worker pod. Using this approach enables maintaining data provenance since the external code (e.g., within a Kubeflow pod) is executed in (and associated with) a MLDM job.
 
 When enabled, input and output repositories are exposed as S3 Buckets via the S3 gateway sidecar instance. 
 
@@ -81,7 +81,7 @@ Use the [S3_ENDPOINT](../../deploy/environment-variables/#pipeline-worker-enviro
 
 ### If Authentication is Enabled
 
-If auth is enabled on the Pachyderm cluster, credentials must be passed with
+If auth is enabled on the MLDM cluster, credentials must be passed with
 each S3 gateway endpoint.
 
 {{% notice warning %}}
@@ -102,7 +102,7 @@ The `Access Key` must equal the `Secret Key`.
 {{% notice info %}}
 **See Also**:
 - [Configure Environment Variables](../../deploy/environment-variables/)
-- [Pachyderm S3 Gateway Supported Operations](../s3gateway/supported-operations)
+- [MLDM S3 Gateway Supported Operations](../s3gateway/supported-operations)
 - [Complete S3 Gateway API reference](../../../reference/s3gateway-api/)
 - [Pipeline Specification](../../../reference/pipeline-spec/#input)
 {{% /notice %}}

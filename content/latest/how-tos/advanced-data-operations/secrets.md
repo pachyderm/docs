@@ -9,11 +9,11 @@ series:
 seriesPart:
 ---
 
-Pachyderm uses Kubernetes' *Secrets* to store and manage sensitive data, such as passwords, OAuth tokens, or ssh keys. You can use any of [Kubernetes' types of Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-types) that match your use case. 
+MLDM uses Kubernetes' *Secrets* to store and manage sensitive data, such as passwords, OAuth tokens, or ssh keys. You can use any of [Kubernetes' types of Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-types) that match your use case. 
 Namely, `generic` (or Opaque), `tls`, or `docker-registry`.
 
 {{% notice warning %}}
-As of today, Pachyderm *only supports the JSON format for Kubernetes' Secrets files*.
+As of today, MLDM *only supports the JSON format for Kubernetes' Secrets files*.
 {{%/notice %}}
 
 To use a Secret in Pachyderm, you need to:
@@ -22,7 +22,7 @@ To use a Secret in Pachyderm, you need to:
 1. Reference it in your pipeline's specification file.
 
 ## Create A Secret
-The creation of a Secret in Pachyderm *requires a JSON configuration file*.
+The creation of a Secret in MLDM *requires a JSON configuration file*.
 
 A good way to create this file is:
 
@@ -68,7 +68,7 @@ Let's first generate your secret configuration file using the `kubectl` command.
 Find more detailed information on the [creation of Secrets](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/) in Kubernetes documentation.
 
 ### Create your Secret in Pachyderm
-Next, run the following to actually create the secret in the Pachyderm Kubernetes cluster:
+Next, run the following to actually create the secret in the MLDM Kubernetes cluster:
 ```s
 pachctl create secret -f myfirstsecret.json 
 ```
@@ -87,7 +87,7 @@ Use `pachctl delete secret` to delete a secret given its name,  `pachctl inspect
 
 You can now edit your pipeline specification file as follow.
 ## Reference a Secret in Pachyderm's specification file
-Now that your secret is created on Pachyderm cluster, you will need to notify your pipeline by updating your pipeline [specification file](https://docs.pachyderm.com/latest/reference/pipeline-spec/#manifest-format).
+Now that your secret is created on MLDM cluster, you will need to notify your pipeline by updating your pipeline [specification file](https://docs.pachyderm.com/latest/reference/pipeline-spec/#manifest-format).
 In Pachyderm, a Secret can be used in three different ways:
 
 1. **As a container environment variable**:
@@ -162,7 +162,7 @@ In Pachyderm, a Secret can be used in three different ways:
       -  **`name`**
       - and specify the mount point (**`mount_path`**) to the secret (ex: `"/var/my-app-secret"`).
 
-      Pachyderm mounts all of the keys in the secret with file names corresponding to the keys.
+      MLDM mounts all of the keys in the secret with file names corresponding to the keys.
       This is useful for secure configuration files.
 
       ```json

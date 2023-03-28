@@ -11,14 +11,14 @@ seriesPart:
 --- 
 
 {{% notice note %}}
-Note that Pachyderm uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
+Note that MLDM uses the term `commit` at two different levels. A global level (check [GlobalID](../../advanced-concepts/globalID) for more details) and commits that occur on the given branch of a repository. The following page details the latter. 
 {{% /notice %}}
 
 ## Definition
 
 In Pachyderm, commits are atomic operations that **snapshot and preserve the state of
 the files and directories in a repository** at a point in time. 
-Unlike Git commits, Pachyderm commits are centralized and transactional.
+Unlike Git commits, MLDM commits are centralized and transactional.
 You can start a commit by running the `pachctl start commit` command with reference
 to a specific repository. 
 After you're done making changes to the repository (`put file`, `delete file`, ...),
@@ -53,7 +53,7 @@ That origin can be of 3 types:
 
 
 {{% notice note %}}
-To track provenance, Pachyderm requires **all commits to belong to exactly one branch**. When moving a commit from one [branch](../branch) to another, Pachyderm creates an `ALIAS` commit on the other branch.
+To track provenance, MLDM requires **all commits to belong to exactly one branch**. When moving a commit from one [branch](../branch) to another, MLDM creates an `ALIAS` commit on the other branch.
 {{% /notice %}}
 
 
@@ -95,7 +95,7 @@ how long ago the commit was started and finished...).
 - The `--full-timestamps` flag will give you the exact date and time
 of when the commit was opened and finished.
 - If you specify a branch instead of a specific commit (`pachctl inspect commit <repo>@<branch>`),
-Pachyderm displays the information about the HEAD of the branch.
+MLDM displays the information about the HEAD of the branch.
 
 ###  Example
 Add a `--raw` flag to output a detailed JSON version of the commit.

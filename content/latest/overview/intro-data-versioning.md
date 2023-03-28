@@ -11,13 +11,13 @@ directory: true
 ---
 
 ## Introduction to Data Versioning
-On this page we want to give a brief overview of how to use and interact with versioned data inside Pachyderm. Collectively, this is often referred to as the **Pachyderm File System (PFS)**.
+On this page we want to give a brief overview of how to use and interact with versioned data inside Pachyderm. Collectively, this is often referred to as the **MLDM File System (PFS)**.
 
 ## Repositories
 
-Data versioning in Pachyderm starts with creating a data repository. Pachyderm data repos are similar to Git repositories in that they provide a place to track changes made to a set of files. 
+Data versioning in MLDM starts with creating a data repository. MLDM data repos are similar to Git repositories in that they provide a place to track changes made to a set of files. 
 
-Using the Pachyderm CLI (`pachctl`) we would create a repository called data with the create repo command. 
+Using the MLDM CLI (`pachctl`) we would create a repository called data with the create repo command. 
 
 ```bash
 pachctl create repo data
@@ -247,4 +247,4 @@ Or from the history perspective of the respective branches:
        commit tag:"master:HEAD"  id:"4-41a750b "
 ```
 
-Branches are useful for many reasons, but in Pachyderm they also form the foundation of the pipeline system. New commits on branches can be used to trigger pipelines to run, resulting in one of the key differentiators, data-driven pipelines.
+Branches are useful for many reasons, but in MLDM they also form the foundation of the pipeline system. New commits on branches can be used to trigger pipelines to run, resulting in one of the key differentiators, data-driven pipelines.

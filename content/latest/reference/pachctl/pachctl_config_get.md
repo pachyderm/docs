@@ -1,10 +1,10 @@
 ## pachctl config get
 
-Commands for getting pachyderm config values
+Commands for getting MLDM config values
 
 ### Synopsis
 
-Commands for getting pachyderm config values
+Commands for getting MLDM config values
 
 ### Options
 

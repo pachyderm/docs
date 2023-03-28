@@ -10,5 +10,5 @@ seriesPart:
 --- 
 
 
-Pachyderm Pipeline System (PPS) is the computational component of the Pachyderm platform that enables you to perform various transformations on your data.
+MLDM Pipeline System (PPS) is the computational component of the MLDM platform that enables you to perform various transformations on your data.
 

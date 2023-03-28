@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
  
-Call the **create an S3 bucket** command on your S3 client to create a branch in a Pachyderm repository. For example, let's create the `master` branch of the repo `foo` in project `bar`.
+Call the **create an S3 bucket** command on your S3 client to create a branch in a MLDM repository. For example, let's create the `master` branch of the repo `foo` in project `bar`.
 
 {{<stack type="wizard" >}}
 

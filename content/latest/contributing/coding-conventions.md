@@ -14,7 +14,7 @@ Interested in contributing to Pachyderm's code? Learn the conventions here! For 
 
 ## Languages 
 
-The Pachyderm repository is written using **Go**, **Shell**, and **Make**. Exceptions to this are:
+The MLDM repository is written using **Go**, **Shell**, and **Make**. Exceptions to this are:
 
 - `/examples`: For showcasing how to use the product in various languages.
 - `/doc`: For building documentation using a python-based static site generator ([MkDocs](https://www.mkdocs.org/)).

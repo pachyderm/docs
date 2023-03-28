@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title: CI/CD Integration
-description:  Learn how to incorporate Pachyderm into your overall CI/CD workflows.
+description:  Learn how to incorporate MLDM into your overall CI/CD workflows.
 date: 
 # taxonomy #
 tags: ["workflows"]
@@ -9,13 +9,13 @@ series:
 seriesPart:
 ---
 
-Pachyderm is a powerful system for providing data
+MLDM is a powerful system for providing data
 provenance and scalable processing to data
 scientists and engineers. You can make it even
 more powerful by integrating it with your existing
 continuous integration and continuous deployment (CI/CD)
 workflows and systems. If you are just starting to use Pachyderm
-and not setting up automation for your Pachyderm build
+and not setting up automation for your MLDM build
 processes, see [Working with Pipelines](../working-with-pipelines).
 
 The following diagram demonstrates automated Pachyderm
@@ -45,7 +45,7 @@ The CI workflow includes the following steps:
 
 1. A new commit triggers a Git hook.
 
-      Typically, Pachyderm users store the following artifacts in a
+      Typically, MLDM users store the following artifacts in a
       Git repository:
       
       * A Dockerfile that you use to build local images.
@@ -75,9 +75,9 @@ The CI workflow includes the following steps:
       SHA for the version of the image that must be used in this pipeline.
       Then, it runs the `pachctl update pipeline` command to push the
       updated pipeline specification to Pachyderm. After that,
-      Pachyderm pulls a new image from the registry automatically.
+      MLDM pulls a new image from the registry automatically.
       When the production pipeline is updated with the `pipeline.json`
-      file that has the correct image tag in it, Pachyderm restarts all pods
+      file that has the correct image tag in it, MLDM restarts all pods
       for this pipeline with the new image automatically.
 
 
@@ -87,6 +87,6 @@ The CI workflow includes the following steps:
 * Manually trigger a pipeline build, or
 * Automatically build a pipeline from a commit or pull request.
 
-In our [example](https://github.com/pachyderm/pachyderm/tree/workflows/examples/workflows/github-actions), we show how to use the Pachyderm GitHub Action to incorporate Pachyderm functions to run on a Pull Request or at other points during development.
+In our [example](https://github.com/pachyderm/pachyderm/tree/workflows/examples/workflows/github-actions), we show how to use the MLDM GitHub Action to incorporate MLDM functions to run on a Pull Request or at other points during development.
 
 

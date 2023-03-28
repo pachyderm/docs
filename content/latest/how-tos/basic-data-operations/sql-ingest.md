@@ -13,7 +13,7 @@ seriesPart:
 SQL Ingest is an [experimental feature](../../../reference/supported-releases/#experimental).
 {{%/notice%}}
 
-You can inject database content, collected by your data warehouse, by pulling the result of a given query into Pachyderm and saving it as a CSV or JSON file.
+You can inject database content, collected by your data warehouse, by pulling the result of a given query into MLDM and saving it as a CSV or JSON file.
 
 ## Before You Start 
 
@@ -57,7 +57,7 @@ Pachyderm's SQL Ingest requires a connection string defined as a [Jsonnet URL pa
 
 ### 3. Create a Pipeline Spec 
 
-Pachyderm provides a [default Jsonnet template](https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/src/templates/sql_ingest_cron.jsonnet) that has key parameters built in. To use it, you must pass an argument for each [parameter](#parameters). 
+MLDM provides a [default Jsonnet template](https://raw.githubusercontent.com/pachyderm/pachyderm/{{% majorMinorVersion %}}/src/templates/sql_ingest_cron.jsonnet) that has key parameters built in. To use it, you must pass an argument for each [parameter](#parameters). 
 
 1. Copy the following:
    ```s
@@ -156,7 +156,7 @@ pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pa
 | `name`        | The name of output repo where query results will materialize.|
 | `url`         | The connection string to the database.|  
 | `query`       | The SQL query to be run against the connected database. |
-| `hasHeader`   | Adds a header to your CSV file if set to `true`. Ignored if `format="json"` (JSON files always display (header,value) pairs for each returned row). Defaults to `false`. <br><br>Pachyderm creates the header after each element of the comma separated list of your SELECT clause or their aliases (if any). <br>For example `country.country_name_eng` will have `country.country_name_eng` as header while `country.country_name_eng as country_name` will have `country_name`. |
+| `hasHeader`   | Adds a header to your CSV file if set to `true`. Ignored if `format="json"` (JSON files always display (header,value) pairs for each returned row). Defaults to `false`. <br><br>MLDM creates the header after each element of the comma separated list of your SELECT clause or their aliases (if any). <br>For example `country.country_name_eng` will have `country.country_name_eng` as header while `country.country_name_eng as country_name` will have `country_name`. |
 | `cronSpec`    | How often to run the query. For example `"@every 60s"`.|
 | `format`      | The type of your output file containing the results of your query (either `json` or `csv`).|
 | `secretName`  | The Kubernetes secret name that contains the password to the database.|
@@ -181,7 +181,7 @@ pachctl update pipeline --jsonnet https://raw.githubusercontent.com/pachyderm/pa
 
 ##### Snowflake 
 
- Pachyderm supports two connection URL patterns to query Snowflake:
+ MLDM supports two connection URL patterns to query Snowflake:
 
   ```s
   snowflake://username@<account_identifier>/<db_name>/<schema_name>?warehouse=<warehouse_name>

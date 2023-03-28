@@ -1,10 +1,10 @@
 ## pachctl delete
 
-Delete an existing Pachyderm resource.
+Delete an existing MLDM resource.
 
 ### Synopsis
 
-Delete an existing Pachyderm resource.
+Delete an existing MLDM resource.
 
 ### Options
 

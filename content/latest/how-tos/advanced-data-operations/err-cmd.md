@@ -20,13 +20,13 @@ concepts as [Datum](../../../concepts/pipeline-concepts/datum/) and
 [Pipeline](../../../concepts/pipeline-concepts/pipeline/).
 {{% /notice %}}
 
-When Pachyderm processes your data, it breaks it up into units of
+When MLDM processes your data, it breaks it up into units of
 computation called datums. Each datum is processed separately.
 In a basic pipeline configuration, a failed datum results in a failed
 job. However, in some cases, you might not need all datums
 to consider a job successful. If your downstream pipelines can be run
 on only the successful datums instead of needing all the datums to be
-successful, Pachyderm can mark some datums as *recovered* which means
+successful, MLDM can mark some datums as *recovered* which means
 that they failed with a non-critical error, but the successful datums
 will be processed.
 
@@ -44,21 +44,21 @@ from its output repository and uses that data to train a model. In some cases,
 you might not need all the datums in the first pipeline to be successful
 to run the second pipeline.
 
-The following diagram describes how Pachyderm transformation and error
+The following diagram describes how MLDM transformation and error
 code work:
 
 ![err_cmd logic](/images/err_cmd_workflow.svg)
 
 Here is what is happening in the diagram above:
 
-1. Pachyderm executes the transformation code that you defined in
+1. MLDM executes the transformation code that you defined in
 the `cmd` field against your datums.
-1. If a datum is processed without errors, Pachyderm marks it as
+1. If a datum is processed without errors, MLDM marks it as
 `processed`.
-1. If a datum fails, Pachyderm executes your
+1. If a datum fails, MLDM executes your
 error code (`err_cmd`) on that datum.
 1. If the code in `err_cmd` successfully runs on the *skipped* datum,
-Pachyderm marks the skipped datum as `recovered`. The datum is in a
+MLDM marks the skipped datum as `recovered`. The datum is in a
 failed state and, therefore, the pipeline does not put it into the output
 repository, but successful datums continue onto the next step in your DAG.
 1. If the `err_cmd` code fails on the skipped datum, the datum is marked
@@ -69,9 +69,9 @@ field in the output of the `pachctl list job -p <pipeline name>` command:
 
 ![Datums in progress](/images/datums_in_progress.png)
 
-Pachyderm writes only processed datums of successful jobs to the output
+MLDM writes only processed datums of successful jobs to the output
 commit so that these datums can be processed by downstream pipelines.
-For example, in your first pipeline, Pachyderm processes three datums.
+For example, in your first pipeline, MLDM processes three datums.
 If one of the datums is marked as *recovered* and two others are
 successfully processed, only these two successful datums are used in
 the next pipeline.

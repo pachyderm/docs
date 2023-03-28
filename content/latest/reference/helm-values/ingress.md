@@ -17,7 +17,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 ## About
 
 {{% notice warning %}}
-`ingress` will be removed from the helm chart once the deployment of Pachyderm with a proxy becomes mandatory.
+`ingress` will be removed from the helm chart once the deployment of MLDM with a proxy becomes mandatory.
 {{% /notice %}}
 
 

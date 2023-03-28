@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-Pachyderm has the ability to trace requests using Jaeger. This
+MLDM has the ability to trace requests using Jaeger. This
 can be useful when diagnosing slow clusters.
 
 ![Successful Trace](/images/healthy.png)
@@ -24,7 +24,7 @@ To use tracing in Pachyderm, complete the following steps:
     kubectl apply -f https://raw.githubusercontent.com/pachyderm/pachyderm/v{{% latestPatchNumber %}}/etc/deploy/tracing/jaeger-all-in-one.yaml
     ```
 
-2. Point Pachyderm at Jaeger
+2. Point MLDM at Jaeger
 
    * For `pachctl`, run:
 
@@ -49,7 +49,7 @@ To use tracing in Pachyderm, complete the following steps:
      created by the `jaeger-all-in-one.yaml` manifest). Killing the pods
      restarts them, which causes them to connect to Jaeger.
 
-3. Send Pachyderm a traced request by setting the `PACH_TRACE`
+3. Send MLDM a traced request by setting the `PACH_TRACE`
    environment variable to "true" before running any `pachctl`
    command (note that `JAEGER_ENDPOINT` must also be
    set/exported):
@@ -58,7 +58,7 @@ To use tracing in Pachyderm, complete the following steps:
    PACH_TRACE=true pachctl list job # for example
    ```
 
-   Pachyderm does not recommend exporting `PACH_TRACE` because
+   MLDM does not recommend exporting `PACH_TRACE` because
    tracing calls can slow them down and make interesting traces hard
    to find in Jaeger. Therefore, you might want to set this variable for
    the specific calls you want to trace.

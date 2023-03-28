@@ -13,13 +13,13 @@ directory: true
 
 Thank you for taking an interest in contributing to Pachyderm's docs! 🐘 📖
 
-This style guide provides editorial guidelines for writing clear and consistent Pachyderm product documentation. See our [contribution guide](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/doc#pachyderm-documentation) for instructions on how to draft and  submit changes.
+This style guide provides editorial guidelines for writing clear and consistent MLDM product documentation. See our [contribution guide](https://github.com/pachyderm/pachyderm/tree/{{% majorMinorVersion %}}/doc#pachyderm-documentation) for instructions on how to draft and  submit changes.
 
 ## Audience
 
-Pachyderm has two main audiences:
+MLDM has two main audiences:
 
-- **MLOPs Engineers**: They install and configure Pachyderm to transform data using pipelines.
+- **MLOPs Engineers**: They install and configure MLDM to transform data using pipelines.
 - **Data Scientists & Data/ML Engineers**: They plan the development of pipelines and consume the outputs of Pachyderm's data processing to feed AI/ML models.
 
  Be sure to provide links to pre-requisite or contextual materials whenever possible, as everyone's experience level and career journey is different.
@@ -108,8 +108,8 @@ Use meaningful link descriptions, such as the original article's title or a one-
 **Examples:**
 
 >
-    - See the [Pachyderm Technical Documentation Style Guide](../docs-style-guide)
-    - Use the [official Pachyderm style guide](../docs-style-guide).
+    - See the [MLDM Technical Documentation Style Guide](../docs-style-guide)
+    - Use the [official MLDM style guide](../docs-style-guide).
 
 ### Lists
 

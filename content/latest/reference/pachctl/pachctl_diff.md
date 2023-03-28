@@ -1,10 +1,10 @@
 ## pachctl diff
 
-Show the differences between two Pachyderm resources.
+Show the differences between two MLDM resources.
 
 ### Synopsis
 
-Show the differences between two Pachyderm resources.
+Show the differences between two MLDM resources.
 
 ### Options
 

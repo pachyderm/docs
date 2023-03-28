@@ -13,13 +13,13 @@ directory: true
 
 ## Before You Start 
 
-- Install Pachyderm either [locally](../local-deploy) our within the [cloud](../cloud-deploy). 
-- Install [Pachyderm Shell](../../deploy-manage/manage/pachctl-shell/).
+- Install MLDM either [locally](../local-deploy) our within the [cloud](../cloud-deploy). 
+- Install [MLDM Shell](../../deploy-manage/manage/pachctl-shell/).
 - Join our [Slack Community](https://www.pachyderm.com/slack/) so you can ask any questions you may have!
 
 ### Context
 
-Pachyderm creates a Kubernetes cluster that you interact with using either the pachctl CLI or through Console, a GUI.
+MLDM creates a Kubernetes cluster that you interact with using either the pachctl CLI or through Console, a GUI.
 
   - **pachctl** is great for users already experienced with using a CLI.
   - **Console** is great for beginners and helps with visualizing relationships between projects, repos, and pipelines.
@@ -80,7 +80,7 @@ pachctl list repo
 
 ### 3. Add Data
 In Pachyderm, you write data to an explicit `commit`. Commits are immutable
-snapshots of your data which give Pachyderm its version control properties.
+snapshots of your data which give MLDM its version control properties.
 You can add, remove, or update `files` in a given commit.
 
 #### Upload an Image File
@@ -201,7 +201,7 @@ import os
 
 # make_edges reads an image from /pfs/images and outputs the result of running
 # edge detection on that image to /pfs/out. Note that /pfs/images and
-# /pfs/out are special directories that Pachyderm injects into the container.
+# /pfs/out are special directories that MLDM injects into the container.
 def make_edges(image):
    img = cv2.imread(image)
    tail = os.path.split(image)[1]
@@ -217,11 +217,11 @@ for dirpath, dirs, files in os.walk("/pfs/images"):
 The code simply walks over all the images in `/pfs/images`, performs edge detection, and writes the result to `/pfs/out`.
 
 - `/pfs/images` and `/pfs/out` are special local directories that
-Pachyderm creates within the container automatically. 
+MLDM creates within the container automatically. 
 - Input data is stored in `/pfs/<input_repo_name>`.
 
 {{% notice note %}}
-Your code must write out to `/pfs/out` (see the function `make_edges(image)` above). Pachyderm gathers data written to `/pfs/out`, versions it, and maps it to the pipeline's output repo of the same name.
+Your code must write out to `/pfs/out` (see the function `make_edges(image)` above). MLDM gathers data written to `/pfs/out`, versions it, and maps it to the pipeline's output repo of the same name.
 {{% /notice %}}
 
 Now, let's create the pipeline in Pachyderm:
@@ -234,7 +234,7 @@ Again, check the end result in your Console:
 
 #### What Happens When You Create a Pipeline
 
-When you create a pipeline, Pachyderm transforms all current and future data added to your input repo using your user code. This process is known as a [job](../../concepts/pipeline-concepts/job/#job). The initial job downloads the specified Docker image that is used for all future jobs.
+When you create a pipeline, MLDM transforms all current and future data added to your input repo using your user code. This process is known as a [job](../../concepts/pipeline-concepts/job/#job). The initial job downloads the specified Docker image that is used for all future jobs.
 
 1. View the job:
 

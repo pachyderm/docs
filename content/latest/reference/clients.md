@@ -11,15 +11,15 @@ directory: true
 ---
 
 `pachctl` is the command-line tool you use 
-to interact with a Pachyderm cluster in your terminal. 
+to interact with a MLDM cluster in your terminal. 
 However,  external applications might need to
-interact with Pachyderm directly through our APIs.
+interact with MLDM directly through our APIs.
 
-In this case, Pachyderm offers language specific SDKs in Go, Python, and JS.
+In this case, MLDM offers language specific SDKs in Go, Python, and JS.
 
 ## Go Client
 
-The Pachyderm team officially supports the Go client. It implements most of the functionalities provided with the `pachctl` CLI tool.
+The MLDM team officially supports the Go client. It implements most of the functionalities provided with the `pachctl` CLI tool.
 
 ### Generate And Serve The godocs Locally
 
@@ -56,8 +56,8 @@ git checkout v1.29.1
 
 ### Running Go Examples
 
-The Pachyderm godocs reference (see generation instructions above)
-provides examples of how you can use the Go client API. You need to have a running Pachyderm cluster
+The MLDM godocs reference (see generation instructions above)
+provides examples of how you can use the Go client API. You need to have a running MLDM cluster
 to run these examples.
 
 Make sure that you use your `pachd_address` in `client.NewFromAddress("<your-pachd-address>:30650")`.
@@ -69,25 +69,25 @@ information.
 
 ## Python Client
 
-The Python client `python-pachyderm` is officially supported by the Pachyderm team. 
+The Python client `python-pachyderm` is officially supported by the MLDM team. 
 It implements most of the functionalities provided with the `pachctl` CLI tool allowing you to easily integrate operations like `create repo`, `put a file,` or `create pipeline` into your python applications.
 
 {{% notice note %}}
-Use **python-pachyderm {{% pythonClientVersion %}}** with Pachyderm {{% majorMinorVersion %}}. 
+Use **python-MLDM {{% pythonClientVersion %}}** with MLDM {{% majorMinorVersion %}}. 
 {{% /notice %}}
 
 You will find all you need to get you started or dive into the details of the available modules and functions in the [API documentation](https://python-pachyderm.readthedocs.io/en/stable/), namely:
 
 - The [installation instructions](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#installation) and links to PyPI.
 - A quick ["Hello World" example](https://python-pachyderm.readthedocs.io/en/stable/getting_started.html#hello-world-example) to jumpstart your understanding of the API.
-- Links to python-pachyderm main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/master/examples). 
+- Links to python-MLDM main Github repository with a [list of useful examples](https://github.com/pachyderm/python-pachyderm/tree/master/examples). 
 - As well as the entire [**reference API**](https://python-pachyderm.readthedocs.io/en/stable/python_pachyderm.html).
 
 ## Node Client
 
-Our Javascript client `node-pachyderm` is a library officially supported by Pachyderm and **used in production by Pachyderm Console**.  
+Our Javascript client `node-pachyderm` is a library officially supported by MLDM and **used in production by MLDM Console**.  
 
-Today, we provide only read operations as shown in Console. Over time, we will add additional functionality to the SDK. However, there are no near-term plans to reach parity with python-pachyderm yet.
+Today, we provide only read operations as shown in Console. Over time, we will add additional functionality to the SDK. However, there are no near-term plans to reach parity with python-MLDM yet.
 
 Please get in touch with us if you are [interested in contributing](https://github.com/pachyderm/node-pachyderm/blob/main/contributing.md) or ask your questions on our dedicated [slack channel](https://pachyderm-users.slack.com/archives/C028ZV066JY).
 
@@ -96,4 +96,4 @@ Check also our [opencv example](https://github.com/pachyderm/node-pachyderm/tree
 
 ## Other languages
 
-Pachyderm uses a simple [protocol buffer API](https://github.com/pachyderm/pachyderm/blob/master/src/pfs/pfs.proto). Protobufs support [other languages](https://developers.google.com/protocol-buffers/), any of which can be used to programmatically use Pachyderm. We have not built clients for them yet. It is an easy way to contribute to Pachyderm if you are looking to get involved.
+MLDM uses a simple [protocol buffer API](https://github.com/pachyderm/pachyderm/blob/master/src/pfs/pfs.proto). Protobufs support [other languages](https://developers.google.com/protocol-buffers/), any of which can be used to programmatically use Pachyderm. We have not built clients for them yet. It is an easy way to contribute to MLDM if you are looking to get involved.

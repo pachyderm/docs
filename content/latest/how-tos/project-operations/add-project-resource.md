@@ -22,7 +22,7 @@ weight: 3
 
 {{% wizardResult val1="tool/pachctl-cli"%}}
 
-There are two main ways to add a resource to a project, depending on whether or not the project has been [set to your current pachyderm context](../set-project).
+There are two main ways to add a resource to a project, depending on whether or not the project has been [set to your current MLDM context](../set-project).
 
 **Add Resource to Unset Project:**
 

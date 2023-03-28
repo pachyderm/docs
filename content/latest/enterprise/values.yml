@@ -8,17 +8,17 @@ deployTarget: ""
 
 global:
   postgresql:
-    # postgresqlUsername is the username to access the pachyderm and dex databases
+    # postgresqlUsername is the username to access the MLDM and dex databases
     postgresqlUsername: "pachyderm"
     # postgresqlPassword to access the postgresql database.  We set a default well-known password to
     # facilitate easy upgrades when testing locally.  Any sort of install that needs to be secure
     # must specify a secure password here, or provide the postgresqlExistingSecretName and
     # postgresqlExistingSecretKey secret.  If using an external Postgres instance (CloudSQL / RDS /
-    # etc.), this is the password that Pachyderm will use to connect to it.
+    # etc.), this is the password that MLDM will use to connect to it.
     postgresqlPassword: "insecure-user-password"
     # When installing a local Postgres instance, postgresqlPostgresPassword defines the root
     # ('postgres') user's password.  It must remain consistent between upgrades, and must be
-    # explicitly set to a value if security is desired.  Pachyderm does not use this account; this
+    # explicitly set to a value if security is desired.  MLDM does not use this account; this
     # password is only required so that administrators can manually perform administrative tasks.
     postgresqlPostgresPassword: "insecure-root-password"
     # The auth type to use with postgres and pg-bouncer. md5 is the default
@@ -27,7 +27,7 @@ global:
     # Supply the name of the existing secret in the namespace and the key in that secret with the password
     postgresqlExistingSecretName: ""
     postgresqlExistingSecretKey: ""
-    # postgresqlDatabase is the database name where pachyderm data will be stored
+    # postgresqlDatabase is the database name where MLDM data will be stored
     postgresqlDatabase: "pachyderm"
     # The postgresql database host to connect to. Defaults to postgres service in subchart
     postgresqlHost: "postgres"
@@ -342,7 +342,7 @@ loki-stack:
           # this gets all kubernetes labels as well
           - action: labelmap
             regex: __meta_kubernetes_pod_label_(.+)
-    # Tolerations for promtail pods. Promtail must run on any node where pachyderm resources will run or you won't get any logs for them
+    # Tolerations for promtail pods. Promtail must run on any node where MLDM resources will run or you won't get any logs for them
     # For example, GKE gpu nodes have a default taint of nvidia.com/gpu=present:NoSchedule so if you use GPUs we wouldn't have logs
     tolerations: []
     livenessProbe:
@@ -361,7 +361,7 @@ pachd:
     enabled: true
   affinity: {}
   annotations: {}
-  # clusterDeploymentID sets the Pachyderm cluster ID.
+  # clusterDeploymentID sets the MLDM cluster ID.
   clusterDeploymentID: ""
   configJob:
     annotations: {}
@@ -463,7 +463,7 @@ pachd:
   # The value is pulled from the key, "enterprise-root-token".
   enterpriseRootTokenSecretName: ""
   # enterpriseServerToken represents a token that can authenticate to a separate Enterprise server,
-  # and is used to complete the enterprise member registration process for this pachyderm cluster.
+  # and is used to complete the enterprise member registration process for this MLDM cluster.
   # The user backing this token should have either the licenseAdmin & identityAdmin roles assigned, or
   # the clusterAdmin role.
   # NOTE: only used if pachd.activateEnterpriseMember == true
@@ -476,7 +476,7 @@ pachd:
   enterpriseCallbackAddress: ""
   # Indicates to pachd whether dex is embedded in its process.
   localhostIssuer: "" # "true", "false", or "" (used string as bool doesn't support empty value)
-  # set the initial pachyderm cluster role bindings, mapping a user to their list of roles
+  # set the initial MLDM cluster role bindings, mapping a user to their list of roles
   # ex.
   # pachAuthClusterRoleBindings:
   #   robot:wallie:
@@ -705,7 +705,7 @@ postgresql:
   image:
     repository: pachyderm/postgresql
     tag: "13.3.0"
-  # DEPRECATED from pachyderm 2.1.5
+  # DEPRECATED from MLDM 2.1.5
   initdbScripts:
     dex.sh: |
       #!/bin/bash
@@ -859,7 +859,7 @@ testConnection:
     repository: alpine
     tag: latest
 
-# The proxy is a service to handle all Pachyderm traffic (S3, Console, OIDC, Dex, GRPC) on a single
+# The proxy is a service to handle all MLDM traffic (S3, Console, OIDC, Dex, GRPC) on a single
 # port; good for exposing directly to the Internet.
 proxy:
   # If enabled, create a proxy deployment (based on the Envoy proxy) and a service to expose it.  If

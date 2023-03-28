@@ -12,12 +12,12 @@ weight:
 mermaid: true
 ---
 
-Projects are logical collections of related work (such as repos and pipelines). Each Pachyderm cluster ships with an initial project named `default`. PachCTL supports all Project operations, such as adding/removing team members, resources, etc. Pachyderm Console can be used to view and access Projects. Pachyderm's integrations with JupyterLab, Seldon, S3 Gateway, and DeterminedAI also support
+Projects are logical collections of related work (such as repos and pipelines). Each MLDM cluster ships with an initial project named `default`. PachCTL supports all Project operations, such as adding/removing team members, resources, etc. MLDM Console can be used to view and access Projects. Pachyderm's integrations with JupyterLab, Seldon, S3 Gateway, and DeterminedAI also support
 projects. 
 
 ## Benefits of Projects
 
-- **Logical Organization of DAGs**: Similar to a file system, you can organize your work  within a Pachyderm instance.
+- **Logical Organization of DAGs**: Similar to a file system, you can organize your work  within a MLDM instance.
 
 - **Standardizable**: Resources like repos can have the same name if they belong to different projects, making it easier to create and adhere to project templates in a collaborative environment. For example, `ProjectA.Repo1` and `ProjectB.Repo1`.
 

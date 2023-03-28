@@ -1,10 +1,10 @@
 ## pachctl subscribe
 
-Wait for notifications of changes to a Pachyderm resource.
+Wait for notifications of changes to a MLDM resource.
 
 ### Synopsis
 
-Wait for notifications of changes to a Pachyderm resource.
+Wait for notifications of changes to a MLDM resource.
 
 ### Options
 

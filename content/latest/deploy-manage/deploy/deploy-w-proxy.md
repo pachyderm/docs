@@ -9,13 +9,13 @@ series:
 seriesPart:
 --- 
 
-Pachyderm ships with an embedded proxy that exposes one external TCP port (`:80` or `:443` if TLS is enabled) for all access, including: GRPCs, HTTP/S, s3 Gateway, OIDC, and Dex. Switching to using the embedded proxy improves your deployment's security posture because the proxy is hardened against malicious traffic and writes out extensive audit logs for all requests to Pachyderm.
+MLDM ships with an embedded proxy that exposes one external TCP port (`:80` or `:443` if TLS is enabled) for all access, including: GRPCs, HTTP/S, s3 Gateway, OIDC, and Dex. Switching to using the embedded proxy improves your deployment's security posture because the proxy is hardened against malicious traffic and writes out extensive audit logs for all requests to Pachyderm.
 
 ## Before You Start 
 
 This guide assumes that:
 
-- You have Pachyderm already set up with [Enterprise Server](../../../enterprise/auth/enterprise-server), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/connectors).
+- You have MLDM already set up with [Enterprise Server](../../../enterprise/auth/enterprise-server), [Authentication](../../../enterprise/auth/) and an [IdP Connector](../../../enterprise/auth/authentication/connectors).
 - You are upgrading to from < **2.5.0** to **2.5.0** or newer.
 - You are currently using `pachd.externalService`.
 - You have a DNS set up or Load Balance IP Address for the `proxy.host` attribute.
@@ -47,7 +47,7 @@ proxy:
 3. Upgrade your cluster: 
 ```s
 helm repo update
-helm upgrade pachyderm pachyderm/pachyderm -f values.yml
+helm upgrade MLDM pachyderm/MLDM -f values.yml
 ```
 4. Connect to your cluster:
 ```s

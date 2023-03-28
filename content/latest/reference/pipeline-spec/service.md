@@ -40,7 +40,7 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 ## When to Use
 
-You should use the `service` field in a Pachyderm Pipeline Spec when you want to expose your pipeline as a Kubernetes service, and allow other Kubernetes services or external clients to connect to it.
+You should use the `service` field in a MLDM Pipeline Spec when you want to expose your pipeline as a Kubernetes service, and allow other Kubernetes services or external clients to connect to it.
 
 Example scenarios: 
 

@@ -27,7 +27,7 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 ## Behavior 
 
 
-Pachyderm starts the number of workers that you specify. For example, set
+MLDM starts the number of workers that you specify. For example, set
 `"constant":10` to use 10 workers.
 
 - The default value is `1`

@@ -10,9 +10,9 @@ series:
 seriesPart:
 --- 
 
-A Pachyderm branch is a pointer to a commit that
+A MLDM branch is a pointer to a commit that
 moves along with new commits as they are submitted. By default,
-when you create a repository, Pachyderm does not create any branches.
+when you create a repository, MLDM does not create any branches.
 Most users prefer to create a `master` branch by initiating the first
 commit and specifying the `master` branch in the `put file` command.
 
@@ -24,11 +24,11 @@ used as extensively as in source code version-control systems.
 
 A branch also stores information about [provenance](../provenance), the other
 branches it uses as input and which rely on its output. These branch relationships
-are how Pachyderm knows which data each pipeline relies on, and which branches and
+are how MLDM knows which data each pipeline relies on, and which branches and
 repos should be included in each commit.
 
 Each branch has a `HEAD` which references the latest commit in the
-branch. Pachyderm pipelines look at the `HEAD` of the branch
+branch. MLDM pipelines look at the `HEAD` of the branch
 for changes and, if they detect new changes, trigger a job. **When you
 commit a new change, the `HEAD` of the branch moves to the latest commit.**
 

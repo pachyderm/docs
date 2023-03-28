@@ -24,9 +24,9 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 ## Behavior
 
-The `autoscaling` attribute in a Pachyderm Pipeline Spec is used to specify whether the pipeline should automatically scale up or down based on the processing load.
+The `autoscaling` attribute in a MLDM Pipeline Spec is used to specify whether the pipeline should automatically scale up or down based on the processing load.
 
-If the `autoscaling` attribute is set to `true`, Pachyderm will monitor the processing load of the pipeline, and automatically scale up or down the number of worker nodes as needed to keep up with the demand. This can help to ensure that the pipeline is always running at optimal efficiency, without wasting resources when the load is low.
+If the `autoscaling` attribute is set to `true`, MLDM will monitor the processing load of the pipeline, and automatically scale up or down the number of worker nodes as needed to keep up with the demand. This can help to ensure that the pipeline is always running at optimal efficiency, without wasting resources when the load is low.
 
 - `autocaling` is set to `false` by default.
 - The maximum number of workers is controlled by the `parallelism_spec`.
@@ -34,7 +34,7 @@ If the `autoscaling` attribute is set to `true`, Pachyderm will monitor the proc
 
 ## When to Use 
 
-You should consider using the `autoscaling` attribute in a Pachyderm Pipeline Spec when you have a workload that has variable processing requirements or when the processing load of your pipeline is difficult to predict.
+You should consider using the `autoscaling` attribute in a MLDM Pipeline Spec when you have a workload that has variable processing requirements or when the processing load of your pipeline is difficult to predict.
 
 Example scenarios:
 

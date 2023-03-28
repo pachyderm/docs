@@ -9,7 +9,7 @@ series:
 seriesPart:
 ---
 
-If *bad* data was committed into a Pachyderm input repository, you might need to
+If *bad* data was committed into a MLDM input repository, you might need to
 delete a commit or surgically delete files from your history. 
 Depending on whether or not the bad data is in the HEAD commit of
 the branch, you can perform one of the following actions:
@@ -27,13 +27,13 @@ To fix a broken HEAD, run the following command:
 pachctl delete commit <commit-ID>
 ```
 
-When you delete a HEAD commit, Pachyderm performs the following actions:
+When you delete a HEAD commit, MLDM performs the following actions:
 
 - Changes HEADs of all the branches that had the bad commit as their
   HEAD to their bad commit's parent and deletes the commit. 
   **The data in the deleted commit is lost**.
   If the bad commit does not have
-  a parent, Pachyderm sets the branch's HEAD to a new empty commit. 
+  a parent, MLDM sets the branch's HEAD to a new empty commit. 
 - Interrupts all running jobs, including not only the
   jobs that use the bad commit as a direct input but also the ones farther
   downstream in your DAG.
@@ -54,7 +54,7 @@ For instance, given a `master` branch in a repository named `repo`, if you branc
 
 If your commit has children, you have the option to use the `squash commit` command.
 Squashing is a way to rewrite your commit history; this helps clean up and simplify your commit history before sharing your work with team members.
-Squashing a commit in Pachyderm means that you are **combining all the file changes in the commits of a global commit
+Squashing a commit in MLDM means that you are **combining all the file changes in the commits of a global commit
 into their children** and then removing the global commit.
 This behavior is inspired by the squash option in git rebase.
 **No data stored in PFS is removed** since they remain in the child commits.

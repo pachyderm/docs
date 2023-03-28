@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Proxy HCVs
-description: Centralize all Pachyderm traffic on a single port that's safe to expose to the Internet. 
+description: Centralize all MLDM traffic on a single port that's safe to expose to the Internet. 
 date: 
 # taxonomy #
 tags: ["helm"]
@@ -17,7 +17,7 @@ Looking for a comprehensive list of all attributes and comments? [View a complet
 
 ## About
 
-Proxy is a service that handles all Pachyderm traffic (S3, Console, OIDC, Dex, GRPC) on a single port; It's great for exposing directly to the Internet. 
+Proxy is a service that handles all MLDM traffic (S3, Console, OIDC, Dex, GRPC) on a single port; It's great for exposing directly to the Internet. 
 
 {{% notice warning %}}
 Proxy will soon be the mandatory way to interact with Pachyderm, replacing [Ingress](/{{% release %}}/reference/helm-values/ingress). See [Upgrade to Embedded Proxy](/{{% release %}}/deploy-manage/deploy/deploy-w-proxy/) for more details.

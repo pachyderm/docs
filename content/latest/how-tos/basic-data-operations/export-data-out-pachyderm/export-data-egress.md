@@ -9,8 +9,8 @@ series:
 seriesPart:
 ---
 
-The `egress` field in the Pachyderm [pipeline specification](../../../../reference/pipeline-spec)
-enables you to push the results of a pipeline to an external datastore such as Amazon S3, Google Cloud Storage, or Azure Blob Storage. After the user code has finished running, but before the job is marked as successful, Pachyderm pushes the data to the specified destination.
+The `egress` field in the MLDM [pipeline specification](../../../../reference/pipeline-spec)
+enables you to push the results of a pipeline to an external datastore such as Amazon S3, Google Cloud Storage, or Azure Blob Storage. After the user code has finished running, but before the job is marked as successful, MLDM pushes the data to the specified destination.
 
 {{% notice note%}}
 Make sure that your cluster has been configured to work with your object store.

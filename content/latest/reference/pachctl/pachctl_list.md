@@ -1,10 +1,10 @@
 ## pachctl list
 
-Print a list of Pachyderm resources of a specific type.
+Print a list of MLDM resources of a specific type.
 
 ### Synopsis
 
-Print a list of Pachyderm resources of a specific type.
+Print a list of MLDM resources of a specific type.
 
 ### Options
 

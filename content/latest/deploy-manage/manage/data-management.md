@@ -10,14 +10,14 @@ seriesPart:
 ---
 
 This section discusses best practices for minimizing the
-space needed to store your Pachyderm data, increasing
+space needed to store your MLDM data, increasing
 the performance of your data processing as related to
 data organization, and general good ideas when you
-are using Pachyderm to version/process your data.
+are using MLDM to version/process your data.
 
 ## Setting a root volume size
 
-When planning and configuring your Pachyderm deployment, you need to
+When planning and configuring your MLDM deployment, you need to
 make sure that each node's root volume is big enough to accommodate
 your total processing bandwidth. Specifically, you should calculate
 the bandwidth for your expected running jobs as follows:

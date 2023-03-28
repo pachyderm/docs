@@ -1,10 +1,10 @@
 ## pachctl config
 
-Manages the pachyderm config.
+Manages the MLDM config.
 
 ### Synopsis
 
-Gets/sets pachyderm config values.
+Gets/sets MLDM config values.
 
 ### Options
 

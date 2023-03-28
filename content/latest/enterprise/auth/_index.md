@@ -8,7 +8,7 @@ tags:
 series:
 seriesPart:
 ---
-Pachyderm has an embedded **Open ID Connect** based on [**Dex**](https://dexidp.io/docs/), allowing for vendor-neutral authentication using your existing credentials from various back-ends. [See compatible connectors.](https://dexidp.io/docs/connectors/)
+MLDM has an embedded **Open ID Connect** based on [**Dex**](https://dexidp.io/docs/), allowing for vendor-neutral authentication using your existing credentials from various back-ends. [See compatible connectors.](https://dexidp.io/docs/connectors/)
 
 ## Auth Token Duration
 

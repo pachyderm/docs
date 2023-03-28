@@ -13,18 +13,18 @@ seriesPart:
 SQL Egress is an [experimental feature](../../../../reference/supported-releases/#experimental).
 {{% /notice %}}
 
-Pachyderm already implements [egress to object storage](../export-data-egress) as an optional egress field in the pipeline specification. 
+MLDM already implements [egress to object storage](../export-data-egress) as an optional egress field in the pipeline specification. 
 Similarly, our **SQL egress** lets you seamlessly export data from a Pachyderm-powered pipeline output repo to an SQL database.
 
 Specifically, we help you connect to a remote database and push the content of CSV files to **interface tables**, matching their column names and casting their content into their respective SQL datatype. 
 
-Interface tables are intermediate tables used for staging the data being egressed from Pachyderm to your data warehouse.
+Interface tables are intermediate tables used for staging the data being egressed from MLDM to your data warehouse.
 They are the tables your SQL Egress pipeline inserts its data into and should be **dedicated tables**. The content of your interface tables matches the content of the latest output commit of your pipeline. 
 
 {{% notice note %}}
  Best Practice.
 
-A new output commit will trigger a **delete of all data in the interface tables** before inserting more recent values. As a best practice, we strongly recommend to **create a separate database** for Pachyderm Egress. 
+A new output commit will trigger a **delete of all data in the interface tables** before inserting more recent values. As a best practice, we strongly recommend to **create a separate database** for MLDM Egress. 
 {{% /notice %}}
 
 As of today, we support the following drivers:
@@ -51,7 +51,7 @@ To egress data from the output commit of a pipeline to an SQL database, you will
 
 ### 1. Create a Secret 
 
-Create a **secret** containing your database password in the field `PACHYDERM_SQL_PASSWORD`. This secret is identical to the database secret of Pachyderm SQL Ingest. Refer to the SQL Ingest page for instructions on [how to create your secret](../../sql-ingest).
+Create a **secret** containing your database password in the field `PACHYDERM_SQL_PASSWORD`. This secret is identical to the database secret of MLDM SQL Ingest. Refer to the SQL Ingest page for instructions on [how to create your secret](../../sql-ingest).
 
 ### 2. Update your Pipeline Spec
 
@@ -132,7 +132,7 @@ Data (in the form of CSV files) that the pipeline writes to the output repo is i
 ```
 
 {{% notice note %}}
-- Pachyderm queries the schema of the interface tables before insertion then parses the data into their SQL data types.    
+- MLDM queries the schema of the interface tables before insertion then parses the data into their SQL data types.    
 - Each insertion creates a new row in your table.
 {{% /notice %}}
 

@@ -1,7 +1,7 @@
 ---
 # metadata #
 title: Troubleshooting Pipelines
-description: Learn how to troubleshoot Pachyderm pipelines.
+description: Learn how to troubleshoot MLDM pipelines.
 date:
 # taxonomy #
 tags: ["pipelines"]
@@ -14,16 +14,16 @@ directory: true
 
 Job failures can occur for a variety of reasons, but they generally categorize into 4 failure types:
 
-1. You [hit one of the Pachyderm Community Edition Scaling Limits](#community-edition-scaling-limits).
+1. You [hit one of the MLDM Community Edition Scaling Limits](#community-edition-scaling-limits).
 1. [User-code-related](#user-code-failures): An error in the user code running inside the container or the json pipeline config.
 1. [Data-related](#data-failures): A problem with the input data such as incorrect file type or file name.
-1. [System- or infrastructure-related](#system-level-failures): An error in Pachyderm or Kubernetes such as missing credentials, transient network errors, or resource constraints (for example, out-of-memory--OOM--killed).
+1. [System- or infrastructure-related](#system-level-failures): An error in MLDM or Kubernetes such as missing credentials, transient network errors, or resource constraints (for example, out-of-memory--OOM--killed).
 
 In this document, we'll show you the tools for determining what kind of failure it is. For each of the failure modes, we’ll describe Pachyderm’s and Kubernetes’s specific retry and error-reporting behaviors as well as typical user triaging methodologies.
 
 Failed jobs in a pipeline will propagate information to downstream pipelines with empty commits to preserve provenance and make tracing the failed job easier. A failed job is no longer running.
 
-In this document, we'll describe what you'll see, how Pachyderm will respond, and techniques for triaging each of those three categories of failure.
+In this document, we'll describe what you'll see, how MLDM will respond, and techniques for triaging each of those three categories of failure.
 
 At the bottom of the document, we'll provide specific troubleshooting steps for [specific scenarios](#specific-scenarios).
 
@@ -43,13 +43,13 @@ That scenario is quite easy to troubleshoot:
 1. Check your number of pipelines and parallelism settings (`"parallelism_spec"` attribute in your pipeline specification files) against our [limits](../../reference/scaling-limits).
 1. Additionally, your stderr and pipeline logs (`pachctl log -p <pipeline name> --master` or `pachctl log -p <pipeline name> --worker`) should contain one or both of those messages:
 
-   - **number of pipelines limit exceeded**: Pachyderm Community Edition requires an activation key to create more than 16 total pipelines (you have X).  Use the command `pachctl license activate` to enter your key.
+   - **number of pipelines limit exceeded**: MLDM Community Edition requires an activation key to create more than 16 total pipelines (you have X).  Use the command `pachctl license activate` to enter your key.
 
-       Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
+       MLDM offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
 
-   - **max number of workers exceeded**: This pipeline will only create a total of 8 workers (you specified X). Pachyderm Community Edition requires an activation key to create pipelines with constant parallelism greater than 8. Use the command `pachctl license activate` to enter your key.
+   - **max number of workers exceeded**: This pipeline will only create a total of 8 workers (you specified X). MLDM Community Edition requires an activation key to create pipelines with constant parallelism greater than 8. Use the command `pachctl license activate` to enter your key.
 
-     Pachyderm offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
+     MLDM offers readily available activation keys for proofs-of-concept, startups, academic, nonprofit, or open-source projects. Tell us about your project to get one.
 
 To lift those limitations, Request an [**Enterprise Edition trial token**](https://www.pachyderm.com/trial/).
 Check out our [Enterprise features](https://docs.pachyderm.com/latest/enterprise/) for more details on our Enterprise Offer.
@@ -62,19 +62,19 @@ When there’s an error in user code, the typical error message you’ll see is
 failed to process datum <UUID> with error: <user code error>
 ```
 
-This means pachyderm successfully got to the point where it was running user code, but that code exited with a non-zero error code. If any datum in a pipeline fails, the entire job will be marked as failed, but datums that did not fail will not need to be reprocessed on future jobs. You can use `pachctl inspect datum <job-id> <datum-id>` or `pachctl logs` with the `--pipeline`, `--job` or `--datum` flags to get more details.
+This means MLDM successfully got to the point where it was running user code, but that code exited with a non-zero error code. If any datum in a pipeline fails, the entire job will be marked as failed, but datums that did not fail will not need to be reprocessed on future jobs. You can use `pachctl inspect datum <job-id> <datum-id>` or `pachctl logs` with the `--pipeline`, `--job` or `--datum` flags to get more details.
 
 There are some cases where users may want mark a datum as successful even for a non-zero error code by setting the `transform.accept_return_code` field in the pipeline config .
 
 #### Retries
 
-Pachyderm will automatically retry user code three (3) times before marking the datum as failed. This mitigates datums failing for transient connection reasons.
+MLDM will automatically retry user code three (3) times before marking the datum as failed. This mitigates datums failing for transient connection reasons.
 
 #### Triage
 
 `pachctl logs --job=<job_ID>` or `pachctl logs --pipeline=<pipeline_name>` will print out any logs from your user code to help you triage the issue. Kubernetes will rotate logs occasionally so if nothing is being returned, you’ll need to make sure that you have a persistent log collection tool running in your cluster.
 
-In cases where user code is failing, changes first need to be made to the code and followed by updating the pachyderm pipeline. This involves building a new docker container with the corrected code, modifying the pachyderm pipeline config to use the new image, and then calling `pachctl update pipeline -f updated_pipeline_config.json`. Depending on the issue/error, user may or may not want to also include the `--reprocess` flag with `update pipeline`.
+In cases where user code is failing, changes first need to be made to the code and followed by updating the MLDM pipeline. This involves building a new docker container with the corrected code, modifying the MLDM pipeline config to use the new image, and then calling `pachctl update pipeline -f updated_pipeline_config.json`. Depending on the issue/error, user may or may not want to also include the `--reprocess` flag with `update pipeline`.
 
 ### Data Failures
 
@@ -84,17 +84,17 @@ When there’s an error in the data, this will typically manifest in a user code
 failed to process datum <UUID> with error: <user code error>
 ```
 
-This means pachyderm successfully got to the point where it was running user code, but that code exited with a non-zero error code, usually due to being unable to find a file or a path, a misformatted file, or incorrect fields/data within a file. If any datum in a pipeline fails, the entire job will be marked as failed. Datums that did not fail will not need to be reprocessed on future jobs.
+This means MLDM successfully got to the point where it was running user code, but that code exited with a non-zero error code, usually due to being unable to find a file or a path, a misformatted file, or incorrect fields/data within a file. If any datum in a pipeline fails, the entire job will be marked as failed. Datums that did not fail will not need to be reprocessed on future jobs.
 
 #### Retries
 
-Just like with user code failures, Pachyderm will automatically retry running a datum 3 times before marking the datum as failed. This mitigates datums failing for transient connection reasons.
+Just like with user code failures, MLDM will automatically retry running a datum 3 times before marking the datum as failed. This mitigates datums failing for transient connection reasons.
 
 #### Triage
 
 Data failures can be triaged in a few different way depending on the nature of the failure and design of the pipeline.
 
-In some cases, where malformed datums are expected to happen occasionally, they can be “swallowed” (e.g. marked as successful using `transform.accept_return_codes` or written out to a “failed_datums” directory and handled within user code). This would simply require the necessary updates to the user code and pipeline config as described above. For cases where your code detects bad input data, a "dead letter queue" design pattern may be needed. Many pachyderm developers use a special directory in each output repo for "bad data" and pipelines with globs for detecting bad data direct that data for automated and manual intervention.
+In some cases, where malformed datums are expected to happen occasionally, they can be “swallowed” (e.g. marked as successful using `transform.accept_return_codes` or written out to a “failed_datums” directory and handled within user code). This would simply require the necessary updates to the user code and pipeline config as described above. For cases where your code detects bad input data, a "dead letter queue" design pattern may be needed. Many MLDM developers use a special directory in each output repo for "bad data" and pipelines with globs for detecting bad data direct that data for automated and manual intervention.
 
 If a few files as part of the input commit are causing the failure, they can simply be removed from the HEAD commit with `start commit`, `delete file`, `finish commit`. The files can also be corrected in this manner as well. This method is similar to a revert in Git -- the “bad” data will still live in the older commits in Pachyderm, but will not be part of the HEAD commit and therefore not processed by the pipeline.
 
@@ -111,7 +111,7 @@ Here are some of the most common system-level failures:
 
 #### Retries
 
-For system-level failures, Pachyderm or Kubernetes will generally continually retry the operation with exponential backoff. If a job is stuck in a given state (e.g. starting, merging) or a pod is in `CrashLoopBackoff`, those are common signs of a system-level failure mode.
+For system-level failures, MLDM or Kubernetes will generally continually retry the operation with exponential backoff. If a job is stuck in a given state (e.g. starting, merging) or a pod is in `CrashLoopBackoff`, those are common signs of a system-level failure mode.
 
 #### Triage
 
@@ -212,7 +212,7 @@ etcdserver: too many operations in txn request (XXXXXX comparisons, YYYYYYY writ
 
 #### Recourse
 
-When a Pachyderm cluster reaches a certain scale, you need to adjust
+When a MLDM cluster reaches a certain scale, you need to adjust
 the default parameters provided for certain `etcd` flags.
 Depending on how you deployed Pachyderm,
 you need to either edit the `etcd` `Deployment` or `StatefulSet`.

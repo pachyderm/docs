@@ -10,7 +10,7 @@ seriesPart:
 weight: 6
 ---
 
-When you deactivate authorization, all permissions granted to users on Pachyderm resources are removed. Everyone that can connect to Pachyderm is back to being a clusterAdmin (can access and modify all data in all repos).
+When you deactivate authorization, all permissions granted to users on MLDM resources are removed. Everyone that can connect to MLDM is back to being a clusterAdmin (can access and modify all data in all repos).
 
 ## Before You Start 
 

@@ -141,7 +141,7 @@ This step comes in 3 flavors:
       pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
       ```
 
-### **If you use Pachyderm commands**
+### **If you use MLDM commands**
 
    1. [Build your new image](../../developer-workflow/working-with-pipelines/#step-2-build-your-docker-image) using `docker build` (for example, in a makefile: `@docker build --platform linux/amd64 -t $(DOCKER_ACCOUNT)/$(CONTAINER_NAME) .`). No tag needed, the folllowing [`--push-images`](../../developer-workflow/push-images-flag/) flag will take care of it.
 

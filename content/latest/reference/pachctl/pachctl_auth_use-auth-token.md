@@ -1,10 +1,10 @@
 ## pachctl auth use-auth-token
 
-Read a Pachyderm auth token from stdin, and write it to the current user's Pachyderm config file
+Read a MLDM auth token from stdin, and write it to the current user's MLDM config file
 
 ### Synopsis
 
-Read a Pachyderm auth token from stdin, and write it to the current user's Pachyderm config file
+Read a MLDM auth token from stdin, and write it to the current user's MLDM config file
 
 ```
 pachctl auth use-auth-token [flags]

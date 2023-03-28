@@ -2,7 +2,7 @@
 # metadata # 
 title: Repository
 description: Learn about the concept of a repository in Pachyderm. 
-glossaryDefinition: A top-level data object inside Pachyderm that behaves as a location where data is stored.
+glossaryDefinition: A top-level data object inside MLDM that behaves as a location where data is stored.
 date: 
 # taxonomy #
 tags: ["concepts", "pachctl", "data-operations"]
@@ -12,28 +12,28 @@ seriesPart:
 
 ## Definition
 
-A Pachyderm repository is a location where you store your data inside Pachyderm. It is a top-level data object that contains files and folders. 
+A MLDM repository is a location where you store your data inside Pachyderm. It is a top-level data object that contains files and folders. 
 
-Similar to Git, a **Pachyderm repository tracks all changes to the data and creates a history of data modifications that you can access and review**. 
+Similar to Git, a **MLDM repository tracks all changes to the data and creates a history of data modifications that you can access and review**. 
 
 {{% notice info %}}
-You can store any type of file in a Pachyderm repo, including binary and plain text files.
+You can store any type of file in a MLDM repo, including binary and plain text files.
 {{%/notice%}}
 
 Unlike a Git repository that stores history in a `.git` file in your copy
-of a Git repo, **Pachyderm stores the history of your commits in a centralized
+of a Git repo, **MLDM stores the history of your commits in a centralized
 location**. Because of that, you do not run into
 merge conflicts as you often do with Git commits when you try to merge
 your `.git` history with the master copy of the repo. With large datatsets
 resolving a merge conflict might not be possible.
 
-A Pachyderm repository is **the first entity that you configure when you want
+A MLDM repository is **the first entity that you configure when you want
 to add data to Pachyderm**. You can create a repository with the `pachctl create repo`
 command, or by using one of [Pachyderm's client API](../../../reference/clients/). 
 After creating the repository, add your data by using the `pachctl put file` command.
 
 {{% notice warning %}}
-A Pachyderm repo name can include alphanumeric characters, dashes, and underscores, and should be no more than 63 characters long.
+A MLDM repo name can include alphanumeric characters, dashes, and underscores, and should be no more than 63 characters long.
 {{% /notice %}}
 
 
@@ -46,12 +46,12 @@ Pachyderm's repositories are divided into two categories:
 
     - **Source** repositories
 
-        Users or external applications outside of Pachyderm can add data to
+        Users or external applications outside of MLDM can add data to
         the source repositories for further processing.
 
     - **Output** repositories
 
-        Pachyderm automatically creates an output repository at the end of a pipeline for
+        MLDM automatically creates an output repository at the end of a pipeline for
         the pipeline to write the results of its transformations into. An output repository
         might serve as input for another pipeline.
 
@@ -71,7 +71,7 @@ Pachyderm's repositories are divided into two categories:
 
 
 ## List Your Repos
-You can view the list of all user repositories in your Pachyderm cluster
+You can view the list of all user repositories in your MLDM cluster
 by running the `pachctl list repo` command.
 
 ### Example
@@ -116,7 +116,7 @@ If you need to delete a repository, you can run the
 data and the information about the specified
 repository, such as commit history. The delete
 operation is irreversible and results in a
-complete cleanup of your Pachyderm cluster.
+complete cleanup of your MLDM cluster.
 If you run the delete command with the `--all` flag, all
 repositories will be deleted.
 

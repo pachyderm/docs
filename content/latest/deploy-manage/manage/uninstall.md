@@ -13,7 +13,7 @@ seriesPart:
 
 ```s
 helm uninstall pachd 
-kubectl delete pvc -l suite=pachyderm 
+kubectl delete pvc -l suite=MLDM 
 ```
 
 ## Uninstall Pachctl 

@@ -1,7 +1,7 @@
 ---
 # metadata # 
-title:  Deploy Pachyderm with TSL (SSL, HTTPS)
-description: Learn how to deploy a Pachyderm cluster with Transport Layer Security (TLS).
+title:  Deploy MLDM with TSL (SSL, HTTPS)
+description: Learn how to deploy a MLDM cluster with Transport Layer Security (TLS).
 date: 
 # taxonomy #
 tags: ["deployment"]
@@ -9,7 +9,7 @@ series:
 seriesPart:
 --- 
 
-Secure internet browser connections and transactions via data encryption by deploying Pachyderm with Transport Layer Security ([TLS](https://cert-manager.io/docs/reference/tls-terminology/)).
+Secure internet browser connections and transactions via data encryption by deploying MLDM with Transport Layer Security ([TLS](https://cert-manager.io/docs/reference/tls-terminology/)).
 
 
 ## Before You Start 
@@ -89,11 +89,11 @@ When using self signed certificates or custom certificate authority (instead of 
 
 If you are using a custom ca-signed cert, **you must include the full certificate chain in the root.crt file**.
 
-### 3. Connect to Pachyderm via SSL
+### 3. Connect to MLDM via SSL
 
 After you deploy Pachyderm, to connect through `pachctl` by using a
 trusted certificate, you will need to set the `pachd_address` in the
-Pachyderm context with the cluster IP address that starts with `grpcs://`.
+MLDM context with the cluster IP address that starts with `grpcs://`.
 You can do so by running the following command:
 
 

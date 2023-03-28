@@ -1,10 +1,10 @@
 ## pachctl glob
 
-Print a list of Pachyderm resources matching a glob pattern.
+Print a list of MLDM resources matching a glob pattern.
 
 ### Synopsis
 
-Print a list of Pachyderm resources matching a glob pattern.
+Print a list of MLDM resources matching a glob pattern.
 
 ### Options
 

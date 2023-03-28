@@ -43,17 +43,17 @@ For a single-page view of all PPS options, go to the [PPS series page](/series/p
 
 
 ## Behavior 
-The `sidecar_resource_limits` field in a Pachyderm Pipeline Spec is used to specify the resource limits for any sidecar containers that are run alongside the main pipeline container.
+The `sidecar_resource_limits` field in a MLDM Pipeline Spec is used to specify the resource limits for any sidecar containers that are run alongside the main pipeline container.
 
-In a Pachyderm Pipeline, sidecar containers can be used to perform additional tasks alongside the main pipeline container, such as logging, monitoring, or handling external dependencies. By specifying resource limits for these sidecar containers, you can ensure that they don't consume too many resources and impact the performance of the main pipeline container.
+In a MLDM Pipeline, sidecar containers can be used to perform additional tasks alongside the main pipeline container, such as logging, monitoring, or handling external dependencies. By specifying resource limits for these sidecar containers, you can ensure that they don't consume too many resources and impact the performance of the main pipeline container.
 
-This field can also be useful in deployments where Kubernetes automatically applies resource limits to containers, which might conflict with Pachyderm pipelines' resource requests. Such a deployment might fail if Pachyderm requests more than the default Kubernetes limit. The `sidecar_resource_limits` enables you to explicitly specify these resources to fix the issue.
+This field can also be useful in deployments where Kubernetes automatically applies resource limits to containers, which might conflict with MLDM pipelines' resource requests. Such a deployment might fail if MLDM requests more than the default Kubernetes limit. The `sidecar_resource_limits` enables you to explicitly specify these resources to fix the issue.
 
 
 
 ## When to Use 
 
-You should use the `sidecar_resource_limits` field in a Pachyderm Pipeline Spec when you have sidecar containers that perform additional tasks alongside the main pipeline container, and you want to set resource limits for those sidecar containers.
+You should use the `sidecar_resource_limits` field in a MLDM Pipeline Spec when you have sidecar containers that perform additional tasks alongside the main pipeline container, and you want to set resource limits for those sidecar containers.
 
 Example scenarios:
 

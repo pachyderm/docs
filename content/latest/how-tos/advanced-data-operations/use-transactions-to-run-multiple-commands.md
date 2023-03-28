@@ -10,12 +10,12 @@ seriesPart:
 ---
 
 {{% notice note %}}
-**TL;DR**:Use transactions to run multiple Pachyderm commands simultaneously in one job run.
+**TL;DR**:Use transactions to run multiple MLDM commands simultaneously in one job run.
 {{% /notice %}}
 
-A transaction is a Pachyderm operation that enables you to **create
-a collection of Pachyderm commands and execute them concurrently**.
-Regular Pachyderm operations, that are not in a transaction, are
+A transaction is a MLDM operation that enables you to **create
+a collection of MLDM commands and execute them concurrently**.
+Regular MLDM operations, that are not in a transaction, are
 executed one after another. However, when you need
 to run multiple commands at the same time, you can use transactions.
 This functionality is useful in particular for pipelines with multiple
@@ -45,7 +45,7 @@ A transaction demarcation initializes some transactional behavior before the dem
     ```
 
     This command generates a transaction object in the cluster and saves
-    its ID in the local Pachyderm configuration file. By default, this file
+    its ID in the local MLDM configuration file. By default, this file
     is stored at `~/.pachyderm/config.json`.
 
 ###  Example
@@ -105,7 +105,7 @@ are executed atomically.
 
 ## Supported Operations
 
-While there is a transaction object in the Pachyderm configuration
+While there is a transaction object in the MLDM configuration
 file, all supported API requests append the request to the
 transaction instead of running directly. These supported commands include:
 
@@ -123,16 +123,16 @@ update pipeline
 edit pipeline
 ```
 
-Each time you add a command to a transaction, Pachyderm validates the
+Each time you add a command to a transaction, MLDM validates the
 transaction against the current state of the cluster metadata and obtains
 any return values, which is important for such commands as
-`start commit`. If validation fails for any reason, Pachyderm does
+`start commit`. If validation fails for any reason, MLDM does
 not add the operation to the transaction. If the transaction has been
 invalidated by changing the cluster state, you must delete the transaction
 and start over, taking into account the new state of the cluster.
 From a command-line perspective, these commands work identically within
 a transaction as without. The only differences are that you do not apply
-your changes until you run `finish transaction`, and Pachyderm logs a message
+your changes until you run `finish transaction`, and MLDM logs a message
 to `stderr` to indicate that the command was placed
 in a transaction rather than run directly.
 
@@ -141,10 +141,10 @@ Other supported commands for transactions include:
 
 | Command      | Description |
 | ------------ | ----------- |
-| pachctl list transaction| List all unfinished transactions available in the Pachyderm cluster. |
-| pachctl stop transaction | Remove the currently active transaction from the local Pachyderm config file. The transaction remains in the Pachyderm cluster and can be resumed later. |
-| pachctl resume transaction | Set an already-existing transaction as the active transaction in the local Pachyderm config file. |
-| pachctl delete transaction | Deletes a transaction from the Pachyderm cluster. |
+| pachctl list transaction| List all unfinished transactions available in the MLDM cluster. |
+| pachctl stop transaction | Remove the currently active transaction from the local MLDM config file. The transaction remains in the MLDM cluster and can be resumed later. |
+| pachctl resume transaction | Set an already-existing transaction as the active transaction in the local MLDM config file. |
+| pachctl delete transaction | Deletes a transaction from the MLDM cluster. |
 | pachctl inspect transaction | Provides detailed information about an existing transaction, including which operations it will perform. By default, displays information about the current transaction. If you specify a transaction ID, displays information about the corresponding transaction. |
 
 ## Multiple Opened Transactions
@@ -154,13 +154,13 @@ open transactions within an already opened transaction. In such systems, the
 operations added to the subsequent transactions are not executed
 until all the nested transactions and the main transaction are finished.
 
-Pachyderm does not support such behavior. Instead, when you open a
-transaction, the transaction ID is written to the Pachyderm configuration
+MLDM does not support such behavior. Instead, when you open a
+transaction, the transaction ID is written to the MLDM configuration
 file. If you begin another transaction while the first one is open, Pachyderm
 returns an error.
 
 Every time you add a command to a transaction,
-Pachyderm creates a blueprint of the commit and verifies that the
+MLDM creates a blueprint of the commit and verifies that the
 command is valid. However, one transaction can invalidate another.
 In this case, a transaction that is closed first takes precedence
 over the other. For example, if two transactions create a repository
@@ -168,7 +168,7 @@ with the same name, the one that is executed first results in the
 creation of the repository, and the other results in error.
 ## Use Cases
 
-Pachyderm users implement transactions to their own workflows finding
+MLDM users implement transactions to their own workflows finding
 unique ways to benefit from this feature, whether it is a small
 research team or an enterprise-grade machine learning workflow.
 
@@ -176,7 +176,7 @@ Below are examples of the most commonly employed ways of using transactions.
 
 ### Commit to Separate Repositories Simultaneously
 
-For example, you have a Pachyderm pipeline with two input
+For example, you have a MLDM pipeline with two input
 repositories. One repository includes training `data` and the
 other `parameters` for your machine learning pipeline. If you need
 to run specific data against specific parameters, you need to
@@ -184,20 +184,20 @@ run your pipeline against specific commits in both repositories.
 To achieve this, you need to commit to these repositories
 simultaneously.
 
-If you use a regular Pachyderm workflow, the data is uploaded sequentially,
+If you use a regular MLDM workflow, the data is uploaded sequentially,
 each time triggering a separate job instead of one job with both commits
 of new data. One `put file` operation commits changes to
 the data repository and the other updates the parameters repository.
-The following animation shows the standard Pachyderm workflow without
+The following animation shows the standard MLDM workflow without
 a transaction:
 
 ![Standard workflow](/images/transaction_wrong.gif)
 
 In Pachyderm, a pipeline starts as soon as a new commit lands in
 a repository. In the diagram above, as soon as `commit 1` is added
-to the `data` repository, Pachyderm runs a job for `commit 1` and
+to the `data` repository, MLDM runs a job for `commit 1` and
 `commit 0` in the `parameters` repository. You can also see
-that Pachyderm runs the second job and processes `commit 1`
+that MLDM runs the second job and processes `commit 1`
 from the `data` repository with the `commit 1` in the `parameters`
 repository. In some cases, this is perfectly acceptable solution.
 But if your job takes many hours and you are only interested in the
@@ -212,7 +212,7 @@ demonstrates how transactions work:
 
 The transaction ensures that a single job runs for the two commits
 that were started within the transaction.
-While Pachyderm supports some workflows where you can get the
+While MLDM supports some workflows where you can get the
 same effect by having both data and parameters in the same repo,
 often separating them and using transactions is much more efficient for
 organizational and performance reasons.

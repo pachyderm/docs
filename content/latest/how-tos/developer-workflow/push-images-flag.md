@@ -21,7 +21,7 @@ The `--push-images` flag performs the following steps after you have built your 
 
 1. Pushes the Docker image, with the tag, to your registry 
 1. Updates the image tag in the pipeline spec json (on the fly) to match the new image
-1. Submits the updated pipeline to the Pachyderm cluster
+1. Submits the updated pipeline to the MLDM cluster
 
 The usage of the flag is shown below:
 

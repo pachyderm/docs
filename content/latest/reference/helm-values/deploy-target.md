@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Deploy Target HCVs
-description: Define where you're deploying Pachyderm (Local, Cloud).
+description: Define where you're deploying MLDM (Local, Cloud).
 date: 
 # taxonomy #
 tags: ["helm"]

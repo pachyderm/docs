@@ -12,9 +12,9 @@ seriesPart:
 You can define environment variables that handle required configuration. In Pachyderm, you can define the following types of environment variables:
 
 * **pachd variables:** Used for your
-Pachyderm daemon container.
+MLDM daemon container.
 
-* **Pachyderm worker variables:** Used by the Kubernetes pods that run your pipeline code.
+* **MLDM worker variables:** Used by the Kubernetes pods that run your pipeline code.
 
 {{% notice tip %}}
 You can reference environment variables in your code. For example,
@@ -46,28 +46,28 @@ environment variables.
 | `PORT`                 | `650`             | The `pachd` port number. |
 | `HTTP_PORT`             | `652`             | The HTTP port number.   |
 | `PEER_PORT`             | `653`             | The port for pachd-to-pachd communication. |
-| `NAMESPACE`            | `deafult`         | The namespace in which Pachyderm is deployed. |
+| `NAMESPACE`            | `deafult`         | The namespace in which MLDM is deployed. |
 
 ### pachd Configuration
 
 | Environment Variable       | Default Value | Description |
 | -------------------------- | ------------- | ----------- |
 | `NUM_SHARDS`               | `32`      | The max number of `pachd` pods that can run in a <br> single cluster. |
-| `STORAGE_BACKEND`          | `""`      | The storage backend defined for the Pachyderm cluster.|
+| `STORAGE_BACKEND`          | `""`      | The storage backend defined for the MLDM cluster.|
 | `STORAGE_HOST_PATH`        | `""`      | The host path to storage. |
 | `KUBERNETES_PORT_443_TCP_ADDR` |`none` | An IP address that Kubernetes exports <br> automatically for your code to communicate with <br> the Kubernetes API. Read access only. Most variables <br> that have use the `PORT_ADDRESS_TCP_ADDR` pattern <br> are Kubernetes environment variables. For more information,<br> see [Kubernetes environment variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables). |
-| `METRICS`                  | `true`   | Defines whether anonymous Pachyderm metrics are being <br>collected or not. |
+| `METRICS`                  | `true`   | Defines whether anonymous MLDM metrics are being <br>collected or not. |
 | `BLOCK_CACHE_BYTES`        | `1G`     | The size of the block cache in `pachd`. |
 | `WORKER_IMAGE`             | `""`     | The base Docker image that is used to run your pipeline.|
 | `WORKER_SIDECAR_IMAGE`     | `""`     | The `pachd` image that is used as a worker sidecar. |
 | `WORKER_IMAGE_PULL_POLICY` | `IfNotPresent`| The pull policy that defines how Docker images are <br>pulled. You can set <br> a Kubernetes image pull policy as needed. |
 | `LOG_LEVEL`                | `info`   | Verbosity of the log output. If you want to disable <br> logging, set this variable to `0`. Viable Options <br>`debug` <br>`info` <br> `error`<br>For more information, see [Go logrus log levels](https://pkg.go.dev/github.com/sirupsen/logrus#Level). ||
-| `IAM_ROLE`                 |  `""`    | The role that defines permissions for Pachyderm in AWS.|
+| `IAM_ROLE`                 |  `""`    | The role that defines permissions for MLDM in AWS.|
 | `IMAGE_PULL_SECRET`        |  `""`    | The Kubernetes secret for image pull credentials.|
-| `EXPOSE_OBJECT_API`        |  `false` | Controls access to internal Pachyderm API.|
+| `EXPOSE_OBJECT_API`        |  `false` | Controls access to internal MLDM API.|
 | `WORKER_USES_ROOT`         |  `true`  | Controls root access in the worker container.|
 | `S3GATEWAY_PORT`           |  `600`   | The S3 gateway port number|
-| `DISABLE_COMMIT_PROGRESS_COUNTER` |`false`| A feature flag that disables commit propagation <br> progress counter. If you have a large DAG, <br> setting this parameter to `true` might help <br> improve etcd performance. You only need to set <br>this parameter on the `pachd` pod. Pachyderm passes <br> this parameter to worker containers automatically. |
+| `DISABLE_COMMIT_PROGRESS_COUNTER` |`false`| A feature flag that disables commit propagation <br> progress counter. If you have a large DAG, <br> setting this parameter to `true` might help <br> improve etcd performance. You only need to set <br>this parameter on the `pachd` pod. MLDM passes <br> this parameter to worker containers automatically. |
 
 ### Storage Configuration
 
@@ -78,9 +78,9 @@ environment variables.
 
 ## Pipeline Worker Environment Variables
 
-Pachyderm defines many environment variables for each Pachyderm
+MLDM defines many environment variables for each Pachyderm
 worker that runs your pipeline code. You can print the list
-of environment variables into your Pachyderm logs by including
+of environment variables into your MLDM logs by including
 the `env` command into your pipeline specification. For example,
 if you have an `images` repository, you can configure your pipeline
 specification like this:
@@ -137,9 +137,9 @@ particularly useful:
 | `PPS_PIPELINE_NAME`        | The name of the pipeline that this pod runs. <br> For example, `env`. |
 | `PIPELINE_SERVICE_PORT_PROMETHEUS_METRICS` | The port that you can use to <br> exposed metrics to Prometheus from within your pipeline. The default value is 9090. |
 | `HOME`                     | The path to the home directory. The default value is `/root` |
-| `<input-repo>=<path/to/input/repo>` | The path to the filesystem that is <br> defined in the `input` in your pipeline specification. Pachyderm defines <br> such a variable for each input. The path is defined by the `glob` pattern in the <br> spec. For example, if you have an input `images` and a glob pattern of `/`, <br> Pachyderm defines the `images=/pfs/images` variable. If you <br> have a glob pattern of `/*`, Pachyderm matches <br> the files in the `images` repository and, therefore, the path is <br> `images=/pfs/images/liberty.png`. |
+| `<input-repo>=<path/to/input/repo>` | The path to the filesystem that is <br> defined in the `input` in your pipeline specification. MLDM defines <br> such a variable for each input. The path is defined by the `glob` pattern in the <br> spec. For example, if you have an input `images` and a glob pattern of `/`, <br> MLDM defines the `images=/pfs/images` variable. If you <br> have a glob pattern of `/*`, MLDM matches <br> the files in the `images` repository and, therefore, the path is <br> `images=/pfs/images/liberty.png`. |
 | `input_COMMIT`             | The ID of the commit that is used for the input. <br>For example, `images_COMMIT=fa765b5454e3475f902eadebf83eac34`. |
-| `S3_ENDPOINT`         | A Pachyderm S3 gateway sidecar container endpoint. <br> If you have an S3 enabled pipeline, this parameter specifies a URL that <br> you can use to access the pipeline's repositories state when a <br> particular job was run. The URL has the following format: <br> `http://<job-ID>-s3:600`. <br> An example of accessing the data by using AWS CLI looks like this: `echo foo_data | aws --endpoint=${S3_ENDPOINT} s3 cp - s3://out/foo_file`. |
+| `S3_ENDPOINT`         | A MLDM S3 gateway sidecar container endpoint. <br> If you have an S3 enabled pipeline, this parameter specifies a URL that <br> you can use to access the pipeline's repositories state when a <br> particular job was run. The URL has the following format: <br> `http://<job-ID>-s3:600`. <br> An example of accessing the data by using AWS CLI looks like this: `echo foo_data | aws --endpoint=${S3_ENDPOINT} s3 cp - s3://out/foo_file`. |
 
 In addition to these environment variables, Kubernetes injects others for
 Services that run inside the cluster. These variables enable you to connect to
@@ -147,8 +147,8 @@ those outside services, which can be powerful but might also result
 in processing being retried multiple times. 
 
 For example, if your code writes a row to a database, that row might be written multiple times because of retries. Interaction with outside services must be idempotent to prevent unexpected behavior. Furthermore, one of the running services that your code
-can connect to is Pachyderm itself. This is generally not recommended as very
-little of the Pachyderm API is idempotent, but in some specific cases it can be
+can connect to is MLDM itself. This is generally not recommended as very
+little of the MLDM API is idempotent, but in some specific cases it can be
 a viable approach.
 
  

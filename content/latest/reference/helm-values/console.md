@@ -1,7 +1,7 @@
 ---
 # metadata # 
 title:  Console HCVs
-description:  Configure the Pachyderm UI.
+description:  Configure the MLDM UI.
 date: 
 # taxonomy #
 tags: ["helm"]

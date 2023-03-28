@@ -16,7 +16,7 @@ pachctl port-forward [flags]
       --console-port uint16            The local port to bind the console service to. (default 4000)
       --dex-port uint16                The local port to bind the identity service to. (default 30658)
   -h, --help                           help for port-forward
-      --namespace string               Kubernetes namespace Pachyderm is deployed in.
+      --namespace string               Kubernetes namespace MLDM is deployed in.
       --oidc-port uint16               The local port to bind pachd's OIDC callback to. (default 30657)
   -p, --port uint16                    The local port to bind pachd to. (default 30650)
       --remote-console-port uint16     The remote port to bind the console  service to. (default 4000)

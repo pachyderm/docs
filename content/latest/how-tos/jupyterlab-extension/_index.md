@@ -13,8 +13,8 @@ beta: true
 
 Use the [JupyterLab extension](https://pypi.org/project/jupyterlab-pachyderm/) to:
 
-- Connect your Notebook to a Pachyderm cluster
-- Browse, explore, and analyze data stored in Pachyderm directly from your Notebook
+- Connect your Notebook to a MLDM cluster
+- Browse, explore, and analyze data stored in MLDM directly from your Notebook
 - Run and test out your pipeline code before creating a Docker image
 
 ![Mount extension in action](/images/mount-extension.gif)

@@ -10,13 +10,13 @@ seriesPart:
 --- 
 
 ## Datum Statistics
-Pachyderm stores information about each datum that
+MLDM stores information about each datum that
 a pipeline processes, including timing information, size information,
 and `/pfs` snapshots. 
 You can view these statistics by running the [`pachctl inspect datum`](../glob-pattern/#test-your-datums)
 command (or its language client equivalents).
 
-In particular, Pachyderm provides the following information for each datum
+In particular, MLDM provides the following information for each datum
 processed by your pipelines:
 
 - The amount of data that was uploaded and downloaded

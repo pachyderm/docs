@@ -1,6 +1,6 @@
 ---
 title: "Intro to Pipelines"
-description: Learn about Pachyderm Pipeline System and how to define pipelines in YAML for data transformation and processing, including datums, jobs, and advanced glob patterns.
+description: Learn about MLDM Pipeline System and how to define pipelines in YAML for data transformation and processing, including datums, jobs, and advanced glob patterns.
 date: 2023-01-30T16:17:44-06:00
 weight: 050
 tags:
@@ -13,14 +13,14 @@ directory: true
 
 ## Introduction to Pipelines
 
-The  **Pachyderm Pipeline System (PPS)** is a powerful tool for automating data transformations. With PPS, pipelines can be automatically triggered whenever input data changes, meaning that data transformations happen automatically in response to changes in your data, without the need for manual intervention.
+The  **MLDM Pipeline System (PPS)** is a powerful tool for automating data transformations. With PPS, pipelines can be automatically triggered whenever input data changes, meaning that data transformations happen automatically in response to changes in your data, without the need for manual intervention.
 
-Pipelines in Pachyderm are defined by a pipeline specification and run on Kubernetes. The output of a pipeline is stored in a versioned data repository, which allows you to reproduce any transformation that occurs in Pachyderm.
+Pipelines in MLDM are defined by a pipeline specification and run on Kubernetes. The output of a pipeline is stored in a versioned data repository, which allows you to reproduce any transformation that occurs in Pachyderm.
 
 Pipelines can be combined into a computational DAG (directed acyclic graph), with each pipeline being triggered when an upstream commit is finished. This allows you to build complex workflows that can process large amounts of data efficiently and with minimal manual intervention.
 
 ## Pipeline Specification 
-This is a Pachyderm pipeline definition in YAML. It describes a pipeline called transform that takes data from the data repository and transforms it using a Python script `my_transform_code.py`.
+This is a MLDM pipeline definition in YAML. It describes a pipeline called transform that takes data from the data repository and transforms it using a Python script `my_transform_code.py`.
 
 ```yaml
 pipeline: 
@@ -51,7 +51,7 @@ So, in summary, this pipeline definition defines a pipeline called transform tha
 
 ## Datums and Jobs
 
-Pipelines can distribute work across a cluster to parallelize computation. Each time data is committed to a Pachyderm repository, a job is created for each pipeline with that repo as an input to process the data.
+Pipelines can distribute work across a cluster to parallelize computation. Each time data is committed to a MLDM repository, a job is created for each pipeline with that repo as an input to process the data.
 
 To determine how to distribute data and computational work, datums are used. A **datum** is an indivisible unit of data required by the pipeline, defined according to the pipeline spec. The datums will be distributed across the cluster to be processed by workers.
 
@@ -66,7 +66,7 @@ For example, say you have a bunch of images that you want to normalize to a sing
 
 Next, let’s say you want to create a collage from those images. Now, we need to consider all of the images together to combine them. In this case, the collection of images would be a single datum, since they are all required for the process. 
 
-Pachyderm input specifications can handle both of these situations with the glob section of the Pipeline Specification. 
+MLDM input specifications can handle both of these situations with the glob section of the Pipeline Specification. 
 
 ### Basic Glob Patterns
 In this section we'll introduce glob patterns and datums in a couple of examples. 
@@ -126,13 +126,13 @@ Datums can also be created from advanced operations, such as Join, Cross, Group,
 
 
 ## Pipeline Communication (Advanced)
-A much more detailed look at how Pachyderm actually triggers pipelines is shown in the sequence diagram below. This is a much more advanced level of detail, but knowing how the different pieces of the platform interact can be useful.
+A much more detailed look at how MLDM actually triggers pipelines is shown in the sequence diagram below. This is a much more advanced level of detail, but knowing how the different pieces of the platform interact can be useful.
 
 Before we look at the diagram, it may be helpful to provide a brief recap of the main participants involved:
 
 - **User:** The user is the person interacting with Pachyderm, typically through the command line interface (CLI) or one of the client libraries.
-- **PFS (Pachyderm File System):** PFS is the underlying file system that stores all of the data in Pachyderm. It provides version control and lineage tracking for all data inside it.
-- **PPS (Pachyderm Pipeline System):** PPS is how code gets applied to the data in Pachyderm. It manages the computational graph, which describes the dependencies between different steps of the data processing pipeline.
+- **PFS (MLDM File System):** PFS is the underlying file system that stores all of the data in Pachyderm. It provides version control and lineage tracking for all data inside it.
+- **PPS (MLDM Pipeline System):** PPS is how code gets applied to the data in Pachyderm. It manages the computational graph, which describes the dependencies between different steps of the data processing pipeline.
 - **Worker:** Workers are Kubernetes pods that executes the jobs defined by PPS. Each worker runs a container image that contains the code for a specific pipeline. The worker will iterate through the datums it is given and apply user code to it.
 
 
@@ -183,7 +183,7 @@ sequenceDiagram
    deactivate Worker
 ```
 
-This diagram illustrates the data flow and interaction between the user, the Pachyderm Pipeline System (PPS), the Pachyderm File System (PFS), and a worker node when creating and running a Pachyderm pipeline. Note, this is simplified for the single worker case. The multi-worker and autoscaling mechanisms are more complex. 
+This diagram illustrates the data flow and interaction between the user, the MLDM Pipeline System (PPS), the MLDM File System (PFS), and a worker node when creating and running a MLDM pipeline. Note, this is simplified for the single worker case. The multi-worker and autoscaling mechanisms are more complex. 
 
 The sequence of events begins with the user creating a PFS repo called `foo` and a PPS pipeline called `bar` with the foo repo as its input. When the pipeline is created, PPS creates a branch called `bar@master`, which is provenant on the `foo@master` branch in PFS. A worker pod is then created in the Kubernetes cluster by PPS, which subscribes to the `bar@master` branch.
 

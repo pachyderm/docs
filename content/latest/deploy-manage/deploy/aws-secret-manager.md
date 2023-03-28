@@ -224,7 +224,7 @@ spec:
 ```
 Run a quick `kubectl get all` to check on your new pod.
 
-## 8. Update Your Secrets In Pachyderm Values.YAML 
+## 8. Update Your Secrets In MLDM Values.YAML 
 
 Finally, using the `secretName`(s) of your SecretProviderClass above, update Pachyderm's values.YAML with the list of secrets you will be needing.
 
