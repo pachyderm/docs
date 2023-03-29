@@ -14,7 +14,7 @@ jobs:
     - name: Checkout main branch
       uses: actions/checkout@v3
       with:
-        ref: main,hpe-branding
+        ref: main
     - name: Replace "Pachyderm" with "MLDM"
       run: |
         cd content
@@ -26,5 +26,7 @@ jobs:
         git add .
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git fetch
+        git checkout hpe-branding
         git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
         git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
