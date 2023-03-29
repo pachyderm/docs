@@ -8,20 +8,38 @@ on:
       - 'content/**'
 
 jobs:
-  update-branch:
+  checkout-main:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v3
         with:
           ref: main
+
+  update-content:
+    runs-on: ubuntu-latest
+    needs: checkout-main
+    steps:
       - name: Replace "Pachyderm" with "MLDM"
         run: |
           cd content
           find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
-      - name: Copy files to hpe-branding branch
+
+  checkout-hpe-branch:
+    runs-on: ubuntu-latest
+    needs: update-content
+    steps:
+      - name: Checkout hpe-branch
+        uses: actions/checkout@v3
+        with:
+          ref: hpe-branding
+
+  update-hpe-content:
+    runs-on: ubuntu-latest
+    needs: checkout-hpe-branch
+    steps:
+      - name: Update hpe-branch content
         run: |
-          git checkout hpe-branding
           cp -r ../content/* content/
           git add .
           git config --local user.email "action@github.com"
