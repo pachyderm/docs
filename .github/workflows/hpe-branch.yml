@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout main branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: main
     - name: Replace "Pachyderm" with "MLDM"
@@ -20,7 +20,7 @@ jobs:
         cd content
         find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
     - name: Checkout hpe-branding branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: 'hpe-branding'
     - name: Copy files to hpe-branding
