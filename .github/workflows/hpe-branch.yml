@@ -6,10 +6,15 @@ on:
       - main
     paths:
       - 'content/**'
+
 jobs:
-  pull-content-to-hpe:
+  update-branch:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout HPE branch
+      uses: actions/checkout@v3
+      with:
+        ref: hpe-branding
     - name: Checkout main branch
       uses: actions/checkout@v3
       with:
@@ -20,21 +25,10 @@ jobs:
         find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
     - name: Copy files to hpe-branding
       run: |
-        cp -r content hpe-branding/
+        cp -r content/hpe-branding hpe-branding
         cd hpe-branding
         git add .
-    - name: Checkout HPE branch
-      uses: actions/checkout@v3
-      with:
-        ref: hpe-branding
-    - name: Replace hpe-branding/content dir with main/content/hpe-branding
-      run: |
-        cp -r ../content/hpe-branding/* content/
-    - name: Commit and push
-      run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
         git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
-
-
