@@ -1,0 +1,30 @@
+name: Update hpe-branding branch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/**'
+
+jobs:
+  update-branch:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout main branch
+      uses: actions/checkout@v2
+      with:
+        ref: main
+    - name: Replace "Pachyderm" with "MLDM"
+      run: |
+        cd content
+        find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
+    - name: Copy files to hpe-branding
+      run: |
+        cp -r content hpe-branding/
+        cd hpe-branding
+        git add .
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
+        git push
