@@ -25,6 +25,8 @@ jobs:
           git stash                          # stash any changes to the current branch
           git fetch                          # fetch branches
           git checkout hpe-branding          # checkout to the target branch
+          git pull
+          git rm -r content/**
           git add .                    # add updated files to staging area
           git diff-index --quiet HEAD || git commit -am "Update"
           git push origin hpe-branding       # push to remote branch
