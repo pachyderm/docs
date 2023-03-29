@@ -26,7 +26,7 @@ jobs:
     - name: Checkout HPE branch
       uses: actions/checkout@v3
       with:
-        ref: hpe-branch
+        ref: hpe-branding
     - name: Replace hpe-branding/content dir with main/content/hpe-branding
       run: |
         cp -r ../content/hpe-branding/* content/
