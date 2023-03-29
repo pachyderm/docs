@@ -6,43 +6,35 @@ on:
       - main
     paths:
       - 'content/**'
-
 jobs:
-  checkout-main:
+  pull-content-to-hpe:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v3
-        with:
-          ref: main
+    - name: Checkout main branch
+      uses: actions/checkout@v3
+      with:
+        ref: main
+    - name: Replace "Pachyderm" with "MLDM"
+      run: |
+        cd content
+        find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
+    - name: Copy files to hpe-branding
+      run: |
+        cp -r content hpe-branding/
+        cd hpe-branding
+        git add .
+    - name: Checkout HPE branch
+      uses: actions/checkout@v3
+      with:
+        ref: hpe-branch
+    - name: Replace hpe-branding/content dir with main/content/hpe-branding
+      run: |
+        cp -r ../content/hpe-branding/* content/
+    - name: Commit and push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
+        git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
 
-  update-content:
-    runs-on: ubuntu-latest
-    needs: checkout-main
-    steps:
-      - name: Replace "Pachyderm" with "MLDM"
-        run: |
-          cd content
-          find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
 
-  checkout-hpe-branch:
-    runs-on: ubuntu-latest
-    needs: update-content
-    steps:
-      - name: Checkout hpe-branch
-        uses: actions/checkout@v3
-        with:
-          ref: hpe-branding
-
-  update-hpe-content:
-    runs-on: ubuntu-latest
-    needs: checkout-hpe-branch
-    steps:
-      - name: Update hpe-branch content
-        run: |
-          cp -r ../content/* content/
-          git add .
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
-          git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
