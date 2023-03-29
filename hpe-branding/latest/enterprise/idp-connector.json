@@ -1,0 +1,17 @@
+{
+    "type": "oidc",
+    "id": "auth0-test",
+    "name": "MLDM",
+    "version": 0,
+    "config":{
+        "issuer": "dev-ps2tkwpgxblc1ozs.us.auth0.com",
+        "clientID": "jgkZcw7Wm1MruITlAMu7BaRD02KaUugx",
+        "clientSecret": "2LB1HB0JToG3G_04nfo4rNwxAIMElhOf6_zSKv5e9SJjpjx6pP-a-sU13owBI-3I",
+        "redirectURI": "http://localhost:3000/dex/callback",
+        "scopes": ["groups", "email", "profile"],
+        "claimMapping":{
+            "groups": "http://MLDM.com/groups"
+        },
+        "insecureEnableGroups": true
+        }
+}
