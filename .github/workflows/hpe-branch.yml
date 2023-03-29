@@ -26,7 +26,7 @@ jobs:
           git fetch                          # fetch branches
           git checkout hpe-branding          # checkout to the target branch
           git checkout main -- content/**    # copy files from the source branch
-          git add -A
+          git add content                    # add updated files to staging area
           git diff-index --quiet HEAD || git commit -am "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM" # commit to the target branch (ignore if no modification)
           git push origin hpe-branding       # push to remote branch
           git checkout -                      # switch back to the previous branch and unstash changes if any
