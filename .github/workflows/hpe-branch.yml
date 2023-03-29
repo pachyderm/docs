@@ -22,9 +22,12 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git fetch                         # fetch branches
-          git checkout hpe-branding         # checkout to the target branch
-          git checkout main -- content/** # copy files from the source branch
+          git stash                          # stash any changes to the current branch
+          git fetch                          # fetch branches
+          git checkout hpe-branding          # checkout to the target branch
+          git checkout main -- content/**    # copy files from the source branch
           git add -A
           git diff-index --quiet HEAD || git commit -am "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM" # commit to the target branch (ignore if no modification)
-          git push origin hpe-branding     # push to remote branch
+          git push origin hpe-branding       # push to remote branch
+          git checkout -                      # switch back to the previous branch and unstash changes if any
+          git stash pop -q                     # remove the stash if any
