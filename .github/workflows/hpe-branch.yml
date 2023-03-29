@@ -26,7 +26,8 @@ jobs:
           git fetch                          # fetch branches
           git checkout hpe-branding          # checkout to the target branch
           git pull
-          git add content                    # add updated files to staging area
+          git rm -r hpe-branding/content*   # remove the folder
+          git add .                    # add updated files to staging area
           git diff-index --quiet HEAD || git commit -am "Update"
           git push origin hpe-branding       # push to remote branch
           git checkout -                      # switch back to the previous branch and unstash changes if any
