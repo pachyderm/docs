@@ -1,32 +1,30 @@
-name: Update hpe-branding branch
+name: Copy folder to other branch
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'content/**'
 
 jobs:
-  update-branch:
+  copy:
+    name: Copy my folder
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout main branch
-      uses: actions/checkout@v3
-      with:
-        ref: main
-    - name: Replace "Pachyderm" with "MLDM"
-      run: |
-        cd content
-        find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
-    - name: Copy files to hpe-branding
-      run: |
-        cp -r content hpe-branding/
-        cd hpe-branding
-        git add .
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git fetch
-        git checkout hpe-branding
-        git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
-        git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: Replace "Pachyderm" with "MLDM"
+        run: |
+          cd content
+          find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
+      - name: Copy files to hpe-branding
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git fetch                         # fetch branches
+          git checkout hpe-branding         # checkout to the target branch
+          git checkout main -- content/** # copy files from the source branch
+          git add -A
+          git diff-index --quiet HEAD || git commit -am "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM" # commit to the target branch (ignore if no modification)
+          git push origin hpe-branding     # push to remote branch
