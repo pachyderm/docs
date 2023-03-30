@@ -20,6 +20,7 @@ jobs:
         grep -rlZ "Pachyderm" content/ | xargs -0 sed -i 's/Pachyderm/MLDM/g'
     - name: Copy files to hpe-branding
       run: |
+        cd ..
         cp -r content hpe-branding/
         cd hpe-branding
         git add .
