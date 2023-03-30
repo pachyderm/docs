@@ -17,7 +17,7 @@ jobs:
     - name: Replace "Pachyderm" with "MLDM"
       run: |
         cd content
-        find . -type f -name "*.md" -exec sed -i 's/Pachyderm/MLDM/g' {} +
+        grep -rlZ "Pachyderm" content/ | xargs -0 sed -i 's/Pachyderm/MLDM/g'
     - name: Copy files to hpe-branding
       run: |
         cp -r content hpe-branding/
