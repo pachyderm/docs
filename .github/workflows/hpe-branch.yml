@@ -26,6 +26,7 @@ jobs:
     - name: Checkout hpe-branding branch
       run: |  
         git checkout hpe-branding
+        git pull
         git stash pop
         git commit -ma "Update hpe-branding branch"
         git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
