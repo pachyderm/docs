@@ -16,24 +16,16 @@ jobs:
         ref: main
     - name: Replace "Pachyderm" with "MLDM"
       run: |
-        cd content
         grep -rlZ "Pachyderm" content/ | xargs -0 sed -i 's/Pachyderm/MLDM/g'
-    - name: Copy files to hpe-branding
-      run: |
-        cd ..
-        cp -r content hpe-branding/
-        cd hpe-branding
-        git add .
-    - name: Checkout HPE branch
-      uses: actions/checkout@v3
-      with:
-        ref: hpe-branch
-    - name: Replace hpe-branding/content dir with main/content/hpe-branding
-      run: |
-        cp -r ../content/hpe-branding/* content/
-    - name: Commit and push
+    - name: Stash changes 
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Update hpe-branding branch with latest content from main branch and replace Pachyderm with MLDM"
+        git stash
+        git fetch
+    - name: Checkout hpe-branding branch
+      run: |  
+        git checkout hpe-branding
+        git stash pop
+        git commit -ma "Update hpe-branding branch"
         git push --force --quiet https://${{ secrets.HPE }}@github.com/${{ github.repository }} hpe-branding
