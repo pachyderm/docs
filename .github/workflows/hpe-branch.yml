@@ -23,9 +23,9 @@ jobs:
         git config --local user.name "GitHub Action"
         git stash
         git fetch
-    - name: Checkout hpe-branding branch
+    - name: Checkout hpe-docs branch
       run: |  
-        git checkout hpe-branding
+        git checkout hpe-docs
         git pull
         git stash pop
         git commit -ma "Update hpe-branding branch"
