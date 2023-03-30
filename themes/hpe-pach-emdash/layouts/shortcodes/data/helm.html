@@ -1,0 +1,53 @@
+{{/* TODO: fix the weird blockquote and spacing that appears at the end of the rendered output */}}
+
+<pre class="is-size-7"> 
+    {{$name := .Get 0 }}
+
+    {{ if $name }}
+        {{ if eq $name "global"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.global  }}
+        {{ end }}
+        {{ if eq $name "console"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.console }}
+        {{ end }}
+        {{ if eq $name "etcd"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.etcd }}
+        {{ end }}
+        {{ if eq $name "enterpriseServer"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.enterpriseServer }}
+        {{ end }}
+        {{ if eq $name "ingress"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.ingress }}
+        {{ end }}
+        {{ if eq $name "lokiStack"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.lokiStack }}
+        {{ end }}
+        {{ if eq $name "pachd"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.pachd }}
+        {{ end }}
+        {{ if eq $name "kubeEventTail"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.kubeEventTail }}
+        {{ end }}
+        {{ if eq $name "pgbouncer"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.pgbouncer}}
+        {{ end }}
+        {{ if eq $name "postgresql"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.postgresql }}
+        {{ end }}
+        {{ if eq $name "cloudsqlAuthProxy"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.cloudsqlAuthProxy }}
+        {{ end }}
+        {{ if eq $name "oidc"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.oidc }}
+        {{ end }}
+        {{ if eq $name "testConnection"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.testConnection }}
+        {{ end }}
+        {{ if eq $name "proxy"}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm.proxy }}
+        {{ end }}
+    {{else}}
+            {{ jsonify (dict "indent" "  ") site.Data.helm }}
+    {{end}}
+
+</pre>

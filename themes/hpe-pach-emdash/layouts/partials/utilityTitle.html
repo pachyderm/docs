@@ -1,0 +1,18 @@
+{{if .Title}}
+    {{.Title | truncate 30}}
+{{else}}
+    {{ path.BaseName . | humanize }}
+{{end}}
+
+ <a href="{{ .RelPermalink }}" class="tag">
+    {{if .Pages}}
+        ├ 
+    {{else}}
+    {{if .PrevInSection }} 
+        │ 
+    {{else}}
+        └ 
+    {{end}}
+    {{end}} 
+    {{ .Title | truncate 30 }}
+</a>

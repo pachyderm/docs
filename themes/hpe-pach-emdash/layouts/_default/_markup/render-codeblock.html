@@ -1,0 +1,15 @@
+
+{{if eq .Type "mermaid"}}
+<div class="stack brighten-3 my-1 rounded-1">
+    {{- transform.Highlight .Inner .Type -}}
+</div>
+{{else}}
+
+<div class="stack black sp-3 c-sp-1 rounded-3 outlined">
+    {{/*  transform.Highlight wraps code in a div with a highlight class for you. See: https://gohugo.io/functions/highlight/  */}}
+    {{- transform.Highlight .Inner .Type -}}
+    <div class="spread-right c-pinned-top">
+        <div class="button clippy black is-fit p-1 mr-3 xxs rounded-1 bold "><img src="/images/copy.svg"></div>
+    </div>
+</div>
+{{end}}

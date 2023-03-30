@@ -1,0 +1,20 @@
+{{if .Site.Params.downloads }}
+    {{if .Site.Params.releaseInfo.patch}}
+        <div class="navbar-item has-dropdown is-hoverable is-size-7">
+            <a class="navbar-link" href="" >
+                Download CLI {{.Site.Params.releaseInfo.patch}}
+            </a>
+            <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item is-size-7" href="https://github.com/pachyderm/pachyderm/releases/download/v{{.Site.Params.releaseInfo.patch}}/pachctl_{{.Site.Params.releaseInfo.patch}}_amd64.deb" >
+                    amd64
+                </a>
+                <a class="navbar-item is-size-7" href="https://github.com/pachyderm/pachyderm/releases/download/v{{.Site.Params.releaseInfo.patch}}/pachctl_{{.Site.Params.releaseInfo.patch}}_darwin_amd64.zip" >
+                    darwin
+                </a>
+                <a class="navbar-item is-size-7" href="https://github.com/pachyderm/pachyderm/releases/download/v{{.Site.Params.releaseInfo.patch}}/pachctl_{{.Site.Params.releaseInfo.patch}}_linux_amd64.tar.gz" >
+                    linux 
+                </a>
+            </div>
+        </div>
+    {{end}}
+{{end}}

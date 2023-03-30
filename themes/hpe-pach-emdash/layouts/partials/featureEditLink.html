@@ -1,0 +1,6 @@
+{{ if .Site.Params.editLink.display }} 
+    {{$url := ""}}
+    {{with .File}} {{$url = .File.Path}} {{end}}
+ 
+    <a class="label black darken-7 is-fit p-2 xs rounded-1 uppercase bold is-hidden-touch" href="{{ print .Site.Params.editLink.githubUrl $url }} "> <img src="/images/github-white.svg" height="15px" class="" alt="GitHub"> </a>
+{{end}}
