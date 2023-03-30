@@ -17,7 +17,10 @@ jobs:
       - name: Replace "Pachyderm" with "MLDM"
         run: |
           cd content
-          find . -type f -name "*.md" -exec sed -i -e 's/Pachyderm/MLDM/g' {} +
+          find content/ -name "*.md" -type f -print0 | while IFS= read -r -d '' file; do
+          # replace all the instances of "Pachyderm" with "MLDM"
+            sed -i '' 's/Pachyderm/MLDM/g' "$file"
+          done
       - name: Copy files to hpe-branding
         run: |
           git config --global user.name 'GitHub Action'
