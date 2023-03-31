@@ -3,12 +3,195 @@
    [headers.values]
       Access-Control-Allow-Origin = "*"
 
+# Manage Redirects # 
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/check-user/"
+  to = "/latest/manage/check-user"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/deactivate-auth/"
+  to = "/latest/manage/deactivate-auth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/supported-releases/"
+  to = "/latest/manage/supported-releases"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/scaling-limits/"
+  to = "/latest/manage/scaling-limits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/secrets/"
+  to = "/latest/manage/secrets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/manage/:splat"
+  to = "/latest/manage/:splat"
+  status = 301
+  force = true
+
+# Prepare Data Redirects # 
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/mount-volume/"
+  to = "/latest/prepare-data/mount-volume"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/removing-data-from-pachyderm/"
+  to = "/latest/prepare-data/removing-data"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/how-tos/basic-data-operations/load-data-into-pachyderm/"
+  to = "/latest/prepare-data/ingest-data"
+  status = 301
+  force = true
+
+# Set Up Redirects #
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/rbac/"
+  to = "/latest/set-up/rbac"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/getting-started/install-pachctl-completion/"
+  to = "/latest/set-up/pachctl-autocomplete"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/on-premises/"
+  to = "/latest/set-up/on-prem"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/namespaces/"
+  to = "/latest/set-up/namespaces"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/deploy-manage/deploy/loki/"
+  to = "/latest/set-up/loki"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/deploy-manage/deploy/console/"
+  to = "/latest/set-up/cloud-deploy/console/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/deploy-manage/deploy/google-cloud-platform/"
+  to = "/latest/set-up/cloud-deploy/gcp/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/deploy-manage/deploy/azure/"
+  to = "/latest/set-up/cloud-deploy/azure/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/deploy-manage/deploy/aws-deploy-pachyderm/"
+  to = "/latest/set-up/cloud-deploy/aws/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/deploy-manage/deploy/aws-secret-manager/"
+  to = "/latest/set-up/cloud-deploy/aws-secret-manager"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/"
+  to = "/latest/set-up/enterprise-edition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/environment-variables/"
+  to = "/latest/set-up/environment-variables"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/connectors/:splat"
+  to = "/latest/set-up/connectors/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/enterprise-server/:splat"
+  to = "/latest/set-up/enterprise-server/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authorization/:splat"
+  to = "/latest/set-up/authorization/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/:splat"
+  to = "/latest/set-up/authentication/:splat"
+  status = 301
+  force = true
+
+# Learn Redirects #
+
+[[redirects]]
+  from = "/latest/overview/:splat"
+  to = "/latest/learn/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/overview/:splat"
+  to = "/latest/learn/:splat"
+  status = 301
+  force = true
+
+# Version Redirects #
+
 [[redirects]]
   from = "/2.5.x/*"
   to = "/latest/:splat"
   status = 301
   force = true
 
+[[redirects]]
+  from = "/2.5.x/*"
+  to = "/latest/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2.3.x/*"
+  to = "https://docs.pachyderm.com/archive"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/2.2.x/*"
