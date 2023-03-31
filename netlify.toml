@@ -3,7 +3,23 @@
    [headers.values]
       Access-Control-Allow-Origin = "*"
 
-# Learn Redirects #
+[[redirects]]
+  from = "/latest/concepts/"
+  to = "/latest/learn/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/"
+  to = "/latest/learn/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/overview/"
+  to = "/latest/learn/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/overview/:splat"
@@ -12,8 +28,8 @@
   force = true
 
 [[redirects]]
-  from = "/latest/overview/:splat"
-  to = "/latest/learn/:splat"
+  from = "/latest/how-tos/developer-workflow/"
+  to = "/latest/learn/developer-workflow/"
   status = 301
   force = true
 
@@ -23,7 +39,11 @@
   status = 301
   force = true
 
-# Get Started Redirects # 
+[[redirects]]
+  from = "/latest/getting-started/"
+  to = "/latest/get-started/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/reference/clients/"
@@ -37,7 +57,11 @@
   status = 301
   force = true
 
-# Set Up Redirects #
+[[redirects]]
+  from = "/latest/deploy-manage/"
+  to = "/latest/set-up/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/enterprise/auth/authentication/activate-auth/"
@@ -136,8 +160,20 @@
   force = true
 
 [[redirects]]
+  from = "/latest/enterprise/auth/authentication/connectors/"
+  to = "/latest/set-up/connectors/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/enterprise/auth/authentication/connectors/:splat"
   to = "/latest/set-up/connectors/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/enterprise-server/"
+  to = "/latest/set-up/enterprise-server/"
   status = 301
   force = true
 
@@ -148,8 +184,20 @@
   force = true
 
 [[redirects]]
+  from = "/latest/enterprise/auth/authorization/"
+  to = "/latest/set-up/authorization/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/enterprise/auth/authorization/:splat"
   to = "/latest/set-up/authorization/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/"
+  to = "/latest/set-up/authentication/"
   status = 301
   force = true
 
@@ -160,8 +208,20 @@
   force = true
 
 [[redirects]]
+  from = "/latest/getting-started/local-deploy/"
+  to = "/latest/set-up/local-deploy/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/getting-started/local-deploy/:splat"
   to = "/latest/set-up/local-deploy/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/getting-started/cloud-deploy/"
+  to = "/latest/set-up/cloud-deploy/"
   status = 301
   force = true
 
@@ -170,8 +230,6 @@
   to = "/latest/set-up/cloud-deploy/:splat"
   status = 301
   force = true
-
-# Manage Redirects # 
 
 [[redirects]]
   from = "/latest/enterprise/auth/authentication/check-user/"
@@ -204,12 +262,16 @@
   force = true
 
 [[redirects]]
+  from = "/latest/deploy-manage/manage/"
+  to = "/latest/manage/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/deploy-manage/manage/:splat"
   to = "/latest/manage/:splat"
   status = 301
   force = true
-
-# Prepare Data Redirects # 
 
 [[redirects]]
   from = "/latest/how-tos/advanced-data-operations/mount-volume/"
@@ -253,11 +315,27 @@
   status = 301
   force = true
 
-# Build DAGs Redirects # 
+[[redirects]]
+  from = "/latest/how-tos/"
+  to = "/latest/build-dags/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/pipeline-operations/"
+  to = "/latest/build-dags/pipeline-operations/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/how-tos/pipeline-operations/:splat"
   to = "/latest/build-dags/pipeline-operations/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/pipeline-spec/"
+  to = "/latest/build-dags/pipeline-spec/"
   status = 301
   force = true
 
@@ -268,12 +346,16 @@
   force = true
 
 [[redirects]]
+  from = "/latest/reference/project-operations/"
+  to = "/latest/build-dags/project-operations/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/reference/project-operations/:splat"
   to = "/latest/build-dags/project-operations/:splat"
   status = 301
   force = true
-
-# Export Data Redirects #
 
 [[redirects]]
   from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress/"
@@ -283,7 +365,7 @@
 
 [[redirects]]
   from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress/"
-  to = "/latest/export-data/export-data-egress
+  to = "/latest/export-data/export-data-egress"
   status = 301
   force = true
 
@@ -299,7 +381,12 @@
   status = 301
   force = true
 
-# Integrate Redirects #
+
+[[redirects]]
+  from = "/latest/how-tos/jupyterlab-extension/"
+  to = "/latest/integrate/jupyterlab-extension/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/how-tos/jupyterlab-extension/:splat"
@@ -307,7 +394,11 @@
   status = 301
   force = true
 
-# Run Commands Redirects #
+[[redirects]]
+  from = "/latest/reference/pachctl/"
+  to = "/latest/run-commands/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/reference/pachctl/:splat"
@@ -315,7 +406,11 @@
   status = 301
   force = true
 
-# Debug Redirects #
+[[redirects]]
+  from = "/latest/troubleshooting/"
+  to = "/latest/debug/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/how-tos/debugging-operations/view-user-logs/"
@@ -329,7 +424,11 @@
   status = 301
   force = true
 
-# Contributing Redirects #
+[[redirects]]
+  from = "/latest/contributing/"
+  to = "/latest/contribute/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/contributing/:splat"
@@ -337,17 +436,8 @@
   status = 301
   force = true
 
-
-# Version Redirects #
-
 [[redirects]]
-  from = "/2.5.x/*"
-  to = "/latest/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/2.5.x/*"
+  from = "/2.6.x/*"
   to = "/latest/:splat"
   status = 301
   force = true
