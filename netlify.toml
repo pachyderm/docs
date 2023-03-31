@@ -3,65 +3,65 @@
    [headers.values]
       Access-Control-Allow-Origin = "*"
 
-# Manage Redirects # 
+# Learn Redirects #
 
 [[redirects]]
-  from = "/latest/enterprise/auth/authentication/check-user/"
-  to = "/latest/manage/check-user"
+  from = "/latest/overview/:splat"
+  to = "/latest/learn/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/latest/enterprise/auth/authentication/deactivate-auth/"
-  to = "/latest/manage/deactivate-auth"
+  from = "/latest/overview/:splat"
+  to = "/latest/learn/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/latest/reference/supported-releases/"
-  to = "/latest/manage/supported-releases"
+  from = "/latest/how-tos/developer-workflow/:splat"
+  to = "/latest/learn/developer-workflow/:splat"
+  status = 301
+  force = true
+
+# Get Started Redirects # 
+
+[[redirects]]
+  from = "/latest/reference/clients/"
+  to = "/latest/get-started/clients"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/latest/reference/scaling-limits/"
-  to = "/latest/manage/scaling-limits"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/how-tos/advanced-data-operations/secrets/"
-  to = "/latest/manage/secrets"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/deploy-manage/manage/:splat"
-  to = "/latest/manage/:splat"
-  status = 301
-  force = true
-
-# Prepare Data Redirects # 
-
-[[redirects]]
-  from = "/latest/how-tos/advanced-data-operations/mount-volume/"
-  to = "/latest/prepare-data/mount-volume"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/latest/how-tos/basic-data-operations/removing-data-from-pachyderm/"
-  to = "/latest/prepare-data/removing-data"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "latest/how-tos/basic-data-operations/load-data-into-pachyderm/"
-  to = "/latest/prepare-data/ingest-data"
+  from = "/latest/getting-started/beginner-tutorial/"
+  to = "/latest/get-started/beginner-tutorial"
   status = 301
   force = true
 
 # Set Up Redirects #
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/activate-auth/"
+  to = "/latest/set-up/authentication"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/s3gateway-api/"
+  to = "/latest/set-up/s3gateway-api"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/tracing/"
+  to = "/latest/set-up/tracing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/deploy-w-tls/"
+  to = "/latest/set-up/tls"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/latest/deploy-manage/deploy/rbac/"
@@ -159,19 +159,184 @@
   status = 301
   force = true
 
-# Learn Redirects #
-
 [[redirects]]
-  from = "/latest/overview/:splat"
-  to = "/latest/learn/:splat"
+  from = "/latest/getting-started/local-deploy/:splat"
+  to = "/latest/set-up/local-deploy/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/latest/overview/:splat"
-  to = "/latest/learn/:splat"
+  from = "/latest/getting-started/cloud-deploy/:splat"
+  to = "/latest/set-up/cloud-deploy/:splat"
   status = 301
   force = true
+
+# Manage Redirects # 
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/check-user/"
+  to = "/latest/manage/check-user"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/deactivate-auth/"
+  to = "/latest/manage/deactivate-auth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/supported-releases/"
+  to = "/latest/manage/supported-releases"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/scaling-limits/"
+  to = "/latest/manage/scaling-limits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/secrets/"
+  to = "/latest/manage/secrets"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/manage/:splat"
+  to = "/latest/manage/:splat"
+  status = 301
+  force = true
+
+# Prepare Data Redirects # 
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/mount-volume/"
+  to = "/latest/prepare-data/mount-volume"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/removing-data-from-pachyderm/"
+  to = "/latest/prepare-data/removing-data"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "latest/how-tos/basic-data-operations/load-data-into-pachyderm/"
+  to = "/latest/prepare-data/ingest-data"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/err-cmd/"
+  to = "/latest/prepare-data/err-cmd"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/sql-ingest/"
+  to = "/latest/prepare-data/sql-ingest"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/time-windows/"
+  to = "/latest/prepare-data/time-windows"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/use-transactions-to-run-multiple-commands/"
+  to = "/latest/prepare-data/transactions"
+  status = 301
+  force = true
+
+# Build DAGs Redirects # 
+
+[[redirects]]
+  from = "/latest/how-tos/pipeline-operations/:splat"
+  to = "/latest/build-dags/pipeline-operations/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/pipeline-spec/:splat"
+  to = "/latest/build-dags/pipeline-spec/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/project-operations/:splat"
+  to = "/latest/build-dags/project-operations/:splat"
+  status = 301
+  force = true
+
+# Export Data Redirects #
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/sql-egress/"
+  to = "/latest/export-data/sql-egress"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/export-data-egress/"
+  to = "/latest/export-data/export-data-egress
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/export-data-pachctl/"
+  to = "/latest/export-data/export-data-pachctl"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/mount-repo-to-local-computer/"
+  to = "/latest/export-data/mount-repo-to-local-computer"
+  status = 301
+  force = true
+
+# Integrate Redirects #
+
+[[redirects]]
+  from = "/latest/how-tos/jupyterlab-extension/:splat"
+  to = "/latest/integrate/jupyterlab-extension/:splat"
+  status = 301
+  force = true
+
+# Run Commands Redirects #
+
+[[redirects]]
+  from = "/latest/reference/pachctl/:splat"
+  to = "/latest/run-commands/:splat"
+  status = 301
+  force = true
+
+# Debug Redirects #
+
+[[redirects]]
+  from = "/latest/how-tos/debugging-operations/view-user-logs/"
+  to = "/latest/debug/view-user-logs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/debugging-operations/view-k8s-events/"
+  to = "/latest/debug/view-k8s-events"
+  status = 301
+  force = true
+
+# Contributing Redirects #
+
+[[redirects]]
+  from = "/latest/contributing/:splat"
+  to = "/latest/contribute/:splat"
+  status = 301
+  force = true
+
 
 # Version Redirects #
 
