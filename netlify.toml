@@ -149,7 +149,7 @@
 
 [[redirects]]
   from = "/latest/enterprise/"
-  to = "/latest/set-up/enterprise-edition"
+  to = "/latest/set-up/enterprise"
   status = 301
   force = true
 
