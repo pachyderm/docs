@@ -1,9 +1,0 @@
-{{/* 
-    - Traverses the heading tree and generates an anchor for each heading
-    - See docs for info: https://gohugo.io/templates/render-hooks/#heading-link-example 
-*/}}
-
-{{$id := .Page.Title | anchorize }}
-
-<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="mb-2 mt-5">{{ .Text | safeHTML }} <a href="#{{$id}}-{{ .Anchor | safeURL }}" class="l mx-1 anchor">#</a> </h{{ .Level }}>
-

@@ -1,7 +1,0 @@
-{{ if .Site.Params.seriesButton }}
-    {{if and (.Params.series) (.Site.Params.seriesButton) }}
-        {{range .Params.series }}
-            <a class="button xs rounded-1 ml-3 my-2 p-2 white" href="/series/{{ . | urlize }}"> Read the {{.}}  series</a> 
-        {{end}}
-    {{end}}
-{{end}}

@@ -1,0 +1,47 @@
+name: Update submodules on content changes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/**'
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout pachyderm/docs-hpe-ui
+        uses: actions/checkout@v3
+        with:
+          repository: pachyderm/docs-hpe-ui
+          ref: main
+
+      - name: Checkout pachyderm/docs
+        uses: actions/checkout@v3
+        with:
+            repository: pachyderm/docs
+            ref: main
+          
+      - name: Update content submodule in pachyderm/docs-hpe-ui
+        run: |
+          cd docs-hpe-ui
+          git submodule update --init --recursive
+          git submodule foreach --recursive git pull origin main
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add content
+          git commit -m "Update content submodule"
+          git push origin main
+
+      - name: Update content submodule in pachyderm/docs
+        run: |
+          cd ../docs
+          git submodule update --init --recursive
+          git submodule foreach --recursive git pull origin main
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add content
+          git commit -m "Update content submodule"
+          git push origin main

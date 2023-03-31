@@ -1,4 +1,0 @@
-{{ $state := .Get "state" | lower}}
-<div class="is-fit">
-    <button data-wizard-option="{{ .Parent.Get "id" | lower |urlize }}/{{ .Get "option" | lower | urlize }}" type="button" class="outlined rounded-1 p-3 m-1 {{if eq $state "active"}}purple{{end}}">{{ .Get "option" }}</button>
-</div>
