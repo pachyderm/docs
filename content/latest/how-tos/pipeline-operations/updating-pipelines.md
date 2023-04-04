@@ -9,33 +9,22 @@ series:
 seriesPart:
 ---
 
+While working with data, it's common to modify an existing pipeline with new transformation code or pipeline parameters. This can be done in a few ways:
 
-While working with your data, you often need to modify an existing
-pipeline with new transformation code or pipeline parameters. 
+- Using the `pachctl update pipeline` command.
+- Using [jsonnet pipeline specification files (PPS)](#using-jsonnet-pipeline-specification-files).
 
-Use the `pachctl update pipeline` command to make changes to a pipeline,
-whether you have re-built a docker image after a code change and/or
-need to update pipeline parameters in the pipeline specification file. 
+Making changes to your pipeline's user code or parameters does not trigger a reprocessing of your data. Pipeline updates only trigger data reprocessing when the shape of your datums (via a glob pattern update) or number of inputs has changed; otherwise, the pipeline just processes any new data added to the input repo. 
 
-Alternatively, you can update a pipeline using [jsonnet pipeline specification files](#using-jsonnet-pipeline-specification-files).
+If you want to run the changes in your pipeline against the data in your input repo's `HEAD` commit, use the `--reprocess` flag. The updated pipeline will then continue to process new input data only. Previous results remain accessible through the corresponding commit IDs.
 
-## After You Changed Your Specification File
+## How to Update a Pipeline
 
-Run the `pachctl update pipeline` command to apply any change to your
-[pipeline specification](../../../reference/pipeline-spec) JSON file, such as change to the
-parallelism settings, change of an image tag, change of an input repository, etc...
+### Via pachctl update pipeline
 
-By default, a pipeline update does not trigger the reprocessing of the data
-that has already been processed. Instead,
-it processes only the new data you submit to the input repo.
-If you want to run the changes in your pipeline against the data in
-your input repo's `HEAD` commit, use the `--reprocess` flag.
-The updated pipeline will then continue to process new input data only.
-Previous results remain accessible through the corresponding commit IDs.
-
-To update a pipeline, run the following command after
-you have updated your pipeline specification JSON file.
-
+1. Apply any changes necessary to your [pipeline specification](../../../reference/pipeline-spec) JSON file.
+2. [Update your user code](#how-to-update-user-code-in-a-pipeline).
+3. Run the following:
 ```s
 pachctl update pipeline -f pipeline.json
 ```
@@ -44,7 +33,7 @@ pachctl update pipeline -f pipeline.json
 Similar to `create pipeline`, `update pipeline` with the `-f` flag can  take a URL if your JSON manifest is hosted on GitHub or other remote location.
 {{% /notice %}}
 
-## Using Jsonnet Pipeline Specification Files
+### Via Jsonnet PPS
 
 [Jsonnet pipeline specs](../jsonnet-pipeline-specs) allow you to bypass the "update-your -specification-file" step and 
 apply your changes at once by running:
@@ -53,96 +42,82 @@ apply your changes at once by running:
 pachctl update pipeline --jsonnet <your jsonnet pipeline specs path or URL> --arg <param 1>=<value 1> --arg <param 2>=<value 2>
 ```
 
-### Example
+#### Example
 ```s
 pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
 ```
 
-## Update the Code in a Pipeline
-To update the code in your pipeline, complete the following steps:
+## How to Update User Code in a Pipeline
 
 1. Make the code changes.
-1. Verify that the Docker daemon is running. Depending on your operating system and
-the Docker distribution that you use, steps for enabling it might
-vary:
+2. Verify that the Docker daemon is running using the command `docker ps`. Depending on your operating system and
+the container orchestrator that you use (Docker Desktop, Minikube, Kind, etc) this step may vary.
+1. Build, tag, and push the new image to your image registry and update the pipeline. This step comes in 3 flavors:
 
-     ```s
-     docker ps
-     ```
-     If you get an error message similar to the following:
+{{< stack type="wizard">}}
 
-     ```s
-     Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
-     ```
-     enable the Docker daemon (see the Docker documentation for your operating system and platform).
-     For example, if you use `minikube` on  macOS, run the following
-     command:
+{{% wizardRow id="Push Method"%}}
+{{% wizardButton option="Image Registry" state="active" %}}
+{{% wizardButton option="Jsonnet" %}}
+{{% wizardButton option="PachCTL" %}}
+{{% /wizardRow %}}
 
-     ```s
-     eval $(minikube docker-env)
-     ```
-
-Then build, tag, and push the new image to your image registry and update the pipeline. 
-This step comes in 3 flavors:
-### **If you prefer to use instructions from your image registry**
-
+{{% wizardResults  %}}
+{{% wizardResult val1="push-method/image-registry"%}}
    1. Build, tag, and push a new image as described in your
       image registry documentation. For example, if you use
       DockerHub, see [Docker Documentation](https://docs.docker.com/docker-hub/).
 
-   1. Update the [`transform.image`](../../../reference/pipeline-spec/#transform-required) field of your pipeline spec with your new tag.
+   2. Update the [`transform.image`](../../../reference/pipeline-spec/#transform-required) field of your pipeline spec with your new tag.
    
    {{% notice tip %}}
    Make sure to update your tag every time you re-build. Our pull policy is `IfNotPresent` (Only pull the image if it does not already exist on the node.). Failing to update your tag will result in your pipeline running on a previous version of your code.
    {{%/notice %}}
 
-   1. Update the pipeline:
+   3. Update the pipeline:
 
       ```s
       pachctl update pipeline -f <pipeline.json>
       ```
-
-### **If you chose to use a [jsonnet version of your pipeline specs](../jsonnet-pipeline-specs)**
-
-   * Pass the tag of your image to your jsonnet specs.
-
-      As an example, see the `tag` parameter in this jsonnet version of opencv's edges pipeline (`edges.jsonnet`):
+{{% /wizardResult %}}
+{{% wizardResult val1="push-method/jsonnet"%}}
+   1. Pass the tag of your image to your jsonnet specs.
+   As an example, see the `tag` parameter in this jsonnet version of opencv's edges pipeline (`edges.jsonnet`):
       
-   ```json
-   ////
-   // Template arguments:
-   //
-   // suffix : An arbitrary suffix appended to the name of this pipeline, for
-   //          disambiguation when multiple instances are created.
-   // src : the repo from which this pipeline will read the images to which
-   //       it applies edge detection.
-   ////
-   function(suffix, src)
-   {
-     pipeline: { name: "edges-"+suffix },
-     description: "OpenCV edge detection on "+src,
-     input: {
-       pfs: {
-         name: "images",
-         glob: "/*",
-         repo: src,
-       }
-     },
-     transform: {
-       cmd: [ "python3", "/edges.py" ],
-       image: "pachyderm/opencv:0.0.1"
-     }
-   }
-   ```
+      ```json
+      ////
+      // Template arguments:
+      //
+      // suffix : An arbitrary suffix appended to the name of this pipeline, for
+      //          disambiguation when multiple instances are created.
+      // src : the repo from which this pipeline will read the images to which
+      //       it applies edge detection.
+      ////
+      function(suffix, src)
+      {
+        pipeline: { name: "edges-"+suffix },
+        description: "OpenCV edge detection on "+src,
+        input: {
+          pfs: {
+            name: "images",
+            glob: "/*",
+            repo: src,
+          }
+        },
+        transform: {
+          cmd: [ "python3", "/edges.py" ],
+          image: "pachyderm/opencv:0.0.1"
+        }
+      }
+      ```
 
-   * Once your pipeline code is updated and your image is built, tagged, and pushed, update your pipeline using this command line. In this case, there is no need to edit the pipeline specification file to update the value of your new tag. This command will take care of it:
+   2. Update your pipeline using this command line. In this case, there is no need to edit the pipeline specification file to update the value of your new tag. This command will take care of it:
 
       ```s
       pachctl update pipeline --jsonnet jsonnet/edges.jsonnet --arg suffix=1 --arg tag=1.0.2
       ```
-
-### **If you use Pachyderm commands**
-
+{{% /wizardResult %}}
+{{% wizardResult val1="push-method/pachctl"%}}
    1. [Build your new image](../../developer-workflow/working-with-pipelines/#step-2-build-your-docker-image) using `docker build` (for example, in a makefile: `@docker build --platform linux/amd64 -t $(DOCKER_ACCOUNT)/$(CONTAINER_NAME) .`). No tag needed, the folllowing [`--push-images`](../../developer-workflow/push-images-flag/) flag will take care of it.
 
 
@@ -167,4 +142,7 @@ This step comes in 3 flavors:
       ```s
       Password for docker.io/testuser: Building pachyderm/opencv:f1e0239fce5441c483b09de425f06b40, this may take a while.
       ```
+{{% /wizardResult %}}
+{{% /wizardResults %}}
+{{< /stack >}}
 
