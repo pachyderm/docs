@@ -14,9 +14,9 @@ While working with data, it's common to modify an existing pipeline with new tra
 - Using the `pachctl update pipeline` command.
 - Using [jsonnet pipeline specification files (PPS)](#using-jsonnet-pipeline-specification-files).
 
-Making changes to your pipeline's user code or parameters does not trigger a reprocessing of your data. Pipeline updates only trigger data reprocessing when the shape of your datums (via a glob pattern update) or number of inputs has changed; otherwise, the pipeline just processes any new data added to the input repo. 
+Making changes to your pipeline's user code or parameters causes the pipeline to calculate any new datums using the new pipeline specification. Existing datums are not reprocessed; however, if your changes result in new datums being created, those new datums are processed. New datums are created when you either: change the glob pattern, add new files, or add more input repos.
 
-If you want to run the changes in your pipeline against the data in your input repo's `HEAD` commit, use the `--reprocess` flag. The updated pipeline will then continue to process new input data only. Previous results remain accessible through the corresponding commit IDs.
+You can trigger reprocessing of your datums by adding the `--reprocess` flag to your `update pipeline` command.
 
 ## How to Update a Pipeline
 
