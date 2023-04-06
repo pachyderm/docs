@@ -19,7 +19,7 @@
             </div>
         </section>
         <section class="stack">
-            {{ range .Pages.ByParam "seriesPart" }}
+            {{ range .Pages.ByParam "seriesPart" }} {{ if eq .Params.release "latest" }}
                 <div class="content"> 
                         <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.Permalink}}" id="{{.Title | anchorize}}">{{.Params.seriesPart}} {{.Title}} </a>
                     {{ partial "featureBetaNotice.html" . }}
@@ -27,15 +27,15 @@
                     {{.Content}}
                     </div>
                 </div>
-            {{ end }}
+            {{ end }} {{ end }}
         </section>
     </main>
     <div class="pt-5 noscrollbar sticky is-one-fifth directory h-scroll px-3 is-hidden-mobile">
         <div> 
             <p class="m bold">{{strings.FirstUpper .Title }} Series</p>
-            {{ range .Pages.ByParam "seriesPart" }}
+            {{ range .Pages.ByParam "seriesPart" }} {{ if eq .Params.release "latest" }}
                 <div><a href="#{{.Title | anchorize}}" class="s">{{.Title}}</a></div>
-            {{end}}
+            {{end}} {{end}}
         </div>
         
     </div>

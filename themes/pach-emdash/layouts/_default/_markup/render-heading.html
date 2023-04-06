@@ -5,5 +5,5 @@
 
 {{$id := .Page.Title | anchorize }}
 
-<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="mb-2 mt-5">{{ .Text | safeHTML }} <a href="#{{$id}}-{{ .Anchor | safeURL }}" class="l mx-1 anchor">#</a> </h{{ .Level }}>
+<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="mb-2 mt-5">{{ .Text | safeHTML }} <a id="{{$id}}-{{ .Anchor | safeURL }}" href="#{{$id}}-{{ .Anchor | safeURL }}" class="l mx-1 anchor">#</a> </h{{ .Level }}>
 

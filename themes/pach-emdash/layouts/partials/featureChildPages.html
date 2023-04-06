@@ -27,7 +27,7 @@
                             {{ if .Site.Params.childPages.grandchildren}}
                                 <div class="spread-left mb-3">
                                     {{ range first 7 .Pages }}
-                                        <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1" href="{{ .RelPermalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
+                                        <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="{{ .RelPermalink }}"> {{if .Title}}{{.Title | truncate 30}}{{else}}{{ path.BaseName . | humanize | truncate 30}}{{end}}
                                         </a>
                                     {{ end }}
                                     {{/*  {{if .Pages}}

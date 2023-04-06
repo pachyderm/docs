@@ -1,12 +1,12 @@
-<section class="pt-5 noscrollbar sticky is-one-fifth directory h-scroll px-3 is-hidden-mobile">
+<section class="pt-5 sticky is-one-fifth directory h-scroll px-3 is-hidden-mobile">
   
 {{ template "directory" (dict "dir" .FirstSection.Sections "current" .RelPermalink "parent" .Parent "section" .CurrentSection "level" "1")  }}
 
 {{ define "directory" }}
 
-  <div class="content is-one-fifth">
+
   {{ range .dir }}
-    {{ if  (or (eq .BundleType "branch") (.Params.directory) )}}
+    {{ if and (not .Params.hidden) (or (eq .BundleType "branch") (.Params.directory) )}}
         <div class="ml-3 my-2">
 
             <a class="{{if eq $.level "1" }} m bold {{else if eq $.level "2"}} s normal {{else}}xs thin{{end}}" href="{{ .RelPermalink }}" data-parent="{{.Parent.RelPermalink}}" data-section="{{.CurrentSection.RelPermalink}}"> {{ if eq $.current .RelPermalink }}👉{{else}} {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
@@ -21,7 +21,7 @@
     </div>
     {{ end }}
   {{ end }}
-  </div>
+
 {{ end }}
 
 </section>

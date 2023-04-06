@@ -1,0 +1,9 @@
+{{- $pageId := .Page.Title -}}
+{{- $chunkId := .Get 0 -}}
+
+{{- $id := printf "%s-%s" $pageId $chunkId | urlize -}}
+<div id="{{ $id }}">
+  {{ .Inner }}
+</div>
+
+{{/*  could be useful in the future for reusing content without having to put it in a shared folder  */}}
