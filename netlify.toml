@@ -1,3 +1,8 @@
+[build]
+  command = "hugo --minify"
+  publish = "public"
+
+
 [[headers]]
    for = "/*"
    [headers.values]
@@ -8,6 +13,25 @@
   to = "/latest/learn/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/latest/concepts/advanced-concepts/"
+  to = "/latest/learn/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/"
+  to = "/latest/learn/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/"
+  to = "/latest/learn/"
+  status = 301
+  force = true
+
 
 [[redirects]]
   from = "/latest/reference/"
@@ -40,6 +64,78 @@
   force = true
 
 [[redirects]]
+  from = "/latest/concepts/advanced-concepts/globalid"
+  to = "/latest/learn/glossary/globalid"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/datum"
+  to = "/latest/learn/glossary/datum"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/job"
+  to = "/latest/learn/glossary/job"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/pipeline"
+  to = "/latest/learn/glossary/pipeline"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/advanced-concepts/deferred-processing"
+  to = "/latest/learn/glossary/deferred-processing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/advanced-concepts/distributed-computing"
+  to = "/latest/learn/glossary/distributed-computing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/branch"
+  to = "/latest/learn/glossary/branch"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/commit"
+  to = "/latest/learn/glossary/commit"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/file"
+  to = "/latest/learn/glossary/file"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/provenance"
+  to = "/latest/learn/glossary/provenance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/history"
+  to = "/latest/learn/glossary/history"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/data-concepts/repo"
+  to = "/latest/learn/glossary/input-repo"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/getting-started/"
   to = "/latest/get-started/"
   status = 301
@@ -64,8 +160,20 @@
   force = true
 
 [[redirects]]
-  from = "/latest/enterprise/auth/authentication/activate-auth/"
-  to = "/latest/set-up/authentication"
+  from = "/latest/reference/helm-values/"
+  to = "/latest/set-up/helm-values/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/helm-values/:splat"
+  to = "/latest/set-up/helm-values/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/reference/pipeline-spec/:splat"
+  to = "/latest/build-dags/pipeline-spec/:splat"
   status = 301
   force = true
 
@@ -150,6 +258,18 @@
 [[redirects]]
   from = "/latest/enterprise/"
   to = "/latest/set-up/enterprise"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/overview/"
+  to = "/latest/set-up/enterprise/overview"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/activate-auth/"
+  to = "/latest/set-up/authentication"
   status = 301
   force = true
 
@@ -268,8 +388,39 @@
   force = true
 
 [[redirects]]
+  from = "/latest/enterprise/auth/authentication/revoke-user/"
+  to = "/latest/manage/revoke-user/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/check-user/"
+  to = "/latest/manage/check-user/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/deactivate-auth/"
+  to = "/latest/manage/deactivate-auth/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/authentication/login/"
+  to = "/latest/manage/login/"
+  status = 301
+  force = true
+
+
+[[redirects]]
   from = "/latest/deploy-manage/manage/:splat"
   to = "/latest/manage/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/manage/s3gateway/:splat"
+  to = "/latest/manage/s3gateway/:splat"
   status = 301
   force = true
 
@@ -403,6 +554,18 @@
 [[redirects]]
   from = "/latest/reference/pachctl/:splat"
   to = "/latest/run-commands/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/debugging-operations/"
+  to = "/latest/debug/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/debugging-operations/:splat"
+  to = "/latest/debug/:splat"
   status = 301
   force = true
 
