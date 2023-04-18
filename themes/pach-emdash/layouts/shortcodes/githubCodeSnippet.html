@@ -1,31 +1,22 @@
 {{ $repo := .Get "repo" }}
 {{ $file := .Get "file" }}
 {{ $lines := .Get "lines" }}
-{{ $id := sha1 (printf "%s-%s-%s" $repo $file $lines) }}
 {{ $lang := .Get "lang" }}
+{{ $url := printf "https://api.github.com/repos/%s/contents/%s" $repo $file}}
 
-<div class="stack black sp-3 c-sp-1 rounded-3 outlined">
-  <div class="highlight"><pre tabindex="0" class="chroma">
-    <code id="{{$id}}" class="language-{{$lang}}" data-lang="{{$lang}}"></code>
-    <div class="spread-right c-pinned-top">
-      <div class="button clippy black is-fit p-1 mr-3 xxs rounded-1 bold "><img src="/images/copy.svg"></div>
-    </div>
-  </div>
-</div>
+{{ $resource := resources.GetRemote $url (dict 
+    "headers" (dict 
+        "Content-Type" "application/json"
+    )
+    "query" (dict 
+        "ref" "main"
+    )
+)}} 
 
-<script>
-  fetch('https://api.github.com/repos/{{$repo}}/contents/{{ $file }}')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      const code = atob(data.content)
-      const lines = code.split('\n')
-      const [startLine, endLine] = '{{ $lines }}'.split('-').map(Number)
-      const codeSnippet = lines.slice(startLine - 1, endLine).join('\n')
-      document.getElementById('{{ $id }}').innerHTML = codeSnippet;
-    })
-    .catch(error => console.error(error))
+{{ $resource | base64Decode | highlight $lang $lines }}
 
-</script>
+
+
+{{ $local := resources.Get "sass/main.scss" }}
 
 
