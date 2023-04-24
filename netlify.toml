@@ -1,4 +1,3 @@
-
 [[headers]]
    for = "/*"
    [headers.values]
@@ -222,6 +221,12 @@
   force = true
 
 [[redirects]]
+  from = "latest/deploy-manage/deploy/console/:splat"
+  to = "/latest/set-up/cloud-deploy/console/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "latest/deploy-manage/deploy/console/"
   to = "/latest/set-up/cloud-deploy/console/"
   status = 301
@@ -344,6 +349,24 @@
 [[redirects]]
   from = "/latest/getting-started/cloud-deploy/:splat"
   to = "/latest/set-up/cloud-deploy/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/prometheus/"
+  to = "/latest/manage/prometheus"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/prometheus/job-metrics"
+  to = "/latest/manage/prometheus/job-metrics"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/prometheus/pachd-metrics"
+  to = "/latest/manage/prometheus/pachd-metrics"
   status = 301
   force = true
 
@@ -562,6 +585,24 @@
 [[redirects]]
   from = "/latest/how-tos/debugging-operations/:splat"
   to = "/latest/debug/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/troubleshooting/pipeline-troubleshooting"
+  to = "/latest/debug/pipelines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/troubleshooting/deploy-troubleshooting"
+  to = "/latest/debug/deployment"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/troubleshooting/general-troubleshooting"
+  to = "/latest/debug/common-issues"
   status = 301
   force = true
 
