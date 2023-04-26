@@ -11,7 +11,7 @@
              {{/*  do nothing  */}}
              {{else}}
                 <div class="stack"> 
-                {{ range after 2 .Site.Sections.ByTitle.Reverse }} 
+                {{ range .Site.Sections.ByTitle.Reverse }} 
                     {{ if not .Params.hidden }}
                     {{$currentVersionOption := print "/" .Section "/"}}
                     {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}

@@ -13,5 +13,5 @@
 		"hidden": "{{ .Params.hidden}}",
 		"categories": [{{ range $cindex, $cat := .Params.categories }}{{ if $cindex }}, {{ end }}"{{ $cat| htmlEscape }}"{{ end }}],
 		"tags": [{{- range $tindex, $tag := .Params.tags -}}{{ if $tindex }}, {{ end }}"{{- $tag| htmlEscape -}}"{{- end -}}],
-		"id": {{- .File.UniqueID | jsonify -}},
+		"id": {{with .File}}{{- .File.UniqueID | jsonify -}}{{end}},
 }
