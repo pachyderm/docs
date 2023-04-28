@@ -25,7 +25,7 @@ The assets directory is for resources that you intend to transform (minify, opti
 
 {{ $js := slice  $darkMode $toc $clippy $relatedArticles $notices | resources.Concat "js/bundle.js"}}
 
-<script src="{{ $js.Permalink }}" ></script> ## result 
+<script src="{{ $js.RelPermalink }}" ></script> ## result 
 ```
 
 ### `/css` 

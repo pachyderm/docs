@@ -3,7 +3,7 @@ import { refinementTemplate } from "./refinementTemplate";
 import { client } from "./configureIndex.js";
 
 // Pachyderm Docs specific Settings and Functions
-const indexName = document.getElementById('activeVersion')?.getAttribute('data-algolia') || 'latest';
+const indexName = document.getElementById('activeVersion')?.getAttribute('data-algolia') || 'pach-latest';
 const darkModeColor = localStorage.getItem("theme-dark-mode") === "true" ? "black" : "white";
 
 function handleSearch(helper) {
