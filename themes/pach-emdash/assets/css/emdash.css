@@ -2265,3 +2265,7 @@ input[type="checkbox"]:checked {
   height: 900px;
   border: none;
 }
+
+.hide-overflow {
+  overflow: hidden;
+}
