@@ -183,12 +183,8 @@ hr {
 }
 
 .content :is(ol,ul) > li { margin-left: 1rem; margin-bottom: .5rem; } /* Flexbox Layout System */
-/* todo: there's a weird glitch where links in wizards are getting wrapped in <p>; it's caused by the render-link hook. */
-.content > ol > li > p {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
+
+
 /* Layer things horizontally */
 
 :is(.layer-right, .layer-center) {

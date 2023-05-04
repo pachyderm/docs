@@ -62,7 +62,7 @@ either of these shortcodes in conjunction with this render hook.
 */}}
 
 
-{{$release := "latest"}}
+{{- $release := "latest"}}
 
 {{- /* Initialize. */}}
 {{- $renderHookName := "link" }}
@@ -99,7 +99,7 @@ either of these shortcodes in conjunction with this render hook.
 {{- /* Set attributes for anchor element. */}}
 {{- $attrs := dict "href" $u.String }}
 
-{{ if eq .Page.Params.release $release}}
+{{- if eq .Page.Params.release $release}}
 
 {{- if $u.IsAbs }}
   {{- /* Destination is external. */}}
@@ -166,14 +166,13 @@ either of these shortcodes in conjunction with this render hook.
   {{- $attrs = merge $attrs (dict "title" .) }}
 {{- end -}}
 
-{{end}}
+{{- end }}
 
 {{- /* Render anchor element. */ -}}
-<a
-  {{- range $k, $v := $attrs }}
-    {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-  {{- end -}}
->{{ .Text | safeHTML }}</a>
+
+
+
+<a href="{{ .Destination | safeURL }}"{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
 
 {{- define "partials/inline/h-rh-l/validate-fragment.html" }}
   {{- /*
