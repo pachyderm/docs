@@ -19,7 +19,7 @@ load_dotenv()
 ""
 # Set up OpenAI API credentials
 
-key = "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"
+key = os.getenv("OPENAI_API_KEY")
 
 openai.api_key = key
 
