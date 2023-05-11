@@ -166,14 +166,14 @@
   force = true
 
 [[redirects]]
-  from = "/latest/reference/helm-values/"
-  to = "/latest/set-up/helm-values/"
+  from = "/latest/reference/helm-values"
+  to = "/latest/manage/helm-values"
   status = 301
   force = true
 
 [[redirects]]
   from = "/latest/reference/helm-values/:splat"
-  to = "/latest/set-up/helm-values/:splat"
+  to = "/latest/manage/helm-values/:splat"
   status = 301
   force = true
 
