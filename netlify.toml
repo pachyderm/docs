@@ -166,6 +166,12 @@
   force = true
 
 [[redirects]]
+  from = "/latest/deploy-manage/deploy/ingress"
+  to = "/latest/manage/helm-values/proxy"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/reference/helm-values"
   to = "/latest/manage/helm-values"
   status = 301
