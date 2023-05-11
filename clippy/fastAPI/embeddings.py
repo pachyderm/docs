@@ -1,44 +1,48 @@
-
-from dotenv import load_dotenv
 import json
-import numpy as np
-import openai
-from openai.embeddings_utils import distances_from_embeddings
+import requests
+import re
+import urllib.request
+from bs4 import BeautifulSoup
+from collections import deque
+from html.parser import HTMLParser
+from urllib.parse import urlparse
 import os
 import pandas as pd
 import tiktoken
-
+import openai
+from openai.embeddings_utils import distances_from_embeddings
+import numpy as np
+from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
+from dotenv import load_dotenv
 
 load_dotenv()
+""
+# Set up OpenAI API credentials
 
-# OpenAI API Creds
-
-key = os.getenv("OPENAI_API_KEY")
-max_tokens = 500
-texts = []
-shortened = []
-tokenizer = tiktoken.get_encoding("cl100k_base")
+key = "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"
 
 openai.api_key = key
 
-def create_context(question, df, max_len=1800, size="ada"):
+def create_context(
+    question, df, max_len=1800, size="ada"
+):
     """
     Create a context for a question by finding the most similar context from the dataframe
     """
+
     # Get the embeddings for the question
     q_embeddings = openai.Embedding.create(input=question, engine='text-embedding-ada-002')['data'][0]['embedding']
 
-    # Compute distances from embeddings
-    distances = distances_from_embeddings(q_embeddings, df['embeddings'].values, distance_metric='cosine')
+    # Get the distances from the embeddings
+    df['distances'] = distances_from_embeddings(q_embeddings, df['embeddings'].values, distance_metric='cosine')
 
-    # Sort by distance
-    df_sorted = df.loc[np.array(distances).argsort()]
 
     returns = []
     cur_len = 0
 
-    # Add the text to the context until the context is too long
-    for _, row in df_sorted.iterrows():
+    # Sort by distance and add the text to the context until the context is too long
+    for i, row in df.sort_values('distances', ascending=True).iterrows():
+        
         # Add the length of the text to the current length
         cur_len += row['n_tokens'] + 4
         
@@ -52,7 +56,17 @@ def create_context(question, df, max_len=1800, size="ada"):
     # Return the context
     return "\n\n###\n\n".join(returns)
 
-def answer_question(df, model="text-davinci-003", question="Am I allowed to publish model outputs to Twitter, without a human review?", max_len=1800, size="ada", debug=False, max_tokens=500, stop_sequence=None):
+
+def answer_question(
+    df,
+    model="text-davinci-003",
+    question="Am I allowed to publish model outputs to Twitter, without a human review?",
+    max_len=1800,
+    size="ada",
+    debug=False,
+    max_tokens=150,
+    stop_sequence=None
+):
     """
     Answer a question based on the most similar context from the dataframe texts
     """
@@ -84,137 +98,140 @@ def answer_question(df, model="text-davinci-003", question="Am I allowed to publ
         print(e)
         return ""
 
-def load_embeddings(file_path):
-    df = pd.read_csv(file_path, index_col=0)
+def start():
+    df=pd.read_csv('processed/embeddings.csv', index_col=0)
     df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
-    return df
-
-def start(df):
-
+    print('Embeddings found!')
     while True:
         # Prompt the user to input their question
         question = input("What is your question? (Type 'exit' to quit) ")
         if question.lower() == 'exit':
             break
         # Call the answer_question function with the user's question
-        print("\n\n")
         print(answer_question(df, question=question, debug=False))
-        print("\n\n")
-
-def split_into_many(text, max_tokens=max_tokens):
-    # Split the text into sentences
-    sentences = text.split('. ')
-
-    # Get the number of tokens for each sentence
-    n_tokens = [len(tokenizer.encode(" " + sentence)) for sentence in sentences]
-
-    chunks = []
-    chunk_tokens = 0
-    chunk = []
-
-    # Loop through the sentences and tokens joined together in a tuple
-    for sentence, token in zip(sentences, n_tokens):
-        # If the number of tokens so far plus the number of tokens in the current sentence is greater
-        # than the max number of tokens, then add the chunk to the list of chunks and reset
-        # the chunk and tokens so far
-        if chunk_tokens + token > max_tokens:
-            chunks.append(". ".join(chunk) + ".")
-            chunk = []
-            chunk_tokens = 0
-
-        # If the number of tokens in the current sentence is greater than the max number of
-        # tokens, go to the next sentence
-        if token > max_tokens:
-            continue
-
-        # Otherwise, add the sentence to the chunk and add the number of tokens to the total
-        chunk.append(sentence)
-        chunk_tokens += token + 1
-
-    # Add the last chunk to the list of chunks
-    if chunk:
-        chunks.append(". ".join(chunk) + ".")
-
-    return chunks
-
-def loadDataframe():
-    # Check if embeddings exist, if yes, load the dataframe from embeddings.csv
-    if os.path.exists('processed/embeddings.csv'):
-        df = load_embeddings('processed/embeddings.csv')
-        return df 
-
-    else:
-        # Load the docs.json file
-        with open("docs.json", "r") as f:
-            docs = json.load(f)
-
-        # Extract article body attribute if not empty string and push to texts array.
-        for doc in docs:
-            text = doc.get("body", "")
-            if text:
-                fname = doc["title"]
-                texts.append((fname, text))
-
-        # Create a dataframe from the list of texts
-        df = pd.DataFrame(texts, columns=["fname", "text"])
-
-        print("dataframe: ", df)
-
-        # Set the text column to be the raw text 
-        df["text"] = df.text
-        df.to_csv("processed/docs.csv")
-        df.head()
-
-        df = pd.read_csv('processed/docs.csv', index_col=0)
-        df.columns = ['title', 'text']
-
-        # Tokenize the text and save the number of tokens to a new column
-        df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
-
-        # Visualize the distribution of the number of tokens per row using a histogram
-        df.n_tokens.hist()
 
 
-        # Loop through the dataframe
-        for row in df.iterrows():
+# Check if embeddings exist, if yes, load the dataframe from embeddings.csv
+if os.path.exists('processed/embeddings.csv'):
+    start()
 
-            # If the text is None, go to the next row
-            if row[1]['text'] is None:
+else:
+    # Load the docs.json file
+    with open("docs.json", "r") as f:
+        docs = json.load(f)
+
+    # Create a list to store the texts
+    texts = []
+
+    # Extract the text from the body attribute of each document in docs, if it's not an empty string
+    for doc in docs:
+        text = doc.get("body", "")
+        if text:
+            # Omit the "latest" version string from the filename
+            fname = doc["title"]
+            texts.append((fname, text))
+
+    # Create a dataframe from the list of texts
+    df = pd.DataFrame(texts, columns=["fname", "text"])
+
+    print("dataframe: ", df)
+
+    # Set the text column to be the raw text 
+    df["text"] = df.text
+    df.to_csv("processed/docs.csv")
+    df.head()
+
+    # Load the cl100k_base tokenizer which is designed to work with the ada-002 model
+    tokenizer = tiktoken.get_encoding("cl100k_base")
+
+    df = pd.read_csv('processed/docs.csv', index_col=0)
+    df.columns = ['title', 'text']
+
+    # Tokenize the text and save the number of tokens to a new column
+    df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
+
+    # Visualize the distribution of the number of tokens per row using a histogram
+    df.n_tokens.hist()
+
+    max_tokens = 500
+
+    # Function to split the text into chunks of a maximum number of tokens
+    def split_into_many(text, max_tokens = max_tokens):
+
+        # Split the text into sentences
+        sentences = text.split('. ')
+
+        # Get the number of tokens for each sentence
+        n_tokens = [len(tokenizer.encode(" " + sentence)) for sentence in sentences]
+        
+        chunks = []
+        tokens_so_far = 0
+        chunk = []
+
+        # Loop through the sentences and tokens joined together in a tuple
+        for sentence, token in zip(sentences, n_tokens):
+
+            # If the number of tokens so far plus the number of tokens in the current sentence is greater 
+            # than the max number of tokens, then add the chunk to the list of chunks and reset
+            # the chunk and tokens so far
+            if tokens_so_far + token > max_tokens:
+                chunks.append(". ".join(chunk) + ".")
+                chunk = []
+                tokens_so_far = 0
+
+            # If the number of tokens in the current sentence is greater than the max number of 
+            # tokens, go to the next sentence
+            if token > max_tokens:
                 continue
 
-            # If the number of tokens is greater than the max number of tokens, split the text into chunks
-            if row[1]['n_tokens'] > max_tokens:
-                shortened += split_into_many(row[1]['text'])
-            
-            # Otherwise, add the text to the list of shortened texts
-            else:
-                shortened.append( row[1]['text'] )
+            # Otherwise, add the sentence to the chunk and add the number of tokens to the total
+            chunk.append(sentence)
+            tokens_so_far += token + 1
 
-        ################################################################################
-        ### Step 4
-        ################################################################################
+        return chunks
+        
 
-        df = pd.DataFrame(shortened, columns = ['text'])
-        df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
-        df.n_tokens.hist()
+    shortened = []
 
-        ################################################################################
-        ### Step 5
-        ################################################################################
+    # Loop through the dataframe
+    for row in df.iterrows():
 
-        # Note that you may run into rate limit issues depending on how many files you try to embed
-        # Please check out our rate limit guide to learn more on how to handle this: https://platform.openai.com/docs/guides/rate-limits
+        # If the text is None, go to the next row
+        if row[1]['text'] is None:
+            continue
 
-        df['embeddings'] = df.text.apply(lambda x: openai.Embedding.create(input=x, engine='text-embedding-ada-002')['data'][0]['embedding'])
-        df.to_csv('processed/embeddings.csv')
-        df.head()
+        # If the number of tokens is greater than the max number of tokens, split the text into chunks
+        if row[1]['n_tokens'] > max_tokens:
+            shortened += split_into_many(row[1]['text'])
+        
+        # Otherwise, add the text to the list of shortened texts
+        else:
+            shortened.append( row[1]['text'] )
 
-        ################################################################################
-        ### Step 6
-        ################################################################################
+    ################################################################################
+    ### Step 4
+    ################################################################################
 
-        df=pd.read_csv('processed/embeddings.csv', index_col=0)
-        df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
+    df = pd.DataFrame(shortened, columns = ['text'])
+    df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
+    df.n_tokens.hist()
 
-        df.head()
+    ################################################################################
+    ### Step 5
+    ################################################################################
 
+    # Note that you may run into rate limit issues depending on how many files you try to embed
+    # Please check out our rate limit guide to learn more on how to handle this: https://platform.openai.com/docs/guides/rate-limits
+
+    df['embeddings'] = df.text.apply(lambda x: openai.Embedding.create(input=x, engine='text-embedding-ada-002')['data'][0]['embedding'])
+    df.to_csv('processed/embeddings.csv')
+    df.head()
+
+    ################################################################################
+    ### Step 6
+    ################################################################################
+
+    df=pd.read_csv('processed/embeddings.csv', index_col=0)
+    df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
+
+    df.head()
