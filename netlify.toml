@@ -27,7 +27,6 @@
   status = 301
   force = true
 
-
 [[redirects]]
   from = "/latest/reference/"
   to = "/latest/learn/"
@@ -127,6 +126,18 @@
 [[redirects]]
   from = "/latest/concepts/data-concepts/repo"
   to = "/latest/learn/glossary/input-repo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/console-guide/"
+  to = "/latest/learn/console-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/console-guide/:splat"
+  to = "/latest/learn/console-guide/:splat"
   status = 301
   force = true
 
@@ -269,6 +280,18 @@
   force = true
 
 [[redirects]]
+  from = "/latest/enterprise/activate-via-pachctl/"
+  to = "/latest/set-up/enterprise/activate-via-pachctl"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/activate-via-helm/"
+  to = "/latest/set-up/enterprise/activate-via-helm/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/enterprise/auth/authentication/activate-auth/"
   to = "/latest/set-up/authentication"
   status = 301
@@ -277,6 +300,12 @@
 [[redirects]]
   from = "/latest/deploy-manage/deploy/environment-variables/"
   to = "/latest/set-up/environment-variables"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/enterprise/auth/"
+  to = "/latest/set-up/connectors/"
   status = 301
   force = true
 
@@ -349,6 +378,12 @@
 [[redirects]]
   from = "/latest/getting-started/cloud-deploy/:splat"
   to = "/latest/set-up/cloud-deploy/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/deploy/helm-install/"
+  to = "/latest/manage/secrets"
   status = 301
   force = true
 
@@ -510,6 +545,30 @@
   force = true
 
 [[redirects]]
+  from = "/latest/concepts/pipeline-concepts/datum/join/"
+  to = "/latest/build-dags/pipeline-spec/input-join"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/datum/group/"
+  to = "/latest/build-dags/pipeline-spec/input-group"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/datum/cross-union/"
+  to = "/latest/build-dags/pipeline-spec/input-cross/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/datum/metadata/"
+  to = "/latest/build-dags/datum-operations/get-metadata/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/reference/pipeline-spec/:splat"
   to = "/latest/build-dags/pipeline-spec/:splat"
   status = 301
@@ -524,6 +583,18 @@
 [[redirects]]
   from = "/latest/reference/project-operations/:splat"
   to = "/latest/build-dags/project-operations/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/advanced-data-operations/"
+  to = "/latest/build-dags/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/"
+  to = "/latest/build-dags/"
   status = 301
   force = true
 
@@ -548,6 +619,19 @@
 [[redirects]]
   from = "/latest/how-tos/basic-data-operations/export-data-out-pachyderm/mount-repo-to-local-computer/"
   to = "/latest/export-data/mount-repo-to-local-computer"
+  status = 301
+  force = true
+
+
+[[redirects]]
+  from = "/latest/how-tos/s3-gateway-operations/"
+  to = "/latest/export-data/s3-gateway-operations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/s3-gateway-operations/:splat"
+  to = "/latest/export-data/s3-gateway-operations/:splat"
   status = 301
   force = true
 
