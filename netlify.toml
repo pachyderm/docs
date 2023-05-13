@@ -190,6 +190,30 @@
   force = true
 
 [[redirects]]
+  from = "/latest/concepts/pipeline-concepts/pipeline/cron/#cron-pipeline"
+  to = "/latest/build-dags/pipeline-spec/input-cron"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/concepts/pipeline-concepts/pipeline/spout/"
+  to = "/latest/build-dags/pipeline-spec/spout"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/how-tos/basic-data-operations/sql-ingest/"
+  to = "/latest/prepare-data/sql-ingest/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/latest/deploy-manage/manage/s3gateway/#global-s3-gateway"
+  to = "/latest/export-data/s3-gateway-operations/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/reference/s3gateway-api/"
   to = "/latest/set-up/s3gateway-api"
   status = 301
