@@ -30,3 +30,6 @@ async def get_answer(question: Question):
     context = create_context(question.question, df, max_len=1800, size="ada")
     answer = answer_question(df, question=question.question, debug=False)
     return Answer(answer=answer)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
