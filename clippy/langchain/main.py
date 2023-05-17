@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from langchain.llms import OpenAI 
 from langchain.chains.question_answering import load_qa_chain
 import keys
-import vectorstore
+from store import docsearch
 
 app = FastAPI(
     title="LangChain DocsGPT",
@@ -19,12 +19,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-vs = vectorstore.docsearch
+
 llm = OpenAI(temperature=0, openai_api_key=keys.openai_key) 
 chain = load_qa_chain(llm, chain_type="stuff")
 
 def answer_question(question: str):
-    docs = vs.similarity_search(question)
+    docs = docsearch.similarity_search(question)
     answer = chain.run(input_documents=docs, question=question)
     print(answer)
     return answer["answer"]
