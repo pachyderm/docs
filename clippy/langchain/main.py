@@ -1,53 +1,46 @@
-## Data Loader & Imported Data 
-
-from langchain.document_loaders.pdf import UnstructuredPDFLoader, OnlinePDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-##### Notes: needed to install dependencies such as pip install unstructured, pytesseract, pdf2image; 
-##### you can use various loader options, such as UnstructuredPDFLoader, OnlinePDFLoader, OnlinePDFLoader, etc. 
-
-loader = OnlinePDFLoader("https://www.wolfpaulus.com/wp-content/uploads/2017/05/field-guide-to-data-science.pdf")
-data = loader.load()
-print(f'You have {len(data)} pages of data')
-print(f'There are {len(data[0].page_content)} characters in your document')
-
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-texts = text_splitter.split_documents(data)
-print(f'You now have {len(texts)} chunks of text')
-
-## VectorStores & OpenAI Embeddings  
-
-from langchain.vectorstores import Pinecone 
-from langchain.embeddings.openai import OpenAIEmbeddings
-import pinecone 
-import os
-
-openai_key = os.environ.get('OPENAI_API_KEY')
-pinecone_key = os.environ.get('PINECONE_API_KEY') or "be596285-2253-4a51-b363-13ffd1cc589f"
-pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT') or "us-central1-gcp"
-
-embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
-
-### Initialize Pinecone Vector Store
-
-pinecone.init(
-    api_key=pinecone_key,
-    environment=pinecone_environment,
-)
-pinecone_index = "langchain1"
-
-docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=pinecone_index)
-
-### Query via OpenAI 
-
+from fastapi import FastAPI, Query, Request
+from fastapi.middleware.cors import CORSMiddleware
 from langchain.llms import OpenAI 
 from langchain.chains.question_answering import load_qa_chain
+import keys
+import vectorstore
 
-llm = OpenAI(temperature=0, openai_api_key=openai_key) 
- 
+app = FastAPI(
+    title="LangChain DocsGPT",
+    description="The backend for LangChain DocsGPT.",
+    version="0.0.1",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+vs = vectorstore.docsearch
+llm = OpenAI(temperature=0, openai_api_key=keys.openai_key) 
 chain = load_qa_chain(llm, chain_type="stuff")
 
-query = "What are examples of good data science teams?"
-docs = docsearch.similarity_search(query)
+def answer_question(question: str):
+    docs = vs.similarity_search(question)
+    answer = chain.run(input_documents=docs, question=question)
+    print(answer)
+    return answer["answer"]
 
-chain.run(input_documents=docs, question=query)
+@app.get("/ask")
+def ask_question_get(request: Request, question: str = Query(None)):
+    if question:
+        return {"answer": answer_question(question)}
+    else:
+        return {"message": "Please provide a question."}
+
+@app.post("/ask")
+async def ask_question_post(request: Request):
+    question = await request.json()
+    return {"answer": answer_question(question["question"])}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
