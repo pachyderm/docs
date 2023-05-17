@@ -3,12 +3,11 @@
 from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-
 docs_index_path = "./docs.json"
 docs_index_schema = ".[].body" # [{"body:..."}] -> .[].body; see JSONLoader docs for more info
 loader = JSONLoader(docs_index_path, jq_schema=docs_index_schema) 
 data = loader.load()
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=0)
 texts = text_splitter.split_documents(data) 
 
 ## VectorStores & OpenAI Embeddings  
@@ -16,14 +15,10 @@ texts = text_splitter.split_documents(data)
 from langchain.vectorstores import Pinecone 
 from store import embeddings, pinecone_index
 import pinecone 
-import keys 
+import store
 
 
-pinecone.init(
-    api_key=keys.pinecone_key,
-    environment=keys.pinecone_environment,
-)
-
+print(pinecone.list_indexes())
 indexExists = pinecone.describe_index(pinecone_index)
 
 if indexExists:
