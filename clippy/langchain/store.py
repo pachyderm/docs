@@ -15,4 +15,5 @@ pinecone.init(
 )
 pinecone_index = "langchain1"
 
+docsearch = Pinecone.from_existing_index(pinecone_index, embeddings)
 

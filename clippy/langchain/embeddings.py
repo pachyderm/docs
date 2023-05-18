@@ -2,18 +2,14 @@
 from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# Chunk function; Pinecone has a limit of 100 documents per request
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
 
-# Get any other details we want from the json index associated with an article.
 def metadata_func(record: dict, metadata: dict) -> dict:
-
     metadata["title"] = record.get("title")
     metadata["relURI"] = record.get("relURI")
-
     return metadata
 
 docs_index_path = "./docs.json" 
@@ -37,9 +33,15 @@ if pinecone_index in pinecone.list_indexes():
 
 print("Recreating index...")
 pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
+
+
 print(f'Loading {len(texts)} texts to index {pinecone_index}...')
 print(f"This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
-for chunk in chunks([t.page_content for t in texts], 100):
-    Pinecone.from_texts(chunk, embeddings, index_name=pinecone_index)
-print("Done!")
+for chunk in chunks(texts, 50):
+    for doc in chunk:
+        if doc.page_content.strip():  # Check if the content is not blank or empty
+            Pinecone.from_texts([doc.page_content], embeddings, index_name=pinecone_index)
+        else:
+            print("Ignoring blank document")
+print("Done!")  
 

@@ -19,9 +19,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def answer_question(question: str, vs, chain, llm):
+def answer_question(question: str, vs, chain):
     query = question
-    docs = docsearch.similarity_search(query)
+    docs = vs.similarity_search(query)
     answer = chain.run(input_documents=docs, question=query)
     return {"answer": answer}
 
@@ -34,7 +34,7 @@ def prompt_question():
         question = input("What is your question? (Type 'exit' to quit) ")
         if question.lower() == 'exit':
             break
-        print(answer_question(question=question, vs=docsearch, chain=chain, llm=llm))
+        print(answer_question(question=question, vs=docsearch, chain=chain))
         print("\n")
 
 if __name__ == "__main__":
