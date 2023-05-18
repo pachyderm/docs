@@ -20,13 +20,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 llm = OpenAI(temperature=0, openai_api_key=keys.openai_key) 
 chain = load_qa_chain(llm, chain_type="stuff")
 
 def answer_question(question: str):
-    docs = Pinecone.similarity_search(question)
-    answer = chain.run(input_documents=docs, question=question)
+    docsearch = Pinecone.similarity_search(question)
+    answer = chain.run(input_documents=docsearch, question=question)
     print(answer)
     return answer["answer"]
 
