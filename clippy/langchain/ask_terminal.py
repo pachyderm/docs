@@ -26,7 +26,7 @@ def answer_question(question: str, vs, chain):
     return {"answer": answer}
 
 
-llm = OpenAI(temperature=0, openai_api_key=keys.openai_key) 
+llm = OpenAI(temperature=0, openai_api_key=keys.openai_key, max_tokens=-1) 
 chain = load_qa_chain(llm, chain_type="stuff")
 
 def prompt_question():
