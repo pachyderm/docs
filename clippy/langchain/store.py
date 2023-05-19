@@ -3,17 +3,16 @@
 from langchain.vectorstores import Pinecone 
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone 
-import keys
+import config
 
-embeddings = OpenAIEmbeddings(openai_api_key=keys.openai_key)
+embeddings = OpenAIEmbeddings(openai_api_key=config.openai_key)
 
 ### Initialize Pinecone Vector Store
 
 pinecone.init(
-    api_key=keys.pinecone_key,
-    environment=keys.pinecone_environment,
+    api_key=config.pinecone_key,
+    environment=config.pinecone_environment,
 )
-pinecone_index = "langchain1"
 
-docsearch = Pinecone.from_existing_index(pinecone_index, embeddings)
+docsearch = Pinecone.from_existing_index(config.pinecone_index, embeddings)
 

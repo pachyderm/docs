@@ -22,9 +22,9 @@ texts = text_splitter.split_documents(data)
 ## VectorStores & OpenAI Embeddings  
 
 from langchain.vectorstores import Pinecone 
+import store
 from store import embeddings, pinecone_index
 import pinecone 
-import store
 
 if pinecone_index in pinecone.list_indexes():
     print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
