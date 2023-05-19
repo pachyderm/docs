@@ -16,7 +16,7 @@ pinecone_index = "langchain1"
 docs_index_path = "./docs.json" 
 docs_index_schema = ".[]" # [{"body:..."}] -> .[].body; see JSONLoader docs for more info
 embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0,)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0,)
 
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
@@ -51,7 +51,9 @@ print(f"This may take a while. Here's a preview of the first text: \n {texts[0].
 for chunk in chunks(texts, 20):
     for doc in chunk:
         if doc.page_content.strip():  # Check if the content is not blank or empty
-            Pinecone.from_texts([doc.page_content], embeddings, index_name=pinecone_index)
+            print(f"Indexing: {doc.metadata['title']}")
+            print(f"Content: {doc.page_content}")
+            Pinecone.from_texts([doc.page_content], embedding=embeddings, index_name=pinecone_index, metadatas=[doc.metadata])
         else:
             print("Ignoring blank document")
 print("Done!")  
