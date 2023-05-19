@@ -23,24 +23,27 @@ texts = text_splitter.split_documents(data)
 
 from langchain.vectorstores import Pinecone 
 import store
-from store import embeddings, pinecone_index
+from store import embeddings
+import config
 import pinecone 
 
-if pinecone_index in pinecone.list_indexes():
-    print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
+if config.pinecone_index in pinecone.list_indexes():
+    print(f'The {config.pinecone_index} index already exists! We need to replace it with a new one.')
     print("Erasing existing index...")
-    pinecone.delete_index(pinecone_index) # delete index if it exists so we can recreate it
+    pinecone.delete_index(config.pinecone_index) # delete index if it exists so we can recreate it
 
 print("Recreating index...")
-pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
+pinecone.create_index(config.pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
 
 
-print(f'Loading {len(texts)} texts to index {pinecone_index}...')
+print(f'Loading {len(texts)} texts to index {config.pinecone_index}...')
 print(f"This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
+
+print(f'embeddings: \n {embeddings}')
 for chunk in chunks(texts, 50):
     for doc in chunk:
         if doc.page_content.strip():  # Check if the content is not blank or empty
-            Pinecone.from_texts([doc.page_content], embeddings, index_name=pinecone_index)
+            Pinecone.from_texts([doc.page_content], embeddings, index_name=config.pinecone_index)
         else:
             print("Ignoring blank document")
 print("Done!")  

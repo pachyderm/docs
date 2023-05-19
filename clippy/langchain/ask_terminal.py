@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from langchain.llms import OpenAI 
 from langchain.chains.question_answering import load_qa_chain
-import keys
+import config
 from store import docsearch
 
 app = FastAPI(
@@ -26,7 +26,7 @@ def answer_question(question: str, vs, chain):
     return {"answer": answer}
 
 
-llm = OpenAI(temperature=0, openai_api_key=keys.openai_key, max_tokens=-1) 
+llm = OpenAI(temperature=0, openai_api_key=config.openai_key, max_tokens=-1) 
 chain = load_qa_chain(llm, chain_type="stuff")
 
 def prompt_question():

@@ -1,0 +1,254 @@
+[
+    
+    
+    
+    {
+		"title": "Overview",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"section",
+		"parent": "2.5.x",
+		"description":"Pachyderm is a versioned, flexible, and scalable data processing platform.",
+		"date": "February 8, 2023",
+		"uri": "http://localhost:1313/latest/overview/",
+		"relURI": "/latest/overview/",
+		"body": " Pachyderm is a data science platform that provides data-driven pipelines with version control and autoscaling. It is container-native, allowing developers to use the languages and libraries that are best suited to their needs, and runs across all major cloud providers and on-premises installations.\nThe platform is built on Kubernetes and integrates with standard tools for CI/CD, logging, authentication, and data APIs, making it scalable and incredibly flexible. Pachyderm’s data-driven pipelines allow you to automatically trigger data processing based on changes in your data, and the platform’s autoscaling capabilities ensure that resource utilization is optimized, maximizing developer efficiency.\n",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+    
+        
+            
+                
+                ,{
+		"title": "Key Features",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Overview",
+		"description":"Learn about the key features and benefits of Pachyderm, a powerful data processing platform.",
+		"date": "January 30, 2023",
+		"uri": "http://localhost:1313/latest/overview/key-features/",
+		"relURI": "/latest/overview/key-features/",
+		"body": " Key Features and Benefits # The following are the key features of Pachyderm that make it a powerful data processing platform.\nData-driven Pipelines # Automatically trigger pipelines based on changes in the data. Orchestrate batch or real-time data pipelines. Only process dependent changes in the data. Reproducibility and data lineage across all pipelines. Version Control # Track every change to your data automatically. Works with any file type. Supports collaboration through a git-like structure of commits. Autoscaling and Deduplication # Autoscale jobs based on resource demand. Automatically parallelize large data sets. Automatically deduplicate data across repositories. Flexibility and Infrastructure Agnosticism # Use existing cloud or on-premises infrastructure. Process any data type, size, or scale in batch or real-time pipelines. Container-native architecture allows for developer autonomy. Integrates with existing tools and services, including CI/CD, logging, authentication, and data APIs. ",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+                
+                
+            
+                
+                ,{
+		"title": "Target Audience",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Overview",
+		"description":"Discover if Pachyderm is the right solution for your large-scale data processing and analysis needs.",
+		"date": "January 30, 2023",
+		"uri": "http://localhost:1313/latest/overview/target-audience/",
+		"relURI": "/latest/overview/target-audience/",
+		"body": " Target Audience # Pachyderm is designed for data engineers and data scientists who are managing and processing large amounts of data in a scalable and efficient manner. Pachyderm is ideal for organizations working with big data and require robust, version-controlled, reproducible, and distributed data pipelines.\nIt is particularly useful for large unstructured data processing jobs, such as dataset curation for computer vision, speech recognition, video analytics, NLP, and many others.\nNon-Target Audience # Pachyderm is not intended for users who do not require large-scale data processing and analysis. For instance, data scientists who are just starting with a small project may not need Pachyderm\u0026rsquo;s distributed system. Additionally, users with limited experience with containerization, cloud computing, and distributed systems may find it challenging to use Pachyderm effectively.\n",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+                
+                
+            
+                
+                ,{
+		"title": "Basic Concepts",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Overview",
+		"description":"Discover how Pachyderm provides a secure, scalable, and version-controlled solution for storing and processing large amounts of data through its most basic concepts.",
+		"date": "January 30, 2023",
+		"uri": "http://localhost:1313/latest/overview/basic-concepts/",
+		"relURI": "/latest/overview/basic-concepts/",
+		"body": " Pachyderm File System # The Pachyderm File System (PFS) is the backbone of the Pachyderm data platform, providing a secure, scalable, and efficient way to store and manage large amounts of data. It is a version-controlled data management system that enables users to store any type of data in any format and scale, from a single file to a directory of files. The PFS is built on top of Postgres and S3, ensuring that your data is secure, consistent, and easily accessible. With PFS, users can version their data and work collaboratively with their teams, using branches and commits to manage and track changes over time.\nRepositories (Repo) # Pachyderm repositories are version controlled, meaning that they keep track of changes to the data stored within them. Each repository can contain any type of data, including individual files or directories of files, and can handle data of any scale.\nLearn more about Repositories\nBranches # Branches in Pachyderm are similar to branches in Git. They are pointers to commits that move along a growing chain of commits. This allows you to work with different versions of your data within the same repository.\nLearn more about Branches\nCommits # A commit in Pachyderm is created automatically whenever data is added to or deleted from a repository. Each commit preserves the state of all files in the repository at the time of the commit, similar to a snapshot. Each commit is uniquely identifiable by a UUID and is immutable, meaning that the source data can never change.\nLearn more about Commits\nPachyderm Pipeline System # The Pachyderm Pipeline System (PPS) is a core component of the Pachyderm platform, designed to run robust data pipelines in a scalable and reproducible manner. With PPS, you can define, execute, and monitor complex data transformations using code that is run in Docker containers. The output of each pipeline is version-controlled in a Pachyderm data repository, providing a complete, auditable history of all processing steps. In this way, PPS provides a flexible, data-driven solution for managing your data processing needs, while keeping data and processing results secure, reproducible, and scalable.\nLearn more about the PPS\nPipelines # Pachyderm pipelines are used to transform data from Pachyderm repositories. The output data is versioned in a Pachyderm data repository, and the code for the transformation is run in Docker containers. Pipelines are triggered by new commits to a branch, making them data-driven.\nLearn more about Pipelines\nJobs # A job in Pachyderm is the execution of a pipeline with a new commit. The data is distributed and parallelized computation is performed across a cluster. Each job is uniquely identified, making it possible to reproduce the results of a specific job.\nLearn more about Jobs\nDatum # A datum in Pachyderm is a unit of computation for a job. It is used to distribute the processing workloads and to define how data can be split for parallel processing.\nLearn more about Datums\n",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+                
+                
+            
+                
+                ,{
+		"title": "Intro to Data Versioning",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Overview",
+		"description":"Learn how to interact with versioned data in Pachyderm, including creating and managing data repositories, creating and navigating commits, and branching to manage the evolution of data.",
+		"date": "January 30, 2023",
+		"uri": "http://localhost:1313/latest/overview/intro-data-versioning/",
+		"relURI": "/latest/overview/intro-data-versioning/",
+		"body": " Introduction to Data Versioning # On this page we want to give a brief overview of how to use and interact with versioned data inside Pachyderm. Collectively, this is often referred to as the Pachyderm File System (PFS).\nRepositories # Data versioning in Pachyderm starts with creating a data repository. Pachyderm data repos are similar to Git repositories in that they provide a place to track changes made to a set of files.\nUsing the Pachyderm CLI (pachctl) we would create a repository called data with the create repo command.\npachctl create repo data Once a repo is created, data can be added, deleted, or updated to a branch and all changes are versioned with commits.\nCommits # In Pachyderm, commits are made to branches of a repo. For example, in the following session if we add a file to our data repository, that file will be captured in a commit.\n$ pachctl put file data@master -f my_file.bin $ pachctl list commit images@master REPO BRANCH COMMIT FINISHED SIZE ORIGIN data master 6806cce 4 seconds ago 57.27KiB USER $ pachctl list file data@master NAME TYPE SIZE /my_file.bin file 57.27KiB If we then delete that file, it is removed from the active state of the branch, but the commit still exists.\n$ pachctl delete file data@master:/my_file.bin $ pachctl list commit data@master REPO BRANCH COMMIT FINISHED SIZE ORIGIN data master ff1867a 3 seconds ago 0B USER data master 6806cce 20 seconds ago 57.27KiB USER $ pachctl list file data@master NAME TYPE SIZE Then if we add the file back, we\u0026rsquo;ll see a third commit.\n$ pachctl create file data@master:/my_file.bin $ pachctl list commit data@master REPO BRANCH COMMIT FINISHED SIZE ORIGIN data master 0ec029b 20 seconds ago 57.27KiB USER data master ff1867a 3 seconds ago 0B USER data master 6806cce 20 seconds ago 57.27KiB USER $ pachctl list file data@master NAME TYPE SIZE /my_file.bin file 57.27KiB Visualizing the commit history for the master branch looks like the following.\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; commit id:\u0026#34;0ec029b\u0026#34; tag: \u0026#34;master\u0026#34; Branches are a critical for tracking commits. The branch functions as a pointer to the most recent commit to the branch. For instance, when we create a new commit on the master branch (pachctl put file data@master -f my_new_file), we would create a new commit and our master branch would point at it.\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; commit id:\u0026#34;0ec029b\u0026#34; commit id:\u0026#34;b69b3e3\u0026#34; tag: \u0026#34;master\u0026#34; As we\u0026rsquo;ve already seen, we can reference the HEAD of the branch, with the syntax, data@master.\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data@master\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; commit id:\u0026#34;0ec029b\u0026#34; commit id:\u0026#34;b69b3e3\u0026#34; type:HIGHLIGHT tag: \u0026#34;HEAD\u0026#34; Navigating Commits # Here we\u0026rsquo;ll introduce the basics of how to navigate commits. Navigating these commits is an important aspect of working with PFS, and allows you to easily manage the history and evolution of your data.\nOne useful feature for navigating commits in PFS is the ability to refer to a previous commit using ancestry syntax. This syntax allows you to specify a commit relative to the current one, making it easy to compare and manipulate different versions of your data.\nThis makes it simple to switch between different versions of your data, and to perform operations like diffing, branching, and merging.\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data@master^\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; commit id:\u0026#34;0ec029b\u0026#34; type:HIGHLIGHT commit id:\u0026#34;b69b3e3\u0026#34; tag: \u0026#34;HEAD\u0026#34; To refer to the commit 2 before the HEAD:\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data@master^^\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; type:HIGHLIGHT commit id:\u0026#34;0ec029b\u0026#34; commit id:\u0026#34;b69b3e3\u0026#34; tag: \u0026#34;HEAD\u0026#34; Similarly, we can abbreviate this with the following syntax:\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data@master^2\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; type:HIGHLIGHT commit id:\u0026#34;0ec029b\u0026#34; commit id:\u0026#34;b69b3e3\u0026#34; tag: \u0026#34;HEAD\u0026#34; We can reference the commits in numerical order using .n, where n is the commit number.\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data@master.1\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; type:HIGHLIGHT commit id:\u0026#34;ff1867a\u0026#34; commit id:\u0026#34;0ec029b\u0026#34; commit id:\u0026#34;b69b3e3\u0026#34; tag: \u0026#34;HEAD\u0026#34; %%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;data@master.-1\u0026#39;}} }%% gitGraph commit id:\u0026#34;6806cce\u0026#34; commit id:\u0026#34;ff1867a\u0026#34; commit id:\u0026#34;0ec029b\u0026#34; type:HIGHLIGHT commit id:\u0026#34;b69b3e3\u0026#34; tag: \u0026#34;HEAD\u0026#34; Branches # In Pachyderm, branches are used to track changes in a repository. You can think of a branch as a tag on a specific commit. Branches are associated with a particular commit and are updated as new commits are made (moving the HEAD of that branch to its most recent commit). This also means that at any time, you can change the commit that a branch is associated with, affecting branch history.\nHere\u0026rsquo;s an example of a repo with three branches, each with its own history of commits:\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;master\u0026#39;}} }%% gitGraph commit commit branch v1.0 commit commit commit branch v1.1 commit commit commit tag:\u0026#34;v1.1:HEAD\u0026#34; checkout v1.0 commit tag:\u0026#34;v1.0:HEAD\u0026#34; checkout master commit tag:\u0026#34;master:HEAD\u0026#34; \u0026ldquo;Merging\u0026rdquo; Branches # The concept of merging binary data from different commits is complex. Ultimately, there are too many edge cases to do it reliably for every type of binary data, because computing a diff between two commits is ultimately meaningless unless you know how to compare the data. For example, we know that text files can be compared line-by-line or a bitmap image pixel by pixel, but how would we compute a diff for, say, binary model files?\nAdditionally, the output of a merge is usually a master copy, the official set of files desired. We rarely combine multiple pieces of image data to make one image, and if we are, we have usually created a technique for doing so. In the end, some files will be deleted, some updated, and some added.\nInstead, merging data, means creating a new commit with the desired combination of files and pointing our branch at that commit. In order to maintain a proper history, we would also want to make sure that the parent of that commit is relevant to what we want as well.\nFor example, in this situation, we have created a branch, dev, based on the 1-2833cd3 commit. We have committed multiple times to the dev branch, but nothing to master.\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;master\u0026#39;}} }%% gitGraph commit id:\u0026#34;0-96e9b89\u0026#34; commit id:\u0026#34;1-2833cd3\u0026#34; tag:\u0026#34;master:HEAD\u0026#34; branch dev commit id:\u0026#34;2-25a8daf\u0026#34; commit id:\u0026#34;3-6413afc\u0026#34; commit id:\u0026#34;4-41a750b\u0026#34; tag:\u0026#34;dev:HEAD\u0026#34; In this case it is simple to simply move the master branch to follow the most recent commit on dev, 4-41a750b.\npachctl create branch data@master --head 41a750b\nWhich would look like this:\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;master\u0026#39;}} }%% gitGraph commit id:\u0026#34;0-96e9b89\u0026#34; commit id:\u0026#34;1-2833cd3\u0026#34; branch dev commit id:\u0026#34;2-25a8daf\u0026#34; commit id:\u0026#34;3-6413afc\u0026#34; commit id:\u0026#34;4-41a750b\u0026#34; tag:\u0026#34;master:HEAD, dev:HEAD\u0026#34; Or from the history perspective of the respective branches:\n%%{init: { \u0026#39;logLevel\u0026#39;: \u0026#39;debug\u0026#39;, \u0026#39;theme\u0026#39;: \u0026#39;base\u0026#39;, \u0026#39;gitGraph\u0026#39;: {\u0026#39;showBranches\u0026#39;: true, \u0026#39;showCommitLabel\u0026#39;:true,\u0026#39;mainBranchName\u0026#39;: \u0026#39;master\u0026#39;}} }%% gitGraph commit id:\u0026#34;0-96e9b89\u0026#34; commit id:\u0026#34;1-2833cd3\u0026#34; branch dev commit id:\u0026#34;2-25a8daf\u0026#34; commit id:\u0026#34;3-6413afc\u0026#34; checkout dev commit tag:\u0026#34;dev:HEAD\u0026#34; id:\u0026#34;4-41a750b\u0026#34; checkout master commit id:\u0026#34;2-25a8daf \u0026#34; commit id:\u0026#34;3-6413afc \u0026#34; commit tag:\u0026#34;master:HEAD\u0026#34; id:\u0026#34;4-41a750b \u0026#34; Branches are useful for many reasons, but in Pachyderm they also form the foundation of the pipeline system. New commits on branches can be used to trigger pipelines to run, resulting in one of the key differentiators, data-driven pipelines.\n",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+                
+                
+            
+                
+                ,{
+		"title": "Intro to Pipelines",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Overview",
+		"description":"Learn about Pachyderm Pipeline System and how to define pipelines in YAML for data transformation and processing, including datums, jobs, and advanced glob patterns.",
+		"date": "January 30, 2023",
+		"uri": "http://localhost:1313/latest/overview/intro-pipelines/",
+		"relURI": "/latest/overview/intro-pipelines/",
+		"body": " Introduction to Pipelines # The Pachyderm Pipeline System (PPS) is a powerful tool for automating data transformations. With PPS, pipelines can be automatically triggered whenever input data changes, meaning that data transformations happen automatically in response to changes in your data, without the need for manual intervention.\nPipelines in Pachyderm are defined by a pipeline specification and run on Kubernetes. The output of a pipeline is stored in a versioned data repository, which allows you to reproduce any transformation that occurs in Pachyderm.\nPipelines can be combined into a computational DAG (directed acyclic graph), with each pipeline being triggered when an upstream commit is finished. This allows you to build complex workflows that can process large amounts of data efficiently and with minimal manual intervention.\nPipeline Specification # This is a Pachyderm pipeline definition in YAML. It describes a pipeline called transform that takes data from the data repository and transforms it using a Python script my_transform_code.py.\npipeline: name: transform input: pfs: repo: data glob: \u0026#34;/*\u0026#34; transform: image: my-transform-image:v1.0 cmd: - python - \u0026#34;/my_transform_code.py\u0026#34; - \u0026#34;--input\u0026#34; - \u0026#34;/pfs/data/\u0026#34; - \u0026#34;--output\u0026#34; - \u0026#34;/pfs/out/\u0026#34; Here\u0026rsquo;s a breakdown of the different sections of the pipeline definition:\npipeline specifies the name of the pipeline (in this case, it\u0026rsquo;s transform). This name will also be used as the name for the output data repository. input specifies the input for the pipeline. In this case, the input is taken from the data repository in Pachyderm. glob is used to specify how the files from the repository map to datums for processing. In this case, /* is used to specify all files in the repository can be processed individually. transform specifies the code and image to use for processing the input data. The image field specifies the Docker image to use for the pipeline. In this example, the image is named my-transform-image with a tag of v1.0. The cmd field specifies the command to run inside the container. In this example, the command is python /my_transform_code.py, which runs a Python script named my_transform_code.py. The script is passed the --input flag pointing to the input data directory, and the --output flag pointing to the output data directory. /pfs/data/ and /pfs/out/ are directories created by Pachyderm. The input directory will contain an individual datum when the job is running, and anything put into the output directory will be committed to the output repositories when the job is complete. So, in summary, this pipeline definition defines a pipeline called transform that takes all files in the data repository, runs a Python script to transform them, and outputs the results to the out repository.\nDatums and Jobs # Pipelines can distribute work across a cluster to parallelize computation. Each time data is committed to a Pachyderm repository, a job is created for each pipeline with that repo as an input to process the data.\nTo determine how to distribute data and computational work, datums are used. A datum is an indivisible unit of data required by the pipeline, defined according to the pipeline spec. The datums will be distributed across the cluster to be processed by workers.\nℹ️ Only one job per pipeline will be created per commit, but there may be many datums per job.\nFor example, say you have a bunch of images that you want to normalize to a single size. You could iterate through each image and use opencv to change the size of it. No image depends on any other image, so this task can be parallelized by treating each image as an individual unit of work, a datum.\nNext, let’s say you want to create a collage from those images. Now, we need to consider all of the images together to combine them. In this case, the collection of images would be a single datum, since they are all required for the process.\nPachyderm input specifications can handle both of these situations with the glob section of the Pipeline Specification.\nBasic Glob Patterns # In this section we\u0026rsquo;ll introduce glob patterns and datums in a couple of examples.\nIn the basic glob pattern example below, the input glob pattern is /*. This pattern matches each image at the top level of the images@master branch as an individual unit of work.\npipeline: name: resize description: A pipeline that resizes an image. input: pfs: glob: /* repo: images transform: cmd: - python - resize.py - --input - /pfs/images/* - --output - /pfs/out/ image: pachyderm/opencv When the pipeline is executed, it retrieves the datums defined in the input specification. For each datum, the worker downloads the necessary files into the Docker container at the start of its execution, and then performs the transform. Once the execution is complete, the output for each execution is combined into a commit and written to the output data repository.\nIn this example, the input glob pattern is /. This pattern matches everything at the top level of the images@master branch as an individual unit of work.\npipeline: name: collage description: A pipeline that creates a collage for a collection of images. input: pfs: glob: / repo: images transform: cmd: - python - collage.py - --input - /pfs/images/* - --output - /pfs/out/ image: pachyderm/opencv When this pipeline runs, it retrieves a single datum from the input specification. The job runs the single datum, downloading all the files from the images@master into the Docker container, and performs the transform. The result is then committed to the output data repository.\nAdvanced Glob Patterns # Datums can also be created from advanced operations, such as Join, Cross, Group, Union, and others to combine glob patterns from multiple data repositories. This allows us to create complex datum definitions, enabling sophisticated data processing pipelines.\nPipeline Communication (Advanced) # A much more detailed look at how Pachyderm actually triggers pipelines is shown in the sequence diagram below. This is a much more advanced level of detail, but knowing how the different pieces of the platform interact can be useful.\nBefore we look at the diagram, it may be helpful to provide a brief recap of the main participants involved:\nUser: The user is the person interacting with Pachyderm, typically through the command line interface (CLI) or one of the client libraries. PFS (Pachyderm File System): PFS is the underlying file system that stores all of the data in Pachyderm. It provides version control and lineage tracking for all data inside it. PPS (Pachyderm Pipeline System): PPS is how code gets applied to the data in Pachyderm. It manages the computational graph, which describes the dependencies between different steps of the data processing pipeline. Worker: Workers are Kubernetes pods that executes the jobs defined by PPS. Each worker runs a container image that contains the code for a specific pipeline. The worker will iterate through the datums it is given and apply user code to it. sequenceDiagram participant User participant PPS participant PFS participant Worker User-\u0026gt;\u0026gt;PFS: pachctl create repo foo activate PFS Note over PFS: create branch foo@master deactivate PFS User-\u0026gt;\u0026gt;PPS: pachctl create pipeline bar activate PPS PPS-\u0026gt;\u0026gt;PFS: create branch bar@master \u0026lt;br\u0026gt; (provenant on foo@master) PPS-\u0026gt;\u0026gt;Worker: create pipeline worker master Worker-\u0026gt;\u0026gt;PFS: subscribe to bar@master \u0026lt;br\u0026gt; (because it\u0026#39;s subvenant on foo@master) deactivate PPS User-\u0026gt;\u0026gt;PFS: pachctl put file -f foo@master data.txt activate PFS Note over PFS: start commit PFS-\u0026gt;\u0026gt;PFS: propagate commit \u0026lt;br\u0026gt; (start downstream commits) Note over PFS: copy data.txt to open commit Note over PFS: finish commit PFS--\u0026gt;\u0026gt;Worker: subscribed commit returns deactivate PFS Note over Worker: Pipeline Triggered activate Worker Worker-\u0026gt;\u0026gt;PPS: Create job Worker-\u0026gt;\u0026gt;PFS: request datums for commit PFS--\u0026gt;\u0026gt;Worker: Datum list loop Each datum PFS-\u0026gt;\u0026gt;Worker: download datum Note over Worker: Process datum with user code Worker-\u0026gt;\u0026gt;PFS: copy data to open output commit end Worker-\u0026gt;\u0026gt;PFS: Finish commit Worker-\u0026gt;\u0026gt;PPS: Finish job deactivate Worker This diagram illustrates the data flow and interaction between the user, the Pachyderm Pipeline System (PPS), the Pachyderm File System (PFS), and a worker node when creating and running a Pachyderm pipeline. Note, this is simplified for the single worker case. The multi-worker and autoscaling mechanisms are more complex.\nThe sequence of events begins with the user creating a PFS repo called foo and a PPS pipeline called bar with the foo repo as its input. When the pipeline is created, PPS creates a branch called bar@master, which is provenant on the foo@master branch in PFS. A worker pod is then created in the Kubernetes cluster by PPS, which subscribes to the bar@master branch.\nWhen the user puts a file named data.txt into the foo@master branch, PFS starts a new commit and propagates the commit, opening downstream commits for anything impacted. The worker receives the subscribed commit and when it finishes, triggers the pipeline.\nThe triggered pipeline creates a job for the pipeline, requesting datums for the output commit. For each datum, the worker downloads the data, processes it with the user\u0026rsquo;s code, and writes the output to an open output commit in PFS. Once all datums have been processed, the worker finishes the output commit and the job is marked as complete.\n",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+                
+                
+            
+        
+    
+    
+    ,
+    {
+		"title": "Get Started",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"section",
+		"parent": "2.5.x",
+		"description":"New to using Pachyderm? Start Here.",
+		"date": "January 1, 1",
+		"uri": "http://localhost:1313/latest/getting-started/",
+		"relURI": "/latest/getting-started/",
+		"body": " What is Pachyderm? # Pachyderm is a data-centric pipeline and data versioning application written in go that runs on top of a Kubernetes cluster.\nLocal vs Cloud Installation # Local Cloud Used for learning \u0026amp; testing. Used in production environments. Allocates your local machine\u0026rsquo;s resources to spin up a K8s cluster. Uses a cloud provider (AWS, Azure, GCP) to to spin up K8s clusters. Uses Docker Desktop, Minikube, or Kind. Uses EKS, GKE, or AKS Free. Metered by cloud provider. ",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": []
+}
+    
+        
+            
+                
+                ,{
+		"title": "Local Getting Started Guides",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"section",
+		"parent": "Get Started",
+		"description":"Learn how to install Pachyderm locally using your favorite container solution.",
+		"date": "January 1, 1",
+		"uri": "http://localhost:1313/latest/getting-started/local-deploy/",
+		"relURI": "/latest/getting-started/local-deploy/",
+		"body": " What is a Local Installation? # A local installation means that you will allocate resources from your local machine (e.g., your laptop) to spin up a Kubernetes cluster to run Pachyderm. This installation method is not for a production setup, but is great for personal use, testing, and product exploration.\nWhich Guide Should I Use? # Both the Docker Desktop and Minikube installation guides support MacOS, Windows, and Linux. If this is your first time using Kubernetes, try Docker Desktop \u0026mdash; if you are experienced with Kubernetes, you can deploy using a variety of solutions not listed here (KinD, Rancher Desktop, Podman, etc.).\n💡 Binary Files (Advanced Users)\nYou can download the latest binary files from GitHub for a direct installation of pachctl and the mount-server.\n",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": ["deployment"]
+}
+                
+                
+                    
+                        
+                        ,{
+		"title": "Docker Desktop",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Local Getting Started Guides",
+		"description":"Learn how to install Pachyderm locally with Docker Desktop.",
+		"date": "January 1, 1",
+		"uri": "http://localhost:1313/latest/getting-started/local-deploy/docker/",
+		"relURI": "/latest/getting-started/local-deploy/docker/",
+		"body": " Before You Start # Operating System: macOS Windows Linux You must have Homebrew installed. /bin/bash -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\u0026#34; You must have WSL enabled (wsl --install) and a Linux distribution installed; if Linux does not boot in your WSL terminal after downloading from the Microsoft store, see the manual installation guide. Manual Step Summary:\nOpen a Powershell terminal. Run each of the following: dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart Download the latest WSL2 Linux Kernel for x64 machines. Run each of the following: wsl --set-default-version 2 wsl --install -d Ubuntu Restart your machine. Start a WSL terminal and set up your first Ubuntu user. Update Ubuntu. sudo apt update sudo apt upgrade -y Install Homebrew in Ubuntu so you can complete the rest of this guide: /bin/bash -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\u0026#34; All installation steps after 1. Install Docker Desktop must be run through the WSL terminal (Ubuntu) and not in Powershell.\nYou are now ready to continue to Step 1.\nYou must have Homebrew installed. /bin/bash -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\u0026#34; 1. Install Docker Desktop # Install Docker Desktop for your machine. Navigate to Settings for Mac, Windows, or Linux. Adjust your resources (~4 CPUs and ~12GB Memory) Enable Kubernetes Select Apply \u0026amp; Restart. 2. Install Pachctl CLI # Operating System: MacOs, Windows, \u0026amp; Darwin Debian brew tap pachyderm/tap \u0026amp;\u0026amp; brew install pachyderm/tap/pachctl@2.5 curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v2.5.1/pachctl_2.5.1_amd64.deb \u0026amp;\u0026amp; sudo dpkg -i /tmp/pachctl.deb 3. Install \u0026amp; Configure Helm # Install Helm: brew install helm Add the Pachyderm repo to Helm: helm repo add pachyderm https://helm.pachyderm.com helm repo update Install PachD: Version: Community Edition Enterprise helm install pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer Are you using an Enterprise trial key? If so, you can set up Enterprise Pachyderm locally by storing your trial key in a license.txt file and passing it into the following Helm command:\nhelm install pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost This unlocks Enterprise features but also requires user authentication to access Console. A mock user is created by default to get you started, with the username: admin and password: password.\nThis may take several minutes to complete.\n4. Verify Installation # In a new terminal, run the following command to check the status of your pods: kubectl get pods NAME READY STATUS RESTARTS AGE pod/console-5b67678df6-s4d8c 1/1 Running 0 2m8s pod/etcd-0 1/1 Running 0 2m8s pod/pachd-c5848b5c7-zwb8p 1/1 Running 0 2m8s pod/pg-bouncer-7b855cb797-jqqpx 1/1 Running 0 2m8s pod/postgres-0 1/1 Running 0 2m8s Re-run this command after a few minutes if pachd is not ready. 5. Connect to Cluster # pachctl connect grpc://localhost:80 ℹ️ If the connection commands did not work together, run each separately.\nOptionally open your browser and navigate to the Console UI.\n💡 You can check your Pachyderm version and connection to pachd at any time with the following command:\npachctl version COMPONENT VERSION pachctl 2.5.1 pachd 2.5.1 ",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": ["docker", "linux", "mac", "windows", "getting-started", "local-deploy"]
+}
+                        
+                        
+                    
+                        
+                        ,{
+		"title": "Minikube",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Local Getting Started Guides",
+		"description":"Learn how to install Pachyderm locally with Minikube.",
+		"date": "January 1, 1",
+		"uri": "http://localhost:1313/latest/getting-started/local-deploy/minikube/",
+		"relURI": "/latest/getting-started/local-deploy/minikube/",
+		"body": "Minikube is a tool that quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. It\u0026rsquo;s a great solution for trying out Pachyderm locally.\nBefore You Start # Operating System: macOS Windows Linux You must have Homebrew installed. /bin/bash -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\u0026#34; You must have Docker Desktop installed with Kubernetes enabled. You must have Docker Desktop installed with Kubernetes enabled. You must have WSL enabled (wsl --install) and a Linux distribution installed; if Linux does not boot in your WSL terminal after downloading from the Microsoft store, see the manual installation guide. Manual Step Summary:\nOpen a Powershell terminal. Run each of the following: dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart Download the latest WSL2 Linux Kernel for x64 machines. Run each the following: wsl --set-default-version 2 wsl --install -d Ubuntu Restart your machine. Start a WSL terminal and set up your first Ubuntu user. Update Ubuntu. sudo apt update sudo apt upgrade -y Install Homebrew in Ubuntu so you can complete the rest of this guide: /bin/bash -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\u0026#34; All installation steps after this point must be run through the WSL terminal (Ubuntu) and not in Powershell.\nYou are now ready to continue to Step 1.\nYou must have Homebrew installed. /bin/bash -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\u0026#34; You must have Docker Desktop installed. 1. Install Docker # brew install docker See the official Docker getting started guide for the most up-to-date installation steps.\n2. Install \u0026amp; Start Minikube # Install # brew install minikube See the official Minikube getting started guide for the most up-to-date installation steps.\nStart # Launch Docker Desktop. Start Minikube: minikube start 3. Install Pachctl CLI # brew tap pachyderm/tap \u0026amp;\u0026amp; brew install pachyderm/tap/pachctl@2.5 4. Install \u0026amp; Configure Helm # Install Helm: brew install helm Add the Pachyderm repo to Helm: helm repo add pachyderm https://helm.pachyderm.com helm repo update Install PachD: Version: Community Edition Enterprise helm install pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer Are you using an Enterprise trial key? If so, you can set up Enterprise Pachyderm locally by storing your trial key in a license.txt file and passing it into the following Helm command:\nhelm install pachd pachyderm/pachyderm --set deployTarget=LOCAL --set proxy.enabled=true --set proxy.service.type=LoadBalancer --set pachd.enterpriseLicenseKey=$(cat license.txt) --set ingress.host=localhost This unlocks Enterprise features but also requires user authentication to access Console. A mock user is created by default to get you started, with the username: admin and password: password.\nThis may take several minutes to complete.\n5. Verify Installation # Run the following command in a new terminal to check the status of your pods: kubectl get po -A NAMESPACE NAME READY STATUS RESTARTS AGE default console-6b9bb8766d-f2gm4 1/1 Running 0 41m default etcd-0 1/1 Running 0 41m default pachd-76896d6b5d-kmfvw 1/1 Running 0 41m default pachd-loki-0 1/1 Running 0 41m default pachd-promtail-rm5ss 1/1 Running 0 41m default pachyderm-kube-event-tail-b9b554fb6-dpcsr 1/1 Running 0 41m default pg-bouncer-5c9494c678-z57qh 1/1 Running 0 41m default postgres-0 1/1 Running 0 41m kube-system coredns-6d4b75cb6d-jnl5f 1/1 Running 3 (42m ago) 97d kube-system etcd-minikube 1/1 Running 4 (42m ago) 97d kube-system kube-apiserver-minikube 1/1 Running 3 (42m ago) 97d kube-system kube-controller-manager-minikube 1/1 Running 4 (42m ago) 97d kube-system kube-proxy-bngzv 1/1 Running 3 (42m ago) 97d kube-system kube-scheduler-minikube 1/1 Running 3 (42m ago) 97d kube-system storage-provisioner 1/1 Running 5 (42m ago) 97d kubernetes-dashboard dashboard-metrics-scraper-78dbd9dbf5-swttf 1/1 Running 3 (42m ago) 97d kubernetes-dashboard kubernetes-dashboard-5fd5574d9f-c7ptx 1/1 Running 4 (42m ago) 97d Re-run this command after a few minutes if pachd is not ready. 6. Connect to Cluster # pachctl connect grpc://localhost:80 ℹ️ If the connection commands did not work together, run each separately.\nOptionally open your browser and navigate to the Console UI.\n💡 You can check your Pachyderm version and connection to pachd at any time with the following command:\npachctl version COMPONENT VERSION pachctl 2.5.1 pachd 2.5.1 ",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": ["minikube", "getting-started", "local-deploy", "linux", "mac", "windows"]
+}
+                        
+                        
+                    
+                
+            
+                
+                ,{
+		"title": "Cloud Getting Started Guides",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"section",
+		"parent": "Get Started",
+		"description":"Learn how to deploy to Pachyderm using your preferred cloud provider.",
+		"date": "January 1, 1",
+		"uri": "http://localhost:1313/latest/getting-started/cloud-deploy/",
+		"relURI": "/latest/getting-started/cloud-deploy/",
+		"body": "",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": ["aws", "azure", "gcp", "cloud-deploy"]
+}
+                
+                
+                    
+                        
+                        ,{
+		"title": "AWS + Pachyderm",
+		"version":"latest",
+		"isLatest":"",
+		"pageKind":"page",
+		"parent": "Cloud Getting Started Guides",
+		"description":"Learn how to deploy to Pachyderm to the cloud with AWS.",
+		"date": "January 1, 1",
+		"uri": "http://localhost:1313/latest/getting-started/cloud-deploy/aws/",
+		"relURI": "/latest/getting-started/cloud-deploy/aws/",
+		"body": " Before You Start # This guide assumes that you have already tried Pachyderm locally and have all of the following installed:\nKubectl Pachctl Helm AWS CLI Eksctl 1. Create an EKS Cluster # Use the eksctl tool to deploy an EKS Cluster: eksctl create cluster --name pachyderm-cluster --region \u0026lt;region\u0026gt; -profile \u0026lt;your named profile\u0026gt; Verify deployment: kubectl get all 2. Create an S3 Bucket # Run the following command: aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${AWS_REGION} Verify. aws s3 ls 3. Enable Persistent Volumes Creation # Create an IAM OIDC provider for your cluster. Install the Amazon EBS Container Storage Interface (CSI) driver on your cluster. Create a gp3 storage class manifest file (e.g., gp3-storageclass.yaml) kind: StorageClass apiVersion: storage.k8s.io/v1 metadata: name: gp3 annotations: storageclass.kubernetes.io/is-default-class: \u0026#34;true\u0026#34; provisioner: kubernetes.io/aws-ebs parameters: type: gp3 fsType: ext4 Set gp3 to your default storage class. kubectl apply -f gp3-storageclass.yaml Verify that it has been set as your default. kubectl get storageclass 4. Create a Values.yaml # Version: Community Edition Enterprise deployTarget: \u0026#34;AMAZON\u0026#34; proxy: enabled: true service: type: LoadBalancer pachd: storage: amazon: bucket: \u0026#34;bucket_name\u0026#34; # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials) id: \u0026#34;AKIAIOSFODNN7EXAMPLE\u0026#34; # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials) secret: \u0026#34;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\u0026#34; region: \u0026#34;us-east-2\u0026#34; externalService: enabled: true console: enabled: true deployTarget: \u0026#34;AMAZON\u0026#34; proxy: enabled: true service: type: LoadBalancer pachd: storage: amazon: bucket: \u0026#34;bucket_name\u0026#34; # this is an example access key ID taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials) id: \u0026#34;AKIAIOSFODNN7EXAMPLE\u0026#34; # this is an example secret access key taken from https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html (AWS Credentials) secret: \u0026#34;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\u0026#34; region: \u0026#34;us-east-2\u0026#34; # pachyderm enterprise key enterpriseLicenseKey: \u0026#34;YOUR_ENTERPRISE_TOKEN\u0026#34; console: enabled: true 5. Configure Helm # Run the following to add the Pachyderm repo to Helm:\nhelm repo add pach https://helm.pachyderm.com helm repo update helm install pachd pach/pachyderm -f my_pachyderm_values.yaml 6. Verify Installation # In a new terminal, run the following command to check the status of your pods: kubectl get pods NAME READY STATUS RESTARTS AGE pod/console-5b67678df6-s4d8c 1/1 Running 0 2m8s pod/etcd-0 1/1 Running 0 2m8s pod/pachd-c5848b5c7-zwb8p 1/1 Running 0 2m8s pod/pg-bouncer-7b855cb797-jqqpx 1/1 Running 0 2m8s pod/postgres-0 1/1 Running 0 2m8s Re-run this command after a few minutes if pachd is not ready. 7. Connect to Cluster # pachctl connect grpc://localhost:80 ℹ️ If the connection commands did not work together, run each separately.\nOptionally open your browser and navigate to the Console UI.\n💡 You can check your Pachyderm version and connection to pachd at any time with the following command:\npachctl version COMPONENT VERSION pachctl 2.5.1 pachd 2.5.1 ",
+		"beta": "<no value>",
+		"hidden": "<no value>",
+		"categories": [],
+		"tags": ["aws", "cloud-deploy"]
+}
+                        
+                        
+                    
+           
+                
+            
+        
+    
+]
