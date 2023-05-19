@@ -40,21 +40,23 @@ pinecone.init(
 if pinecone_index in pinecone.list_indexes():
     print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
     print("Erasing existing index...")
-    pinecone.delete_index(pinecone_index) # delete index if it exists so we can recreate it
+    pinecone.delete_index(pinecone_index) 
 
 print("Recreating index...")
 pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
 
-print(f'Loading {len(texts)} texts to index {pinecone_index}...')
-print(f"This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
 
-for chunk in chunks(texts, 20):
-    for doc in chunk:
-        if doc.page_content.strip():  # Check if the content is not blank or empty
-            print(f"Indexing: {doc.metadata['title']}")
-            print(f"Content: {doc.page_content}")
-            Pinecone.from_texts([doc.page_content], embedding=embeddings, index_name=pinecone_index, metadatas=[doc.metadata])
-        else:
-            print("Ignoring blank document")
-print("Done!")  
+if pinecone_index in pinecone.list_indexes():
+
+    print(f"Loading {len(texts)} texts to index {pinecone_index}... \n This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
+
+    for chunk in chunks(texts, 50):
+        for doc in chunk:
+            if doc.page_content.strip(): 
+                print(f"Indexing: {doc.metadata['title']}")
+                print(f"Content: {doc.page_content}")
+                Pinecone.from_texts([doc.page_content], embedding=embeddings, index_name=pinecone_index, metadatas=[doc.metadata])
+            else:
+                print("Ignoring blank document")
+    print("Done!")  
 
