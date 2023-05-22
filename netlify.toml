@@ -166,6 +166,12 @@
   force = true
 
 [[redirects]]
+  from = "/latest/deploy-manage/deploy"
+  to = "/latest/set-up/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/latest/deploy-manage/deploy/ingress"
   to = "/latest/manage/helm-values/proxy"
   status = 301
@@ -758,7 +764,7 @@
 
 [[redirects]]
   from = "/2.3.x/*"
-  to = "https://docs.pachyderm.com/archive"
+  to = "/latest/"
   status = 301
   force = true
 
