@@ -1,0 +1,6 @@
+fastapi==0.95.2
+langchain==0.0.177
+pinecone==0.1.0
+pinecone_client==2.2.1
+python-dotenv==1.0.0
+uvicorn==0.22.0

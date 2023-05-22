@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
+import uvicorn
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from langchain.llms import OpenAI 
 from langchain.chains.question_answering import load_qa_chain
@@ -14,7 +15,6 @@ openai_key = os.environ.get('OPENAI_API_KEY')
 pinecone_key = os.environ.get('PINECONE_API_KEY')
 pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT')
 pinecone_index = "langchain1"
-
 
 app = FastAPI(
     title="LangChain DocsGPT",
@@ -30,7 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def convert_to_document(message): # There may be a better/default way to do this but not sure; this specific chain doesn't seem to have built in memory.
+def convert_to_document(message):
     class Document:
         def __init__(self, page_content, metadata):
             self.page_content = page_content
@@ -49,24 +49,15 @@ def answer_question(question: str, vs, chain, memory):
     memory.save_context(inputs={"question": question}, outputs={"answer": answer})
     return {"answer": answer}
 
-
 llm = OpenAI(temperature=0, openai_api_key=openai_key, max_tokens=-1) 
 chain = load_qa_chain(llm, chain_type="stuff")
 embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
 docsearch = Pinecone.from_existing_index(pinecone_index, embeddings)
 memory = ConversationBufferMemory()
 
-def prompt_question(memory):
-    while True:
-        question = input("What is your question? (Type 'exit' to quit) ")
-        if question.lower() == 'exit':
-            break
-        print(answer_question(question=question, vs=docsearch, chain=chain, memory=memory))
-        print("\n")
-    conversation_history = memory.load_memory_variables(inputs={})["history"]
-    print("Conversation History:")
-    print(conversation_history)
+@app.get("/ask")
+async def ask_question(query: str = Query(...)):
+    return answer_question(question=query, vs=docsearch, chain=chain, memory=memory)
 
 if __name__ == "__main__":
-    memory = ConversationBufferMemory()
-    prompt_question(memory)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
