@@ -16,7 +16,7 @@ pinecone_index = "langchain1"
 docs_index_path = "./docs.json" 
 docs_index_schema = ".[]" # [{"body:..."}] -> .[].body; see JSONLoader docs for more info
 embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0,)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0,)
 
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
@@ -37,13 +37,13 @@ pinecone.init(
     environment=pinecone_environment,
 )
 
-if pinecone_index in pinecone.list_indexes():
-    print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
-    print("Erasing existing index...")
-    pinecone.delete_index(pinecone_index) 
+# if pinecone_index in pinecone.list_indexes():
+#     print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
+#     print("Erasing existing index...")
+#     pinecone.delete_index(pinecone_index) 
 
-print("Recreating index...")
-pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
+# print("Recreating index...")
+# pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
 
 
 if pinecone_index in pinecone.list_indexes():
