@@ -1,7 +1,6 @@
 [[edge_functions]]
-  path="/hello"
-  function="hello"
-
+  path="/ask"
+  function="ask"
  
 [[headers]]
    for = "/*"
