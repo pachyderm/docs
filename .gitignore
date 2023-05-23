@@ -1,3 +1,6 @@
 
 
 /clippy/v3/.env
+
+# Local Netlify folder
+.netlify
