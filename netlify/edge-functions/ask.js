@@ -1,4 +1,9 @@
 import { OpenAI } from "langchain/llms/openai";
+import { RetrievalQAChain } from "langchain/chains";
+import { HNSWLib } from "langchain/vectorstores/hnswlib";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import * as fs from "fs";
 
  
  
