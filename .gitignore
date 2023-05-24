@@ -1,3 +1,6 @@
 
 
 /clippy/v3/.env
+/ask-docs/docker-image/.env
+/ask-docs/embeddings/.env
+/netlify/edge-functions/.env
