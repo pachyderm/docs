@@ -4,17 +4,25 @@ FROM python:3.9-slim-buster
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements.txt file to the container
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+
+COPY . /app
+
+# Install SSL certificates
+RUN apt-get update && apt-get install -y ca-certificates
+
+COPY cert.pem /usr/local/share/ca-certificates/cert.pem
+
+RUN update-ca-certificates
 
 # Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the application code to the container
 COPY . .
 
-# Expose port 8000 for FastAPI
-EXPOSE 8000
+# Expose port 80 for FastAPI
+EXPOSE 80
 
 # Run the FastAPI application using uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
