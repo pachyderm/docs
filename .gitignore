@@ -1,6 +1,9 @@
 
 
 /clippy/v3/.env
+/netlify/edge-functions/.env
+/ask-docs/docker-image/.env
+/ask-docs/embeddings/.env
 
 # Local Netlify folder
 .netlify
