@@ -1,34 +1,16 @@
 import os
-from dotenv import load_dotenv
-import uvicorn
 
-from fastapi import FastAPI, Query
-from fastapi.middleware.cors import CORSMiddleware
 from langchain.llms import OpenAI 
 from langchain.chains.question_answering import load_qa_chain
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone 
 from langchain.memory import ConversationBufferMemory
 
-load_dotenv()
-openai_key = os.environ.get('OPENAI_API_KEY')
-pinecone_key = os.environ.get('PINECONE_API_KEY')
-pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT')
+openai_key = "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"
+pinecone_key = "be596285-2253-4a51-b363-13ffd1cc589f"
+pinecone_environment = "us-central1-gcp"
 pinecone_index = "langchain1"
 
-app = FastAPI(
-    title="LangChain DocsGPT",
-    description="The backend for LangChain DocsGPT.",
-    version="0.0.1",
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 def convert_to_document(message):
     class Document:
@@ -36,6 +18,7 @@ def convert_to_document(message):
             self.page_content = page_content
             self.metadata = metadata
     return Document(page_content=message, metadata={})
+
 
 def answer_question(question: str, vs, chain, memory):
     query = question
@@ -55,10 +38,19 @@ embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
 docsearch = Pinecone.from_existing_index(pinecone_index, embeddings)
 memory = ConversationBufferMemory()
 
-@app.get("/ask")
-async def ask_question(query: str = Query(...)):
-    return answer_question(question=query, vs=docsearch, chain=chain, memory=memory)
+import functions_framework
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, ssl_keyfile="./key.pem",
-        ssl_certfile="./cert.pem", ssl_version=2)
+@functions_framework.http
+def start(request):
+    request_json = request.get_json(silent=True)
+    request_args = request.args
+
+    if request_json and 'query' in request_json:
+        query = request_json['query']
+
+    elif request_args and 'query' in request_args:
+        query = request_args['query']
+    else:
+        query = 'What is Pachyderm?'
+
+    return answer_question(question=query, vs=docsearch, chain=chain, memory=memory)

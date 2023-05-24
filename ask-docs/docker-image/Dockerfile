@@ -11,8 +11,6 @@ COPY . /app
 # Install SSL certificates
 RUN apt-get update && apt-get install -y ca-certificates
 
-COPY cert.pem /usr/local/share/ca-certificates/cert.pem
-
 RUN update-ca-certificates
 
 # Install the Python dependencies
