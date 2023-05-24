@@ -1,3 +1,7 @@
+[[edge_functions]]
+  path="/ask"
+  function="ask"
+ 
 [[headers]]
    for = "/*"
    [headers.values]

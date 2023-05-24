@@ -1,5 +1,12 @@
 {
-    "cSpell.words": [
-        "pydantic"
-    ]
+  "cSpell.words": [
+    "pydantic"
+  ],
+  "deno.enable": true,
+  "deno.enablePaths": [
+    "netlify/edge-functions"
+  ],
+  "deno.unstable": true,
+  "deno.importMap": ".netlify/edge-functions-import-map.json",
+  "deno.path": "/Users/lanel/Library/Preferences/netlify/deno-cli/deno"
 }
