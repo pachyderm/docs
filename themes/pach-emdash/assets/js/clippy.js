@@ -17,13 +17,12 @@ async function submitQuestion(event) {
     console.log("data: ", data)
 
     if (data.error) {
-        document.getElementById('answer').innerText = data.error;
+        document.getElementById('answers').innerHTML = `<div class="notification is-danger">${data.error}</div>`;
         return;
     }
 
     if (data.answer) {
-    
-        document.getElementById('answer').innerText = data.answer;
+        document.getElementById('answers').innerHTML = `<div class="notification is-success">${data.answer}</div>`;
         return;
     }
 }
@@ -35,6 +34,5 @@ function loading() {
         3: 'Thinking...',
     }
 
-    document.getElementById('answer').classList.toggle('is-hidden');
-    document.getElementById('answer').innerText = content[Math.floor(Math.random() * 3) + 1];
+    document.getElementById('answers').innerHTML = `<div class="notification is-info">${content[Math.floor(Math.random() * 3) + 1]}</div>`;
 }
