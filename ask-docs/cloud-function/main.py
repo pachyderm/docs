@@ -6,10 +6,10 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone 
 from langchain.memory import ConversationBufferMemory
 
-openai_key = "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"
-pinecone_key = "be596285-2253-4a51-b363-13ffd1cc589f"
-pinecone_environment = "us-central1-gcp"
-pinecone_index = "langchain1"
+openai_key = ""
+pinecone_key = ""
+pinecone_environment = ""
+pinecone_index = ""
 
 
 def convert_to_document(message):
