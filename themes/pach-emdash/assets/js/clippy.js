@@ -10,7 +10,7 @@ async function submitQuestion(event) {
     const question = document.getElementById('question').value;
     console.log("question: ", question)
 
-    const response = await fetch(`http://localhost:8000/ask?question=${encodeURIComponent(question)}`);
+    const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
     console.log("response: ",  response)
 
     const data = await response.json();
