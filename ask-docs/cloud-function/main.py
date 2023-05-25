@@ -6,10 +6,10 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone 
 from langchain.memory import ConversationBufferMemory
 
-openai_key = ""
-pinecone_key = ""
-pinecone_environment = ""
-pinecone_index = ""
+openai_key = os.environ.get('OPENAI_API_KEY')
+pinecone_key = os.environ.get('PINECONE_API_KEY')
+pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT')
+pinecone_index = "langchain1"
 
 
 def convert_to_document(message):
@@ -46,11 +46,12 @@ def start(request):
     request_args = request.args
 
     if request_json and 'query' in request_json:
-        query = request_json['query']
+        question = request_json['query']
 
     elif request_args and 'query' in request_args:
-        query = request_args['query']
+        question = request_args['query']
     else:
-        query = 'What is Pachyderm?'
+        question = 'What is Pachyderm?'
 
-    return answer_question(question=query, vs=docsearch, chain=chain, memory=memory)
+
+    return answer_question(question=question, vs=docsearch, chain=chain, memory=memory)
