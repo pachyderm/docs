@@ -1,38 +1,37 @@
-
-
 async function submitQuestion(event) {
-
-    loading()
-
-    console.log('submitting question...');
-    event.preventDefault();
-
     const question = document.getElementById('question').value;
-    console.log("question: ", question)
+    loading(question);
+  
+    event.preventDefault();
+  
 
+  
     const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
-    console.log("response: ",  response)
-
     const data = await response.json();
-    console.log("data: ", data)
-
+  
+    const reply = document.createElement('div');
+    reply.classList.add('notification', 'is-success');
+  
     if (data.error) {
-        document.getElementById('answers').innerHTML = `<div class="notification is-danger">${data.error}</div>`;
-        return;
+      reply.textContent = data.error;
     }
-
+  
     if (data.answer) {
-        document.getElementById('answers').innerHTML = `<div class="notification is-success">${data.answer}</div>`;
-        return;
+      reply.textContent = data.answer;
     }
-}
-
-function loading() {
-    content = {
-        1: 'Searching the docs...',
-        2: 'Looking for an answer...',
-        3: 'Thinking...',
-    }
-
-    document.getElementById('answers').innerHTML = `<div class="notification is-info">${content[Math.floor(Math.random() * 3) + 1]}</div>`;
-}
+  
+    const answersContainer = document.getElementById('answers');
+    const firstChild = answersContainer.firstChild;
+    answersContainer.insertBefore(reply, firstChild);
+  }
+  
+  function loading(question) {
+    
+    const loading = document.createElement('div');
+    loading.innerHTML = `> <strong>${question}</strong>`
+  
+    const answersContainer = document.getElementById('answers');
+    const firstChild = answersContainer.firstChild;
+    answersContainer.insertBefore(loading, firstChild);
+  }
+  
