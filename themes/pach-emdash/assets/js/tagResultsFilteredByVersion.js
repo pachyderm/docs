@@ -3,7 +3,7 @@
 var url_string = window.location.href
 var url = new URL(url_string)
 var v = url.searchParams.get("v")
-var tags = document.getElementById("tags").children;
+var tags = document.getElementById("tags")?.children;
 
 if (v === null) {
 
