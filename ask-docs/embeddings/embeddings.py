@@ -29,6 +29,7 @@ def metadata_func(record: dict, metadata: dict) -> dict:
     return metadata
 
 loader = JSONLoader(docs_index_path, jq_schema=docs_index_schema, metadata_func=metadata_func, content_key="body") 
+
 data = loader.load()
 texts = text_splitter.split_documents(data) 
 
