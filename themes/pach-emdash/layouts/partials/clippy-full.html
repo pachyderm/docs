@@ -9,14 +9,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%
     }
 
     .remove {
         float:right;
     }
 
-    .max-height-50vh {
+    .answers {
         max-height: 80vh;
+        width: 100%;
     }
     .input-clamp {
         max-width: 100%;
@@ -25,12 +27,15 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+    .chat-container {
+    width: 100%;
+}
 </style>
 
-<div class="h-full">
+<div class="h-full ">
 
-    <div class="ask-placement stack">
-        <div id="answers" class="white stack c-p-2 h-scroll noscrollbar max-height-50vh">
+    <div class="ask-placement stack is-hidden-tablet">
+        <div id="answers" class="white rounded-6 c-m-2 stack c-p-2 h-scroll noscrollbar answers">
        
         </div>
         <div class="rounded-6 black outlined-white my-2">
