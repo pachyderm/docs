@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import time
 
 from langchain.document_loaders import JSONLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -38,13 +39,15 @@ pinecone.init(
     environment=pinecone_environment,
 )
 
-# if pinecone_index in pinecone.list_indexes():
-#     print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
-#     print("Erasing existing index...")
-#     pinecone.delete_index(pinecone_index) 
+if pinecone_index in pinecone.list_indexes():
+    print(f'The {pinecone_index} index already exists! We need to replace it with a new one.')
+    print("Erasing existing index...")
+    pinecone.delete_index(pinecone_index) 
 
-# print("Recreating index...")
-# pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
+time.sleep(60)
+print("Recreating index...")
+# wait a minute for the index to be deleted
+pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
 
 
 if pinecone_index in pinecone.list_indexes():
