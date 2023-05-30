@@ -53,7 +53,6 @@ async function submitQuestion2(event) {
     const data = await response.json();
   
     const reply = document.createElement('div');
-    reply.classList.add('notification', 'is-success');
   
     if (data.error) {
       reply.textContent = data.error;
