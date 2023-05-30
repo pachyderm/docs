@@ -18,6 +18,13 @@
     .max-height-50vh {
         max-height: 80vh;
     }
+    .input-clamp {
+        max-width: 100%;
+        min-width: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 </style>
 
 <div class="h-full">
@@ -28,8 +35,8 @@
         </div>
         <div class="rounded-6 black outlined-white my-2">
 
-            <form onsubmit="submitQuestion(event)" class="spread-between m-3 c-mx-1">
-                <input class="rounded-6 py-2 px-3" type="text" id="question" name="question" required>
+            <form onsubmit="submitQuestion(event)" class="spread-between p-3 c-mx-1">
+                <input class="rounded-6 py-2 px-3 input-clamp" type="text" id="question" name="question" required>
                 <button class="white is-fit py-2 px-3 rounded-6" type="submit">Ask</button>
             </form>
             
