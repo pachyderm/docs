@@ -72,12 +72,11 @@ function loadConversation() {
       const answerContainer = document.createElement('div');
       answerContainer.innerHTML = `<strong>A:</strong> ${answer}`;
 
-      const removeButton = createRemoveButton(qaContainer);
+      const removeButton = createRemoveButton(qaContainer.id);
       qaContainer.appendChild(answerContainer);
       qaContainer.appendChild(removeButton);
     });
   }
-  console.log(conversation)
 }
 
 function clearConversation() {
@@ -86,14 +85,14 @@ function clearConversation() {
 }
 
 function removeAnswer(id) {
+
   const qaContainer = document.getElementById(id);
-  console.log("container ", qaContainer, "id ", id)
   qaContainer.remove();
   const index = conversation.findIndex(qaPair => qaPair.id === id);
   if (index > -1) {
     conversation.splice(index, 1);
   }
-  console.log(conversation)
+
   storeConversation();
 }
 
