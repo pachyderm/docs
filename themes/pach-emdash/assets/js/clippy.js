@@ -1,38 +1,56 @@
-const answersContainer = document.getElementById('answers')
+const answersContainer = document.getElementById('answers');
 let conversation = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadConversation();
-    console.log("conversation ", conversation)
-    scrollToLastQuestion();
+  loadConversation();
+  scrollToLastQuestion();
 });
 
 async function submitQuestion(event) {
   event.preventDefault();
+
   const question = document.getElementById('question').value;
-  loadQuestion(question);
+  const qaContainer = loadQuestion(question);
 
   try {
     const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
     const data = await response.json();
-    const reply = document.createElement('div');
-    reply.innerHTML = data.error || '<strong>A:</strong>' + data.answer;
-    answersContainer.appendChild(reply);
-    conversation.push(reply.textContent);
+
+    const answer = document.createElement('div');
+    answer.innerHTML = data.error || '<strong>A:</strong> ' + data.answer;
+    qaContainer.appendChild(answer);
+    
+    const removeButton = createRemoveButton(qaContainer.id);
+    qaContainer.appendChild(removeButton);
+
+    conversation.push({ id: qaContainer.id, question: question, answer: data.answer });
     storeConversation();
     scrollToLastQuestion();
   } catch (error) {
     console.error('Error:', error);
   }
 }
-  
+
+function createRemoveButton(id) {
+  const removeButton = document.createElement('button');
+  removeButton.classList.add('remove', 'sp-1', 'rounded-2');
+  removeButton.innerHTML = '🗑️';
+  removeButton.addEventListener('click', () => removeAnswer(id));
+  return removeButton;
+}
+
 function loadQuestion(question) {
+  const qaContainer = document.createElement('div');
+  qaContainer.id = Date.now().toString();
   const questionContainer = document.createElement('div');
-  questionContainer.innerHTML = `<strong>Q:</strong> ${question}`
-  conversation.push(questionContainer.innerText);
-  answersContainer.appendChild(questionContainer);
+  questionContainer.innerHTML = `<strong>Q:</strong> ${question}`;
+  qaContainer.appendChild(questionContainer);
+
+  answersContainer.appendChild(qaContainer);
   clearQuestion();
   scrollToLastQuestion();
+
+  return qaContainer;
 }
 
 function clearQuestion() {
@@ -46,30 +64,20 @@ function storeConversation() {
 function loadConversation() {
   const storedConversation = localStorage.getItem('conversation');
   if (storedConversation) {
-      conversation = JSON.parse(storedConversation);
-      answersContainer.innerHTML = '';
-      const fragment = document.createDocumentFragment();
-      conversation.forEach((message) => {
-          const reply = document.createElement('div');
-          if (message.includes('Q:')) {
-              reply.classList.add('black');
-              message = message.replace('Q:', '<strong>Q: </strong>');
-          }
-          if (message.includes('A:')) {
-              message = message.replace('A:', '<strong>A: </strong>');
-          }
-        
-          reply.innerHTML = message;
-          // create remove button
-          const removeButton = document.createElement('button');
-          removeButton.classList.add('remove');
-          removeButton.innerHTML = '&times;';
-          removeButton.addEventListener('click', () => removeAnswer(reply));
-          reply.appendChild(removeButton);
-          fragment.appendChild(reply);
-      });
-      answersContainer.appendChild(fragment);
+    conversation = JSON.parse(storedConversation);
+    answersContainer.innerHTML = '';
+    conversation.forEach(({ id, question, answer }) => {
+      const qaContainer = loadQuestion(question);
+      qaContainer.id = id;
+      const answerContainer = document.createElement('div');
+      answerContainer.innerHTML = `<strong>A:</strong> ${answer}`;
+
+      const removeButton = createRemoveButton(qaContainer);
+      qaContainer.appendChild(answerContainer);
+      qaContainer.appendChild(removeButton);
+    });
   }
+  console.log(conversation)
 }
 
 function clearConversation() {
@@ -77,17 +85,18 @@ function clearConversation() {
   location.reload();
 }
 
-function removeAnswer(element){
-  element.remove();
-  const index = conversation.indexOf(element.innerText);
+function removeAnswer(id) {
+  const qaContainer = document.getElementById(id);
+  console.log("container ", qaContainer, "id ", id)
+  qaContainer.remove();
+  const index = conversation.findIndex(qaPair => qaPair.id === id);
   if (index > -1) {
     conversation.splice(index, 1);
   }
+  console.log(conversation)
   storeConversation();
 }
 
 function scrollToLastQuestion(){
   answersContainer.scrollTop = answersContainer.scrollHeight;
-  // const lastElement = answersContainer.lastElementChild;
-  // lastElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
