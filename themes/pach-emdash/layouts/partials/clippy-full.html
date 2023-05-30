@@ -1,31 +1,34 @@
 <style>
-    .h-full {
-        height: 90vh;
-    }
-    .bottom-1 {
+    .answers-placement {
         position: absolute;
-        bottom: 0;
+        bottom: 0rem;
     }
-    .bottom-2 {
+    .ask-placement {
         position: absolute;
-        bottom: 4.5rem;
+        bottom: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
-<section class="h-full">
-    <div id="answers" class="white rounded-3 stack m-3 c-p-2 bottom-2">
-       
-    </div>
-    <div class="spread-center">
-        <div class="rounded-6 black outlined-white bottom-1">
+<div class="h-full">
 
-            <form onsubmit="submitQuestion2(event)" class="spread-between m-3 c-mx-1">
+    <div class="ask-placement stack">
+        <div id="answers" class="white stack c-p-2 h-scroll noscrollbar">
+       
+        </div>
+        <div class="rounded-6 black outlined-white my-2">
+
+            <form onsubmit="submitQuestion(event)" class="spread-between m-3 c-mx-1">
                 <input class="rounded-6 py-2 px-3" type="text" id="question" name="question" required>
                 <button class="white is-fit py-2 px-3 rounded-6" type="submit">Ask</button>
             </form>
+            
     
         </div>
+        <button onclick="clearConversation()" class="white is-fit py-2 px-2 my-2 rounded-6">🗑️ Clear</button>
     </div>
-</section>
+</div>
 
 
 

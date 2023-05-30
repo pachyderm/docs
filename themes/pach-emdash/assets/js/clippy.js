@@ -1,116 +1,82 @@
+const answersContainer = document.getElementById('answers')
 let conversation = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     loadConversation();
     console.log("conversation ", conversation)
+    scrollToLastQuestion();
 });
 
-
 async function submitQuestion(event) {
-    const question = document.getElementById('question').value;
-    loading(question);
-  
-    event.preventDefault();
-  
-  
-    const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
-    const data = await response.json();
-  
-    const reply = document.createElement('div');
-    reply.classList.add('notification', 'is-success');
-  
-    if (data.error) {
-      reply.textContent = data.error;
-    }
-  
-    if (data.answer) {
-      reply.textContent = data.answer;
-    }
-  
-    const answersContainer = document.getElementById('answers');
-    const firstChild = answersContainer.firstChild;
-    answersContainer.insertBefore(reply, firstChild);
-  }
-  
-  function loading(question) {
-    
-    const loading = document.createElement('div');
-    loading.innerHTML = `> <strong>${question}</strong>`
-  
-    const answersContainer = document.getElementById('answers');
-    const firstChild = answersContainer.firstChild;
-    answersContainer.insertBefore(loading, firstChild);
-  }
-  
+  event.preventDefault();
+  const question = document.getElementById('question').value;
+  loadQuestion(question);
 
-async function submitQuestion2(event) {
-    const question = document.getElementById('question').value;
-    loading(question);
-  
-    event.preventDefault();
-  
+  try {
     const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
     const data = await response.json();
-  
     const reply = document.createElement('div');
-  
-    if (data.error) {
-      reply.textContent = data.error;
-    }
-  
-    if (data.answer) {
-      reply.textContent = data.answer;
-    }
-  
-    const answersContainer = document.getElementById('answers');
+    reply.textContent = data.error || data.answer;
     answersContainer.appendChild(reply);
-    conversation.push(reply.innerText);
-
+    conversation.push(reply.textContent);
     storeConversation();
-    
+    scrollToLastQuestion();
+  } catch (error) {
+    console.error('Error:', error);
   }
+}
   
-function loading(question) {
-    
-    const loading = document.createElement('div');
-    loading.innerHTML = `> <strong>${question}</strong>`
-    conversation.push(loading.innerText);
-  
-    const answersContainer = document.getElementById('answers');
-    answersContainer.appendChild(loading);
-
-    clearQuestion();
-
-  }
+function loadQuestion(question) {
+  const questionContainer = document.createElement('div');
+  questionContainer.innerHTML = `> <strong>${question}</strong>`
+  conversation.push(questionContainer.innerText);
+  answersContainer.appendChild(questionContainer);
+  clearQuestion();
+  scrollToLastQuestion();
+}
 
 function clearQuestion() {
-    document.getElementById('question').value = '';
-  }
+  document.getElementById('question').value = '';
+}
 
 function storeConversation() {
-    localStorage.setItem('conversation', JSON.stringify(conversation));
-  }
+  localStorage.setItem('conversation', JSON.stringify(conversation));
+}
 
 function loadConversation() {
-    const storedConversation = localStorage.getItem('conversation');
-    if (storedConversation) {
-        console.log("storedConversation ", storedConversation)
-        conversation = JSON.parse(storedConversation);
-        const answersContainer = document.getElementById('answers');
-        answersContainer.innerHTML = '';
-        conversation.forEach((message) => {
-            const reply = document.createElement('div');
-            if (message.includes('>')) {
-            reply.classList.add('black');
-        }
-            reply.textContent = message;
-            answersContainer.appendChild(reply);
-        }
-        );
-    }
+  const storedConversation = localStorage.getItem('conversation');
+  if (storedConversation) {
+      conversation = JSON.parse(storedConversation);
+      answersContainer.innerHTML = '';
+      const fragment = document.createDocumentFragment();
+      conversation.forEach((message) => {
+          const reply = document.createElement('div');
+          if (message.includes('>')) {
+              reply.classList.add('black');
+          }
+          reply.textContent = message;
+          fragment.appendChild(reply);
+      });
+      answersContainer.appendChild(fragment);
+  }
 }
 
 function clearConversation() {
-    localStorage.removeItem('conversation');
-    location.reload();
-    }
+  localStorage.removeItem('conversation');
+  location.reload();
+}
+
+function removeAnswer(element){
+  element.remove();
+  const index = conversation.indexOf(element.innerText);
+  if (index > -1) {
+    conversation.splice(index, 1);
+  }
+  storeConversation();
+}
+
+function scrollToLastQuestion(){
+  answersContainer.scrollTop = answersContainer.scrollHeight;
+  // const lastElement = answersContainer.lastElementChild;
+  // lastElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
