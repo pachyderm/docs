@@ -37,7 +37,7 @@ async function submitQuestion(event) {
 
 function createDocsContainer(docs) {
   const docsContainer = document.createElement('div');
-  docsContainer.classList.add('stack', 'sp-1', 'c-sp-2');
+  docsContainer.classList.add('stack', 'm-1', 'p-3', 'c-sp-2', 'gray', 'rounded-2');
   
   docs.forEach(doc => {
     const docLink = document.createElement('a');
