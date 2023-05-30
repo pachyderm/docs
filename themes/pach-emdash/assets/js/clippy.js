@@ -16,7 +16,7 @@ async function submitQuestion(event) {
     const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
     const data = await response.json();
     const reply = document.createElement('div');
-    reply.textContent = data.error || data.answer;
+    reply.innerHTML = data.error || '<strong>A:</strong>' + data.answer;
     answersContainer.appendChild(reply);
     conversation.push(reply.textContent);
     storeConversation();
@@ -28,7 +28,7 @@ async function submitQuestion(event) {
   
 function loadQuestion(question) {
   const questionContainer = document.createElement('div');
-  questionContainer.innerHTML = `> <strong>${question}</strong>`
+  questionContainer.innerHTML = `<strong>Q:</strong> ${question}`
   conversation.push(questionContainer.innerText);
   answersContainer.appendChild(questionContainer);
   clearQuestion();
@@ -51,10 +51,21 @@ function loadConversation() {
       const fragment = document.createDocumentFragment();
       conversation.forEach((message) => {
           const reply = document.createElement('div');
-          if (message.includes('>')) {
+          if (message.includes('Q:')) {
               reply.classList.add('black');
+              message = message.replace('Q:', '<strong>Q: </strong>');
           }
-          reply.textContent = message;
+          if (message.includes('A:')) {
+              message = message.replace('A:', '<strong>A: </strong>');
+          }
+        
+          reply.innerHTML = message;
+          // create remove button
+          const removeButton = document.createElement('button');
+          removeButton.classList.add('remove');
+          removeButton.innerHTML = '&times;';
+          removeButton.addEventListener('click', () => removeAnswer(reply));
+          reply.appendChild(removeButton);
           fragment.appendChild(reply);
       });
       answersContainer.appendChild(fragment);
