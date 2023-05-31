@@ -10,25 +10,34 @@ async function submitQuestion(event) {
   event.preventDefault();
 
   const question = document.getElementById('question').value;
-  const qaContainer = createQuestionContainer(question);
+  const qaSetContainer = createQASetContainer(question);
 
   try {
-    const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
-    const data = await response.json();
+    qaSetContainer.classList.add('pulse');
+    const data = await fetchAnswerFromFunction(question);
+    qaSetContainer.classList.remove('pulse');
+    
 
-    const answer = createAnswerContainer(data.error || `<strong>A:</strong> ${data.answer}`);
+    const answerContainer = createAnswerContainer(data.error || `<strong>A:</strong> ${data.answer}`);
     const docsContainer = createDocsContainer(data.docs);
-    answer.appendChild(docsContainer);
+    
+    appendElementsToContainer(qaSetContainer, [answerContainer, docsContainer, createRemoveButton(qaSetContainer.id)]);
 
-    qaContainer.appendChild(answer);
-    qaContainer.appendChild(createRemoveButton(qaContainer.id));
-
-    conversation.push({ id: qaContainer.id, question, answer: data.answer, docs: data.docs });
+    conversation.push({ id: qaSetContainer.id, question, answer: data.answer, docs: data.docs });
     storeConversation();
     scrollToLastQuestion();
   } catch (error) {
     console.error('Error:', error);
   }
+}
+
+function appendElementsToContainer(container, elements) {
+  elements.forEach(element => container.appendChild(element));
+}
+
+async function fetchAnswerFromFunction(question) {
+  const response = await fetch(`https://pach-docs-chatgpt-6ukzwpb5kq-uc.a.run.app/?query=${encodeURIComponent(question)}`);
+  return await response.json();
 }
 
 function createAnswerContainer(html) {
@@ -62,13 +71,12 @@ function createRemoveButton(id) {
   return removeButton;
 }
 
-function createQuestionContainer(question) {
-  // Contains the question, answer, and docs
+function createQASetContainer(question) {
+  
   const qaSetContainer = document.createElement('div');
   qaSetContainer.id = Date.now().toString();
   qaSetContainer.classList.add('darken-1', 'p-1', 'rounded-2')
 
-  // Contains the question
   const questionContainer = document.createElement('div');
   questionContainer.classList.add('py-2')
   questionContainer.innerHTML = `<strong>Q:</strong> ${question}`;
@@ -96,12 +104,13 @@ function loadConversation() {
     conversation = JSON.parse(storedConversation);
     chatTrayContainer.innerHTML = '';
     conversation.forEach(({ id, question, answer, docs }) => {
-      const qaContainer = createQuestionContainer(question);
-      qaContainer.id = id;
+      const qaSetContainer = createQASetContainer(question);
+      qaSetContainer.id = id;
 
-      qaContainer.appendChild(createAnswerContainer(`<strong>A:</strong> ${answer}`));
-      qaContainer.appendChild(createDocsContainer(docs));
-      qaContainer.appendChild(createRemoveButton(qaContainer.id));
+      const answerContainer = createAnswerContainer(`<strong>A:</strong> ${answer}`);
+      const docsContainer = createDocsContainer(docs);
+      
+      appendElementsToContainer(qaSetContainer, [answerContainer, docsContainer, createRemoveButton(qaSetContainer.id)]);
     });
   }
 }
@@ -112,8 +121,8 @@ function clearConversation() {
 }
 
 function clearQASet(id) {
-  const qaContainer = document.getElementById(id);
-  qaContainer.remove();
+  const qaSetContainer = document.getElementById(id);
+  qaSetContainer.remove();
   conversation = conversation.filter(qaPair => qaPair.id !== id);
   storeConversation();
 }
