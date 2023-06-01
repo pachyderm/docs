@@ -14,7 +14,17 @@ pinecone_index = "langchain1"
 def answer_question(question: str, vs, chain):
     relevant_docs = vs.similarity_search(question)
     answer = chain.run(input_documents=relevant_docs, question=question)
-    return {"answer": answer}
+    docs_metadata = []
+    for doc in relevant_docs:
+        metadata = doc.metadata
+        if metadata is not None:
+            doc_metadata = {
+                "title": metadata.get('title', None),
+                "relURI": metadata.get('relURI', None)
+            }
+            docs_metadata.append(doc_metadata)
+
+    return {"answer": answer, "docs": docs_metadata}
 
 def convert_to_document(message):
     class Document:
