@@ -17,6 +17,7 @@ async function submitQuestion(event) {
   try {
     qaSetContainer.classList.add('pulse');
     const data = await fetchAnswerFromFunction(question);
+    
     qaSetContainer.classList.remove('pulse');
     
     const answerContainer = createAnswerContainer(data.error || `<strong>A:</strong> ${data.answer}`);

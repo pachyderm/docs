@@ -12,16 +12,6 @@ pinecone_key = os.environ.get('PINECONE_API_KEY')
 pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT')
 pinecone_index = "langchain1"
 
-def answer_question(question: str, vs, chain, memory):
-    relevant_docs = vs.similarity_search(question)
-    conversation_history = memory.load_memory_variables(inputs={})["history"]
-    context_window = conversation_history.split("\n")[-3:] 
-    conversation_document = convert_to_document(context_window)
-    relevant_context = relevant_docs + [conversation_document]
-
-    answer = chain.run(input_documents=relevant_context, question=question)
-    memory.save_context(inputs={"question": question}, outputs={"answer": answer})
-    return {"answer": answer}
 
 def convert_to_document(message):
     class Document:
@@ -29,6 +19,28 @@ def convert_to_document(message):
             self.page_content = page_content
             self.metadata = metadata
     return Document(page_content=message, metadata={})
+
+
+def answer_question(question: str, vs, chain, memory):
+    relevant_docs = vs.similarity_search(question)
+    conversation_history = memory.load_memory_variables(inputs={})["history"]
+    context_window = conversation_history.split("\n")[-3:] 
+    conversation_document = convert_to_document(context_window)
+    input_documents = relevant_docs + [conversation_document]
+
+    answer = chain.run(input_documents=input_documents, question=question)
+    memory.save_context(inputs={"question": question}, outputs={"answer": answer})
+    docs_metadata = []
+    for doc in relevant_docs:
+        metadata = doc.metadata
+        if metadata is not None:
+            doc_metadata = {
+                "title": metadata.get('title', None),
+                "relURI": metadata.get('relURI', None)
+            }
+            docs_metadata.append(doc_metadata)
+
+    return {"answer": answer, "docs": docs_metadata}
 
 llm = OpenAI(temperature=1, openai_api_key=openai_key, max_tokens=-1, streaming=True) 
 chain = load_qa_chain(llm, chain_type="stuff")
