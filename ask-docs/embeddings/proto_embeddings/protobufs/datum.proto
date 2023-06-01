@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package datum;
+option go_package = "github.com/pachyderm/pachyderm/v2/src/server/worker/datum";
+
+import "gogoproto/gogo.proto";
+
+import "pfs/pfs.proto";
+import "pps/pps.proto";
+import "server/worker/common/common.proto";
+
+enum State {
+  PROCESSED = 0;
+  FAILED = 1;
+  RECOVERED = 2;
+}
+
+message Meta {
+  pps_v2.Job job = 1;
+  repeated common.Input inputs = 2;
+  string hash = 3;
+  State state = 4;
+  string reason = 5;
+  pps_v2.ProcessStats stats = 6;
+  int64 index = 7;
+  string image_id = 8;
+}
+
+message Stats {
+  pps_v2.ProcessStats process_stats = 1;
+  int64 processed = 2;
+  int64 skipped = 3;
+  int64 total = 4;
+  int64 failed = 5;
+  int64 recovered = 6;
+  string failed_id = 7 [(gogoproto.customname) = "FailedID"];
+}
+
+message PFSTask {
+  pps_v2.PFSInput input = 1; 
+  pfs_v2.PathRange path_range = 2;
+  int64 base_index = 3;
+  string auth_token = 4;
+}
+
+message PFSTaskResult {
+  string file_set_id = 1;
+}
+
+message CrossTask {
+  repeated string file_set_ids = 1;
+  int64 base_file_set_index = 2;
+  pfs_v2.PathRange base_file_set_path_range = 3;
+  int64 base_index = 4;
+  string auth_token = 5;
+}
+
+message CrossTaskResult {
+  string file_set_id = 1;
+}
+
+message KeyTask {
+  string file_set_id = 1;
+  pfs_v2.PathRange path_range = 2;
+  enum Type {
+    JOIN = 0;
+    GROUP = 1;
+  }
+  Type type = 3;
+  string auth_token = 4;
+}
+
+message KeyTaskResult {
+  string file_set_id = 1;
+}
+
+message MergeTask {
+  repeated string file_set_ids = 1;
+  pfs_v2.PathRange path_range = 2;
+  enum Type {
+    JOIN = 0;
+    GROUP = 1;
+  }
+  Type type = 3;
+  string auth_token = 4;
+}
+
+message MergeTaskResult {
+  string file_set_id = 1;
+}
+
+message ComposeTask {
+  repeated string file_set_ids = 1;
+  string auth_token = 2;
+}
+
+message ComposeTaskResult {
+  string file_set_id = 1;
+}
+
+message SetSpec {
+  int64 number = 1;
+  int64 size_bytes = 2;
+}

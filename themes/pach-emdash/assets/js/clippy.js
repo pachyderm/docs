@@ -116,7 +116,7 @@ function createQASetContainer(question) {
   
   const qaSetContainer = document.createElement('div');
   qaSetContainer.id = Date.now().toString();
-  qaSetContainer.classList.add('darken-1', 'px-3', 'rounded-2', 'outlined-white')
+  qaSetContainer.classList.add('darken-1', 'px-3', 'rounded-2', 'outlined-white', 's')
 
   const questionContainer = document.createElement('div');
   questionContainer.classList.add('py-2')
