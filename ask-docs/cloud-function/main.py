@@ -6,6 +6,30 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone 
 from langchain.memory import ConversationBufferMemory
 
+from opentelemetry import trace
+from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.propagate import set_global_textmap
+from opentelemetry.propagators.cloud_trace_propagator import CloudTraceFormatPropagator
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+def configure_exporter(exporter):
+    """Configures OpenTelemetry context propagation to use Cloud Trace context
+
+    Args:
+        exporter: exporter instance to be configured in the OpenTelemetry tracer provider
+    """
+    set_global_textmap(CloudTraceFormatPropagator())
+    tracer_provider = TracerProvider()
+    tracer_provider.add_span_processor(BatchSpanProcessor(exporter))
+    trace.set_tracer_provider(tracer_provider)
+
+
+configure_exporter(CloudTraceSpanExporter())
+tracer = trace.get_tracer(__name__)
+RequestsInstrumentor().instrument()
+
 openai_key = os.environ.get('OPENAI_API_KEY')
 pinecone_key = os.environ.get('PINECONE_API_KEY')
 pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT')
@@ -23,16 +47,18 @@ def convert_to_document(message):
 def answer_question(question: str, vs, chain, memory):
     query = question
     docs = vs.similarity_search(query)
-    conversation_history = memory.load_memory_variables(inputs={})["history"]
-    context_window = conversation_history.split("\n")[-3:] 
-    conversation_document = convert_to_document(context_window)
-    input_documents = docs + [conversation_document]
-
+    print(docs)
+    #conversation_history = memory.load_memory_variables(inputs={})["history"]
+    #print(conversation_history)
+    #context_window = conversation_history.split("\n")[-3:] 
+    #conversation_document = convert_to_document(context_window)
+    #input_documents = docs + [conversation_document]
+    input_documents = docs
     answer = chain.run(input_documents=input_documents, question=query)
     memory.save_context(inputs={"question": question}, outputs={"answer": answer})
     return {"answer": answer}
 
-llm = OpenAI(temperature=0, openai_api_key=openai_key, max_tokens=-1) 
+llm = OpenAI(temperature=0, openai_api_key=openai_key, max_tokens=150) 
 chain = load_qa_chain(llm, chain_type="stuff")
 embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
 docsearch = Pinecone.from_existing_index(pinecone_index, embeddings)
@@ -42,16 +68,17 @@ import functions_framework
 
 @functions_framework.http
 def start(request):
-    request_json = request.get_json(silent=True)
-    request_args = request.args
+    with tracer.start_as_current_span("answer_question"):
+        request_json = request.get_json(silent=True)
+        request_args = request.args
 
-    if request_json and 'query' in request_json:
-        question = request_json['query']
+        if request_json and 'query' in request_json:
+            question = request_json['query']
 
-    elif request_args and 'query' in request_args:
-        question = request_args['query']
-    else:
-        question = 'What is Pachyderm?'
+        elif request_args and 'query' in request_args:
+            question = request_args['query']
+        else:
+            question = 'What is Pachyderm?'
 
 
-    return answer_question(question=question, vs=docsearch, chain=chain, memory=memory)
+        return answer_question(question=question, vs=docsearch, chain=chain, memory=memory)

@@ -1,0 +1,10 @@
+langchain==v0.0.184
+pinecone_client
+python-dotenv
+openai
+tiktoken
+functions-framework==3.*
+opentelemetry-exporter-gcp-trace==1.4.0
+opentelemetry-propagator-gcp==1.4.0
+opentelemetry-instrumentation-requests==0.34b0
+google-cloud-trace==1.11.1
