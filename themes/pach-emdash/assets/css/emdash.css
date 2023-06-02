@@ -7,10 +7,10 @@
     --xsmall-text: calc(.75rem);  
     --small-text: calc(.85rem);  
     --medium-text: calc(1rem);  
-    --large-text: calc(1.125rem);  
-    --xlarge-text: calc(1.625rem);
-    --xxlarge-text: calc(1.875rem);
-    --xxxlarge-text: calc(2rem);
+    --large-text: calc(1.1rem);  
+    --xlarge-text: calc(1.2rem);
+    --xxlarge-text: calc(1.3rem);
+    --xxxlarge-text: calc(1.5rem);
 
     --spacing-1: calc(.2rem);
     --spacing-2: calc(.4rem);
