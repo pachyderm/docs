@@ -1,4 +1,5 @@
 {{ define "main" }}
+    {{partial "directory.html" . }}
     <main class="px-3"> 
         <div class="my-6">
             <h1>Changelog</h1>
@@ -8,4 +9,7 @@
     
     {{ partial "footer.html" . }}
     </main>
+    <div class="is-one-fifth is-hidden-mobile">
+
+    </div>
 {{end}}
