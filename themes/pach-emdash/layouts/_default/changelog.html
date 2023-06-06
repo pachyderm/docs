@@ -1,0 +1,11 @@
+{{ define "main" }}
+    <main class="px-3"> 
+        <div class="my-6">
+            <h1>Changelog</h1>
+            <p>Release highlights & product announcements.</p>
+        </div>
+    {{partial "featureReleasesComponent.html" . }}
+    
+    {{ partial "footer.html" . }}
+    </main>
+{{end}}

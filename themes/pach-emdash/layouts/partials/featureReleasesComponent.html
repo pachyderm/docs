@@ -1,0 +1,59 @@
+{{ $releases := (where .Site.RegularPages "Section" "==" "changelog").ByDate.Reverse }}
+<style>
+  .timeline {
+    border-left: 2px solid #454545;
+}
+  .point {
+  margin-left: -.4rem;
+  font-size: 3rem;
+  line-height: 30%;
+}
+
+
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+  .tl-sm {
+    flex-basis: 5%;
+    flex-grow: 0;
+  }
+}
+
+/* Media query for medium-sized screens */
+@media (min-width: 768px) {
+  .tl-md {
+    flex-basis: 15%;
+    flex-grow: 0;
+  }
+}
+
+/* Media query for large screens */
+@media (min-width: 1024px) {
+  .tl-lg {
+    flex-basis: 20%;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+}
+</style>
+
+  <section class="stack m-4 mt-6">
+    {{ range $release := $releases }}
+    <article class="spread-center">
+      <div  class="tl-lg tl-md tl-sm timeline pb-6">
+        <div class="sticky-5 spread">
+        <span class="is-fit point">▶</span> <h2 class="mx-2 pl-3"> {{ $release.Title }}</h2>
+        </div>
+      </div>
+      <div class="content m-6">
+        {{if $release.Params.image  }}
+          <img src="{{ $release.Params.image }}" class="rounded-3" />
+        {{end}}
+        <p>
+          {{ $release.Content }}
+        </p>
+      </div>
+    </article>
+    {{end}}
+  </section>
+
