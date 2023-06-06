@@ -1,5 +1,7 @@
 {{ define "main" }}
-    {{partial "directory.html" . }}
+    {{$latest := .Site.GetPage "section" "latest" }}
+
+    {{partial "directory.html" $latest }}
     <main class="px-3"> 
         <div class="my-6">
             <h1>Changelog</h1>
