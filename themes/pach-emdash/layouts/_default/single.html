@@ -4,7 +4,7 @@
 
 {{ define "main" }}
 {{partial "directory.html" . }}
-    <main class="content px-3"> 
+    <main class="stack px-3"> 
         <div class="spread-between my-2">
             {{ partial "featureBreadcrumbs.html" . }} 
             {{ partial "featureEditLink.html" . }}
@@ -24,7 +24,9 @@
             {{/* Does not show the hero section if disabled from config.yaml */}}
         {{end}}
         {{ partial "featureBetaNotice.html" . }}
-        {{ .Content }}
+        <article class="content">
+            {{ .Content }}
+        </article>
         {{ partial "featureChildPages.html" . }}
         {{ partial "featureNextPrev.html" . }}
         {{ partial "footer.html" . }}

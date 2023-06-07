@@ -248,7 +248,7 @@ hr {
 :is(.spread, .spread-left, .spread-right, .spread-around, .spread-center, .spread-stretch, .spread-between, .c-spread > *) {
     display: flex;
     flex-flow: row wrap;
-    min-width: 0;
+    /* min-width: 0; */
     
 
 }
@@ -364,30 +364,25 @@ ol li::marker {
     display: inline-block;
 }
 
-.content  pre { 
-  white-space: pre-wrap;
+pre { 
+  white-space: pre;
   overflow-x: scroll;
   padding: 0;
   margin:0;
   height: fit-content;
  }
 
- code {
 
-  white-space: pre;
-  padding: 2px;
-  margin: 2px;
-  font-weight: 700;
- }
 
- .highlight *, span * {
+ .highlight > *, span * {
   font-size: var(--xsmall-text) !important;
   font-weight: 300;
  }
- 
- .content {
-  overflow-x: hidden;
+
+ .line {
+  display: block;
  }
+ 
 
  :is(.content) :is(p,ul,ol,li) {
   font-family: 'Public Sans';
@@ -584,6 +579,10 @@ button, .button {
 .fixed {
   position: fixed;
   top:0;
+}
+
+.flex {
+  display: flex;
 }
 
 /* Fit */

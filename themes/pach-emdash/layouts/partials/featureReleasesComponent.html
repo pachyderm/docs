@@ -1,4 +1,4 @@
-{{ $releases := (where .Site.RegularPages "Section" "==" "changelog").ByDate.Reverse }}
+{{- $releases := (where .Site.RegularPages "Section" "==" "changelog").ByDate.Reverse -}}
 <style>
   .timeline {
     border-left: 2px solid #454545;
@@ -9,7 +9,7 @@
   line-height: 30%;
 }
 
-.figgy {
+.release {
   margin: 0 auto;
 }
 
@@ -41,23 +41,20 @@
 }
 </style>
 
-  <section class="stack m-4 mt-6">
-    {{ range $release := $releases }}
+
+    {{- range $release := $releases -}}
     <article class="spread-center">
-      <div  class="tl-lg tl-md tl-sm timeline pb-6">
+      <div  class="tl-lg tl-md tl-sm timeline pb-6 is-hidden-mobile">
         <div class="sticky-5 spread">
         <span class="is-fit point">▶</span> <h2 class="mx-2 pl-3"> {{ $release.Title }}</h2>
         </div>
       </div>
-      <div class="content m-6">
-        {{if $release.Params.image  }}
+      <div class="content">
+        {{- if $release.Params.image -}}
           <img src="{{ $release.Params.image }}" class="rounded-3" />
-        {{end}}
-        <p>
-          {{ $release.Content }}
-        </p>
+        {{- end -}}
+          {{- $release.Content -}}
       </div>
     </article>
-    {{end}}
-  </section>
+    {{- end -}}
 

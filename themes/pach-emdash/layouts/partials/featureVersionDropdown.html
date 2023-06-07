@@ -1,33 +1,36 @@
 {{/* Contains the logic for toggling between docs versions + algolia indices */}}
-{{ if .Site.Params.versionDropdown }}
-    {{ $removeVersion := print "/" .Section "/"}}
-    {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
-    <button class="montserrat dropdown-alt is-fit outlined-purple rounded-4 {{if eq .Section "tags" "series" "knowledge-base" "changelog"}}is-invisible{{end}}">
-        <div id="activeVersion" data-algolia="{{if or .IsHome (or (eq .Section "knowledge-base") (eq .Kind "404") (eq .Section "support") (eq .Section "latest") (eq .Section "tags") (eq .Section "changelog") (eq .Section "series"))}}pach-latest{{else}}{{.Section}}{{end}}" class="activeOption p-2 s bold">{{if .IsHome}}pach-latest{{else if eq .Kind "404"}}latest{{else}}{{.Section}}{{end}}</div>
-        <div class="montserrat is-full dropdown-options white rounded-3 outlined-purple"> 
-             {{if eq .Section "series" "knowledge-base" "changelog"}}
-             {{/*  do nothing  */}}
-             {{else if eq .Title "search" }}
-             {{/*  do nothing  */}}
-             {{else}}
-                <div class="stack"> 
-                {{ range .Site.Sections.ByTitle.Reverse }} 
-                    {{ if not .Params.hidden }}
-                    {{$currentVersionOption := print "/" .Section "/"}}
-                    {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
-                    {{ $file :=  print (strings.TrimSuffix "/" $alternativeVersionPath) ".md" }}
-                    {{ $folder :=  print $alternativeVersionPath "_index.md" }}
-                    {{ if os.FileExists $file }}
-                        <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
-                    {{ end }}
-                    {{ if os.FileExists $folder }}
-                        <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
-                    {{ end }}
+{{if eq .Section "changelog"}}
+{{else}}
+    {{- if .Site.Params.versionDropdown -}}
+        {{ $removeVersion := print "/" .Section "/"}}
+        {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
+        <button class="montserrat dropdown-alt is-fit outlined-purple rounded-4 {{if eq .Section "tags" "series" "knowledge-base" "changelog"}}is-invisible{{end}}">
+            <div id="activeVersion" data-algolia="{{if or .IsHome (or (eq .Section "knowledge-base") (eq .Kind "404") (eq .Section "support") (eq .Section "latest") (eq .Section "tags") (eq .Section "changelog") (eq .Section "series"))}}pach-latest{{else}}{{.Section}}{{end}}" class="activeOption p-2 s bold">{{if .IsHome}}pach-latest{{else if eq .Kind "404"}}latest{{else}}{{.Section}}{{end}}</div>
+            <div class="montserrat is-full dropdown-options white rounded-3 outlined-purple"> 
+                {{if eq .Section "series" "knowledge-base" "changelog"}}
+                {{/*  do nothing  */}}
+                {{else if eq .Title "search" }}
+                {{/*  do nothing  */}}
+                {{else}}
+                    <div class="stack"> 
+                    {{ range .Site.Sections.ByTitle.Reverse }} 
+                        {{ if not .Params.hidden }}
+                        {{$currentVersionOption := print "/" .Section "/"}}
+                        {{$alternativeVersionPath := print $currentVersionOption $versionlessLink }}
+                        {{ $file :=  print (strings.TrimSuffix "/" $alternativeVersionPath) ".md" }}
+                        {{ $folder :=  print $alternativeVersionPath "_index.md" }}
+                        {{ if os.FileExists $file }}
+                            <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
+                        {{ end }}
+                        {{ if os.FileExists $folder }}
+                            <a class="bold is-fit p-2 m-1 s" href="{{$alternativeVersionPath}}"> {{.Title}}</a>
+                        {{ end }}
+                        {{end}}
                     {{end}}
+                    </div>
                 {{end}}
-                </div>
-             {{end}}
 
-        </div>
-    </button>
+            </div>
+        </button>
+    {{- end -}}
 {{end}}
