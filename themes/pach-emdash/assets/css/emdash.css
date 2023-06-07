@@ -364,6 +364,10 @@ ol li::marker {
     display: inline-block;
 }
 
+code {
+  word-break:break-all;
+}
+
 pre { 
   white-space: pre;
   overflow-x: scroll;
@@ -469,6 +473,14 @@ button, .button {
 .image-16x9 {
     aspect-ratio: 16 / 9;
     width: 100%;
+}
+
+figure {
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
 }
 
 /* Animations */
@@ -2034,6 +2046,10 @@ box-shadow: inset 0 9000px 0px rgba(255, 255, 255, 0.1);
   width: 100%; 
   height: 100%; 
   overflow-y: scroll; 
+}
+
+.content {
+  
 }
 
 .content > p a, .content > ul a, .content > ol a  { 

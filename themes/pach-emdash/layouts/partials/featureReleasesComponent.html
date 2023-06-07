@@ -42,19 +42,21 @@
 </style>
 
 
-    {{- range $release := $releases -}}
-    <article class="spread-center">
-      <div  class="tl-lg tl-md tl-sm timeline pb-6 is-hidden-mobile">
-        <div class="sticky-5 spread">
-        <span class="is-fit point">▶</span> <h2 class="mx-2 pl-3"> {{ $release.Title }}</h2>
-        </div>
+<section class="m-6">
+  {{- range $release := $releases -}}
+  <article class="spread">
+    <div  class="tl-lg tl-md tl-sm timeline pb-6 is-hidden-mobile">
+      <div class="sticky-5 spread">
+      <span class="is-fit point">▶</span> <h2 class="mx-2 pl-3"> {{ $release.Title }}</h2>
       </div>
-      <div class="content">
-        {{- if $release.Params.image -}}
-          <img src="{{ $release.Params.image }}" class="rounded-3" />
-        {{- end -}}
-          {{- $release.Content -}}
+    </div>
+    <div class="stack content">
+      <h2 class="text-center pt-6 pb-3 is-hidden-desktop is-hidden-tablet"> {{ $release.Title }}</h2>
+      <div class="pt-3">
+        {{- $release.Content -}}
       </div>
-    </article>
-    {{- end -}}
+    </div>
+  </article>
+  {{- end -}}
+</section>
 
