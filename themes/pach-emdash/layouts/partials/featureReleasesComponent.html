@@ -54,14 +54,14 @@
       <h2 class="text-center pt-6 pb-3 is-hidden-desktop is-hidden-tablet"> {{ $release.Title }}</h2>
 
       <div class="spread">
-        <div class="tag black is-fit sp-2 rounded-1 xs outlined">
+        <div class="tag black is-fit sp-2 rounded-1 xs outlined pinned-top">
         {{-  $release.Params.releaseType -}}
       </div>
       <h2 class="pinned-center">
         {{-  $release.Params.slug -}}
       </h2>
-      <div class="is-fit">
-        <a class="label black darken-7 is-fit p-2 xs rounded-1 uppercase bold is-hidden-touch" href="{{$release.Params.fullReleaseNotes}}"> <img src="/images/github-white.svg" height="15px" class="" alt="GitHub"> </a>
+      <div class="is-fit is-hidden-touch">
+        <a class="label black darken-7 is-fit p-2 xs rounded-1 uppercase bold" href="{{$release.Params.fullReleaseNotes}}"> <img src="/images/github-white.svg" height="15px" class="" alt="GitHub"> </a>
       </div>
       
       </div>
@@ -72,4 +72,10 @@
   </article>
   {{- end -}}
 </section>
+
+<p class="text-center content">
+  For releases older than 2.6.0, <br>
+  check out the <a href="https://github.com/pachyderm/pachyderm/releases/">full release changelog</a> on GitHub.
+</p>
+
 
