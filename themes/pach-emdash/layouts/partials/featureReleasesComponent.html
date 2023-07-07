@@ -44,6 +44,7 @@
 
 <section class="m-6">
   {{- range $release := $releases -}}
+  {{- if ne $release.Params.hidden true -}}
   <article class="spread">
     <div  class="tl-lg tl-md tl-sm timeline pb-6 is-hidden-mobile">
       <div class="sticky-5 spread">
@@ -70,6 +71,7 @@
       </div>
     </div>
   </article>
+  {{- end -}}
   {{- end -}}
 </section>
 
