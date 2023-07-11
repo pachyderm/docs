@@ -685,6 +685,11 @@ h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover
   top:0;
 }
 
+.sticky-1 {
+  position: sticky;
+  top:4em;
+}
+
 /* Fit */
 .is-fit, .c-fit > * {
   max-width: fit-content !important;

@@ -4,8 +4,8 @@
 
 {{ define "main" }}
 {{partial "directory.html" . }}
-    <main class="content px-3"> 
-        <div class="spread-between my-2">
+    <main class="stack content px-3"> 
+        <div class="spread-between my-2 is-fit-y">
             {{ partial "featureBreadcrumbs.html" . }} 
             {{ partial "featureEditLink.html" . }}
          </div> 
@@ -19,20 +19,14 @@
                         {{ .Description}}
                     </p>
                 {{end}}
-                <p class="s">
-                    {{/* Displays published date or last build date */}}
-                    {{ if .Date }}
-                        {{ .Date | time.Format ":date_long" }} 
-                    {{else}} 
-                        {{ now | time.Format ":date_long" }} 
-                    {{end}}
-                </p> 
             </section>
         {{else}}
             {{/* Does not show the hero section if disabled from config.yaml */}}
         {{end}}
         {{ partial "featureBetaNotice.html" . }}
-        {{ .Content }}
+        <article class="content">
+            {{ .Content }}
+        </article>
         {{ partial "featureChildPages.html" . }}
         {{ partial "featureNextPrev.html" . }}
         {{ partial "footer.html" . }}

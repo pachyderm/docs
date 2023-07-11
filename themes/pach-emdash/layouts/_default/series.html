@@ -6,8 +6,8 @@
 
 {{ define "main" }}
 {{ partial "glossary-directory.html" . }}
-    <main class="content px-3"> 
-        <div class="spread-between my-2">
+    <main class="stack content px-3"> 
+        <div class="spread-between my-2 is-fit-y">
             {{ partial "featureBreadcrumbs.html" . }} 
             {{ partial "featureEditLink.html" . }}
         </div>    
@@ -23,9 +23,9 @@
                 <div class="content"> 
                         <a class="button black gradient-lr-cold rounded-1 p-2 mt-4 xxl bold" href="{{.Permalink}}" id="{{.Title | anchorize}}">{{.Params.seriesPart}} {{.Title}} </a>
                     {{ partial "featureBetaNotice.html" . }}
-                    <div class="content"> 
+                    <article class="content"> 
                     {{.Content}}
-                    </div>
+                    </article>
                 </div>
             {{ end }} {{ end }}
             
