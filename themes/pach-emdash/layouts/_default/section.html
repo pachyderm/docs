@@ -31,9 +31,12 @@
     
     </main>
     <aside class="is-one-fifth is-hidden-mobile">
-        <div class="sticky pt-6 xs px-3">
-            {{.TableOfContents}}
+        <div class="sticky">
+            {{partial "clippy-full.html" . }}
         </div>
+        {{/*  <div class="sticky pt-6 xs px-3">
+            {{.TableOfContents}}
+
+        </div>  */}}
     </aside>
-{{end}}
 
