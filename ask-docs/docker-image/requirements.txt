@@ -1,7 +1,0 @@
-fastapi
-langchain
-pinecone_client
-python-dotenv
-uvicorn[standard]
-openai
-tiktoken

@@ -5,31 +5,15 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone 
-from langchain.memory import ConversationBufferMemory
 
 openai_key = os.environ.get('OPENAI_API_KEY')
 pinecone_key = os.environ.get('PINECONE_API_KEY')
 pinecone_environment = os.environ.get('PINECONE_ENVIRONMENT')
 pinecone_index = "langchain1"
 
-
-def convert_to_document(message):
-    class Document:
-        def __init__(self, page_content, metadata):
-            self.page_content = page_content
-            self.metadata = metadata
-    return Document(page_content=message, metadata={})
-
-
-def answer_question(question: str, vs, chain, memory):
+def answer_question(question: str, vs, chain):
     relevant_docs = vs.similarity_search(question)
-    conversation_history = memory.load_memory_variables(inputs={})["history"]
-    context_window = conversation_history.split("\n")[-3:] 
-    conversation_document = convert_to_document(context_window)
-    input_documents = relevant_docs + [conversation_document]
-
-    answer = chain.run(input_documents=input_documents, question=question)
-    memory.save_context(inputs={"question": question}, outputs={"answer": answer})
+    answer = chain.run(input_documents=relevant_docs, question=question)
     docs_metadata = []
     for doc in relevant_docs:
         metadata = doc.metadata
@@ -42,11 +26,17 @@ def answer_question(question: str, vs, chain, memory):
 
     return {"answer": answer, "docs": docs_metadata}
 
+def convert_to_document(message):
+    class Document:
+        def __init__(self, page_content, metadata):
+            self.page_content = page_content
+            self.metadata = metadata
+    return Document(page_content=message, metadata={})
+
 llm = OpenAI(temperature=1, openai_api_key=openai_key, max_tokens=-1, streaming=True) 
 chain = load_qa_chain(llm, chain_type="stuff")
 embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
 docsearch = Pinecone.from_existing_index(pinecone_index, embeddings)
-memory = ConversationBufferMemory()
 
 import functions_framework
 
@@ -85,4 +75,4 @@ def start(request):
         question = 'What is Pachyderm?'
 
 
-    return (answer_question(question=question, vs=docsearch, chain=chain, memory=memory), 200, headers)
+    return (answer_question(question=question, vs=docsearch, chain=chain), 200, headers)

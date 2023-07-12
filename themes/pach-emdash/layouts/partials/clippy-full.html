@@ -1,0 +1,67 @@
+<style>
+    .answers-placement {
+        position: absolute;
+        bottom: 0rem;
+    }
+    .ask-placement {
+        position: absolute;
+        bottom: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%
+    }
+
+    .remove {
+        float:right;
+    }
+
+    .answers {
+        max-height: 80vh;
+        width: 100%;
+    }
+    .input-clamp {
+        max-width: 100%;
+        min-width: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .chat-container {
+    width: 100%;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.2; }
+        100% { opacity: 1; }
+      }
+      
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+</style>
+
+<div class="h-full">
+
+    <div class="ask-placement stack is-hidden-tablet">
+        <div id="answers" class="c-m-2 stack c-p-2 h-scroll noscrollbar answers">
+       
+        </div>
+        <div class="rounded-6 black outlined-white my-2">
+
+            <form onsubmit="submitQuestion(event)" class="spread-between p-3 c-mx-1">
+                <input class="rounded-6 py-2 px-3 input-clamp" type="text" id="question" name="question" required>
+                <button class="white is-fit py-2 px-3 rounded-6" type="submit">Ask</button>
+            </form>
+            
+    
+        </div>
+        <button onclick="clearConversation()" class="white is-fit py-2 px-2 my-2 rounded-6">🗑️ Clear</button>
+    </div>
+</div>
+
+
+
+
+

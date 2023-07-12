@@ -48,6 +48,13 @@ params:
   versionDropdown: true # displays a top-nav dropdown with top-level sections served as versioned documentation. 
   ## downloads: true # Enables displaying the download dropdown (requires release.patch)
 
+  ## Chat Features (enable chatGPT; requires a GCP Cloud Function)
+  chatGPT:
+    single: false
+    section: false
+    list: false 
+    glossary: false
+
   releaseInfo: # Note: See the new directory's /content/x.x.x./_index.md page to set release-related frontmatter variables. 
     latest: "2.6.x" # displays matching directory's sections on home page; if blank, all directories are displayed.
     patch: "2.6.5" # Used for announcements and to generate download links
@@ -58,7 +65,7 @@ params:
   nextPrev: true #  displays the next and previous article available on single page.
 
   ## Testing Features
-  defaultCss: false # displays default bulma css only without branding.
+  defaultCss: false # displays default css (don't use this; needs updating)
 
 sitemap:
   changeFreq: monthly 

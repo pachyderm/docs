@@ -47,7 +47,17 @@ def answer_question(question: str, vs, chain, memory):
 
     answer = chain.run(input_documents=input_documents, question=query)
     memory.save_context(inputs={"question": question}, outputs={"answer": answer})
-    return {"answer": answer}
+    docs_metadata = []
+    for doc in docs:
+        metadata = doc.metadata
+        if metadata is not None:
+            doc_metadata = {
+                "title": metadata.get('title', None),
+                "relURI": metadata.get('relURI', None)
+            }
+            docs_metadata.append(doc_metadata)
+
+    return {"answer": answer, "docs": docs_metadata}
 
 
 llm = OpenAI(temperature=0, openai_api_key=openai_key, max_tokens=-1) 
