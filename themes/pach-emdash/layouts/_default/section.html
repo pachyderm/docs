@@ -31,12 +31,17 @@
     
     </main>
     <aside class="is-one-fifth is-hidden-mobile">
+
+        {{- if .Site.Params.chatGPT.section -}}
         <div class="sticky">
             {{partial "clippy-full.html" . }}
         </div>
-        {{/*  <div class="sticky pt-6 xs px-3">
+        {{else}}
+        <div class="sticky pt-6 xs px-3">
             {{.TableOfContents}}
 
-        </div>  */}}
+        </div>
+        {{- end -}}
     </aside>
+{{end}}
 

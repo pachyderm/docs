@@ -33,11 +33,16 @@
         {{ partial "featureKeyboard.html" . }}
     </main>
     <aside class="is-one-fifth is-hidden-mobile">
+        {{- if .Site.Params.chatGPT.single -}}
         <div class="sticky">
-            {{/*  {{.TableOfContents}}  */}}
             {{partial "clippy-full.html" . }}
+        </div>
+        {{else}}
+        <div class="sticky pt-6 xs px-3">
+            {{.TableOfContents}}
 
         </div>
+        {{- end -}}
     </aside>
 {{end}}
 
