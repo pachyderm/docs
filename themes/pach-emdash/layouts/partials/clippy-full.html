@@ -49,15 +49,16 @@
        
         </div>
         <div class="rounded-6 black outlined-white my-2">
-
             <form onsubmit="submitQuestion(event)" class="spread-between p-3 c-mx-1">
                 <input class="rounded-6 py-2 px-3 input-clamp" type="text" id="question" name="question" required>
                 <button class="white is-fit py-2 px-3 rounded-6" type="submit">Ask</button>
             </form>
-            
-    
         </div>
-        <button onclick="clearConversation()" class="white is-fit py-2 px-2 my-2 rounded-6">🗑️ Clear</button>
+        <div class="spread c-pinned-center">
+            <div class="green py-2 px-2 my-2 rounded-1 xxs is-fit">BETA</div>
+            <button onclick="clearConversation()" class="white is-fit py-2 px-2 my-2 rounded-1 xxs ml-2">CLEAR ALL</button>
+        </div>
+        
     </div>
 </div>
 
