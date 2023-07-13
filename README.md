@@ -197,6 +197,11 @@ Pachyderm often releases new pachctl commands in major/minor releases. You can a
 5. Open the docs repo.
 6. Replace the pachctl command reference files with the newly generated ones.
 
+#### SDK Doc Generation
+
+1. Open the Pachyderm repo.
+2. In the terminal, navigate to the pachyderm_sdk directory.
+3. run the following: `pydoc-markdown -p pachyderm_sdk pydoc-markdown.yml`
 #### Search Index Update 
 
 1. Navigate to the docs site (either locally or deploy preview).
