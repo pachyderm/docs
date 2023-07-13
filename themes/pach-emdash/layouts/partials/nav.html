@@ -21,7 +21,9 @@
     {{end}}
   
       <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/" class="black gradient-rl-cold is-fit is-hidden-touch s semi-bold px-3 py-2 rounded-4"> Demo</a>
+      {{if ne .Page.Params.layout "sdk"}}
       <button id="darkModeButton" class="is-fit black grayscale px-3 py-2 rounded-6" onclick="darkMode()">🌙</button>
+      {{end}}
     </div>
  
   
