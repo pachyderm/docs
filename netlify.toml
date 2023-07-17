@@ -200,7 +200,7 @@
   force = true
 
 [[redirects]]
-  from = "/latest/concepts/pipeline-concepts/pipeline/cron/#cron-pipeline"
+  from = "/latest/concepts/pipeline-concepts/pipeline/cron"
   to = "/latest/build-dags/pipeline-spec/input-cron"
   status = 301
   force = true
