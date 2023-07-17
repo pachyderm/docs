@@ -5,7 +5,7 @@
         {{ $removeVersion := print "/" .Section "/"}}
         {{ $versionlessLink := strings.TrimPrefix $removeVersion .RelPermalink }}
         <button class="montserrat dropdown-alt is-fit outlined-purple rounded-4 {{if eq .Section "tags" "series" "knowledge-base" "changelog"}}is-invisible{{end}}">
-            <div id="activeVersion" data-algolia="{{if or .IsHome (or (eq .Section "knowledge-base") (eq .Kind "404") (eq .Section "support") (eq .Section "latest") (eq .Section "tags") (eq .Section "changelog") (eq .Section "series"))}}pach-latest{{else}}{{.Section}}{{end}}" class="activeOption p-2 s bold">{{if .IsHome}}pach-latest{{else if eq .Kind "404"}}latest{{else}}{{.Section}}{{end}}</div>
+            <div id="activeVersion" data-algolia="{{if or .IsHome (or (eq .Section "knowledge-base") (eq .Kind "404") (eq .Section "support") (eq .Section "latest") (eq .Section "tags") (eq .Section "changelog") (eq .Section "series"))}}pach-latest{{else}}pach-{{.Section}}{{end}}" class="activeOption p-2 s bold">{{if .IsHome}}pach-latest{{else if eq .Kind "404"}}latest{{else}}{{.Section}}{{end}}</div>
             <div class="montserrat is-full dropdown-options white rounded-3 outlined-purple"> 
                 {{if eq .Section "series" "knowledge-base" "changelog"}}
                 {{/*  do nothing  */}}
