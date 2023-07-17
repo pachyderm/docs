@@ -13,6 +13,6 @@
   </p>
 {{else}}
   <p class="spread mx-4 my-2">
-    <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+    <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} class="white" />
   </p>
 {{end}}
