@@ -56,7 +56,7 @@ if pinecone_index in pinecone.list_indexes():
 
     print(f"Loading {len(texts)} texts to index {pinecone_index}... \n This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
 
-    for chunk in chunks(texts, 50):
+    for chunk in chunks(texts, 25):
         for doc in chunk:
             if doc.page_content.strip(): 
                 print(f"Indexing: {doc.metadata['title']}")
