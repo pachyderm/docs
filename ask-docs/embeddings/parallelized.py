@@ -56,25 +56,22 @@ pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=
 if pinecone_index in pinecone.list_indexes():
     print(f"Loading {len(texts)} texts to index {pinecone_index}... \n This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
 
-    # Modify the chunk size and number of pods as needed
-    chunk_size = 20
-    num_pods = 4
-
-    def index_chunk(chunk):
-        for doc in chunk:
-            if doc.page_content.strip():
-                print(f"Indexing: {doc.metadata['title']}")
-                print(f"Content: {doc.page_content}")
-                # Index the document into Pinecone
-                Pinecone.from_texts([doc.page_content], embedding=embeddings, index_name=pinecone_index, metadatas=[doc.metadata])
-            else:
-                print("Ignoring blank document")
+    def process_document(doc):
+        if doc.page_content.strip():
+            print(f"Indexing: {doc.metadata['title']}")
+            print(f"Content: {doc.page_content}")
+            Pinecone.from_texts([doc.page_content], embedding=embeddings, index_name=pinecone_index, metadatas=[doc.metadata])
+        else:
+            print("Ignoring blank document")
 
     # Split the texts into chunks
+    chunk_size = 25
     text_chunks = list(chunks(texts, chunk_size))
 
     # Using ThreadPoolExecutor for parallel processing
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(index_chunk, text_chunks)
+        for chunk in text_chunks:
+            # Process the documents in the chunk in parallel
+            executor.map(process_document, chunk)
 
     print("Done!")

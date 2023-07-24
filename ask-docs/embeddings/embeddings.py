@@ -7,7 +7,6 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone 
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone 
-import concurrent.futures
 
 
 load_dotenv()
