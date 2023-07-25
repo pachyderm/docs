@@ -4,7 +4,7 @@
 */}}
 
 {{ define "main" }}
-<section>
+<section class="c-my-6">
         <div class="spread-between c-pinned-center m-4 two-thirds-widescreen">
             <div>
                 <h1 class="text-left">Pachyderm Docs</h1>
@@ -16,11 +16,16 @@
         </div>
     {{ partial "featureCommunityDetails.html" . }}
 
+    {{ partial "featureHomePGSDK.html" . }}
+
     {{/*  {{ partial "featureReleasesComponent.html" . }}  */}}
 
     {{ partial "algoliaHits.html" . }}
     {{ partial "footer.html" . }}
     {{ partial "featureKeyboard.html" . }}
+
+    
+</section>
 
 
 {{end}}
