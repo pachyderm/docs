@@ -23,10 +23,28 @@
 2. Navigate to a directory like `/Documents/GitHub/`.
 3. Run the following:
     ```s
-    gh repo clone pachyderm/docs
+      gh repo clone pachyderm/docs
     ```
 
 **Tip**: Don't have [the GitHub client](https://cli.github.com/) yet? `brew install gh`.
+
+### 3. Install the Submodules
+
+Our documentation is served on two sites:
+- **Open Source**: https://docs.pachyderm.com 
+- **Enterprise (HPE MLDM)**: https://mldm.pachyderm.com
+
+To handle the varying nuances required by both doc sites (theming, content variables), we keep the markdown content separated as a submodule repo (`pachyderm/docs-content`) to be ingested by our site repos (which contain the netlify, hugo, theme config). 
+
+1. Navigate into the project directory. 
+   ```s
+   cd docs
+   ```
+2. Run the following:
+   ```s
+   git submodule init
+   git submodule update
+   ```
 
 ### 3. Build! 
 
@@ -62,22 +80,26 @@ When contributing, we recommend creating a branch with the following naming conv
 # lbliii/doc-111/update-docs-readme
 ```
 
+**Note**: You will need to create a branch on both the `docs`` repo and the `docs-content` repo to enable deployment preview.
+
 ### Editing Existing Content 
 
 1. Open the docs repo in a text editor. 
 2. Pull any changes since your last use of the docs.
-3. Create a new branch.
-4. Navigate to the markdown file you wish to update.
-5. Make, stage, and commit your changes.
-6. Create a pull request.
-7. Tag someone at Pachyderm for approval (`@lbliii` if SME unknown).
+3. Create a new `docs` repo branch.
+4. Create a matching `docs-content` repo branch under the `/content` directory.
+5. Navigate to the markdown file you wish to update.
+6. Make, stage, and commit your changes.
+7. Create a pull request.
+8. Tag someone at Pachyderm for approval (`@lbliii` if SME unknown).
 
 
 ### Creating New Content 
 
 1. Open the docs repo in a text editor. 
 2. Pull any changes since your last use of the docs.
-3. Create a new branch.
+3. Create a new `docs` repo branch.
+4. Create a matching `docs-content` repo branch under the `/content` directory.
 4. Navigate to a place in the `/content` folder you wish to make a new file or folder.
 
 #### A: New File 
