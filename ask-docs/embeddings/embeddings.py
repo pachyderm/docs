@@ -48,7 +48,7 @@ if pinecone_index in pinecone.list_indexes():
 time.sleep(60)
 print("Recreating index...")
 # wait a minute for the index to be deleted
-pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
+pinecone.create_index(pinecone_index, metric="cosine", dimension=1536, pods=1, pod_type="p1") 
 
 
 if pinecone_index in pinecone.list_indexes():
