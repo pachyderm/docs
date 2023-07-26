@@ -1,6 +1,6 @@
-<section class="c-sp-4 c-mx-7 is-hidden-touch">
+<section class="c-sp-4 c-mx-7 is-hidden-desktop">
 
-    <div class="spread">
+    <div class="stack">
         <div class="stack pt-3 mt-3">
             <div class="c-mb-4">
                 <h1 class="text-left">Documentation</h1>
@@ -26,15 +26,15 @@
             </div>
         </div>
     </div>
-<div class="c-p-6">
+<div class=" c-p-6">
     <div class="spread black gradient-bt-cold rounded-4">
         <div class="spread darken-2 rounded-4 c-mb-3 mr-6">
             <div class="spread sp-3 c-pinned-center">
-                <h3 class="text-center">Announcements</h3>
-                <ul class="is-two-thirds c-mb-3">
-                    <li>Pachyderm <strong>{{.Site.Params.releaseInfo.patch}}</strong> is out! Download it <a href="https://github.com/pachyderm/pachyderm/releases/tag/v{{.Site.Params.releaseInfo.patch}}"><strong>here</strong></a>.</li>
-                    <li>The Alpha release of our new Python <strong>Pachyderm SDK</strong> is now available.</li>
-                </ul>
+                <h3 class="is-one-third">Announcements</h3>
+                    <ul class="c-mb-3">
+                        <li>Pachyderm <strong>{{.Site.Params.releaseInfo.patch}}</strong> is out! Download it <a href="https://github.com/pachyderm/pachyderm/releases/tag/v{{.Site.Params.releaseInfo.patch}}"><strong>here</strong></a>.</li>
+                        <li>The Alpha release of our new Python <strong>Pachyderm SDK</strong> is now available.</li>
+                    </ul>
             </div>
         </div>
         <div class="is-one-third c-mb-3">
@@ -51,7 +51,7 @@
     </div>
 </div>
    
-<div class="spread-center c-sp-3">
+<div class="stack c-sp-3">
     <section class="is-one-third stack text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
         <div class="">
             <h2 class="text-center my-3">Try out the SDK</h2>
@@ -60,9 +60,9 @@
         <div class="spread p-1 is-fit">
             <div class="sp-2  text-left"> 
                 <h3 class="mt-2 ">1. Install</h3>
-                <div class="black sp-2 spread is-fit">
+                <pre class="black sp-2 spread is-fit">
                     <code class="lang-python">pip install pachyderm_sdk</code>
-                </div>
+                </pre>
             </div>
         </div>
     
@@ -70,11 +70,11 @@
             <div class="sp-2 text-left"> 
                   
                 <h3 class="mt-2">2. Import</h3>
-                    <div class="black sp-2 spread is-fit stack">
-                        <code class="lang-python is-fit">from pachyderm_sdk import Client</code>
-                        <code class="lang-python is-fit">from pachyderm_sdk.api import pfs </code>
-                        <code class="lang-python is-fit">from pachyderm_sdk.api import pps </code>
-                    </div>
+                    <pre class="black sp-2 spread stack">
+                        <code class="lang-python">from pachyderm_sdk import Client</code>
+                        <code class="lang-python">from pachyderm_sdk.api import pfs </code>
+                        <code class="lang-python">from pachyderm_sdk.api import pps </code>
+                    </pre>
             </div>
         </div>
     
@@ -82,16 +82,16 @@
             <div class="sp-2 text-left"> 
                   
                 <h3 class="mt-2">3. Test Your Connection</h3>
-                    <div class="black sp-2 spread is-fit stack">
-                        <code class="lang-python is-fit">client = Client(host="localhost", port="80")</code>
-                        <code class="lang-python is-fit">version = client.get_version()</code>
-                        <code class="lang-python is-fit">print(version)</code>
-                    </div>
+                    <pre class="black sp-2 spread stack">
+                        <code class="lang-python ">client = Client(host="localhost", port="80")</code>
+                        <code class="lang-python ">version = client.get_version()</code>
+                        <code class="lang-python ">print(version)</code>
+                    </pre>
             </div>
         </div>
         
     </section>
-    <section class="  text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
+    <section class="text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
         <h2 class="text-center my-3">Follow Tutorials</h2>
 
         <div class="text-left c-mb-3">
@@ -122,11 +122,7 @@
     
 </div>
 
- 
-
-{{/*  {{ partial "featureCommunityDetails.html" . }}  */}}
 
 {{ partial "algoliaHits.html" . }}
 {{ partial "footer.html" . }}
 </section>
-
