@@ -1,7 +1,7 @@
 <section class="c-sp-4 c-mx-7 is-hidden-touch">
 
     <div class="spread">
-        <div class="stack">
+        <div class="stack pt-3 mt-3">
             <div class="c-mb-4">
                 <h1 class="text-left">Documentation</h1>
                 <h2 class="subtitle-2 xl text-left">Learn how install, configure, and use Pachyderm. </h2>
@@ -26,31 +26,32 @@
             </div>
         </div>
     </div>
-
-<div class="spread black gradient-bt-cold rounded-4">
-    <div class="spread  darken-2 rounded-4 c-mb-3 mr-6">
-        <div class="spread sp-3 c-pinned-center">
-            <h3 class="is-one-third">Announcements</h3>
-                <ul class="c-mb-3">
-                    <li>Pachyderm <strong>{{.Site.Params.releaseInfo.patch}}</strong> is out! Download it <a href="https://github.com/pachyderm/pachyderm/releases/tag/v{{.Site.Params.releaseInfo.patch}}"><strong>here</strong></a>.</li>
-                    <li>The Alpha release of our new Python <strong>Pachyderm SDK</strong> is now available.</li>
-                </ul>
+<div class=" c-p-6">
+    <div class="spread black gradient-bt-cold rounded-4">
+        <div class="spread darken-2 rounded-4 c-mb-3 mr-6">
+            <div class="spread sp-3 c-pinned-center">
+                <h3 class="is-one-third">Announcements</h3>
+                    <ul class="c-mb-3">
+                        <li>Pachyderm <strong>{{.Site.Params.releaseInfo.patch}}</strong> is out! Download it <a href="https://github.com/pachyderm/pachyderm/releases/tag/v{{.Site.Params.releaseInfo.patch}}"><strong>here</strong></a>.</li>
+                        <li>The Alpha release of our new Python <strong>Pachyderm SDK</strong> is now available.</li>
+                    </ul>
+            </div>
         </div>
-    </div>
-    <div class="is-one-third c-mb-3">
-        <h3>Popular Articles</h3>
-        <div class="spread-left">
-            <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/manage/helm-values/">Helm Chart Values</a>
-            <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/pipeline-spec/">Pipeline Specification</a>
-            <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/sdk">SDK</a>
-            <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/datum-batching">Datum Batching</a>
-            <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/manage/upgrades">Upgrade</a>
+        <div class="is-one-third c-mb-3">
+            <h3>Popular Articles</h3>
+            <div class="spread-left">
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/manage/helm-values/">Helm Chart Values</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/pipeline-spec/">Pipeline Specification</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/sdk">SDK</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/datum-batching">Datum Batching</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/manage/upgrades">Upgrade</a>
+            </div>
         </div>
+        
     </div>
-    
 </div>
    
-<div class="spread-between">
+<div class="spread-center c-sp-3">
     <section class="is-one-third stack text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
         <div class="">
             <h2 class="text-center my-3">Try out the SDK</h2>
@@ -90,45 +91,35 @@
         </div>
         
     </section>
-    <section class="is-one-third stack text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
-        <div class="">
-            <h2 class="text-center my-3">Try out the SDK</h2>
-            <a href='/latest/sdk/install' class="bold">Install Guide</a>, <a href='/latest/sdk/starter-project' class="bold">Starter Project</a>  and <a href='/sdk' class="bold">Reference Docs</a>
-        </div>
-        <div class="spread p-1 is-fit">
-            <div class="sp-2  text-left"> 
-                <h3 class="mt-2 ">1. Install</h3>
-                <pre class="black sp-2 spread is-fit">
-                    <code class="lang-python">pip install pachyderm_sdk</code>
-                </pre>
+    <section class="  text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
+        <h2 class="text-center my-3">Follow Tutorials</h2>
+
+        <div class="text-left c-mb-3">
+            <h3>Data Preparation</h3>
+            <p>Learn how to build a docker image containing your user code and build various types of pipelines.</p>
+            <div class="spread-left">
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/mount-volume/">Volume Mounting</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/datum-batching/">Datum Batching</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/ingest-data/">File Data Ingestion</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/sql-ingest/">SQL Data Ingestion</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/transactions/">Transactions</a>
             </div>
         </div>
-    
-         <div class="spread  text-center p-1 is-fit">
-            <div class="sp-2 text-left"> 
-                  
-                <h3 class="mt-2">2. Import</h3>
-                    <pre class="black sp-2 spread is-fit stack">
-                        <code class="lang-python is-fit">from pachyderm_sdk import Client</code>
-                        <code class="lang-python is-fit">from pachyderm_sdk.api import pfs </code>
-                        <code class="lang-python is-fit">from pachyderm_sdk.api import pps </code>
-                    </pre>
+
+        <div class="text-left c-mb-3">
+            <h3>Pipeline</h3>
+            <p>Learn how to build a docker image containing your user code and build various types of pipelines.</p>
+            <div class="spread-left">
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/user-code/">Docker Image + User Code</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/basic-ml/">Standard ML Pipeline</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/auto-ml/">Auto ML Pipeline</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/multi-ml/">Multi-Pipeline DAG</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/data-parallelism/">Data Parallelism Pipeline</a>
+                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/task-parallelism/">Task Parallelism Pipeline</a>
             </div>
         </div>
-    
-        <div class="spread p-1 ">
-            <div class="sp-2 text-left"> 
-                  
-                <h3 class="mt-2">3. Test Your Connection</h3>
-                    <pre class="black sp-2 spread is-fit stack">
-                        <code class="lang-python is-fit">client = Client(host="localhost", port="80")</code>
-                        <code class="lang-python is-fit">version = client.get_version()</code>
-                        <code class="lang-python is-fit">print(version)</code>
-                    </pre>
-            </div>
-        </div>
-        
     </section>
+    
 </div>
 
  
