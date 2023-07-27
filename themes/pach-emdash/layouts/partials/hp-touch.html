@@ -1,157 +1,291 @@
 <section class="c-mb-6 is-hidden-desktop">
+  <div class="stack">
+    <div class="stack pt-3 mt-3">
+      <div class="c-mb-4">
+        <h1 class="text-left">Documentation</h1>
+        <h2 class="subtitle-2 xl text-left">
+          Learn how install, configure, and use Pachyderm.
+        </h2>
+        <div class="spread c-mr-3 c-pinned-center">
+          <a
+            href="/latest/get-started/beginner-tutorial/"
+            class="black gradient-rl-cold is-fit s semi-bold px-3 py-2 rounded-4"
+          >
+            Try the OpenCV Tutorial</a
+          >
+          <a href="/latest">Explore Latest Docs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="is-one-third outlined rounded-4">
+    <div class="sp-3">
+      <h2>Deploy Anywhere</h2>
+      <p>Discover how to set up Pachyderm locally or in the cloud.</p>
+      <div class="spread c-pinned-bottom c-mx-2">
+        <a href="/latest/set-up/local-deploy/docker"
+          ><img
+            src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
+        /></a>
+        <a href="/latest/set-up/local-deploy/minikube"
+          ><img
+            src="https://miro.medium.com/v2/resize:fit:400/0*KzqL3xqmXzV5PPjX.png"
+        /></a>
+        <a href="/latest/set-up/cloud-deploy/aws/"
+          ><img
+            src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/r4wsu8rl4jvpjydbhooy"
+        /></a>
+        <a href="/latest/set-up/cloud-deploy/gcp/"
+          ><img
+            src="https://www.gend.co/hs-fs/hubfs/gcp-logo-cloud.png?width=730&name=gcp-logo-cloud.png"
+        /></a>
+        <a href="/latest/set-up/cloud-deploy/azure/"
+          ><img src="https://swimburger.net/media/ppnn3pcl/azure.png"
+        /></a>
+      </div>
+    </div>
+  </div>
+  <div class="c-p-2">
+    <div class="spread black gradient-bt-cold rounded-4">
+      <div class="spread darken-2 rounded-4 c-mb-3">
+        <div class="spread sp-3 c-pinned-center">
+          <h3 class="text-center">Announcements</h3>
+          <ul class="is-two-thirds c-mb-3">
+            <li>
+              Pachyderm <strong>{{.Site.Params.releaseInfo.patch}}</strong> is
+              out! Download it
+              <a
+                href="https://github.com/pachyderm/pachyderm/releases/tag/v{{.Site.Params.releaseInfo.patch}}"
+                ><strong>here</strong></a
+              >.
+            </li>
+            <li>
+              The Alpha release of our new Python
+              <strong>Pachyderm SDK</strong> is now available.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="is-full c-mb-3">
+    <h2 class="text-center mb-6">Popular Articles</h2>
     <div class="stack">
-        <div class="stack pt-3 mt-3">
-            <div class="c-mb-4">
-                <h1 class="text-left">Documentation</h1>
-                <h2 class="subtitle-2 xl text-left">Learn how install, configure, and use Pachyderm. </h2>
-                <div class="spread c-mr-3 c-pinned-center">
-                    <a href="/latest/get-started/beginner-tutorial/" class="black gradient-rl-cold is-fit s semi-bold px-3 py-2 rounded-4"> Try the OpenCV Tutorial</a>
-                    <a href="/latest">Explore Latest Docs</a>
-                </div>
-            </div>
+      <div class="mb-6">
+        <h3 class="text-center mb-3">Setup & Management</h3>
+        <div class="spread-center">
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/set-up/enterprise/activate-via-helm/"
+            >Activate Enterprise</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/manage/helm-values/"
+            >Helm Chart Values</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/manage/upgrades"
+            >Upgrade</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/manage/prometheus"
+            >Prometheus Monitoring</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/manage/secrets"
+            >Secrets</a
+          >
         </div>
-    </div>
-    <div class="is-one-third outlined rounded-4">
-        <div class="sp-3">
-            <h2>Deploy Anywhere</h2>
-            <p>Discover how to set up Pachyderm locally or in the cloud.</p>
-            <div class="spread c-pinned-bottom c-mx-2">
-                <a href="/latest/set-up/local-deploy/docker"><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"></a>
-                <a href="/latest/set-up/local-deploy/minikube"><img src="https://miro.medium.com/v2/resize:fit:400/0*KzqL3xqmXzV5PPjX.png"></a>
-                <a href="/latest/set-up/cloud-deploy/aws/"><img src="https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/r4wsu8rl4jvpjydbhooy"></a>
-                <a href="/latest/set-up/cloud-deploy/gcp/"><img src="https://www.gend.co/hs-fs/hubfs/gcp-logo-cloud.png?width=730&name=gcp-logo-cloud.png"></a>
-                <a href="/latest/set-up/cloud-deploy/azure/"><img src="https://swimburger.net/media/ppnn3pcl/azure.png"></a>
-            </div>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-center mb-3">Authentication & Authorization</h3>
+        <div class="spread-center">
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/set-up/authorization/#authorization-enable-authorization"
+            >Enable Auth</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/set-up/authorization/add-user-roles/"
+            >Assign Roles</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/build-dags/project-operations/grant-project-access/"
+            >Grant Project Access</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/set-up/authorization/permissions/"
+            >IAM Permissions</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/manage/revoke-user/"
+            >Revoke Access</a
+          >
         </div>
-    </div>
-    <div class="c-p-2">
-        <div class="spread black gradient-bt-cold rounded-4">
-            <div class="spread darken-2 rounded-4 c-mb-3">
-                <div class="spread sp-3 c-pinned-center">
-                    <h3 class="text-center">Announcements</h3>
-                    <ul class="is-two-thirds c-mb-3">
-                        <li>Pachyderm <strong>{{.Site.Params.releaseInfo.patch}}</strong> is out! Download it <a href="https://github.com/pachyderm/pachyderm/releases/tag/v{{.Site.Params.releaseInfo.patch}}"><strong>here</strong></a>.</li>
-                        <li>The Alpha release of our new Python <strong>Pachyderm SDK</strong> is now available.</li>
-                    </ul>
-                </div>
-            </div>
+      </div>
+      <div class="">
+        <h3 class="text-center mb-3">Data & Pipelines</h3>
+        <div class="spread-center">
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/build-dags/pipeline-spec/"
+            >Pipeline Specification Library</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/build-dags/pipeline-spec/full-spec/"
+            >Full PPS (JSON)</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/sdk"
+            >SDK</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/build-dags/pipeline-operations/jsonnet-pipeline-specs/"
+            >Jsonnet Pipeline Specs</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 s is-fit rounded-1 child-article"
+            href="/latest/build-dags/branch-operations/set-branch-triggers/"
+            >Branch Triggers</a
+          >
         </div>
+      </div>
     </div>
-
-    <div class="is-full c-mb-3">
-        <h2 class="text-center mb-6">Popular Articles</h2>
-        <div class="stack">
-            <div class="mb-6">
-                
-                <h3 class="text-center mb-3">Setup & Management</h3>
-                <div class="spread-center">
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/set-up/enterprise/activate-via-helm/">Activate Enterprise</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/manage/helm-values/">Helm Chart Values</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/manage/upgrades">Upgrade</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/manage/prometheus">Prometheus Monitoring</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/manage/secrets">Secrets</a>
-                </div>
-            </div>
-            <div class="mb-6">
-                <h3 class="text-center mb-3">Authentication & Authorization</h3>
-                <div class="spread-center">
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/set-up/authorization/#authorization-enable-authorization">Enable Auth</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/set-up/authorization/add-user-roles/">Assign Roles</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/build-dags/project-operations/grant-project-access/">Grant Project Access</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/set-up/authorization/permissions/">IAM Permissions</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/manage/revoke-user/">Revoke Access</a>
-                </div>
-                
-            </div>
-            <div class="">
-                <h3 class="text-center mb-3">Data & Pipelines</h3>
-                <div class="spread-center">
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/build-dags/pipeline-spec/">Pipeline Specification Library</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/build-dags/pipeline-spec/full-spec/">Full PPS (JSON)</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/sdk">SDK</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/build-dags/pipeline-operations/jsonnet-pipeline-specs/">Jsonnet Pipeline Specs</a>
-                    <a class="button outlined p-2  mt-2 mr-2 s is-fit rounded-1 child-article" href="/latest/build-dags/branch-operations/set-branch-triggers/">Branch Triggers</a>
-                </div>
-                
-            </div>
+  </div>
+  <div class="stack c-mb-6 c-p-2">
+    <section
+      class="black gradient-rl-cold is-one-third stack text-center c-fullsize-mobile c-sp-1 rounded-4 outlined"
+    >
+      <div class="darken-2 rounded-4">
+        <div class="">
+          <h2 class="text-center my-3">Try out the SDK</h2>
+          <a href="/latest/sdk/install" class="bold">Install Guide</a>,
+          <a href="/latest/sdk/starter-project" class="bold">Starter Project</a>
+          and <a href="/sdk" class="bold">Reference Docs</a>
         </div>
-    </div>
-<div class="stack c-mb-6 c-p-2">
-    <section class="black gradient-rl-cold is-one-third stack text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
-        <div class="darken-2 rounded-4">
-            <div class="">
-                <h2 class="text-center my-3">Try out the SDK</h2>
-                <a href='/latest/sdk/install' class="bold">Install Guide</a>, <a href='/latest/sdk/starter-project' class="bold">Starter Project</a>  and <a href='/sdk' class="bold">Reference Docs</a>
-            </div>
-            <div class="spread p-1 is-fit">
-                <div class="sp-2  text-left"> 
-                    <h3 class="mt-2 ">1. Install</h3>
-                    <pre class="brighten-2 sp-2 spread is-fit">
+        <div class="spread p-1 is-fit">
+          <div class="sp-2 text-left">
+            <h3 class="mt-2">1. Install</h3>
+            <pre class="brighten-2 sp-2 spread is-fit">
                         <code class="lang-python">pip install pachyderm_sdk</code>
                     </pre>
-                </div>
-            </div>
-        
-             <div class="spread  text-center p-1 is-fit">
-                <div class="sp-2 text-left"> 
-                      
-                    <h3 class="mt-2">2. Import</h3>
-                        <pre class="brighten-2 sp-2 spread stack">
+          </div>
+        </div>
+
+        <div class="spread text-center p-1 is-fit">
+          <div class="sp-2 text-left">
+            <h3 class="mt-2">2. Import</h3>
+            <pre class="brighten-2 sp-2 spread stack">
                             <code class="lang-python">from pachyderm_sdk import Client</code>
                             <code class="lang-python">from pachyderm_sdk.api import pfs </code>
                             <code class="lang-python">from pachyderm_sdk.api import pps </code>
                         </pre>
-                </div>
-            </div>
-        
-            <div class="spread p-1 ">
-                <div class="sp-2 text-left"> 
-                      
-                    <h3 class="mt-2">3. Test Your Connection</h3>
-                        <pre class="brighten-2 sp-2 spread stack">
+          </div>
+        </div>
+
+        <div class="spread p-1">
+          <div class="sp-2 text-left">
+            <h3 class="mt-2">3. Test Your Connection</h3>
+            <pre class="brighten-2 sp-2 spread stack">
                             <code class="lang-python ">client = Client(host="localhost", port="80")</code>
                             <code class="lang-python ">version = client.get_version()</code>
                             <code class="lang-python ">print(version)</code>
                         </pre>
-                </div>
-            </div>
+          </div>
         </div>
-        
-        
+      </div>
     </section>
     <section class="text-center c-fullsize-mobile c-sp-1 rounded-4 outlined">
-        <h2 class="text-center my-3">Follow Tutorials</h2>
+      <h2 class="text-center my-3">Follow Tutorials</h2>
 
-        <div class="text-left c-mb-3">
-            <h3>Data Preparation</h3>
-            <p>Learn how to build a docker image containing your user code and build various types of pipelines.</p>
-            <div class="spread-left">
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/mount-volume/">Volume Mounting</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/datum-batching/">Datum Batching</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/ingest-data/">File Data Ingestion</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/sql-ingest/">SQL Data Ingestion</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/prepare-data/transactions/">Transactions</a>
-            </div>
+      <div class="text-left c-mb-3">
+        <h3>Data Preparation</h3>
+        <p>
+          Learn how to build a docker image containing your user code and build
+          various types of pipelines.
+        </p>
+        <div class="spread-left">
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/prepare-data/mount-volume/"
+            >Volume Mounting</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/prepare-data/datum-batching/"
+            >Datum Batching</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/prepare-data/ingest-data/"
+            >File Data Ingestion</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/prepare-data/sql-ingest/"
+            >SQL Data Ingestion</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/prepare-data/transactions/"
+            >Transactions</a
+          >
         </div>
+      </div>
 
-        <div class="text-left c-mb-3">
-            <h3>Pipeline</h3>
-            <p>Learn how to build a docker image containing your user code and build various types of pipelines.</p>
-            <div class="spread-left">
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/user-code/">Docker Image + User Code</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/basic-ml/">Standard ML Pipeline</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/auto-ml/">Auto ML Pipeline</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/multi-ml/">Multi-Pipeline DAG</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/data-parallelism/">Data Parallelism Pipeline</a>
-                <a class="button outlined p-2  mt-2 mr-2 xs is-fit rounded-1 child-article" href="/latest/build-dags/tutorials/task-parallelism/">Task Parallelism Pipeline</a>
-            </div>
+      <div class="text-left c-mb-3">
+        <h3>Pipeline</h3>
+        <p>
+          Learn how to build a docker image containing your user code and build
+          various types of pipelines.
+        </p>
+        <div class="spread-left">
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/build-dags/tutorials/user-code/"
+            >Docker Image + User Code</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/build-dags/tutorials/basic-ml/"
+            >Standard ML Pipeline</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/build-dags/tutorials/auto-ml/"
+            >Auto ML Pipeline</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/build-dags/tutorials/multi-ml/"
+            >Multi-Pipeline DAG</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/build-dags/tutorials/data-parallelism/"
+            >Data Parallelism Pipeline</a
+          >
+          <a
+            class="button outlined p-2 mt-2 mr-2 xs is-fit rounded-1 child-article"
+            href="/latest/build-dags/tutorials/task-parallelism/"
+            >Task Parallelism Pipeline</a
+          >
         </div>
+      </div>
     </section>
-    
-</div>
+  </div>
 
-
-{{ partial "algoliaHits.html" . }}
-{{ partial "footer.html" . }}
+  {{ partial "algoliaHits.html" . }} {{ partial "footer.html" . }}
 </section>
