@@ -5,9 +5,10 @@
 
 {{ define "main" }}
 {{partial "directory.html" . }}
-
-{{ partial "hp-desktop.html" . }}
-{{ partial "hp-touch.html" . }}
+<main>
+    {{ partial "hp-desktop.html" . }}
+    {{ partial "hp-touch.html" . }}
+</main>
 
 
 {{end}}
