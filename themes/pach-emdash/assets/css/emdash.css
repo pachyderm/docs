@@ -1815,7 +1815,7 @@ color: var(--is-text-color-inverted) ;
 }
 .gray, .c-gray > * {
 background-color: var(--is-gray) ;
-color: var(--is-text-color-inverted) ;
+color: var(--is-text-color) ;
 }
 .dark-gray, .c-dark-gray > * {
 background-color: var(--is-dark-gray) ;

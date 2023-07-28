@@ -6,7 +6,7 @@
          Pachyderm Docs
       </a>
     </div>
-    <div class="spread-right is-one-third is-half-tablet is-fullsize-mobile c-rounded-1 c-ml-1 c-my-2">
+    <div id="left-actions" class="spread is-one-third is-half-tablet is-fullsize-mobile c-rounded-1 c-ml-2 c-my-2">
     {{if .IsHome}}
     <div class="spread rounded-6 outlined c-pinned-center">
       <div class="is-fit xs pl-2 is-hidden-mobile">🔍</div>
@@ -20,7 +20,10 @@
       {{ partial "featureVersionDropdown.html" . }}
     {{end}}
   
-      <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/" class="black gradient-rl-cold is-fit is-hidden-touch s semi-bold px-3 py-2 rounded-4"> Demo</a>
+      {{/*  <a href="https://www.pachyderm.com/see-pachyderm-in-action-demo/" class="black gradient-rl-cold is-fit is-hidden-touch s semi-bold px-3 py-2 rounded-4"> Demo</a>  */}}
+      
+      <a href="https://github.com/pachyderm" class="is-fit"><img class="" style="width: 25px;" src="/images/github.svg"></a>
+      <a href="https://www.pachyderm.com/slack" class="is-fit"> <img class="" style="width: 25px;" src="/images/slack.svg"></a>
       {{if ne .Page.Params.layout "sdk"}}
       <button id="darkModeButton" class="is-fit black grayscale px-3 py-2 rounded-6" onclick="darkMode()">🌙</button>
       {{end}}

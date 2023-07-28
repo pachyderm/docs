@@ -1,12 +1,25 @@
 <section class="pt-5 sticky is-one-fifth directory h-scroll px-3 is-hidden-mobile">
+
+  {{if .IsHome}}
+  {{/*  only show the section matching "latest"  */}}
+
+  {{ $latestSection := .Site.GetPage "section" "latest" }}
+
+  {{ template "directory" (dict "dir" $latestSection.Sections "current" .RelPermalink "parent" .Parent "section" .CurrentSection "level" "1")  }}
+
+
+  {{else}}
+  {{ template "directory" (dict "dir" .FirstSection.Sections "current" .RelPermalink "parent" .Parent "section" .CurrentSection "level" "1")  }}
+  {{end}}
   
-{{ template "directory" (dict "dir" .FirstSection.Sections "current" .RelPermalink "parent" .Parent "section" .CurrentSection "level" "1")  }}
+
 
 {{ define "directory" }}
 
+ {{$currentpg := .}}
 
   {{ range .dir }}
-    {{ if and (not .Params.hidden) (or (eq .BundleType "branch") (.Params.directory) )}}
+    {{ if and (not .Params.hidden) (or (eq .BundleType "branch") (.Params.directory) ) }}
         <div class="ml-3 my-2">
 
             <a class="{{if eq $.level "1" }} m bold {{else if eq $.level "2"}} s normal {{else}}xs thin{{end}}" href="{{ .RelPermalink }}" data-parent="{{.Parent.RelPermalink}}" data-section="{{.CurrentSection.RelPermalink}}"> {{ if eq $.current .RelPermalink }}👉{{else}} {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
