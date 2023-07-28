@@ -3,7 +3,7 @@
     - layout-list is an empty class for easier location; do not style against it.
 */}}
 
-{{ define "main" }}
+{{/*  {{ define "main" }}
 {{partial "directory.html" . }}
 <main class="c-my-2">
     <div id="top-level" class="spread c-fullsize-touch c-sp-2">
@@ -313,6 +313,34 @@
 </main>
 
 
+{{end}}  */}}
+
+
+
+
+{{ define "main" }}
+<section class="c-my-6">
+        <div class="spread-between c-pinned-center m-4 two-thirds-widescreen">
+            <div>
+                <h1 class="text-left">Pachyderm Docs</h1>
+                <h2 class="subtitle-1 l mt-2 text-left"> Automate data transformations <br> with data versioning and lineage.
+            </div>
+            <div class="is-one-fifth text-right is-hidden-mobile">
+                <img src="{{ .Site.Params.logos.footer }}" alt="Pachyderm Docs" style="height: 100px;">
+            </div>
+        </div>
+    {{ partial "featureCommunityDetails.html" . }}
+
+    {{/*  {{ partial "featureHomePGSDK.html" . }}  */}}
+
+    {{/*  {{ partial "featureReleasesComponent.html" . }}  */}}
+
+    {{ partial "algoliaHits.html" . }}
+    {{ partial "footer.html" . }}
+    {{ partial "featureKeyboard.html" . }}
+
+    
+</section>
+
+
 {{end}}
-
-
