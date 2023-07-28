@@ -8,6 +8,7 @@ from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone 
 
+
 load_dotenv()
 openai_key = os.environ.get('OPENAI_API_KEY')
 pinecone_key = os.environ.get('PINECONE_API_KEY')
@@ -47,14 +48,14 @@ if pinecone_index in pinecone.list_indexes():
 time.sleep(60)
 print("Recreating index...")
 # wait a minute for the index to be deleted
-pinecone.create_index(pinecone_index, metric="dotproduct", dimension=1536, pods=1, pod_type="p1") 
+pinecone.create_index(pinecone_index, metric="cosine", dimension=1536, pods=1, pod_type="p1") 
 
 
 if pinecone_index in pinecone.list_indexes():
 
     print(f"Loading {len(texts)} texts to index {pinecone_index}... \n This may take a while. Here's a preview of the first text: \n {texts[0].metadata} \n {texts[0].page_content}")
 
-    for chunk in chunks(texts, 50):
+    for chunk in chunks(texts, 25):
         for doc in chunk:
             if doc.page_content.strip(): 
                 print(f"Indexing: {doc.metadata['title']}")
