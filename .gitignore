@@ -4,3 +4,4 @@
 /ask-docs/embeddings/proto_embeddings/.env
 /netlify/edge-functions/.env
 /playground
+node_modules
