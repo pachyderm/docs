@@ -2,3 +2,4 @@
 /ask-docs/docker-image/.env
 /ask-docs/embeddings/.env
 /netlify/edge-functions/.env
+.ipynb_checkpoints
