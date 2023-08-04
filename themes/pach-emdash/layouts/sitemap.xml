@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {{ range .Site.Pages }}
         {{ if eq .Params.release "latest" }}
+        {{ if .Params.hidden }}
+        {{else}}
             <url>
                 <loc>{{ .Permalink }}</loc>
                 {{ if not .Lastmod.IsZero }}
@@ -14,6 +16,7 @@
                     <priority>{{ .Sitemap.Priority }}</priority>
                 {{ end }}
             </url>
+        {{ end }}
         {{ end }}
     {{ end }}
 </urlset>
