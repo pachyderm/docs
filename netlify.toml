@@ -761,14 +761,14 @@
   force = true
 
 [[redirects]]
-  from = "/2.6.x/*"
+  from = "/2.4.x/*"
   to = "/latest/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/2.3.x/*"
-  to = "/latest/"
+  to = "/latest/:splat"
   status = 301
   force = true
 
