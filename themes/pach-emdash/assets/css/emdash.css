@@ -2067,7 +2067,9 @@ height: 100%;
 overflow-y: scroll; 
 }
 
-.content {
+.content > p {
+
+  display: inline-block;
 
 }
 
@@ -2322,4 +2324,11 @@ border: none;
 
 .hide-overflow {
 overflow: hidden;
+}
+
+.inline {
+display: inline-block;
+padding-left: 10px;
+padding-right: 10px;
+
 }
