@@ -1,11 +1,11 @@
-// import algoliasearch from 'algoliasearch'
+import algoliasearch from 'algoliasearch'
 
-// export const client = algoliasearch(
-//   'RUV2F528SR',
-//   '1f21e218181a4f87c5496cd574a88c70'
-// );
+export const client = algoliasearch(
+  'RUV2F528SR',
+  '1f21e218181a4f87c5496cd574a88c70'
+);
 
-// export const index = client.initIndex('latest');
+export const index = client.initIndex('latest');
 
 // index.setSettings({
 //   // Select the attributes you want to search in
