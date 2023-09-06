@@ -1,0 +1,35 @@
+{{/*  
+- themes/pach-emdash/assets/js 
+- each one is minified
+*/}}
+  {{$algolia := resources.Get "js/search/core.js"  | js.Build  }}
+  {{$chatgpt := resources.Get "js/clippy.js"  | resources.Minify }}
+  {{ $toc := resources.Get "js/toc.js"  | resources.Minify  }}
+  {{ $clippy := resources.Get "js/clipboard.js"  | resources.Minify }}
+  {{ $relatedArticles := resources.Get "js/relatedArticles.js"  | resources.Minify }}
+  {{ $darkMode := resources.Get "js/darkMode.js" | resources.Minify   }}
+  {{ $notices := resources.Get "js/notices.js"  | resources.Minify  }}
+  {{ $pagination := resources.Get "js/pagination.js"  | resources.Minify  }}
+  {{ $explore := resources.Get "js/filterByTags.js"  | resources.Minify  }}
+  {{ $mermaid := resources.Get "js/mermaid.js"  | resources.Minify  }}
+  {{ $tables := resources.Get "js/tables.js"  | resources.Minify  }}
+  {{ $keyboard := resources.Get "js/keyboard.js"  | resources.Minify  }}
+  {{ $tags := resources.Get "js/tagResultsFilteredByVersion.js"  | resources.Minify  }}
+  {{ $wizard := resources.Get "js/wizard.js"  | resources.Minify  }}
+
+
+  {{/*  Aggregates all minified js into one 'js/bundle.js' resource at build  */}}
+  {{ $js := slice  $darkMode $wizard $toc $relatedArticles $clippy $chatgpt $mermaid $notices $tables $pagination $explore $tags | resources.Concat "js/bundle.js"}}
+
+<footer class="spread  mt-7 px-4 py-7 c-pinned-top c-mt-5">
+  
+      <script src="{{ $algolia.RelPermalink }}" type="module" defer></script>
+  
+    <script src="{{ $js.RelPermalink }}" defer></script>
+    {{ partial "marketingScripts.html" . }}
+    {{if .Params.mermaid}}
+      {{ partial "mermaid.html" . }}
+      <script src="{{ $mermaid.RelPermalink }}" defer></script>
+    {{else}}
+    {{end}}
+  </footer>
