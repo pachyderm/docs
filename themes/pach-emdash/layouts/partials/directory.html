@@ -27,19 +27,16 @@
             {{ template "directory" (dict "dir" .Pages "current" $.current "parent" .Parent "section" $.section "level" "2") }}
         </div>
     {{ else }}
-      <div class="c-ml-2  ml-3 {{if (eq $.section.Title .CurrentSection.Title) }}{{else}}closed-folder{{end}}">
-        
-        <a class="xs thin" href="{{ .RelPermalink }}">{{ if eq $.current .RelPermalink }}👉{{else}} {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
-        
-    </div>
+      {{ if and (not .Params.hidden) }}
+        <div class="c-ml-2  ml-3 {{if (eq $.section.Title .CurrentSection.Title) }}{{else}}closed-folder{{end}}">
+          
+          <a class="xs thin" href="{{ .RelPermalink }}">{{ if eq $.current .RelPermalink }}👉{{else}} {{end}} {{if .Title}}{{.Title}}{{else}}{{ path.BaseName . | humanize }}{{end}}</a>
+          
+      </div>
+      {{end}}
     {{ end }}
   {{ end }}
 
 {{ end }}
 
 </section>
-
-
-
-
-{{/*  todo: make logic to display pages with a new param: directory  */}}
