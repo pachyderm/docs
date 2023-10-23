@@ -1,0 +1,6 @@
+{{ $currentPage := .Page }}
+{{ $contentPath := .Get 0 }}
+{{ $parentRelease := $currentPage.Param "release" }}
+
+{{ $p := site.GetPage (printf "%s/%s" $parentRelease $contentPath) }}
+{{ $p.RenderShortcodes }}
