@@ -21,6 +21,8 @@ global:
     # explicitly set to a value if security is desired.  Pachyderm does not use this account; this
     # password is only required so that administrators can manually perform administrative tasks.
     postgresqlPostgresPassword: "insecure-root-password"
+    # The auth type to use with postgres and pg-bouncer. md5 is the default
+    postgresqlAuthType: "md5"
     # If you want to supply the postgresql password in an existing secret, leave Password blank and
     # Supply the name of the existing secret in the namespace and the key in that secret with the password
     postgresqlExistingSecretName: ""
@@ -32,7 +34,7 @@ global:
     # The postgresql database port to connect to. Defaults to postgres server in subchart
     postgresqlPort: "5432"
     # postgresqlSSL is the SSL mode to use for pg-bouncer connecting to Postgres, for the default local postgres it is disabled
-    postgresqlSSL: "disable"
+    postgresqlSSL: "prefer"
     # CA Certificate required to connect to Postgres
     postgresqlSSLCACert: ""
     # TLS Secret with cert/key to connect to Postgres
@@ -56,6 +58,324 @@ global:
   # Set security context runAs users. If running on openshift, set enabled to false as openshift creates its own contexts.
   securityContexts:
     enabled: true
+  image:
+    registry: docker.io/
+
+determined:
+  enabled: false
+  # The image registry to be used to pull the Master image.
+  # Determined OSS edition uses the determinedai repository in DockerHub.
+  imageRegistry: determinedai
+  # HPE Machine Learning Development Environment (MLDE), Determined Enterprise Edition, uses the HPE MSC as the image registry
+  #imageRegistry: hub.myenterpriselicense.hpe.com/hpe-mlde/<SKU>
+  # ATTENTION
+  # Please also set:
+  #   - communicated product SKU,
+  #   - enterpriseEdition flag to true,
+  # and configure the imagePullSecretName to the HPE MSC credentials K8s Secret (e.g. mlde-hpe-registry)
+  #
+  # To get the HPE MSC credentials go to the myenterpriselicense.hpe.com website, and along with the information provided with your order
+  # create the HPE MSC credentials K8s Secret (e.g. mlde-hpe-registry) using the following command:
+  # kubectl create secret docker-registry mlde-hpe-registry  \
+  # --docker-server=hub.myenterpriselicense.hpe.com/hpe-mlde/<SKU> \
+  # --docker-username=<HPE MSC user name>  \
+  # --docker-password=<HPE MSC MLDE license key> \
+  # --docker-email=<HPE MSC user email> \
+  # -n <MLDE deployment K8s namespace, if any>
+
+  # Default images used during the deployment
+  defaultImages:
+    # PostgreSQL image
+    postgreSQL: "postgres:10.14"
+
+    # default Kube Scheduler image
+    kubeScheduler: "k8s.gcr.io/scheduler-plugins/kube-scheduler:v0.18.9"
+
+    # Kube Scheduler used when the K8s default scheduler is set to preemption
+    # when, defaultScheduler: preemption
+    kubeSchedulerPreemption: "determinedai/kube-scheduler:0.17.0"
+
+    # default images for CPU and GPU environments
+    cpuImage: "determinedai/environments:py-3.8-pytorch-1.12-tf-2.8-cpu-9d07809"
+    gpuImage: "determinedai/environments:cuda-11.3-pytorch-1.12-tf-2.11-gpu-2b7e2a1"
+
+  # Install Determined enterprise edition.
+  enterpriseEdition: false
+
+  # Should be configured if using the master image in the Determined enterprise edition
+  # or private registry.
+  imagePullSecretName: ""
+
+  # Logger Level in master.yaml - Four severity levels: debug, info, warn, error
+  logLevel: info
+  # Sets in master.yaml the output of Logger in color mode - Values: true (default), false
+  logColor: true
+
+  # masterPort configures the port at which the Determined master listens for connections on.
+  masterPort: 8080
+
+  # Enables the creation of non-namespaced objects - Default: true
+  # Non-namespaced object are cluster-wide resources, such as the PriorityClasses.
+  # In multiple installation on a single cluster (using different namespaces),
+  # this flag set to false avoids to recreate non-namespaced objects. In some cases (e.g., GitOps w/ArgoCD)
+  # creating existing cluster-wide resources could stop/hang automatic deployments.
+  #
+  # WARNING
+  # The first installation must run with the createNonNamespacedObjects flag set to true to ensure
+  # the non-namespaced objects are created.
+  createNonNamespacedObjects: true
+
+  # External ca.crt injection certificate/s secret name
+  # Command to create the ca cert secret:
+  #     kubectl create secret generic <external ca cert secret name, e.g., ext-ca-cert> --from-file=<ca.crt or ca bundle filename> -n <namespace>
+  #
+  # externalCaCertSecretName: <external ca cert secret name, e.g., ext-ca-cert>
+
+  # When useNodePortForMaster is set to false (default), a LoadBalancer service is deployed to make
+  # the Determined master reachable from outside the cluster. When useNodePortForMaster is set to
+  # true, the master will instead be exposed behind a NodePort service. When using a NodePort service
+  # users will typically have to configure an Ingress to make the Determined master reachable from
+  # outside the cluster. NodePort service is recommended when configuring TLS termination in a
+  # load-balancer.
+  useNodePortForMaster: false
+
+  # Enable route support for Openshift by setting enabled to true. Configure tls termination (i.e edge) if needed.
+  # openshiftRoute:
+  # enabled:
+  # host:
+  # termination:
+
+  # tlsSecret enables TLS encryption for all communication made to the Determined master (TLS
+  # termination is performed in the Determined master). This includes communication between the
+  # Determined master and the task containers it launches, but does not include communication between
+  # the task containers (distributed training). The specified Secret of type tls must already exist in
+  # the same namespace in which Determined is being installed.
+  # tlsSecret:
+
+  # security:
+  # defaultTask sets the user and group that tasks will run as. For convenience, the default Determined
+  # environments contain an unprivileged user named det-nobody, which does have a writable HOME
+  # directory. The det-nobody user is a suitable default user when using the default Determined
+  # environment images and when running containers as root is not desired.
+  # defaultTask:
+  #   user: det-nobody
+  #   uid: 65533
+  #   group: det-nobody
+  #   gid: 65533
+  # authz option (EE-only) sets the authorization mode.
+  # authz:
+  #   type: rbac
+
+  # oidc (EE-only) enables OpenID Connect Integration, which is only available if enterpriseEdition
+  # is true. It allows users to use single sign-on with their organization’s identity provider.
+  # clientSecretKey is the key of the secret contained in the secret.
+  oidc:
+    enabled: false
+    provider: ""
+    idpRecipientUrl: ""
+    idpSsoUrl: ""
+    clientId: ""
+    clientSecretKey: ""
+    clientSecretName: ""
+    authenticationClaim: ""
+    scimAuthenticationAttribute: ""
+
+  # scim (EE-only) enables System for Cross-domain Identity Management (SCIM) integration, which is
+  # only available if enterpriseEdition is true. It allows administrators to easily and securely
+  # provision users and groups through their standard identity provider (IdP).
+  # scim:
+  #   enabled: true
+  #   auth:
+  #     type: basic
+  #     username: determined
+  #     password: password
+
+  # db sets the configurations for the database.
+  db:
+    # To deploy your own Postgres DB, provide a hostAddress. If hostAddress is provided, Determined
+    # will skip deploying a Postgres DB.
+    # hostAddress:
+
+    # Required parameters, whether you are using your own DB or a Determined DB.
+    name: determined
+    user: postgres
+    password: postgres
+    port: 5432
+
+    # Only used for Determined DB deployment. Configures the size of the PersistentVolumeClaim for the
+    # Determined deployed database, as well as the CPU and memory requirements. Should be adjusted for
+    # scale.
+    storageSize: 30Gi
+    cpuRequest: "2"
+    memRequest: 8Gi
+    #  cpuLimit: 2
+    #  memLimit: 8Gi
+
+    # useNodePortForDB configures whether ClusterIP or NodePort service type is used for the
+    # Determined deployed DB. By default ClusterIP is used.
+    useNodePortForDB: false
+
+    # storageClassName configures the StorageClass used by the PersistentVolumeClaim for the
+    # Determined deployed database. This can be left blank if a default storage class is specified in
+    # the cluster. If dynamic provisioning of PersistentVolumes is disabled, users must manually
+    # create a PersistentVolume that will match the PersistentVolumeClaim.
+    # storageClassName:
+
+    # ssl_mode and ssl_root_cert configure the TLS connection to the database. Users must first
+    # create a kubernetes secret or configMap containing their certificate and specify its name in
+    # certResourceName. For sslRootCert, specify the name of the file only (not path).
+    # sslMode: verify-ca
+    # sslRootCert: <cert_name>
+    # resourceType: <secret/configMap>
+    # certResourceName: <secret/configMap name>
+
+  # checkpointStorage controls where checkpoints are stored. Supported types include `shared_fs`,
+  # `gcs`, and `s3`.
+  checkpointStorage:
+    # Applicable to all checkpointStorage types.
+    saveExperimentBest: 0
+    saveTrialBest: 1
+    saveTrialLatest: 1
+
+    # Comment out if not using `shared_fs`. Users are strongly discouraged from using `shared_fs` for
+    # storage beyond initial testing as most Kubernetes cluster nodes do not have a shared file
+    # system.
+    type: shared_fs
+    hostPath: /checkpoints
+
+    # For storing in GCS.
+    # type: gcs
+    # bucket: <bucket_name>
+    # prefix: <prefix>
+
+    # For storing in S3.
+    # type: s3
+    # bucket: <bucket_name>
+    # accessKey: <access_key>
+    # secretKey: <secret_key>
+    # endpointUrl: <endpoint_url>
+    # prefix: <prefix>
+
+    # For storing in Azure Blob Storage with a connection string.
+    # Do NOT use if already using Azure Blob Storage with account URL
+    # type: azure
+    # container: <container_name>
+    # connection_string: <connection_string>
+
+    # For storing in Azure Blob Storage with an account URL.
+    # Do NOT use if already using Azure Blob Storage with connection string.
+    # The `credential` field is optional.
+    # type: azure
+    # container: <container_name>
+    # account_url: <account_url>
+    # credential: <credential>
+
+  # This is the number of GPUs there are per machine. Determined uses this information when scheduling
+  # multi-GPU tasks. Each multi-GPU (distributed training) task will be scheduled as a set of
+  # `slotsPerTask / maxSlotsPerPod` separate pods, with each pod assigned up to `maxSlotsPerPod` GPUs.
+  # Distributed tasks with sizes that are not divisible by `maxSlotsPerPod` are never scheduled. If
+  # you have a cluster of different size nodes (e.g., 4 and 8 GPUs per node), set `maxSlotsPerPod` to
+  # the greatest common divisor of all the sizes (4, in that case).
+  # maxSlotsPerPod:
+
+  ## For CPU-only clusters, use `slotType: cpu`, and make sure to set `slotResourceRequest` below.
+  # slotType: cpu
+  # slotResourceRequests:
+  ## Number of cpu units requested for compute slots. Note: since kubernetes may schedule some
+  ## system tasks on the nodes which take up some resources, 8-core node may not always fit
+  ## a `cpu: 8` task container.
+  # cpu: 7
+
+  # Memory and CPU requirements for the master instance. Should be adjusted for scale.
+  masterCpuRequest: "2"
+  masterMemRequest: 8Gi
+  # masterCpuLimit: "2"
+  # masterMemLimit: 8Gi
+
+  ## Configure the task container defaults. Tasks include trials, commands, TensorBoards, notebooks,
+  ## and shells. For all task containers, shm_size_bytes and network_mode are configurable. For
+  ## trials, the network interface used by distributed (multi-machine) training is configurable.
+  taskContainerDefaults:
+    # networkMode: bridge
+    # dtrainNetworkInterface: "<network interface name>"
+    forcePullImage: false
+
+    # Configure a default pod spec for all GPU tasks (experiments, notebooks, commands) and CPU tasks
+    # (CPU notebooks, TensorBoards, zero-slot commands). If a pod spec is defined for an individual
+    # task, that pod spec will replace the default one that is defined here. See
+    # https://docs:determined.ai/latest/topic-guides/custom-pod-specs.html for more details.
+    # cpuPodSpec:
+    # gpuPodSpec:
+
+    # Configure default Docker images for all GPU tasks (experiments, notebooks, commands) and
+    # CPU tasks (CPU notebooks, TensorBoards, zero-slot commands). If a Docker image is defined
+    # for an individual task, that image will replace the default one that is defined here.
+    # If specifying a default image, both GPU and CPU default images must be defined.
+    # cpuImage:
+    # gpuImage:
+
+  ## Configure whether we collect anonymous information about the usage of Determined.
+  telemetry:
+    enabled: true
+
+  ## Configure Prometheus endpoints for monitoring.
+  # observability:
+  #   enable_prometheus: true
+
+  ## A user-friendly name to identify this cluster by.
+  # clusterName: Dev
+
+  ## Specifies the duration in seconds before idle
+  ## TensorBoard instances are automatically terminated.
+  ## A TensorBoard instance is considered to be idle if
+  ## it does not receive any HTTP traffic. The default timeout is 300 seconds (5 minutes).
+  # tensorboardTimeout: 300
+
+  ## Specifies the duration in seconds before idle notebook instances are automatically terminated.
+  ## This behavior is disabled by default.
+  # notebookTimeout: 1800
+
+  # defaultPassword sets the password for the admin and determined user accounts.
+  # defaultPassword:
+
+  ## Configure how trial logs are stored.
+  # logging:
+  ## The backend to use. Can be `default` to send logs to the master to store in the PostgreSQL
+  ## database or `elastic` to store logs in an Elasticsearch cluster (without going through the
+  ## master).
+  # type: default
+
+  ## The remaining options should be provided only for the `elastic` backend.
+
+  ## The host and port to use to connect to the Elasticsearch cluster.
+  # host: <host>
+  # port: <port>
+
+  ## Authentication and TLS options for making the connection to Elasticsearch.
+  # security:
+  # username: <username>
+  # password: <password>
+  # tls:
+  # enabled: true
+  # skipVerify: false
+
+  ## The name to use when verifying the certificate, if different from the name used to connect.
+  # certificateName: <name>
+
+  ## This value must contain the contents of the certificate file, not a path. It may be set
+  ## directly or using `helm install --set-file logging.security.tls.certificate=<path>`.
+  # certificate: <certificate contents>
+
+  ## Configure the default Determined scheduler
+  ## Currently supports "coscheduler" for gang scheduling and "preemption" for priority based
+  ## scheduling with preemption
+  # defaultScheduler: preemption
+
+  ## Configure the resource pools in the Determined cluster.
+  resourcePools:
+    - pool_name: default
+  # defaultAuxResourcePool: default
+  # defaultComputeResourcePool: default
 
 console:
   # enabled controls whether the console manifests are created or not.
@@ -69,7 +389,8 @@ console:
     pullPolicy: "IfNotPresent"
     # tag is the image repo to pull from; together with repository it
     # replicates the --console-image argument to pachctl deploy.
-    tag: "2.3.0-alpha.4"
+    # defaults to .Chart.AppVersion
+    tag: ""
   priorityClassName: ""
   nodeSelector: {}
   tolerations: []
@@ -112,7 +433,7 @@ etcd:
   dynamicNodes: 1
   image:
     repository: "pachyderm/etcd"
-    tag: "v3.5.1"
+    tag: "v3.5.5"
     pullPolicy: "IfNotPresent"
   # maxTxnOps sets the --max-txn-ops in the container args
   maxTxnOps: 10000
@@ -134,8 +455,8 @@ etcd:
   # --etcd-storage-class argument to pachctl deploy.
   # More info for setting up storage classes on various cloud providers:
   # AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
-  # GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
-  # Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+  # GCP: https://cloud.google.com/compute/docs/disks/performance#disk_types
+  # Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes
   storageClass: ""
   # storageSize specifies the size of the volume to use for etcd.
   # Recommended Minimum Disk size for Microsoft/Azure: 256Gi  - 1,100 IOPS https://azure.microsoft.com/en-us/pricing/details/managed-disks/
@@ -221,12 +542,21 @@ loki-stack:
       accessModes:
         - ReadWriteOnce
       size: 10Gi
-      storageClassName: standard
+      # More info for setting up storage classes on various cloud providers:
+      # AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
+      # GCP: https://cloud.google.com/compute/docs/disks/performance#disk_types
+      # Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes
+      storageClassName: ""
       annotations: {}
       priorityClassName: ""
       nodeSelector: {}
       tolerations: []
     config:
+      server:
+        grpc_server_max_recv_msg_size: 67108864 # 64MiB
+      query_scheduler:
+        grpc_client_config:
+          max_send_msg_size: 67108864 # 64MiB
       limits_config:
         retention_period: 24h
         retention_stream:
@@ -237,7 +567,8 @@ loki-stack:
     enabled: false
   promtail:
     config:
-      lokiAddress: http://{{ .Release.Name }}-loki:3100/loki/api/v1/push
+      clients:
+        - url: "http://{{ .Release.Name }}-loki:3100/loki/api/v1/push"
       snippets:
         # The scrapeConfigs section is copied from loki-stack-2.6.4
         # The pipeline_stages.match stanza has been added to prevent multiple lokis in a cluster from mixing their logs.
@@ -335,30 +666,87 @@ loki-stack:
           # this gets all kubernetes labels as well
           - action: labelmap
             regex: __meta_kubernetes_pod_label_(.+)
+    # Tolerations for promtail pods. Promtail must run on any node where pachyderm resources will run or you won't get any logs for them
+    # For example, GKE gpu nodes have a default taint of nvidia.com/gpu=present:NoSchedule so if you use GPUs we wouldn't have logs
+    tolerations: []
+    livenessProbe:
+      failureThreshold: 5
+      tcpSocket:
+        port: http-metrics
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
 
+# The pachw controller creates a pool of pachd instances running in 'pachw' mode which can dynamically scale to handle
+# storage related tasks
+pachw:
+  # When set to true, inheritFromPachd defaults below configuration options like 'resources' and 'tolerations' to
+  # values from pachd. These values can be overridden by defining the corresponding pachw values below.
+  # When set to false, a nil value will be used by default instead. Some configuration variables will always use their
+  # corresponding pachd value, regardless of whether 'inheritFromPachd' is true, such as 'serviceAccountName'
+  inheritFromPachd: true
+  # When set to true, inSidecars also processes storage related tasks in pipeline storage sidecars like version 2.4 or less.
+  # when enabled, pachw instances can still run in their own dedicated kubernetes deployment if maxReplicas is greater than 0.
+  # For more control of where pachw instances run, 'inSidecars' should be disabled.
+  inSidecars: false
+  # maxReplicas should be tuned based on the number of pipelines on a user-per-user basis.
+  maxReplicas: 1
+  # minReplicas: 0
+  # We recommend defining resources when running pachw with a high value of maxReplicas.
+  #resources:
+  #  limits:
+  #    cpu: "1"
+  #    memory: "2G"
+  #  requests:
+  #    cpu: "1"
+  #  memory: "2G"
+  #
+  #tolerations: []
+  #affinity: {}
+  #nodeSelector: {}
 pachd:
   enabled: true
+  preflightChecks:
+    # if enabled runs kube validation preflight checks.
+    enabled: true
   affinity: {}
   annotations: {}
   # clusterDeploymentID sets the Pachyderm cluster ID.
   clusterDeploymentID: ""
   configJob:
     annotations: {}
-  # goMaxProcs is passed as GOMAXPROCS to the pachd container.
+  # goMaxProcs is passed as GOMAXPROCS to the pachd container.  pachd can automatically pick an
+  # optimal GOMAXPROCS from the configured CPU limit, but this overrides it.
   goMaxProcs: 0
+  # goMemLimit is passed as GOMEMLIMIT to the pachd container. pachd can automatically pick an
+  # optimal GOMEMLIMIT from the configured memory request or limit, but this overrides it.  This is a string
+  # because it can be something like '256MiB'.
+  goMemLimit: ""
+  # gcPercent sets the initial garbage collection target percentage.
+  gcPercent: 0
   image:
     repository: "pachyderm/pachd"
     pullPolicy: "IfNotPresent"
     # tag defaults to the chart’s specified appVersion.
     # This sets the worker image tag as well (they should be kept in lock step)
     tag: ""
-  logFormat: "json"
   logLevel: "info"
+  disableLogSampling: false
+  developmentLogger: false
+  # If true, log every SQL query at debug level.  This can potentially log sensitive information
+  # without redaction, so it's not recommended for production.
+  sqlQueryLogs: false
   # If lokiDeploy is true, a Pachyderm-specific instance of Loki will
   # be deployed.
   lokiDeploy: true
   # lokiLogging enables Loki logging if set.
   lokiLogging: true
+  # lokiHost and lokiPort should only be set when using an external Loki instance. lokiDeploy should be false.
+  # lokiHost should be the hostname of the Loki instance to use.
+  lokiHost: ""
+  # lokiPort should be the port of the Loki instance to use.
+  lokiPort: 0
   metrics:
     # enabled sets the METRICS environment variable if set.
     enabled: true
@@ -478,6 +866,16 @@ pachd:
     # of GOOGLE, AMAZON, MINIO, MICROSOFT or LOCAL. This is set automatically
     # if deployTarget is GOOGLE, AMAZON, MICROSOFT, or LOCAL
     backend: ""
+    # If 'gocdkEnabled' is true, 'storageURL' is used to configure the backend for object storage.
+    # The 'backend' configuration options should be used in conjunction with 'storageURL' to
+    # pass in secrets and identity information.
+    # When using gocdkEnabled, 'backend' cannot be 'MINIO'.
+    # Users who desire to use minio as their storage backend should set the 'backend' to 'AMAZON' instead
+    # and set 'storageURL' to the s3 compatible URL representation for their minio endpoint.
+    gocdkEnabled: false
+    # storageURL is a URL endpoint for object storage such as "s3://myamazonbucket" or "gcs://mygooglebucket.
+    # Depending on the storage provider, some configuration options may also be passed via URL query parameters.
+    storageURL: ""
     amazon:
       # bucket sets the S3 bucket to use.
       bucket: ""
@@ -593,8 +991,16 @@ pachd:
     # The shard size corresponds to the total size of the files in a shard.
     # The shard count corresponds to the total number of files in a shard.
     # If either criteria is met, a shard will be created.
-    compactionShardSizeThreshold: 0
-    compactionShardCountThreshold: 0
+    # values are strings
+    compactionShardSizeThreshold: "0"
+    compactionShardCountThreshold: "0"
+    memoryThreshold: 0
+    levelFactor: 0
+    maxFanIn: 10
+    maxOpenFileSets: 50
+    # diskCacheSize and memoryCacheSize are defined in units of 8 Mb chunks. The default is 100 chunks which is 800 Mb.
+    diskCacheSize: 100
+    memoryCacheSize: 100
   ppsWorkerGRPCPort: 1080
   # the number of seconds between pfs's garbage collection cycles.
   # if this value is set to 0, it will default to pachyderm's internal configuration.
@@ -632,6 +1038,40 @@ pachd:
     # Setting it to false is analogous to passing --no-rbac to pachctl
     # deploy.
     create: true
+  # Set up default resources for pipelines that don't include any requests or limits.  The values
+  # are k8s resource quantities, so "1Gi", "2", etc.  Set to "0" to disable setting any defaults.
+  defaultPipelineCPURequest: ""
+  defaultPipelineMemoryRequest: ""
+  defaultPipelineStorageRequest: ""
+  defaultSidecarCPURequest: ""
+  defaultSidecarMemoryRequest: ""
+  defaultSidecarStorageRequest: ""
+  determined:
+    # a determined's cluster API URL
+    apiEndpoint: ""
+    # the name of the kubernetes secret containing the credentials for the determined user representing pachyderm.
+    # the secret is expected to contain the keys "determined-username" & "determined-password"
+    credentialsSecretName: ""
+  # readinessProbe, livenessProbe, startupProbe: Configure the probe settings.
+  # Acceptable inputs for each probe include initialDelaySeconds, timeoutSeconds, periodSeconds, successThreshold, and failureThreshold.
+  readinessProbe:
+    initialDelaySeconds: 0
+    timeoutSeconds: 1
+    periodSeconds: 10
+    successThreshold: 1
+    failureThreshold: 3
+  livenessProbe:
+    initialDelaySeconds: 0
+    failureThreshold: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 30
+  startupProbe:
+    initialDelaySeconds: 0
+    failureThreshold: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 30
 
 kubeEventTail:
   # Deploys a lightweight app that watches kubernetes events and echos them to logs.
@@ -641,11 +1081,11 @@ kubeEventTail:
   image:
     repository: pachyderm/kube-event-tail
     pullPolicy: "IfNotPresent"
-    tag: "v0.0.6"
+    tag: "v0.0.7"
   resources:
     limits:
       cpu: "1"
-      memory: 45Mi
+      memory: 100Mi
     requests:
       cpu: 100m
       memory: 45Mi
@@ -659,7 +1099,7 @@ pgbouncer:
   tolerations: []
   image:
     repository: pachyderm/pgbouncer
-    tag: 1.16.1-debian-10-r82
+    tag: 1.16.2
   resources:
     {}
     #limits:
@@ -669,9 +1109,9 @@ pgbouncer:
     #  cpu: "1"
     #  memory: "2G"
   # maxConnections specifies the maximum number of concurrent connections into pgbouncer.
-  maxConnections: 1000
+  maxConnections: 100000
   # defaultPoolSize specifies the maximum number of concurrent connections from pgbouncer to the postgresql database.
-  defaultPoolSize: 20
+  defaultPoolSize: 80
 
 # Note: Postgres values control the Bitnami Postgresql Subchart
 postgresql:
@@ -682,6 +1122,7 @@ postgresql:
   # dependency in Chart.yaml
   enabled: true
   image:
+    repository: pachyderm/postgresql
     tag: "13.3.0"
   # DEPRECATED from pachyderm 2.1.5
   initdbScripts:
@@ -698,10 +1139,9 @@ postgresql:
     # See notes in Bitnami chart values.yaml file for more information.
     # More info for setting up storage classes on various cloud providers:
     # AWS: https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
-    # GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/ssd-pd
-    # Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage
+    # GCP: https://cloud.google.com/compute/docs/disks/performance#disk_types
+    # Azure: https://docs.microsoft.com/en-us/azure/aks/concepts-storage#storage-classes
     storageClass: ""
-
     # storageSize specifies the size of the volume to use for postgresql
     # Recommended Minimum Disk size for Microsoft/Azure: 256Gi  - 1,100 IOPS https://azure.microsoft.com/en-us/pricing/details/managed-disks/
     # Recommended Minimum Disk size for Google/GCP: 50Gi        - 1,500 IOPS https://cloud.google.com/compute/docs/disks/performance
@@ -722,6 +1162,7 @@ cloudsqlAuthProxy:
   # connectionName may be found by running `gcloud sql instances describe INSTANCE_NAME --project PROJECT_ID`
   connectionName: ""
   serviceAccount: ""
+  iamLogin: false
   port: 5432
   enabled: false
   image:
@@ -778,8 +1219,6 @@ oidc:
   #       insecureEnableGroups: true
   #       insecureSkipEmailVerified: true
   #       insecureSkipIssuerCallbackDomainCheck: true
-  #       forwardedLoginParams:
-  #       - login_hint
   #     name: idpConnector
   #     type: oidc
   #
@@ -792,8 +1231,6 @@ oidc:
   #       insecureEnableGroups: true
   #       insecureSkipEmailVerified: true
   #       insecureSkipIssuerCallbackDomainCheck: true
-  #       forwardedLoginParams:
-  #       - login_hint
   #     name: okta
   #     type: oidc
   upstreamIDPs: []
@@ -827,7 +1264,11 @@ proxy:
   # If enabled, create a proxy deployment (based on the Envoy proxy) and a service to expose it.  If
   # ingress is also enabled, any Ingress traffic will be routed through the proxy before being sent
   # to pachd or Console.
-  enabled: false
+  enabled: true
+  # The external hostname (including port if nonstandard) that the proxy will be reachable at.
+  # If you have ingress enabled and an ingress hostname defined, the proxy will use that.
+  # Ingress will be deprecated in the future so configuring the proxy host instead is recommended.
+  host: ""
   # The number of proxy replicas to run.  1 should be fine, but if you want more for higher
   # availability, that's perfectly reasonable.  Each replica can handle 50,000 concurrent
   # connections.  There is an affinity rule to prefer scheduling the proxy pods on the same node as
@@ -836,8 +1277,8 @@ proxy:
   replicas: 1
   # The envoy image to pull.
   image:
-    repository: "envoyproxy/envoy"
-    tag: "v1.22.0"
+    repository: "envoyproxy/envoy-distroless"
+    tag: "v1.27.1"
     pullPolicy: "IfNotPresent"
   # Set up resources.  The proxy is configured to shed traffic before using 500MB of RAM, so that's
   # a resonable memory limit.  It doesn't need much CPU.
@@ -852,6 +1293,12 @@ proxy:
   labels: {}
   # Any additional annotations to add to the pods.
   annotations: {}
+  # A nodeSelector statement for each pod in the proxy Deployment, if desired.
+  nodeSelector: {}
+  # A tolerations statement for each pod in the proxy Deployment, if desired.
+  tolerations: []
+  # A priority class name for each pod in the proxy Deployment, if desired.
+  priorityClassName: ""
   # Configure the service that routes traffic to the proxy.
   service:
     # The type of service can be ClusterIP, NodePort, or LoadBalancer.
@@ -879,6 +1326,9 @@ proxy:
       oidc: 0 # legacy 30657
       identity: 0 # legacy 30658
       metrics: 0 # legacy 30656
+    # externalTrafficPolicy determines cluster-wide routing policy; see "kubectl explain
+    # service.spec.externalTrafficPolicy".
+    externalTrafficPolicy: ""
   # Configuration for TLS (SSL, HTTPS).
   tls:
     # If true, enable TLS serving.  Enabling TLS is incompatible with support for legacy ports (you
@@ -899,3 +1349,34 @@ proxy:
     secretName: ""
     # If set, generate the secret from values here.  This is intended only for unit tests.
     secret: {}
+preflightCheckJob:
+  # If true, install a Kubernetes job that runs preflight checks from the configured Pachyderm
+  # release.
+  enabled: false
+
+  # The version to preflight.  It is totally fine if this is newer than the currently-running pachd
+  # version.
+  image:
+    repository: "pachyderm/pachd"
+    pullPolicy: "IfNotPresent"
+    tag: ""
+
+  # misc k8s settings
+  affinity: {}
+  annotations: {}
+  resources:
+    {}
+    #limits:
+    #  cpu: "1"
+    #  memory: "2G"
+    #requests:
+    #  cpu: "1"
+    #  memory: "2G"
+  priorityClassName: ""
+  podLabels: {}
+  nodeSelector: {}
+  tolerations: []
+
+  # logging settings
+  sqlQueryLogs: false
+  disableLogSampling: false
