@@ -761,6 +761,12 @@
   force = true
 
 [[redirects]]
+  from = "/2.5.x/*"
+  to = "/latest/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/2.4.x/*"
   to = "/latest/:splat"
   status = 301
