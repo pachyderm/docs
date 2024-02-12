@@ -662,7 +662,6 @@
   status = 301
   force = true
 
-
 [[redirects]]
   from = "/latest/how-tos/s3-gateway-operations/"
   to = "/latest/export-data/s3-gateway-operations"
@@ -674,7 +673,6 @@
   to = "/latest/export-data/s3-gateway-operations/:splat"
   status = 301
   force = true
-
 
 [[redirects]]
   from = "/latest/how-tos/jupyterlab-extension/"
@@ -761,31 +759,61 @@
   force = true
 
 [[redirects]]
+  from = "/2.0.x/*"
+  to = "https://github.com/pachyderm/docs-content/tree/main/.archive"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2.1.x/*"
+  to = "https://github.com/pachyderm/docs-content/tree/main/.archive"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2.2.x/*"
+  to = "https://github.com/pachyderm/docs-content/tree/main/.archive"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2.3.x/*"
+  to = "https://github.com/pachyderm/docs-content/tree/main/.archive"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2.4.x/*"
+  to = "https://github.com/pachyderm/docs-content/tree/main/.archive"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/2.5.x/*"
   to = "/latest/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/2.4.x/*"
+  from = "/2.10.x/*"
   to = "/latest/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/2.3.x/*"
+  from = "/2.11.x/*"
   to = "/latest/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/2.2.x/*"
-  to = "https://docs.pachyderm.com/archive"
+  from = "/2.12.x/*"
+  to = "/latest/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/2.1.x/*"
-  to = "https://docs.pachyderm.com/archive"
+  from = "/2.13.x/*"
+  to = "/latest/:splat"
   status = 301
   force = true
