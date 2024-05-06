@@ -1,5 +1,5 @@
-baseURL: "https://docs.pachyderm.com"
-title: Pachyderm's Docs
+baseURL: "/"
+title: Archived Pachyderm's Docs
 
 enableGitInfo: true 
 enableEmoji: true 
