@@ -27,7 +27,7 @@ params:
     display: true # displays child pages of a section.
     grandchildren: true # displays first 7 grandchildren as buttons in the card.
   editLink: 
-    display: true #  displays a link to the corresponding github file for a given page; githubUrl must be set.
+    display: false #  displays a link to the corresponding github file for a given page; githubUrl must be set.
     githubUrl: https://github.com/pachyderm/docs-content/tree/main/  # should end with content/ 
   giscus: false # displays giscus commenting on single pages.
   heroBanner:
